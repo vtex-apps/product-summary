@@ -1,0 +1,12 @@
+{
+  "pages": {
+    "product-summary": {
+      "path": "/product-summary"
+    }
+  },
+  "extensions": {
+    "product-summary": {
+      "component": "index"
+    }
+  }
+}
