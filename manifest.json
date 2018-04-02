@@ -1,18 +1,21 @@
 {
-  "name": "product-summary",
   "vendor": "vtex",
+  "name": "product-summary",
   "version": "0.1.0",
   "title": "Product Summary",
   "description": "Product summary component",
+  "defaultLocale": "pt-BR",
+  "builders": {
+    "pages": "0.x",
+    "react": "2.x"
+  },
   "mustUpdateAt": "2019-04-02",
   "categories": [],
   "registries": [
     "smartcheckout"
   ],
   "settingsSchema": {},
-  "dependencies": {},
-  "builders": {
-    "pages": "0.x",
-    "react": "2.x"
+  "scripts": {
+    "postreleasy": "vtex publish --public"
   }
 }

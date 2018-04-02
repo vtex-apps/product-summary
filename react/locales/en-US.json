@@ -1,0 +1,18 @@
+{
+  "getting-started.title": "VTEX Render - Getting started",
+  "getting-started.greeting": "Welcome to the first VTEX Render tutorial!",
+  "getting-started.description": "This is an interactive tutorial.The idea is for you to discover the Render features by editing an app.",
+  "getting-started.first-steps-header": "Getting Started",
+  "getting-started.toolbelt": "First, install the <strong>toolbelt</strong>, our command-line tool to develop on the VTEX platform:",
+  "getting-started.workspace-creation": "Now let's login to your account and create a <strong>workspace</strong>, your personal version of this store.",
+  "getting-started.workspace-description": "A workspace is for you to do isolated changes in your store. Nothing you do in a workspace is published until you <strong>promote</strong> your workspace. For now, don't worry about it.",
+  "getting-started.clone": "Now, clone the repository of this app:",
+  "getting-started.synchronize": "Finally, in order to change an app and see its changes we need to synchronize the local files with the platform, so all our edits will be reflected in real time!",
+  "getting-started.watch": "To do this, let's use the <i>link</i> command",
+  "getting-started.online": "Cool! After a few seconds, your files are already being synced and you can click the URL that appeared on your terminal to see <i>your workspace online!</i>",
+  "getting-started.edit-file": "Now open your preferred text editor to edit the file {fileName}.",
+  "getting-started.change-css": "Look for the following code snippet and change the 'dn' class to 'green':",
+  "getting-started.save": "Now <strong>save</strong> the file. If everything works out, the change will appear below!",
+  "getting-started.congrats": "Woohoo! You made your first change in an app!",
+  "getting-started.mobile": "(Hey 📱! It's best to access this tutorial straight from your development environment, but welcome anyway. 😊)"
+}
