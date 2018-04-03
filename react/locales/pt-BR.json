@@ -1,4 +1,7 @@
 {
+  "pricing.installment-display": "ou até {installments}X de {installmentPrice}",
+  "pricing.from": "de:",
+  "pricing.to": "por:",
   "getting-started.title": "VTEX Render - Primeiros passos",
   "getting-started.greeting": "Bem-vindo ao Primeiro Tutorial do VTEX Render!",
   "getting-started.description": "Esse é um tutorial interativo. A idéia é você descobrir as funcionalidades do Render editando uma app.",

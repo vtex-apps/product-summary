@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedNumber } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 /**
  * The Price component. Shows the prices information of the Product Summary.
  */
-export default class Price extends Component {
+class Price extends Component {
 
   /**
    * Component properties
@@ -33,59 +33,67 @@ export default class Price extends Component {
    * Reders the component showing the list price, selling price and installment information if there is any.
    */
   render() {
-    // TODO: Internationalize ('de:', 'por:' 'ou em até nX de m')
     const {
       sellingPrice,
       listPrice,
       installments,
       installmentPrice,
-      showListPrice
+      showListPrice,
+      intl: { formatNumber }
     } = this.props;
+
+    const currencyOptions = {
+      style: 'currency',
+      currency: this.context.culture.currency,
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    };
 
     const installmentElement = (
       (installments && installmentPrice) &&
       <div>
-        <div className='dib'>ou até {installments}X de</div>
+        <div className='dib'>
+          <FormattedMessage
+            id='pricing.installment-display'
+            values={{
+              installments,
+              installmentPrice: formatNumber(installmentPrice, currencyOptions)
+            }} />
+        </div>
+      </div>
+    );
+
+    const listPriceElement = (
+      (showListPrice) &&
+      <div className='pv1'>
+        <div className='dib'>
+          <FormattedMessage id='pricing.from'/>
+        </div>
+        <div className='dib strike ph2'>
+        { formatNumber(listPrice, currencyOptions) }
+        </div>
+      </div>
+    );
+
+    const sellingPriceElement = (
+      <div className='pv1'>
+        <div className='dib'>
+          <FormattedMessage id='pricing.to'/>
+        </div>
         <div className='dib ph2'>
-          <FormattedNumber
-            style='currency'
-            currency={this.context.culture.currency}
-            minimumFractionDigits={2}
-            maximumFractionDigits={2}
-            value={installmentPrice} />
+          { formatNumber(sellingPrice, currencyOptions) }
         </div>
       </div>
     );
 
     return (
       <div className='tc b fabriga'>
-        {
-          (showListPrice) &&
-          <div className='pv1'>
-            <div className='dib'>de:</div>
-            <div className='dib strike ph2'>
-              <FormattedNumber
-                style='currency'
-                currency={this.context.culture.currency}
-                minimumFractionDigits={2}
-                maximumFractionDigits={2}
-                value={listPrice} />
-            </div>
-          </div>
-        }
-        <div className='pv1'>
-          <div className='dib'>por:</div>
-          <div className='dib ph2'>
-            <FormattedNumber
-              style='currency'
-              currency={this.context.culture.currency}
-              minimumFractionDigits={2}
-              maximumFractionDigits={2}
-              value={sellingPrice} />
-          </div>
-        </div>
-        {installmentElement}
+        { listPriceElement }
+        { sellingPriceElement }
+        { installmentElement }
       </div>
     );
   }
 }
+
+export default injectIntl(Price);
