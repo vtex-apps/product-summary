@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class ProductName extends Component {
@@ -6,8 +6,8 @@ class ProductName extends Component {
     const { name, skuVariation, brandName } = this.props
 
     return (
-      <h2 className="f3 ttu-s">
-        {name} {skuVariation} {brandName && <Fragment>({brandName})</Fragment>}
+      <h2 className="f3 ttu">
+        {name} {skuVariation} {brandName && `(${brandName})`}
       </h2>
     )
   }
