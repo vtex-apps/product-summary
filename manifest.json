@@ -9,6 +9,9 @@
     "pages": "0.x",
     "react": "2.x"
   },
+  "dependencies": {
+    "vtex.store-graphql": "2.x"
+  },
   "mustUpdateAt": "2019-04-02",
   "categories": [],
   "registries": [
