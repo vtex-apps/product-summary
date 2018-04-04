@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import {ExtensionPoint, Link, Helmet} from 'render'
 import {FormattedMessage, FormattedHTMLMessage, injectIntl, intlShape} from 'react-intl'
 
+import Price from './Price';
+
 class GettingStartedIndex extends Component {
   static propTypes = {
     intl: intlShape,
@@ -46,6 +48,10 @@ class GettingStartedIndex extends Component {
           </div>
         )}
         {this.props.children}
+        <div className="pv6">
+          <ExtensionPoint id="Price">
+          </ExtensionPoint>
+        </div>
       </article>
     )
   }

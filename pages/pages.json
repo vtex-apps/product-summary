@@ -98,6 +98,16 @@
         "text": "You can edit it yourself in the edit bar below."
       }
     },
+    "getting-started/Price": {
+      "component": "Price",
+      "props": {
+        "showListPrice": true,
+        "listPrice": 120,
+        "sellingPrice": 100,
+        "installments": 5,
+        "installmentPrice": 20
+      }
+    },
     "legacy-getting-started": {
       "component": "index"
     },
