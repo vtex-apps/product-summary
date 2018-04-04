@@ -27,7 +27,7 @@ ProductName.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   skuVariation: PropTypes.string,
-  brandName: PropTypes.string
+  brandName: PropTypes.string,
 }
 
 export default ProductName
