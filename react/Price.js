@@ -29,9 +29,6 @@ class Price extends Component {
     culture: PropTypes.object,
   }
 
-  /**
-   * Reders the component showing the list price, selling price and installment information if there is any.
-   */
   render() {
     const {
       sellingPrice,
