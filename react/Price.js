@@ -84,16 +84,4 @@ Price.propTypes = {
   intl: intlShape.isRequired,
 }
 
-Price.schema = {
-  title: 'Price',
-  description: 'The price component for the Product Summary',
-  type: 'object',
-  properties: {
-    showListPrice: {
-      type: 'boolean',
-      title: 'Show list price',
-    },
-  },
-}
-
 export default injectIntl(Price)
