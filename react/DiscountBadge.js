@@ -11,8 +11,7 @@ class DiscountBadge extends Component {
   * This method calculates the discount tax by the selling and list prices.
   */
   calculateDiscountTax() {
-    const listPrice = this.props.listPrice
-    const sellingPrice = this.props.sellingPrice
+    const { listPrice, sellingPrice } = this.props
     return (listPrice - sellingPrice) / listPrice
   }
 
