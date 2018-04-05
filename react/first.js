@@ -2,10 +2,15 @@ import React from 'react'
 import {FormattedMessage, FormattedHTMLMessage} from 'react-intl'
 import DiscountBadge from './DiscountBadge'
 
+const product = {
+  listPrice: 200,
+  sellingPrice: 150,
+}
+
 const FirstStep = () =>
   <div>
     <div className="relative dib">
-      <DiscountBadge listPrice={200} sellingPrice={20} />
+      <DiscountBadge listPrice={product.listPrice} sellingPrice={product.sellingPrice} />
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd0cHfPOO0tneOT0AH3UDs7BumkdOVHZtv4DL55dFtInS2q8mi"/>
     </div>
     <h2>
