@@ -32,11 +32,11 @@ DiscountBadge.propTypes = {
   /** The product's price with discount */
   sellingPrice: PropTypes.number.isRequired,
   /** The label to track the discount percent */
-  label: PropTypes.string,
+  label: PropTypes.string
 }
 
 DiscountBadge.defaultProps = {
-  label: 'OFF',
+  label: '',
 }
 
 export default DiscountBadge
