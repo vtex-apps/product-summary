@@ -10,18 +10,6 @@ class Price extends Component {
     culture: PropTypes.object,
   }
 
-  static schema = {
-    title: 'Price',
-    description: 'The price component for the Product Summary',
-    type: 'object',
-    properties: {
-      showListPrice: {
-        type: 'boolean',
-        title: 'Show list price',
-      },
-    },
-  }
-
   render() {
     const {
       sellingPrice,
@@ -94,6 +82,18 @@ Price.propTypes = {
   installmentPrice: PropTypes.number,
   /** intl property to format data */
   intl: intlShape.isRequired,
+}
+
+Price.schema = {
+  title: 'Price',
+  description: 'The price component for the Product Summary',
+  type: 'object',
+  properties: {
+    showListPrice: {
+      type: 'boolean',
+      title: 'Show list price',
+    },
+  },
 }
 
 export default injectIntl(Price)
