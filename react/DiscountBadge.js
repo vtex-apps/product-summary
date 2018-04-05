@@ -7,11 +7,6 @@ import PropTypes from 'prop-types'
 * and calculates the discount percent to show it in the product's sumary.
 */
 class DiscountBadge extends Component {
-  /**
-  * This method calculates the discount tax.
-  * @param {number} listPrice - The product's price
-  * @param {number} sellingPrice - The product's price with discount
-  */
   calculateDiscountTax(listPrice, sellingPrice) {
     return (listPrice - sellingPrice) / listPrice
   }
