@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {ExtensionPoint, Link, Helmet} from 'render'
-import {FormattedMessage, FormattedHTMLMessage, injectIntl, intlShape} from 'react-intl'
+import {FormattedMessage, injectIntl, intlShape} from 'react-intl'
 
 class GettingStartedIndex extends Component {
   static propTypes = {
