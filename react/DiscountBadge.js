@@ -8,18 +8,20 @@ import PropTypes from 'prop-types'
 */
 class DiscountBadge extends Component {
   /**
-  * This method calculates the discount tax by the selling and list prices.
+  * This method calculates the discount tax.
+  * @param {number} listPrice - The product's price
+  * @param {number} sellingPrice - The product's price with discount
   */
-  calculateDiscountTax() {
-    const { listPrice, sellingPrice } = this.props
+  calculateDiscountTax(listPrice, sellingPrice) {
     return (listPrice - sellingPrice) / listPrice
   }
 
   render() {
-    const percent = this.calculateDiscountTax()
+    const { listPrice, sellingPrice, label } = this.props
+    const percent = this.calculateDiscountTax(listPrice, sellingPrice)
     return (percent !== 0) &&
       <div className="f7 dark-gray absolute right-0 pa2-s bg-white">
-        <FormattedNumber value={percent} style="percent" /> { this.props.label }
+        <FormattedNumber value={percent} style="percent" /> { label }
       </div>
   }
 }
