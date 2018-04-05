@@ -7,19 +7,17 @@ import PropTypes from 'prop-types'
 * and calculates the discount percent to show it in the product's sumary.
 */
 class DiscountBadge extends Component {
-  /**
-  * This method calculates the discount tax by the selling and list prices.
-  */
-  calculateDiscountTax() {
-    const { listPrice, sellingPrice } = this.props
+  calculateDiscountTax(listPrice, sellingPrice) {
     return (listPrice - sellingPrice) / listPrice
   }
 
   render() {
-    const percent = this.calculateDiscountTax()
+    const { listPrice, sellingPrice, label } = this.props
+    const percent = this.calculateDiscountTax(listPrice, sellingPrice)
     return (percent !== 0) &&
       <div className="f7 dark-gray absolute right-0 pa2-s bg-white">
-        <FormattedNumber value={percent} style="percent" /> { this.props.label }
+        { label === '' && '-' }
+        <FormattedNumber value={percent} style="percent" /> { label }
       </div>
   }
 }
@@ -34,7 +32,7 @@ DiscountBadge.propTypes = {
 }
 
 DiscountBadge.defaultProps = {
-  label: 'OFF',
+  label: '',
 }
 
 export default DiscountBadge
