@@ -49,21 +49,21 @@ class Price extends Component {
         </div>
         {installments &&
           installmentPrice && (
-            <div>
-              <div className="dib">
-                <FormattedMessage
-                  id="pricing.installment-display"
-                  values={{
-                    installments,
-                    installmentPrice: formatNumber(
-                      installmentPrice,
-                      currencyOptions
-                    ),
-                  }}
-                />
-              </div>
+          <div>
+            <div className="dib">
+              <FormattedMessage
+                id="pricing.installment-display"
+                values={{
+                  installments,
+                  installmentPrice: formatNumber(
+                    installmentPrice,
+                    currencyOptions
+                  ),
+                }}
+              />
             </div>
-          )}
+          </div>
+        )}
       </div>
     )
   }
