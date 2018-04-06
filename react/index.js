@@ -1,54 +1,40 @@
-import React, {Component} from 'react'
-import PropTypes from 'prop-types'
-import {ExtensionPoint, Link, Helmet} from 'render'
-import {FormattedMessage, injectIntl, intlShape} from 'react-intl'
+import React, { Component } from 'react'
+import Card from '@vtex/styleguide/lib/Card'
 
-class GettingStartedIndex extends Component {
+import ProductSummary from './ProductSummary'
+
+// FIXME: Delete when we can use true data.
+const props = {
+  product: {
+    listPrice: 200,
+    sellingPrice: 150,
+    installments: 3,
+    installmentPrice: 50,
+    imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd0cHfPOO0tneOT0AH3UDs7BumkdOVHZtv4DL55dFtInS2q8mi',
+    name: 'My product',
+    url: 'https://google.com',
+  },
+  showListPrice: true,
+  showInstallments: true,
+  showLabels: true,
+  showBadge: true,
+  disable: true,
+  showOnHover: true,
+}
+
+export default class GettingStartedIndex extends Component {
   static propTypes = {
-    intl: intlShape,
-    page: PropTypes.string,
-    targetParams: PropTypes.object,
   }
 
-  render () {
-    const {page, targetParams = {}, intl: {formatMessage}} = this.props
-
+  render() {
     return (
-      <article className="bg-serious-black">
-        <Helmet title={formatMessage({id: 'getting-started.title'})} />
-        <header className="bg-heavy-rebel-pink sans-serif white">
-          <div className="mw8 center pa6 pv6-ns ph7-1">
-            <h1 className="f2 f1-m f-headline-l lh-title mv0">
-              <FormattedMessage id="getting-started.greeting"/>
-            </h1>
-            <h3 className="f3 fw1 georgia">
-              <FormattedMessage id="getting-started.description"/>
-            </h3>
-            <h4 className="f6 ttu tracked black-80">
-              @renderteam
-            </h4>
-          </div>
-        </header>
-        {__RUNTIME__.hints && __RUNTIME__.hints.mobile && <FormattedMessage id="getting-started.mobile"/>}
-        {!this.props.children && (
-          <div className="pa4 ph7-l georgia mw8 center near-white f4">
-            <ExtensionPoint id="first-step">
-            </ExtensionPoint>
-            <ExtensionPoint id="second-step">
-            </ExtensionPoint>
-            <ExtensionPoint id="configurable-component">
-            </ExtensionPoint>
-            <ExtensionPoint id="empty">
-            </ExtensionPoint>
-            <Link page={page} params={targetParams} className="f4 fw6 db rebel-pink no-underline underline-hover pointer">
-              Link to {page} with params: {JSON.stringify(targetParams)}
-            </Link>
-          </div>
-        )}
-        {this.props.children}
-      </article>
+      <div className="center mw5">
+        <div className="pv2">
+          <Card fullWidth>
+            <ProductSummary {...props} />
+          </Card>
+        </div>
+      </div>
     )
   }
 }
-
-export default injectIntl(GettingStartedIndex)

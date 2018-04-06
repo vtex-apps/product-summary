@@ -2,5 +2,6 @@
   "name": "vtex.render-getting-started",
   "version": "0.0.0",
   "dependencies": {
+    "@vtex/styleguide": "2.0.0-rc.34"
   }
 }

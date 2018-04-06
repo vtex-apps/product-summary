@@ -1,117 +1,17 @@
 {
   "pages": {
-    "getting-started": {
-      "path": "/getting-started",
+    "product-summary": {
+      "path": "/product-summary",
       "theme": "theme",
       "extensible": true
-    },
-    "getting-started/nested-a": {
-      "path": "/getting-started/nested-a"
-    },
-    "getting-started/nested-b": {
-      "path": "/getting-started/nested-b"
-    },
-    "getting-started/nested-param": {
-      "path": "/getting-started/:slug/nested-param"
-    },
-    "getting-started/nested-param/deeply-nested": {
-      "path": "/getting-started/:slug/nested-param/:deep/deeply-nested"
-    },
-    "getting-started/container": {
-      "path": "/getting-started/container"
-    },
-    "legacy-getting-started": {
-      "path": "/legacy-extensions/render-example",
-      "theme": "theme"
-    },
-    "legacy-without-tachyons": {
-      "path": "/legacy-extensions/render-example-without-tachyons",
-      "theme": "theme",
-      "disableExternals": ["tachyons"]
     }
   },
   "extensions": {
-    "getting-started": {
-      "component": "index",
-      "props": {
-        "page": "getting-started/nested-a"
-      }
-    },
-    "getting-started/nested-a": {
-      "component": "nested",
-      "props": {
-        "page": "getting-started/nested-b"
-      }
-    },
-    "getting-started/nested-b": {
-      "component": "nested",
-      "props": {
-        "page": "getting-started/nested-param",
-        "targetParams": {
-          "slug": "myslug"
-        }
-      }
-    },
-    "getting-started/nested-param": {
-      "component": "nested",
-      "props": {
-        "page": "getting-started/nested-param/deeply-nested",
-        "targetParams": {
-          "slug": "myslug",
-          "deep": "second"
-        }
-      }
-    },
-    "getting-started/nested-param/deeply-nested": {
-      "component": "nested",
-      "props": {
-        "page": "getting-started/container"
-      }
-    },
-    "getting-started/container": {
-      "component": "vtex.render-runtime/ExtensionContainer"
-    },
-    "getting-started/container/first": {
-      "component": "nested",
-      "props": {
-        "page": "getting-started"
-      }
-    },
-    "getting-started/container/second": {
-      "component": "nested",
-      "props": {
-        "page": "getting-started/nested-a"
-      }
-    },
-    "getting-started/first-step": {
-      "component": "first"
-    },
-    "getting-started/second-step": {
-      "component": "second",
-      "async": true
-    },
-    "getting-started/configurable-component": {
-      "component": "configurable",
-      "props": {
-        "show": true,
-        "title": "This is a configurable component",
-        "text": "You can edit it yourself in the edit bar below."
-      }
-    },
-    "legacy-getting-started": {
+    "product-summary/index": {
       "component": "index"
     },
-    "legacy-getting-started/first-step": {
-      "component": "first"
-    },
-    "legacy-getting-started/second-step": {
-      "component": "second"
-    },
-    "legacy-without-tachyons/first-step": {
-      "component": "first"
-    },
-    "legacy-without-tachyons/second-step": {
-      "component": "second"
+    "product-summary/summary": {
+      "component": "ProductSummary"
     }
   }
 }
