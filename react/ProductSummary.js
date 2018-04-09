@@ -40,7 +40,6 @@ class ProductSummary extends Component {
         onClick={event => this.redirect(event)}
         onMouseEnter={() => this.onMouseEnter()}
         onMouseLeave={() => this.onMouseLeave()}>
-        <a href="google.com" className=""></a>
         {!product &&
           <div>Loading...</div>
         }
@@ -61,7 +60,9 @@ class ProductSummary extends Component {
           <div className="pv2">
             <ProductName
               name={product.name}
-              url={product.url} />
+              skuVariation={product.skuVariation}
+              brandName={product.brandName}
+              referenceCode={product.referenceCode} />
           </div>
           <div className="pv1">
             <Price
