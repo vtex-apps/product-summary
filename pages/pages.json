@@ -10,7 +10,7 @@
     "product-summary/index": {
       "component": "index"
     },
-    "product-summary/summary": {
+    "product-summary/product-summary": {
       "component": "ProductSummary"
     }
   }

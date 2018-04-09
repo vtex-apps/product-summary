@@ -20,8 +20,8 @@ class ProductSummary extends Component {
     this.setState({ isHovering: true })
   }
 
-  redirect() {
-    window.location.assign(this.props.product.url)
+  redirect(event) {
+    event.ctrlKey ? window.open(this.props.product.url) : window.location.assign(this.props.product.url)
   }
 
   render() {
@@ -31,15 +31,19 @@ class ProductSummary extends Component {
       showLabels,
       showInstallments,
       showBadge,
-      disable,
-      showOnHover,
+      hideBuyButton,
+      showButtonOnHover,
     } = this.props
 
     return (
       <div className="tc pointer"
-        onClick={() => this.redirect()}
+        onClick={event => this.redirect(event)}
         onMouseEnter={() => this.onMouseEnter()}
         onMouseLeave={() => this.onMouseLeave()}>
+        <a href="google.com" className=""></a>
+        {!product &&
+          <div>Loading...</div>
+        }
         {product && (<div>
           <div>
             {
@@ -71,15 +75,11 @@ class ProductSummary extends Component {
           </div>
 
           <div className="pv2">
-            <div style={{ display: (!showOnHover || (showOnHover && this.state.isHovering)) ? 'block' : 'none' }}>
-              <Button primary
-                disabled={disable}>BUY THIS AWESOME PRODUCT</Button>
+            <div style={{ display: (!showButtonOnHover || (showButtonOnHover && this.state.isHovering)) ? 'block' : 'none' }}>
+              {!hideBuyButton && <Button primary onClick={event => event.stopPropagation()}>BUY THIS AWESOME PRODUCT</Button>}
             </div>
           </div>
         </div>)}
-        {!product &&
-          <div>No product to be shown...</div>
-        }
       </div>
     )
   }
@@ -97,8 +97,8 @@ ProductSummary.propTypes = {
   showLabels: PropTypes.bool,
   showInstallments: PropTypes.bool,
   showBadge: PropTypes.bool,
-  disable: PropTypes.bool,
-  showOnHover: PropTypes.bool,
+  hideBuyButton: PropTypes.bool,
+  showButtonOnHover: PropTypes.bool,
 }
 
 ProductSummary.schema = {
@@ -122,11 +122,11 @@ ProductSummary.schema = {
       type: 'boolean',
       title: 'Show the discount badge',
     },
-    disable: {
+    hideBuyButton: {
       type: 'boolean',
-      title: 'Disable the buy button',
+      title: 'Hides the buy button',
     },
-    showOnHover: {
+    showButtonOnHover: {
       type: 'boolean',
       title: 'Show the buy button only on hover',
     },

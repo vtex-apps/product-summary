@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import Card from '@vtex/styleguide/lib/Card'
-
-import ProductSummary from './ProductSummary'
+import { ExtensionPoint } from 'render'
 
 // FIXME: Delete when we can use true data.
 const props = {
   product: {
     listPrice: 200,
-    sellingPrice: 150,
+    sellingPrice: 170,
     installments: 3,
     installmentPrice: 50,
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd0cHfPOO0tneOT0AH3UDs7BumkdOVHZtv4DL55dFtInS2q8mi',
@@ -15,11 +14,11 @@ const props = {
     url: 'https://google.com',
   },
   showListPrice: true,
-  showInstallments: true,
+  showInstallments: false,
   showLabels: true,
   showBadge: true,
-  disable: true,
-  showOnHover: true,
+  hideBuyButton: false,
+  showOnHover: false,
 }
 
 export default class GettingStartedIndex extends Component {
@@ -31,7 +30,7 @@ export default class GettingStartedIndex extends Component {
       <div className="center mw5">
         <div className="pv2">
           <Card fullWidth>
-            <ProductSummary {...props} />
+            <ExtensionPoint id="product-summary" {...props} />
           </Card>
         </div>
       </div>
