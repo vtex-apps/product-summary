@@ -11,10 +11,25 @@ const product = {
 const FirstStep = () =>
   <div>
     <div>
-      <QtdSelector qtdMax={7} />
+      <table className="collapse ba br2 b--black-10 pv2 ph3">
+        <tbody>
+          <tr>
+            <th className="pv2 ph3 tl f6 fw6 ttu">Produto</th>
+            <th className="pv2 ph3 tl f6 fw6 ttu">Preço unitário</th>
+            <th className="pv2 ph3 tl f6 fw6 ttu">Quantidade</th>
+            <th className="pv2 ph3 tl f6 fw6 ttu">Preço total</th>
+          </tr>
+          <tr>
+            <td className="pv2 ph3">Um lindíssimo perfume da Boticário]</td>
+            <td className="pv2 ph3">R$ 1000</td>
+            <td className="pv2 ph3"><QtdSelector qtdMax={ 4 } /></td>
+            <td className="pv2 ph3">R$ 1000</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div className="relative dib">
-      <DiscountBadge listPrice={product.listPrice} sellingPrice={product.sellingPrice} />
+      <DiscountBadge listPrice={product.listPrice} sellingPrice={product.sellingPrice} label="de desconto" />
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd0cHfPOO0tneOT0AH3UDs7BumkdOVHZtv4DL55dFtInS2q8mi"/>
     </div>
     <h2>
