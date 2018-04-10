@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import PropTypes from 'prop-types'
 
 /**
 * The quantity selector component. It receives the maximous quantity that a client
@@ -13,10 +14,9 @@ class QtdSelector extends Component {
 
   handleChange(event) {
     var quantity = event.target.value
-    console.log('qtd: ' + quantity);
     if (quantity > this.props.qtdMax) {
       quantity = this.props.qtdMax
-      //this.props.maxReached()
+      this.props.maxReached()
     } else if (quantity < 0) {
       quantity = 0
     }
@@ -33,7 +33,11 @@ QtdSelector.propTypes = {
   /** The product's maximous quantity that the client can buy */
   qtdMax: PropTypes.number.isRequired,
   /** This function is useful to tell the user that can't put more itens then the maximous limit */
-  //maxReached: PropTypes.func(),
+  maxReached: PropTypes.func,
+}
+
+QtdSelector.defaultProps = {
+  maxReached: () => {}
 }
 
 export default QtdSelector
