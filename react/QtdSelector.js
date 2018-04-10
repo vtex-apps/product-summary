@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 /**
@@ -8,24 +8,26 @@ import PropTypes from 'prop-types'
 class QtdSelector extends Component {
   constructor(props) {
     super(props)
-    this.state = {qtd: 1}
-    this.handleChange = this.handleChange.bind(this);
+    this.state = { qtd: 1 }
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(event) {
+    const qtdMax = this.props.qtdMax
     var quantity = event.target.value
-    if (quantity > this.props.qtdMax) {
-      quantity = this.props.qtdMax
+    if (quantity > qtdMax) {
+      quantity = qtdMax
       this.props.maxReached()
     } else if (quantity < 0) {
       quantity = 0
     }
-    this.setState({qtd: quantity})
+    this.setState({ qtd: quantity })
   }
 
   render() {
-    return <input className="f4 dark-gray br2-l" type="number" name="quantity" min="0" max={this.props.qtdMax}
-      value={ this.state.qtd } onChange={this.handleChange} />
+    return (<input
+      className="f4 dark-gray br2-l" type="number" name="quantity"
+      min="0" max={this.props.qtdMax} value={this.state.qtd} onChange={this.handleChange} />)
   }
 }
 
@@ -37,7 +39,7 @@ QtdSelector.propTypes = {
 }
 
 QtdSelector.defaultProps = {
-  maxReached: () => {}
+  maxReached: () => {},
 }
 
 export default QtdSelector
