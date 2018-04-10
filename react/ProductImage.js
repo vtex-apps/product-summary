@@ -31,8 +31,7 @@ class ProductImage extends Component {
     const isHorizontal = orientation === HORIZONTAL
 
     return (
-      // <div className="fl w-50">
-      <div>
+      <div className="fl w-50">
         {
           isHorizontal ? 
             <div>

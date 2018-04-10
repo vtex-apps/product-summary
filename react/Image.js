@@ -11,8 +11,7 @@ class Image extends Component {
     const isHorizontal = orientation === HORIZONTAL
 
     return (
-      // <div className={isHorizontal ? 'fl w-80' : 'w-80'}>
-      <div>
+      <div className={isHorizontal ? 'fl w-80' : 'w-80'}>
         <img src={imageUrl} alt={imageText} />
       </div>
     )

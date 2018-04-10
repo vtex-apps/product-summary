@@ -24,8 +24,7 @@ class Thumbnail extends Component {
     }
 
     return (
-      // <div className={isHorizontal ? 'fl w-20' : ''}>
-      <div>
+      <div className={isHorizontal ? 'fl w-20' : ''}>
         <Slider {...settings}>
           {
             thumbnails.map((thumbnail) => {

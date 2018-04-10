@@ -1,18 +1,21 @@
 {
   "pages": {
-    "index": {
+    "store": {
       "path": "/",
       "theme": "theme"
     },
-    "index/product-image": {
+    "store/home": {
       "path": "/"
     }
   },
   "extensions": {
-    "index": {
-      "component": "index"
+    "store": {
+      "component": "StoreTemplate"
     },
-    "index/product-image": {
+    "store/home": {
+      "component": "HomePage"
+    }, 
+    "store/home/product-image": {
       "component": "ProductImage",
       "props": {
         "thumbnails": [

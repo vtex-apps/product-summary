@@ -1,33 +1,22 @@
-@import url('~slick-carousel/slick/slick.css');
-@import url('~slick-carousel/slick/slick-theme.css');
+@import url(//io.vtex.com.br/fonts/fabriga/stylesheet.css);
+@import url("./slider.css");
 
-.vtex-shelf .slick-prev.slick-disabled:before,
-.vtex-shelf .slick-next.slick-disabled:before
-{
-    color: inherit;
-}
-
-.vtex-shelf .slick-prev:before,
-.vtex-shelf .slick-next:before
-{
-    font-size: 1rem;
-    color: inherit;
-}
-.vtex-shelf .slick-next
-{
-    right: 3%;
-}
-.vtex-shelf .slick-dots li button
-{
-    color: inherit;
+body,
+button,
+input,
+optgroup,
+select,
+textarea,
+span,
+h1,
+h2,
+h3,
+h4,
+p1 {
+  font-family: Fabriga, -apple-system, BlinkMacSystemFont, avenir next, avenir,
+    helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
 }
 
-.vtex-shelf .slick-dots li button:before
-{
-    font-size: 16px;
-    color: inherit;
-}
-.vtex-shelf .slick-dots li.slick-active button:before
-{
-    color: inherit;
+body {
+  background-color: white;
 }
