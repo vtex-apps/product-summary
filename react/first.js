@@ -1,6 +1,7 @@
 import React from 'react'
 import {FormattedMessage, FormattedHTMLMessage} from 'react-intl'
 import DiscountBadge from './DiscountBadge'
+import QtdSelector from './QtdSelector'
 
 const product = {
   listPrice: 200,
@@ -9,6 +10,9 @@ const product = {
 
 const FirstStep = () =>
   <div>
+    <div>
+      <QtdSelector qtdMax={7} />
+    </div>
     <div className="relative dib">
       <DiscountBadge listPrice={product.listPrice} sellingPrice={product.sellingPrice} />
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd0cHfPOO0tneOT0AH3UDs7BumkdOVHZtv4DL55dFtInS2q8mi"/>
