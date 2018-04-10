@@ -2,5 +2,7 @@
   "name": "vtex.render-getting-started",
   "version": "0.0.0",
   "dependencies": {
+    "react-slick": "^0.23.1",
+    "slick-carousel": "^1.8.1"
   }
 }

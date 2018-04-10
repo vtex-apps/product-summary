@@ -2,38 +2,24 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class ThumbnailItem extends Component {
-  handleClick(event) {
+  handleClick = (event) => {
     event.preventDefault()
-
-    const { image, onThumbnailClick } = this.props
-
-    if (onThumbnailClick) {
-      onThumbnailClick(image)
-    }
+    const { thumbnail, onClick } = this.props
+    onClick(thumbnail)
   }
 
   render() {
-    const { image, onThumbnailClick } = this.props
-    const { imageUrl, imageText } = image
-    
+    const { thumbnail } = this.props
+    const { imageUrl, imageText } = thumbnail
+
     return (
-      <div className="dtr w3">
-        <a href="#" className="dim">
-          <img src={imageUrl} alt={imageText} onClick={this.handleClick.bind(this)} />
-        </a>
-      </div>
+      <a href="#" onClick={this.handleClick}>
+        <img src={imageUrl} alt={imageText} />
+      </a>
     )
   }
 }
 
-ThumbnailItem.propTypes = {
-  /** The image to be showed as a thumbnail */
-  image: PropTypes.shape({
-    imageUrl: PropTypes.string.isRequired, 
-    imageText: PropTypes.string.isRequired
-  }).isRequired,
-  /** The function that implements the action click of the thumbnail */
-  onThumbnailClick: PropTypes.func,
-}
+ThumbnailItem.propTypes = {}
 
 export default ThumbnailItem
