@@ -6,7 +6,15 @@ import ProductName from './ProductName'
 import Price from './Price'
 import DiscountBadge from './DiscountBadge'
 
+/**
+ * Product Summary component. Summarizes the product informations.
+ */
 class ProductSummary extends Component {
+  /**
+   * Constructs the state of the component. Uses a hovering property to react if the Buy button should be shown only on hover.
+   *
+   * @param {*} props Component's props
+   */
   constructor(props) {
     super(props)
     this.state = { isHovering: false }
@@ -20,6 +28,11 @@ class ProductSummary extends Component {
     this.setState({ isHovering: true })
   }
 
+  /**
+   * Act like an anchor tag, redirecting to the product URL or opening a new tab if the ctrl key is pressed.
+   *
+   * @param {Event} event Click event
+   */
   redirect(event) {
     event.ctrlKey ? window.open(this.props.product.url) : window.location.assign(this.props.product.url)
   }
@@ -31,74 +44,101 @@ class ProductSummary extends Component {
       showLabels,
       showInstallments,
       showBadge,
+      badgeText,
       hideBuyButton,
       showButtonOnHover,
     } = this.props
 
     return (
       <div className="tc pointer"
-        onClick={event => this.redirect(event)}
         onMouseEnter={() => this.onMouseEnter()}
         onMouseLeave={() => this.onMouseLeave()}>
         {!product &&
           <div>Loading...</div>
         }
-        {product && (<div>
+        {product && (
           <div>
-            {
-              (showBadge) ? (
-                <DiscountBadge
+            <div onClick={event => this.redirect(event)}>
+              <div>
+                {
+                  (showBadge) ? (
+                    <DiscountBadge
+                      listPrice={product.listPrice}
+                      sellingPrice={product.sellingPrice}
+                      label={badgeText}>
+                      <img src={product.imageUrl} />
+                    </DiscountBadge>
+                  ) : (
+                    <img src={product.imageUrl} />
+                  )
+                }
+              </div>
+              <div className="pv2">
+                <ProductName
+                  name={product.name}
+                  skuVariation={product.skuVariation}
+                  brandName={product.brandName}
+                  referenceCode={product.referenceCode} />
+              </div>
+              <div className="pv1">
+                <Price
                   listPrice={product.listPrice}
-                  sellingPrice={product.sellingPrice}>
-                  <img src={product.imageUrl} />
-                </DiscountBadge>
-              ) : (
-                <img src={product.imageUrl} />
-              )
-            }
-          </div>
-          <div className="pv2">
-            <ProductName
-              name={product.name}
-              skuVariation={product.skuVariation}
-              brandName={product.brandName}
-              referenceCode={product.referenceCode} />
-          </div>
-          <div className="pv1">
-            <Price
-              listPrice={product.listPrice}
-              sellingPrice={product.sellingPrice}
-              installments={product.installments}
-              installmentPrice={product.installmentPrice}
-              showListPrice={showListPrice}
-              showLabels={showLabels}
-              showInstallments={showInstallments} />
-          </div>
-
-          <div className="pv2">
-            <div style={{ display: (!showButtonOnHover || (showButtonOnHover && this.state.isHovering)) ? 'block' : 'none' }}>
-              {!hideBuyButton && <Button primary onClick={event => event.stopPropagation()}>BUY THIS AWESOME PRODUCT</Button>}
+                  sellingPrice={product.sellingPrice}
+                  installments={product.installments}
+                  installmentPrice={product.installmentPrice}
+                  showListPrice={showListPrice}
+                  showLabels={showLabels}
+                  showInstallments={showInstallments} />
+              </div>
+            </div>
+            <div className="pv2">
+              <div style={{ display: (!showButtonOnHover || (showButtonOnHover && this.state.isHovering)) ? 'block' : 'none' }}>
+                {!hideBuyButton && (
+                  // TODO: Use the buy button component
+                  <Button primary onClick={event => event.stopPropagation()}>BUY THIS AWESOME PRODUCT</Button>
+                )}
+              </div>
             </div>
           </div>
-        </div>)}
+        )}
       </div>
     )
   }
 }
 
 ProductSummary.propTypes = {
+  /** Product that owns the informations */
   product: PropTypes.shape({
+    /** Product's list price */
     listPrice: PropTypes.number.isRequired,
+    /** Product's selling price */
     sellingPrice: PropTypes.number.isRequired,
+    /** Product's image url */
     imageUrl: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    /** Product's url */
     url: PropTypes.string.isRequired,
+    /** Product's name */
+    name: PropTypes.string.isRequired,
+    /** Product's selected SKU name */
+    skuVariation: PropTypes.string,
+    /** Product's brand name */
+    brandName: PropTypes.string,
+    /** Product's reference code of the product */
+    referenceCode: PropTypes.string,
   }),
+  /** Shows the product list price */
   showListPrice: PropTypes.bool,
+  /** If true, shows the pricing labels. If false, only the numbers will be shown */
   showLabels: PropTypes.bool,
+  /** If true, shows the install information */
   showInstallments: PropTypes.bool,
+  /** If true, shows the discount badge */
   showBadge: PropTypes.bool,
+  /** Text shown on badge */
+  badgeText: PropTypes.string,
+  /** Hides the buy button completely . If active, the button will not be shown in any condition */
   hideBuyButton: PropTypes.bool,
+  /** Defines if the button is shown only if the mouse is on the summary */
   showButtonOnHover: PropTypes.bool,
 }
 
@@ -123,13 +163,17 @@ ProductSummary.schema = {
       type: 'boolean',
       title: 'Show the discount badge',
     },
+    badgeText: {
+      type: 'string',
+      title: 'Badge\'s text',
+    },
     hideBuyButton: {
       type: 'boolean',
-      title: 'Hides the buy button',
+      title: 'Hides the buy button completely',
     },
     showButtonOnHover: {
       type: 'boolean',
-      title: 'Show the buy button only on hover',
+      title: 'Show the buy button only on hover (if not hidden)',
     },
   },
 }
