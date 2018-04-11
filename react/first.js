@@ -7,7 +7,7 @@ const product = {
   name: "Coffee Woman Seduction Des. Colônia, 100ml",
   listPrice: 124.90,
   sellingPrice: 104.00,
-  maxQtd: 7,
+  maxQuantity: 7,
 }
 
 const FirstStep = () =>

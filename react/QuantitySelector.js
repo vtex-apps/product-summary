@@ -5,17 +5,17 @@ import PropTypes from 'prop-types'
 * The quantity selector component.
 * It constrols how many products a client wants to buy.
 */
-class QtdSelector extends Component {
+class QuantitySelector extends Component {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(event) {
-    const qtdMax = this.props.qtdMax
+    const maxQuantity = this.props.maxQuantity
     var quantity = event.target.value
-    if (quantity > qtdMax) {
-      quantity = qtdMax
+    if (quantity > maxQuantity) {
+      quantity = maxQuantity
       this.props.onMaxReached()
     } else if (quantity < 0) {
       quantity = 0
@@ -24,17 +24,17 @@ class QtdSelector extends Component {
   }
 
   render() {
-    const {qtdMax, currentQtd} = this.props
+    const {maxQuantity, currentQuantity} = this.props
     return (<input className="f4 dark-gray br2-l" type="number" name="quantity"
-      min="0" max={qtdMax} value={currentQtd} onChange={this.handleChange} />)
+      min="0" max={maxQuantity} value={currentQuantity} onChange={this.handleChange} />)
   }
 }
 
-QtdSelector.propTypes = {
+QuantitySelector.propTypes = {
   /** The product's maximum quantity that the client can buy */
-  qtdMax: PropTypes.number.isRequired,
+  maxQuantity: PropTypes.number.isRequired,
   /** This is the current quantity to be setted as the initial value */
-  currentQtd: PropTypes.number,
+  currentQuantity: PropTypes.number,
   /** This function is called when the client set the quantity selector. It is useful to set the
   total price in the parent for exemple */
   updateTotalPrice: PropTypes.func,
@@ -42,10 +42,10 @@ QtdSelector.propTypes = {
   onMaxReached: PropTypes.func,
 }
 
-QtdSelector.defaultProps = {
-  currentQtd: 1,
+QuantitySelector.defaultProps = {
+  currentQuantity: 1,
   onMaxReached: () => {},
   updateTotalPrice: () => {},
 }
 
-export default QtdSelector
+export default QuantitySelector
