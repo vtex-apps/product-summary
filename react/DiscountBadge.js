@@ -15,10 +15,13 @@ class DiscountBadge extends Component {
     const { listPrice, sellingPrice, label } = this.props
     const percent = this.calculateDiscountTax(listPrice, sellingPrice)
     return (percent !== 0) &&
+    <div className="relative dib">
       <div className="f7 dark-gray absolute right-0 pa2-s bg-white">
         { label === '' && '-' }
         <FormattedNumber value={percent} style="percent" /> { label }
       </div>
+      {this.props.children}
+    </div>
   }
 }
 
@@ -27,8 +30,10 @@ DiscountBadge.propTypes = {
   listPrice: PropTypes.number.isRequired,
   /** The product's price with discount */
   sellingPrice: PropTypes.number.isRequired,
-  /** The label to track the discount percent */
+  /** Label to track the discount percent */
   label: PropTypes.string,
+  /** Image element */
+  children: PropTypes.node.isRequired,
 }
 
 DiscountBadge.defaultProps = {

@@ -6,12 +6,12 @@ import PropTypes from 'prop-types'
  */
 class ProductName extends Component {
   render() {
-    const { name, skuVariation, brandName, url, referenceCode } = this.props
+    const { name, referenceCode, skuName, brandName } = this.props
 
     return (
-      <a href={url} className="f5 gray db tc overflow-hidden no-underline">
-        {referenceCode} {name} {skuVariation} {brandName && `(${brandName})`}
-      </a>
+      <div className="f5 gray db tc overflow-hidden no-underline">
+        {referenceCode} {name} {skuName} {brandName && `(${brandName})`}
+      </div>
     )
   }
 }
@@ -19,10 +19,8 @@ class ProductName extends Component {
 ProductName.propTypes = {
   /** Name of the product */
   name: PropTypes.string.isRequired,
-  /** Url to product main page */
-  url: PropTypes.string.isRequired,
   /** Selected SKU name */
-  skuVariation: PropTypes.string,
+  skuName: PropTypes.string,
   /** Brand name */
   brandName: PropTypes.string,
   /** Reference code of the product */
