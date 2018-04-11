@@ -20,6 +20,7 @@ const props = {
   showInstallments: false,
   showLabels: true,
   showBadge: true,
+  hideDetailsButton: false,
   hideBuyButton: false,
   showOnHover: false,
 }

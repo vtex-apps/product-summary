@@ -36,8 +36,9 @@ class ProductSummary extends Component {
       showInstallments,
       showBadge,
       badgeText,
+      hideDetailsButton,
       hideBuyButton,
-      showButtonOnHover,
+      showButtonsOnHover,
     } = this.props
 
     return (
@@ -84,11 +85,20 @@ class ProductSummary extends Component {
                   showInstallments={showInstallments} />
               </div>
             </div>
-            <div className="pv2">
-              <div className={`${(!showButtonOnHover || (showButtonOnHover && this.state.isHovering)) ? 'db' : 'dn'}`}>
+            <div className="pt4">
+              <div className={`cf ph4 ${(!showButtonsOnHover || this.state.isHovering) ? 'db' : 'dn'}`}>
+                {!hideDetailsButton && (
+                  <div className={`${(!hideBuyButton && 'fl') || ''}`}>
+                    <Button onClick={this.handleClick} block>
+                      <FormattedMessage id="details" />
+                    </Button>
+                  </div>
+                )}
                 {!hideBuyButton && (
                   // TODO: Use the buy button component
-                  <Button primary onClick={event => event.stopPropagation()}>BUY THIS AWESOME PRODUCT</Button>
+                  <div className={`${(!hideDetailsButton && 'fr') || ''}`}>
+                    <Button primary onClick={event => event.stopPropagation()} block>BUY</Button>
+                  </div>
                 )}
               </div>
             </div>
@@ -129,10 +139,12 @@ ProductSummary.propTypes = {
   showBadge: PropTypes.bool,
   /** Text shown on badge */
   badgeText: PropTypes.string,
-  /** Hides the buy button completely . If active, the button will not be shown in any condition */
+  /** Hides the details button completely */
+  hideDetailsButton: PropTypes.bool,
+  /** Hides the buy button completely. If active, the button will not be shown in any condition */
   hideBuyButton: PropTypes.bool,
   /** Defines if the button is shown only if the mouse is on the summary */
-  showButtonOnHover: PropTypes.bool,
+  showButtonsOnHover: PropTypes.bool,
 }
 
 ProductSummary.schema = {
@@ -160,13 +172,17 @@ ProductSummary.schema = {
       type: 'string',
       title: 'Badge\'s text',
     },
+    hideDetailsButton: {
+      type: 'boolean',
+      title: 'Hides the details button completely',
+    },
     hideBuyButton: {
       type: 'boolean',
       title: 'Hides the buy button completely',
     },
-    showButtonOnHover: {
+    showButtonsOnHover: {
       type: 'boolean',
-      title: 'Show the buy button only on hover (if not hidden)',
+      title: 'Show the buttons only on hover (if not hidden)',
     },
   },
 }
