@@ -1,10 +1,20 @@
 @import url(//io.vtex.com.br/fonts/fabriga/stylesheet.css);
-body,button,input,optgroup,select,textarea,span,h1,h2,h3,h4,p1 {
-  font-family: Fabriga,-apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif
-}
+@import url("./slider.css");
 
-html, body, #render-container, #render-provider, #render-provider > article {
-  min-height: 100%;
+body,
+button,
+input,
+optgroup,
+select,
+textarea,
+span,
+h1,
+h2,
+h3,
+h4,
+p1 {
+  font-family: Fabriga, -apple-system, BlinkMacSystemFont, avenir next, avenir,
+    helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
 }
 
 body {
