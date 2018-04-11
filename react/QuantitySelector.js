@@ -5,10 +5,6 @@ import PropTypes from 'prop-types'
 * The quantity selector component.
 */
 class QuantitySelector extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   handleChange = (event) => {
     const maxQuantity = this.props.maxQuantity
     let quantity = event.target.value
@@ -22,7 +18,7 @@ class QuantitySelector extends Component {
   }
 
   render() {
-    const {maxQuantity, currentQuantity} = this.props
+    const { maxQuantity, currentQuantity } = this.props
     return (<input className="f4 dark-gray br2-l" type="number" name="quantity"
       min="0" max={maxQuantity} value={currentQuantity} onChange={this.handleChange} />)
   }
