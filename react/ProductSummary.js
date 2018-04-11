@@ -96,7 +96,7 @@ class ProductSummary extends Component {
                 )}
                 {!hideBuyButton && (
                   // TODO: Use the buy button component
-                  <div className={`${(!hideDetailsButton && 'fr') || ''} ${hideDetailsButton && 'w-100'}`}>
+                  <div className={`${(!hideDetailsButton && 'fr') || ''}`}>
                     <Button primary onClick={event => event.stopPropagation()} block>BUY</Button>
                   </div>
                 )}
