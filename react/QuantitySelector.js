@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 /**
 * The quantity selector component.
-* It controls how many products a client wants to buy.
 */
 class QuantitySelector extends Component {
   constructor(props) {
@@ -33,18 +32,12 @@ QuantitySelector.propTypes = {
   /** The product's maximum quantity that the client can buy */
   maxQuantity: PropTypes.number.isRequired,
   /** This is the current quantity to be setted as the initial value */
-  currentQuantity: PropTypes.number,
+  currentQuantity: PropTypes.number.isRequired,
   /** This function is called when the client set the quantity selector. It is useful to set the
   total price in the parent for example */
-  updateTotalPrice: PropTypes.func,
+  updateTotalPrice: PropTypes.func.isRequired,
   /** This function is useful to tell the user that can't buy more items than the maximum limit */
-  onMaxReached: PropTypes.func,
-}
-
-QuantitySelector.defaultProps = {
-  currentQuantity: 1,
-  onMaxReached: () => {},
-  updateTotalPrice: () => {},
+  onMaxReached: PropTypes.func.isRequired,
 }
 
 export default QuantitySelector

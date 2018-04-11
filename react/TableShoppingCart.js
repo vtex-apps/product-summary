@@ -13,6 +13,10 @@ class TableShoppingCart extends Component {
     this.setState({totalPrice, currentQuantity: quantity})
   }
 
+  onMaxReached = () => {
+    console.log('Max quantity reached!');
+  }
+
   render() {
     const {name, sellingPrice, maxQuantity} = this.props.product
     const {totalPrice, currentQuantity, isSettingPrice} = this.state
@@ -32,7 +36,8 @@ class TableShoppingCart extends Component {
               <QuantitySelector
                 maxQuantity={maxQuantity}
                 updateTotalPrice={this.updateTotalPrice}
-                currentQuantity={currentQuantity} />
+                currentQuantity={currentQuantity}
+                onMaxReached={this.onMaxReached} />
             </td>
             <td className="pv2 ph3">R$ {totalPrice}</td>
           </tr>
