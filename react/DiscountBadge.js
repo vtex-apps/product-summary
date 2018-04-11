@@ -30,10 +30,10 @@ DiscountBadge.propTypes = {
   listPrice: PropTypes.number.isRequired,
   /** The product's price with discount */
   sellingPrice: PropTypes.number.isRequired,
-  /** The label to track the discount percent */
+  /** Label to track the discount percent */
   label: PropTypes.string,
   /** Image element */
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
 }
 
 DiscountBadge.defaultProps = {

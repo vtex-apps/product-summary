@@ -8,7 +8,7 @@ import Price from './Price'
 import DiscountBadge from './DiscountBadge'
 
 /**
- * Product Summary component. Summarizes the product informations.
+ * Product Summary component. Summarizes the product information.
  */
 class ProductSummary extends Component {
   /**
@@ -29,11 +29,6 @@ class ProductSummary extends Component {
     this.setState({ isHovering: true })
   }
 
-  /**
-   * Act like an anchor tag, redirecting to the product URL or opening a new tab if the ctrl key is pressed.
-   *
-   * @param {Event} event Click event
-   */
   redirect(event) {
     event.ctrlKey ? window.open(this.props.product.url) : window.location.assign(this.props.product.url)
   }
@@ -69,17 +64,17 @@ class ProductSummary extends Component {
                       listPrice={product.listPrice}
                       sellingPrice={product.sellingPrice}
                       label={badgeText}>
-                      <img src={product.imageUrl} />
+                      <img alt={product.name} src={product.imageUrl} />
                     </DiscountBadge>
                   ) : (
-                    <img src={product.imageUrl} />
+                    <img alt={product.name} src={product.imageUrl} />
                   )
                 }
               </div>
               <div className="pv2">
                 <ProductName
                   name={product.name}
-                  skuVariation={product.skuVariation}
+                  skuName={product.skuName}
                   brandName={product.brandName}
                   referenceCode={product.referenceCode} />
               </div>
@@ -123,7 +118,7 @@ ProductSummary.propTypes = {
     /** Product's name */
     name: PropTypes.string.isRequired,
     /** Product's selected SKU name */
-    skuVariation: PropTypes.string,
+    skuName: PropTypes.string,
     /** Product's brand name */
     brandName: PropTypes.string,
     /** Product's reference code of the product */

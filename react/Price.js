@@ -85,17 +85,23 @@ Price.propTypes = {
   /** Product list price */
   listPrice: PropTypes.number.isRequired,
   /** Determines if the list price is shown or not */
-  showListPrice: PropTypes.bool,
+  showListPrice: PropTypes.bool.isRequired,
   /** Determines if the labels are shown. If false, only the values will be shown */
-  showLabels: PropTypes.bool,
+  showLabels: PropTypes.bool.isRequired,
   /** Determines if the installments are shown */
-  showInstallments: PropTypes.bool,
+  showInstallments: PropTypes.bool.isRequired,
   /** Available number of installments */
   installments: PropTypes.number,
   /** Single installment price */
   installmentPrice: PropTypes.number,
   /** intl property to format data */
   intl: intlShape.isRequired,
+}
+
+Price.defaultProps = {
+  showListPrice: true,
+  showLabels: true,
+  showInstallments: false,
 }
 
 export default injectIntl(Price)

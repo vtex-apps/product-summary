@@ -1,7 +1,7 @@
 {
   "pages": {
     "product-summary": {
-      "path": "/product-summary",
+      "path": "/",
       "theme": "theme",
       "extensible": true
     }

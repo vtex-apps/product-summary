@@ -13,7 +13,7 @@ const props = {
     name: 'My product',
     url: 'https://google.com',
     referenceCode: '10125120',
-    skuVariation: 'v2',
+    skuName: 'v2',
     brandName: 'Boticario',
   },
   showListPrice: true,
