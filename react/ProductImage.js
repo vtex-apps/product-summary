@@ -11,50 +11,50 @@ const DEFAULT_IMAGE = 0
 class ProductImage extends Component {
   constructor(props) {
     super(props)
-    
+
     const { thumbnails } = this.props
 
     this.state = {
-      selectedThumbnail: thumbnails[DEFAULT_IMAGE]
+      selectedThumbnail: thumbnails[DEFAULT_IMAGE],
     }
   }
 
   handleThumbnailClick = (selectedThumbnail) => {
     this.setState({
-      selectedThumbnail
+      selectedThumbnail,
     })
+  }
+
+  getOrientationStyle = (orientation) => {
+    let style
+    if (orientation === HORIZONTAL) {
+      style = 'flex w-50'
+    } else if (orientation === VERTICAL) {
+      style = 'flex flex-column-reverse w-50'
+    }
+    return style
   }
 
   render() {
     const { thumbnails, orientation } = this.props
     const { selectedThumbnail } = this.state
-    const isHorizontal = orientation === HORIZONTAL
 
     return (
-      <div className="fl w-50">
-        {
-          isHorizontal ? 
-            <div>
-              <Thumbnail thumbnails={thumbnails} onThumbnailClick={this.handleThumbnailClick} orientation={orientation} />    
-              <Image image={selectedThumbnail} orientation={orientation} />
-            </div>
-          : 
-            <div>
-              <Image image={selectedThumbnail} orientation={orientation} />
-              <Thumbnail thumbnails={thumbnails} onThumbnailClick={this.handleThumbnailClick} orientation={orientation} />    
-            </div>
-        }
+      <div className={this.getOrientationStyle(orientation)}>
+        <Thumbnail thumbnails={thumbnails} onThumbnailClick={this.handleThumbnailClick} orientation={orientation} />
+        <Image image={selectedThumbnail} />
       </div>
-    )  
+    )
   }
 }
 
 ProductImage.propTypes = {
-  orientation: PropTypes.oneOf([ HORIZONTAL, VERTICAL ])
+  thumbnails: PropTypes.array.isRequired,
+  orientation: PropTypes.oneOf([ HORIZONTAL, VERTICAL ]),
 }
 
 ProductImage.defaultProps = {
-  orientation: HORIZONTAL
+  orientation: HORIZONTAL,
 }
 
 ProductImage.schema = {
@@ -66,9 +66,9 @@ ProductImage.schema = {
       type: 'string',
       title: 'Orientation',
       enum: [ HORIZONTAL, VERTICAL ],
-      default: HORIZONTAL
-    }
-  }
+      default: HORIZONTAL,
+    },
+  },
 }
 
 export default ProductImage

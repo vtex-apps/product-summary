@@ -18,36 +18,37 @@
     "store/home/product-image": {
       "component": "ProductImage",
       "props": {
-        "thumbnails": [
-          {
-            "imageUrl": "https://www.pontofrio-imagens.com.br/Informatica/Notebook/11483028/816389617/notebook-acer-core-i5-7200u-8gb-1tb-tela-15-6-windows-10-aspire-f5-573-51lj-11483028.jpg",
-            "imageAlt": ""
-          },
-          {
-            "imageUrl": "https://www.pontofrio-imagens.com.br/Informatica/Notebook/11483028/816389636/notebook-acer-core-i5-7200u-8gb-1tb-tela-15-6-windows-10-aspire-f5-573-51lj-11483028.jpg",
-            "imageAlt": ""
-          },
-          {
-            "imageUrl": "https://www.pontofrio-imagens.com.br/Informatica/Notebook/11483028/816389648/notebook-acer-core-i5-7200u-8gb-1tb-tela-15-6-windows-10-aspire-f5-573-51lj-11483028.jpg",
-            "imageAlt": ""
-          },
-          {
-            "imageUrl": "https://www.pontofrio-imagens.com.br/Informatica/Notebook/11483028/816389678/notebook-acer-core-i5-7200u-8gb-1tb-tela-15-6-windows-10-aspire-f5-573-51lj-11483028.jpg",
-            "imageAlt": ""
-          },
-          {
-            "imageUrl": "https://www.pontofrio-imagens.com.br/Informatica/Notebook/11483028/816389688/notebook-acer-core-i5-7200u-8gb-1tb-tela-15-6-windows-10-aspire-f5-573-51lj-11483028.jpg",
-            "imageAlt": ""
-          },
-          {
-            "imageUrl": "https://www.pontofrio-imagens.com.br/Informatica/Notebook/11483028/816389698/notebook-acer-core-i5-7200u-8gb-1tb-tela-15-6-windows-10-aspire-f5-573-51lj-11483028.jpg",
-            "imageAlt": ""
-          },
-          {
-            "imageUrl": "https://www.pontofrio-imagens.com.br/Informatica/Notebook/11483028/816389708/notebook-acer-core-i5-7200u-8gb-1tb-tela-15-6-windows-10-aspire-f5-573-51lj-11483028.jpg",
-            "imageAlt": ""
-          }
-        ]
+         "thumbnails": [
+            {
+              "imageUrl": "https://www.pontofrio-imagens.com.br/Informatica/Notebook/11483028/816389617/notebook-acer-core-i5-7200u-8gb-1tb-tela-15-6-windows-10-aspire-f5-573-51lj-11483028.jpg",
+              "imageAlt": ""
+            },
+            {
+              "imageUrl": "https://www.pontofrio-imagens.com.br/Informatica/Notebook/11483028/816389636/notebook-acer-core-i5-7200u-8gb-1tb-tela-15-6-windows-10-aspire-f5-573-51lj-11483028.jpg",
+              "imageAlt": ""
+            },
+            {
+              "imageUrl": "https://www.pontofrio-imagens.com.br/Informatica/Notebook/11483028/816389648/notebook-acer-core-i5-7200u-8gb-1tb-tela-15-6-windows-10-aspire-f5-573-51lj-11483028.jpg",
+              "imageAlt": ""
+            },
+            {
+              "imageUrl": "https://www.pontofrio-imagens.com.br/Informatica/Notebook/11483028/816389678/notebook-acer-core-i5-7200u-8gb-1tb-tela-15-6-windows-10-aspire-f5-573-51lj-11483028.jpg",
+              "imageAlt": ""
+            },
+            {
+              "imageUrl": "https://www.pontofrio-imagens.com.br/Informatica/Notebook/11483028/816389688/notebook-acer-core-i5-7200u-8gb-1tb-tela-15-6-windows-10-aspire-f5-573-51lj-11483028.jpg",
+              "imageAlt": ""
+            },
+            {
+              "imageUrl": "https://www.pontofrio-imagens.com.br/Informatica/Notebook/11483028/816389698/notebook-acer-core-i5-7200u-8gb-1tb-tela-15-6-windows-10-aspire-f5-573-51lj-11483028.jpg",
+              "imageAlt": ""
+            },
+            {
+              "imageUrl": "https://www.pontofrio-imagens.com.br/Informatica/Notebook/11483028/816389708/notebook-acer-core-i5-7200u-8gb-1tb-tela-15-6-windows-10-aspire-f5-573-51lj-11483028.jpg",
+              "imageAlt": ""
+            }
+          ],
+          "orientation": "VERTICAL"
       }
     }
   }

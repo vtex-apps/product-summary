@@ -4,6 +4,7 @@
   "dependencies": {
     "@vtex/styleguide": "^2.0.0-rc.35",
     "react-slick": "^0.23.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "vtex": "^2.22.1"
   }
 }

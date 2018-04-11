@@ -8,7 +8,6 @@ import ThumbnailItem from './ThumbnailItem'
 import { HORIZONTAL } from './values/Orientations'
 
 class Thumbnail extends Component {
-
   render() {
     const { thumbnails, onThumbnailClick, orientation } = this.props
 
@@ -20,11 +19,11 @@ class Thumbnail extends Component {
       slidesToShow: 4,
       slidesToScroll: 1,
       vertical: isHorizontal,
-      verticalSwiping: isHorizontal
+      verticalSwiping: isHorizontal,
     }
 
     return (
-      <div className={isHorizontal ? 'fl w-20' : ''}>
+      <div className={isHorizontal ? 'w-20' : ''}>
         <Slider {...settings}>
           {
             thumbnails.map((thumbnail) => {
@@ -32,15 +31,19 @@ class Thumbnail extends Component {
                 <div key={thumbnail.imageUrl}>
                   <ThumbnailItem thumbnail={thumbnail} onClick={onThumbnailClick} />
                 </div>
-              ) 
+              )
             })
           }
         </Slider>
       </div>
-    );
+    )
   }
 }
 
-Thumbnail.propTypes = {}
+Thumbnail.propTypes = {
+  thumbnails: PropTypes.array.isRequired,
+  onThumbnailClick: PropTypes.func.isRequired,
+  orientation: PropTypes.string,
+}
 
 export default Thumbnail

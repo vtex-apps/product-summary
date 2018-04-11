@@ -20,6 +20,9 @@ class ThumbnailItem extends Component {
   }
 }
 
-ThumbnailItem.propTypes = {}
+ThumbnailItem.propTypes = {
+  thumbnail: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
+}
 
 export default ThumbnailItem
