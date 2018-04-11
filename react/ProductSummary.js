@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Button from '@vtex/styleguide/lib/Button'
+import { FormattedMessage } from 'react-intl'
 
 import ProductName from './ProductName'
 import Price from './Price'
@@ -54,7 +55,9 @@ class ProductSummary extends Component {
         onMouseEnter={() => this.onMouseEnter()}
         onMouseLeave={() => this.onMouseLeave()}>
         {!product &&
-          <div>Loading...</div>
+          <div>
+            <FormattedMessage id="loading" />
+          </div>
         }
         {product && (
           <div>
