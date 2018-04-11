@@ -21,15 +21,15 @@ class ProductSummary extends Component {
     this.state = { isHovering: false }
   }
 
-  onMouseLeave() {
+  handleMouseLeave = () => {
     this.setState({ isHovering: false })
   }
 
-  onMouseEnter() {
+  handleMouseEnter = () => {
     this.setState({ isHovering: true })
   }
 
-  redirect(event) {
+  handleClick = (event) => {
     event.ctrlKey ? window.open(this.props.product.url) : window.location.assign(this.props.product.url)
   }
 
@@ -47,8 +47,8 @@ class ProductSummary extends Component {
 
     return (
       <div className="tc pointer"
-        onMouseEnter={() => this.onMouseEnter()}
-        onMouseLeave={() => this.onMouseLeave()}>
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}>
         {!product &&
           <div>
             <FormattedMessage id="loading" />
@@ -56,10 +56,10 @@ class ProductSummary extends Component {
         }
         {product && (
           <div>
-            <div onClick={event => this.redirect(event)}>
+            <div onClick={this.handleClick}>
               <div>
                 {
-                  (showBadge) ? (
+                  showBadge ? (
                     <DiscountBadge
                       listPrice={product.listPrice}
                       sellingPrice={product.sellingPrice}
@@ -90,7 +90,7 @@ class ProductSummary extends Component {
               </div>
             </div>
             <div className="pv2">
-              <div style={{ display: (!showButtonOnHover || (showButtonOnHover && this.state.isHovering)) ? 'block' : 'none' }}>
+              <div className={`d${(!showButtonOnHover || (showButtonOnHover && this.state.isHovering)) ? 'b' : 'n'}`}>
                 {!hideBuyButton && (
                   // TODO: Use the buy button component
                   <Button primary onClick={event => event.stopPropagation()}>BUY THIS AWESOME PRODUCT</Button>
