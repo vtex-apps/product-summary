@@ -85,7 +85,7 @@ class ProductSummary extends Component {
               </div>
             </div>
             <div className="pv2">
-              <div className={`d${(!showButtonOnHover || (showButtonOnHover && this.state.isHovering)) ? 'b' : 'n'}`}>
+              <div className={`${(!showButtonOnHover || (showButtonOnHover && this.state.isHovering)) ? 'db' : 'dn'}`}>
                 {!hideBuyButton && (
                   // TODO: Use the buy button component
                   <Button primary onClick={event => event.stopPropagation()}>BUY THIS AWESOME PRODUCT</Button>
