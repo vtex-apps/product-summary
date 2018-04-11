@@ -3,17 +3,16 @@ import PropTypes from 'prop-types'
 
 /**
 * The quantity selector component.
-* It constrols how many products a client wants to buy.
+* It controls how many products a client wants to buy.
 */
 class QuantitySelector extends Component {
   constructor(props) {
     super(props)
-    this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     const maxQuantity = this.props.maxQuantity
-    var quantity = event.target.value
+    let quantity = event.target.value
     if (quantity > maxQuantity) {
       quantity = maxQuantity
       this.props.onMaxReached()
@@ -36,9 +35,9 @@ QuantitySelector.propTypes = {
   /** This is the current quantity to be setted as the initial value */
   currentQuantity: PropTypes.number,
   /** This function is called when the client set the quantity selector. It is useful to set the
-  total price in the parent for exemple */
+  total price in the parent for example */
   updateTotalPrice: PropTypes.func,
-  /** This function is useful to tell the user that can't buy more itens then the maximum limit */
+  /** This function is useful to tell the user that can't buy more items than the maximum limit */
   onMaxReached: PropTypes.func,
 }
 
