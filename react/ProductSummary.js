@@ -11,11 +11,6 @@ import DiscountBadge from './DiscountBadge'
  * Product Summary component. Summarizes the product information.
  */
 class ProductSummary extends Component {
-  /**
-   * Constructs the state of the component. Uses a hovering property to react if the Buy button should be shown only on hover.
-   *
-   * @param {*} props Component's props
-   */
   constructor(props) {
     super(props)
     this.state = { isHovering: false }
