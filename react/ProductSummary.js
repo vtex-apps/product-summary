@@ -86,7 +86,7 @@ class ProductSummary extends Component {
               </div>
             </div>
             <div className="pt4">
-              <div className={`cf ph4 ${(!showButtonsOnHover || (showButtonsOnHover && this.state.isHovering)) ? 'db' : 'dn'}`}>
+              <div className={`cf ph4 ${(!showButtonsOnHover || this.state.isHovering) ? 'db' : 'dn'}`}>
                 {!hideDetailsButton && (
                   <div className={`${(!hideBuyButton && 'fl') || ''}`}>
                     <Button onClick={this.handleClick} block>
