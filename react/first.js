@@ -1,33 +1,18 @@
 import React from 'react'
 import {FormattedMessage, FormattedHTMLMessage} from 'react-intl'
 import DiscountBadge from './DiscountBadge'
-import QtdSelector from './QtdSelector'
+import TableShoppingCart from './TableShoppingCart'
 
 const product = {
-  listPrice: 200,
-  sellingPrice: 150,
+  name: "Coffee Woman Seduction Des. Colônia, 100ml",
+  listPrice: 124.90,
+  sellingPrice: 104.00,
+  maxQtd: 7,
 }
 
 const FirstStep = () =>
   <div>
-    <div>
-      <table className="collapse ba br2 b--black-10 pv2 ph3">
-        <tbody>
-          <tr>
-            <th className="pv2 ph3 tl f6 fw6 ttu">Produto</th>
-            <th className="pv2 ph3 tl f6 fw6 ttu">Preço unitário</th>
-            <th className="pv2 ph3 tl f6 fw6 ttu">Quantidade</th>
-            <th className="pv2 ph3 tl f6 fw6 ttu">Preço total</th>
-          </tr>
-          <tr>
-            <td className="pv2 ph3">Um lindíssimo perfume da Boticário]</td>
-            <td className="pv2 ph3">R$ 1000</td>
-            <td className="pv2 ph3"><QtdSelector qtdMax={ 4 } /></td>
-            <td className="pv2 ph3">R$ 1000</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <TableShoppingCart product={product}/>
     <div className="relative dib">
       <DiscountBadge listPrice={product.listPrice} sellingPrice={product.sellingPrice} label="de desconto" />
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd0cHfPOO0tneOT0AH3UDs7BumkdOVHZtv4DL55dFtInS2q8mi"/>
