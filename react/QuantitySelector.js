@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 /**
-* The quantity selector component.
+* Quantity selector component.
 */
 class QuantitySelector extends Component {
   handleChange = (event) => {
@@ -25,14 +25,13 @@ class QuantitySelector extends Component {
 }
 
 QuantitySelector.propTypes = {
-  /** The product's maximum quantity that the client can buy */
+  /** Product's maximum quantity that the client can buy */
   maxQuantity: PropTypes.number.isRequired,
-  /** This is the current quantity to be setted as the initial value */
+  /** Current quantity to be setted as the initial value */
   currentQuantity: PropTypes.number.isRequired,
-  /** This function is called when the client set the quantity selector. It is useful to set the
-  total price in the parent for example */
+  /** Called when the client set the quantity selector */
   updateTotalPrice: PropTypes.func.isRequired,
-  /** This function is useful to tell the user that can't buy more items than the maximum limit */
+  /** Define if can buy more items than the maximum limit */
   onMaxReached: PropTypes.func.isRequired,
 }
 
