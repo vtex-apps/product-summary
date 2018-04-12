@@ -1,60 +1,82 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import Thumbnail from './Thumbnail'
-import Image from './Image'
+import ThumbnailSlider from './ThumbnailSlider'
+import SelectedImage from './SelectedImage'
 
-import { HORIZONTAL, VERTICAL } from './values/Orientations'
+import { VERTICAL, HORIZONTAL } from './values/Orientations'
 
-const DEFAULT_IMAGE = 0
+const DEFAULT_SELECTED_IMAGE = 0
 
 class ProductImage extends Component {
   constructor(props) {
     super(props)
 
-    const { thumbnails } = this.props
+    const { images } = this.props
 
     this.state = {
-      selectedThumbnail: thumbnails[DEFAULT_IMAGE],
+      selectedImage: images[DEFAULT_SELECTED_IMAGE],
     }
   }
 
-  handleThumbnailClick = (selectedThumbnail) => {
+  handleThumbnailClick = (image) => {
     this.setState({
-      selectedThumbnail,
+      selectedImage: image,
     })
   }
 
-  getOrientationStyle = (orientation) => {
+  configureStyle = () => {
+    const { thumbnailSliderOrientation } = this.props
     let style
-    if (orientation === HORIZONTAL) {
-      style = 'flex w-50'
-    } else if (orientation === VERTICAL) {
-      style = 'flex flex-column-reverse w-50'
+    switch (thumbnailSliderOrientation) {
+      case HORIZONTAL:
+        style = 'flex flex-column-reverse w-100 w-50-ns'
+        break
+      case VERTICAL:
+        style = 'flex w-100 w-50-ns'
+        break
     }
     return style
   }
 
+  configureThumbnailSlider = () => {
+    const { images, thumbnailSliderOrientation } = this.props
+    return {
+      images: images,
+      onThumbnailClick: this.handleThumbnailClick,
+      orientation: thumbnailSliderOrientation,
+    }
+  }
+
+  configureSelectedImage = () => {
+    const { selectedImage } = this.state
+    return {
+      image: selectedImage,
+    }
+  }
+
   render() {
-    const { thumbnails, orientation } = this.props
-    const { selectedThumbnail } = this.state
+    const style = this.configureStyle()
+    const thumbnailSlider = this.configureThumbnailSlider()
+    const selectedImage = this.configureSelectedImage()
 
     return (
-      <div className={this.getOrientationStyle(orientation)}>
-        <Thumbnail thumbnails={thumbnails} onThumbnailClick={this.handleThumbnailClick} orientation={orientation} />
-        <Image image={selectedThumbnail} />
+      <div className={style}>
+        <ThumbnailSlider {...thumbnailSlider} />
+        <SelectedImage {...selectedImage} />
       </div>
     )
   }
 }
 
 ProductImage.propTypes = {
-  thumbnails: PropTypes.array.isRequired,
-  orientation: PropTypes.oneOf([ HORIZONTAL, VERTICAL ]),
+  images: PropTypes.array.isRequired,
+  onThumbnailClick: PropTypes.func.isRequired,
+  thumbnailSliderOrientation: PropTypes.oneOf([ VERTICAL, HORIZONTAL ]),
 }
 
 ProductImage.defaultProps = {
-  orientation: HORIZONTAL,
+  thumbnailSliderOrientation: VERTICAL,
 }
 
 ProductImage.schema = {
@@ -62,11 +84,11 @@ ProductImage.schema = {
   description: 'A simple product image',
   type: 'object',
   properties: {
-    orientation: {
+    thumbnailSliderOrientation: {
       type: 'string',
-      title: 'Orientation',
-      enum: [ HORIZONTAL, VERTICAL ],
-      default: HORIZONTAL,
+      title: 'Thumbnail Slider Orientation',
+      enum: [ VERTICAL, HORIZONTAL ],
+      default: VERTICAL,
     },
   },
 }
