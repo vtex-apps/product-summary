@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class StoreTemplate extends Component {
-
   render() {
     return (
       <div>
@@ -13,7 +12,7 @@ class StoreTemplate extends Component {
 }
 
 StoreTemplate.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.element,
 }
 
 export default StoreTemplate

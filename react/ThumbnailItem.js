@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 /** Thumbnail Item Component.
  * Display a thumbnail image with an on click event well defined. */
-
 class ThumbnailItem extends Component {
   /** The function that is called when the thumbnail image is clicked */
   handleClick = (event) => {
@@ -28,11 +27,12 @@ ThumbnailItem.propTypes = {
   image: PropTypes.shape({
     /** The URL of the image */
     imageUrl: PropTypes.string.isRequired,
+
     /** The text that describes the image */
     imageText: PropTypes.string.isRequired,
   }).isRequired,
 
-  /** The function that is called when the thumbnail image is clicked */
+  /** The action that is called when the thumbnail image is clicked */
   onClick: PropTypes.func.isRequired,
 }
 

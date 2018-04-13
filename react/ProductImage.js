@@ -8,46 +8,40 @@ import { VERTICAL, HORIZONTAL } from './values/Orientations'
 
 const DEFAULT_SELECTED_IMAGE = 0
 
+/** Product Image component.
+ *  Display a list of thumbnail images in a slider and a main image of a product */
 class ProductImage extends Component {
   constructor(props) {
     super(props)
-
-    const { images } = this.props
-
+    const images = this.props.images
     this.state = {
       selectedImage: images[DEFAULT_SELECTED_IMAGE],
     }
   }
 
+  /** The action that changes the selected image */
   handleThumbnailClick = (image) => {
     this.setState({
       selectedImage: image,
     })
   }
 
+  /** The function that configures the component style */
   configureStyle = () => {
     const { thumbnailSliderOrientation } = this.props
     let style
     switch (thumbnailSliderOrientation) {
       case HORIZONTAL:
-        style = 'flex flex-column-reverse w-100 w-50-ns'
+        style = 'flex w-100 w-50-ns flex-column-reverse vtex-product-image'
         break
       case VERTICAL:
-        style = 'flex w-100 w-50-ns'
+        style = 'flex w-100 w-50-ns vtex-product-image'
         break
     }
     return style
   }
 
-  configureThumbnailSlider = () => {
-    const { images, thumbnailSliderOrientation } = this.props
-    return {
-      images: images,
-      onThumbnailClick: this.handleThumbnailClick,
-      orientation: thumbnailSliderOrientation,
-    }
-  }
-
+  /** The function that configures the properties of the Selected Image nested component */
   configureSelectedImage = () => {
     const { selectedImage } = this.state
     return {
@@ -55,10 +49,21 @@ class ProductImage extends Component {
     }
   }
 
+  /** The function that configures the properties of the Thumbnail Slider nested component */
+  configureThumbnailSlider = () => {
+    const { images, thumbnailSliderOrientation, thumbnailMaxVisibleItems } = this.props
+    return {
+      images: images,
+      onThumbnailClick: this.handleThumbnailClick,
+      orientation: thumbnailSliderOrientation,
+      maxVisibleItems: thumbnailMaxVisibleItems,
+    }
+  }
+
   render() {
     const style = this.configureStyle()
-    const thumbnailSlider = this.configureThumbnailSlider()
     const selectedImage = this.configureSelectedImage()
+    const thumbnailSlider = this.configureThumbnailSlider()
 
     return (
       <div className={style}>
@@ -70,12 +75,18 @@ class ProductImage extends Component {
 }
 
 ProductImage.propTypes = {
+  /** The array of images to be passed for the Thumbnail Slider component */
   images: PropTypes.array.isRequired,
-  onThumbnailClick: PropTypes.func.isRequired,
+
+  /** The Thumbnail Slider orientation */
   thumbnailSliderOrientation: PropTypes.oneOf([ VERTICAL, HORIZONTAL ]),
+
+  /** The maximum number of visible items that should be displayed by the Thumbnail Slider at the same time */
+  thumbnailMaxVisibleItems: PropTypes.number,
 }
 
 ProductImage.defaultProps = {
+  /** In the case that the Thumbnail Slider orientation is not defined then vertical orientation will be used as default */
   thumbnailSliderOrientation: VERTICAL,
 }
 
