@@ -6,17 +6,17 @@ import PropTypes from 'prop-types'
 */
 class QuantitySelector extends Component {
   handleChange = (event) => {
-    const maxQuantity = this.props.maxQuantity
+    const { maxQuantity, onQuantityChange, onMaxReached } = this.props
     let value = event.target.value
     let quantity = (value) ? parseInt(value, 10) : 0
     if (quantity > maxQuantity) {
       quantity = maxQuantity
-      this.props.onMaxReached()
+      onMaxReached()
     } else if (quantity < 0) {
       quantity = 0
     }
     event.target.value = quantity
-    this.props.onQuantityChange(quantity)
+    onQuantityChange(quantity)
   }
 
   render() {
