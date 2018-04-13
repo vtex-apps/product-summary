@@ -8,7 +8,7 @@ class QuantitySelector extends Component {
   handleChange = (event) => {
     const { maxQuantity, onQuantityChange, onMaxReached } = this.props
     let value = event.target.value
-    let quantity = (value) ? parseInt(value, 10) : 0
+    let quantity = value ? parseInt(value, 10) : 0
     if (quantity > maxQuantity) {
       quantity = maxQuantity
       onMaxReached()
@@ -22,7 +22,7 @@ class QuantitySelector extends Component {
   render() {
     const { maxQuantity, currentQuantity } = this.props
     return (<input className="f4 dark-gray br2-l" type="number" name="quantity"
-      min="0" max={maxQuantity} value={currentQuantity} onChange={this.handleChange} />)
+      value={currentQuantity} onChange={this.handleChange} />)
   }
 }
 
