@@ -2,6 +2,7 @@
   "name": "vtex.render-getting-started",
   "version": "0.0.0",
   "scripts": {
+    "pretest": "yarn",
     "test": "jest"
   },
   "dependencies": {
