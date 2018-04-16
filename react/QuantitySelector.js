@@ -15,7 +15,7 @@ class QuantitySelector extends Component {
     } else if (quantity < 0) {
       quantity = 0
     }
-    event.target.value = quantity
+    this.setState({ currentQuantity: quantity })
     onQuantityChange(quantity)
   }
 
