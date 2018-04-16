@@ -26,7 +26,7 @@ Desktop.ini
 $RECYCLE.BIN/
 
 # yarn
-yarn*
+yarn-error.log
 
 # App specific
 node_modules/
