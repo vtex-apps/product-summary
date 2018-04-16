@@ -14,7 +14,8 @@ describe('<Price /> component', () => {
 
   const defaultConfiguration = {}
 
-  function renderComponent(props = { ...productPropsMock, ...defaultConfiguration }, intlInfo = getIntlContextInfo()) {
+  function renderComponent(customProps, intlInfo = getIntlContextInfo()) {
+    const props = Object.assign({}, productPropsMock, defaultConfiguration, customProps)
     const { context, childContextTypes, locale } = intlInfo
 
     const intl = getIntlInstance({ locale }, context)
@@ -46,7 +47,7 @@ describe('<Price /> component', () => {
   })
 
   it('should not show the list price if prop showListPrice is false', () => {
-    const { component, context, intl } = renderComponent(Object.assign({}, productPropsMock, defaultConfiguration, { showListPrice: false }))
+    const { component, context, intl } = renderComponent({ showListPrice: false })
     const currencyOptions = getCurrencyOptions(context)
 
     expect(component.contains(intl.formatMessage({ id: 'pricing.from' }))).toBe(false)
