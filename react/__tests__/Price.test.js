@@ -48,36 +48,50 @@ describe('<Price /> component', () => {
 
   it('should not show the list price if prop showListPrice is false', () => {
     const { component, context, intl } = renderComponent({ showListPrice: false })
-    const currencyOptions = getCurrencyOptions(context)
 
-    expect(component.contains(intl.formatMessage({ id: 'pricing.from' }))).toBe(false)
-    expect(component.contains(intl.formatMessage({ id: 'pricing.to' }))).toBe(true)
-    expect(component.contains(intl.formatNumber(productPropsMock.sellingPrice, currencyOptions))).toBe(true)
-    expect(component.contains(intl.formatNumber(productPropsMock.listPrice, currencyOptions))).toBe(false)
+    const currencyOptions = getCurrencyOptions(context)
+    const listPriceLabel = intl.formatMessage({ id: 'pricing.from' })
+    const listPrice = intl.formatNumber(productPropsMock.listPrice, currencyOptions)
+
+    const sellingPriceLabel = intl.formatMessage({ id: 'pricing.to' })
+    const sellingPrice = intl.formatNumber(productPropsMock.sellingPrice, currencyOptions)
+
+    expect(component.contains(listPriceLabel)).toBe(false)
+    expect(component.contains(listPrice)).toBe(false)
+    expect(component.contains(sellingPriceLabel)).toBe(true)
+    expect(component.contains(sellingPrice)).toBe(true)
   })
 
   describe('with no configuration', () => {
     it('should show the list price by default', () => {
       const { component, context, intl } = renderComponent()
-      const currencyOptions = getCurrencyOptions(context)
 
-      expect(component.contains(intl.formatNumber(productPropsMock.listPrice, currencyOptions))).toBe(true)
+      const currencyOptions = getCurrencyOptions(context)
+      const listPrice = intl.formatNumber(productPropsMock.listPrice, currencyOptions)
+
+      expect(component.contains(listPrice)).toBe(true)
     })
 
     it('should show the price labels by default', () => {
       const { component, intl } = renderComponent()
-      expect(component.contains(intl.formatMessage({ id: 'pricing.from' }))).toBe(true)
-      expect(component.contains(intl.formatMessage({ id: 'pricing.to' }))).toBe(true)
+
+      const listPriceLabel = intl.formatMessage({ id: 'pricing.from' })
+      const sellingPriceLabel = intl.formatMessage({ id: 'pricing.to' })
+
+      expect(component.contains(listPriceLabel)).toBe(true)
+      expect(component.contains(sellingPriceLabel)).toBe(true)
     })
 
     it('should not show the installments by default', () => {
       const { component, context, intl } = renderComponent()
+
       const currencyOptions = getCurrencyOptions(context)
       const formattedInstallmentPrice = intl.formatNumber(productPropsMock.installmentPrice, currencyOptions)
       const formattedMessage = intl.formatMessage({ id: 'pricing.installment-display' }, {
         installments: productPropsMock.installments,
         installmentPrice: formattedInstallmentPrice,
       })
+
       expect(component.contains(formattedMessage)).toBe(false)
     })
   })
