@@ -43,7 +43,7 @@ describe('<Price /> component', () => {
 
   it('should be mounted and not break', () => {
     const { component } = renderComponent()
-    expect(component).toMatchSnapshot()
+    expect(component).toBeTruthy()
   })
 
   it('should not show the list price if prop showListPrice is false', () => {
