@@ -19,7 +19,7 @@ export function getIntlContextInfo() {
 }
 
 export function getIntlInstance(props = { locale: DEFAULT_LOCALE }, context = {}) {
-  const intlProvider = new IntlProvider({messages: props.messages || getMessages(props.locale), ...props}, context)
+  const intlProvider = new IntlProvider({ messages: props.messages || getMessages(props.locale), ...props }, context)
   return intlProvider.getChildContext().intl
 }
 
