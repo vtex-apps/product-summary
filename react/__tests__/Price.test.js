@@ -46,11 +46,9 @@ describe('<Price /> component', () => {
   })
 
   it('should not show the list price if prop showListPrice is false', () => {
-    const props = Object.assign({}, productPropsMock, defaultConfiguration, { showListPrice: false })
-    const { component, context, intl } = renderComponent(props)
+    const { component, context, intl } = renderComponent(Object.assign({}, productPropsMock, defaultConfiguration, { showListPrice: false }))
     const currencyOptions = getCurrencyOptions(context)
 
-    expect(component.prop('showListPrice')).toBe(false)
     expect(component.contains(intl.formatMessage({ id: 'pricing.from' }))).toBe(false)
     expect(component.contains(intl.formatMessage({ id: 'pricing.to' }))).toBe(true)
     expect(component.contains(intl.formatNumber(productPropsMock.sellingPrice, currencyOptions))).toBe(true)
