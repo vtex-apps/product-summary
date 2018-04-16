@@ -5,7 +5,6 @@ import { getIntlContextInfo, getIntlInstance } from './helpers/intlHelper'
 import Price from '../Price'
 
 describe('<Price /> component', () => {
-
   const productPropsMock = {
     listPrice: 200,
     sellingPrice: 170,
@@ -15,10 +14,10 @@ describe('<Price /> component', () => {
 
   const defaultConfiguration = {}
 
-  function renderComponent(props = {...productPropsMock, ...defaultConfiguration}, intlInfo = getIntlContextInfo()) {
+  function renderComponent(props = { ...productPropsMock, ...defaultConfiguration }, intlInfo = getIntlContextInfo()) {
     const { context, childContextTypes, locale } = intlInfo
 
-    const intl = getIntlInstance()
+    const intl = getIntlInstance({ locale }, context)
     loadTranslation(`../locales/${locale}.json`)
 
     const component = mountWithIntl(
@@ -28,7 +27,7 @@ describe('<Price /> component', () => {
     return {
       component,
       intl,
-      ...intlInfo
+      ...intlInfo,
     }
   }
 
@@ -38,7 +37,7 @@ describe('<Price /> component', () => {
       currency: context.culture.currency,
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
-    };
+    }
   }
 
   it('should be mounted and not break', () => {
@@ -47,7 +46,7 @@ describe('<Price /> component', () => {
   })
 
   it('should not show the list price if prop showListPrice is false', () => {
-    const props = Object.assign({}, productPropsMock, defaultConfiguration, {showListPrice: false})
+    const props = Object.assign({}, productPropsMock, defaultConfiguration, { showListPrice: false })
     const { component, context, intl } = renderComponent(props)
     const currencyOptions = getCurrencyOptions(context)
 
@@ -62,7 +61,7 @@ describe('<Price /> component', () => {
     it('should show the list price by default', () => {
       const { component, context, intl } = renderComponent()
       const currencyOptions = getCurrencyOptions(context)
-      
+
       expect(component.contains(intl.formatNumber(productPropsMock.listPrice, currencyOptions))).toBe(true)
     })
 
