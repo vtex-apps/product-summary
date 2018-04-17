@@ -1,18 +1,6 @@
 {
-  "getting-started.title": "VTEX Render - Primeiros passos",
-  "getting-started.greeting": "Bem-vindo ao Primeiro Tutorial do VTEX Render!",
-  "getting-started.description": "Esse é um tutorial interativo. A idéia é você descobrir as funcionalidades do Render editando uma app.",
-  "getting-started.first-steps-header": "Primeiros passos",
-  "getting-started.toolbelt": "Primeiro, instale o <strong>toolbelt</strong>, nossa ferramenta de linha de comando para desenvolver na plataforma VTEX:",
-  "getting-started.workspace-creation": "Agora vamos fazer <i>login</i> na sua conta e criar um <strong>workspace</strong>, que é a sua área de trabalho pessoal.",
-  "getting-started.workspace-description": "Um workspace serve para que você possa fazer mudanças isoladas na sua loja. Nada que você faz em um workspace é publicado até que você <strong>promova</strong> seu workspace. Por enquanto, não se preocupe com isso.",
-  "getting-started.clone": "Agora, clone o repositório dessa app:",
-  "getting-started.synchronize": "Finalmente, para podermos alterar uma app e ver suas mudanças precisamos sincronizar os arquivos locais com a plataforma. Assim, todas as nossas edições serão refletidas em tempo real!",
-  "getting-started.watch": "Pra fazer isso, vamos instalar o builder-hub e usar o comando <i>link</i>",
-  "getting-started.online": "Legal! Após alguns segundos, seus arquivos já estão sendo sincronizados e você pode clicar na URL que apareceu no seu terminal para ver o <i>seu workspace online!</i>",
-  "getting-started.edit-file": "Agora, abra seu editor de texto preferido para editar o arquivo {fileName}.",
-  "getting-started.change-css": "Procure o seguinte trecho de código e troque a classe 'dn' por 'green':",
-  "getting-started.save": "Agora <strong>salve</strong> o arquivo. Se tudo der certo, a mudança vai aparecer aqui embaixo!",
-  "getting-started.congrats": "Woohoo! Você fez sua primeira mudança numa app!",
-  "getting-started.mobile": "(Ei 📱! É melhor acessar esse tutorial direto do seu ambiente de desenvolvimento, mas bem-vindo mesmo assim. 😊)"
+  "pricing.installment-display": "ou até {installments}X de {installmentPrice}",
+  "pricing.from": "de:",
+  "pricing.to": "por:",
+  "loading": "Carregando…"
 }

@@ -1,10 +1,47 @@
 {
   "name": "vtex.render-getting-started",
   "version": "0.0.0",
+  "scripts": {
+    "pretest": "yarn",
+    "test": "jest"
+  },
   "dependencies": {
     "@vtex/styleguide": "^2.0.0-rc.35",
     "react-slick": "^0.23.1",
-    "slick-carousel": "^1.8.1",
-    "vtex": "^2.22.1"
+    "slick-carousel": "^1.8.1"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-jest": "^22.4.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react-app": "^3.1.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-react-intl": "^2.0.0",
+    "intl": "^1.2.5",
+    "jest": "^22.4.3",
+    "jest-environment-enzyme": "^6.0.0",
+    "jest-enzyme": "^6.0.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-intl": "^2.4.0"
+  },
+  "jest": {
+    "verbose": true,
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+    "testEnvironment": "enzyme",
+    "transform": {
+      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+    ],
+    "setupFiles": [
+      "./tests-setup.js"
+    ],
+    "testPathIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\]",
+      "(.*)[/\\\\]helpers[/\\\\](.*)"
+    ]
   }
 }

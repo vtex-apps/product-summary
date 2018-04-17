@@ -25,6 +25,9 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
+# yarn
+yarn-error.log
+
 # App specific
 node_modules/
 docs/_book/
