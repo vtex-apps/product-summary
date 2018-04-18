@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Card from '@vtex/styleguide/lib/Card'
 import { ExtensionPoint } from 'render'
 
 // FIXME: Delete when we can use true data.
@@ -15,6 +14,12 @@ const props = {
     referenceCode: '10125120',
     skuName: 'v2',
     brandName: 'Boticario',
+    skuId: 12,
+  },
+  orderForm: {
+    orderFormId: '3e33beb9928540099018085fafb87b6b',
+    salesChannel: '1',
+    seller: '1',
   },
   showListPrice: true,
   showInstallments: false,
@@ -25,16 +30,11 @@ const props = {
 }
 
 export default class GettingStartedIndex extends Component {
-  static propTypes = {
-  }
-
   render() {
     return (
       <div className="center mw5">
         <div className="pv2">
-          <Card fullWidth>
-            <ExtensionPoint id="productSummary" {...props} />
-          </Card>
+          <ExtensionPoint id="productSummary" {...props} />
         </div>
       </div>
     )
