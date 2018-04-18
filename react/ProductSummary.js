@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Button from '@vtex/styleguide/lib/Button'
 import { FormattedMessage } from 'react-intl'
+
+import Card from '@vtex/styleguide/lib/Card'
+import Button from '@vtex/styleguide/lib/Button'
 
 import ProductName from './ProductName'
 import Price from './Price'
@@ -41,60 +43,62 @@ class ProductSummary extends Component {
     } = this.props
 
     return (
-      <div className="tc pointer"
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}>
-        {!product &&
+      <Card fullWidth>
+        <div className="tc pointer"
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}>
+          {!product &&
           <div>
             <FormattedMessage id="loading" />
           </div>
-        }
-        {product && (
-          <div>
-            <div onClick={this.handleClick}>
-              <div>
-                {
-                  showBadge ? (
-                    <DiscountBadge
-                      listPrice={product.listPrice}
-                      sellingPrice={product.sellingPrice}
-                      label={badgeText}>
+          }
+          {product && (
+            <div>
+              <div onClick={this.handleClick}>
+                <div>
+                  {
+                    showBadge ? (
+                      <DiscountBadge
+                        listPrice={product.listPrice}
+                        sellingPrice={product.sellingPrice}
+                        label={badgeText}>
+                        <img alt={product.name} src={product.imageUrl} />
+                      </DiscountBadge>
+                    ) : (
                       <img alt={product.name} src={product.imageUrl} />
-                    </DiscountBadge>
-                  ) : (
-                    <img alt={product.name} src={product.imageUrl} />
-                  )
-                }
+                    )
+                  }
+                </div>
+                <div className="pv2">
+                  <ProductName
+                    name={product.name}
+                    skuName={product.skuName}
+                    brandName={product.brandName}
+                    referenceCode={product.referenceCode} />
+                </div>
+                <div className="pv1">
+                  <Price
+                    listPrice={product.listPrice}
+                    sellingPrice={product.sellingPrice}
+                    installments={product.installments}
+                    installmentPrice={product.installmentPrice}
+                    showListPrice={showListPrice}
+                    showLabels={showLabels}
+                    showInstallments={showInstallments} />
+                </div>
               </div>
               <div className="pv2">
-                <ProductName
-                  name={product.name}
-                  skuName={product.skuName}
-                  brandName={product.brandName}
-                  referenceCode={product.referenceCode} />
-              </div>
-              <div className="pv1">
-                <Price
-                  listPrice={product.listPrice}
-                  sellingPrice={product.sellingPrice}
-                  installments={product.installments}
-                  installmentPrice={product.installmentPrice}
-                  showListPrice={showListPrice}
-                  showLabels={showLabels}
-                  showInstallments={showInstallments} />
-              </div>
-            </div>
-            <div className="pv2">
-              <div className={`${(!showButtonOnHover || (showButtonOnHover && this.state.isHovering)) ? 'db' : 'dn'}`}>
-                {!hideBuyButton && (
+                <div className={`${(!showButtonOnHover || (showButtonOnHover && this.state.isHovering)) ? 'db' : 'dn'}`}>
+                  {!hideBuyButton && (
                   // TODO: Use the buy button component
-                  <Button primary onClick={event => event.stopPropagation()}>BUY THIS AWESOME PRODUCT</Button>
-                )}
+                    <Button primary onClick={event => event.stopPropagation()}>BUY THIS AWESOME PRODUCT</Button>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      </Card>
     )
   }
 }

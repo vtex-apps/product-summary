@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Card from '@vtex/styleguide/lib/Card'
 import { ExtensionPoint } from 'render'
 
 // FIXME: Delete when we can use true data.
@@ -32,9 +31,7 @@ export default class GettingStartedIndex extends Component {
     return (
       <div className="center mw5">
         <div className="pv2">
-          <Card fullWidth>
-            <ExtensionPoint id="productSummary" {...props} />
-          </Card>
+          <ExtensionPoint id="productSummary" {...props} />
         </div>
       </div>
     )
