@@ -6,7 +6,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@vtex/buy-button": "^0.0.11",
+    "@vtex/buy-button": "^0.0.14",
     "@vtex/styleguide": "2.0.0-rc.35"
   },
   "devDependencies": {

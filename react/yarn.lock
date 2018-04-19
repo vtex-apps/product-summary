@@ -32,9 +32,9 @@
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.5.3.tgz#91b728599544efbb7386d8b6633693a3c2e7ade5"
 
-"@vtex/buy-button@^0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@vtex/buy-button/-/buy-button-0.0.11.tgz#6c2bd93a95b561702f18cb8688d80565e9a95ea1"
+"@vtex/buy-button@^0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@vtex/buy-button/-/buy-button-0.0.14.tgz#0494af8de1d8b800e827179c296e197fdcb7f864"
   dependencies:
     "@vtex/styleguide" "2.0.0-rc.34"
     apollo-client "~2.2.3"
