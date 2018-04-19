@@ -11,17 +11,17 @@ body {
   background-color: white;
 }
 
-.buy-button {
-  max-width: 187px;
-  max-height: 42px;
+.vtex-product-summary__buy-button {
+  width: 187px;
+  height: 42px;
 }
 
-.summary-card {
-  max-width: 395px;
-  max-height: 428px;
+.vtex-product-summary__card {
+  width: 395px;
+  height: 428px;
 }
 
-.summary-image {
+.vtex-product-summary__image {
   max-width: 198px;
   max-height: 198px;
 }

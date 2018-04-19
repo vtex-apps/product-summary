@@ -14,14 +14,15 @@ class DiscountBadge extends Component {
   render() {
     const { listPrice, sellingPrice, label } = this.props
     const percent = this.calculateDiscountTax(listPrice, sellingPrice)
-    return (percent !== 0) &&
-    <div className="relative dib">
-      <div className="f7 dark-gray absolute right-0 pa2-s bg-white">
-        { label === '' && '-' }
-        <FormattedNumber value={percent} style="percent" /> { label }
+    return percent ? (
+      <div className="relative dib">
+        <div className="f7 dark-gray absolute right-0 pa2-s bg-white">
+          { label === '' && '-' }
+          <FormattedNumber value={percent} style="percent" /> { label }
+        </div>
+        {this.props.children}
       </div>
-      {this.props.children}
-    </div>
+    ) : this.props.children
   }
 }
 

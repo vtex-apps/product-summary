@@ -9,7 +9,7 @@ class ProductName extends Component {
     const { name, referenceCode, skuName, brandName } = this.props
 
     return (
-      <div className="f5 gray db tc overflow-hidden no-underline">
+      <div className="overflow-hidden vtex-product-summary__name">
         {referenceCode} {name} {skuName} {brandName && `(${brandName})`}
       </div>
     )

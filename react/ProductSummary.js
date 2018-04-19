@@ -8,6 +8,7 @@ import Button from '@vtex/styleguide/lib/Button'
 import ProductName from './ProductName'
 import Price from './Price'
 import DiscountBadge from './DiscountBadge'
+import { createProduct } from './ProductFactory'
 
 /**
  * Product Summary component. Summarizes the product information.
@@ -32,7 +33,6 @@ class ProductSummary extends Component {
 
   render() {
     const {
-      product,
       showListPrice,
       showLabels,
       showInstallments,
@@ -42,8 +42,10 @@ class ProductSummary extends Component {
       showButtonOnHover,
     } = this.props
 
+    const product = this.props.product || createProduct()
+
     return (
-      <div className="summary-card center">
+      <div className="vtex-product-summary__card">
         <Card fullWidth>
           <div className="tc pointer"
             onMouseEnter={this.handleMouseEnter}
@@ -63,21 +65,21 @@ class ProductSummary extends Component {
                           listPrice={product.listPrice}
                           sellingPrice={product.sellingPrice}
                           label={badgeText}>
-                          <img className="summary-image" alt={product.name} src={product.imageUrl} />
+                          <img className="vtex-product-summary__image" alt={product.name} src={product.imageUrl} />
                         </DiscountBadge>
                       ) : (
-                        <img className="summary-image" alt={product.name} src={product.imageUrl} />
+                        <img className="vtex-product-summary__image" alt={product.name} src={product.imageUrl} />
                       )
                     }
                   </div>
-                  <div className="pv5">
+                  <div className="pv5 f4 gray db tc vtex-product-summary__name-container">
                     <ProductName
                       name={product.name}
                       skuName={product.skuName}
                       brandName={product.brandName}
                       referenceCode={product.referenceCode} />
                   </div>
-                  <div className="pv1">
+                  <div className="pv1 vtex-product-summary__price-container">
                     <Price
                       listPrice={product.listPrice}
                       sellingPrice={product.sellingPrice}
@@ -92,7 +94,7 @@ class ProductSummary extends Component {
                   <div className={`${(!showButtonOnHover || (showButtonOnHover && this.state.isHovering)) ? 'db' : 'dn'}`}>
                     {!hideBuyButton && (
                     // TODO: Use the buy button component
-                      <div className="center buy-button">
+                      <div className="center vtex-product-summary__buy-button">
                         <Button block primary onClick={event => event.stopPropagation()}>BUY</Button>
                       </div>
                     )}
