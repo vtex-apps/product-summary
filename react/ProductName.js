@@ -9,7 +9,7 @@ class ProductName extends Component {
     const { name, referenceCode, skuName, brandName } = this.props
 
     return (
-      <div className="overflow-hidden vtex-product-summary__name">
+      <div className="vtex-product-summary__name overflow-hidden">
         {referenceCode} {name} {skuName} {brandName && `(${brandName})`}
       </div>
     )

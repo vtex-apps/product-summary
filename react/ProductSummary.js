@@ -45,7 +45,7 @@ class ProductSummary extends Component {
     const product = this.props.product || createProduct()
 
     return (
-      <div className="vtex-product-summary__card">
+      <div className="vtex-product-summary">
         <Card fullWidth>
           <div className="tc pointer"
             onMouseEnter={this.handleMouseEnter}
@@ -72,14 +72,14 @@ class ProductSummary extends Component {
                       )
                     }
                   </div>
-                  <div className="pv5 f4 gray db tc vtex-product-summary__name-container">
+                  <div className="vtex-product-summary__name-container pv5 f4 gray db tc">
                     <ProductName
                       name={product.name}
                       skuName={product.skuName}
                       brandName={product.brandName}
                       referenceCode={product.referenceCode} />
                   </div>
-                  <div className="pv1 vtex-product-summary__price-container">
+                  <div className="vtex-product-summary__price-container pv1">
                     <Price
                       listPrice={product.listPrice}
                       sellingPrice={product.sellingPrice}
@@ -94,7 +94,7 @@ class ProductSummary extends Component {
                   <div className={`${(!showButtonOnHover || (showButtonOnHover && this.state.isHovering)) ? 'db' : 'dn'}`}>
                     {!hideBuyButton && (
                     // TODO: Use the buy button component
-                      <div className="center vtex-product-summary__buy-button">
+                      <div className="vtex-product-summary__buy-button center">
                         <Button block primary onClick={event => event.stopPropagation()}>BUY</Button>
                       </div>
                     )}

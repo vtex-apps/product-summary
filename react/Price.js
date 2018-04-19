@@ -32,32 +32,32 @@ class Price extends Component {
     const formattedInstallmentPrice = formatNumber(installmentPrice, currencyOptions)
 
     return (
-      <div className="tc fabriga vtex-product-summary__price">
+      <div className="vtex-product-summary__price tc fabriga">
         {showListPrice && (
           <div className="pv1 f6 normal">
             {showLabels &&
-              <div className="dib vtex-product-summary__price-list-price-label">
+              <div className="vtex-product-summary__price-list-price-label dib">
                 <FormattedMessage id="pricing.from" />
               </div>
             }
-            <div className="dib strike ph2 vtex-product-summary__price-list-price">
+            <div className="vtex-product-summary__price-list-price dib strike ph2">
               {formatNumber(listPrice, currencyOptions)}
             </div>
           </div>
         )}
         <div className="pv1 b f4">
           { showLabels &&
-            <div className="dib vtex-product-summary__price-selling-price-label">
+            <div className="vtex-product-summary__price-selling-price-label dib">
               <FormattedMessage id="pricing.to" />
             </div>
           }
-          <div className="dib ph2 vtex-product-summary__price-selling-price">
+          <div className="vtex-product-summary__price-selling-price dib ph2">
             {formatNumber(sellingPrice, currencyOptions)}
           </div>
         </div>
         {showInstallments && (
           <div className="f5">
-            <div className="dib vtex-product-summary__price-installments">
+            <div className="vtex-product-summary__price-installments dib">
               { showLabels ? (
                 <FormattedMessage
                   id="pricing.installment-display"
