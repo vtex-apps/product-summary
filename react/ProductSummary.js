@@ -43,62 +43,66 @@ class ProductSummary extends Component {
     } = this.props
 
     return (
-      <Card fullWidth>
-        <div className="tc pointer"
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}>
-          {!product &&
-          <div>
-            <FormattedMessage id="loading" />
-          </div>
-          }
-          {product && (
+      <div className="summary-card center">
+        <Card fullWidth>
+          <div className="tc pointer"
+            onMouseEnter={this.handleMouseEnter}
+            onMouseLeave={this.handleMouseLeave}>
+            {!product &&
             <div>
-              <div onClick={this.handleClick}>
-                <div>
-                  {
-                    showBadge ? (
-                      <DiscountBadge
-                        listPrice={product.listPrice}
-                        sellingPrice={product.sellingPrice}
-                        label={badgeText}>
-                        <img alt={product.name} src={product.imageUrl} />
-                      </DiscountBadge>
-                    ) : (
-                      <img alt={product.name} src={product.imageUrl} />
-                    )
-                  }
+              <FormattedMessage id="loading" />
+            </div>
+            }
+            {product && (
+              <div>
+                <div onClick={this.handleClick}>
+                  <div>
+                    {
+                      showBadge ? (
+                        <DiscountBadge
+                          listPrice={product.listPrice}
+                          sellingPrice={product.sellingPrice}
+                          label={badgeText}>
+                          <img className="summary-image" alt={product.name} src={product.imageUrl} />
+                        </DiscountBadge>
+                      ) : (
+                        <img className="summary-image" alt={product.name} src={product.imageUrl} />
+                      )
+                    }
+                  </div>
+                  <div className="pv5">
+                    <ProductName
+                      name={product.name}
+                      skuName={product.skuName}
+                      brandName={product.brandName}
+                      referenceCode={product.referenceCode} />
+                  </div>
+                  <div className="pv1">
+                    <Price
+                      listPrice={product.listPrice}
+                      sellingPrice={product.sellingPrice}
+                      installments={product.installments}
+                      installmentPrice={product.installmentPrice}
+                      showListPrice={showListPrice}
+                      showLabels={showLabels}
+                      showInstallments={showInstallments} />
+                  </div>
                 </div>
                 <div className="pv2">
-                  <ProductName
-                    name={product.name}
-                    skuName={product.skuName}
-                    brandName={product.brandName}
-                    referenceCode={product.referenceCode} />
-                </div>
-                <div className="pv1">
-                  <Price
-                    listPrice={product.listPrice}
-                    sellingPrice={product.sellingPrice}
-                    installments={product.installments}
-                    installmentPrice={product.installmentPrice}
-                    showListPrice={showListPrice}
-                    showLabels={showLabels}
-                    showInstallments={showInstallments} />
+                  <div className={`${(!showButtonOnHover || (showButtonOnHover && this.state.isHovering)) ? 'db' : 'dn'}`}>
+                    {!hideBuyButton && (
+                    // TODO: Use the buy button component
+                      <div className="center buy-button">
+                        <Button block primary onClick={event => event.stopPropagation()}>BUY</Button>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
-              <div className="pv2">
-                <div className={`${(!showButtonOnHover || (showButtonOnHover && this.state.isHovering)) ? 'db' : 'dn'}`}>
-                  {!hideBuyButton && (
-                  // TODO: Use the buy button component
-                    <Button primary onClick={event => event.stopPropagation()}>BUY THIS AWESOME PRODUCT</Button>
-                  )}
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </Card>
+            )}
+          </div>
+        </Card>
+      </div>
     )
   }
 }

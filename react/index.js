@@ -29,10 +29,8 @@ export default class GettingStartedIndex extends Component {
 
   render() {
     return (
-      <div className="center mw5">
-        <div className="pv2">
-          <ExtensionPoint id="productSummary" {...props} />
-        </div>
+      <div className="pv5">
+        <ExtensionPoint id="productSummary" {...props} />
       </div>
     )
   }

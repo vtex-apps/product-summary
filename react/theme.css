@@ -10,3 +10,18 @@ html, body, #render-container, #render-provider, #render-provider > article {
 body {
   background-color: white;
 }
+
+.buy-button {
+  max-width: 187px;
+  max-height: 42px;
+}
+
+.summary-card {
+  max-width: 395px;
+  max-height: 428px;
+}
+
+.summary-image {
+  max-width: 198px;
+  max-height: 198px;
+}

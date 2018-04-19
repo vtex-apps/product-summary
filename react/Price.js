@@ -32,9 +32,9 @@ class Price extends Component {
     const formattedInstallmentPrice = formatNumber(installmentPrice, currencyOptions)
 
     return (
-      <div className="tc b fabriga">
+      <div className="tc fabriga">
         {showListPrice && (
-          <div className="pv1">
+          <div className="pv1 f6 normal">
             {showLabels &&
               <div className="dib">
                 <FormattedMessage id="pricing.from" />
@@ -45,7 +45,7 @@ class Price extends Component {
             </div>
           </div>
         )}
-        <div className="pv1">
+        <div className="pv1 b f4">
           { showLabels &&
             <div className="dib">
               <FormattedMessage id="pricing.to" />
@@ -57,7 +57,7 @@ class Price extends Component {
         </div>
         {showInstallments && installments &&
           installmentPrice && (
-          <div>
+          <div className="f5">
             <div className="dib">
               { showLabels ? (
                 <FormattedMessage
