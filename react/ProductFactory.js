@@ -14,6 +14,6 @@ const DEFAULT_PRODUCT = {
 
 export function createProduct(customProps) {
   const randomNumber = _.random(1, 12)
-  const imageUrl = require(`../resources/images/imagem-prod-summary${(randomNumber === 1) ? '' : randomNumber}.png`)
-  return Object.assign({}, DEFAULT_PRODUCT, { imageUrl }, customProps)
+  const imageUrl = require(`../resources/images/imagem-prod-summary${randomNumber}.png`)
+  return Object.assign({ imageUrl }, DEFAULT_PRODUCT, customProps)
 }
