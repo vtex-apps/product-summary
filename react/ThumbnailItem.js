@@ -27,11 +27,9 @@ ThumbnailItem.propTypes = {
   image: PropTypes.shape({
     /** The URL of the image */
     imageUrl: PropTypes.string.isRequired,
-
     /** The text that describes the image */
     imageText: PropTypes.string.isRequired,
   }).isRequired,
-
   /** The action that is called when the thumbnail image is clicked */
   onClick: PropTypes.func.isRequired,
 }

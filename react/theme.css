@@ -13,10 +13,36 @@
     font-size: 2rem;
     color: inherit;
 }
+
+.vtex-product-image .vtex-product-image__vertical-arrow-prev,
+.vtex-product-image .vtex-product-image__vertical-arrow-next
+{
+    transform: rotate(90deg);
+    position: relative;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    z-index: 999;
+}
+
+.vtex-product-image .vtex-product-image__horizontal-arrow-prev
+{
+    left: 0px;
+    z-index: 999;
+}
+
+.vtex-product-image .vtex-product-image__horizontal-arrow-next
+{
+    right: 0px;
+    z-index: 999;
+}
+
+
 .vtex-product-image .slick-next
 {
     right: -0.7rem;
 }
+
 .vtex-product-image .slick-dots li button
 {
     color: inherit;

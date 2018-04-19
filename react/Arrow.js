@@ -7,11 +7,11 @@ import PropTypes from 'prop-types'
  */
 class Arrow extends Component {
   render() {
-    const { className, customStyle, onClick, color } = this.props
+    const { className, customClassName, style, onClick, color } = this.props
     return (
       <div
-        className={className}
-        style={{ ...customStyle, color: color }}
+        className={`${className} ${customClassName}`}
+        style={{ ...style, color: color }}
         onClick={onClick}
       />
     )
@@ -19,10 +19,12 @@ class Arrow extends Component {
 }
 
 Arrow.propTypes = {
-  /** The css class of the element. */
+  /** The css class of the element that is passed by the react-slick parent component. */
   className: PropTypes.string,
+  /** The custom css class of the element. */
+  customClassName: PropTypes.string,
   /** The custom style of the element. */
-  customStyle: PropTypes.object,
+  style: PropTypes.object,
   /** Maximum number of items in the shelf. */
   onClick: PropTypes.func,
   /** The color of the arrow icon. Ex: '#F00', 'rgb(255, 0, 0)'. */

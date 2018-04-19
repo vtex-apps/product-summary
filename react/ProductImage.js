@@ -27,7 +27,7 @@ class ProductImage extends Component {
   }
 
   /** The function that configures the component style */
-  configureStyle = () => {
+  configureClassName = () => {
     const { thumbnailSliderOrientation } = this.props
     let style
     switch (thumbnailSliderOrientation) {
@@ -61,13 +61,18 @@ class ProductImage extends Component {
   }
 
   render() {
-    const style = this.configureStyle()
+    const { images } = this.props
+
+    const className = this.configureClassName()
     const selectedImage = this.configureSelectedImage()
     const thumbnailSlider = this.configureThumbnailSlider()
 
     return (
-      <div className={style}>
-        <ThumbnailSlider {...thumbnailSlider} />
+      <div className={className}>
+        {
+          /** It should render the Slider if and only if the number of images is greater than one */
+          images.length > 1 ? <ThumbnailSlider {...thumbnailSlider} /> : ''
+        }
         <SelectedImage {...selectedImage} />
       </div>
     )
@@ -77,10 +82,8 @@ class ProductImage extends Component {
 ProductImage.propTypes = {
   /** The array of images to be passed for the Thumbnail Slider component */
   images: PropTypes.array.isRequired,
-
   /** The Thumbnail Slider orientation */
   thumbnailSliderOrientation: PropTypes.oneOf([ VERTICAL, HORIZONTAL ]),
-
   /** The maximum number of visible items that should be displayed by the Thumbnail Slider at the same time */
   thumbnailMaxVisibleItems: PropTypes.number,
 }
