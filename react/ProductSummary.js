@@ -28,7 +28,9 @@ class ProductSummary extends Component {
   }
 
   handleClick = (event) => {
-    event.ctrlKey ? window.open(this.props.product.url) : window.location.assign(this.props.product.url)
+    if (this.props.product) {
+      event.ctrlKey ? window.open(this.props.product.url) : window.location.assign(this.props.product.url)
+    }
   }
 
   render() {
