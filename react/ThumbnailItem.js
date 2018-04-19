@@ -16,7 +16,7 @@ class ThumbnailItem extends Component {
 
     return (
       <a href="#" onClick={this.handleClick}>
-        <img src={imageUrl} alt={imageText} />
+        <img className="center" src={imageUrl} alt={imageText} />
       </a>
     )
   }

@@ -9,7 +9,7 @@ class SelectedImage extends Component {
 
     return (
       <div className="dn di-ns w-80-ns">
-        <img src={imageUrl} alt={imageText} />
+        <img className="dn di-ns w-80-ns" src={imageUrl} alt={imageText} />
       </div>
     )
   }

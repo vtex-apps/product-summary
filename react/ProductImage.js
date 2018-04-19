@@ -91,6 +91,57 @@ ProductImage.propTypes = {
 ProductImage.defaultProps = {
   /** In the case that the Thumbnail Slider orientation is not defined then vertical orientation will be used as default */
   thumbnailSliderOrientation: VERTICAL,
+  /** The placeholder images */
+  images: [
+    {
+      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary.png",
+      imageText: ""
+    },
+    {
+      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary2.png",
+      imageText: ""
+    },
+    {
+      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary3.png",
+      imageText: ""
+    },
+    {
+      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary4.png",
+      imageText: ""
+    },
+    {
+      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary5.png",
+      imageText: ""
+    },
+    {
+      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary6.png",
+      imageText: ""
+    },
+    {
+      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary7.png",
+      imageText: ""
+    },
+    {
+      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary8.png",
+      imageText: ""
+    },
+    {
+      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary9.png",
+      imageText: ""
+    },
+    {
+      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary10.png",
+      imageText: ""
+    },
+    {
+      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary11.png",
+      imageText: ""
+    },
+    {
+      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary12.png",
+      imageText: ""
+    },
+  ]
 }
 
 ProductImage.schema = {
