@@ -1,13 +1,12 @@
 {
   "pages": {
-    "product-summary": {
+    "product-image": {
       "path": "/",
-      "theme": "theme",
-      "extensible": true
+      "theme": "theme"
     }
   },
   "extensions": {
-    "product-summary/productSummary": {
+    "product-image": {
       "component": "ProductImage"
     }
   }
