@@ -6,7 +6,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "@vtex/styleguide": "2.0.0-rc.35"
+    "@vtex/styleguide": "2.0.0-rc.35",
+    "react-slick": "^0.23.1",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -33,6 +35,9 @@
     },
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+    ],
+    "setupFiles": [
+      "./tests-setup.js"
     ],
     "testPathIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\]",

@@ -1,12 +1,62 @@
-@import url(//io.vtex.com.br/fonts/fabriga/stylesheet.css);
-body,button,input,optgroup,select,textarea,span,h1,h2,h3,h4,p1 {
-  font-family: Fabriga,-apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif
+@import url('~slick-carousel/slick/slick.css');
+@import url('~slick-carousel/slick/slick-theme.css');
+
+.vtex-product-image .slick-prev.slick-disabled:before,
+.vtex-product-image .slick-next.slick-disabled:before
+{
+    color: inherit;
 }
 
-html, body, #render-container, #render-provider, #render-provider > article {
-  min-height: 100%;
+.vtex-product-image .slick-prev:before,
+.vtex-product-image .slick-next:before
+{
+    font-size: 2rem;
+    color: inherit;
 }
 
-body {
-  background-color: white;
+.vtex-product-image .vtex-product-image__vertical-arrow--prev,
+.vtex-product-image .vtex-product-image__vertical-arrow--next
+{
+    transform: rotate(90deg);
+    position: relative;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    z-index: 999;
+    color: black;
+}
+
+.vtex-product-image .vtex-product-image__horizontal-arrow--prev
+{
+    left: 0px;
+    z-index: 999;
+    color: black;
+}
+
+.vtex-product-image .vtex-product-image__horizontal-arrow--next
+{
+    right: 0px;
+    z-index: 999;
+    color: black;
+}
+
+
+.vtex-product-image .slick-next
+{
+    right: -0.7rem;
+}
+
+.vtex-product-image .slick-dots li button
+{
+    color: inherit;
+}
+
+.vtex-product-image .slick-dots li button:before
+{
+    font-size: 1rem;
+    color: inherit;
+}
+.vtex-product-image .slick-dots li.slick-active button:before
+{
+    color: inherit;
 }
