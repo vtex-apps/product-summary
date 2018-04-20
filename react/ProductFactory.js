@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import random from 'lodash/random'
 
 const DEFAULT_PRODUCT = {
   listPrice: 1,
@@ -13,7 +13,7 @@ const DEFAULT_PRODUCT = {
 }
 
 export function createProduct(customProps) {
-  const randomNumber = _.random(1, 12)
+  const randomNumber = random(1, 12)
   const imageUrl = require(`../resources/images/imagem-prod-summary${randomNumber}.png`)
   return Object.assign({ imageUrl }, DEFAULT_PRODUCT, customProps)
 }
