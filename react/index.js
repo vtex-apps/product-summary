@@ -1,23 +1,10 @@
 import React, { Component } from 'react'
-import Card from '@vtex/styleguide/lib/Card'
 import { ExtensionPoint } from 'render'
 
 // FIXME: Delete when we can use true data.
 const props = {
-  product: {
-    listPrice: 200,
-    sellingPrice: 170,
-    installments: 3,
-    installmentPrice: 50,
-    imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd0cHfPOO0tneOT0AH3UDs7BumkdOVHZtv4DL55dFtInS2q8mi',
-    name: 'My product',
-    url: 'https://google.com',
-    referenceCode: '10125120',
-    skuName: 'v2',
-    brandName: 'Boticario',
-  },
   showListPrice: true,
-  showInstallments: false,
+  showInstallments: true,
   showLabels: true,
   showBadge: true,
   hideBuyButton: false,
@@ -30,11 +17,15 @@ export default class GettingStartedIndex extends Component {
 
   render() {
     return (
-      <div className="center mw5">
-        <div className="pv2">
-          <Card fullWidth>
-            <ExtensionPoint id="productSummary" {...props} />
-          </Card>
+      <div className="pv5 flex">
+        <div className="ph4">
+          <ExtensionPoint id="product-summary" {...props} />
+        </div>
+        <div className="ph4">
+          <ExtensionPoint id="product-summary" {...props} />
+        </div>
+        <div className="ph4">
+          <ExtensionPoint id="product-summary" {...props} />
         </div>
       </div>
     )
