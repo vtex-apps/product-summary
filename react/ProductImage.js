@@ -118,18 +118,4 @@ ProductImage.defaultProps = {
   thumbnailSliderOrientation: VERTICAL
 }
 
-ProductImage.schema = {
-  title: 'ProductImage',
-  description: 'A simple product image',
-  type: 'object',
-  properties: {
-    thumbnailSliderOrientation: {
-      type: 'string',
-      title: 'Thumbnail Slider Orientation',
-      enum: [ VERTICAL, HORIZONTAL ],
-      default: VERTICAL,
-    },
-  },
-}
-
 export default ProductImage

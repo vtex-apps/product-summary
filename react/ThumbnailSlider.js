@@ -24,7 +24,7 @@ class ThumbnailSlider extends Component {
   
     const sliderVertical = (orientation === VERTICAL)
 
-    /** The number of visible slider items should not exceed the number of images, in the case that this condition is not satisfied, 
+    /** Number of visible slider items should not exceed the number of images, in the case that this condition is not satisfied, 
      * then it must not exceed the maxVisibleItems property. Finally, the number of visible slider items should not be greater 
      * than the maximum allowed value that is defined by MAX_VISIBLE_ITEMS */
     const numOfVisibleItems = Math.min(maxVisibleItems, images.length, MAX_VISIBLE_ITEMS)
