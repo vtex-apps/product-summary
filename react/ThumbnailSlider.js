@@ -64,7 +64,7 @@ class ThumbnailSlider extends Component {
     const sliderSettings = this.configureSliderSettings()
 
     return (
-      <div className={sliderVertical && 'w-100 w-20-ns'}>
+      <div className={sliderVertical ? 'w-100 w-20-ns' : ''}>
         {
           <Slider {...sliderSettings}>
             {
