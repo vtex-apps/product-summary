@@ -46,17 +46,6 @@ class ProductImage extends Component {
   }
 
   /** 
-   * Function that configures the properties of the Selected Image nested component 
-   */
-  configureSelectedImage = () => {
-    const { selectedImage } = this.state
-    
-    return {
-      image: selectedImage,
-    }
-  }
-
-  /** 
    * Function that configures the properties of the Thumbnail Slider nested component 
    */
   configureThumbnailSlider = () => {
@@ -74,13 +63,12 @@ class ProductImage extends Component {
     const { images } = this.props
 
     const className = this.configureClassName()
-    const selectedImage = this.configureSelectedImage()
     const thumbnailSlider = this.configureThumbnailSlider()
 
     return (
       <div className={className}>
         { images.length > 1 ? <ThumbnailSlider {...thumbnailSlider} /> : '' }
-        <SelectedImage {...selectedImage} />
+        <SelectedImage image={this.state.selectedImage} />
       </div>
     )
   }
@@ -88,7 +76,12 @@ class ProductImage extends Component {
 
 ProductImage.propTypes = {
   /** Array of images to be passed for the Thumbnail Slider component as a props */
-  images: PropTypes.array.isRequired,
+  images: PropTypes.arrayOf(PropTypes.shape({
+    /** URL of the image */
+    imageUrl: PropTypes.string.isRequired,
+    /** Text that describes the image */
+    imageText: PropTypes.string.isRequired,
+  })),
   /** Thumbnail Slider orientation */
   thumbnailSliderOrientation: PropTypes.oneOf([ VERTICAL, HORIZONTAL ]),
   /** Maximum number of visible items that should be displayed by the Thumbnail Slider at the same time */
