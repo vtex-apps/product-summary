@@ -55,8 +55,7 @@ class ProductSummary extends Component {
           <div
             className="tc pointer"
             onMouseEnter={this.handleMouseEnter}
-            onMouseLeave={this.handleMouseLeave}
-          >
+            onMouseLeave={this.handleMouseLeave}>
             {!product && (
               <div>
                 <FormattedMessage id="loading" />
@@ -70,8 +69,7 @@ class ProductSummary extends Component {
                       <DiscountBadge
                         listPrice={product.listPrice}
                         sellingPrice={product.sellingPrice}
-                        label={badgeText}
-                      >
+                        label={badgeText}>
                         <img
                           className="vtex-product-summary__image"
                           alt={product.name}
@@ -113,8 +111,7 @@ class ProductSummary extends Component {
                       (showButtonOnHover && this.state.isHovering)
                         ? 'db'
                         : 'dn'
-                    }`}
-                  >
+                    }`}>
                     {!hideBuyButton && (
                       // TODO: Use the buy button component
                       <div className="vtex-product-summary__buy-button center">
@@ -122,9 +119,8 @@ class ProductSummary extends Component {
                           {...orderForm}
                           quantity={1}
                           skuId={product.skuId}
-                          afterClick={event => event.stopPropagation()}
-                        >
-                          BUY THIS AWESOME PRODUCT
+                          afterClick={event => event.stopPropagation()}>
+                          <FormattedMessage id="buy-button" />
                         </BuyButton>
                       </div>
                     )}
