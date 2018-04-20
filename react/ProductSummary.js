@@ -8,6 +8,7 @@ import BuyButton from '@vtex/buy-button'
 import ProductName from './ProductName'
 import Price from './Price'
 import DiscountBadge from './DiscountBadge'
+import { createProduct } from './ProductFactory'
 
 /**
  * Product Summary component. Summarizes the product information.
@@ -26,13 +27,16 @@ class ProductSummary extends Component {
     this.setState({ isHovering: true })
   }
 
-  handleClick = (event) => {
-    event.ctrlKey ? window.open(this.props.product.url) : window.location.assign(this.props.product.url)
+  handleClick = event => {
+    if (this.props.product) {
+      event.ctrlKey
+        ? window.open(this.props.product.url)
+        : window.location.assign(this.props.product.url)
+    }
   }
 
   render() {
     const {
-      product,
       orderForm,
       showListPrice,
       showLabels,
@@ -43,66 +47,94 @@ class ProductSummary extends Component {
       showButtonOnHover,
     } = this.props
 
+    const product = this.props.product || createProduct()
+
     return (
-      <Card fullWidth>
-        <div className="tc pointer"
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}>
-          {!product &&
-          <div>
-            <FormattedMessage id="loading" />
-          </div>
-          }
-          {product && (
-            <div>
-              <div onClick={this.handleClick}>
-                <div>
-                  {
-                    showBadge ? (
+      <div className="vtex-product-summary">
+        <Card fullWidth>
+          <div
+            className="tc pointer"
+            onMouseEnter={this.handleMouseEnter}
+            onMouseLeave={this.handleMouseLeave}
+          >
+            {!product && (
+              <div>
+                <FormattedMessage id="loading" />
+              </div>
+            )}
+            {product && (
+              <div>
+                <div onClick={this.handleClick}>
+                  <div>
+                    {showBadge ? (
                       <DiscountBadge
                         listPrice={product.listPrice}
                         sellingPrice={product.sellingPrice}
-                        label={badgeText}>
-                        <img alt={product.name} src={product.imageUrl} />
+                        label={badgeText}
+                      >
+                        <img
+                          className="vtex-product-summary__image"
+                          alt={product.name}
+                          src={product.imageUrl}
+                        />
                       </DiscountBadge>
                     ) : (
-                      <img alt={product.name} src={product.imageUrl} />
-                    )
-                  }
+                      <img
+                        className="vtex-product-summary__image"
+                        alt={product.name}
+                        src={product.imageUrl}
+                      />
+                    )}
+                  </div>
+                  <div className="vtex-product-summary__name-container pv5 f4 gray db tc">
+                    <ProductName
+                      name={product.name}
+                      skuName={product.skuName}
+                      brandName={product.brandName}
+                      referenceCode={product.referenceCode}
+                    />
+                  </div>
+                  <div className="vtex-price-container pv1">
+                    <Price
+                      listPrice={product.listPrice}
+                      sellingPrice={product.sellingPrice}
+                      installments={product.installments}
+                      installmentPrice={product.installmentPrice}
+                      showListPrice={showListPrice}
+                      showLabels={showLabels}
+                      showInstallments={showInstallments}
+                    />
+                  </div>
                 </div>
                 <div className="pv2">
-                  <ProductName
-                    name={product.name}
-                    skuName={product.skuName}
-                    brandName={product.brandName}
-                    referenceCode={product.referenceCode} />
-                </div>
-                <div className="pv1">
-                  <Price
-                    listPrice={product.listPrice}
-                    sellingPrice={product.sellingPrice}
-                    installments={product.installments}
-                    installmentPrice={product.installmentPrice}
-                    showListPrice={showListPrice}
-                    showLabels={showLabels}
-                    showInstallments={showInstallments} />
-                </div>
-              </div>
-              <div className="pv2">
-                <div className={`${(!showButtonOnHover || (showButtonOnHover && this.state.isHovering)) ? 'db' : 'dn'}`}>
-                  {!hideBuyButton && (
-                  // TODO: Use the buy button component
-                    <BuyButton {...orderForm}
-                      quantity={1}
-                      skuId={product.skuId}
-                      afterClick={event => event.stopPropagation()}>BUY THIS AWESOME PRODUCT</BuyButton>
-                  )}
+                  <div
+                    className={`${
+                      !showButtonOnHover ||
+                      (showButtonOnHover && this.state.isHovering)
+                        ? 'db'
+                        : 'dn'
+                    }`}
+                  >
+                    {!hideBuyButton && (
+                      // TODO: Use the buy button component
+                      <div className="vtex-product-summary__buy-button center">
+                        <BuyButton
+                          {...orderForm}
+                          quantity={1}
+                          skuId={product.skuId}
+                          afterClick={event => event.stopPropagation()}
+                        >
+                          BUY THIS AWESOME PRODUCT
+                        </BuyButton>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-        </div>
-      </Card>
+            )}
+          </div>
+        </Card>
+      </div>
     )
   }
 }
@@ -159,15 +191,15 @@ ProductSummary.schema = {
   properties: {
     showListPrice: {
       type: 'boolean',
-      title: 'Show product\'s list price',
+      title: "Show product's list price",
     },
     showLabels: {
       type: 'boolean',
-      title: 'Show product\'s prices\' labels (if false, shows only the prices)',
+      title: "Show product's prices' labels (if false, shows only the prices)",
     },
     showInstallments: {
       type: 'boolean',
-      title: 'Show product\'s payment installments',
+      title: "Show product's payment installments",
     },
     showBadge: {
       type: 'boolean',
@@ -175,7 +207,7 @@ ProductSummary.schema = {
     },
     badgeText: {
       type: 'string',
-      title: 'Badge\'s text',
+      title: "Badge's text",
     },
     hideBuyButton: {
       type: 'boolean',
