@@ -8,8 +8,10 @@ import { VERTICAL, HORIZONTAL } from './values/Orientations'
 
 const DEFAULT_SELECTED_IMAGE = 0
 
-/** Product Image component.
- *  Display a list of thumbnail images in a slider and a main image of a product */
+/**
+ *  Product Image component.
+ *  Display a list of thumbnail images in a slider and a main image of a product
+ */
 class ProductImage extends Component {
   constructor(props) {
     super(props)
@@ -20,14 +22,18 @@ class ProductImage extends Component {
     }
   }
 
-  /** Function that changes the selected image */
+  /** 
+   * Function that changes the selected image
+   */
   handleThumbnailClick = (image) => {
     this.setState({
       selectedImage: image,
     })
   }
 
-  /** Function that configures the component style */
+  /** 
+   * Function that configures the component style 
+   */
   configureClassName = () => {
     const { thumbnailSliderOrientation } = this.props
     
@@ -40,7 +46,9 @@ class ProductImage extends Component {
     return style
   }
 
-  /** Function that configures the properties of the Selected Image nested component */
+  /** 
+   * Function that configures the properties of the Selected Image nested component 
+   */
   configureSelectedImage = () => {
     const { selectedImage } = this.state
     
@@ -49,7 +57,9 @@ class ProductImage extends Component {
     }
   }
 
-  /** Function that configures the properties of the Thumbnail Slider nested component */
+  /** 
+   * Function that configures the properties of the Thumbnail Slider nested component 
+   */
   configureThumbnailSlider = () => {
     const { images, thumbnailSliderOrientation, thumbnailMaxVisibleItems } = this.props
    
