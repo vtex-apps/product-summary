@@ -24,10 +24,10 @@ class ThumbnailSlider extends Component {
   
     const sliderVertical = (orientation === VERTICAL)
 
-    /** The number of visible slider items should not exceed the number of images, in the case that that condition is not satisfied, 
-     * then it must not exceed the maxVisibleItems property. Finnaly, the number of visible slider items should not be greater 
+    /** The number of visible slider items should not exceed the number of images, in the case that this condition is not satisfied, 
+     * then it must not exceed the maxVisibleItems property. Finally, the number of visible slider items should not be greater 
      * than the maximum allowed value that is defined by MAX_VISIBLE_ITEMS */
-    const numOfVisivleItems = Math.min(maxVisibleItems, images.length, MAX_VISIBLE_ITEMS)
+    const numOfVisibleItems = Math.min(maxVisibleItems, images.length, MAX_VISIBLE_ITEMS)
 
     return {
       dots: false,
@@ -36,7 +36,7 @@ class ThumbnailSlider extends Component {
       arrows: true,
       prevArrow: <Arrow customClassName={sliderVertical ? "vtex-product-image__vertical-arrow--prev" : "vtex-product-image__horizontal-arrow--prev"} />,
       nextArrow: <Arrow customClassName={sliderVertical ? "vtex-product-image__vertical-arrow--next" : "vtex-product-image__horizontal-arrow--next"} />,
-      slidesToShow: numOfVisivleItems,
+      slidesToShow: numOfVisibleItems,
       vertical: sliderVertical,
       verticalSwiping: sliderVertical,
       /** Responsive slider behavior is defined here */
@@ -64,7 +64,7 @@ class ThumbnailSlider extends Component {
     const sliderSettings = this.configureSliderSettings()
 
     return (
-      <div className={sliderVertical ? 'w-100 w-20-ns' : ''}>
+      <div className={sliderVertical && 'w-100 w-20-ns'}>
         {
           <Slider {...sliderSettings}>
             {

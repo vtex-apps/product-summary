@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 class SelectedImage extends Component {
   render() {
     const { imageUrl, imageText } = this.props.image
-    const className = "dn di-ns w-80-ns"
+    const className = "vtex-product-image__selected-image dn di-ns w-80-ns"
 
     return (
       <div className={className}>

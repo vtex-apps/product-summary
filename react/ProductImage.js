@@ -67,7 +67,7 @@ class ProductImage extends Component {
 
     return (
       <div className={className}>
-        { images.length > 1 ? <ThumbnailSlider {...thumbnailSlider} /> : '' }
+        { images.length > 1 && <ThumbnailSlider {...thumbnailSlider} /> }
         <SelectedImage image={this.state.selectedImage} />
       </div>
     )

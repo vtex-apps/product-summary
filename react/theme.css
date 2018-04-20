@@ -1,6 +1,9 @@
 @import url('~slick-carousel/slick/slick.css');
 @import url('~slick-carousel/slick/slick-theme.css');
 
+.vtex-product-image .vtex-product-image__selected-image
+{}
+
 /* Arrows */
 .vtex-product-image .slick-prev.slick-disabled:before,
 .vtex-product-image .slick-next.slick-disabled:before
