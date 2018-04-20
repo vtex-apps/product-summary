@@ -67,7 +67,7 @@ describe('<ProductImage /> component', () => {
       const images = [ { imageUrl: "", imageText: "" },
                        { imageUrl: "", imageText: "" } ]
       const { component } = renderComponent({
-        images: images,
+        images,
         thumbnailMaxVisibleItems: INVALID_NUM_OF_VISIBLE_ITEMS
       })
       expect(

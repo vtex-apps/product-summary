@@ -81,7 +81,7 @@ ProductImage.propTypes = {
     imageUrl: PropTypes.string.isRequired,
     /** Text that describes the image */
     imageText: PropTypes.string.isRequired,
-  })),
+  })).isRequired,
   /** Thumbnail Slider orientation */
   thumbnailSliderOrientation: PropTypes.oneOf([ VERTICAL, HORIZONTAL ]),
   /** Maximum number of visible items that should be displayed by the Thumbnail Slider at the same time */
