@@ -35,7 +35,7 @@ describe('<ProductImage /> component', () => {
 
   it('should hide thumbnail slider if the number of images is not greater than one', () => {
     const { component } = renderComponent({
-      images: [ { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary10.png", imageText: "" } ]
+      images: [ { imageUrl: "", imageText: "" } ]
     })
     expect(
       component.find('.slick-list')
@@ -64,8 +64,8 @@ describe('<ProductImage /> component', () => {
     })
 
     it('should display the entire image of thumbnails if this number is less than the NUM_OF_VISIBLE_ITEMS that is passed as a props', () => {
-      const images = [ { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary10.png", imageText: "" },
-                       { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary10.png", imageText: "" } ]
+      const images = [ { imageUrl: "", imageText: "" },
+                       { imageUrl: "", imageText: "" } ]
       const { component } = renderComponent({
         images: images,
         thumbnailMaxVisibleItems: INVALID_NUM_OF_VISIBLE_ITEMS
