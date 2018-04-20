@@ -10,10 +10,15 @@ import { HORIZONTAL, VERTICAL } from './values/Orientations'
 
 const MAX_VISIBLE_ITEMS = 4
 
-/** Thumbnail component.
- *  Display a slider with a list of thumbnail images */
+/** 
+ * Thumbnail component.
+ * Display a slider with a list of thumbnail images. 
+ */
 class ThumbnailSlider extends Component {
-  /** Function that retrieve properties to configure the slider */
+  
+  /** 
+   * Function that configure slider settings according to the component props
+   */
   configureSliderSettings = () => {
     const { images, maxVisibleItems, orientation} = this.props
   

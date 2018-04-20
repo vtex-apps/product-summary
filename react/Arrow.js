@@ -7,11 +7,11 @@ import PropTypes from 'prop-types'
  */
 class Arrow extends Component {
   render() {
-    const { className, customClassName, style, onClick, color } = this.props
+    const { className, customClassName, customStyle, onClick, color } = this.props
     return (
       <div
         className={`${className} ${customClassName}`}
-        style={{ ...style }}
+        style={{ ...customStyle }}
         onClick={onClick}
       />
     )
@@ -24,7 +24,7 @@ Arrow.propTypes = {
   /** Custom css class of the element. */
   customClassName: PropTypes.string,
   /** Custom style of the element. */
-  style: PropTypes.object,
+  customStyle: PropTypes.object,
   /** Maximum number of items in the shelf. */
   onClick: PropTypes.func,
 }

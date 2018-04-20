@@ -3,14 +3,13 @@ import PropTypes from 'prop-types'
 
 import ThumbnailSlider from './ThumbnailSlider'
 import SelectedImage from './SelectedImage'
-
 import { VERTICAL, HORIZONTAL } from './values/Orientations'
 
 const DEFAULT_SELECTED_IMAGE = 0
 
 /**
  *  Product Image component.
- *  Display a list of thumbnail images in a slider and a main image of a product
+ *  Display a list of thumbnail images in a slider and a main image of a product.
  */
 class ProductImage extends Component {
   constructor(props) {
@@ -80,9 +79,7 @@ class ProductImage extends Component {
 
     return (
       <div className={className}>
-        {
-          images.length > 1 ? <ThumbnailSlider {...thumbnailSlider} /> : ''
-        }
+        { images.length > 1 ? <ThumbnailSlider {...thumbnailSlider} /> : '' }
         <SelectedImage {...selectedImage} />
       </div>
     )
@@ -90,7 +87,7 @@ class ProductImage extends Component {
 }
 
 ProductImage.propTypes = {
-  /** Array of images to be passed for the Thumbnail Slider component */
+  /** Array of images to be passed for the Thumbnail Slider component as a props */
   images: PropTypes.array.isRequired,
   /** Thumbnail Slider orientation */
   thumbnailSliderOrientation: PropTypes.oneOf([ VERTICAL, HORIZONTAL ]),
@@ -99,57 +96,33 @@ ProductImage.propTypes = {
 }
 
 ProductImage.defaultProps = {
-  thumbnailSliderOrientation: VERTICAL,
   images: [
-    {
-      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary.png",
-      imageText: ""
-    },
-    {
-      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary2.png",
-      imageText: ""
-    },
-    {
-      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary3.png",
-      imageText: ""
-    },
-    {
-      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary4.png",
-      imageText: ""
-    },
-    {
-      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary5.png",
-      imageText: ""
-    },
-    {
-      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary6.png",
-      imageText: ""
-    },
-    {
-      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary7.png",
-      imageText: ""
-    },
-    {
-      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary8.png",
-      imageText: ""
-    },
-    {
-      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary9.png",
-      imageText: ""
-    },
-    {
-      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary10.png",
-      imageText: ""
-    },
-    {
-      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary11.png",
-      imageText: ""
-    },
-    {
-      imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image-tests/images/imagem-prod-summary12.png",
-      imageText: ""
-    },
-  ]
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro1.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro2.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro3.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro4.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro5.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro6.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro7.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro8.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro9.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro10.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro11.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro12.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro13.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro14.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro15.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro16.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro17.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro18.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro19.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro20.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro21.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro22.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro23.png", imageText: "" },
+    { imageUrl: "https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/images/500x500-img-pro24.png", imageText: "" }
+  ],
+  thumbnailSliderOrientation: VERTICAL
 }
 
 ProductImage.schema = {

@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-/** Selected Image component.
- *  Display an image */
+/** 
+ * Selected Image component.
+ * Display an image.
+ */
 class SelectedImage extends Component {
   render() {
     const { imageUrl, imageText } = this.props.image
+    const className = "dn di-ns w-80-ns"
 
     return (
-      <div className="dn di-ns w-80-ns">
-        <img className="dn di-ns w-80-ns" src={imageUrl} alt={imageText} />
+      <div className={className}>
+        <img className={className} src={imageUrl} alt={imageText} />
       </div>
     )
   }

@@ -1,6 +1,7 @@
 @import url('~slick-carousel/slick/slick.css');
 @import url('~slick-carousel/slick/slick-theme.css');
 
+/* Arrows */
 .vtex-product-image .slick-prev.slick-disabled:before,
 .vtex-product-image .slick-next.slick-disabled:before
 {
@@ -40,12 +41,12 @@
     color: black;
 }
 
-
 .vtex-product-image .slick-next
 {
     right: -0.7rem;
 }
 
+/* Dots */
 .vtex-product-image .slick-dots li button
 {
     color: inherit;
@@ -56,6 +57,7 @@
     font-size: 1rem;
     color: inherit;
 }
+
 .vtex-product-image .slick-dots li.slick-active button:before
 {
     color: inherit;

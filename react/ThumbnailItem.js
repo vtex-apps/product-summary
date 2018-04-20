@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-/** Thumbnail Item Component.
- * Display a thumbnail image with an on click event well defined. */
+/** 
+ * Thumbnail Item Component.
+ * Display a thumbnail image with an on click event well defined. 
+ */
 class ThumbnailItem extends Component {
-  /** Function that is called when the thumbnail image is clicked */
+  
+  /** 
+   * Function that is called when the thumbnail image is clicked 
+   */
   handleClick = (event) => {
     event.preventDefault()
     const { image, onClick } = this.props
