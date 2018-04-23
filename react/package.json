@@ -6,6 +6,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@vtex/slick-components": "^1.0.3",
     "@vtex/styleguide": "2.0.0-rc.39",
     "react-slick": "^0.23.1",
     "slick-carousel": "^1.8.1"

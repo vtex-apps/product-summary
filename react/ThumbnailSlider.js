@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 
-import Arrow from './Arrow'
-import Dots from './Dots'
-import ThumbnailItem from './ThumbnailItem'
+import { Arrow, Dots } from '@vtex/slick-components'
 
+import ThumbnailItem from './ThumbnailItem'
 import { HORIZONTAL, VERTICAL } from './values/Orientations'
 
 const MAX_VISIBLE_ITEMS = 4
@@ -32,8 +31,8 @@ class ThumbnailSlider extends Component {
       speed: 500,
       infinite: false,
       arrows: true,
-      prevArrow: <Arrow customClassName={sliderVertical ? 'vtex-product-image__vertical-arrow--prev' : 'vtex-product-image__horizontal-arrow--prev'} />,
-      nextArrow: <Arrow customClassName={sliderVertical ? 'vtex-product-image__vertical-arrow--next' : 'vtex-product-image__horizontal-arrow--next'} />,
+      prevArrow: <Arrow cssClass={sliderVertical ? 'vtex-product-image__vertical-arrow--prev' : 'vtex-product-image__horizontal-arrow--prev'} />,
+      nextArrow: <Arrow cssClass={sliderVertical ? 'vtex-product-image__vertical-arrow--next' : 'vtex-product-image__horizontal-arrow--next'} />,
       slidesToShow: numOfVisibleItems,
       vertical: sliderVertical,
       verticalSwiping: sliderVertical,
