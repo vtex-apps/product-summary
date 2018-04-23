@@ -43,6 +43,7 @@ class ProductSummary extends Component {
       showInstallments,
       showBadge,
       badgeText,
+      buyButtonText,
       hideBuyButton,
       showButtonOnHover,
     } = this.props
@@ -120,7 +121,9 @@ class ProductSummary extends Component {
                           quantity={1}
                           skuId={product.skuId}
                           afterClick={event => event.stopPropagation()}>
-                          <FormattedMessage id="buy-button" />
+                          {buyButtonText || (
+                            <FormattedMessage id="buy-button" />
+                          )}
                         </BuyButton>
                       </div>
                     )}
@@ -157,7 +160,7 @@ ProductSummary.propTypes = {
   }),
   /** Order form used in the buy button */
   orderForm: PropTypes.shape({
-    /** The user's cart id */
+    /** User's cart id */
     orderFormId: PropTypes.string.isRequired,
     /** Channel */
     salesChannel: PropTypes.string.isRequired,
@@ -166,7 +169,7 @@ ProductSummary.propTypes = {
   }),
   /** Shows the product list price */
   showListPrice: PropTypes.bool,
-  /** If true, shows the pricing labels. If false, only the numbers will be shown */
+  /** Set pricing labels visibility */
   showLabels: PropTypes.bool,
   /** If true, shows the install information */
   showInstallments: PropTypes.bool,
@@ -174,6 +177,8 @@ ProductSummary.propTypes = {
   showBadge: PropTypes.bool,
   /** Text shown on badge */
   badgeText: PropTypes.string,
+  /** Custom buy button text */
+  buyButtonText: PropTypes.string,
   /** Hides the buy button completely . If active, the button will not be shown in any condition */
   hideBuyButton: PropTypes.bool,
   /** Defines if the button is shown only if the mouse is on the summary */
@@ -191,7 +196,7 @@ ProductSummary.schema = {
     },
     showLabels: {
       type: 'boolean',
-      title: "Show product's prices' labels (if false, shows only the prices)",
+      title: "Show product's prices' labels",
     },
     showInstallments: {
       type: 'boolean',
@@ -205,6 +210,10 @@ ProductSummary.schema = {
       type: 'string',
       title: "Badge's text",
     },
+    buyButtonText: {
+      type: 'string',
+      title: "Custom buy button's text",
+    },
     hideBuyButton: {
       type: 'boolean',
       title: 'Hides the buy button completely',
@@ -214,6 +223,15 @@ ProductSummary.schema = {
       title: 'Show the buy button only on hover (if not hidden)',
     },
   },
+}
+
+ProductSummary.defaultProps = {
+  showListPrice: true,
+  showInstallments: true,
+  showLabels: true,
+  showBadge: true,
+  hideBuyButton: false,
+  showOnHover: false,
 }
 
 export default ProductSummary

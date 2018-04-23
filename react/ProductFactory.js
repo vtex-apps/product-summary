@@ -6,7 +6,7 @@ const DEFAULT_PRODUCT = {
   installments: 0,
   installmentPrice: 0,
   name: 'ProductName',
-  url: 'https://google.com',
+  url: 'https://www.vtex.com/',
   referenceCode: 'ReferenceCode',
   skuName: 'SkuName',
   brandName: 'BrandName',

@@ -8,12 +8,6 @@ const props = {
     salesChannel: '1',
     seller: '1',
   },
-  showListPrice: true,
-  showInstallments: true,
-  showLabels: true,
-  showBadge: true,
-  hideBuyButton: false,
-  showOnHover: false,
 }
 
 export default class GettingStartedIndex extends Component {
