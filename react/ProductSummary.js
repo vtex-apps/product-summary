@@ -57,80 +57,72 @@ class ProductSummary extends Component {
             className="tc pointer"
             onMouseEnter={this.handleMouseEnter}
             onMouseLeave={this.handleMouseLeave}>
-            {!product && (
-              <div>
-                <FormattedMessage id="loading" />
-              </div>
-            )}
-            {product && (
-              <div>
-                <div onClick={this.handleClick}>
-                  <div>
-                    {showBadge ? (
-                      <DiscountBadge
-                        listPrice={product.listPrice}
-                        sellingPrice={product.sellingPrice}
-                        label={badgeText}>
-                        <img
-                          className="vtex-product-summary__image"
-                          alt={product.name}
-                          src={product.imageUrl}
-                        />
-                      </DiscountBadge>
-                    ) : (
+            <div>
+              <div onClick={this.handleClick}>
+                <div>
+                  {showBadge ? (
+                    <DiscountBadge
+                      listPrice={product.listPrice}
+                      sellingPrice={product.sellingPrice}
+                      label={badgeText}>
                       <img
                         className="vtex-product-summary__image"
                         alt={product.name}
                         src={product.imageUrl}
                       />
-                    )}
-                  </div>
-                  <div className="vtex-product-summary__name-container pv5 f4 gray db tc">
-                    <ProductName
-                      name={product.name}
-                      skuName={product.skuName}
-                      brandName={product.brandName}
-                      referenceCode={product.referenceCode}
+                    </DiscountBadge>
+                  ) : (
+                    <img
+                      className="vtex-product-summary__image"
+                      alt={product.name}
+                      src={product.imageUrl}
                     />
-                  </div>
-                  <div className="vtex-price-container pv1">
-                    <Price
-                      listPrice={product.listPrice}
-                      sellingPrice={product.sellingPrice}
-                      installments={product.installments}
-                      installmentPrice={product.installmentPrice}
-                      showListPrice={showListPrice}
-                      showLabels={showLabels}
-                      showInstallments={showInstallments}
-                    />
-                  </div>
+                  )}
                 </div>
-                <div className="pv2">
-                  <div
-                    className={`${
-                      !showButtonOnHover ||
-                      (showButtonOnHover && this.state.isHovering)
-                        ? 'db'
-                        : 'dn'
-                    }`}>
-                    {!hideBuyButton && (
-                      // TODO: Use the buy button component
-                      <div className="vtex-product-summary__buy-button center">
-                        <BuyButton
-                          {...orderForm}
-                          quantity={1}
-                          skuId={product.skuId}
-                          afterClick={event => event.stopPropagation()}>
-                          {buyButtonText || (
-                            <FormattedMessage id="buy-button" />
-                          )}
-                        </BuyButton>
-                      </div>
-                    )}
-                  </div>
+                <div className="vtex-product-summary__name-container pv5 f4 gray db tc">
+                  <ProductName
+                    name={product.name}
+                    skuName={product.skuName}
+                    brandName={product.brandName}
+                    referenceCode={product.referenceCode}
+                  />
+                </div>
+                <div className="vtex-price-container pv1">
+                  <Price
+                    listPrice={product.listPrice}
+                    sellingPrice={product.sellingPrice}
+                    installments={product.installments}
+                    installmentPrice={product.installmentPrice}
+                    showListPrice={showListPrice}
+                    showLabels={showLabels}
+                    showInstallments={showInstallments}
+                  />
                 </div>
               </div>
-            )}
+              <div className="pv2">
+                <div
+                  className={`${
+                    !showButtonOnHover ||
+                    (showButtonOnHover && this.state.isHovering)
+                      ? 'db'
+                      : 'dn'
+                  }`}>
+                  {!hideBuyButton && (
+                    <div className="vtex-product-summary__buy-button center">
+                      <BuyButton
+                        {...orderForm}
+                        quantity={1}
+                        skuId={product.skuId}
+                        afterClick={event => event.stopPropagation()}>
+                        {buyButtonText || (
+                          <FormattedMessage id="button-label" />
+                        )}
+                      </BuyButton>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         </Card>
       </div>

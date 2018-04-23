@@ -3,6 +3,5 @@
     "or up to {installments}X of {installmentPrice}",
   "pricing.from": "from:",
   "pricing.to": "to:",
-  "loading": "Loading…",
-  "buy-button": "Buy"
+  "button-label": "Buy"
 }

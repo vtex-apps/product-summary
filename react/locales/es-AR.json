@@ -3,6 +3,5 @@
     "o hasta {installments}X de {installmentPrice}",
   "pricing.from": "de:",
   "pricing.to": "por:",
-  "loading": "Cargando…",
-  "buy-button": "Comprar"
+  "button-label": "Comprar"
 }
