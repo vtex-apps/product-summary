@@ -20,9 +20,9 @@
   version "9.6.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.5.tgz#ee700810fdf49ac1c399fc5980b7559b3e5a381d"
 
-"@vtex/styleguide@2.0.0-rc.35":
-  version "2.0.0-rc.35"
-  resolved "https://registry.yarnpkg.com/@vtex/styleguide/-/styleguide-2.0.0-rc.35.tgz#034ebf97f7335d7cf93203144f4ae5914be54a78"
+"@vtex/styleguide@2.0.0-rc.39":
+  version "2.0.0-rc.39"
+  resolved "https://registry.yarnpkg.com/@vtex/styleguide/-/styleguide-2.0.0-rc.39.tgz#24b9a19b89094ccc23ad93ea545c454704ee943c"
   dependencies:
     react-responsive-modal "^2.0.1"
     vtex-tachyons "^2.3.0"

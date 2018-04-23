@@ -10,22 +10,20 @@ import { HORIZONTAL, VERTICAL } from './values/Orientations'
 
 const MAX_VISIBLE_ITEMS = 4
 
-/** 
+/**
  * Thumbnail component.
- * Display a slider with a list of thumbnail images. 
+ * Display a slider with a list of thumbnail images.
  */
 class ThumbnailSlider extends Component {
-  
-  /** 
+  /**
    * Function that configure slider settings according to the component props
    */
   configureSliderSettings = () => {
-    const { images, maxVisibleItems, orientation} = this.props
-  
+    const { images, maxVisibleItems, orientation } = this.props
     const sliderVertical = (orientation === VERTICAL)
 
-    /** Number of visible slider items should not exceed the number of images, in the case that this condition is not satisfied, 
-     * then it must not exceed the maxVisibleItems property. Finally, the number of visible slider items should not be greater 
+    /** Number of visible slider items should not exceed the number of images, in the case that this condition is not satisfied,
+     * then it must not exceed the maxVisibleItems property. Finally, the number of visible slider items should not be greater
      * than the maximum allowed value that is defined by MAX_VISIBLE_ITEMS */
     const numOfVisibleItems = Math.min(maxVisibleItems, images.length, MAX_VISIBLE_ITEMS)
 
@@ -34,8 +32,8 @@ class ThumbnailSlider extends Component {
       speed: 500,
       infinite: false,
       arrows: true,
-      prevArrow: <Arrow customClassName={sliderVertical ? "vtex-product-image__vertical-arrow--prev" : "vtex-product-image__horizontal-arrow--prev"} />,
-      nextArrow: <Arrow customClassName={sliderVertical ? "vtex-product-image__vertical-arrow--next" : "vtex-product-image__horizontal-arrow--next"} />,
+      prevArrow: <Arrow customClassName={sliderVertical ? 'vtex-product-image__vertical-arrow--prev' : 'vtex-product-image__horizontal-arrow--prev'} />,
+      nextArrow: <Arrow customClassName={sliderVertical ? 'vtex-product-image__vertical-arrow--next' : 'vtex-product-image__horizontal-arrow--next'} />,
       slidesToShow: numOfVisibleItems,
       vertical: sliderVertical,
       verticalSwiping: sliderVertical,
@@ -84,8 +82,13 @@ class ThumbnailSlider extends Component {
 }
 
 ThumbnailSlider.propTypes = {
-  /** Array of images to be rendered as a list of thumbnails */
-  images: PropTypes.array.isRequired,
+  /** Array of images to be passed for the Thumbnail Slider component as a props */
+  images: PropTypes.arrayOf(PropTypes.shape({
+    /** URL of the image */
+    imageUrl: PropTypes.string.isRequired,
+    /** Text that describes the image */
+    imageText: PropTypes.string.isRequired,
+  })).isRequired,
   /** Function that is called when a thumbnail is clicked */
   onThumbnailClick: PropTypes.func.isRequired,
   /** Slider orientation that could be vertical or horizontal */

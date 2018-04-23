@@ -2,16 +2,16 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 /**
- * Arrow component. 
+ * Arrow component.
  * It's an overrided component of react-slick that controls the slide transition.
  */
 class Arrow extends Component {
   render() {
-    const { className, customClassName, customStyle, onClick, color } = this.props
+    const { className, customClassName, style, onClick } = this.props
     return (
       <div
         className={`${className} ${customClassName}`}
-        style={{ ...customStyle }}
+        style={style}
         onClick={onClick}
       />
     )
@@ -24,9 +24,15 @@ Arrow.propTypes = {
   /** Custom css class of the element. */
   customClassName: PropTypes.string,
   /** Custom style of the element. */
-  customStyle: PropTypes.object,
+  style: PropTypes.object,
   /** Maximum number of items in the shelf. */
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
+}
+
+Arrow.defaultProps = {
+  className: '',
+  customClassName: '',
+  style: {},
 }
 
 export default Arrow
