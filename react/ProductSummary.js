@@ -51,80 +51,74 @@ class ProductSummary extends Component {
     const product = this.props.product || createProduct()
 
     return (
-      <div className="vtex-product-summary">
-        <Card fullWidth>
-          <div
-            className="tc pointer"
-            onMouseEnter={this.handleMouseEnter}
-            onMouseLeave={this.handleMouseLeave}>
+      <div
+        className="vtex-product-summary tc pointer"
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}>
+        <div>
+          <div onClick={this.handleClick}>
             <div>
-              <div onClick={this.handleClick}>
-                <div>
-                  {showBadge ? (
-                    <DiscountBadge
-                      listPrice={product.listPrice}
-                      sellingPrice={product.sellingPrice}
-                      label={badgeText}>
-                      <img
-                        className="vtex-product-summary__image"
-                        alt={product.name}
-                        src={product.imageUrl}
-                      />
-                    </DiscountBadge>
-                  ) : (
-                    <img
-                      className="vtex-product-summary__image"
-                      alt={product.name}
-                      src={product.imageUrl}
-                    />
-                  )}
-                </div>
-                <div className="vtex-product-summary__name-container pv5 f4 gray db tc">
-                  <ProductName
-                    name={product.name}
-                    skuName={product.skuName}
-                    brandName={product.brandName}
-                    referenceCode={product.referenceCode}
+              {showBadge ? (
+                <DiscountBadge
+                  listPrice={product.listPrice}
+                  sellingPrice={product.sellingPrice}
+                  label={badgeText}>
+                  <img
+                    className="vtex-product-summary__image"
+                    alt={product.name}
+                    src={product.imageUrl}
                   />
-                </div>
-                <div className="vtex-price-container pv1">
-                  <Price
-                    listPrice={product.listPrice}
-                    sellingPrice={product.sellingPrice}
-                    installments={product.installments}
-                    installmentPrice={product.installmentPrice}
-                    showListPrice={showListPrice}
-                    showLabels={showLabels}
-                    showInstallments={showInstallments}
-                  />
-                </div>
-              </div>
-              <div className="pv2">
-                <div
-                  className={`${
-                    !showButtonOnHover ||
-                    (showButtonOnHover && this.state.isHovering)
-                      ? 'db'
-                      : 'dn'
-                  }`}>
-                  {!hideBuyButton && (
-                    <div className="vtex-product-summary__buy-button center">
-                      <BuyButton
-                        {...orderForm}
-                        quantity={1}
-                        skuId={product.skuId}
-                        afterClick={event => event.stopPropagation()}>
-                        {buyButtonText || (
-                          <FormattedMessage id="button-label" />
-                        )}
-                      </BuyButton>
-                    </div>
-                  )}
-                </div>
-              </div>
+                </DiscountBadge>
+              ) : (
+                <img
+                  className="vtex-product-summary__image"
+                  alt={product.name}
+                  src={product.imageUrl}
+                />
+              )}
+            </div>
+            <div className="vtex-product-summary__name-container pv5 f4 gray db tc">
+              <ProductName
+                name={product.name}
+                skuName={product.skuName}
+                brandName={product.brandName}
+                referenceCode={product.referenceCode}
+              />
+            </div>
+            <div className="vtex-price-container pv1">
+              <Price
+                listPrice={product.listPrice}
+                sellingPrice={product.sellingPrice}
+                installments={product.installments}
+                installmentPrice={product.installmentPrice}
+                showListPrice={showListPrice}
+                showLabels={showLabels}
+                showInstallments={showInstallments}
+              />
             </div>
           </div>
-        </Card>
+          <div className="pv2">
+            <div
+              className={`${
+                !showButtonOnHover ||
+                (showButtonOnHover && this.state.isHovering)
+                  ? 'db'
+                  : 'dn'
+              }`}>
+              {!hideBuyButton && (
+                <div className="vtex-product-summary__buy-button center">
+                  <BuyButton
+                    {...orderForm}
+                    quantity={1}
+                    skuId={product.skuId}
+                    afterClick={event => event.stopPropagation()}>
+                    {buyButtonText || <FormattedMessage id="button-label" />}
+                  </BuyButton>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
