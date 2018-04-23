@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 
-import Card from '@vtex/styleguide/lib/Card'
 import BuyButton from '@vtex/buy-button'
 
 import ProductName from './ProductName'
