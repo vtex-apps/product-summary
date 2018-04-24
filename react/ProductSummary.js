@@ -54,7 +54,7 @@ class ProductSummary extends Component {
 
     return (
       <div
-        className="vtex-product-summary tc pointer pt3"
+        className="vtex-product-summary tc pointer pa3 overflow-hidden"
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}>
         <div>

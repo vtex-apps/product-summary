@@ -18,3 +18,11 @@
   max-width: 176px;
   max-height: 176.3px;
 }
+
+:global .vtex-product-summary button {
+  width: 212px;
+  height: 38px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
