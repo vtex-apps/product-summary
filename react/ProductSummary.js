@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
+import { isMobile } from 'react-device-detect'
 
 import BuyButton from '@vtex/buy-button'
 
@@ -46,14 +47,14 @@ class ProductSummary extends Component {
       badgeText,
       buyButtonText,
       hideBuyButton,
-      showButtonOnHover,
     } = this.props
 
     const product = this.props.product || createProduct()
+    const showButtonOnHover = this.props.showButtonOnHover && !isMobile
 
     return (
       <div
-        className="vtex-product-summary tc pointer"
+        className="vtex-product-summary tc pointer pt3"
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}>
         <div>
@@ -78,7 +79,7 @@ class ProductSummary extends Component {
                 />
               )}
             </div>
-            <div className="vtex-product-summary__name-container pv5 f4 gray db tc">
+            <div className="vtex-product-summary__name-container pv5 f5 near-black db tc">
               <ProductName
                 name={product.name}
                 skuName={product.skuName}
@@ -177,18 +178,22 @@ ProductSummary.schema = {
     showListPrice: {
       type: 'boolean',
       title: "Show product's list price",
+      default: true,
     },
     showLabels: {
       type: 'boolean',
       title: "Show product's prices' labels",
+      default: true,
     },
     showInstallments: {
       type: 'boolean',
       title: "Show product's payment installments",
+      default: true,
     },
     showBadge: {
       type: 'boolean',
       title: 'Show the discount badge',
+      default: true,
     },
     badgeText: {
       type: 'string',
@@ -201,10 +206,12 @@ ProductSummary.schema = {
     hideBuyButton: {
       type: 'boolean',
       title: 'Hides the buy button completely',
+      default: false,
     },
     showButtonOnHover: {
       type: 'boolean',
       title: 'Show the buy button only on hover (if not hidden)',
+      default: false,
     },
   },
 }

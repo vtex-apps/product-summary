@@ -1,11 +1,11 @@
 :global .vtex-product-summary__buy-button {
-  width: 187px;
-  height: 42px;
+  width: 212px;
+  height: 38px;
 }
 
 :global .vtex-product-summary {
-  width: 395px;
-  height: 428px;
+  width: 281px;
+  height: 380px;
   -webkit-transition: box-shadow 0.25s; /* Safari */
   transition: box-shadow 0.25s;
 }
@@ -15,6 +15,6 @@
 }
 
 :global .vtex-product-summary__image {
-  max-width: 198px;
-  max-height: 198px;
+  max-width: 176px;
+  max-height: 176.3px;
 }
