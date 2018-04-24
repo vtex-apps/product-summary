@@ -84,7 +84,6 @@ class ProductSummary extends Component {
                 name={product.name}
                 skuName={product.skuName}
                 brandName={product.brandName}
-                referenceCode={product.referenceCode}
               />
             </div>
             <div className="vtex-price-container pv1">
