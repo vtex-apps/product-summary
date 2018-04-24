@@ -79,7 +79,7 @@ class ProductSummary extends Component {
                 />
               )}
             </div>
-            <div className="vtex-product-summary__name-container pv5 f5 near-black db tc">
+            <div className="vtex-product-summary__name-container pv5 near-black">
               <ProductName
                 name={product.name}
                 skuName={product.skuName}

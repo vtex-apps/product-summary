@@ -10,10 +10,10 @@ class ProductName extends Component {
 
     return (
       <div className="vtex-product-name overflow-hidden">
-        <div>
+        <div className="f5">
           {referenceCode} {name}
         </div>
-        <div>
+        <div className="f6">
           {skuName} {brandName && `(${brandName})`}
         </div>
       </div>
