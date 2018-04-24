@@ -9,6 +9,8 @@ import Price from './Price'
 import DiscountBadge from './DiscountBadge'
 import { createProduct } from './ProductFactory'
 
+import './summary.css'
+
 /**
  * Product Summary component. Summarizes the product information.
  */
@@ -98,12 +100,9 @@ class ProductSummary extends Component {
           </div>
           <div className="pv2">
             <div
-              className={`${
-                !showButtonOnHover ||
-                (showButtonOnHover && this.state.isHovering)
-                  ? 'db'
-                  : 'dn'
-              }`}>
+              className={
+                !showButtonOnHover || this.state.isHovering ? 'db' : 'dn'
+              }>
               {!hideBuyButton && (
                 <div className="vtex-product-summary__buy-button center">
                   <BuyButton
