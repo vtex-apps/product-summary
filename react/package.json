@@ -6,7 +6,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@vtex/styleguide": "2.0.0-rc.39",
+    "@vtex/buy-button": "^0.0.14",
     "lodash": "^4.17.5"
   },
   "devDependencies": {
@@ -32,9 +32,7 @@
     "transform": {
       "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest"
     },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
-    ],
+    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"],
     "testPathIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\]",
       "(.*)[/\\\\]helpers[/\\\\](.*)"

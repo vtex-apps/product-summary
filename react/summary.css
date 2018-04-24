@@ -1,0 +1,20 @@
+:global .vtex-product-summary__buy-button {
+  width: 187px;
+  height: 42px;
+}
+
+:global .vtex-product-summary {
+  width: 395px;
+  height: 428px;
+  -webkit-transition: box-shadow 0.25s; /* Safari */
+  transition: box-shadow 0.25s;
+}
+
+:global .vtex-product-summary:hover {
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+:global .vtex-product-summary__image {
+  max-width: 198px;
+  max-height: 198px;
+}

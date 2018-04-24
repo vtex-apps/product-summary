@@ -11,11 +11,15 @@
   },
   "mustUpdateAt": "2019-04-02",
   "categories": [],
-  "registries": [
-    "smartcheckout"
-  ],
+  "registries": ["smartcheckout"],
   "settingsSchema": {},
   "scripts": {
     "postreleasy": "vtex publish --public"
+  },
+  "billingOptions": {
+    "billingListeningRoute": "/_v/deactivateMePlease",
+    "termsURL": "http://route.to.the/terms",
+    "version": "0.1",
+    "free": true
   }
 }
