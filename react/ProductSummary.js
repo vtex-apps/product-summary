@@ -100,11 +100,9 @@ class ProductSummary extends Component {
             </div>
           </div>
           <div className="pv2">
-            <div
-              className={
-                !showButtonOnHover || this.state.isHovering ? 'db' : 'dn'
-              }>
-              {!hideBuyButton && (
+            <div>
+              {!hideBuyButton &&
+                (!showButtonOnHover || this.state.isHovering) && (
                 <div className="vtex-product-summary__buy-button center">
                   <BuyButton
                     {...orderForm}
@@ -211,7 +209,6 @@ ProductSummary.schema = {
     showButtonOnHover: {
       type: 'boolean',
       title: 'Show the buy button only on hover (if not hidden)',
-      default: false,
     },
   },
 }
