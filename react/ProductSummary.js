@@ -153,11 +153,11 @@ ProductSummary.propTypes = {
   }),
   /** Shows the product list price */
   showListPrice: PropTypes.bool,
-  /** Set pricing labels visibility */
+  /** Set pricing labels' visibility */
   showLabels: PropTypes.bool,
-  /** If true, shows the install information */
+  /** Set installments' visibility */
   showInstallments: PropTypes.bool,
-  /** If true, shows the discount badge */
+  /** Set the discount badge's visibility */
   showBadge: PropTypes.bool,
   /** Text shown on badge */
   badgeText: PropTypes.string,
