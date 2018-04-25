@@ -68,6 +68,7 @@ class Price extends Component {
                   values={{
                     installments,
                     installmentPrice: formattedInstallmentPrice,
+                    times: <span>&times;</span>,
                   }}
                 />
               ) : (
