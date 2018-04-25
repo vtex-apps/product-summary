@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import { isMobile } from 'react-device-detect'
+import cloneDeep from 'lodash/cloneDeep'
 
 import BuyButton from '@vtex/buy-button'
 
@@ -167,7 +168,16 @@ ProductSummary.propTypes = {
   showButtonOnHover: PropTypes.bool,
 }
 
-ProductSummary.schema = {
+ProductSummary.defaultProps = {
+  showListPrice: true,
+  showInstallments: true,
+  showLabels: true,
+  showBadge: true,
+  hideBuyButton: false,
+  showOnHover: false,
+}
+
+const defaultSchema = {
   title: 'Product Summary',
   description: 'The product summary showing the main product informations',
   type: 'object',
@@ -207,18 +217,17 @@ ProductSummary.schema = {
     },
     showButtonOnHover: {
       type: 'boolean',
-      title: 'Show the buy button only on hover (if not hidden)',
+      title: 'Show the buy button only on hover',
     },
   },
 }
 
-ProductSummary.defaultProps = {
-  showListPrice: true,
-  showInstallments: true,
-  showLabels: true,
-  showBadge: true,
-  hideBuyButton: false,
-  showOnHover: false,
+ProductSummary.getSchema = ({ hideBuyButton }) => {
+  const dynamicSchema = cloneDeep(defaultSchema)
+  if (hideBuyButton) {
+    delete dynamicSchema.properties.showButtonOnHover
+  }
+  return dynamicSchema
 }
 
 export default ProductSummary
