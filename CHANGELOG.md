@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-* Do not shows list price when equals selling price
+* Does not show list price when it is equal to selling price
 * Always shows the buy button on mobile if `showButtonOnHover` is activated (smartphones and tablets)
 * Add default schema props to the _Product Summary_
 

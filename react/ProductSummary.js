@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import { isMobile } from 'react-device-detect'
-import cloneDeep from 'lodash/cloneDeep'
 
 import BuyButton from '@vtex/buy-button'
 
@@ -223,11 +222,11 @@ const defaultSchema = {
 }
 
 ProductSummary.getSchema = ({ hideBuyButton }) => {
-  const dynamicSchema = cloneDeep(defaultSchema)
-  if (hideBuyButton) {
-    delete dynamicSchema.properties.showButtonOnHover
+  const { showButtonOnHover, ...rest } = defaultSchema.properties
+  return {
+    ...defaultSchema,
+    properties: Object.assign(rest, hideBuyButton ? {} : { showButtonOnHover }),
   }
-  return dynamicSchema
 }
 
 export default ProductSummary
