@@ -72,7 +72,7 @@ class Price extends Component {
                 />
               ) : (
                 <span>
-                  {installments}X {formattedInstallmentPrice}
+                  {installments} &times; {formattedInstallmentPrice}
                 </span>
               )}
             </div>
