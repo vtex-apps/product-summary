@@ -9,7 +9,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* **Component** Create the VTEX Store Component _Product Summary_
 * Add the component dynamic schema props to hide the `showButtonOnHover` property if `hideBuyButton` is activated.
 
 ### Fixed
@@ -19,3 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Add default schema props to the _Product Summary_
 
 ## [0.1.0] - 2018-04-24
+
+### Added
+
+* **Component** Create the VTEX Store Component _Product Summary_
