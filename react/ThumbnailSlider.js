@@ -61,7 +61,7 @@ class ThumbnailSlider extends Component {
     const sliderSettings = this.configureSliderSettings()
 
     return (
-      <div className={sliderVertical ? 'w-100 w-20-ns' : ''}>
+      <div className={sliderVertical ? 'vtex-product-image__vertical-thumbnail-slider' : 'vtex-product-image__horizontal-thumbnail-slider'}>
         {
           <Slider {...sliderSettings}>
             {

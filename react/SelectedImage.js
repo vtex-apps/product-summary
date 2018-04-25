@@ -10,8 +10,8 @@ class SelectedImage extends Component {
     const { imageUrl, imageText } = this.props.image
 
     return (
-      <div className="vtex-product-image__selected-image dn di-ns w-80-ns">
-        <img className="dn di-ns w-80-ns" src={imageUrl} alt={imageText} />
+      <div className="vtex-product-image__selected-image dn di-ns">
+        <img className="mw-100 mh-100" src={imageUrl} alt={imageText} />
       </div>
     )
   }

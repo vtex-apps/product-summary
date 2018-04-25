@@ -18,8 +18,8 @@ class ThumbnailItem extends Component {
     const { imageUrl, imageText } = this.props.image
 
     return (
-      <div className="link pointer" onClick={this.handleClick}>
-        <img className="center" src={imageUrl} alt={imageText} />
+      <div className="vtex-product-image__thumbnail-slider-item" onClick={this.handleClick}>
+        <img className="mw-100 mh-100" src={imageUrl} alt={imageText} />
       </div>
     )
   }
