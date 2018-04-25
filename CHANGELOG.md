@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.1.0] - 2018-04-24
+
 ### Added
 
 * **Component** Create the VTEX Store Component _Product Summary_
