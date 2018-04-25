@@ -225,7 +225,10 @@ ProductSummary.getSchema = ({ hideBuyButton }) => {
   const { showButtonOnHover, ...rest } = defaultSchema.properties
   return {
     ...defaultSchema,
-    properties: Object.assign(rest, hideBuyButton ? {} : { showButtonOnHover }),
+    properties: {
+      ...rest,
+      ...(hideBuyButton ? {} : { showButtonOnHover }),
+    },
   }
 }
 
