@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
+import { isMobile } from 'react-device-detect'
 
 import BuyButton from '@vtex/buy-button'
 
@@ -46,14 +47,14 @@ class ProductSummary extends Component {
       badgeText,
       buyButtonText,
       hideBuyButton,
-      showButtonOnHover,
     } = this.props
 
     const product = this.props.product || createProduct()
+    const showButtonOnHover = this.props.showButtonOnHover && !isMobile
 
     return (
       <div
-        className="vtex-product-summary tc pointer"
+        className="vtex-product-summary tc pointer pa3 overflow-hidden"
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}>
         <div>
@@ -78,12 +79,11 @@ class ProductSummary extends Component {
                 />
               )}
             </div>
-            <div className="vtex-product-summary__name-container pv5 f4 gray db tc">
+            <div className="vtex-product-summary__name-container pv5 near-black">
               <ProductName
                 name={product.name}
                 skuName={product.skuName}
                 brandName={product.brandName}
-                referenceCode={product.referenceCode}
               />
             </div>
             <div className="vtex-price-container pv1">
@@ -99,11 +99,9 @@ class ProductSummary extends Component {
             </div>
           </div>
           <div className="pv2">
-            <div
-              className={
-                !showButtonOnHover || this.state.isHovering ? 'db' : 'dn'
-              }>
-              {!hideBuyButton && (
+            <div>
+              {!hideBuyButton &&
+                (!showButtonOnHover || this.state.isHovering) && (
                 <div className="vtex-product-summary__buy-button center">
                   <BuyButton
                     {...orderForm}
@@ -177,18 +175,22 @@ ProductSummary.schema = {
     showListPrice: {
       type: 'boolean',
       title: "Show product's list price",
+      default: true,
     },
     showLabels: {
       type: 'boolean',
       title: "Show product's prices' labels",
+      default: true,
     },
     showInstallments: {
       type: 'boolean',
       title: "Show product's payment installments",
+      default: true,
     },
     showBadge: {
       type: 'boolean',
       title: 'Show the discount badge',
+      default: true,
     },
     badgeText: {
       type: 'string',
@@ -201,6 +203,7 @@ ProductSummary.schema = {
     hideBuyButton: {
       type: 'boolean',
       title: 'Hides the buy button completely',
+      default: false,
     },
     showButtonOnHover: {
       type: 'boolean',
