@@ -7,8 +7,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.1.0] - 2018-04-24
-
 ### Added
 
 * **Component** Create the VTEX Store Component _Product Summary_
@@ -19,3 +17,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Do not shows list price when equals selling price
 * Always shows the buy button on mobile if `showButtonOnHover` is activated (smartphones and tablets)
 * Add default schema props to the _Product Summary_
+
+## [0.1.0] - 2018-04-24
