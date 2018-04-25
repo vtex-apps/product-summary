@@ -167,7 +167,16 @@ ProductSummary.propTypes = {
   showButtonOnHover: PropTypes.bool,
 }
 
-ProductSummary.schema = {
+ProductSummary.defaultProps = {
+  showListPrice: true,
+  showInstallments: true,
+  showLabels: true,
+  showBadge: true,
+  hideBuyButton: false,
+  showOnHover: false,
+}
+
+const defaultSchema = {
   title: 'Product Summary',
   description: 'The product summary showing the main product informations',
   type: 'object',
@@ -207,18 +216,20 @@ ProductSummary.schema = {
     },
     showButtonOnHover: {
       type: 'boolean',
-      title: 'Show the buy button only on hover (if not hidden)',
+      title: 'Show the buy button only on hover',
     },
   },
 }
 
-ProductSummary.defaultProps = {
-  showListPrice: true,
-  showInstallments: true,
-  showLabels: true,
-  showBadge: true,
-  hideBuyButton: false,
-  showOnHover: false,
+ProductSummary.getSchema = ({ hideBuyButton }) => {
+  const { showButtonOnHover, ...rest } = defaultSchema.properties
+  return {
+    ...defaultSchema,
+    properties: {
+      ...rest,
+      ...(hideBuyButton ? {} : { showButtonOnHover }),
+    },
+  }
 }
 
 export default ProductSummary

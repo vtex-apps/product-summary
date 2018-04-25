@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+* Add the component dynamic schema props to hide the `showButtonOnHover` property if `hideBuyButton` is activated.
+
+### Fixed
+
+* Does not show list price when it is equal to selling price
+* Always shows the buy button on mobile if `showButtonOnHover` is activated (smartphones and tablets)
+* Add default schema props to the _Product Summary_
+
 ## [0.1.0] - 2018-04-24
 
 ### Added

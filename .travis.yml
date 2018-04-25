@@ -7,6 +7,6 @@ node_js:
 before_install: 
   - cd react
 install: 
-  - npm install
+  - yarn
 script: 
-  - npm t
+  - yarn test

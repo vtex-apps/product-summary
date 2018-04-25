@@ -15,15 +15,21 @@ describe('<Price /> component', () => {
   const defaultConfiguration = {}
 
   function renderComponent(customProps, intlInfo = getIntlContextInfo()) {
-    const props = Object.assign({}, productPropsMock, defaultConfiguration, customProps)
+    const props = Object.assign(
+      {},
+      productPropsMock,
+      defaultConfiguration,
+      customProps
+    )
     const { context, childContextTypes, locale } = intlInfo
 
     const intl = getIntlInstance({ locale }, context)
     loadTranslation(`../locales/${locale}.json`)
 
-    const component = mountWithIntl(
-      <Price {...props} />, { context, childContextTypes }
-    )
+    const component = mountWithIntl(<Price {...props} />, {
+      context,
+      childContextTypes,
+    })
 
     return {
       component,
@@ -47,14 +53,22 @@ describe('<Price /> component', () => {
   })
 
   it('should not show the list price if prop showListPrice is false', () => {
-    const { component, context, intl } = renderComponent({ showListPrice: false })
+    const { component, context, intl } = renderComponent({
+      showListPrice: false,
+    })
 
     const currencyOptions = getCurrencyOptions(context)
     const listPriceLabel = intl.formatMessage({ id: 'pricing.from' })
-    const listPrice = intl.formatNumber(productPropsMock.listPrice, currencyOptions)
+    const listPrice = intl.formatNumber(
+      productPropsMock.listPrice,
+      currencyOptions
+    )
 
     const sellingPriceLabel = intl.formatMessage({ id: 'pricing.to' })
-    const sellingPrice = intl.formatNumber(productPropsMock.sellingPrice, currencyOptions)
+    const sellingPrice = intl.formatNumber(
+      productPropsMock.sellingPrice,
+      currencyOptions
+    )
 
     expect(component.contains(listPriceLabel)).toBe(false)
     expect(component.contains(listPrice)).toBe(false)
@@ -67,7 +81,10 @@ describe('<Price /> component', () => {
       const { component, context, intl } = renderComponent()
 
       const currencyOptions = getCurrencyOptions(context)
-      const listPrice = intl.formatNumber(productPropsMock.listPrice, currencyOptions)
+      const listPrice = intl.formatNumber(
+        productPropsMock.listPrice,
+        currencyOptions
+      )
 
       expect(component.contains(listPrice)).toBe(true)
     })
@@ -86,11 +103,18 @@ describe('<Price /> component', () => {
       const { component, context, intl } = renderComponent()
 
       const currencyOptions = getCurrencyOptions(context)
-      const formattedInstallmentPrice = intl.formatNumber(productPropsMock.installmentPrice, currencyOptions)
-      const formattedMessage = intl.formatMessage({ id: 'pricing.installment-display' }, {
-        installments: productPropsMock.installments,
-        installmentPrice: formattedInstallmentPrice,
-      })
+      const formattedInstallmentPrice = intl.formatNumber(
+        productPropsMock.installmentPrice,
+        currencyOptions
+      )
+      const formattedMessage = intl.formatMessage(
+        { id: 'pricing.installment-display' },
+        {
+          installments: productPropsMock.installments,
+          installmentPrice: formattedInstallmentPrice,
+          times: <span>&times;</span>,
+        }
+      )
 
       expect(component.contains(formattedMessage)).toBe(false)
     })
