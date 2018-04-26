@@ -14,9 +14,26 @@
   box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
+:global .vtex-product-summary__name-container {
+  height: 65px;
+}
+
+:global .vtex-price-container {
+  height: 65px;
+}
+
+:global .vtex-product-summary__image-container {
+  width: 176px;
+  height: 176.3px;
+}
+
 :global .vtex-product-summary__image {
   max-width: 176px;
   max-height: 176.3px;
+}
+
+:global .vtex-product-summary__buy-button-container {
+  height: 50px;
 }
 
 :global .vtex-product-summary button {

@@ -59,7 +59,9 @@ class Price extends Component {
             {formatNumber(sellingPrice, currencyOptions)}
           </div>
         </div>
-        {showInstallments && (
+        {showInstallments &&
+          installments &&
+          installmentPrice && (
           <div className="f6">
             <div className="vtex-price-installments dib">
               {showLabels ? (

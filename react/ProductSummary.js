@@ -59,7 +59,7 @@ class ProductSummary extends Component {
         onMouseLeave={this.handleMouseLeave}>
         <div>
           <div onClick={this.handleClick}>
-            <div>
+            <div className="vtex-product-summary__image-container center">
               {showBadge ? (
                 <DiscountBadge
                   listPrice={product.listPrice}
@@ -79,14 +79,14 @@ class ProductSummary extends Component {
                 />
               )}
             </div>
-            <div className="vtex-product-summary__name-container pv5 near-black">
+            <div className="vtex-product-summary__name-container flex items-center justify-center near-black">
               <ProductName
                 name={product.name}
                 skuName={product.skuName}
                 brandName={product.brandName}
               />
             </div>
-            <div className="vtex-price-container pv1">
+            <div className="vtex-price-container">
               <Price
                 listPrice={product.listPrice}
                 sellingPrice={product.sellingPrice}
@@ -99,7 +99,7 @@ class ProductSummary extends Component {
             </div>
           </div>
           <div className="pv2">
-            <div>
+            <div className="vtex-product-summary__buy-button-container">
               {!hideBuyButton &&
                 (!showButtonOnHover || this.state.isHovering) && (
                 <div className="vtex-product-summary__buy-button center">

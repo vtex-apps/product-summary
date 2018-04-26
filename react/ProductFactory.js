@@ -1,10 +1,10 @@
 import random from 'lodash/random'
 
 const DEFAULT_PRODUCT = {
-  listPrice: 1,
-  sellingPrice: 0,
-  installments: 0,
-  installmentPrice: 0,
+  listPrice: 2,
+  sellingPrice: 1,
+  installments: 1,
+  installmentPrice: 1,
   name: 'ProductName',
   url: 'https://www.vtex.com/',
   skuName: 'SkuName',
