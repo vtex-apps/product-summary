@@ -32,8 +32,8 @@ class ProductSummary extends Component {
   handleClick = event => {
     if (this.props.product) {
       event.ctrlKey
-        ? window.open(this.props.product.url)
-        : window.location.assign(this.props.product.url)
+        ? window.open(this.props.product.link)
+        : window.location.assign(this.props.product.link)
     }
   }
 
@@ -62,36 +62,38 @@ class ProductSummary extends Component {
             <div className="vtex-product-summary__image-container center">
               {showBadge ? (
                 <DiscountBadge
-                  listPrice={product.listPrice}
-                  sellingPrice={product.sellingPrice}
+                  listPrice={product.sku.seller.commertialOffer.ListPrice}
+                  sellingPrice={product.sku.seller.commertialOffer.Price}
                   label={badgeText}>
                   <img
                     className="vtex-product-summary__image"
-                    alt={product.name}
-                    src={product.imageUrl}
+                    alt={product.productName}
+                    src={product.sku.image.imageUrl}
                   />
                 </DiscountBadge>
               ) : (
                 <img
                   className="vtex-product-summary__image"
-                  alt={product.name}
-                  src={product.imageUrl}
+                  alt={product.productName}
+                  src={product.sku.image.imageUrl}
                 />
               )}
             </div>
             <div className="vtex-product-summary__name-container flex items-center justify-center near-black">
               <ProductName
-                name={product.name}
-                skuName={product.skuName}
-                brandName={product.brandName}
+                name={product.productName}
+                skuName={product.sku.name}
+                brandName={product.brand}
               />
             </div>
             <div className="vtex-price-container flex flex-column justify-center items-center">
               <Price
-                listPrice={product.listPrice}
-                sellingPrice={product.sellingPrice}
-                installments={product.installments}
-                installmentPrice={product.installmentPrice}
+                listPrice={product.sku.seller.commertialOffer.ListPrice}
+                sellingPrice={product.sku.seller.commertialOffer.Price}
+                installments={product.sku.seller.commertialOffer.Installments}
+                installmentPrice={
+                  product.sku.seller.commertialOffer.InstallmentPrice
+                }
                 showListPrice={showListPrice}
                 showLabels={showLabels}
                 showInstallments={showInstallments}
@@ -106,7 +108,7 @@ class ProductSummary extends Component {
                   <BuyButton
                     {...orderForm}
                     quantity={1}
-                    skuId={product.skuId}
+                    skuId={product.sku.referenceId.Value}
                     afterClick={event => event.stopPropagation()}>
                     {buyButtonText || <FormattedMessage id="button-label" />}
                   </BuyButton>
@@ -123,22 +125,41 @@ class ProductSummary extends Component {
 ProductSummary.propTypes = {
   /** Product that owns the informations */
   product: PropTypes.shape({
-    /** Product's list price */
-    listPrice: PropTypes.number.isRequired,
-    /** Product's selling price */
-    sellingPrice: PropTypes.number.isRequired,
-    /** Product's image url */
-    imageUrl: PropTypes.string.isRequired,
-    /** Product's url */
-    url: PropTypes.string.isRequired,
+    /** Product's id */
+    productId: PropTypes.string.isRequired,
     /** Product's name */
-    name: PropTypes.string.isRequired,
-    /** Product's selected SKU name */
-    skuName: PropTypes.string,
-    /** Product's brand name */
-    brandName: PropTypes.string,
-    /** Product's reference code of the product */
-    referenceCode: PropTypes.string,
+    productName: PropTypes.string.isRequired,
+    /** Product's URL to further details */
+    link: PropTypes.string.isRequired,
+    /** Product's brand */
+    brand: PropTypes.string.isRequired,
+    /** Product's SKU */
+    sku: PropTypes.shape({
+      /** SKU name */
+      name: PropTypes.string.isRequired,
+      /** SKU reference id */
+      referenceId: PropTypes.shape({
+        /** Reference id value */
+        Value: PropTypes.string.isRequired,
+      }),
+      /** SKU Image to be shown */
+      image: PropTypes.shape({
+        /** Image URL */
+        imageUrl: PropTypes.string.isRequired,
+        /** Image tag as string */
+        imageTag: PropTypes.string.isRequired,
+      }).isRequired,
+      /** SKU seller */
+      seller: PropTypes.shape({
+        /** Seller comertial offer */
+        commertialOffer: PropTypes.shape({
+          /** Selling Price */
+          Price: PropTypes.number.isRequired,
+          /** List Price */
+          ListPrice: PropTypes.number.isRequired,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
   }),
   /** Order form used in the buy button */
   orderForm: PropTypes.shape({

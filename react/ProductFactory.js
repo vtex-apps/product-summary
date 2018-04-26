@@ -1,19 +1,39 @@
 import random from 'lodash/random'
 
 const DEFAULT_PRODUCT = {
-  listPrice: 2,
-  sellingPrice: 1,
-  installments: 1,
-  installmentPrice: 1,
-  name: 'ProductName',
-  url: 'https://www.vtex.com/',
-  skuName: 'SkuName',
-  brandName: 'BrandName',
-  skuId: 12,
+  productId: '1',
+  productName: 'ProductName',
+  link: 'https://www.vtex.com/',
+  linkText: 'product',
+  brand: 'Brand',
+  sku: {
+    name: 'SkuName',
+    referenceId: {
+      Value: '321',
+    },
+    image: {
+      imageTag:
+        '<img src="" width="#width#" height="#height#" alt="Product-Name" id="" />',
+    },
+    seller: {
+      commertialOffer: {
+        Price: 1,
+        ListPrice: 2,
+        Installments: 1,
+        InstallmentPrice: 1,
+      },
+    },
+  },
 }
 
 export function createProduct(customProps) {
   const randomNumber = random(1, 12)
   const imageUrl = require(`../resources/images/imagem-prod-summary${randomNumber}.png`)
-  return Object.assign({ imageUrl }, DEFAULT_PRODUCT, customProps)
+  const product = {
+    ...DEFAULT_PRODUCT,
+    ...customProps,
+  }
+  product.sku.imageUrl = imageUrl
+
+  return product
 }
