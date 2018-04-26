@@ -86,7 +86,7 @@ class ProductSummary extends Component {
                 brandName={product.brandName}
               />
             </div>
-            <div className="vtex-price-container">
+            <div className="vtex-price-container flex flex-column justify-center items-center">
               <Price
                 listPrice={product.listPrice}
                 sellingPrice={product.sellingPrice}
