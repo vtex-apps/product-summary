@@ -8,6 +8,7 @@
   "dependencies": {
     "@vtex/slick-components": "^1.0.3",
     "@vtex/styleguide": "2.0.0-rc.39",
+    "identity-obj-proxy": "^3.0.0",
     "react-slick": "^0.23.1",
     "slick-carousel": "^1.8.1"
   },
@@ -43,6 +44,9 @@
     "testPathIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\]",
       "(.*)[/\\\\]helpers[/\\\\](.*)"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss)$": "identity-obj-proxy"
+    }
   }
 }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import VTEXClasses from './CustomClasses'
+
 /**
  * Selected Image component.
  * Display an image.
@@ -10,7 +12,7 @@ class SelectedImage extends Component {
     const { imageUrl, imageText } = this.props.image
 
     return (
-      <div className="vtex-product-image__selected-image dn di-ns">
+      <div className={`${VTEXClasses.SELECTED_IMAGE} dn di-ns`}>
         <img className="mw-100 mh-100" src={imageUrl} alt={imageText} />
       </div>
     )

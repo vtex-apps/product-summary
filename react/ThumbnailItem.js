@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import VTEXClasses from './CustomClasses'
+
 /**
  * Thumbnail Item Component.
  * Display a thumbnail image with an on click event well defined.
@@ -18,7 +20,7 @@ class ThumbnailItem extends Component {
     const { imageUrl, imageText } = this.props.image
 
     return (
-      <div className="vtex-product-image__thumbnail-slider-item" onClick={this.handleClick}>
+      <div className={VTEXClasses.THUMBNAIL_ITEM} onClick={this.handleClick}>
         <img className="mw-100 mh-100" src={imageUrl} alt={imageText} />
       </div>
     )

@@ -3,7 +3,11 @@ import PropTypes from 'prop-types'
 
 import ThumbnailSlider from './ThumbnailSlider'
 import SelectedImage from './SelectedImage'
+
+import VTEXClasses from './CustomClasses'
 import { VERTICAL, HORIZONTAL } from './values/Orientations'
+
+import './global.css'
 
 const DEFAULT_SELECTED_IMAGE = 0
 
@@ -32,23 +36,23 @@ class ProductImage extends Component {
   render() {
     const { images, thumbnailSliderOrientation, thumbnailMaxVisibleItems } = this.props
 
-    const thubmnailStyleStyle = {
-      images: images,
+    const thumbnailProps = {
+      images,
       onThumbnailClick: this.handleThumbnailClick,
       orientation: thumbnailSliderOrientation,
       maxVisibleItems: thumbnailMaxVisibleItems,
     }
 
-    let className = 'vtex-product-image'
+    let className = `${VTEXClasses.MAIN_CLASS} flex inline-flex-ns`
     if (thumbnailSliderOrientation === VERTICAL) {
-      className += ' vtex-product-image__vertical flex inline-flex-ns'
+      className += ` ${VTEXClasses.VERTICAL_COMPONENT} `
     } else {
-      className += ' vtex-product-image__horizontal flex inline-flex-ns flex-column-reverse'
+      className += ` ${VTEXClasses.HORIZONTAL_COMPONENT} flex-column-reverse`
     }
 
     return (
       <div className={className}>
-        { images.length > 1 && <ThumbnailSlider {...thubmnailStyleStyle} /> }
+        { images.length > 1 && <ThumbnailSlider {...thumbnailProps} /> }
         <SelectedImage image={this.state.selectedImage} />
       </div>
     )
@@ -79,20 +83,6 @@ ProductImage.defaultProps = {
     { imageUrl: 'https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/resources/images/500x500-img-pro6.png', imageText: '' },
   ],
   thumbnailSliderOrientation: VERTICAL,
-}
-
-ProductImage.schema = {
-  title: 'Product Image',
-  description: 'The product image',
-  type: 'object',
-  properties: {
-    thumbnailSliderOrientation: {
-      type: 'string',
-      title: 'Thumbnail Slider Orientation',
-      enum: [ VERTICAL, HORIZONTAL ],
-      default: VERTICAL,
-    },
-  },
 }
 
 export default ProductImage

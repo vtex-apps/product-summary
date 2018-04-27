@@ -47,7 +47,7 @@
     width: 100%;
 }
 
-@media (min-width: 700px) 
+@media (min-width: 700px)
 {
     .vtex-product-image .vtex-product-image__thumbnail-slider-item 
     {
@@ -98,18 +98,18 @@
 }
 
 /* Dots */
-.vtex-product-image .slick-dots li button
+.vtex-product-image .vtex-product-image__dots li button
 {
     color: inherit;
 }
 
-.vtex-product-image .slick-dots li button:before
+.vtex-product-image .vtex-product-image__dots li button:before
 {
     font-size: 1rem;
     color: inherit;
 }
 
-.vtex-product-image .slick-dots li.slick-active button:before
+.vtex-product-image .vtex-product-image__dots li.slick-active button:before
 {
     color: inherit;
 }

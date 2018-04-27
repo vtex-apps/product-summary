@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Slider from 'react-slick'
-
 import { Arrow, Dots } from '@vtex/slick-components'
 
 import ThumbnailItem from './ThumbnailItem'
+
+import VTEXClasses from './CustomClasses'
 import { HORIZONTAL, VERTICAL } from './values/Orientations'
 
 const MAX_VISIBLE_ITEMS = 4
@@ -31,8 +32,8 @@ class ThumbnailSlider extends Component {
       speed: 500,
       infinite: false,
       arrows: true,
-      prevArrow: <Arrow cssClass={sliderVertical ? 'vtex-product-image__vertical-arrow--prev' : 'vtex-product-image__horizontal-arrow--prev'} />,
-      nextArrow: <Arrow cssClass={sliderVertical ? 'vtex-product-image__vertical-arrow--next' : 'vtex-product-image__horizontal-arrow--next'} />,
+      prevArrow: <Arrow cssClass={sliderVertical ? VTEXClasses.VERTICAL_ARROW_PREV : VTEXClasses.HORIZONTAL_ARROW_PREV} />,
+      nextArrow: <Arrow cssClass={sliderVertical ? VTEXClasses.VERTICAL_ARROW_NEXT : VTEXClasses.HORIZONTAL_ARROW_NEXT} />,
       slidesToShow: numOfVisibleItems,
       vertical: sliderVertical,
       verticalSwiping: sliderVertical,
@@ -44,7 +45,7 @@ class ThumbnailSlider extends Component {
           settings: {
             arrows: false,
             dots: true,
-            appendDots: dots => <Dots dots={dots} />,
+            appendDots: dots => <Dots dots={dots} cssClass={VTEXClasses.DOTS_CLASS} />,
             slidesToShow: 1,
             vertical: false,
             verticalSwiping: false,
@@ -61,7 +62,7 @@ class ThumbnailSlider extends Component {
     const sliderSettings = this.configureSliderSettings()
 
     return (
-      <div className={sliderVertical ? 'vtex-product-image__vertical-thumbnail-slider' : 'vtex-product-image__horizontal-thumbnail-slider'}>
+      <div className={sliderVertical ? VTEXClasses.VERTICAL_THUMBNAIL_SLIDER : VTEXClasses.HORIZONTAL_THUMBNAIL_SLIDER}>
         {
           <Slider {...sliderSettings}>
             {
