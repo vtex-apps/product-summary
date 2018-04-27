@@ -1,6 +1,16 @@
 @import url('~slick-carousel/slick/slick.css');
 @import url('~slick-carousel/slick/slick-theme.css');
 
+.vtex-product-image .vtex-product-image__horizontal
+{
+    width: 500px;   
+}
+
+.vtex-product-image .vtex-product-image__vertical
+{
+    width: 600px;
+}
+
 /* Selected Image */
 .vtex-product-image .vtex-product-image__selected-image
 {
@@ -16,18 +26,20 @@
     height: 100%;
 }
 
-@media (min-width: 700px) {
-    .vtex-product-image .vtex-product-image__vertical-thumbnail-slider {
+@media (min-width: 700px) 
+{
+    .vtex-product-image .vtex-product-image__vertical-thumbnail-slider 
+    {
         width: 100px;
         height: 500px;
     }
 
-    .vtex-product-image .vtex-product-image__horizontal-thumbnail-slider {
+    .vtex-product-image .vtex-product-image__horizontal-thumbnail-slider 
+    {
         width: 500px;
         height: 100px;
     }    
 }
-
 
 /* Thumbnail Slider Item */
 .vtex-product-image .vtex-product-image__thumbnail-slider-item
@@ -35,8 +47,10 @@
     width: 100%;
 }
 
-@media (min-width: 700px) {
-    .vtex-product-image .vtex-product-image__thumbnail-slider-item {
+@media (min-width: 700px) 
+{
+    .vtex-product-image .vtex-product-image__thumbnail-slider-item 
+    {
         width: 100px;
         height: 100px;
     }
