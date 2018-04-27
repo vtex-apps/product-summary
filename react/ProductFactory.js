@@ -33,7 +33,7 @@ export function createProduct(customProps) {
     ...DEFAULT_PRODUCT,
     ...customProps,
   }
-  product.sku.imageUrl = imageUrl
+  product.sku.image.imageUrl = imageUrl
 
   return product
 }

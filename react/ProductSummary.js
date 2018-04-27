@@ -54,67 +54,64 @@ class ProductSummary extends Component {
 
     return (
       <div
-        className="vtex-product-summary tc pointer pa3 overflow-hidden"
+        className="vtex-product-summary tc pointer pa3 overflow-hidden center br3 h-100 flex flex-column justify-between"
         onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}>
+        onMouseLeave={this.handleMouseLeave}
+        onClick={this.handleClick}>
         <div>
-          <div onClick={this.handleClick}>
-            <div className="vtex-product-summary__image-container center">
-              {showBadge ? (
-                <DiscountBadge
-                  listPrice={product.sku.seller.commertialOffer.ListPrice}
-                  sellingPrice={product.sku.seller.commertialOffer.Price}
-                  label={badgeText}>
-                  <img
-                    className="vtex-product-summary__image"
-                    alt={product.productName}
-                    src={product.sku.image.imageUrl}
-                  />
-                </DiscountBadge>
-              ) : (
+          <div className="vtex-product-summary__image-container center db">
+            {showBadge ? (
+              <DiscountBadge
+                listPrice={product.sku.seller.commertialOffer.ListPrice}
+                sellingPrice={product.sku.seller.commertialOffer.Price}
+                label={badgeText}>
                 <img
                   className="vtex-product-summary__image"
                   alt={product.productName}
                   src={product.sku.image.imageUrl}
                 />
-              )}
-            </div>
-            <div className="vtex-product-summary__name-container flex items-center justify-center near-black">
-              <ProductName
-                name={product.productName}
-                skuName={product.sku.name}
-                brandName={product.brand}
+              </DiscountBadge>
+            ) : (
+              <img
+                className="vtex-product-summary__image"
+                alt={product.productName}
+                src={product.sku.image.imageUrl}
               />
-            </div>
-            <div className="vtex-price-container flex flex-column justify-center items-center">
-              <Price
-                listPrice={product.sku.seller.commertialOffer.ListPrice}
-                sellingPrice={product.sku.seller.commertialOffer.Price}
-                installments={product.sku.seller.commertialOffer.Installments}
-                installmentPrice={
-                  product.sku.seller.commertialOffer.InstallmentPrice
-                }
-                showListPrice={showListPrice}
-                showLabels={showLabels}
-                showInstallments={showInstallments}
-              />
-            </div>
+            )}
           </div>
-          <div className="pv2">
-            <div className="vtex-product-summary__buy-button-container">
-              {!hideBuyButton &&
-                (!showButtonOnHover || this.state.isHovering) && (
-                <div className="vtex-product-summary__buy-button center">
-                  <BuyButton
-                    {...orderForm}
-                    quantity={1}
-                    skuId={product.sku.referenceId.Value}
-                    afterClick={event => event.stopPropagation()}>
-                    {buyButtonText || <FormattedMessage id="button-label" />}
-                  </BuyButton>
-                </div>
-              )}
-            </div>
+          <div className="vtex-product-summary__name-container flex items-center justify-center near-black">
+            <ProductName
+              name={product.productName}
+              skuName={product.sku.name}
+              brandName={product.brand}
+            />
+          </div>
+          <div className="vtex-price-container flex flex-column justify-center items-center">
+            <Price
+              listPrice={product.sku.seller.commertialOffer.ListPrice}
+              sellingPrice={product.sku.seller.commertialOffer.Price}
+              installments={product.sku.seller.commertialOffer.Installments}
+              installmentPrice={
+                product.sku.seller.commertialOffer.InstallmentPrice
+              }
+              showListPrice={showListPrice}
+              showLabels={showLabels}
+              showInstallments={showInstallments}
+            />
+          </div>
+          <div className="vtex-product-summary__buy-button-container pv2">
+            {!hideBuyButton &&
+              (!showButtonOnHover || this.state.isHovering) && (
+              <div className="vtex-product-summary__buy-button center">
+                <BuyButton
+                  {...orderForm}
+                  quantity={1}
+                  skuId={product.sku.referenceId.Value}
+                  afterClick={event => event.stopPropagation()}>
+                  {buyButtonText || <FormattedMessage id="button-label" />}
+                </BuyButton>
+              </div>
+            )}
           </div>
         </div>
       </div>
