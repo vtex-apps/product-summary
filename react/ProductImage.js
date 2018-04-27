@@ -18,9 +18,8 @@ const DEFAULT_SELECTED_IMAGE = 0
 class ProductImage extends Component {
   constructor(props) {
     super(props)
-    const images = this.props.images
     this.state = {
-      selectedImage: images[DEFAULT_SELECTED_IMAGE],
+      selectedImage: this.props.images[DEFAULT_SELECTED_IMAGE],
     }
   }
 

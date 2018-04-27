@@ -9,7 +9,7 @@ describe('<ProductImage /> component', () => {
   const defaultConfiguration = {}
 
   function renderComponent(customProps, intlInfo = getIntlContextInfo()) {
-    const props = Object.assign({}, productImagePropsMock, defaultConfiguration, customProps)
+    const props = { ...productImagePropsMock, ...defaultConfiguration, ...customProps }
     const { context, childContextTypes, locale } = intlInfo
 
     const intl = getIntlInstance({ locale }, context)
@@ -35,7 +35,7 @@ describe('<ProductImage /> component', () => {
 
   it('should hide thumbnail slider if the number of images is not greater than one', () => {
     const { component } = renderComponent({
-      images: [ { imageUrl: "", imageText: "" } ]
+      images: [ { imageUrl: '', imageText: '' } ]
     })
     expect(
       component.find('.slick-list')
@@ -47,14 +47,14 @@ describe('<ProductImage /> component', () => {
     const NUM_OF_VISIBLE_ITEMS = 2
     const INVALID_NUM_OF_VISIBLE_ITEMS = 10
 
-    it('should display at most MAX_VISIBLE_ITEMS thumbnail items at same time', () => {
+    it(`should display at most ${MAX_VISIBLE_ITEMS} thumbnail items at same time`, () => {
       const { component } = renderComponent()
       expect(
         component.find('.slick-active').length
       ).toBeLessThanOrEqual(MAX_VISIBLE_ITEMS)
     })
 
-    it('should display NUM_OF_VISIBLE_ITEMS thumbnail items that is passed as a props, since that this number is less than or qual to MAX_VISIBLE_ITEMS', () => {
+    it(`should display ${NUM_OF_VISIBLE_ITEMS} thumbnail items that is passed as a prop, since that this number is less than or equal to ${MAX_VISIBLE_ITEMS}`, () => {
       const { component } = renderComponent({
         thumbnailMaxVisibleItems: NUM_OF_VISIBLE_ITEMS
       })
@@ -63,9 +63,8 @@ describe('<ProductImage /> component', () => {
       ).toBe(NUM_OF_VISIBLE_ITEMS)
     })
 
-    it('should display the entire image of thumbnails if this number is less than the NUM_OF_VISIBLE_ITEMS that is passed as a props', () => {
-      const images = [ { imageUrl: "", imageText: "" },
-                       { imageUrl: "", imageText: "" } ]
+    it(`should display the entire image of thumbnails if this number is less than the ${NUM_OF_VISIBLE_ITEMS} that is passed as a prop`, () => {
+      const images = [ { imageUrl: '', imageText: '' }, { imageUrl: '', imageText: '' } ]
       const { component } = renderComponent({
         images,
         thumbnailMaxVisibleItems: INVALID_NUM_OF_VISIBLE_ITEMS
