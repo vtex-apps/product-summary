@@ -1,0 +1,14 @@
+{
+  "pages": {
+    "product-image": {
+      "path": "/",
+      "theme": "theme",
+      "extensible": true
+    }
+  },
+  "extensions": {
+    "product-image/product-image": {
+      "component": "ProductImage"
+    }
+  }
+}

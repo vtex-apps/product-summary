@@ -71,14 +71,28 @@ ProductImage.propTypes = {
 
 ProductImage.defaultProps = {
   images: [
-    { imageUrl: 'https://raw.githubusercontent.com/vtex-apps/product-summary/master/resources/images/500x500-img-pro1.png', imageText: '' },
-    { imageUrl: 'https://raw.githubusercontent.com/vtex-apps/product-summary/master/resources/images/500x500-img-pro2.png', imageText: '' },
-    { imageUrl: 'https://raw.githubusercontent.com/vtex-apps/product-summary/master/resources/images/500x500-img-pro3.png', imageText: '' },
-    { imageUrl: 'https://raw.githubusercontent.com/vtex-apps/product-summary/master/resources/images/500x500-img-pro4.png', imageText: '' },
-    { imageUrl: 'https://raw.githubusercontent.com/vtex-apps/product-summary/master/resources/images/500x500-img-pro5.png', imageText: '' },
-    { imageUrl: 'https://raw.githubusercontent.com/vtex-apps/product-summary/master/resources/images/500x500-img-pro6.png', imageText: '' },
+    { imageUrl: 'https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/resources/images/500x500-img-pro1.png', imageText: '' },
+    { imageUrl: 'https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/resources/images/500x500-img-pro2.png', imageText: '' },
+    { imageUrl: 'https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/resources/images/500x500-img-pro3.png', imageText: '' },
+    { imageUrl: 'https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/resources/images/500x500-img-pro4.png', imageText: '' },
+    { imageUrl: 'https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/resources/images/500x500-img-pro5.png', imageText: '' },
+    { imageUrl: 'https://raw.githubusercontent.com/vtex-apps/product-summary/feature/product-image/resources/images/500x500-img-pro6.png', imageText: '' },
   ],
   thumbnailSliderOrientation: VERTICAL,
+}
+
+ProductImage.schema = {
+  title: 'Product Image',
+  description: 'The product image',
+  type: 'object',
+  properties: {
+    thumbnailSliderOrientation: {
+      type: 'string',
+      title: 'Thumbnail Slider Orientation',
+      enum: [ VERTICAL, HORIZONTAL ],
+      default: VERTICAL,
+    },
+  },
 }
 
 export default ProductImage
