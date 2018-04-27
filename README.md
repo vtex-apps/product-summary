@@ -2,6 +2,11 @@
 
 Product summary is a canonical component that any VTEX store can install. 
 
+## Continuous Integrations 
+
+### Travis CI 
+[![Build Status](https://travis-ci.org/vtex-apps/product-summary.svg?branch=master)](https://travis-ci.org/vtex-apps/product-summary)
+
 ## Usage
 
 TODO

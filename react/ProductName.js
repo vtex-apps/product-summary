@@ -6,11 +6,14 @@ import PropTypes from 'prop-types'
  */
 class ProductName extends Component {
   render() {
-    const { name, referenceCode, skuName, brandName } = this.props
+    const { name, skuName, brandName } = this.props
 
     return (
-      <div className="f5 gray db tc overflow-hidden no-underline">
-        {referenceCode} {name} {skuName} {brandName && `(${brandName})`}
+      <div className="vtex-product-name overflow-hidden">
+        <div className="f5">
+          {name} {brandName && `(${brandName})`}
+        </div>
+        <div className="f6">{skuName}</div>
       </div>
     )
   }
@@ -23,8 +26,6 @@ ProductName.propTypes = {
   skuName: PropTypes.string,
   /** Brand name */
   brandName: PropTypes.string,
-  /** Reference code of the product */
-  referenceCode: PropTypes.string,
 }
 
 export default ProductName

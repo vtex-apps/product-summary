@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "product-summary",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "title": "Product Summary",
   "description": "Product summary component",
   "defaultLocale": "pt-BR",
@@ -17,5 +17,11 @@
   "settingsSchema": {},
   "scripts": {
     "postreleasy": "vtex publish --public"
+  },
+  "billingOptions": {
+    "billingListeningRoute": "/_v/deactivateMePlease",
+    "termsURL": "http://route.to.the/terms",
+    "version": "0.1",
+    "free": true
   }
 }
