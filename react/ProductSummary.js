@@ -54,51 +54,52 @@ class ProductSummary extends Component {
 
     return (
       <div
-        className="vtex-product-summary tc pointer pa3 overflow-hidden"
+        className="vtex-product-summary tc pointer pa3 overflow-hidden center br3 h-100 flex flex-column justify-between"
         onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}>
+        onMouseLeave={this.handleMouseLeave}
+        onClick={this.handleClick}>
         <div>
-          <div onClick={this.handleClick}>
-            <div>
-              {showBadge ? (
-                <DiscountBadge
-                  listPrice={product.listPrice}
-                  sellingPrice={product.sellingPrice}
-                  label={badgeText}>
-                  <img
-                    className="vtex-product-summary__image"
-                    alt={product.name}
-                    src={product.imageUrl}
-                  />
-                </DiscountBadge>
-              ) : (
+          <div>
+            {showBadge ? (
+              <DiscountBadge
+                listPrice={product.listPrice}
+                sellingPrice={product.sellingPrice}
+                label={badgeText}>
                 <img
                   className="vtex-product-summary__image"
                   alt={product.name}
                   src={product.imageUrl}
                 />
-              )}
-            </div>
-            <div className="vtex-product-summary__name-container pv5 near-black">
-              <ProductName
-                name={product.name}
-                skuName={product.skuName}
-                brandName={product.brandName}
+              </DiscountBadge>
+            ) : (
+              <img
+                className="vtex-product-summary__image"
+                alt={product.name}
+                src={product.imageUrl}
               />
-            </div>
-            <div className="vtex-price-container pv1">
-              <Price
-                listPrice={product.listPrice}
-                sellingPrice={product.sellingPrice}
-                installments={product.installments}
-                installmentPrice={product.installmentPrice}
-                showListPrice={showListPrice}
-                showLabels={showLabels}
-                showInstallments={showInstallments}
-              />
-            </div>
+            )}
           </div>
-          <div className="pv2">
+          <div className="vtex-product-summary__name-container pv5 near-black">
+            <ProductName
+              name={product.name}
+              skuName={product.skuName}
+              brandName={product.brandName}
+            />
+          </div>
+        </div>
+        <div>
+          <div className="vtex-price-container pv1">
+            <Price
+              listPrice={product.listPrice}
+              sellingPrice={product.sellingPrice}
+              installments={product.installments}
+              installmentPrice={product.installmentPrice}
+              showListPrice={showListPrice}
+              showLabels={showLabels}
+              showInstallments={showInstallments}
+            />
+          </div>
+          <div className="pv5">
             <div>
               {!hideBuyButton &&
                 (!showButtonOnHover || this.state.isHovering) && (
