@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import { isMobile } from 'react-device-detect'
+import { Link } from 'render'
 
 import BuyButton from '@vtex/buy-button'
 
@@ -29,14 +30,6 @@ class ProductSummary extends Component {
     this.setState({ isHovering: true })
   }
 
-  handleClick = event => {
-    if (this.props.product) {
-      event.ctrlKey
-        ? window.open(this.props.product.link)
-        : window.location.assign(this.props.product.link)
-    }
-  }
-
   render() {
     const {
       orderForm,
@@ -53,68 +46,72 @@ class ProductSummary extends Component {
     const showButtonOnHover = this.props.showButtonOnHover && !isMobile
 
     return (
-      <div
-        className="vtex-product-summary tc pointer pa3 overflow-hidden center br3 h-100 flex flex-column justify-between"
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-        onClick={this.handleClick}>
-        <div>
-          <div className="vtex-product-summary__image-container center db">
-            {showBadge ? (
-              <DiscountBadge
-                listPrice={product.sku.seller.commertialOffer.ListPrice}
-                sellingPrice={product.sku.seller.commertialOffer.Price}
-                label={badgeText}>
+      <Link
+        className="pointer"
+        page={'store/product'}
+        params={{ id: product.productId }}>   
+        <div
+          className="vtex-product-summary tc pa3 overflow-hidden center br3 h-100 flex flex-column justify-between"
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}>
+          <div>
+            <div className="vtex-product-summary__image-container center db">
+              {showBadge ? (
+                <DiscountBadge
+                  listPrice={product.sku.seller.commertialOffer.ListPrice}
+                  sellingPrice={product.sku.seller.commertialOffer.Price}
+                  label={badgeText}>
+                  <img
+                    className="vtex-product-summary__image"
+                    alt={product.productName}
+                    src={product.sku.image.imageUrl}
+                  />
+                </DiscountBadge>
+              ) : (
                 <img
                   className="vtex-product-summary__image"
                   alt={product.productName}
                   src={product.sku.image.imageUrl}
                 />
-              </DiscountBadge>
-            ) : (
-              <img
-                className="vtex-product-summary__image"
-                alt={product.productName}
-                src={product.sku.image.imageUrl}
+              )}
+            </div>
+            <div className="vtex-product-summary__name-container flex items-center justify-center near-black">
+              <ProductName
+                name={product.productName}
+                skuName={product.sku.name}
+                brandName={product.brand}
               />
-            )}
-          </div>
-          <div className="vtex-product-summary__name-container flex items-center justify-center near-black">
-            <ProductName
-              name={product.productName}
-              skuName={product.sku.name}
-              brandName={product.brand}
-            />
-          </div>
-          <div className="vtex-price-container flex flex-column justify-center items-center">
-            <Price
-              listPrice={product.sku.seller.commertialOffer.ListPrice}
-              sellingPrice={product.sku.seller.commertialOffer.Price}
-              installments={product.sku.seller.commertialOffer.Installments}
-              installmentPrice={
-                product.sku.seller.commertialOffer.InstallmentPrice
-              }
-              showListPrice={showListPrice}
-              showLabels={showLabels}
-              showInstallments={showInstallments}
-            />
-          </div>
-          <div className="vtex-product-summary__buy-button-container pv2">
-            {!hideBuyButton &&
-              (!showButtonOnHover || this.state.isHovering) && (
-              <div className="vtex-product-summary__buy-button center">
-                <BuyButton
-                  {...orderForm}
-                  quantity={1}
-                  skuId={product.sku.referenceId.Value}
-                  afterClick={event => event.stopPropagation()}>
-                  {buyButtonText || <FormattedMessage id="button-label" />}
-                </BuyButton>
-              </div>
-            )}
+            </div>
+            <div className="vtex-price-container flex flex-column justify-center items-center">
+              <Price
+                listPrice={product.sku.seller.commertialOffer.ListPrice}
+                sellingPrice={product.sku.seller.commertialOffer.Price}
+                installments={product.sku.seller.commertialOffer.Installments}
+                installmentPrice={
+                  product.sku.seller.commertialOffer.InstallmentPrice
+                }
+                showListPrice={showListPrice}
+                showLabels={showLabels}
+                showInstallments={showInstallments}
+              />
+            </div>
+            <div className="vtex-product-summary__buy-button-container pv2">
+              {!hideBuyButton &&
+                (!showButtonOnHover || this.state.isHovering) && (
+                <div className="vtex-product-summary__buy-button center">
+                  <BuyButton
+                    {...orderForm}
+                    quantity={1}
+                    skuId={product.sku.referenceId.Value}
+                    afterClick={event => event.stopPropagation()}>
+                    {buyButtonText || <FormattedMessage id="button-label" />}
+                  </BuyButton>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      </Link>
     )
   }
 }
@@ -126,8 +123,6 @@ ProductSummary.propTypes = {
     productId: PropTypes.string.isRequired,
     /** Product's name */
     productName: PropTypes.string.isRequired,
-    /** Product's URL to further details */
-    link: PropTypes.string.isRequired,
     /** Product's brand */
     brand: PropTypes.string.isRequired,
     /** Product's SKU */
