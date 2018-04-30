@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 * Add the Product Image component which is responsible to display a main image and a list of thumbnail images of a Product.
 
+### Changed
+
+* Use the `Link` module of render
+
 ## [0.2.1] - 2018-04-27
 
 ### Fixed
