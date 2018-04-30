@@ -46,14 +46,14 @@ class ProductSummary extends Component {
     const showButtonOnHover = this.props.showButtonOnHover && !isMobile
 
     return (
-      <Link
-        className="pointer"
-        page={'store/product'}
-        params={{ id: product.productId }}>   
-        <div
-          className="vtex-product-summary tc pa3 overflow-hidden center br3 h-100 flex flex-column justify-between"
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}>
+      <div
+        className="vtex-product-summary tc overflow-hidden center br3 h-100 flex flex-column justify-between"
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}>
+        <Link
+          className="pointer pa3"
+          page={'store/product'}
+          params={{ id: product.productId }}>   
           <div>
             <div className="vtex-product-summary__image-container center db">
               {showBadge ? (
@@ -110,8 +110,8 @@ class ProductSummary extends Component {
               )}
             </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
     )
   }
 }
