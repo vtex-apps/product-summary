@@ -43,3 +43,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+:global a.clear-link {
+  text-decoration: inherit;
+  color: inherit;
+}
