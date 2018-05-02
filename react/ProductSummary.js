@@ -45,7 +45,7 @@ class ProductSummary extends Component {
 
     return (
       <div
-        className="vtex-product-summary tc overflow-hidden center br3 h-100 flex flex-column justify-between"
+        className="vtex-product-summary tc overflow-hidden center br3 flex flex-column justify-between"
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}>
         <Link
