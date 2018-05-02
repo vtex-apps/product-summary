@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@vtex/buy-button": "^0.0.14",
-    "@vtex/product-details": "^1.1.2",
+    "@vtex/product-details": "^1.2.0",
     "@vtex/slick-components": "^1.0.3",
     "@vtex/styleguide": "2.0.0-rc.39",
     "identity-obj-proxy": "^3.0.0",
@@ -39,12 +39,8 @@
     "transform": {
       "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest"
     },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
-    ],
-    "setupFiles": [
-      "./tests-setup.js"
-    ],
+    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"],
+    "setupFiles": ["./tests-setup.js"],
     "testPathIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\]",
       "(.*)[/\\\\]helpers[/\\\\](.*)"
