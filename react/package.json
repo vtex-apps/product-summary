@@ -6,14 +6,15 @@
     "test": "jest"
   },
   "dependencies": {
+    "@vtex/buy-button": "^0.0.14",
+    "@vtex/product-details": "^1.2.1",
     "@vtex/slick-components": "^1.0.3",
     "@vtex/styleguide": "2.0.0-rc.39",
     "identity-obj-proxy": "^3.0.0",
-    "react-slick": "^0.23.1",
-    "slick-carousel": "^1.8.1",
-    "@vtex/buy-button": "^0.0.14",
     "lodash": "^4.17.5",
-    "react-device-detect": "^1.3.4"
+    "react-device-detect": "^1.3.4",
+    "react-slick": "^0.23.1",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -38,13 +39,8 @@
     "transform": {
       "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest"
     },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
-    ],
     "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"],
-    "setupFiles": [
-      "./tests-setup.js"
-    ],
+    "setupFiles": ["./tests-setup.js"],
     "testPathIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\]",
       "(.*)[/\\\\]helpers[/\\\\](.*)"

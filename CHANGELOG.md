@@ -13,7 +13,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-* Use the `Link` module of render
+* Use the _Link_ Component from _render_ module.
+* Use _Price_, _ProductName_ and _DiscountBadge_ from [npm-storecomponents](https://github.com/vtex-apps/npm-storecomponents).
+
+### Fixed
+
+* Fix components style that was overwritten by the _Link_ Component.
 
 ## [0.2.1] - 2018-04-27
 

@@ -5,10 +5,8 @@ import { isMobile } from 'react-device-detect'
 import { Link } from 'render'
 
 import BuyButton from '@vtex/buy-button'
+import { DiscountBadge, ProductName, Price } from '@vtex/product-details'
 
-import ProductName from './ProductName'
-import Price from './Price'
-import DiscountBadge from './DiscountBadge'
 import { createProduct } from './ProductFactory'
 
 import './summary.css'
@@ -47,14 +45,14 @@ class ProductSummary extends Component {
 
     return (
       <div
-        className="vtex-product-summary tc overflow-hidden center br3 h-100 flex flex-column justify-between"
+        className="vtex-product-summary tc overflow-hidden center br3 flex flex-column justify-between"
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}>
         <Link
-          className="pointer pa3"
+          className="clear-link"
           page={'store/product'}
-          params={{ id: product.productId }}>   
-          <div>
+          params={{ id: product.productId }}>
+          <div className="pointer pa3">
             <div className="vtex-product-summary__image-container center db">
               {showBadge ? (
                 <DiscountBadge
