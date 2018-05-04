@@ -20,6 +20,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 * Fix components style that was overwritten by the _Link_ Component.
 
+### Removed
+
+* Removed _ProductImage_ Component and it's dependencies.
+
 ## [0.2.1] - 2018-04-27
 
 ### Fixed
