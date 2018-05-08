@@ -51,7 +51,7 @@ class ProductSummary extends Component {
         <Link
           className="clear-link"
           page={'store/product'}
-          params={{ id: product.linkText }}>
+          params={{ slug: product.linkText }}>
           <div className="pointer pa3">
             <div className="vtex-product-summary__image-container center db">
               {showBadge ? (
