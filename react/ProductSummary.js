@@ -117,8 +117,8 @@ class ProductSummary extends Component {
 ProductSummary.propTypes = {
   /** Product that owns the informations */
   product: PropTypes.shape({
-    /** Product's id */
-    productId: PropTypes.string.isRequired,
+    /** Product's link text */
+    linkText: PropTypes.string.isRequired,
     /** Product's name */
     productName: PropTypes.string.isRequired,
     /** Product's brand */
