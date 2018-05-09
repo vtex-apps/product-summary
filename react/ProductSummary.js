@@ -125,11 +125,6 @@ ProductSummary.propTypes = {
       name: PropTypes.string.isRequired,
       /** SKU id */
       itemId: PropTypes.string.isRequired,
-      /** SKU reference id */
-      referenceId: PropTypes.shape({
-        /** Reference id value */
-        Value: PropTypes.string.isRequired,
-      }),
       /** SKU Image to be shown */
       image: PropTypes.shape({
         /** Image URL */
