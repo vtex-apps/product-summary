@@ -7,8 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.4.0] - 2018-05-09
+### Changed 
+- Update productSummary to get `skuId`, and pass through `buybutton` component.
+
 ## [0.3.1] - 2018-05-08
-## Fixed 
+### Fixed 
 - Fix Link component params to use `linkText` in a prop slug
 
 ## [0.3.0] - 2018-05-07

@@ -96,7 +96,6 @@ class ProductSummary extends Component {
                 (!showButtonOnHover || this.state.isHovering) && (
                 <div className="vtex-product-summary__buy-button center">
                   <BuyButton
-                    quantity={1}
                     skuId={product.sku.itemId}
                     afterClick={event => event.stopPropagation()}>
                     {buyButtonText || <FormattedMessage id="button-label" />}
