@@ -8,6 +8,7 @@ const DEFAULT_PRODUCT = {
   brand: 'Brand',
   sku: {
     name: 'SkuName',
+    itemId: '291',
     referenceId: {
       Value: '321',
     },
