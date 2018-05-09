@@ -9,9 +9,6 @@ const DEFAULT_PRODUCT = {
   sku: {
     name: 'SkuName',
     itemId: '291',
-    referenceId: {
-      Value: '321',
-    },
     image: {
       imageTag:
         '<img src="" width="#width#" height="#height#" alt="Product-Name" id="" />',
