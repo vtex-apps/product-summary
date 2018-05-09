@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.4.0] - 2018-05-09
 ### Changed 
-- Update productSummary to get `skuId`, and pass through `buybutton` component.
+- Update productSummary to get `skuId`, and pass through `BuyButton` component.
 
 ## [0.3.1] - 2018-05-08
 ### Fixed 
