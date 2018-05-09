@@ -97,7 +97,7 @@ class ProductSummary extends Component {
                 <div className="vtex-product-summary__buy-button center">
                   <BuyButton
                     skuId={product.sku.itemId}
-                    afterClick={event => event.stopPropagation()}>
+                    afterClick={() => console.log('Ok foi adicionado')}>
                     {buyButtonText || <FormattedMessage id="button-label" />}
                   </BuyButton>
                 </div>

@@ -6,8 +6,8 @@
     "test": "vtex-scripts test"
   },
   "dependencies": {
-    "@vtex/buy-button": "~0.1.17",
-    "@vtex/product-details": "^1.2.1",
+    "@vtex/buy-button": "0.1.21",
+    "@vtex/product-details": "1.2.1",
     "lodash": "^4.17.5",
     "react-device-detect": "^1.3.4"
   },
