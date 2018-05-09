@@ -30,7 +30,6 @@ class ProductSummary extends Component {
 
   render() {
     const {
-      orderForm,
       showListPrice,
       showLabels,
       showInstallments,
@@ -42,7 +41,6 @@ class ProductSummary extends Component {
 
     const product = this.props.product || createProduct()
     const showButtonOnHover = this.props.showButtonOnHover && !isMobile
-
     return (
       <div
         className="vtex-product-summary tc overflow-hidden center br3 flex flex-column justify-between"
@@ -98,9 +96,8 @@ class ProductSummary extends Component {
                 (!showButtonOnHover || this.state.isHovering) && (
                 <div className="vtex-product-summary__buy-button center">
                   <BuyButton
-                    {...orderForm}
                     quantity={1}
-                    skuId={product.sku.referenceId.Value}
+                    skuId={product.sku.itemId}
                     afterClick={event => event.stopPropagation()}>
                     {buyButtonText || <FormattedMessage id="button-label" />}
                   </BuyButton>
@@ -127,6 +124,8 @@ ProductSummary.propTypes = {
     sku: PropTypes.shape({
       /** SKU name */
       name: PropTypes.string.isRequired,
+      /** SKU id */
+      itemId: PropTypes.string.isRequired,
       /** SKU reference id */
       referenceId: PropTypes.shape({
         /** Reference id value */
@@ -150,15 +149,6 @@ ProductSummary.propTypes = {
         }).isRequired,
       }).isRequired,
     }).isRequired,
-  }),
-  /** Order form used in the buy button */
-  orderForm: PropTypes.shape({
-    /** User's cart id */
-    orderFormId: PropTypes.string.isRequired,
-    /** Channel */
-    salesChannel: PropTypes.string.isRequired,
-    /** Which seller is being referenced by the button */
-    seller: PropTypes.string.isRequired,
   }),
   /** Shows the product list price */
   showListPrice: PropTypes.bool,
