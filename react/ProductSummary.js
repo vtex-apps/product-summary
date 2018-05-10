@@ -46,8 +46,8 @@ class ProductSummary extends Component {
         className="vtex-product-summary tc overflow-hidden center br3 flex flex-column justify-between"
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}>
-          <div className="pointer pa3">
-            <Link
+        <div className="pointer pa3">
+          <Link
             className="clear-link"
             page={'store/product'}
             params={{ slug: product.linkText }}>
