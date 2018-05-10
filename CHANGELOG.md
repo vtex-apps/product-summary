@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.4.1] - 2018-05-09
+### Changed
+- Change dependencies to use the buy button being provided by `vtex.storecomponents` app instead of npm module.
+### Fixed
+- Move buy button to outside of product page link
+
 ## [0.4.0] - 2018-05-09
 ### Changed 
 - Update productSummary to get `skuId`, and pass through `BuyButton` component.
