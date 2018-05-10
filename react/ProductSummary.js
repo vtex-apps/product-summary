@@ -46,11 +46,11 @@ class ProductSummary extends Component {
         className="vtex-product-summary tc overflow-hidden center br3 flex flex-column justify-between"
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}>
-        <Link
-          className="clear-link"
-          page={'store/product'}
-          params={{ slug: product.linkText }}>
           <div className="pointer pa3">
+            <Link
+            className="clear-link"
+            page={'store/product'}
+            params={{ slug: product.linkText }}>
             <div className="vtex-product-summary__image-container center db">
               {showBadge ? (
                 <DiscountBadge
@@ -91,20 +91,20 @@ class ProductSummary extends Component {
                 showInstallments={showInstallments}
               />
             </div>
-            <div className="vtex-product-summary__buy-button-container pv2">
-              {!hideBuyButton &&
-                (!showButtonOnHover || this.state.isHovering) && (
-                <div className="vtex-product-summary__buy-button center">
-                  <BuyButton
-                    skuId={product.sku.itemId}
-                    afterClick={() => console.log('Ok foi adicionado')}>
-                    {buyButtonText || <FormattedMessage id="button-label" />}
-                  </BuyButton>
-                </div>
-              )}
-            </div>
+          </Link>
+          <div className="vtex-product-summary__buy-button-container pv2">
+            {!hideBuyButton &&
+              (!showButtonOnHover || this.state.isHovering) && (
+              <div className="vtex-product-summary__buy-button center">
+                <BuyButton
+                  skuId={product.sku.itemId}
+                  afterClick={() => console.log('Ok foi adicionado')}>
+                  {buyButtonText || <FormattedMessage id="button-label" />}
+                </BuyButton>
+              </div>
+            )}
           </div>
-        </Link>
+        </div>
       </div>
     )
   }
