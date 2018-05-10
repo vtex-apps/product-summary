@@ -23,5 +23,8 @@
     "termsURL": "http://route.to.the/terms",
     "version": "0.1",
     "free": true
+  },
+  "dependencies": {
+    "vtex.storecomponents": "0.x"
   }
 }
