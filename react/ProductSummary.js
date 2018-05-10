@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl'
 import { isMobile } from 'react-device-detect'
 import { Link } from 'render'
 
-import BuyButton from '@vtex/buy-button'
+import BuyButton from 'vtex.storecomponents/BuyButton'
 import { DiscountBadge, ProductName, Price } from '@vtex/product-details'
 
 import { createProduct } from './ProductFactory'
