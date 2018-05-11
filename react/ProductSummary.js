@@ -64,12 +64,12 @@ class ProductSummary extends Component {
                   />
                 </DiscountBadge>
               ) : (
-                <img
-                  className="vtex-product-summary__image"
-                  alt={product.productName}
-                  src={product.sku.image.imageUrl}
-                />
-              )}
+                  <img
+                    className="vtex-product-summary__image"
+                    alt={product.productName}
+                    src={product.sku.image.imageUrl}
+                  />
+                )}
             </div>
             <div className="vtex-product-summary__name-container flex items-center justify-center near-black">
               <ProductName
@@ -95,14 +95,13 @@ class ProductSummary extends Component {
           <div className="vtex-product-summary__buy-button-container pv2">
             {!hideBuyButton &&
               (!showButtonOnHover || this.state.isHovering) && (
-              <div className="vtex-product-summary__buy-button center">
-                <BuyButton
-                  skuId={product.sku.itemId}
-                  afterClick={() => console.log('Ok foi adicionado')}>
-                  {buyButtonText || <FormattedMessage id="button-label" />}
-                </BuyButton>
-              </div>
-            )}
+                <div className="vtex-product-summary__buy-button center">
+                  <BuyButton
+                    skuId={product.sku.itemId}>
+                    {buyButtonText || <FormattedMessage id="button-label" />}
+                  </BuyButton>
+                </div>
+              )}
           </div>
         </div>
       </div>
