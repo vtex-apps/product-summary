@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.4.1] - 2018-05-09
+## [0.4.2] - 2018-05-11
+### Changed
+- Remove `afterClick` param of BuyButton call.
+
+## [0.4.1] - 2018-05-10
 ### Changed
 - Change dependencies to use the buy button being provided by `vtex.storecomponents` app instead of npm module.
 ### Fixed
