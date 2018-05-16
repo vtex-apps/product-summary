@@ -7,9 +7,6 @@
   },
   "extensions": {
     "product-summary": {
-      "component": "index"
-    },
-    "product-summary/product-summary": {
       "component": "ProductSummary"
     }
   }
