@@ -6,7 +6,7 @@ import { Link } from 'render'
 
 import BuyButton from 'vtex.storecomponents/BuyButton'
 import ProductName from 'vtex.storecomponents/ProductName'
-import Price from 'vtex.storecomponents/Price'
+import ProductPrice from 'vtex.storecomponents/ProductPrice'
 import DiscountBadge from 'vtex.storecomponents/DiscountBadge'
 
 import { createProduct } from './ProductFactory'
@@ -47,18 +47,21 @@ class ProductSummary extends Component {
       <div
         className="vtex-product-summary tc overflow-hidden center br3 flex flex-column justify-between"
         onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}>
+        onMouseLeave={this.handleMouseLeave}
+      >
         <div className="pointer pa3">
           <Link
             className="clear-link"
             page={'store/product'}
-            params={{ slug: product.linkText }}>
+            params={{ slug: product.linkText }}
+          >
             <div className="vtex-product-summary__image-container center db">
               {showBadge ? (
                 <DiscountBadge
                   listPrice={product.sku.seller.commertialOffer.ListPrice}
                   sellingPrice={product.sku.seller.commertialOffer.Price}
-                  label={badgeText}>
+                  label={badgeText}
+                >
                   <img
                     className="vtex-product-summary__image"
                     alt={product.productName}
@@ -81,7 +84,7 @@ class ProductSummary extends Component {
               />
             </div>
             <div className="vtex-price-container flex flex-column justify-center items-center">
-              <Price
+              <ProductPrice
                 listPrice={product.sku.seller.commertialOffer.ListPrice}
                 sellingPrice={product.sku.seller.commertialOffer.Price}
                 installments={product.sku.seller.commertialOffer.Installments}
