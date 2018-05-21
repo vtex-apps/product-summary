@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Changed
+- Update product price name.
+- Update `vtex.storecomponents` dependency version to `1.x`
 - Remove `@vtex/buy-button` and `@vtex/product-details` dependencies and use `vtex.storecomponents`.
 
 ## [0.4.2] - 2018-05-11

@@ -11,9 +11,7 @@
   },
   "mustUpdateAt": "2019-04-02",
   "categories": [],
-  "registries": [
-    "smartcheckout"
-  ],
+  "registries": ["smartcheckout"],
   "settingsSchema": {},
   "scripts": {
     "postreleasy": "vtex publish --public"
@@ -25,6 +23,6 @@
     "free": true
   },
   "dependencies": {
-    "vtex.storecomponents": "0.x"
+    "vtex.storecomponents": "1.x"
   }
 }
