@@ -4,10 +4,10 @@ import { FormattedMessage } from 'react-intl'
 import { isMobile } from 'react-device-detect'
 import { Link } from 'render'
 
-import BuyButton from 'vtex.storecomponents/BuyButton'
-import ProductName from 'vtex.storecomponents/ProductName'
-import ProductPrice from 'vtex.storecomponents/ProductPrice'
-import DiscountBadge from 'vtex.storecomponents/DiscountBadge'
+import BuyButton from 'vtex.store-components/BuyButton'
+import ProductName from 'vtex.store-components/ProductName'
+import ProductPrice from 'vtex.store-components/ProductPrice'
+import DiscountBadge from 'vtex.store-components/DiscountBadge'
 
 import { createProduct } from './ProductFactory'
 
@@ -47,21 +47,18 @@ class ProductSummary extends Component {
       <div
         className="vtex-product-summary tc overflow-hidden center br3 flex flex-column justify-between"
         onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-      >
+        onMouseLeave={this.handleMouseLeave}>
         <div className="pointer pa3">
           <Link
             className="clear-link"
             page={'store/product'}
-            params={{ slug: product.linkText }}
-          >
+            params={{ slug: product.linkText }}>
             <div className="vtex-product-summary__image-container center db">
               {showBadge ? (
                 <DiscountBadge
                   listPrice={product.sku.seller.commertialOffer.ListPrice}
                   sellingPrice={product.sku.seller.commertialOffer.Price}
-                  label={badgeText}
-                >
+                  label={badgeText}>
                   <img
                     className="vtex-product-summary__image"
                     alt={product.productName}
@@ -83,14 +80,11 @@ class ProductSummary extends Component {
                 brandName={product.brand}
               />
             </div>
-            <div className="vtex-price-container flex flex-column justify-center items-center">
+            <div className="vtex-price-container flex flex-column justify-center items-center pv2">
               <ProductPrice
                 listPrice={product.sku.seller.commertialOffer.ListPrice}
                 sellingPrice={product.sku.seller.commertialOffer.Price}
                 installments={product.sku.seller.commertialOffer.Installments}
-                installmentPrice={
-                  product.sku.seller.commertialOffer.InstallmentPrice
-                }
                 showListPrice={showListPrice}
                 showLabels={showLabels}
                 showInstallments={showInstallments}
@@ -139,6 +133,21 @@ ProductSummary.propTypes = {
       seller: PropTypes.shape({
         /** Seller comertial offer */
         commertialOffer: PropTypes.shape({
+          /** SKU installments */
+          Installments: PropTypes.arrayOf(
+            PropTypes.shape({
+              /** Installment value */
+              Value: PropTypes.number.isRequired,
+              /** Interest rate (zero if interest-free) */
+              InterestRate: PropTypes.number.isRequired,
+              /** Calculated total value */
+              TotalValuePlusInterestRate: PropTypes.number,
+              /** Number of installments */
+              NumberOfInstallments: PropTypes.number.isRequired,
+              /** Installments offer name */
+              Name: PropTypes.string,
+            })
+          ),
           /** Selling Price */
           Price: PropTypes.number.isRequired,
           /** List Price */
