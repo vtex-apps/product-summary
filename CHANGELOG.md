@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
-- Fix `vtex.store-components` dependency and fix Installments property passed to ProductPrice component.
+- Fix `vtex.store-components` dependency.
+- Fix Installments property passed to _ProductPrice_ component.
 
 ## [0.5.0] - 2018-05-21
 ### Changed
