@@ -108,7 +108,7 @@ class ProductSummary extends Component {
             {!hideBuyButton &&
               (!showButtonOnHover || this.state.isHovering) && (
                 <div className="vtex-product-summary__buy-button center">
-                  <BuyButton skuId={product.sku.itemId} isOneClickBuy>
+                  <BuyButton skuId={product.sku.itemId} isOneClickBuy={isOneClickBuy}>
                     {buyButtonText || <FormattedMessage id="button-label" />}
                   </BuyButton>
                 </div>
