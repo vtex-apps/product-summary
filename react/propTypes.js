@@ -51,6 +51,8 @@ export default {
   }),
   /** Shows the product list price */
   showListPrice: PropTypes.bool,
+  /** Should redirect to checkout after clicking on buy */
+  isOneClickBuy: PropTypes.bool,
   /** Set pricing labels' visibility */
   showLabels: PropTypes.bool,
   /** Set installments' visibility */

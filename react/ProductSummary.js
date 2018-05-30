@@ -26,6 +26,7 @@ class ProductSummary extends Component {
     showBadge: true,
     hideBuyButton: false,
     showOnHover: false,
+    isOneClickBuy: false,
   }
 
   constructor(props) {
@@ -50,6 +51,7 @@ class ProductSummary extends Component {
       badgeText,
       buyButtonText,
       hideBuyButton,
+      isOneClickBuy,
     } = this.props
 
     const product = this.props.product || createProduct()
@@ -77,12 +79,12 @@ class ProductSummary extends Component {
                   />
                 </DiscountBadge>
               ) : (
-                <img
-                  className="vtex-product-summary__image"
-                  alt={product.productName}
-                  src={product.sku.image.imageUrl}
-                />
-              )}
+                  <img
+                    className="vtex-product-summary__image"
+                    alt={product.productName}
+                    src={product.sku.image.imageUrl}
+                  />
+                )}
             </div>
             <div className="vtex-product-summary__name-container flex items-center justify-center near-black">
               <ProductName
@@ -106,7 +108,7 @@ class ProductSummary extends Component {
             {!hideBuyButton &&
               (!showButtonOnHover || this.state.isHovering) && (
                 <div className="vtex-product-summary__buy-button center">
-                  <BuyButton skuId={product.sku.itemId}>
+                  <BuyButton skuId={product.sku.itemId} isOneClickBuy>
                     {buyButtonText || <FormattedMessage id="button-label" />}
                   </BuyButton>
                 </div>
@@ -127,6 +129,11 @@ const defaultSchema = {
       type: 'boolean',
       title: "Show product's list price",
       default: true,
+    },
+    isOneClickBuy: {
+      type: 'boolean',
+      title: "Should redirect to checkout after clicking on buy",
+      default: false,
     },
     showLabels: {
       type: 'boolean',
