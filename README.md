@@ -38,3 +38,50 @@ You can check if others are experiencing similar issues [here](https://github.co
 | `buyButtonText`    | `String`   | Custom buy button text                                                      |
 | `hideBuyButton`    | `Boolean`  | Hides the buybutton completely                                              |
 | `showButtonOnHover`| `Boolean`  | Defines if the button is shown only if the mouse is on the summary          |
+
+
+Product: 
+
+| Prop name          | Type       | Description                                                                 |
+| ------------------ | ---------- | --------------------------------------------------------------------------- |
+| `linkText`         | `String!`  | Product's link text                                                         |
+| `productName`      | `String!`  | Product's name                                                              |
+| `brand`            | `String!`  | Product's brand                                                             |
+| `sku`              | `SKU`      | Product's SKU                                                               |
+| `buyButtonText`    | `String`   | Custom buy button text                                                      |
+| `hideBuyButton`    | `Boolean`  | Hides the buybutton completely                                              |
+| `showButtonOnHover`| `Boolean`  | Defines if the button is shown only if the mouse is on the summary          |
+
+Sku:
+
+| Prop name          | Type       | Description                                                                 |
+| ------------------ | ---------- | --------------------------------------------------------------------------- |
+| `name`             | `String!`  | SKU name                                                                    |
+| `itemId`           | `String!`  | SKU id                                                                      |
+| `image`            | `Image`    | SKU Image to be shown                                                       |
+| `seller`           | `Seller`   | SKU seller                                                                  |
+
+Image:
+
+| Prop name          | Type       | Description                                                                 |
+| ------------------ | ---------- | --------------------------------------------------------------------------- |
+| `imageUrl`         | `String!`  | Image URL                                                                   |
+| `imageTag`         | `String!`  | Image tag as string                                                         |
+
+Seller:
+
+| Prop name                     | Type                 | Description                                            |
+| ----------------------------- | -------------------- | ------------------------------------------------------ |
+| `commertialOffer`             | `CommertialOffer`    | Seller comertial offer                                 |
+| `commertialOffer.Installments`| `Array(Installment)` | Selling Price                                          |
+| `commertialOffer.Price`       | `Number`             | List Price                                             |
+
+Instalment:
+
+| Prop name                        | Type       | Description                                                   |
+| -------------------------------- | ---------- | ------------------------------------------------------------- |
+| `Value`                          | `Number!`  | Installment value                                             |
+| `InterestRate`                   | `Number!`  | Interest rate (zero if interest-free)                         |
+| `TotalValuePlusInterestRate`     | `Number`   | Calculated total value                                        |
+| `NumberOfInstallments`           | `Number!`  | Number of installments                                        |
+| `Name`                           | `String`   | Installments offer name                                       |
