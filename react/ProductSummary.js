@@ -121,51 +121,51 @@ class ProductSummary extends Component {
 }
 
 const defaultSchema = {
-  title: 'Product Summary',
-  description: 'The product summary showing the main product informations',
+  title: 'editor.productSummary.title',
+  description: 'editor.productSummary.description',
   type: 'object',
   properties: {
     showListPrice: {
       type: 'boolean',
-      title: "Show product's list price",
+      title: "editor.productSummary.showListPrice.title",
       default: true,
     },
     isOneClickBuy: {
       type: 'boolean',
-      title: "Should redirect to checkout after clicking on buy",
+      title: "editor.productSummary.isOneClickBuy.title",
       default: false,
     },
     showLabels: {
       type: 'boolean',
-      title: "Show product's prices' labels",
+      title: "editor.productSummary.showLabels.title",
       default: true,
     },
     showInstallments: {
       type: 'boolean',
-      title: "Show product's payment installments",
+      title: "editor.productSummary.showInstallments.title",
       default: true,
     },
     showBadge: {
       type: 'boolean',
-      title: 'Show the discount badge',
+      title: 'editor.productSummary.showBadge.title',
       default: true,
     },
     badgeText: {
       type: 'string',
-      title: "Badge's text",
+      title: "editor.productSummary.badgeText.title",
     },
     buyButtonText: {
       type: 'string',
-      title: "Custom buy button's text",
+      title: "editor.productSummary.buyButtonText.title",
     },
     hideBuyButton: {
       type: 'boolean',
-      title: 'Hides the buy button completely',
+      title: 'editor.productSummary.hideBuyButton.title',
       default: false,
     },
     showButtonOnHover: {
       type: 'boolean',
-      title: 'Show the buy button only on hover',
+      title: 'editor.productSummary.showButtonOnHover.title',
     },
   },
 }

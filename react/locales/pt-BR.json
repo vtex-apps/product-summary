@@ -1,3 +1,14 @@
 {
-  "button-label": "Comprar"
+  "button-label": "Comprar",
+  "editor.productSummary.title": "Resumo do Produto",
+  "editor.productSummary.description": "O resumo do produto mostrando as principais informações do produto",
+  "editor.productSummary.showListPrice.title": "Mostrar preço de lista do produto",
+  "editor.productSummary.isOneClickBuy.title": "Deve redirecionar para checkout depois de clicar em comprar",
+  "editor.productSummary.showLabels.title": "Mostrar os rótulos dos preços dos produtos",
+  "editor.productSummary.showInstallments.title": "Mostrar parcelas de pagamento do produto",
+  "editor.productSummary.showBadge.title": "Mostrar a etiqueta de desconto",
+  "editor.productSummary.badgeText.title": "Texto da etiqueta",
+  "editor.productSummary.buyButtonText.title": "Texto do botão de compra personalizado",
+  "editor.productSummary.hideBuyButton.title": "Esconde completamente o botão de compra",
+  "editor.productSummary.showButtonOnHover.title": "Mostrar o botão de compra apenas ao passar o mouse"
 }
