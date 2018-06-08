@@ -127,22 +127,22 @@ const defaultSchema = {
   properties: {
     showListPrice: {
       type: 'boolean',
-      title: "editor.productSummary.showListPrice.title",
+      title: 'editor.productSummary.showListPrice.title',
       default: true,
     },
     isOneClickBuy: {
       type: 'boolean',
-      title: "editor.productSummary.isOneClickBuy.title",
+      title: 'editor.productSummary.isOneClickBuy.title',
       default: false,
     },
     showLabels: {
       type: 'boolean',
-      title: "editor.productSummary.showLabels.title",
+      title: 'editor.productSummary.showLabels.title',
       default: true,
     },
     showInstallments: {
       type: 'boolean',
-      title: "editor.productSummary.showInstallments.title",
+      title: 'editor.productSummary.showInstallments.title',
       default: true,
     },
     showBadge: {
