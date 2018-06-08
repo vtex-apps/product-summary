@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - Added isOneClickBuy attribute.
+- Add internationalization into product summary schema
 
 ## [0.5.1] - 2018-05-29
 ### Fixed
