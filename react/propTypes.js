@@ -67,4 +67,6 @@ export default {
   hideBuyButton: PropTypes.bool,
   /** Defines if the button is shown only if the mouse is on the summary */
   showButtonOnHover: PropTypes.bool,
+  /** Flag that indicates if is loading */
+  isLoading: PropTypes.bool,
 }

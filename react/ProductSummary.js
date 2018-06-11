@@ -11,6 +11,8 @@ import DiscountBadge from 'vtex.store-components/DiscountBadge'
 import { createProduct } from './ProductFactory'
 import ProductSummaryPropTypes from './propTypes'
 
+import ContentLoader from 'react-content-loader'
+
 import './global.css'
 
 /**
@@ -27,6 +29,7 @@ class ProductSummary extends Component {
     hideBuyButton: false,
     showOnHover: false,
     isOneClickBuy: false,
+    isLoading: true,
   }
 
   constructor(props) {
@@ -52,6 +55,7 @@ class ProductSummary extends Component {
       buyButtonText,
       hideBuyButton,
       isOneClickBuy,
+      isLoading,
     } = this.props
 
     const product = this.props.product || createProduct()
@@ -67,18 +71,25 @@ class ProductSummary extends Component {
             page={'store/product'}
             params={{ slug: product.linkText }}>
             <div className="vtex-product-summary__image-container center db">
-              {showBadge ? (
-                <DiscountBadge
-                  listPrice={product.sku.seller.commertialOffer.ListPrice}
-                  sellingPrice={product.sku.seller.commertialOffer.Price}
-                  label={badgeText}>
-                  <img
-                    className="vtex-product-summary__image"
-                    alt={product.productName}
-                    src={product.sku.image.imageUrl}
-                  />
-                </DiscountBadge>
-              ) : (
+              {isLoading ? (
+                <div>
+                  <ContentLoader height={500} speed={1}>
+                    <rect x="0" y="0" rx="5" ry="5" width="370" height="370" />
+                  </ContentLoader>
+                </div>
+              )
+                : showBadge ? (
+                  <DiscountBadge
+                    listPrice={product.sku.seller.commertialOffer.ListPrice}
+                    sellingPrice={product.sku.seller.commertialOffer.Price}
+                    label={badgeText} >
+                    <img
+                      className="vtex-product-summary__image"
+                      alt={product.productName}
+                      src={product.sku.image.imageUrl}
+                    />
+                  </DiscountBadge>
+                ) : (
                   <img
                     className="vtex-product-summary__image"
                     alt={product.productName}
@@ -91,6 +102,7 @@ class ProductSummary extends Component {
                 name={product.productName}
                 skuName={product.sku.name}
                 brandName={product.brand}
+                isLoading={isLoading}
               />
             </div>
             <div className="vtex-price-container flex flex-column justify-center items-center pv2">
@@ -101,18 +113,22 @@ class ProductSummary extends Component {
                 showListPrice={showListPrice}
                 showLabels={showLabels}
                 showInstallments={showInstallments}
+                isLoading={isLoading}
               />
             </div>
           </Link>
           <div className="vtex-product-summary__buy-button-container pv2">
             {!hideBuyButton &&
               (!showButtonOnHover || this.state.isHovering) && (
-                <div className="vtex-product-summary__buy-button center">
-                  <BuyButton skuId={product.sku.itemId} isOneClickBuy={isOneClickBuy}>
-                    {buyButtonText || <FormattedMessage id="button-label" />}
-                  </BuyButton>
-                </div>
-              )}
+              <div className="vtex-product-summary__buy-button center">
+                <BuyButton
+                  skuId={product.sku.itemId}
+                  isOneClickBuy={isOneClickBuy}
+                  isLoading={isLoading}>
+                  {buyButtonText || <FormattedMessage id="button-label" />}
+                </BuyButton>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -132,7 +148,7 @@ const defaultSchema = {
     },
     isOneClickBuy: {
       type: 'boolean',
-      title: "Should redirect to checkout after clicking on buy",
+      title: 'Should redirect to checkout after clicking on buy',
       default: false,
     },
     showLabels: {
