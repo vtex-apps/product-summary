@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added isOneClickBuy attribute.
 - Add internationalization into product summary schema
 
+### Changed
+- `ProductSummary` schema to reuse the `ProductPrice` one
+
 ## [0.5.1] - 2018-05-29
 ### Fixed
 - Fix `vtex.store-components` dependency.
