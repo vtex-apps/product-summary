@@ -79,12 +79,12 @@ class ProductSummary extends Component {
                   />
                 </DiscountBadge>
               ) : (
-                  <img
-                    className="vtex-product-summary__image"
-                    alt={product.productName}
-                    src={product.sku.image.imageUrl}
-                  />
-                )}
+                <img
+                  className="vtex-product-summary__image"
+                  alt={product.productName}
+                  src={product.sku.image.imageUrl}
+                />
+              )}
             </div>
             <div className="vtex-product-summary__name-container flex items-center justify-center near-black">
               <ProductName
@@ -107,12 +107,12 @@ class ProductSummary extends Component {
           <div className="vtex-product-summary__buy-button-container pv2">
             {!hideBuyButton &&
               (!showButtonOnHover || this.state.isHovering) && (
-                <div className="vtex-product-summary__buy-button center">
-                  <BuyButton skuId={product.sku.itemId} isOneClickBuy={isOneClickBuy}>
-                    {buyButtonText || <FormattedMessage id="button-label" />}
-                  </BuyButton>
-                </div>
-              )}
+              <div className="vtex-product-summary__buy-button center">
+                <BuyButton skuId={product.sku.itemId} isOneClickBuy={isOneClickBuy}>
+                  {buyButtonText || <FormattedMessage id="button-label" />}
+                </BuyButton>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -125,25 +125,10 @@ const defaultSchema = {
   description: 'editor.productSummary.description',
   type: 'object',
   properties: {
-    showListPrice: {
-      type: 'boolean',
-      title: 'editor.productSummary.showListPrice.title',
-      default: true,
-    },
     isOneClickBuy: {
       type: 'boolean',
       title: 'editor.productSummary.isOneClickBuy.title',
       default: false,
-    },
-    showLabels: {
-      type: 'boolean',
-      title: 'editor.productSummary.showLabels.title',
-      default: true,
-    },
-    showInstallments: {
-      type: 'boolean',
-      title: 'editor.productSummary.showInstallments.title',
-      default: true,
     },
     showBadge: {
       type: 'boolean',
@@ -152,11 +137,11 @@ const defaultSchema = {
     },
     badgeText: {
       type: 'string',
-      title: "editor.productSummary.badgeText.title",
+      title: 'editor.productSummary.badgeText.title',
     },
     buyButtonText: {
       type: 'string',
-      title: "editor.productSummary.buyButtonText.title",
+      title: 'editor.productSummary.buyButtonText.title',
     },
     hideBuyButton: {
       type: 'boolean',
@@ -167,6 +152,7 @@ const defaultSchema = {
       type: 'boolean',
       title: 'editor.productSummary.showButtonOnHover.title',
     },
+    ...ProductPrice.schema.properties,
   },
 }
 
