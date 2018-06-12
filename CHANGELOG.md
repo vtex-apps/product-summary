@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.6.0] - 2018-6-11
 ### Added
 - Added isOneClickBuy attribute.
+- Add internationalization into `ProductSummary` schema
+
+### Changed
+- `ProductSummary` schema to reuse the `ProductPrice` one
 
 ## [0.5.1] - 2018-05-29
 ### Fixed
