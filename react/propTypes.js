@@ -48,6 +48,10 @@ export default {
         }).isRequired,
       }).isRequired,
     }).isRequired,
+    /** Product's collections */
+    productClusters: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    })),
   }),
   /** Shows the product list price */
   showListPrice: PropTypes.bool,

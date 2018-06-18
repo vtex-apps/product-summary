@@ -22,6 +22,7 @@ const DEFAULT_PRODUCT = {
       },
     },
   },
+  productClusters: [],
 }
 
 export function createProduct(customProps) {
