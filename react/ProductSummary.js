@@ -7,6 +7,7 @@ import BuyButton from 'vtex.store-components/BuyButton'
 import ProductName from 'vtex.store-components/ProductName'
 import ProductPrice from 'vtex.store-components/ProductPrice'
 import DiscountBadge from 'vtex.store-components/DiscountBadge'
+import CollectionBadges from 'vtex.store-components/CollectionBadges'
 
 import { createProduct } from './ProductFactory'
 import ProductSummaryPropTypes from './propTypes'
@@ -29,9 +30,8 @@ class ProductSummary extends Component {
     isOneClickBuy: false,
   }
 
-  constructor(props) {
-    super(props)
-    this.state = { isHovering: false }
+  state = {
+    isHovering: false,
   }
 
   handleMouseLeave = () => {
@@ -40,6 +40,24 @@ class ProductSummary extends Component {
 
   handleMouseEnter = () => {
     this.setState({ isHovering: true })
+  }
+
+  renderImage = product => {
+    const { productClusters, productName: name, sku: { image: { imageUrl } } } = product
+
+    if (productClusters.length > 0) {
+      const collections = productClusters.map(cl => cl.name)
+
+      return (
+        <CollectionBadges collectionBadgesText={collections}>
+          <img className="vtex-product-summary__image" alt={name} src={imageUrl} />
+        </CollectionBadges>
+      )
+    }
+
+    return (
+      <img className="vtex-product-summary__image" alt={name} src={imageUrl} />
+    )
   }
 
   render() {
@@ -72,18 +90,10 @@ class ProductSummary extends Component {
                   listPrice={product.sku.seller.commertialOffer.ListPrice}
                   sellingPrice={product.sku.seller.commertialOffer.Price}
                   label={badgeText}>
-                  <img
-                    className="vtex-product-summary__image"
-                    alt={product.productName}
-                    src={product.sku.image.imageUrl}
-                  />
+                  {this.renderImage(product)}
                 </DiscountBadge>
               ) : (
-                <img
-                  className="vtex-product-summary__image"
-                  alt={product.productName}
-                  src={product.sku.image.imageUrl}
-                />
+                this.renderImage(product)
               )}
             </div>
             <div className="vtex-product-summary__name-container flex items-center justify-center near-black">
