@@ -28,6 +28,7 @@ class ProductSummary extends Component {
     hideBuyButton: false,
     showOnHover: false,
     isOneClickBuy: false,
+    product: createProduct(),
   }
 
   state = {
@@ -42,22 +43,39 @@ class ProductSummary extends Component {
     this.setState({ isHovering: true })
   }
 
-  renderImage = product => {
+  renderImage = () => {
+    const {
+      product,
+      showBadge,
+      badgeText,
+    } = this.props
     const { productClusters, productName: name, sku: { image: { imageUrl } } } = product
+
+    let img = <img className="vtex-product-summary__image" alt={name} src={imageUrl} />
+
+    if (showBadge) {
+      img = (
+        <DiscountBadge
+          listPrice={product.sku.seller.commertialOffer.ListPrice}
+          sellingPrice={product.sku.seller.commertialOffer.Price}
+          label={badgeText}
+        >
+          {img}
+        </DiscountBadge>
+      )
+    }
 
     if (productClusters.length > 0) {
       const collections = productClusters.map(cl => cl.name)
 
       return (
         <CollectionBadges collectionBadgesText={collections}>
-          <img className="vtex-product-summary__image" alt={name} src={imageUrl} />
+          {img}
         </CollectionBadges>
       )
     }
 
-    return (
-      <img className="vtex-product-summary__image" alt={name} src={imageUrl} />
-    )
+    return img
   }
 
   render() {
@@ -65,14 +83,12 @@ class ProductSummary extends Component {
       showListPrice,
       showLabels,
       showInstallments,
-      showBadge,
-      badgeText,
       buyButtonText,
       hideBuyButton,
       isOneClickBuy,
+      product,
     } = this.props
 
-    const product = this.props.product || createProduct()
     const showButtonOnHover = this.props.showButtonOnHover && !isMobile
     return (
       <div
@@ -85,16 +101,7 @@ class ProductSummary extends Component {
             page={'store/product'}
             params={{ slug: product.linkText }}>
             <div className="vtex-product-summary__image-container center db">
-              {showBadge ? (
-                <DiscountBadge
-                  listPrice={product.sku.seller.commertialOffer.ListPrice}
-                  sellingPrice={product.sku.seller.commertialOffer.Price}
-                  label={badgeText}>
-                  {this.renderImage(product)}
-                </DiscountBadge>
-              ) : (
-                this.renderImage(product)
-              )}
+              {this.renderImage()}
             </div>
             <div className="vtex-product-summary__name-container flex items-center justify-center near-black">
               <ProductName
