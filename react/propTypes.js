@@ -71,4 +71,6 @@ export default {
   hideBuyButton: PropTypes.bool,
   /** Defines if the button is shown only if the mouse is on the summary */
   showButtonOnHover: PropTypes.bool,
+  /** Defines if the collection badges are shown */
+  showCollections: PropTypes.bool,
 }

@@ -25,6 +25,7 @@ class ProductSummary extends Component {
     showInstallments: true,
     showLabels: true,
     showBadge: true,
+    showCollections: true,
     hideBuyButton: false,
     showOnHover: false,
     isOneClickBuy: false,
@@ -48,6 +49,7 @@ class ProductSummary extends Component {
       product,
       showBadge,
       badgeText,
+      showCollections,
     } = this.props
     const { productClusters, productName: name, sku: { image: { imageUrl } } } = product
 
@@ -65,7 +67,7 @@ class ProductSummary extends Component {
       )
     }
 
-    if (productClusters.length > 0) {
+    if (showCollections && productClusters && productClusters.length > 0) {
       const collections = productClusters.map(cl => cl.name)
 
       return (
