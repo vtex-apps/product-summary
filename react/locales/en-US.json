@@ -1,11 +1,16 @@
 {
   "button-label": "Buy",
   "editor.productSummary.title": "Product Summary",
-  "editor.productSummary.description": "The product summary showing the main product informations",
-  "editor.productSummary.isOneClickBuy.title": "Should redirect to checkout after clicking on buy",
+  "editor.productSummary.description":
+    "The product summary showing the main product informations",
+  "editor.productSummary.isOneClickBuy.title":
+    "Should redirect to checkout after clicking on buy",
   "editor.productSummary.showBadge.title": "Show the discount badge",
   "editor.productSummary.badgeText.title": "Badge's text",
   "editor.productSummary.buyButtonText.title": "Custom buy button's text",
-  "editor.productSummary.hideBuyButton.title": "Hides the buy button completely",
-  "editor.productSummary.showButtonOnHover.title": "Show the buy button only on hover"
+  "editor.productSummary.hideBuyButton.title":
+    "Hides the buy button completely",
+  "editor.productSummary.showButtonOnHover.title":
+    "Show the buy button only on hover",
+  "editor.productSummary.showCollections.title": "Show the collections badges"
 }

@@ -1,18 +1,17 @@
-import React, { Component } from 'react'
-import { FormattedMessage } from 'react-intl'
-import { isMobile } from 'react-device-detect'
-import { Link } from 'render'
+import './global.css'
 
+import React, { Component } from 'react'
+import { isMobile } from 'react-device-detect'
+import { FormattedMessage } from 'react-intl'
+import { Link } from 'render'
 import BuyButton from 'vtex.store-components/BuyButton'
+import CollectionBadges from 'vtex.store-components/CollectionBadges'
+import DiscountBadge from 'vtex.store-components/DiscountBadge'
 import ProductName from 'vtex.store-components/ProductName'
 import ProductPrice from 'vtex.store-components/ProductPrice'
-import DiscountBadge from 'vtex.store-components/DiscountBadge'
-import CollectionBadges from 'vtex.store-components/CollectionBadges'
 
 import { createProduct } from './ProductFactory'
 import ProductSummaryPropTypes from './propTypes'
-
-import './global.css'
 
 /**
  * Product Summary component. Summarizes the product information.
@@ -45,23 +44,25 @@ class ProductSummary extends Component {
   }
 
   renderImage = () => {
+    const { product, showBadge, badgeText, showCollections } = this.props
     const {
-      product,
-      showBadge,
-      badgeText,
-      showCollections,
-    } = this.props
-    const { productClusters, productName: name, sku: { image: { imageUrl } } } = product
+      productClusters,
+      productName: name,
+      sku: {
+        image: { imageUrl },
+      },
+    } = product
 
-    let img = <img className="vtex-product-summary__image" alt={name} src={imageUrl} />
+    let img = (
+      <img className="vtex-product-summary__image" alt={name} src={imageUrl} />
+    )
 
     if (showBadge) {
       img = (
         <DiscountBadge
           listPrice={product.sku.seller.commertialOffer.ListPrice}
           sellingPrice={product.sku.seller.commertialOffer.Price}
-          label={badgeText}
-        >
+          label={badgeText}>
           {img}
         </DiscountBadge>
       )
@@ -126,12 +127,14 @@ class ProductSummary extends Component {
           <div className="vtex-product-summary__buy-button-container pv2">
             {!hideBuyButton &&
               (!showButtonOnHover || this.state.isHovering) && (
-              <div className="vtex-product-summary__buy-button center">
-                <BuyButton skuId={product.sku.itemId} isOneClickBuy={isOneClickBuy}>
-                  {buyButtonText || <FormattedMessage id="button-label" />}
-                </BuyButton>
-              </div>
-            )}
+                <div className="vtex-product-summary__buy-button center">
+                  <BuyButton
+                    skuId={product.sku.itemId}
+                    isOneClickBuy={isOneClickBuy}>
+                    {buyButtonText || <FormattedMessage id="button-label" />}
+                  </BuyButton>
+                </div>
+              )}
           </div>
         </div>
       </div>
@@ -175,6 +178,12 @@ const defaultSchema = {
     showButtonOnHover: {
       type: 'boolean',
       title: 'editor.productSummary.showButtonOnHover.title',
+      isLayout: true,
+    },
+    showCollections: {
+      type: 'boolean',
+      title: 'editor.productSummary.showCollections.title',
+      default: true,
       isLayout: true,
     },
     ...ProductPrice.schema.properties,
