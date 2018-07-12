@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "product-summary",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "title": "Product Summary",
   "description": "Product summary component",
   "defaultLocale": "pt-BR",
