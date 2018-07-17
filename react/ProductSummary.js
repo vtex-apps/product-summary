@@ -24,7 +24,7 @@ class ProductSummary extends Component {
     showInstallments: true,
     showLabels: true,
     showBadge: true,
-    showCollections: true,
+    showCollections: false,
     hideBuyButton: false,
     showOnHover: false,
     isOneClickBuy: false,
@@ -191,7 +191,7 @@ const defaultSchema = {
     showCollections: {
       type: 'boolean',
       title: 'editor.productSummary.showCollections.title',
-      default: true,
+      default: false,
       isLayout: true,
     },
     ...ProductPrice.schema.properties,
