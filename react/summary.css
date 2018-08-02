@@ -36,12 +36,17 @@
   height: 38px;
 }
 
-.vtex-product-summary button {
+.vtex-product-summary__buy-button button {
   width: 140px;
   height: 38px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.vtex-product-summary__buy-button button span {
+  top: -3px;
+  position: relative;
 }
 
 a.clear-link {
