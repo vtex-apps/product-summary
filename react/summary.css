@@ -42,11 +42,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.vtex-product-summary__buy-button button span {
-  top: -3px;
-  position: relative;
+  padding: 0;
 }
 
 a.clear-link {
