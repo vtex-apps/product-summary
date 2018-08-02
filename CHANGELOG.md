@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Changed
-- button text positioning
+- button text position
 - the default value which indicates if the `CollectionBadges` should be displayed or not.
 
 ## [0.8.3] - 2018-07-12

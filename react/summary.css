@@ -33,16 +33,10 @@
 
 .vtex-product-summary__buy-button {
   width: 140px;
-  height: 36px;
 }
 
 .vtex-product-summary__buy-button button {
   width: 140px;
-  height: 36px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 0;
 }
 
 a.clear-link {
