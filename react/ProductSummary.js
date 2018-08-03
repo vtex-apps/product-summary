@@ -12,7 +12,6 @@ import DiscountBadge from 'vtex.store-components/DiscountBadge'
 import ProductName from 'vtex.store-components/ProductName'
 import ProductPrice from 'vtex.store-components/ProductPrice'
 
-import { createProduct } from './ProductFactory'
 import ProductSummaryPropTypes from './propTypes'
 
 /**
@@ -30,7 +29,6 @@ class ProductSummary extends Component {
     hideBuyButton: false,
     showOnHover: false,
     isOneClickBuy: false,
-    product: createProduct(),
   }
 
   state = {
