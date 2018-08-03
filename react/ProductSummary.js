@@ -1,6 +1,8 @@
 import './global.css'
 
+import { path } from 'ramda'
 import React, { Component } from 'react'
+import ContentLoader from 'react-content-loader'
 import { isMobile } from 'react-device-detect'
 import { FormattedMessage } from 'react-intl'
 import { Link } from 'render'
@@ -43,6 +45,10 @@ class ProductSummary extends Component {
     this.setState({ isHovering: true })
   }
 
+  get commertialOffer() {
+    return path(['sku', 'seller', 'commertialOffer'], this.props.product)
+  }
+
   renderImage = () => {
     const { product, showBadge, badgeText, showCollections } = this.props
     const {
@@ -60,8 +66,8 @@ class ProductSummary extends Component {
     if (showBadge) {
       img = (
         <DiscountBadge
-          listPrice={product.sku.seller.commertialOffer.ListPrice}
-          sellingPrice={product.sku.seller.commertialOffer.Price}
+          listPrice={this.commertialOffer.ListPrice}
+          sellingPrice={this.commertialOffer.Price}
           label={badgeText}>
           {img}
         </DiscountBadge>
@@ -81,6 +87,19 @@ class ProductSummary extends Component {
     return img
   }
 
+  renderImageLoader = () => (
+    <ContentLoader
+      uniquekey="vtex-summary-image-loader"
+      style={{
+        width: '100%',
+        height: '100%',
+      }}
+      height="100%"
+      width="100%">
+      <rect className="vtex-product-summary__image-loader" />
+    </ContentLoader>
+  )
+
   render() {
     const {
       showListPrice,
@@ -93,6 +112,9 @@ class ProductSummary extends Component {
     } = this.props
 
     const showButtonOnHover = this.props.showButtonOnHover && !isMobile
+    const showBuyButton =
+      !hideBuyButton && (!showButtonOnHover || this.state.isHovering)
+
     return (
       <div
         className="vtex-product-summary tc overflow-hidden center br3 flex flex-column justify-between"
@@ -102,22 +124,24 @@ class ProductSummary extends Component {
           <Link
             className="clear-link"
             page={'store/product'}
-            params={{ slug: product.linkText }}>
+            params={{ slug: path(['linkText'], product) }}>
             <div className="vtex-product-summary__image-container center db">
-              {this.renderImage()}
+              {path(['sku', 'image', 'imageUrl'], product)
+                ? this.renderImage()
+                : this.renderImageLoader()}
             </div>
             <div className="vtex-product-summary__name-container flex items-center justify-center near-black">
               <ProductName
-                name={product.productName}
-                skuName={product.sku.name}
-                brandName={product.brand}
+                name={path(['productName'], product)}
+                skuName={path(['sku', 'name'], product)}
+                brandName={path(['brand'], product)}
               />
             </div>
             <div className="vtex-price-container flex flex-column justify-center items-center pv2">
               <ProductPrice
-                listPrice={product.sku.seller.commertialOffer.ListPrice}
-                sellingPrice={product.sku.seller.commertialOffer.Price}
-                installments={product.sku.seller.commertialOffer.Installments}
+                listPrice={path(['ListPrice'], this.commertialOffer)}
+                sellingPrice={path(['Price'], this.commertialOffer)}
+                installments={path(['Installments'], this.commertialOffer)}
                 showListPrice={showListPrice}
                 showLabels={showLabels}
                 showInstallments={showInstallments}
@@ -125,24 +149,21 @@ class ProductSummary extends Component {
             </div>
           </Link>
           <div className="vtex-product-summary__buy-button-container pv2">
-            {!hideBuyButton &&
-              (!showButtonOnHover || this.state.isHovering) && (
-                <div className="vtex-product-summary__buy-button center">
-                  <BuyButton
-                    skuItems={
-                      [ 
-                        {
-                          skuId: product.sku.itemId,
-                          quantity: 1,
-                          seller: 1,
-                        },
-                      ]
-                    }
-                    isOneClickBuy={isOneClickBuy}>
-                    {buyButtonText || <FormattedMessage id="button-label" />}
-                  </BuyButton>
-                </div>
-              )}
+            {showBuyButton && (
+              <div className="vtex-product-summary__buy-button center">
+                <BuyButton
+                  skuItems={[
+                    {
+                      skuId: path(['sku', 'itemId'], product),
+                      quantity: 1,
+                      seller: 1,
+                    },
+                  ]}
+                  isOneClickBuy={isOneClickBuy}>
+                  {buyButtonText || <FormattedMessage id="button-label" />}
+                </BuyButton>
+              </div>
+            )}
           </div>
         </div>
       </div>

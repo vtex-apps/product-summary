@@ -39,6 +39,15 @@
   width: 140px;
 }
 
+.vtex-product-summary .vtex-product-name-loader {
+  height: 5em;
+}
+
+.vtex-product-summary__image-loader {
+  width: 100%;
+  height: 100%;
+}
+
 a.clear-link {
   text-decoration: inherit;
   color: inherit;
