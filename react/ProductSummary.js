@@ -1,18 +1,18 @@
-import './global.css'
+import './global.css';
 
-import { path } from 'ramda'
-import React, { Component } from 'react'
-import ContentLoader from 'react-content-loader'
-import { isMobile } from 'react-device-detect'
-import { FormattedMessage } from 'react-intl'
-import { Link } from 'render'
-import BuyButton from 'vtex.store-components/BuyButton'
-import CollectionBadges from 'vtex.store-components/CollectionBadges'
-import DiscountBadge from 'vtex.store-components/DiscountBadge'
-import ProductName from 'vtex.store-components/ProductName'
-import ProductPrice from 'vtex.store-components/ProductPrice'
+import { path } from 'ramda';
+import React, { Component } from 'react';
+import ContentLoader from 'react-content-loader';
+import { isMobile } from 'react-device-detect';
+import { FormattedMessage } from 'react-intl';
+import { Link } from 'render';
+import BuyButton from 'vtex.store-components/BuyButton';
+import CollectionBadges from 'vtex.store-components/CollectionBadges';
+import DiscountBadge from 'vtex.store-components/DiscountBadge';
+import ProductName from 'vtex.store-components/ProductName';
+import ProductPrice from 'vtex.store-components/ProductPrice';
 
-import ProductSummaryPropTypes from './propTypes'
+import ProductSummaryPropTypes from './propTypes';
 
 /**
  * Product Summary component. Summarizes the product information.
@@ -150,13 +150,15 @@ class ProductSummary extends Component {
             {showBuyButton && (
               <div className="vtex-product-summary__buy-button center">
                 <BuyButton
-                  skuItems={[
-                    {
-                      skuId: path(['sku', 'itemId'], product),
-                      quantity: 1,
-                      seller: 1,
-                    },
-                  ]}
+                  skuItems={
+                    path(['sku', 'itemId'], product) && [
+                      {
+                        skuId: path(['sku', 'itemId'], product),
+                        quantity: 1,
+                        seller: 1,
+                      },
+                    ]
+                  }
                   isOneClickBuy={isOneClickBuy}>
                   {buyButtonText || <FormattedMessage id="button-label" />}
                 </BuyButton>
