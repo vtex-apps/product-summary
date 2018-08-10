@@ -87,14 +87,13 @@ class ProductSummary extends Component {
 
   renderImageLoader = () => (
     <ContentLoader
-      uniquekey="vtex-summary-image-loader"
       style={{
         width: '100%',
         height: '100%',
       }}
       height="100%"
       width="100%">
-      <rect className="vtex-product-summary__image-loader" />
+      <rect width="100%" height="100%" />
     </ContentLoader>
   )
 
