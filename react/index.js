@@ -1,18 +1,18 @@
-import './global.css';
+import './global.css'
 
-import { path } from 'ramda';
-import React, { Component } from 'react';
-import ContentLoader from 'react-content-loader';
-import { isMobile } from 'react-device-detect';
-import { FormattedMessage } from 'react-intl';
-import { Link } from 'render';
-import BuyButton from 'vtex.store-components/BuyButton';
-import CollectionBadges from 'vtex.store-components/CollectionBadges';
-import DiscountBadge from 'vtex.store-components/DiscountBadge';
-import ProductName from 'vtex.store-components/ProductName';
-import ProductPrice from 'vtex.store-components/ProductPrice';
+import { path } from 'ramda'
+import React, { Component } from 'react'
+import ContentLoader from 'react-content-loader'
+import { isMobile } from 'react-device-detect'
+import { FormattedMessage } from 'react-intl'
+import { Link } from 'render'
+import BuyButton from 'vtex.store-components/BuyButton'
+import CollectionBadges from 'vtex.store-components/CollectionBadges'
+import DiscountBadge from 'vtex.store-components/DiscountBadge'
+import ProductName from 'vtex.store-components/ProductName'
+import ProductPrice from 'vtex.store-components/ProductPrice'
 
-import ProductSummaryPropTypes from './propTypes';
+import ProductSummaryPropTypes from './propTypes'
 
 /**
  * Product Summary component. Summarizes the product information.
@@ -23,6 +23,9 @@ class ProductSummary extends Component {
   static defaultProps = {
     showListPrice: true,
     showInstallments: true,
+    showProductReference: false,
+    showBrandName: false,
+    showSku: false,
     showLabels: true,
     showBadge: true,
     showCollections: false,
@@ -66,7 +69,8 @@ class ProductSummary extends Component {
         <DiscountBadge
           listPrice={this.commertialOffer.ListPrice}
           sellingPrice={this.commertialOffer.Price}
-          label={badgeText}>
+          label={badgeText}
+        >
           {img}
         </DiscountBadge>
       )
@@ -92,7 +96,8 @@ class ProductSummary extends Component {
         height: '100%',
       }}
       height="100%"
-      width="100%">
+      width="100%"
+    >
       <rect width="100%" height="100%" />
     </ContentLoader>
   )
@@ -101,6 +106,9 @@ class ProductSummary extends Component {
     const {
       showListPrice,
       showLabels,
+      showBrandName,
+      showProductReference,
+      showSku,
       showInstallments,
       buyButtonText,
       hideBuyButton,
@@ -116,12 +124,14 @@ class ProductSummary extends Component {
       <div
         className="vtex-product-summary tc overflow-hidden center br3 flex flex-column justify-between"
         onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}>
+        onMouseLeave={this.handleMouseLeave}
+      >
         <div className="pointer pa3">
           <Link
             className="clear-link"
             page={'store/product'}
-            params={{ slug: path(['linkText'], product) }}>
+            params={{ slug: path(['linkText'], product) }}
+          >
             <div className="vtex-product-summary__image-container center db">
               {path(['sku', 'image', 'imageUrl'], product)
                 ? this.renderImage()
@@ -132,6 +142,9 @@ class ProductSummary extends Component {
                 name={path(['productName'], product)}
                 skuName={path(['sku', 'name'], product)}
                 brandName={path(['brand'], product)}
+                showBrandName={showBrandName}
+                showProductReference={showProductReference}
+                showSku={showSku}
               />
             </div>
             <div className="vtex-price-container flex flex-column justify-center items-center pv2">
@@ -158,7 +171,8 @@ class ProductSummary extends Component {
                       },
                     ]
                   }
-                  isOneClickBuy={isOneClickBuy}>
+                  isOneClickBuy={isOneClickBuy}
+                >
                   {buyButtonText || <FormattedMessage id="button-label" />}
                 </BuyButton>
               </div>
@@ -211,6 +225,24 @@ const defaultSchema = {
     showCollections: {
       type: 'boolean',
       title: 'editor.productSummary.showCollections.title',
+      default: false,
+      isLayout: true,
+    },
+    showBrandName: {
+      type: 'boolean',
+      title: 'editor.productSummary.showBrandName.title',
+      default: false,
+      isLayout: true,
+    },
+    showSku: {
+      type: 'boolean',
+      title: 'editor.productSummary.showSku.title',
+      default: false,
+      isLayout: true,
+    },
+    showProductReference: {
+      type: 'boolean',
+      title: 'editor.productSummary.showProductReference.title',
       default: false,
       isLayout: true,
     },

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.0.0] - 2018-08-21
+### Added
+- Show product: sku, reference and brand to the schema.
+
+### Changed
+- Rename the main file to `index.js`
+
 ## [0.8.8] - 2018-08-16
 
 ## [0.8.7] - 2018-08-15

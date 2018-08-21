@@ -1,18 +1,15 @@
 {
   "button-label": "Comprar",
   "editor.productSummary.title": "Resumen del producto",
-  "editor.productSummary.description":
-    "El resumen del producto que muestra las principales informaciones del producto",
-  "editor.productSummary.isOneClickBuy.title":
-    "Debe redireccionar a la caja después de hacer clic en comprar",
+  "editor.productSummary.description": "El resumen del producto que muestra las principales informaciones del producto",
+  "editor.productSummary.isOneClickBuy.title": "Debe redireccionar a la caja después de hacer clic en comprar",
   "editor.productSummary.showBadge.title": "Mostrar la etiqueta de descuento",
   "editor.productSummary.badgeText.title": "Texto de la etiqueta",
-  "editor.productSummary.buyButtonText.title":
-    "Texto del botón de compra personalizado",
-  "editor.productSummary.hideBuyButton.title":
-    "Oculta el botón comprar por completo",
-  "editor.productSummary.showButtonOnHover.title":
-    "Mostrar el botón de comprar solo al pasar el mouse",
-  "editor.productSummary.showCollections.title":
-    "Mostrar las insignias de las colecciones"
+  "editor.productSummary.buyButtonText.title": "Texto del botón de compra personalizado",
+  "editor.productSummary.hideBuyButton.title": "Oculta el botón comprar por completo",
+  "editor.productSummary.showButtonOnHover.title": "Mostrar el botón de comprar solo al pasar el mouse",
+  "editor.productSummary.showCollections.title": "Mostrar las insignias de las colecciones",
+  "editor.productSummary.showBrandName.title": "Mostrar la marca",
+  "editor.productSummary.showSku.title": "Mostrar el SKU",
+  "editor.productSummary.showProductReference.title": "Mostrar la referencia del producto"
 }
