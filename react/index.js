@@ -23,15 +23,17 @@ class ProductSummary extends Component {
   static defaultProps = {
     showListPrice: true,
     showInstallments: true,
-    showProductReference: false,
-    showBrandName: false,
-    showSku: false,
     showLabels: true,
     showBadge: true,
     showCollections: false,
     hideBuyButton: false,
     showOnHover: false,
     isOneClickBuy: false,
+    name: {
+      showProductReference: false,
+      showBrandName: false,
+      showSku: false,
+    },
   }
 
   state = {
@@ -106,9 +108,6 @@ class ProductSummary extends Component {
     const {
       showListPrice,
       showLabels,
-      showBrandName,
-      showProductReference,
-      showSku,
       showInstallments,
       buyButtonText,
       hideBuyButton,
@@ -142,9 +141,7 @@ class ProductSummary extends Component {
                 name={path(['productName'], product)}
                 skuName={path(['sku', 'name'], product)}
                 brandName={path(['brand'], product)}
-                showBrandName={showBrandName}
-                showProductReference={showProductReference}
-                showSku={showSku}
+                {...this.props.name}
               />
             </div>
             <div className="vtex-price-container flex flex-column justify-center items-center pv2">
@@ -228,35 +225,19 @@ const defaultSchema = {
       default: false,
       isLayout: true,
     },
-    showBrandName: {
-      type: 'boolean',
-      title: 'editor.productSummary.showBrandName.title',
-      default: false,
-      isLayout: true,
-    },
-    showSku: {
-      type: 'boolean',
-      title: 'editor.productSummary.showSku.title',
-      default: false,
-      isLayout: true,
-    },
-    showProductReference: {
-      type: 'boolean',
-      title: 'editor.productSummary.showProductReference.title',
-      default: false,
-      isLayout: true,
-    },
     ...ProductPrice.schema.properties,
   },
 }
 
 ProductSummary.getSchema = ({ hideBuyButton }) => {
   const { showButtonOnHover, ...rest } = defaultSchema.properties
+  const nameSchema = ProductName.schema
   return {
     ...defaultSchema,
     properties: {
       ...rest,
       ...(hideBuyButton ? {} : { showButtonOnHover }),
+      name: nameSchema,
     },
   }
 }

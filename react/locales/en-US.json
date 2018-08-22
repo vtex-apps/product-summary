@@ -8,8 +8,5 @@
   "editor.productSummary.buyButtonText.title": "Custom buy button's text",
   "editor.productSummary.hideBuyButton.title": "Hides the buy button completely",
   "editor.productSummary.showButtonOnHover.title": "Show the buy button only on hover",
-  "editor.productSummary.showCollections.title": "Show the collections badges",
-  "editor.productSummary.showBrandName.title": "Shows the brand name",
-  "editor.productSummary.showSku.title": "Shows the sku",
-  "editor.productSummary.showProductReference.title": "Shows the product reference"
+  "editor.productSummary.showCollections.title": "Show the collections badges"
 }
