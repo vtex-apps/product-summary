@@ -8,8 +8,5 @@
   "editor.productSummary.buyButtonText.title": "Texto do botão de compra personalizado",
   "editor.productSummary.hideBuyButton.title": "Esconde completamente o botão de compra",
   "editor.productSummary.showButtonOnHover.title": "Mostrar o botão de compra apenas ao passar o mouse",
-  "editor.productSummary.showCollections.title": "Mostrar os selos de coleção",
-  "editor.productSummary.showBrandName.title": "Mostrar a marca",
-  "editor.productSummary.showSku.title": "Mostrar o SKU",
-  "editor.productSummary.showProductReference.title": "Mostrar a referência do produto"
+  "editor.productSummary.showCollections.title": "Mostrar os selos de coleção"
 }
