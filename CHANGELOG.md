@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.1.0] - 2018-08-31
+### Changed
+- Update the `store-components` version.
+
 ## [1.0.1] - 2018-08-22
 ### Changed
 - Using `ProductName` own schema
