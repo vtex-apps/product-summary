@@ -176,7 +176,8 @@ class ProductSummary extends Component {
       {
         'items-center justify-center': displayMode !== 'inline',
         'justify-left': displayMode === 'inline',
-        'f7 pv2 h2': displayMode !== 'normal',
+        'h2': displayMode === 'small',
+        'f7 pv2': displayMode !== 'normal',
         'pv4 h3': displayMode === 'normal',
       }
     )
