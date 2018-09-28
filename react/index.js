@@ -118,6 +118,8 @@ class ProductSummary extends Component {
     const showButtonOnHover = this.props.showButtonOnHover && !isMobile
     const showBuyButton =
       !hideBuyButton && (!showButtonOnHover || this.state.isHovering)
+    const quantity = path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) || 0
+    const isAvailable = (quantity > 0)
 
     return (
       <div
@@ -159,6 +161,7 @@ class ProductSummary extends Component {
             {showBuyButton && (
               <div className="vtex-product-summary__buy-button center">
                 <BuyButton
+                  available={isAvailable}
                   skuItems={
                     path(['sku', 'itemId'], product) && [
                       {

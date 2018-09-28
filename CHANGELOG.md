@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.3.0] - 2018-09-28
+
+## [1.2.0] - 2018-09-28
+### Fixed
+- Availability verification
+
 ## [1.1.0] - 2018-08-31
 ### Changed
 - Update the `store-components` version.
