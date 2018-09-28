@@ -1,6 +1,5 @@
 {
   "button-label": "Comprar",
-  "button-label-unavailable": "Indisponible",
   "editor.productSummary.title": "Resumen del producto",
   "editor.productSummary.description": "El resumen del producto que muestra las principales informaciones del producto",
   "editor.productSummary.isOneClickBuy.title": "Debe redireccionar a la caja después de hacer clic en comprar",
