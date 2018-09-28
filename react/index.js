@@ -118,8 +118,8 @@ class ProductSummary extends Component {
     const showButtonOnHover = this.props.showButtonOnHover && !isMobile
     const showBuyButton =
       !hideBuyButton && (!showButtonOnHover || this.state.isHovering)
-    const availability = path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) || 0
-    const isAvailable = (availability > 0)
+    const quantity = path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) || 0
+    const isAvailable = (quantity > 0)
 
     return (
       <div
