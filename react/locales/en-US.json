@@ -1,5 +1,6 @@
 {
   "button-label": "Buy",
+  "button-label-unavailable": "Unavailable",
   "editor.productSummary.title": "Product Summary",
   "editor.productSummary.description": "The product summary showing the main product informations",
   "editor.productSummary.isOneClickBuy.title": "Should redirect to checkout after clicking on buy",

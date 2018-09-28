@@ -11,6 +11,7 @@ import CollectionBadges from 'vtex.store-components/CollectionBadges'
 import DiscountBadge from 'vtex.store-components/DiscountBadge'
 import ProductName from 'vtex.store-components/ProductName'
 import ProductPrice from 'vtex.store-components/ProductPrice'
+import { Button } from 'vtex.styleguide'
 
 import ProductSummaryPropTypes from './propTypes'
 
@@ -119,6 +120,10 @@ class ProductSummary extends Component {
     const showBuyButton =
       !hideBuyButton && (!showButtonOnHover || this.state.isHovering)
 
+    const availability = path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product)
+
+    const isAvailable = availability && (availability > 0)
+
     return (
       <div
         className="vtex-product-summary tc overflow-hidden center br3 flex flex-column justify-between"
@@ -158,20 +163,24 @@ class ProductSummary extends Component {
           <div className="vtex-product-summary__buy-button-container pv2">
             {showBuyButton && (
               <div className="vtex-product-summary__buy-button center">
-                <BuyButton
-                  skuItems={
-                    path(['sku', 'itemId'], product) && [
-                      {
-                        skuId: path(['sku', 'itemId'], product),
-                        quantity: 1,
-                        seller: 1,
-                      },
-                    ]
-                  }
-                  isOneClickBuy={isOneClickBuy}
-                >
-                  {buyButtonText || <FormattedMessage id="button-label" />}
-                </BuyButton>
+                {isAvailable ?
+                  (<BuyButton
+                    skuItems={
+                      path(['sku', 'itemId'], product) && [
+                        {
+                          skuId: path(['sku', 'itemId'], product),
+                          quantity: 1,
+                          seller: 1,
+                        },
+                      ]
+                    }
+                    isOneClickBuy={isOneClickBuy}
+                  >
+                    {buyButtonText || <FormattedMessage id="button-label" />}
+                  </BuyButton>) :
+                  (<Button disabled size="small">
+                    <FormattedMessage id="button-label-unavailable" />
+                  </Button>)}
               </div>
             )}
           </div>
