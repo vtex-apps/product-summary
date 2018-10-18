@@ -31,6 +31,8 @@ class ProductSummary extends Component {
     showLabels: PropTypes.bool,
     /** Set installments' visibility */
     showInstallments: PropTypes.bool,
+    /** Set the borders product's visibility */
+    showBorders: PropTypes.bool, 
     /** Set the discount badge's visibility */
     showBadge: PropTypes.bool,
     /** Text of selling Price's label */
@@ -77,6 +79,7 @@ class ProductSummary extends Component {
       showSku: false,
     },
     displayMode: 'normal',
+    showBorders: false
   }
 
   state = {
@@ -149,6 +152,7 @@ class ProductSummary extends Component {
 
   render() {
     const {
+      showBorders,
       showListPrice,
       showLabels,
       showInstallments,
@@ -204,10 +208,15 @@ class ProductSummary extends Component {
     const imageContainerClasses = classNames('vtex-product-summary__image-container db', {
       'w-100 center': displayMode !== 'inline',
       'w-40': displayMode === 'inline',
+      'ba b--gray pa1' : showBorders
     })
 
     const informationClasses = classNames('vtex-product-summary__informations', {
-      'w-50 pv3 ph4': displayMode === 'inline',
+      'w-50 pv3 ph4': displayMode === 'inline'
+    })
+
+    const elementClasses = classNames('pointer pa2', {
+      'ba b--gray ma2' : showBorders
     })
 
     return (
@@ -216,7 +225,7 @@ class ProductSummary extends Component {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <div className="pointer pa2">
+        <div className={elementClasses}>
           <Link
             className={linkClasses}
             page={'store/product'}
