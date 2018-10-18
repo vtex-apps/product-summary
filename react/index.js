@@ -39,6 +39,8 @@ class ProductSummary extends Component {
     labelSellingPrice: PropTypes.string,
     /** Text shown on badge */
     badgeText: PropTypes.string,
+    /** Custom delete button component */
+    deleteButton: PropTypes.element,
     /** Custom buy button text */
     buyButtonText: PropTypes.string,
     /** Hides the buy button completely . If active, the button will not be shown in any condition */
@@ -153,6 +155,7 @@ class ProductSummary extends Component {
   render() {
     const {
       showBorders,
+      deleteButton,
       showListPrice,
       showLabels,
       showInstallments,
@@ -280,6 +283,9 @@ class ProductSummary extends Component {
                 }
               </div>
             )}
+          </div>
+          <div className="fr">
+            {deleteButton}
           </div>
         </div>
       </div>
