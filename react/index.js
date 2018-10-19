@@ -152,6 +152,7 @@ class ProductSummary extends Component {
     </ContentLoader>
   )
 
+  
   render() {
     const {
       showBorders,
@@ -165,8 +166,11 @@ class ProductSummary extends Component {
       isOneClickBuy,
       product,
       displayMode,
+      onActionClick,
       runtime: { hints: { mobile } },
     } = this.props
+
+ 
 
     const showButtonOnHover = this.props.showButtonOnHover && !mobile
     const showBuyButton =
@@ -210,8 +214,7 @@ class ProductSummary extends Component {
 
     const imageContainerClasses = classNames('vtex-product-summary__image-container db', {
       'w-100 center': displayMode !== 'inline',
-      'w-40': displayMode === 'inline',
-      'ba b--light-gray pa1': showBorders
+      'w-40': displayMode === 'inline'
     })
 
     const informationClasses = classNames('vtex-product-summary__informations', {
@@ -229,10 +232,15 @@ class ProductSummary extends Component {
         onMouseLeave={this.handleMouseLeave}
       >
         <div className={elementClasses}>
-          <Link
+          <div className='fr pt7 mt8'>
+            {deleteButton && (<div className="bottom-0 right-0">
+              {deleteButton}
+            </div>)}
+          </div>
+          <Link 
             className={linkClasses}
             page={'store/product'}
-            params={{ slug: path(['linkText'], product) }}
+            params={{ slug: path(['linkText'], product) }}            
           >
             <div className={imageContainerClasses}>
               {path(['sku', 'image', 'imageUrl'], product)
@@ -259,11 +267,8 @@ class ProductSummary extends Component {
                   labelSellingPrice={labelSellingPrice}
                 />
               </div>
-
             </div>
-            {deleteButton && <div className='fr bottom-0'>
-              {deleteButton}
-            </div>}
+
           </Link>
 
           <div className={buyButtonClasses}>
