@@ -32,7 +32,7 @@ class ProductSummary extends Component {
     /** Set installments' visibility */
     showInstallments: PropTypes.bool,
     /** Set the borders product's visibility */
-    showBorders: PropTypes.bool, 
+    showBorders: PropTypes.bool,
     /** Set the discount badge's visibility */
     showBadge: PropTypes.bool,
     /** Text of selling Price's label */
@@ -211,7 +211,7 @@ class ProductSummary extends Component {
     const imageContainerClasses = classNames('vtex-product-summary__image-container db', {
       'w-100 center': displayMode !== 'inline',
       'w-40': displayMode === 'inline',
-      'ba b--gray pa1' : showBorders
+      'ba b--light-gray pa1': showBorders
     })
 
     const informationClasses = classNames('vtex-product-summary__informations', {
@@ -219,7 +219,7 @@ class ProductSummary extends Component {
     })
 
     const elementClasses = classNames('pointer pa2', {
-      'ba b--gray ma2' : showBorders
+      'ba b--light-gray ma2': showBorders
     })
 
     return (
@@ -259,8 +259,13 @@ class ProductSummary extends Component {
                   labelSellingPrice={labelSellingPrice}
                 />
               </div>
+
             </div>
+            {deleteButton && <div className='fr bottom-0'>
+              {deleteButton}
+            </div>}
           </Link>
+
           <div className={buyButtonClasses}>
             {(showButtonOnHover || showBuyButton) && (
               <div className="vtex-product-summary__buy-button center mw-100">
@@ -284,11 +289,10 @@ class ProductSummary extends Component {
               </div>
             )}
           </div>
-          <div className="fr">
-            {deleteButton}
-          </div>
+
         </div>
       </div>
+
     )
   }
 }
