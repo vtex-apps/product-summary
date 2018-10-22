@@ -64,6 +64,7 @@ class ProductSummary extends Component {
       'small',
       'inline',
     ]),
+    actionOnClick: PropTypes.func,
   }
 
   static defaultProps = {
@@ -166,11 +167,9 @@ class ProductSummary extends Component {
       isOneClickBuy,
       product,
       displayMode,
-      onActionClick,
+      actionOnClick,
       runtime: { hints: { mobile } },
     } = this.props
-
- 
 
     const showButtonOnHover = this.props.showButtonOnHover && !mobile
     const showBuyButton =
@@ -214,7 +213,9 @@ class ProductSummary extends Component {
 
     const imageContainerClasses = classNames('vtex-product-summary__image-container db', {
       'w-100 center': displayMode !== 'inline',
-      'w-40': displayMode === 'inline'
+      'w-40': displayMode === 'inline',
+      'ma2': showBorders
+
     })
 
     const informationClasses = classNames('vtex-product-summary__informations', {
@@ -232,15 +233,16 @@ class ProductSummary extends Component {
         onMouseLeave={this.handleMouseLeave}
       >
         <div className={elementClasses}>
-          <div className='fr pt7 mt8'>
-            {deleteButton && (<div className="bottom-0 right-0">
+          <div className='fr pt7 mt7 bottom-0 right-0'>
+            {deleteButton && (<div >
               {deleteButton}
             </div>)}
           </div>
           <Link 
             className={linkClasses}
             page={'store/product'}
-            params={{ slug: path(['linkText'], product) }}            
+            params={{ slug: path(['linkText'], product) }}  
+            onClick={actionOnClick}          
           >
             <div className={imageContainerClasses}>
               {path(['sku', 'image', 'imageUrl'], product)
