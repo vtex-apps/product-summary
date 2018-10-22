@@ -64,6 +64,7 @@ class ProductSummary extends Component {
       'small',
       'inline',
     ]),
+    /** Define a function that is executed when a product is clicked */
     actionOnClick: PropTypes.func,
   }
 
@@ -233,7 +234,7 @@ class ProductSummary extends Component {
         onMouseLeave={this.handleMouseLeave}
       >
         <div className={elementClasses}>
-          <div className='fr pt7 mt7 bottom-0 right-0'>
+          <div className='fr pt7 mt8 bottom-0 right-0 top-0'>
             {deleteButton && (<div >
               {deleteButton}
             </div>)}
