@@ -39,8 +39,6 @@ class ProductSummary extends Component {
     labelSellingPrice: PropTypes.string,
     /** Text shown on badge */
     badgeText: PropTypes.string,
-    /** Custom delete button component */
-    deleteButton: PropTypes.element,
     /** Custom buy button text */
     buyButtonText: PropTypes.string,
     /** Hides the buy button completely . If active, the button will not be shown in any condition */
@@ -158,7 +156,6 @@ class ProductSummary extends Component {
   render() {
     const {
       showBorders,
-      deleteButton,
       showListPrice,
       showLabels,
       showInstallments,
@@ -234,11 +231,7 @@ class ProductSummary extends Component {
         onMouseLeave={this.handleMouseLeave}
       >
         <div className={elementClasses}>
-          <div className='fr pt7 mt8 bottom-0 right-0 top-0'>
-            {deleteButton && (<div >
-              {deleteButton}
-            </div>)}
-          </div>
+          
           <Link 
             className={linkClasses}
             page={'store/product'}
