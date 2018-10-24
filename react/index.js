@@ -230,8 +230,7 @@ class ProductSummary extends Component {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <div className={elementClasses}>
-          
+        <div className={elementClasses}>        
           <Link 
             className={linkClasses}
             page={'store/product'}
@@ -264,11 +263,13 @@ class ProductSummary extends Component {
                 />
               </div>
             </div>
-
           </Link>
-
           <div className={buyButtonClasses}>
+<<<<<<< HEAD
             {(showButtonOnHover || showBuyButton) && (
+=======
+            {showButtonOnHover || showBuyButton && (
+>>>>>>> Remove empty rows
               <div className="vtex-product-summary__buy-button center mw-100">
                 {showBuyButton &&
                   <BuyButton
@@ -290,10 +291,8 @@ class ProductSummary extends Component {
               </div>
             )}
           </div>
-
         </div>
       </div>
-
     )
   }
 }
