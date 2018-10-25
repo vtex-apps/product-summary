@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Add the `showBorders` property to the schema.
+- Add optional function that runs when a product is clicked
 
 ## [1.5.1] - 2018-11-26
 ### Fixed
@@ -17,7 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.4.1] - 2018-10-25
 ### Fixed
-- Added sellerId in `BuyButton` component. 
+- Add sellerId in `BuyButton` component. 
 
 ## [1.4.0] - 2018-10-02
 ### Added
@@ -72,7 +75,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.8.1] - 2018-6-21
 ### Added
 - Prop to set whether or not to show the collection badges.
-
 
 ### Fixed
 - Error when `productClusters` were `undefined`.
