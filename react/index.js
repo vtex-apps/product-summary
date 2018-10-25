@@ -256,7 +256,7 @@ class ProductSummary extends Component {
                         {
                           skuId: path(['sku', 'itemId'], product),
                           quantity: 1,
-                          seller: 1,
+                          seller: path(['sku', 'seller', 'sellerId'], product),
                         },
                       ]
                     }

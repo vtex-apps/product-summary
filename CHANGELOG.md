@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.4.1] - 2018-10-25
+### Fixed
+- Added sellerId in `BuyButton` component.
+
 ## [1.4.0] - 2018-10-02
 ### Added
 - New display modes of the summary (small and inline).
