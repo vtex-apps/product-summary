@@ -13,6 +13,7 @@ import ProductPrice from 'vtex.store-components/ProductPrice'
 
 import { productShape } from './propTypes'
 import Image from './components/Image'
+import Heart from './components/Heart'
 
 import './global.css'
 
@@ -213,6 +214,9 @@ class ProductSummary extends Component {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
+                <div className="z-9999">
+                <Heart/>
+                </div>
         <div className="pointer pa2">
           <Link
             className={linkClasses}
