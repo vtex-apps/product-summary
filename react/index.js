@@ -10,10 +10,10 @@ import CollectionBadges from 'vtex.store-components/CollectionBadges'
 import DiscountBadge from 'vtex.store-components/DiscountBadge'
 import ProductName from 'vtex.store-components/ProductName'
 import ProductPrice from 'vtex.store-components/ProductPrice'
+import AddProduct from 'vtex.wishlist/AddProduct'
 
 import { productShape } from './propTypes'
 import Image from './components/Image'
-import Heart from './components/Heart'
 
 import './global.css'
 
@@ -50,15 +50,11 @@ class ProductSummary extends Component {
     runtime: PropTypes.shape({
       hints: PropTypes.shape({
         /** Indicates if is on a mobile device */
-        mobile: PropTypes.bool,
-      }),
+        mobile: PropTypes.bool
+      })
     }),
     /** Display mode of the summary used in the search result */
-    displayMode: PropTypes.oneOf([
-      'normal',
-      'small',
-      'inline',
-    ]),
+    displayMode: PropTypes.oneOf(['normal', 'small', 'inline'])
   }
 
   static defaultProps = {
@@ -73,13 +69,13 @@ class ProductSummary extends Component {
     name: {
       showProductReference: false,
       showBrandName: false,
-      showSku: false,
+      showSku: false
     },
-    displayMode: 'normal',
+    displayMode: 'normal'
   }
 
   state = {
-    isHovering: false,
+    isHovering: false
   }
 
   handleMouseLeave = () => {
@@ -100,12 +96,16 @@ class ProductSummary extends Component {
       productClusters,
       productName: name,
       sku: {
-        image: { imageUrl },
-      },
+        image: { imageUrl }
+      }
     } = product
 
     let img = (
-      <Image className="vtex-product-summary__image" alt={name} src={imageUrl} />
+      <Image
+        className="vtex-product-summary__image"
+        alt={name}
+        src={imageUrl}
+      />
     )
 
     if (showBadge) {
@@ -137,7 +137,7 @@ class ProductSummary extends Component {
     <ContentLoader
       style={{
         width: '100%',
-        height: '100%',
+        height: '100%'
       }}
       height="100%"
       width="100%"
@@ -156,57 +156,75 @@ class ProductSummary extends Component {
       isOneClickBuy,
       product,
       displayMode,
-      runtime: { hints: { mobile } },
+      runtime: {
+        hints: { mobile }
+      }
     } = this.props
 
     const showButtonOnHover = this.props.showButtonOnHover && !mobile
     const showBuyButton =
       !hideBuyButton && (!showButtonOnHover || this.state.isHovering)
-    const quantity = path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) || 0
-    const isAvailable = (quantity > 0)
+    const quantity =
+      path(
+        ['sku', 'seller', 'commertialOffer', 'AvailableQuantity'],
+        product
+      ) || 0
+    const isAvailable = quantity > 0
 
-    const classes = classNames('vtex-product-summary overflow-hidden br3 w-100 h-100', {
-      'flex flex-column justify-between center tc': displayMode !== 'inline',
-      'vtex-product-summary--normal': displayMode === 'normal',
-      'vtex-product-summary--small': displayMode === 'small',
-      'vtex-product-summary--inline': displayMode === 'inline',
-    })
+    const classes = classNames(
+      'vtex-product-summary overflow-hidden br3 w-100 h-100',
+      {
+        'flex flex-column justify-between center tc': displayMode !== 'inline',
+        'vtex-product-summary--normal': displayMode === 'normal',
+        'vtex-product-summary--small': displayMode === 'small',
+        'vtex-product-summary--inline': displayMode === 'inline'
+      }
+    )
 
     const nameClasses = classNames(
       'vtex-product-summary__name-container flex near-black',
       {
         'items-center justify-center': displayMode !== 'inline',
         'justify-left': displayMode === 'inline',
-        'h2': displayMode === 'small',
+        h2: displayMode === 'small',
         'f7 pv2': displayMode !== 'normal',
-        'pv4 h3': displayMode === 'normal',
+        'pv4 h3': displayMode === 'normal'
       }
     )
 
-    const priceClasses = classNames('vtex-product-summary__price-container flex flex-column pv2 h3', {
-      'justify-center items-center': displayMode !== 'inline',
-    })
+    const priceClasses = classNames(
+      'vtex-product-summary__price-container flex flex-column pv2 h3',
+      {
+        'justify-center items-center': displayMode !== 'inline'
+      }
+    )
 
     const buyButtonClasses = classNames(
       'vtex-product-summary__buy-button-container pv3 w-100',
       {
-        'dn': displayMode === 'small' || displayMode === 'inline',
-        'dn db-ns': displayMode === 'normal',
+        dn: displayMode === 'small' || displayMode === 'inline',
+        'dn db-ns': displayMode === 'normal'
       }
     )
 
     const linkClasses = classNames('clear-link flex', {
-      'flex-column': displayMode !== 'inline',
+      'flex-column': displayMode !== 'inline'
     })
 
-    const imageContainerClasses = classNames('vtex-product-summary__image-container db', {
-      'w-100 center': displayMode !== 'inline',
-      'w-40': displayMode === 'inline',
-    })
+    const imageContainerClasses = classNames(
+      'vtex-product-summary__image-container db',
+      {
+        'w-100 center': displayMode !== 'inline',
+        'w-40': displayMode === 'inline'
+      }
+    )
 
-    const informationClasses = classNames('vtex-product-summary__informations', {
-      'w-50 pv3 ph4': displayMode === 'inline',
-    })
+    const informationClasses = classNames(
+      'vtex-product-summary__informations',
+      {
+        'w-50 pv3 ph4': displayMode === 'inline'
+      }
+    )
 
     return (
       <div
@@ -214,9 +232,7 @@ class ProductSummary extends Component {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-                <div className="z-9999">
-                <Heart/>
-                </div>
+        <AddProduct/>
         <div className="pointer pa2">
           <Link
             className={linkClasses}
@@ -250,27 +266,28 @@ class ProductSummary extends Component {
             </div>
           </Link>
           <div className={buyButtonClasses}>
-            {showButtonOnHover || showBuyButton && (
-              <div className="vtex-product-summary__buy-button center mw-100">
-                {showBuyButton &&
-                  <BuyButton
-                    available={isAvailable}
-                    skuItems={
-                      path(['sku', 'itemId'], product) && [
-                        {
-                          skuId: path(['sku', 'itemId'], product),
-                          quantity: 1,
-                          seller: path(['sku', 'seller', 'sellerId'], product),
-                        },
-                      ]
-                    }
-                    isOneClickBuy={isOneClickBuy}
-                  >
-                    {buyButtonText || <FormattedMessage id="button-label" />}
-                  </BuyButton>
-                }
-              </div>
-            )}
+            {showButtonOnHover ||
+              (showBuyButton && (
+                <div className="vtex-product-summary__buy-button center mw-100">
+                  {showBuyButton && (
+                    <BuyButton
+                      available={isAvailable}
+                      skuItems={
+                        path(['sku', 'itemId'], product) && [
+                          {
+                            skuId: path(['sku', 'itemId'], product),
+                            quantity: 1,
+                            seller: path(['sku', 'seller', 'sellerId'], product)
+                          }
+                        ]
+                      }
+                      isOneClickBuy={isOneClickBuy}
+                    >
+                      {buyButtonText || <FormattedMessage id="button-label" />}
+                    </BuyButton>
+                  )}
+                </div>
+              ))}
           </div>
         </div>
       </div>
@@ -287,43 +304,43 @@ const defaultSchema = {
       type: 'boolean',
       title: 'editor.productSummary.isOneClickBuy.title',
       default: false,
-      isLayout: true,
+      isLayout: true
     },
     showBadge: {
       type: 'boolean',
       title: 'editor.productSummary.showBadge.title',
       default: true,
-      isLayout: true,
+      isLayout: true
     },
     badgeText: {
       type: 'string',
       title: 'editor.productSummary.badgeText.title',
-      isLayout: false,
+      isLayout: false
     },
     buyButtonText: {
       type: 'string',
       title: 'editor.productSummary.buyButtonText.title',
-      isLayout: false,
+      isLayout: false
     },
     hideBuyButton: {
       type: 'boolean',
       title: 'editor.productSummary.hideBuyButton.title',
       default: false,
-      isLayout: true,
+      isLayout: true
     },
     showButtonOnHover: {
       type: 'boolean',
       title: 'editor.productSummary.showButtonOnHover.title',
-      isLayout: true,
+      isLayout: true
     },
     showCollections: {
       type: 'boolean',
       title: 'editor.productSummary.showCollections.title',
       default: false,
-      isLayout: true,
+      isLayout: true
     },
-    ...ProductPrice.schema.properties,
-  },
+    ...ProductPrice.schema.properties
+  }
 }
 
 ProductSummary.getSchema = ({ hideBuyButton }) => {
@@ -334,8 +351,8 @@ ProductSummary.getSchema = ({ hideBuyButton }) => {
     properties: {
       ...rest,
       ...(hideBuyButton ? {} : { showButtonOnHover }),
-      name: nameSchema,
-    },
+      name: nameSchema
+    }
   }
 }
 

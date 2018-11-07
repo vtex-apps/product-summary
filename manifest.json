@@ -19,6 +19,7 @@
     "postreleasy": "vtex publish --verbose"
   },
   "dependencies": {
-    "vtex.store-components": "2.x"
+    "vtex.store-components": "2.x",
+    "vtex.wishlist": "0.x"
   }
 }
