@@ -33,6 +33,8 @@ class ProductSummary extends Component {
     showInstallments: PropTypes.bool,
     /** Set the discount badge's visibility */
     showBadge: PropTypes.bool,
+    /** Text of selling Price's label */
+    labelSellingPrice: PropTypes.string,
     /** Text shown on badge */
     badgeText: PropTypes.string,
     /** Custom buy button text */
@@ -150,6 +152,7 @@ class ProductSummary extends Component {
       showListPrice,
       showLabels,
       showInstallments,
+      labelSellingPrice,
       buyButtonText,
       hideBuyButton,
       isOneClickBuy,
@@ -241,6 +244,7 @@ class ProductSummary extends Component {
                   showListPrice={showListPrice}
                   showLabels={showLabels}
                   showInstallments={showInstallments}
+                  labelSellingPrice={labelSellingPrice}
                 />
               </div>
             </div>
