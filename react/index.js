@@ -180,7 +180,7 @@ class ProductSummary extends Component {
         'items-center justify-center': displayMode !== 'inline',
         'justify-left': displayMode === 'inline',
         'h2': displayMode === 'small',
-        'f7 pv2': displayMode !== 'normal',
+        't-mini pv2': displayMode !== 'normal',
         'pv4 h3': displayMode === 'normal',
       }
     )
