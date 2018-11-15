@@ -175,7 +175,7 @@ class ProductSummary extends Component {
     })
 
     const nameClasses = classNames(
-      'vtex-product-summary__name-container flex near-black',
+      'vtex-product-summary__name-container flex c-on-base',
       {
         'items-center justify-center': displayMode !== 'inline',
         'justify-left': displayMode === 'inline',
