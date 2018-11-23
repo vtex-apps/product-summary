@@ -217,11 +217,11 @@ class ProductSummary extends Component {
     })
 
     const informationClasses = classNames('vtex-product-summary__informations', {
-      'w-50 pv3 ph4': displayMode === 'inline'
+      'w-70 pv3 ph4': displayMode === 'inline'
     })
 
-    const elementClasses = classNames('pa2', {
-      'bb b--light-gray ma2 content-center ': showBorders
+    const elementClasses = classNames('pointer pa2', {
+      'bb b--light-gray ma2': showBorders
     })
 
     return (
