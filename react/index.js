@@ -250,7 +250,7 @@ class ProductSummary extends Component {
             </div>
           </Link>
           <div className={buyButtonClasses}>
-            {showButtonOnHover || showBuyButton && (
+            {(showButtonOnHover || showBuyButton) && (
               <div className="vtex-product-summary__buy-button center mw-100">
                 {showBuyButton &&
                   <BuyButton
