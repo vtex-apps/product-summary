@@ -220,8 +220,8 @@ class ProductSummary extends Component {
       'w-50 pv3 ph4': displayMode === 'inline'
     })
 
-    const elementClasses = classNames('pointer pa2', {
-      'ba b--light-gray ma2': showBorders
+    const elementClasses = classNames('pa2', {
+      'bb b--light-gray ma2 content-center ': showBorders
     })
 
     return (
