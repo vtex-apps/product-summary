@@ -220,7 +220,7 @@ class ProductSummary extends Component {
     })
 
     const elementClasses = classNames('pointer pa2', {
-      'bb b--light-gray ma2': showBorders
+      'bb b--muted-4 ma2': showBorders
     })
 
     return (
