@@ -62,7 +62,7 @@ class ProductSummary extends Component {
       'small',
       'inline',
     ]),
-    /** Define a function that is executed when a product is clicked */
+    /** Function that is executed when a product is clicked */
     actionOnClick: PropTypes.func,
   }
 
