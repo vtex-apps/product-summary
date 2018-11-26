@@ -81,7 +81,7 @@ class ProductSummary extends Component {
       showSku: false,
     },
     displayMode: 'normal',
-    showBorders: false
+    showBorders: false,
   }
 
   state = {
@@ -213,7 +213,6 @@ class ProductSummary extends Component {
     const imageContainerClasses = classNames('vtex-product-summary__image-container db', {
       'w-100 center': displayMode !== 'inline',
       'w-40': displayMode === 'inline',
-
     })
 
     const informationClasses = classNames('vtex-product-summary__informations', {
