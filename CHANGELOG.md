@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
-- Buy button dont showing on hover's action when this option has active on frontstore.
+- Buy button not showing on hover's action when this option is active on frontstore.
 
 ## [1.5.0] - 2018-11-07
 ### Added
