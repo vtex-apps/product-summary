@@ -265,11 +265,7 @@ class ProductSummary extends Component {
             </div>
           </Link>
           <div className={buyButtonClasses}>
-<<<<<<< HEAD
-            {(showButtonOnHover || showBuyButton) && (
-=======
-            {showButtonOnHover || showBuyButton && (
->>>>>>> Remove empty rows
+            {(showButtonOnHover || showBuyButton) &&
               <div className="vtex-product-summary__buy-button center mw-100">
                 {showBuyButton &&
                   <BuyButton
@@ -289,7 +285,7 @@ class ProductSummary extends Component {
                   </BuyButton>
                 }
               </div>
-            )}
+            }
           </div>
         </div>
       </div>
