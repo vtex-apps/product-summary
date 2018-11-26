@@ -213,7 +213,6 @@ class ProductSummary extends Component {
     const imageContainerClasses = classNames('vtex-product-summary__image-container db', {
       'w-100 center': displayMode !== 'inline',
       'w-40': displayMode === 'inline',
-      'ma2': showBorders
 
     })
 
