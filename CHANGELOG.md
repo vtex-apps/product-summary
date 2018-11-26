@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - Add the `showBorders` property to the schema.
-- Add optional function that runs when a product is clicked
+- Add optional function that runs when a product is clicked.
 
 ## [1.5.1] - 2018-11-26
 ### Fixed
