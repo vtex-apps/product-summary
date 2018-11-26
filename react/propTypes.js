@@ -6,7 +6,7 @@ export const productShape = PropTypes.shape({
   /** Product's name */
   productName: PropTypes.string.isRequired,
   /** Product's brand */
-  brand: PropTypes.string.isRequired,
+  brand: PropTypes.string,
   /** Product's SKU */
   sku: PropTypes.shape({
     /** SKU name */
@@ -18,7 +18,7 @@ export const productShape = PropTypes.shape({
       /** Image URL */
       imageUrl: PropTypes.string.isRequired,
       /** Image tag as string */
-      imageTag: PropTypes.string.isRequired,
+      imageTag: PropTypes.string,
     }).isRequired,
     /** SKU seller */
     seller: PropTypes.shape({
