@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.5.1] - 2018-11-26
+### Fixed
+- Buy button not showing on hover's action when this option is active on frontstore.
+
 ## [1.5.0] - 2018-11-07
 ### Added
 - Export the `labelSellingPrice` of ProductPrice through the props.
