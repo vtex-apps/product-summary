@@ -152,7 +152,7 @@ class ProductSummary extends Component {
     </ContentLoader>
   )
 
-  
+
   render() {
     const {
       showBorders,
@@ -186,15 +186,16 @@ class ProductSummary extends Component {
       'vtex-product-summary__name-container flex near-black',
       {
         'items-center justify-center': displayMode !== 'inline',
-        'justify-left': displayMode === 'inline',
+        'justify-left w-100': displayMode === 'inline',
         'h2': displayMode === 'small',
         'f7 pv2': displayMode !== 'normal',
         'pv4 h3': displayMode === 'normal',
       }
     )
 
-    const priceClasses = classNames('vtex-product-summary__price-container flex flex-column pv2 h3', {
+    const priceClasses = classNames('vtex-product-summary__price-container flex flex-column pv2', {
       'justify-center items-center': displayMode !== 'inline',
+      'h3': !showBorders,
     })
 
     const buyButtonClasses = classNames(
@@ -217,7 +218,7 @@ class ProductSummary extends Component {
     })
 
     const informationClasses = classNames('vtex-product-summary__informations', {
-      'w-70 pv3 ph4': displayMode === 'inline'
+      'w-80 pv3 pl3 pr3 h-100': displayMode === 'inline'
     })
 
     const elementClasses = classNames('pointer pa2', {
@@ -230,12 +231,12 @@ class ProductSummary extends Component {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <div className={elementClasses}>        
-          <Link 
+        <div className={elementClasses}>
+          <Link
             className={linkClasses}
             page={'store/product'}
-            params={{ slug: path(['linkText'], product) }}  
-            onClick={actionOnClick}          
+            params={{ slug: path(['linkText'], product) }}
+            onClick={actionOnClick}
           >
             <div className={imageContainerClasses}>
               {path(['sku', 'image', 'imageUrl'], product)
