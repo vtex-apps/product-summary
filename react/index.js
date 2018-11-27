@@ -223,11 +223,7 @@ class ProductSummary extends Component {
       'bb b--muted-4 ma2': showBorders
     })
 
-    const getBuyButtonVisibility = () => {
-      return showBuyButton ? 'visible' : 'hidden' 
-    }
-
-    const style = { visibility: getBuyButtonVisibility() }
+    const style = { visibility: showBuyButton ? 'visible' : 'hidden' }
 
     return (
       <div
