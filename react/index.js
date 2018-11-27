@@ -304,7 +304,7 @@ class ProductSummary extends Component {
             <div className={imageContainerClasses}>
               {path(['sku', 'image', 'imageUrl'], product)
                 ? this.renderImage
-                : this.renderImageLoader()}
+                : this.renderImageLoader}
             </div>
             <div className={informationClasses}>
               {this.renderProductName}
