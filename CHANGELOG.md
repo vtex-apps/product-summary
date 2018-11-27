@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
-- Fix how buy button is rendered
+- Now, buy button doesn't move the product summary box when is hidden.
 
 ## [1.6.0] - 2018-11-26
 ### Added
