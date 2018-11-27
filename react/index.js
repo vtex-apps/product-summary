@@ -153,6 +153,48 @@ class ProductSummary extends Component {
     </ContentLoader>
   )
 
+  get renderProductPrice() {
+
+    const {
+      showListPrice,
+      showLabels,
+      showInstallments,
+      labelSellingPrice,
+      displayMode,
+      showBorders
+    } = this.props
+
+    const containerClasses = classNames('vtex-product-summary__price-container flex flex-column pv2', {
+      'justify-center items-center': displayMode !== 'inline',
+      'h3': !showBorders
+    })
+
+    return (
+      <div className={containerClasses}>
+        <ProductPrice
+          className="flex flex-column justify-around"
+          listPriceContainerClass="pv1 normal c-muted-2"
+          listPriceLabelClass="dib strike"
+          listPriceClass="dib ph2 strike t-small-ns"
+          sellingPriceContainerClass="pv1 b c-muted-1"
+          sellingPriceLabelClass="dib"
+          sellingPriceClass="dib ph2"
+          savingsContainerClass="c-muted-2"
+          savingsClass="dib"
+          interestRateClass="pl1"
+          installmentContainerClass="c-muted-2"
+          listPrice={path(['ListPrice'], this.commertialOffer)}
+          sellingPrice={path(['Price'], this.commertialOffer)}
+          installments={path(['Installments'], this.commertialOffer)}
+          showListPrice={showListPrice}
+          showLabels={showLabels}
+          showInstallments={showInstallments}
+          labelSellingPrice={labelSellingPrice}
+        />
+      </div>
+    )
+  }
+
   get renderProductName() {
     const {
       displayMode,
@@ -195,10 +237,6 @@ class ProductSummary extends Component {
   render() {
     const {
       showBorders,
-      showListPrice,
-      showLabels,
-      showInstallments,
-      labelSellingPrice,
       buyButtonText,
       hideBuyButton,
       isOneClickBuy,
@@ -219,11 +257,6 @@ class ProductSummary extends Component {
       'vtex-product-summary--normal': displayMode === 'normal',
       'vtex-product-summary--small': displayMode === 'small',
       'vtex-product-summary--inline': displayMode === 'inline',
-    })
-
-    const priceClasses = classNames('vtex-product-summary__price-container flex flex-column pv2', {
-      'justify-center items-center': displayMode !== 'inline',
-      'h3': !showBorders,
     })
 
     const buyButtonClasses = classNames(
@@ -273,17 +306,7 @@ class ProductSummary extends Component {
             </div>
             <div className={informationClasses}>
               {this.renderProductName}
-              <div className={priceClasses}>
-                <ProductPrice
-                  listPrice={path(['ListPrice'], this.commertialOffer)}
-                  sellingPrice={path(['Price'], this.commertialOffer)}
-                  installments={path(['Installments'], this.commertialOffer)}
-                  showListPrice={showListPrice}
-                  showLabels={showLabels}
-                  showInstallments={showInstallments}
-                  labelSellingPrice={labelSellingPrice}
-                />
-              </div>
+              {this.renderProductPrice}
             </div>
           </Link>
           <div className={buyButtonClasses}>
