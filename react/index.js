@@ -153,6 +153,44 @@ class ProductSummary extends Component {
     </ContentLoader>
   )
 
+  get renderProductName() {
+    const {
+      displayMode,
+      product,
+      name: showFieldsProps
+    } = this.props
+
+    const containerClasses = classNames(
+      'vtex-product-summary__name-container flex',
+      {
+        'items-center justify-center': displayMode !== 'inline',
+        'justify-left w-100': displayMode === 'inline',
+        'h2': displayMode === 'small',
+        't-mini pv2': displayMode !== 'normal',
+        'pv4 h3': displayMode === 'normal',
+      }
+    )
+
+    const productName = path(['productName'], product)
+    const skuName = path(['sku', 'name'], product)
+    const brandName = path(['brand'], product)
+
+    return (
+      <div className={containerClasses}>
+        <ProductName
+          className="vtex-product-name overflow-hidden c-on-base"
+          brandNameClass="t-body"
+          skuNameClass="t-small"
+          loaderClass="pt5 overflow-hidden"
+          name={productName}
+          skuName={skuName}
+          brandName={brandName}
+          {...showFieldsProps}
+        />
+      </div>
+    );
+  }
+
 
   render() {
     const {
@@ -182,17 +220,6 @@ class ProductSummary extends Component {
       'vtex-product-summary--small': displayMode === 'small',
       'vtex-product-summary--inline': displayMode === 'inline',
     })
-
-    const nameClasses = classNames(
-      'vtex-product-summary__name-container flex near-black',
-      {
-        'items-center justify-center': displayMode !== 'inline',
-        'justify-left w-100': displayMode === 'inline',
-        'h2': displayMode === 'small',
-        'f7 pv2': displayMode !== 'normal',
-        'pv4 h3': displayMode === 'normal',
-      }
-    )
 
     const priceClasses = classNames('vtex-product-summary__price-container flex flex-column pv2', {
       'justify-center items-center': displayMode !== 'inline',
@@ -245,14 +272,7 @@ class ProductSummary extends Component {
                 : this.renderImageLoader()}
             </div>
             <div className={informationClasses}>
-              <div className={nameClasses}>
-                <ProductName
-                  name={path(['productName'], product)}
-                  skuName={path(['sku', 'name'], product)}
-                  brandName={path(['brand'], product)}
-                  {...this.props.name}
-                />
-              </div>
+              {this.renderProductName}
               <div className={priceClasses}>
                 <ProductPrice
                   listPrice={path(['ListPrice'], this.commertialOffer)}

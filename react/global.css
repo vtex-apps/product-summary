@@ -1,12 +1,6 @@
-.vtex-product-summary {
-  -webkit-transition: box-shadow 0.25s; /* Safari */
-  transition: box-shadow 0.25s;
-}
-
 .vtex-product-summary--normal {
   width: 281px;
 }
-
 
 .vtex-product-summary__buy-button {
   width: 140px;
