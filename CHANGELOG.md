@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.6.2] - 2018-11-27
+### Fixed
+- Fix svg warning caused by the `ContentLoader`.
+
 ## [1.6.1] - 2018-11-27
 ### Fixed
 - Now, buy button doesn't move the product summary box when is hidden.

@@ -145,8 +145,9 @@ class ProductSummary extends Component {
         width: '100%',
         height: '100%',
       }}
-      height="100%"
-      width="100%"
+      width={100}
+      height={56}
+      preserveAspectRatio="xMinYMin meet"
     >
       <rect width="100%" height="100%" />
     </ContentLoader>
