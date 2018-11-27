@@ -183,7 +183,7 @@ class ProductSummary extends Component {
           sellingPriceClass="dib ph2"
           savingsContainerClass="c-muted-2"
           savingsClass="dib"
-          interestRateClass="pl1"
+          interestRateClass="dib pl2"
           installmentContainerClass="c-muted-2"
           listPrice={path(['ListPrice'], this.commertialOffer)}
           sellingPrice={path(['Price'], this.commertialOffer)}
