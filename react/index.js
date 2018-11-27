@@ -100,7 +100,7 @@ class ProductSummary extends Component {
     return path(['sku', 'seller', 'commertialOffer'], this.props.product)
   }
 
-  renderImage = () => {
+  get renderImage() {
     const { product, showBadge, badgeText, showCollections } = this.props
     const {
       productClusters,
@@ -139,19 +139,21 @@ class ProductSummary extends Component {
     return img
   }
 
-  renderImageLoader = () => (
-    <ContentLoader
-      style={{
-        width: '100%',
-        height: '100%',
-      }}
-      width={100}
-      height={56}
-      preserveAspectRatio="xMinYMin meet"
-    >
-      <rect width="100%" height="100%" />
-    </ContentLoader>
-  )
+  get renderImageLoader() {
+    return (
+      <ContentLoader
+        style={{
+          width: '100%',
+          height: '100%',
+        }}
+        width={100}
+        height={56}
+        preserveAspectRatio="xMinYMin meet"
+      >
+        <rect width="100%" height="100%" />
+      </ContentLoader>
+    )
+  }
 
   get renderProductPrice() {
 
@@ -301,7 +303,7 @@ class ProductSummary extends Component {
           >
             <div className={imageContainerClasses}>
               {path(['sku', 'image', 'imageUrl'], product)
-                ? this.renderImage()
+                ? this.renderImage
                 : this.renderImageLoader()}
             </div>
             <div className={informationClasses}>
