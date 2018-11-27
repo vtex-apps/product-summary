@@ -224,7 +224,7 @@ class ProductSummary extends Component {
     })
 
     const getBuyButtonVisibility = () => {
-      return !((showButtonOnHover || showBuyButton) && showBuyButton) ? 'hidden' : 'visible'
+      return showBuyButton ? 'visible' : 'hidden' 
     }
 
     const style = { visibility: getBuyButtonVisibility() }
