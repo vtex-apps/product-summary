@@ -223,6 +223,8 @@ class ProductSummary extends Component {
       'bb b--muted-4 ma2': showBorders
     })
 
+    const style = { visibility: showBuyButton ? 'visible' : 'hidden' }
+
     return (
       <div
         className={classes}
@@ -264,27 +266,23 @@ class ProductSummary extends Component {
             </div>
           </Link>
           <div className={buyButtonClasses}>
-            {(showButtonOnHover || showBuyButton) &&
-              <div className="vtex-product-summary__buy-button center mw-100">
-                {showBuyButton &&
-                  <BuyButton
-                    available={isAvailable}
-                    skuItems={
-                      path(['sku', 'itemId'], product) && [
-                        {
-                          skuId: path(['sku', 'itemId'], product),
-                          quantity: 1,
-                          seller: path(['sku', 'seller', 'sellerId'], product),
-                        },
-                      ]
-                    }
-                    isOneClickBuy={isOneClickBuy}
-                  >
-                    {buyButtonText || <FormattedMessage id="button-label" />}
-                  </BuyButton>
+            <div style={style} className="vtex-product-summary__buy-button center mw-100">
+              <BuyButton
+                available={isAvailable}
+                skuItems={
+                  path(['sku', 'itemId'], product) && [
+                    {
+                      skuId: path(['sku', 'itemId'], product),
+                      quantity: 1,
+                      seller: path(['sku', 'seller', 'sellerId'], product),
+                    },
+                  ]
                 }
-              </div>
-            }
+                isOneClickBuy={isOneClickBuy}
+              >
+                {buyButtonText || <FormattedMessage id="button-label" />}
+              </BuyButton>
+            </div>
           </div>
         </div>
       </div>

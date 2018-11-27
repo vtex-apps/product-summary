@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.6.1] - 2018-11-27
+### Fixed
+- Now, buy button doesn't move the product summary box when is hidden.
+
 ## [1.6.0] - 2018-11-26
 ### Added
 - Add the `showBorders` property to the schema.
