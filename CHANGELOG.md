@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - Fix how buy button is rendered
 
+## [1.6.0] - 2018-11-26
+### Added
+- Add the `showBorders` property to the schema.
+- Add optional function that runs when a product is clicked.
+
 ## [1.5.1] - 2018-11-26
 ### Fixed
 - Buy button not showing on hover's action when this option is active on frontstore.
@@ -19,7 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.4.1] - 2018-10-25
 ### Fixed
-- Added sellerId in `BuyButton` component.
+- Add sellerId in `BuyButton` component. 
 
 ## [1.4.0] - 2018-10-02
 ### Added
