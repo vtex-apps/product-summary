@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Changed
-- Update `store-components` to `3.x`.
+- Add Design Tokens on Product Summary.
 
 ## [1.6.2] - 2018-11-27
 ### Fixed
