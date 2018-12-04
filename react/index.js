@@ -168,7 +168,7 @@ class ProductSummary extends Component {
 
     const containerClasses = classNames('vtex-product-summary__price-container flex flex-column pv2', {
       'justify-center items-center': displayMode !== 'inline',
-      'h3': !showBorders
+      'pv2': !showBorders
     })
 
     return (
@@ -178,9 +178,9 @@ class ProductSummary extends Component {
           listPriceContainerClass="pv1 normal c-muted-2"
           listPriceLabelClass="dib strike"
           listPriceClass="dib ph2 strike t-small-ns"
-          sellingPriceContainerClass="pv1 b c-muted-1"
+          sellingPriceContainerClass="pt1 pb3 c-muted-1"
           sellingPriceLabelClass="dib"
-          sellingPriceClass="dib ph2"
+          sellingPriceClass="dib ph2 t-heading-4"
           savingsContainerClass="c-muted-2"
           savingsClass="dib"
           interestRateClass="dib pl2"
@@ -209,9 +209,9 @@ class ProductSummary extends Component {
       {
         'items-center justify-center': displayMode !== 'inline',
         'justify-left w-100': displayMode === 'inline',
-        'h2': displayMode === 'small',
+        'pt5 pb3': displayMode === 'small',
         't-mini pv2': displayMode !== 'normal',
-        'pv4 h3': displayMode === 'normal',
+        'pt7 pb4': displayMode === 'normal',
       }
     )
 
