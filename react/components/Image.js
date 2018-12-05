@@ -1,25 +1,23 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { withRuntimeContext } from 'render'
 
-const MOBILE_SIZE = 200
-const DESKTOP_SIZE = 500
-
+import withDimensions from './withDimensions'
 /** Image component with 1:1 aspect ratio */
+/** TODO use a generic approach to resize images in Dreamstore */
 class Image extends Component {
 
   resizeUrl = src => {
     //Check of src is already in a size defined by the client
-    const resized = /[1-9]+-(:?([1-9]+)|(auto))/
-    if (resized.exec(src)) {
+    const isWithMeasures = new RegExp(/[1-9]+-(:?([1-9]+)|(auto))/)
+    if (isWithMeasures.exec(src)) {
       return src
     }
 
-    const { runtime: { hints: { mobile } } } = this.props
+    const { width: deviceWidth } = this.props
 
     const imageId = src.slice(src.indexOf('/ids/')).split('/')[2]
-    const idSuffix = imageId + (mobile ? `-${MOBILE_SIZE}-auto` : `-${DESKTOP_SIZE}-auto`)
+    const idSuffix = `${imageId}-${deviceWidth}-auto`
 
     return src.replace(imageId, idSuffix)
   }
@@ -43,4 +41,4 @@ Image.propTypes = {
   className: PropTypes.string,
 }
 
-export default withRuntimeContext(Image)
+export default withDimensions(Image)
