@@ -235,31 +235,17 @@ class ProductSummary extends Component {
     );
   }
 
+  get renderBuyButton() {
 
-  render() {
     const {
-      showBorders,
-      buyButtonText,
-      hideBuyButton,
-      isOneClickBuy,
       product,
       displayMode,
-      actionOnClick,
+      hideBuyButton,
+      isOneClickBuy,
+      buyButtonText,
+      showButtonOnHover,
       runtime: { hints: { mobile } },
     } = this.props
-
-    const showButtonOnHover = this.props.showButtonOnHover && !mobile
-    const showBuyButton =
-      !hideBuyButton && (!showButtonOnHover || this.state.isHovering)
-    const quantity = path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) || 0
-    const isAvailable = (quantity > 0)
-
-    const classes = classNames('vtex-product-summary overflow-hidden br3 w-100 h-100', {
-      'flex flex-column justify-between center tc': displayMode !== 'inline',
-      'vtex-product-summary--normal': displayMode === 'normal',
-      'vtex-product-summary--small': displayMode === 'small',
-      'vtex-product-summary--inline': displayMode === 'inline',
-    })
 
     const buyButtonClasses = classNames(
       'vtex-product-summary__buy-button-container pv3 w-100',
@@ -268,30 +254,15 @@ class ProductSummary extends Component {
         'dn db-ns': displayMode === 'normal',
       }
     )
+    
+    const showBuyButton =  !showButtonOnHover || mobile || this.state.isHovering
+    const quantity = path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) || 0
+    const isAvailable = (quantity > 0)
 
-    const linkClasses = classNames('clear-link flex', {
-      'flex-column': displayMode !== 'inline',
-    })
-
-    const imageContainerClasses = classNames('vtex-product-summary__image-container db', {
-      'w-100 center': displayMode !== 'inline',
-      'w-40': displayMode === 'inline',
-    })
-
-    const informationClasses = classNames('vtex-product-summary__informations', {
-      'w-80 pv3 pl3 pr3 h-100': displayMode === 'inline'
-    })
-
-    const elementClasses = classNames('pointer pa2 flex flex-column', {
-      'bb b--muted-4 ma2': showBorders
-    })
-
-    const buyButtonStyle = { visibility: showBuyButton ? 'visible' : 'hidden' }
-
-    const renderBuyButton = () => (
+    return (
       !hideBuyButton && (
-        <div className={buyButtonClasses}>
-          <div style={ buyButtonStyle } className="vtex-product-summary__buy-button center mw-100">
+        <div className={ buyButtonClasses }>
+          <div className={`vtex-product-summary__buy-button center mw-100 ${ !showBuyButton && 'is-hidden' }`}>
             <BuyButton
               available={isAvailable}
               skuItems={
@@ -311,6 +282,41 @@ class ProductSummary extends Component {
         </div>
       )
     )
+    
+  }
+
+
+  render() {
+    const {
+      showBorders,
+      product,
+      displayMode,
+      actionOnClick,
+    } = this.props
+
+    const classes = classNames('vtex-product-summary overflow-hidden br3 w-100 h-100', {
+      'flex flex-column justify-between center tc': displayMode !== 'inline',
+      'vtex-product-summary--normal': displayMode === 'normal',
+      'vtex-product-summary--small': displayMode === 'small',
+      'vtex-product-summary--inline': displayMode === 'inline',
+    })
+
+    const linkClasses = classNames('clear-link flex', {
+      'flex-column': displayMode !== 'inline',
+    })
+
+    const imageContainerClasses = classNames('vtex-product-summary__image-container db', {
+      'w-100 center': displayMode !== 'inline',
+      'w-40': displayMode === 'inline',
+    })
+
+    const informationClasses = classNames('vtex-product-summary__informations', {
+      'w-80 pv3 pl3 pr3 h-100': displayMode === 'inline'
+    })
+
+    const elementClasses = classNames('pointer pa2 flex flex-column', {
+      'bb b--muted-4 ma2': showBorders
+    })
 
     return (
       <div
@@ -335,7 +341,7 @@ class ProductSummary extends Component {
               {this.renderProductPrice}
             </div>
           </Link>
-          { renderBuyButton() }
+          { this.renderBuyButton }
         </div>
       </div>
     )
