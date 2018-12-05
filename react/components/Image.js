@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import { withRuntimeContext } from 'render'
+
+const MOBILE_SIZE = 200
+const DESKTOP_SIZE = 500
 
 import withDimensions from './withDimensions'
 /** Image component with 1:1 aspect ratio */
