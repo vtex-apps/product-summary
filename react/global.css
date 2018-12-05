@@ -7,7 +7,7 @@
   width: 140px;
 }
 
-.vtex-product-summary__price-container {
+.vtex-product-summary__price-container .vtex-price {
   min-height: 81px;
 }
 

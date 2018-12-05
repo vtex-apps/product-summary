@@ -166,7 +166,7 @@ class ProductSummary extends Component {
       showBorders
     } = this.props
 
-    const containerClasses = classNames('vtex-product-summary__price-container flex flex-column pv2', {
+    const containerClasses = classNames('vtex-product-summary__price-container flex flex-column justify-end pv2 ', {
       'justify-center items-center': displayMode !== 'inline',
       'pv2': !showBorders
     })
@@ -174,7 +174,7 @@ class ProductSummary extends Component {
     return (
       <div className={containerClasses}>
         <ProductPrice
-          className="flex flex-column justify-around"
+          className="flex flex-column justify-end"
           listPriceContainerClass="pv1 normal c-muted-2"
           listPriceLabelClass="dib strike"
           listPriceClass="dib ph2 strike t-small-ns"
@@ -282,7 +282,7 @@ class ProductSummary extends Component {
       'w-80 pv3 pl3 pr3 h-100': displayMode === 'inline'
     })
 
-    const elementClasses = classNames('pointer pa2 flex flex-column justify-between', {
+    const elementClasses = classNames('pointer pa2 flex flex-column', {
       'bb b--muted-4 ma2': showBorders
     })
 
