@@ -7,6 +7,10 @@
   width: 140px;
 }
 
+.vtex-product-summary__price-container .vtex-price {
+  min-height: 5.063rem;
+}
+
 .vtex-product-summary__buy-button button {
   width: inherit;
 }
