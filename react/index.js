@@ -169,11 +169,7 @@ class ProductSummary extends Component {
 
     const containerClasses = classNames('vtex-product-summary__price-container flex flex-column justify-end pv2 ', {
       'justify-center items-center': displayMode !== 'inline',
-<<<<<<< HEAD
       'pv2': !showBorders
-=======
-      'h3': !showBorders,
->>>>>>> Use default image sizes for desktop and mobile
     })
 
     return (
@@ -240,12 +236,7 @@ class ProductSummary extends Component {
     )
   }
 
-<<<<<<< HEAD
   get renderBuyButton() {
-
-=======
-  render() {
->>>>>>> Use default image sizes for desktop and mobile
     const {
       product,
       displayMode,
@@ -323,13 +314,8 @@ class ProductSummary extends Component {
       'w-80 pv3 pl3 pr3 h-100': displayMode === 'inline',
     })
 
-<<<<<<< HEAD
-    const elementClasses = classNames('pointer pa2 flex flex-column', {
-      'bb b--muted-4 ma2': showBorders
-=======
     const elementClasses = classNames('pointer pa2', {
       'bb b--muted-4 ma2': showBorders,
->>>>>>> Use default image sizes for desktop and mobile
     })
 
     return (
