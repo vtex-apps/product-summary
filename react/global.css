@@ -6,10 +6,6 @@
   width: 281px;
 }
 
-.vtex-product-summary__buy-button {
-  width: auto !important;
-}
-
 .vtex-product-summary .vtex-product-name-loader {
   height: 5em;
 }
