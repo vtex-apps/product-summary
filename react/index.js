@@ -235,31 +235,17 @@ class ProductSummary extends Component {
     );
   }
 
+  get renderBuyButton() {
 
-  render() {
     const {
-      showBorders,
-      buyButtonText,
-      hideBuyButton,
-      isOneClickBuy,
       product,
       displayMode,
-      actionOnClick,
+      hideBuyButton,
+      isOneClickBuy,
+      buyButtonText,
+      showButtonOnHover,
       runtime: { hints: { mobile } },
     } = this.props
-
-    const showButtonOnHover = this.props.showButtonOnHover && !mobile
-    const showBuyButton =
-      !hideBuyButton && (!showButtonOnHover || this.state.isHovering)
-    const quantity = path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) || 0
-    const isAvailable = (quantity > 0)
-
-    const classes = classNames('vtex-product-summary overflow-hidden br3 w-100 h-100', {
-      'flex flex-column justify-between center tc': displayMode !== 'inline',
-      'vtex-product-summary--normal': displayMode === 'normal',
-      'vtex-product-summary--small': displayMode === 'small',
-      'vtex-product-summary--inline': displayMode === 'inline',
-    })
 
     const buyButtonClasses = classNames(
       'vtex-product-summary__buy-button-container pv3 w-100',
@@ -268,6 +254,52 @@ class ProductSummary extends Component {
         'dn db-ns': displayMode === 'normal',
       }
     )
+    
+    const showBuyButton =  !showButtonOnHover || mobile || this.state.isHovering
+    const quantity = path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) || 0
+    const isAvailable = (quantity > 0)
+
+    return (
+      !hideBuyButton && (
+        <div className={ buyButtonClasses }>
+          <div className={`vtex-product-summary__buy-button center mw-100 ${ !showBuyButton && 'is-hidden' }`}>
+            <BuyButton
+              available={isAvailable}
+              skuItems={
+                path(['sku', 'itemId'], product) && [
+                  {
+                    skuId: path(['sku', 'itemId'], product),
+                    quantity: 1,
+                    seller: path(['sku', 'seller', 'sellerId'], product),
+                  },
+                ]
+              }
+              isOneClickBuy={isOneClickBuy}
+            >
+              {buyButtonText || <FormattedMessage id="button-label" />}
+            </BuyButton>
+          </div>
+        </div>
+      )
+    )
+    
+  }
+
+
+  render() {
+    const {
+      showBorders,
+      product,
+      displayMode,
+      actionOnClick,
+    } = this.props
+
+    const classes = classNames('vtex-product-summary overflow-hidden br3 w-100 h-100', {
+      'flex flex-column justify-between center tc': displayMode !== 'inline',
+      'vtex-product-summary--normal': displayMode === 'normal',
+      'vtex-product-summary--small': displayMode === 'small',
+      'vtex-product-summary--inline': displayMode === 'inline',
+    })
 
     const linkClasses = classNames('clear-link flex', {
       'flex-column': displayMode !== 'inline',
@@ -285,8 +317,6 @@ class ProductSummary extends Component {
     const elementClasses = classNames('pointer pa2 flex flex-column', {
       'bb b--muted-4 ma2': showBorders
     })
-
-    const style = { visibility: showBuyButton ? 'visible' : 'hidden' }
 
     return (
       <div
@@ -311,25 +341,7 @@ class ProductSummary extends Component {
               {this.renderProductPrice}
             </div>
           </Link>
-          <div className={buyButtonClasses}>
-            <div style={style} className="vtex-product-summary__buy-button center mw-100">
-              <BuyButton
-                available={isAvailable}
-                skuItems={
-                  path(['sku', 'itemId'], product) && [
-                    {
-                      skuId: path(['sku', 'itemId'], product),
-                      quantity: 1,
-                      seller: path(['sku', 'seller', 'sellerId'], product),
-                    },
-                  ]
-                }
-                isOneClickBuy={isOneClickBuy}
-              >
-                {buyButtonText || <FormattedMessage id="button-label" />}
-              </BuyButton>
-            </div>
-          </div>
+          { this.renderBuyButton }
         </div>
       </div>
     )

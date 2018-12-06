@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.1.0] - 2018-12-06
+### Fixed
+- Unnecessary `BuyButton` rendering.
+
 ## [2.0.3] - 2018-12-05
 ### Fixed
 - `BuyButton` position when `ProductPrice` didn't have all fields.

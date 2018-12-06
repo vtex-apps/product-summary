@@ -1,3 +1,7 @@
+.vtex-product-summary__buy-button-container .is-hidden {
+  visibility: hidden;
+}
+
 .vtex-product-summary--normal {
   width: 281px;
 }
