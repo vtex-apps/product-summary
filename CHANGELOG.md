@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - Unnecessary `BuyButton` rendering.
 
+## [2.0.4] - 2018-12-06
+### Fixed
+- Use product image size according to client device.
+
 ## [2.0.3] - 2018-12-05
 ### Fixed
 - `BuyButton` position when `ProductPrice` didn't have all fields.

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import withDimensions from './withDimensions'
 /** Image component with 1:1 aspect ratio */
 /** TODO use a generic approach to resize images in Dreamstore */
 class Image extends Component {
@@ -40,4 +41,8 @@ Image.propTypes = {
   className: PropTypes.string,
 }
 
+<<<<<<< HEAD
 export default Image
+=======
+export default withDimensions(Image)
+>>>>>>> 361530cb7362b4496ada81d61845433b56dd9667
