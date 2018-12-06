@@ -101,7 +101,9 @@ class ProductSummary extends Component {
   }
 
   get renderImage() {
-    const { product, showBadge, badgeText, showCollections } = this.props
+    const WIDTH_MOBILE = 350
+    const WIDTH_DESKTOP = 600
+    const { product, showBadge, badgeText, showCollections, runtime: { hints: { mobile } } } = this.props
     const {
       productClusters,
       productName: name,
@@ -111,7 +113,7 @@ class ProductSummary extends Component {
     } = product
 
     let img = (
-      <Image className="vtex-product-summary__image" alt={name} src={imageUrl} />
+      <Image className="vtex-product-summary__image" width={mobile ? WIDTH_MOBILE : WIDTH_DESKTOP} alt={name} src={imageUrl} />
     )
 
     if (showBadge) {
@@ -254,15 +256,15 @@ class ProductSummary extends Component {
         'dn db-ns': displayMode === 'normal',
       }
     )
-    
-    const showBuyButton =  !showButtonOnHover || mobile || this.state.isHovering
+
+    const showBuyButton = !showButtonOnHover || mobile || this.state.isHovering
     const quantity = path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) || 0
     const isAvailable = (quantity > 0)
 
     return (
       !hideBuyButton && (
-        <div className={ buyButtonClasses }>
-          <div className={`vtex-product-summary__buy-button center mw-100 ${ !showBuyButton && 'is-hidden' }`}>
+        <div className={buyButtonClasses}>
+          <div className={`vtex-product-summary__buy-button center mw-100 ${!showBuyButton && 'is-hidden'}`}>
             <BuyButton
               available={isAvailable}
               skuItems={
@@ -282,7 +284,7 @@ class ProductSummary extends Component {
         </div>
       )
     )
-    
+
   }
 
 
@@ -341,7 +343,7 @@ class ProductSummary extends Component {
               {this.renderProductPrice}
             </div>
           </Link>
-          { this.renderBuyButton }
+          {this.renderBuyButton}
         </div>
       </div>
     )
