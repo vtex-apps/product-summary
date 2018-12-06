@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import withDimensions from './withDimensions'
 /** Image component with 1:1 aspect ratio */
 /** TODO use a generic approach to resize images in Dreamstore */
 class Image extends Component {
@@ -14,12 +13,12 @@ class Image extends Component {
       return src
     }
 
-    const { width: deviceWidth } = this.props
+    const { width } = this.props
 
     const imageId = src.slice(src.indexOf('/ids/')).split('/')[2]
-    const idSuffix = `${imageId}-${deviceWidth}-auto`
+    const withSuffix = `${imageId}-${width}-auto`
 
-    return src.replace(imageId, idSuffix)
+    return src.replace(imageId, withSuffix)
   }
 
   render() {
@@ -41,4 +40,4 @@ Image.propTypes = {
   className: PropTypes.string,
 }
 
-export default withDimensions(Image)
+export default Image

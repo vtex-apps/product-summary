@@ -101,7 +101,9 @@ class ProductSummary extends Component {
   }
 
   get renderImage() {
-    const { product, showBadge, badgeText, showCollections } = this.props
+    const WIDTH_MOBILE = 350
+    const WIDTH_DESKTOP = 600
+    const { product, showBadge, badgeText, showCollections, runtime: { hints: { mobile } } } = this.props
     const {
       productClusters,
       productName: name,
@@ -111,7 +113,7 @@ class ProductSummary extends Component {
     } = product
 
     let img = (
-      <Image className="vtex-product-summary__image" alt={name} src={imageUrl} />
+      <Image className="vtex-product-summary__image" width={mobile ? WIDTH_MOBILE : WIDTH_DESKTOP} alt={name} src={imageUrl} />
     )
 
     if (showBadge) {
@@ -156,19 +158,22 @@ class ProductSummary extends Component {
   }
 
   get renderProductPrice() {
-
     const {
       showListPrice,
       showLabels,
       showInstallments,
       labelSellingPrice,
       displayMode,
-      showBorders
+      showBorders,
     } = this.props
 
     const containerClasses = classNames('vtex-product-summary__price-container flex flex-column justify-end pv2 ', {
       'justify-center items-center': displayMode !== 'inline',
+<<<<<<< HEAD
       'pv2': !showBorders
+=======
+      'h3': !showBorders,
+>>>>>>> Use default image sizes for desktop and mobile
     })
 
     return (
@@ -201,7 +206,7 @@ class ProductSummary extends Component {
     const {
       displayMode,
       product,
-      name: showFieldsProps
+      name: showFieldsProps,
     } = this.props
 
     const containerClasses = classNames(
@@ -232,11 +237,15 @@ class ProductSummary extends Component {
           {...showFieldsProps}
         />
       </div>
-    );
+    )
   }
 
+<<<<<<< HEAD
   get renderBuyButton() {
 
+=======
+  render() {
+>>>>>>> Use default image sizes for desktop and mobile
     const {
       product,
       displayMode,
@@ -311,11 +320,16 @@ class ProductSummary extends Component {
     })
 
     const informationClasses = classNames('vtex-product-summary__informations', {
-      'w-80 pv3 pl3 pr3 h-100': displayMode === 'inline'
+      'w-80 pv3 pl3 pr3 h-100': displayMode === 'inline',
     })
 
+<<<<<<< HEAD
     const elementClasses = classNames('pointer pa2 flex flex-column', {
       'bb b--muted-4 ma2': showBorders
+=======
+    const elementClasses = classNames('pointer pa2', {
+      'bb b--muted-4 ma2': showBorders,
+>>>>>>> Use default image sizes for desktop and mobile
     })
 
     return (
