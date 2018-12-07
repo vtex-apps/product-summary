@@ -101,8 +101,8 @@ class ProductSummary extends Component {
   }
 
   get renderImage() {
-    const WIDTH_MOBILE = 350
-    const WIDTH_DESKTOP = 600
+    const WIDTH_MOBILE = 600
+    const WIDTH_DESKTOP = 900
     const { product, showBadge, badgeText, showCollections, runtime: { hints: { mobile } } } = this.props
     const {
       productClusters,
