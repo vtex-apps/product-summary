@@ -6,12 +6,9 @@
   width: 281px;
 }
 
+
 .vtex-product-summary__buy-button {
   width: 140px;
-}
-
-.vtex-product-summary__price-container .vtex-price {
-  min-height: 3.063rem;
 }
 
 .vtex-product-summary__buy-button button {
