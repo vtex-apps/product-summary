@@ -311,7 +311,7 @@ class ProductSummary extends Component {
     })
 
     const informationClasses = classNames('vtex-product-summary__informations', {
-      'w-80 pv3 pl3 pr3 h-100': displayMode === 'inline'
+      'w-80 pb3 pl3 pr3 h-100': displayMode === 'inline'
     })
 
     const elementClasses = classNames('pointer ph2 pt2 pb3 flex flex-column', {
