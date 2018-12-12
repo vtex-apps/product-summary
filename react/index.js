@@ -180,7 +180,7 @@ class ProductSummary extends Component {
           listPriceClass="dib ph2 strike t-small-ns"
           sellingPriceContainerClass="pt1 pb3 c-muted-1"
           sellingPriceLabelClass="dib"
-          sellingPriceClass="dib ph2 t-heading-4"
+          sellingPriceClass="dib ph2 t-heading-5"
           savingsContainerClass="c-muted-2"
           savingsClass="dib"
           interestRateClass="dib pl2"
@@ -210,7 +210,7 @@ class ProductSummary extends Component {
         'items-center justify-center': displayMode !== 'inline',
         'justify-left w-100': displayMode === 'inline',
         'pt5 pb3': displayMode === 'small',
-        't-mini pv2': displayMode !== 'normal',
+        't-mini pb2': displayMode !== 'normal',
         'pt7 pb4': displayMode === 'normal',
       }
     )
@@ -311,11 +311,11 @@ class ProductSummary extends Component {
     })
 
     const informationClasses = classNames('vtex-product-summary__informations', {
-      'w-80 pv3 pl3 pr3 h-100': displayMode === 'inline'
+      'w-80 pb2 pl3 pr3 h-100': displayMode === 'inline'
     })
 
-    const elementClasses = classNames('pointer pa2 flex flex-column', {
-      'bb b--muted-4 ma2': showBorders
+    const elementClasses = classNames('pointer ph2 pt3 pb4 flex flex-column', {
+      'bb b--muted-4 mh2 mt2': showBorders
     })
 
     return (
