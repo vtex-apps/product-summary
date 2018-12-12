@@ -1,3 +1,4 @@
+*.orig
 ### SublimeText ###
 *.sublime-workspace
 
