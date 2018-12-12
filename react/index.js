@@ -314,7 +314,7 @@ class ProductSummary extends Component {
       'w-80 pv3 pl3 pr3 h-100': displayMode === 'inline'
     })
 
-    const elementClasses = classNames('pointer pa2 flex flex-column', {
+    const elementClasses = classNames('pointer ph2 pt3 pb4 flex flex-column', {
       'bb b--muted-4 ma2': showBorders
     })
 
