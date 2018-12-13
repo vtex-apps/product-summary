@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { path } from 'ramda'
+import { path, equals } from 'ramda'
 import React, { Component } from 'react'
 import ContentLoader from 'react-content-loader'
 import { FormattedMessage } from 'react-intl'
@@ -13,6 +13,7 @@ import ProductPrice from 'vtex.store-components/ProductPrice'
 
 import { productShape } from './propTypes'
 import Image from './components/Image'
+import displayButtonTypes, { getDisplayButtonNames, getDisplayButtonValues } from './DisplayButtonTypes'
 
 import './global.css'
 
@@ -41,6 +42,8 @@ class ProductSummary extends Component {
     badgeText: PropTypes.string,
     /** Custom buy button text */
     buyButtonText: PropTypes.string,
+    /** Defines the display mode of buy button */
+    displayBuyButton: PropTypes.oneOf(getDisplayButtonValues()),
     /** Hides the buy button completely . If active, the button will not be shown in any condition */
     hideBuyButton: PropTypes.bool,
     /** Defines if the button is shown only if the mouse is on the summary */
@@ -72,7 +75,7 @@ class ProductSummary extends Component {
     showLabels: true,
     showBadge: true,
     showCollections: false,
-    hideBuyButton: false,
+    displayBuyButton: displayButtonTypes.DISPLAY_ALWAYS.value,
     showOnHover: false,
     isOneClickBuy: false,
     name: {
@@ -240,10 +243,9 @@ class ProductSummary extends Component {
     const {
       product,
       displayMode,
-      hideBuyButton,
+      displayBuyButton,
       isOneClickBuy,
       buyButtonText,
-      showButtonOnHover,
       runtime: { hints: { mobile } },
     } = this.props
 
@@ -255,12 +257,12 @@ class ProductSummary extends Component {
       }
     )
     
-    const showBuyButton =  !showButtonOnHover || mobile || this.state.isHovering
+    const showBuyButton =  !equals(displayBuyButton, displayButtonTypes.DISPLAY_ON_HOVER.value) || mobile || this.state.isHovering
     const quantity = path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) || 0
     const isAvailable = (quantity > 0)
 
     return (
-      !hideBuyButton && (
+      !equals(displayBuyButton, displayButtonTypes.DISPLAY_NONE.value) && (
         <div className={ buyButtonClasses }>
           <div className={`vtex-product-summary__buy-button center mw-100 ${ !showBuyButton && 'is-hidden' }`}>
             <BuyButton
@@ -375,15 +377,12 @@ const defaultSchema = {
       title: 'editor.productSummary.buyButtonText.title',
       isLayout: false,
     },
-    hideBuyButton: {
-      type: 'boolean',
-      title: 'editor.productSummary.hideBuyButton.title',
-      default: false,
-      isLayout: true,
-    },
-    showButtonOnHover: {
-      type: 'boolean',
-      title: 'editor.productSummary.showButtonOnHover.title',
+    displayBuyButton: {
+      title: 'editor.productSummary.displayBuyButton.title',
+      type: 'string',
+      enum: getDisplayButtonValues(),
+      enumNames: getDisplayButtonNames(),
+      default: displayButtonTypes.DISPLAY_ALWAYS.value,
       isLayout: true,
     },
     showCollections: {
@@ -396,14 +395,13 @@ const defaultSchema = {
   },
 }
 
-ProductSummary.getSchema = ({ hideBuyButton }) => {
-  const { showButtonOnHover, ...rest } = defaultSchema.properties
+ProductSummary.getSchema = () => {
+  const { ...rest } = defaultSchema.properties
   const nameSchema = ProductName.schema
   return {
     ...defaultSchema,
     properties: {
       ...rest,
-      ...(hideBuyButton ? {} : { showButtonOnHover }),
       name: nameSchema,
     },
   }
