@@ -9,6 +9,7 @@
   "editor.productSummary.hideBuyButton.title": "Hides the buy button completely",
   "editor.productSummary.showButtonOnHover.title": "Show the buy button only on hover",
   "editor.productSummary.showCollections.title": "Show the collections badges",
+  "editor.productSummary.displayBuyButton.title": "Buy button display mode",
   "editor.productSummary.displayBuyButton.option.none": "Never show",
   "editor.productSummary.displayBuyButton.option.always": "Always show",
   "editor.productSummary.displayBuyButton.option.hover": "Show on hover"
