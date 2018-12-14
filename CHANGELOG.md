@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.3.1] - 2018-12-14
+### Changed
+- Changed price color.
+
 ## [2.3.0] - 2018-12-14
 ### Added
 - Support to CSS modules.
