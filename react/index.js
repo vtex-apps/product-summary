@@ -174,18 +174,11 @@ class ProductSummary extends Component {
     const listPriceClasses = classNames('dib ph2 strike t-small-ns', {
       't-mini': displayMode !== 'normal'
     })
-<<<<<<< HEAD
-    const listPriceLabelClasses = classNames('dib strike t-small', {
-      't-mini': displayMode !== 'normal'
-    })
-
-=======
 
     const listPriceLabelClasses = classNames('dib strike t-small', {
       't-mini': displayMode !== 'normal'
     })
-    console.log(displayMode)
->>>>>>> Adding CSS Modules & Change locales to messages folder
+
     return (
       <div className={containerClasses}>
         <ProductPrice
@@ -233,21 +226,15 @@ class ProductSummary extends Component {
     const productName = path(['productName'], product)
     const skuName = path(['sku', 'name'], product)
     const brandName = path(['brand'], product)
+
     const brandNameClasses = classNames('t-body', {
       't-mini': displayMode !== 'normal',
     })
-<<<<<<< HEAD
 
     return (
       <div className={containerClasses}>
         <ProductName
           className="overflow-hidden c-on-base"
-=======
-    return (
-      <div className={containerClasses}>
-        <ProductName
-          className='overflow-hidden c-on-base'
->>>>>>> Adding CSS Modules & Change locales to messages folder
           brandNameClass={brandNameClasses}
           skuNameClass="t-small"
           loaderClass="pt5 overflow-hidden"
