@@ -192,10 +192,10 @@ class ProductSummary extends Component {
           sellingPriceContainerClass="pt1 pb3 c-muted-1"
           sellingPriceLabelClass="dib"
           sellingPriceClass="dib ph2 t-heading-5"
-          savingsContainerClass="c-muted-2"
+          savingsContainerClass="t-small-ns c-muted-2"
           savingsClass="dib"
           interestRateClass="dib pl2"
-          installmentContainerClass="c-muted-2"
+          installmentContainerClass="t-small-ns c-muted-2"
           listPrice={path(['ListPrice'], this.commertialOffer)}
           sellingPrice={path(['Price'], this.commertialOffer)}
           installments={path(['Installments'], this.commertialOffer)}
@@ -230,6 +230,9 @@ class ProductSummary extends Component {
     const skuName = path(['sku', 'name'], product)
     const brandName = path(['brand'], product)
 
+    const brandNameClasses = classNames('t-body', {
+      't-mini': displayMode !== 'normal',
+    })
     return (
       <div className={containerClasses}>
         <ProductName
