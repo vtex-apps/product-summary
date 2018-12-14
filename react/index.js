@@ -15,7 +15,7 @@ import { productShape } from './propTypes'
 import Image from './components/Image'
 import displayButtonTypes, { getDisplayButtonNames, getDisplayButtonValues } from './DisplayButtonTypes'
 
-import './global.css'
+import productSummary from './productSummary.css'
 
 /**
  * Product Summary component. Summarizes the product information.
@@ -114,7 +114,7 @@ class ProductSummary extends Component {
     } = product
 
     let img = (
-      <Image className="vtex-product-summary__image" alt={name} src={imageUrl} />
+      <Image className={`${productSummary.image}`} alt={name} src={imageUrl} />
     )
 
     if (showBadge) {
@@ -169,9 +169,16 @@ class ProductSummary extends Component {
       showBorders
     } = this.props
 
-    const containerClasses = classNames('vtex-product-summary__price-container flex flex-column justify-end pv2 ', {
+    const containerClasses = classNames(`${productSummary.priceContainer} flex flex-column justify-end pv2`, {
       'justify-center items-center': displayMode !== 'inline',
       'pv2': !showBorders
+    })
+
+    const listPriceClasses = classNames('dib ph2 strike t-small-ns', {
+      't-mini': displayMode !== 'normal'
+    })
+    const listPriceLabelClasses = classNames('dib strike t-small', {
+      't-mini': displayMode !== 'normal'
     })
 
     return (
@@ -179,8 +186,8 @@ class ProductSummary extends Component {
         <ProductPrice
           className="flex flex-column justify-end"
           listPriceContainerClass="pv1 normal c-muted-2"
-          listPriceLabelClass="dib strike"
-          listPriceClass="dib ph2 strike t-small-ns"
+          listPriceLabelClass={listPriceLabelClasses}
+          listPriceClass={listPriceClasses}
           sellingPriceContainerClass="pt1 pb3 c-muted-1"
           sellingPriceLabelClass="dib"
           sellingPriceClass="dib ph2 t-heading-5"
@@ -208,7 +215,7 @@ class ProductSummary extends Component {
     } = this.props
 
     const containerClasses = classNames(
-      'vtex-product-summary__name-container flex',
+      `${productSummary.nameContainer} flex`,
       {
         'items-center justify-center': displayMode !== 'inline',
         'justify-left w-100': displayMode === 'inline',
@@ -221,12 +228,15 @@ class ProductSummary extends Component {
     const productName = path(['productName'], product)
     const skuName = path(['sku', 'name'], product)
     const brandName = path(['brand'], product)
+    const brandNameClasses = classNames('t-body', {
+      't-mini': displayMode !== 'normal',
+    })
 
     return (
       <div className={containerClasses}>
         <ProductName
-          className="vtex-product-name overflow-hidden c-on-base"
-          brandNameClass="t-body"
+          className="overflow-hidden c-on-base"
+          brandNameClass={brandNameClasses}
           skuNameClass="t-small"
           loaderClass="pt5 overflow-hidden"
           name={productName}
@@ -250,21 +260,21 @@ class ProductSummary extends Component {
     } = this.props
 
     const buyButtonClasses = classNames(
-      'vtex-product-summary__buy-button-container pv3 w-100',
+      `${productSummary.buyButtonContainer} pv3 w-100`,
       {
         'dn': displayMode === 'small' || displayMode === 'inline',
         'dn db-ns': displayMode === 'normal',
       }
     )
-    
-    const showBuyButton =  !equals(displayBuyButton, displayButtonTypes.DISPLAY_ON_HOVER.value) || mobile || this.state.isHovering
+
+    const showBuyButton = !equals(displayBuyButton, displayButtonTypes.DISPLAY_ON_HOVER.value) || mobile || this.state.isHovering
     const quantity = path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) || 0
     const isAvailable = (quantity > 0)
 
     return (
       !equals(displayBuyButton, displayButtonTypes.DISPLAY_NONE.value) && (
-        <div className={ buyButtonClasses }>
-          <div className={`vtex-product-summary__buy-button center mw-100 ${ !showBuyButton && 'is-hidden' }`}>
+        <div className={buyButtonClasses}>
+          <div className={`${productSummary.buyButton} center mw-100 ${!showBuyButton && 'isHidden'}`}>
             <BuyButton
               available={isAvailable}
               skuItems={
@@ -284,7 +294,7 @@ class ProductSummary extends Component {
         </div>
       )
     )
-    
+
   }
 
 
@@ -296,23 +306,23 @@ class ProductSummary extends Component {
       actionOnClick,
     } = this.props
 
-    const classes = classNames('vtex-product-summary overflow-hidden br3 w-100 h-100', {
+    const classes = classNames(`${productSummary.container} overflow-hidden br3 w-100 h-100`, {
       'flex flex-column justify-between center tc': displayMode !== 'inline',
-      'vtex-product-summary--normal': displayMode === 'normal',
-      'vtex-product-summary--small': displayMode === 'small',
-      'vtex-product-summary--inline': displayMode === 'inline',
+      [`${productSummary.containerNormal}`]: displayMode === 'normal',
+      [`${productSummary.containerSmall}`]: displayMode === 'small',
+      [`${productSummary.containerInline}`]: displayMode === 'inline',
     })
 
-    const linkClasses = classNames('clear-link flex', {
+    const linkClasses = classNames(`${productSummary.clearLink} flex`, {
       'flex-column': displayMode !== 'inline',
     })
 
-    const imageContainerClasses = classNames('vtex-product-summary__image-container db', {
+    const imageContainerClasses = classNames(`${productSummary.imageContainer} db`, {
       'w-100 center': displayMode !== 'inline',
       'w-40': displayMode === 'inline',
     })
 
-    const informationClasses = classNames('vtex-product-summary__informations', {
+    const informationClasses = classNames(`${productSummary.informations}`, {
       'w-80 pb2 pl3 pr3 h-100': displayMode === 'inline'
     })
 
@@ -343,7 +353,7 @@ class ProductSummary extends Component {
               {this.renderProductPrice}
             </div>
           </Link>
-          { this.renderBuyButton }
+          {this.renderBuyButton}
         </div>
       </div>
     )
