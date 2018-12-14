@@ -1,3 +1,5 @@
+import { values, map } from 'ramda'
+
 const displayButtonTypes = {
   DISPLAY_ALWAYS: {
     name: 'editor.productSummary.displayBuyButton.option.always',
@@ -14,19 +16,11 @@ const displayButtonTypes = {
 }
 
 export function getDisplayButtonNames() {
-  const names = []
-  for (const key in displayButtonTypes) {
-    names.push(displayButtonTypes[key].name)
-  }
-  return names
+  return map(opt => opt.name ,values(displayButtonTypes))
 }
 
 export function getDisplayButtonValues() {
-  const values = []
-  for (const key in displayButtonTypes) {
-    values.push(displayButtonTypes[key].value)
-  }
-  return values
+  return map(opt => opt.value ,values(displayButtonTypes))
 }
 
 export default displayButtonTypes
