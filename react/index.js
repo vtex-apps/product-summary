@@ -396,12 +396,11 @@ const defaultSchema = {
 }
 
 ProductSummary.getSchema = ({ displayBuyButton }) => {
-  const { ...rest } = defaultSchema.properties
   const nameSchema = ProductName.schema
   return {
     ...defaultSchema,
     properties: {
-      ...rest,
+      ...defaultSchema.properties,
       ...displayBuyButton,
       name: nameSchema,
     },
