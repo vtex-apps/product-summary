@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { path, equals } from 'ramda'
+import { path } from 'ramda'
 import React, { Component } from 'react'
 import ContentLoader from 'react-content-loader'
 import { FormattedMessage } from 'react-intl'
@@ -13,7 +13,6 @@ import ProductPrice from 'vtex.store-components/ProductPrice'
 
 import { productShape } from './propTypes'
 import Image from './components/Image'
-import displayButtonTypes, { getDisplayButtonNames, getDisplayButtonValues } from './DisplayButtonTypes'
 
 import productSummary from './productSummary.css'
 
@@ -42,8 +41,6 @@ class ProductSummary extends Component {
     badgeText: PropTypes.string,
     /** Custom buy button text */
     buyButtonText: PropTypes.string,
-    /** Defines the display mode of buy button */
-    displayBuyButton: PropTypes.oneOf(getDisplayButtonValues()),
     /** Hides the buy button completely . If active, the button will not be shown in any condition */
     hideBuyButton: PropTypes.bool,
     /** Defines if the button is shown only if the mouse is on the summary */
@@ -75,7 +72,7 @@ class ProductSummary extends Component {
     showLabels: true,
     showBadge: true,
     showCollections: false,
-    displayBuyButton: displayButtonTypes.DISPLAY_ALWAYS.value,
+    hideBuyButton: false,
     showOnHover: false,
     isOneClickBuy: false,
     name: {
@@ -177,10 +174,18 @@ class ProductSummary extends Component {
     const listPriceClasses = classNames('dib ph2 strike t-small-ns', {
       't-mini': displayMode !== 'normal'
     })
+<<<<<<< HEAD
     const listPriceLabelClasses = classNames('dib strike t-small', {
       't-mini': displayMode !== 'normal'
     })
 
+=======
+
+    const listPriceLabelClasses = classNames('dib strike t-small', {
+      't-mini': displayMode !== 'normal'
+    })
+    console.log(displayMode)
+>>>>>>> Adding CSS Modules & Change locales to messages folder
     return (
       <div className={containerClasses}>
         <ProductPrice
@@ -231,11 +236,18 @@ class ProductSummary extends Component {
     const brandNameClasses = classNames('t-body', {
       't-mini': displayMode !== 'normal',
     })
+<<<<<<< HEAD
 
     return (
       <div className={containerClasses}>
         <ProductName
           className="overflow-hidden c-on-base"
+=======
+    return (
+      <div className={containerClasses}>
+        <ProductName
+          className='overflow-hidden c-on-base'
+>>>>>>> Adding CSS Modules & Change locales to messages folder
           brandNameClass={brandNameClasses}
           skuNameClass="t-small"
           loaderClass="pt5 overflow-hidden"
@@ -253,9 +265,10 @@ class ProductSummary extends Component {
     const {
       product,
       displayMode,
-      displayBuyButton,
+      hideBuyButton,
       isOneClickBuy,
       buyButtonText,
+      showButtonOnHover,
       runtime: { hints: { mobile } },
     } = this.props
 
@@ -294,7 +307,6 @@ class ProductSummary extends Component {
         </div>
       )
     )
-
   }
 
 
@@ -387,12 +399,15 @@ const defaultSchema = {
       title: 'editor.productSummary.buyButtonText.title',
       isLayout: false,
     },
-    displayBuyButton: {
-      title: 'editor.productSummary.displayBuyButton.title',
-      type: 'string',
-      enum: getDisplayButtonValues(),
-      enumNames: getDisplayButtonNames(),
-      default: displayButtonTypes.DISPLAY_ALWAYS.value,
+    hideBuyButton: {
+      type: 'boolean',
+      title: 'editor.productSummary.hideBuyButton.title',
+      default: false,
+      isLayout: true,
+    },
+    showButtonOnHover: {
+      type: 'boolean',
+      title: 'editor.productSummary.showButtonOnHover.title',
       isLayout: true,
     },
     showCollections: {
@@ -405,13 +420,14 @@ const defaultSchema = {
   },
 }
 
-ProductSummary.getSchema = ({ displayBuyButton }) => {
+ProductSummary.getSchema = ({ hideBuyButton }) => {
+  const { showButtonOnHover, ...rest } = defaultSchema.properties
   const nameSchema = ProductName.schema
   return {
     ...defaultSchema,
     properties: {
-      ...defaultSchema.properties,
-      ...displayBuyButton,
+      ...rest,
+      ...(hideBuyButton ? {} : { showButtonOnHover }),
       name: nameSchema,
     },
   }

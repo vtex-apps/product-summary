@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 import productSummary from '../productSummary.css'
 
+import productSummary from '../productSummary.css'
+
 /** Image component with 1:1 aspect ratio */
 export default function Image({ src, className }) {
   return (
