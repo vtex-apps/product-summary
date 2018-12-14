@@ -15,7 +15,7 @@ import { productShape } from './propTypes'
 import Image from './components/Image'
 import displayButtonTypes, { getDisplayButtonNames, getDisplayButtonValues } from './DisplayButtonTypes'
 
-import productSummary from '../productSummary.css'
+import productSummary from './productSummary.css'
 
 /**
  * Product Summary component. Summarizes the product information.
