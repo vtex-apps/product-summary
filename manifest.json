@@ -1,11 +1,12 @@
 {
   "vendor": "vtex",
   "name": "product-summary",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "title": "Product Summary",
   "description": "Product summary component",
   "defaultLocale": "pt-BR",
   "builders": {
+    "messages": "0.x",
     "pages": "0.x",
     "react": "2.x"
   },

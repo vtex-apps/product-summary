@@ -1,0 +1,18 @@
+.isHidden {
+  visibility: hidden;
+}
+
+.containerNormal {
+  width: 281px;
+}
+
+.clearLink {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+.aspectRatio {
+  padding-top: 100%;
+  background: center / contain no-repeat;
+}
+  

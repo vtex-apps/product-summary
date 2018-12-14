@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.3.0] - 2018-12-14
+### Added
+- Support to CSS modules.
+
+### Changed
+- Add messages-builder and move locales to `messages/` folder.
+
 ## [2.2.0] - 2018-12-14
 ### Changed
 - Add buy button display option on StoreFront.
