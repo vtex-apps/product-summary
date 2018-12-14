@@ -8,9 +8,6 @@
   "extensions": {
     "product-summary": {
       "component": "ProductSummary"
-    },
-    "wishlistAddProduct": {
-      "component": "vtex.wishlist/index"          
     }
   }
 }

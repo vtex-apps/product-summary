@@ -10,8 +10,8 @@ import CollectionBadges from 'vtex.store-components/CollectionBadges'
 import DiscountBadge from 'vtex.store-components/DiscountBadge'
 import ProductName from 'vtex.store-components/ProductName'
 import ProductPrice from 'vtex.store-components/ProductPrice'
-import AddProduct from 'vtex.wishlist/AddProduct'
-
+//import AddProduct from 'vtex.wishlist/AddProduct'
+import { ExtensionPoint } from 'render'
 import { productShape } from './propTypes'
 import Image from './components/Image'
 
@@ -226,13 +226,15 @@ class ProductSummary extends Component {
       }
     )
 
+    console.log(product)
+
     return (
       <div
         className={classes}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <AddProduct/>
+        <ExtensionPoint id="heart" skuId={path(['sku', 'itemId'], product)} productId={path(['productId'], product)}/>
         <div className="pointer pa2">
           <Link
             className={linkClasses}
