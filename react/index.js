@@ -189,7 +189,7 @@ class ProductSummary extends Component {
           listPriceContainerClass="pv1 normal c-muted-2"
           listPriceLabelClass={listPriceLabelClasses}
           listPriceClass={listPriceClasses}
-          sellingPriceContainerClass="pt1 pb3 c-muted-1"
+          sellingPriceContainerClass="pt1 pb3 c-on-base"
           sellingPriceLabelClass="dib"
           sellingPriceClass="dib ph2 t-heading-5"
           savingsContainerClass="t-small-ns c-muted-2"
