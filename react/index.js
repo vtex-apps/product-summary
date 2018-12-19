@@ -222,7 +222,7 @@ class ProductSummary extends Component {
         'justify-left w-100': displayMode === 'inline',
         'pv5': displayMode === 'small',
         't-mini pb2': displayMode !== 'normal',
-        'pv7': displayMode === 'normal',
+        'pv6': displayMode === 'normal',
       }
     )
 
