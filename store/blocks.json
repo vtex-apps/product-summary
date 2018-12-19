@@ -1,6 +1,6 @@
 {
   "product-summary": {
     "blocks": [],
-    "component": "index"
+    "inheritComponent": true
   }
 }
