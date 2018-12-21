@@ -183,7 +183,7 @@ class ProductSummary extends Component {
           listPriceClass="dib ph2 strike t-small-ns t-mini"
           sellingPriceContainerClass="pt1 pb3 c-on-base"
           sellingPriceLabelClass="dib"
-          sellingPriceClass="dib ph2"
+          sellingPriceClass="dib ph2 t-heading-5-ns"
           savingsContainerClass="t-small-ns c-muted-2"
           savingsClass="dib"
           interestRateClass="dib pl2"
