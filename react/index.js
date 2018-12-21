@@ -174,12 +174,12 @@ class ProductSummary extends Component {
       'pv5': !showBorders
     })
 
-    const listPriceLabelClasses = classNames('dib strike t-small', {
+    const listPriceLabelClasses = classNames('dib strike t-small t-mini', {
       't-mini': displayMode !== 'normal'
     })
 
-    const listPriceClasses = classNames('dib ph2 strike t-small-ns', {
-      't-mini': displayMode !== 'normal'
+    const listPriceClasses = classNames('dib ph2 strike t-small-ns t-mini', {
+      't-mini': displayMode === 'normal'
     })
 
     return (
@@ -191,7 +191,7 @@ class ProductSummary extends Component {
           listPriceClass={listPriceClasses}
           sellingPriceContainerClass="pt1 pb3 c-on-base"
           sellingPriceLabelClass="dib"
-          sellingPriceClass="dib ph2 t-heading-5"
+          sellingPriceClass="dib ph2 6"
           savingsContainerClass="t-small-ns c-muted-2"
           savingsClass="dib"
           interestRateClass="dib pl2"
