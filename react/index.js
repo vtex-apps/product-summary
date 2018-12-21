@@ -169,9 +169,9 @@ class ProductSummary extends Component {
       showBorders
     } = this.props
 
-    const containerClasses = classNames(`${productSummary.priceContainer} flex flex-column justify-end pv2`, {
-      'justify-center items-center': displayMode !== 'inline',
-      'pv2': !showBorders
+    const containerClasses = classNames(`${productSummary.priceContainer} flex flex-column`, {
+      'justify-end items-center': displayMode !== 'inline',
+      'pv5': !showBorders
     })
 
     const listPriceLabelClasses = classNames('dib strike t-small', {
@@ -185,7 +185,7 @@ class ProductSummary extends Component {
     return (
       <div className={containerClasses}>
         <ProductPrice
-          className="flex flex-column justify-end"
+          className="flex flex-column justify-start"
           listPriceContainerClass="pv1 normal c-muted-2"
           listPriceLabelClass={listPriceLabelClasses}
           listPriceClass={listPriceClasses}
@@ -216,13 +216,13 @@ class ProductSummary extends Component {
     } = this.props
 
     const containerClasses = classNames(
-      `${productSummary.nameContainer} flex`,
+      `${productSummary.nameContainer} flex items-start`,
       {
-        'items-center justify-center': displayMode !== 'inline',
+        'justify-center': displayMode !== 'inline',
         'justify-left w-100': displayMode === 'inline',
-        'pt5 pb3': displayMode === 'small',
+        'pv5': displayMode === 'small',
         't-mini pb2': displayMode !== 'normal',
-        'pt7 pb4': displayMode === 'normal',
+        'pv6': displayMode === 'normal',
       }
     )
 

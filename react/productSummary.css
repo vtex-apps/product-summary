@@ -15,4 +15,11 @@
   padding-top: 100%;
   background: center / contain no-repeat;
 }
-  
+
+.nameContainer {
+  height: 3.25rem;
+}
+
+.priceContainer {
+  height: 6.25rem;
+}
