@@ -24,9 +24,6 @@ import ProductSummaryAttachmentsList from './components/ProductSummaryAttachment
  * Product Summary component. Summarizes the product information.
  */
 class ProductSummary extends Component {
-  componentDidMount() {
-    console.log('teste === ProductSummary: ', this.props)
-  }
   static propTypes = {
     /** Product that owns the informations */
     product: productShape,
@@ -171,6 +168,14 @@ class ProductSummary extends Component {
       displayMode,
       actionOnClick,
       name,
+      showListPrice,
+      showLabels,
+      showInstallments,
+      labelSellingPrice,
+      displayBuyButton,
+      isOneClickBuy,
+      buyButtonText,
+      runtime,
     } = this.props
 
     const classes = classNames(`${productSummary.container} overflow-hidden br3 w-100 h-100`, {
@@ -197,6 +202,26 @@ class ProductSummary extends Component {
       'bb b--muted-4 mh2 mt2': showBorders
     })
 
+    const priceProps = {
+      showListPrice,
+      showLabels,
+      showInstallments,
+      labelSellingPrice,
+      displayMode,
+      showBorders,
+      product,
+    }
+
+    const buyButtonProps = {
+      product,
+      displayMode,
+      displayBuyButton,
+      isOneClickBuy,
+      buyButtonText,
+      runtime,
+      isHovering: this.state.isHovering,
+    }
+
     return (
       <div
         className={classes}
@@ -217,11 +242,11 @@ class ProductSummary extends Component {
             </div>
             <div className={informationClasses}>
               <ProductSummaryName {...{ displayMode, product, name }} />
-              <ProductSummaryAttachmentsList {...{ product }} />
-              <ProductSummaryPrice {...this.props} />
+              <ProductSummaryAttachmentsList product={product} />
+              <ProductSummaryPrice {...priceProps} />
             </div>
           </Link>
-          {<ProductSummaryBuyButton isHovering={this.state.isHovering} {...this.props} />}
+          {<ProductSummaryBuyButton {...buyButtonProps} />}
         </div>
       </div>
     )

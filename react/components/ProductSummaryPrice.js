@@ -14,7 +14,7 @@ export default class ProductSummaryPrice extends Component {
       showInstallments,
       labelSellingPrice,
       displayMode,
-      showBorders
+      showBorders,
     } = this.props
 
     const containerClasses = classNames(`${productSummary.priceContainer} flex flex-column`, {

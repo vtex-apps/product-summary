@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { path } from 'ramda'
 import ProductPrice from 'vtex.store-components/ProductPrice'
 import { productShape } from '../propTypes'
 
@@ -7,7 +8,7 @@ export default class ProductSummaryAttachmentsList extends Component {
     product: productShape,
   }
 
-  hasPrice = (option) => option.sku.seller.commertialOffer.Price > 0
+  hasPrice = (option) => path(['sku', 'seller', 'commertialOffer', 'Price'], option) > 0
 
   render() {
     const { product } = this.props
@@ -19,7 +20,7 @@ export default class ProductSummaryAttachmentsList extends Component {
     return product.addedOptions.filter(this.hasPrice).map(option => {
       const productText = option.isRequired ? option.productName : `+ ${option.quantity}× ${option.productName}`
       return (
-        <div className="flex flex-row items-center justify-between" key={option.productName}>
+        <div className="flex items-center justify-between" key={option.productName}>
           <span className="f5 c-muted-2">{productText}</span>
           <ProductPrice
             sellingPrice={option.sku.seller.commertialOffer.Price}
