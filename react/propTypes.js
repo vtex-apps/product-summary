@@ -50,4 +50,6 @@ export const productShape = PropTypes.shape({
   productClusters: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
   })),
+  addedOptions: PropTypes.arrayOf(PropTypes.object),
+  quantity: PropTypes.number.isRequired,
 })

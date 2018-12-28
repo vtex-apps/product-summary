@@ -18,6 +18,7 @@ import ProductSummaryBuyButton from './components/ProductSummaryBuyButton'
 import displayButtonTypes, { getDisplayButtonNames, getDisplayButtonValues } from './DisplayButtonTypes'
 
 import productSummary from './productSummary.css'
+import ProductSummaryAttachmentsList from './components/ProductSummaryAttachmentsList'
 
 /**
  * Product Summary component. Summarizes the product information.
@@ -216,6 +217,7 @@ class ProductSummary extends Component {
             </div>
             <div className={informationClasses}>
               <ProductSummaryName {...{ displayMode, product, name }} />
+              <ProductSummaryAttachmentsList {...{ product }} />
               <ProductSummaryPrice {...this.props} />
             </div>
           </Link>

@@ -7,10 +7,10 @@ import productSummary from '../productSummary.css'
 
 const ProductSummaryName = ({ displayMode, product, name }) => {
   const containerClasses = classNames(
-    `${productSummary.nameContainer} flex items-start`,
+    'flex items-start',
     {
-      'justify-center': displayMode !== 'inline',
-      'justify-left w-100': displayMode === 'inline',
+      [`${productSummary.nameContainer} justify-center`]: displayMode !== 'inline',
+      'justify-left w-100 pv5': displayMode === 'inline',
       'pv5': displayMode === 'small',
       't-mini pb2': displayMode !== 'normal',
       'pv6': displayMode === 'normal',
@@ -22,7 +22,7 @@ const ProductSummaryName = ({ displayMode, product, name }) => {
   const brandName = path(['brand'], product)
 
   const brandNameClasses = classNames('t-body', {
-    't-mini': displayMode !== 'normal',
+    't-mini': displayMode === 'small',
   })
   return (
     <div className={containerClasses}>
