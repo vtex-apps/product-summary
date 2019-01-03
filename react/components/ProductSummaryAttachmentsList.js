@@ -18,7 +18,7 @@ export default class ProductSummaryAttachmentsList extends Component {
     }
 
     return product.addedOptions.filter(this.hasPrice).map(option => {
-      const productText = option.isRequired ? option.productName : `+ ${option.quantity}× ${option.productName}`
+      const productText = option.isSingleChoice ? option.productName : `+ ${option.quantity}× ${option.productName}`
       return (
         <div className="flex items-center justify-between" key={option.productName}>
           <span className="f5 c-muted-2">{productText}</span>

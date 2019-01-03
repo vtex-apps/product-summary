@@ -17,8 +17,8 @@ export default class ProductSummaryPrice extends Component {
       showBorders,
     } = this.props
 
-    const containerClasses = classNames(`${productSummary.priceContainer} flex flex-column`, {
-      'justify-end items-center': displayMode !== 'inline',
+    const containerClasses = classNames('flex flex-column', {
+      [`${productSummary.priceContainer} justify-end items-center`]: displayMode !== 'inline',
       'pv5': !showBorders,
     })
 
