@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.3.3] - 2019-01-04
+### Fixed 
+- Fix price's typography class.
+
 ## [2.3.2] - 2018-12-21
 ### Fixed
 - Variable component height.

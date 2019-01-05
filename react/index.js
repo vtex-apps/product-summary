@@ -174,24 +174,16 @@ class ProductSummary extends Component {
       'pv5': !showBorders
     })
 
-    const listPriceLabelClasses = classNames('dib strike t-small', {
-      't-mini': displayMode !== 'normal'
-    })
-
-    const listPriceClasses = classNames('dib ph2 strike t-small-ns', {
-      't-mini': displayMode !== 'normal'
-    })
-
     return (
       <div className={containerClasses}>
         <ProductPrice
           className="flex flex-column justify-start"
           listPriceContainerClass="pv1 normal c-muted-2"
-          listPriceLabelClass={listPriceLabelClasses}
-          listPriceClass={listPriceClasses}
+          listPriceLabelClass="dib strike t-small t-mini"
+          listPriceClass="dib ph2 strike t-small-ns t-mini"
           sellingPriceContainerClass="pt1 pb3 c-on-base"
           sellingPriceLabelClass="dib"
-          sellingPriceClass="dib ph2 t-heading-5"
+          sellingPriceClass="dib ph2 t-heading-5-ns"
           savingsContainerClass="t-small-ns c-muted-2"
           savingsClass="dib"
           interestRateClass="dib pl2"
