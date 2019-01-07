@@ -208,7 +208,6 @@ class ProductSummary extends Component {
       showBorders,
       name: showFieldsProps
     } = this.props
-    console.log(showBorders)
 
     const containerClasses = classNames(
       `flex items-start`,
