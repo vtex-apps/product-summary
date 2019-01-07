@@ -22,6 +22,8 @@ export const productShape = PropTypes.shape({
     }).isRequired,
     /** SKU seller */
     seller: PropTypes.shape({
+      /** Seller id */
+      sellerId: PropTypes.string.isRequired,
       /** Seller comertial offer */
       commertialOffer: PropTypes.shape({
         /** SKU installments */
@@ -50,6 +52,14 @@ export const productShape = PropTypes.shape({
   productClusters: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
   })),
-  addedOptions: PropTypes.arrayOf(PropTypes.object),
+  /** If item is parent item, will contain added assembly options */
+  addedOptions: PropTypes.arrayOf(addedOptionShape),
+  /** Quantity of item in Minicart */
   quantity: PropTypes.number.isRequired,
+})
+
+const addedOptionShape = PropTypes.shape({
+  ...productShape,
+  /** If assembly option is of type "Single Choice", like Pizza Crust */
+  isSingleChoice: PropTypes.bool.isRequired,
 })

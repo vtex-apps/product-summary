@@ -19,6 +19,7 @@ import displayButtonTypes, { getDisplayButtonNames, getDisplayButtonValues } fro
 
 import productSummary from './productSummary.css'
 import ProductSummaryAttachmentsList from './components/ProductSummaryAttachmentsList'
+import ProductQuantityStepper from './components/ProductQuantityStepper';
 
 /**
  * Product Summary component. Summarizes the product information.
@@ -92,6 +93,7 @@ class ProductSummary extends Component {
 
   state = {
     isHovering: false,
+    isUpdatingItems: false,
   }
 
   handleMouseLeave = () => {
@@ -160,7 +162,9 @@ class ProductSummary extends Component {
       </ContentLoader>
     )
   }
-  
+
+  handleUpdateItemsUpdate = isLoading => this.setState({ isUpdatingItems: isLoading })
+
   render() {
     const {
       showBorders,
@@ -202,6 +206,10 @@ class ProductSummary extends Component {
       'bb b--muted-4 mh2 mt2': showBorders
     })
 
+    const priceWrapperClasses = classNames('', {
+      'flex justify-between items-center': displayMode === 'inline',
+    })
+
     const priceProps = {
       showListPrice,
       showLabels,
@@ -210,6 +218,7 @@ class ProductSummary extends Component {
       displayMode,
       showBorders,
       product,
+      isLoading: this.state.isUpdatingItems,
     }
 
     const buyButtonProps = {
@@ -243,7 +252,16 @@ class ProductSummary extends Component {
             <div className={informationClasses}>
               <ProductSummaryName {...{ displayMode, product, name }} />
               <ProductSummaryAttachmentsList product={product} />
-              <ProductSummaryPrice {...priceProps} />
+              <div className={priceWrapperClasses}>
+                {displayMode === 'inline' && (
+                  <ProductQuantityStepper 
+                    product={product} 
+                    setUpdatingItemsState={this.handleUpdateItemsUpdate}
+                  />)
+                }
+                <ProductSummaryPrice {...priceProps} />
+              </div>
+              
             </div>
           </Link>
           {<ProductSummaryBuyButton {...buyButtonProps} />}

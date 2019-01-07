@@ -23,7 +23,7 @@ export default class ProductSummaryAttachmentsList extends Component {
         <div className="flex items-center justify-between" key={option.productName}>
           <span className="f5 c-muted-2">{productText}</span>
           <ProductPrice
-            sellingPrice={option.sku.seller.commertialOffer.Price}
+            sellingPrice={option.sku.seller.commertialOffer.Price * option.quantity}
             sellingPriceContainerClass="pt1 pb3 c-on-base"
             sellingPriceLabelClass="dib"
             sellingPriceClass="dib f5 c-muted-2"

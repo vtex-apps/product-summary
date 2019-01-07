@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import ProductPrice from 'vtex.store-components/ProductPrice'
 import { path } from 'ramda'
 import productSummary from '../productSummary.css'
+import { Spinner } from 'vtex.styleguide'
 
 export default class ProductSummaryPrice extends Component {
   commertialOffer = () => path(['sku', 'seller', 'commertialOffer'], this.props.product)
@@ -15,7 +16,16 @@ export default class ProductSummaryPrice extends Component {
       labelSellingPrice,
       displayMode,
       showBorders,
+      isLoading,
     } = this.props
+
+    if (isLoading) {
+      return (
+        <div className="w-100 flex justify-center items-center">
+          <Spinner size={20}/>
+        </div>
+      )
+    }
 
     const containerClasses = classNames('flex flex-column', {
       [`${productSummary.priceContainer} justify-end items-center`]: displayMode !== 'inline',
@@ -33,7 +43,7 @@ export default class ProductSummaryPrice extends Component {
           listPriceClass="dib ph2 strike t-small-ns t-mini"
           sellingPriceContainerClass="pt1 pb3 c-on-base"
           sellingPriceLabelClass="dib"
-          sellingPriceClass="dib ph2 t-heading-5-ns"
+          sellingPriceClass="dib ph2 t-heading-5-ns b"
           savingsContainerClass="t-small-ns c-muted-2"
           savingsClass="dib"
           interestRateClass="dib pl2"
