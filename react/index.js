@@ -169,7 +169,7 @@ class ProductSummary extends Component {
       showBorders
     } = this.props
 
-    const containerClasses = classNames(`flex flex-column`, {
+    const containerClasses = classNames('flex flex-column', {
       'justify-end items-center': displayMode !== 'inline',
       'pv5': !showBorders,
       [`${productSummary.priceContainer}`] : !showBorders
@@ -210,7 +210,7 @@ class ProductSummary extends Component {
     } = this.props
 
     const containerClasses = classNames(
-      `flex items-start`,
+      'flex items-start',
       {
         'justify-center': displayMode !== 'inline',
         'justify-left w-100': displayMode === 'inline',
