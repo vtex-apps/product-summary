@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed 
-- Fix price container's height.
+- Fix price and name container's height.
 
 ## [2.3.3] - 2019-01-04
 ### Fixed 
