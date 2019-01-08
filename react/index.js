@@ -267,7 +267,7 @@ class ProductSummary extends Component {
     return (
       !equals(displayBuyButton, displayButtonTypes.DISPLAY_NONE.value) && (
         <div className={buyButtonClasses}>
-          <div className={`${productSummary.buyButton} center mw-100 ${!showBuyButton && 'isHidden'}`}>
+          <div className={`${productSummary.buyButton} center mw-100 ${!showBuyButton && productSummary.isHidden}`}>
             <BuyButton
               available={isAvailable}
               skuItems={
