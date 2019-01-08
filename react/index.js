@@ -171,8 +171,7 @@ class ProductSummary extends Component {
 
     const containerClasses = classNames('flex flex-column', {
       'justify-end items-center': displayMode !== 'inline',
-      'pv5': !showBorders,
-      [`${productSummary.priceContainer}`] : !showBorders
+      [`${productSummary.priceContainer} pv5`] : !showBorders
     })
 
     return (
