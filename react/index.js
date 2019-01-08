@@ -205,19 +205,17 @@ class ProductSummary extends Component {
     const {
       displayMode,
       product,
-      showBorders,
       name: showFieldsProps
     } = this.props
 
     const containerClasses = classNames(
-      `flex items-start`,
+      `${productSummary.nameContainer} flex items-start`,
       {
         'justify-center': displayMode !== 'inline',
         'justify-left w-100': displayMode === 'inline',
         'pv5': displayMode === 'small',
         't-mini pb2': displayMode !== 'normal',
         'pv6': displayMode === 'normal',
-        [`${productSummary.nameContainer}`] : showBorders,
       }
     )
 
