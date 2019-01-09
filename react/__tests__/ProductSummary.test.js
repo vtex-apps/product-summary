@@ -7,6 +7,7 @@ describe('<ProductSummary /> component', () => {
   function renderComponent(customProps) {
     const props = {
       ...customProps,
+      runtime: { hints: {} },
     }
 
     const component = mount(<ProductSummary {...props} />)

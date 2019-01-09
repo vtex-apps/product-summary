@@ -126,38 +126,8 @@ class ProductSummary extends Component {
       name: showFieldsProps,
     } = this.props
 
-<<<<<<< HEAD
     const imageProps = { product, showBadge, badgeText, showCollections }
     const nameProps = { product, showFieldsProps }
-=======
-    const classes = classNames(`${productSummary.container} overflow-hidden br3 w-100 h-100`, {
-      'flex flex-column justify-between center tc': displayMode !== 'inline',
-      [`${productSummary.containerNormal}`]: displayMode === 'normal',
-      [`${productSummary.containerSmall}`]: displayMode === 'small',
-      [`${productSummary.containerInline}`]: displayMode === 'inline',
-    })
-
-    const linkClasses = classNames(`${productSummary.clearLink} flex`, {
-      'flex-column': displayMode !== 'inline',
-    })
-
-    const imageContainerClasses = classNames(`${productSummary.imageContainer} db`, {
-      'w-100 center': displayMode !== 'inline',
-      'w-40': displayMode === 'inline',
-    })
-
-    const informationClasses = classNames(`${productSummary.informations}`, {
-      'w-80 pb2 pl3 pr3 h-100': displayMode === 'inline',
-    })
-
-    const elementClasses = classNames('pointer ph2 pt3 pb4 flex flex-column', {
-      'bb b--muted-4 mh2 mt2': showBorders,
-    })
-
-    const priceWrapperClasses = classNames({
-      'flex justify-between items-center': displayMode === 'inline',
-    })
->>>>>>> Fix buy button on hover always showing. Refactoring of Buy button behavior. Change storefront label
 
     const priceProps = {
       product,
