@@ -171,7 +171,7 @@ class ProductSummary extends Component {
 
     const containerClasses = classNames('flex flex-column', {
       'justify-end items-center': displayMode !== 'inline',
-      [`${productSummary.priceContainer} pv5`] : !showBorders
+      [`${productSummary.priceContainer} pv5`]: !showBorders
     })
 
     return (
@@ -216,7 +216,7 @@ class ProductSummary extends Component {
         'pv5': displayMode === 'small',
         't-mini pb2': displayMode !== 'normal',
         'pv6': displayMode === 'normal',
-        [`${productSummary.nameContainer}`] : !showBorders,
+        [productSummary.nameContainer]: !showBorders,
         'pb6': showBorders,
       }
     )
@@ -304,9 +304,9 @@ class ProductSummary extends Component {
 
     const classes = classNames(`${productSummary.container} overflow-hidden br3 w-100 h-100`, {
       'flex flex-column justify-between center tc': displayMode !== 'inline',
-      [`${productSummary.containerNormal}`]: displayMode === 'normal',
-      [`${productSummary.containerSmall}`]: displayMode === 'small',
-      [`${productSummary.containerInline}`]: displayMode === 'inline',
+      [productSummary.containerNormal]: displayMode === 'normal',
+      [productSummary.containerSmall]: displayMode === 'small',
+      [productSummary.containerInline]: displayMode === 'inline',
     })
 
     const linkClasses = classNames(`${productSummary.clearLink} flex`, {
