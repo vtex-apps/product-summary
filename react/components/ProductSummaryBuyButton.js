@@ -15,17 +15,24 @@ const ProductSummaryBuyButton = ({
   isHovering,
   containerClass,
 }) => {
-  if (equals(displayBuyButton, displayButtonTypes.DISPLAY_NONE.value)) {
-    return null
-  }
+  const hoverBuyButton = equals(displayBuyButton, displayButtonTypes.DISPLAY_ALWAYS.value) ||
+    !equals(displayBuyButton, displayButtonTypes.DISPLAY_ON_HOVER.value) ||
+    (this.state.isHovering && !mobile)
+    
+  const showBuyButton = !equals(displayBuyButton, displayButtonTypes.DISPLAY_NONE.value) &&
+    !(equals(displayBuyButton, displayButtonTypes.DISPLAY_ON_HOVER.value) && mobile)
+
+  const buyButtonClasses = classNames(`${productSummary.buyButton} center mw-100`, {
+    [productSummary.isHidden]: !hoverBuyButton,
+  })
 
   const showBuyButton = !equals(displayBuyButton, displayButtonTypes.DISPLAY_ON_HOVER.value) || mobile || isHovering
   const quantity = path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) || 0
   const isAvailable = (quantity > 0)
 
-  return (
+  return (showBuyButton && 
     <div className={containerClass}>
-      <div className={`${productSummary.buyButton} center mw-100 ${!showBuyButton && 'isHidden'}`}>
+      <div className={buyButtonClasses}>
         <BuyButton
           available={isAvailable}
           skuItems={
@@ -45,9 +52,9 @@ const ProductSummaryBuyButton = ({
         >
           {buyButtonText || <FormattedMessage id="button-label" />}
         </BuyButton>
+        </div>
       </div>
-    </div>
-  )
+    )
 }
 
 export default ProductSummaryBuyButton
