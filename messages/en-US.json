@@ -12,5 +12,6 @@
   "editor.productSummary.displayBuyButton.title": "Buy button display mode",
   "editor.productSummary.displayBuyButton.option.none": "Never show",
   "editor.productSummary.displayBuyButton.option.always": "Always show",
-  "editor.productSummary.displayBuyButton.option.hover": "Show on hover"
+  "editor.productSummary.displayBuyButton.option.hover": "Show on hover",
+  "editor.productSummary.quantity-error": "It wasn't possible to select the specified amount"
 }

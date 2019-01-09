@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import NumericStepper from 'vtex.styleguide/NumericStepper'
+import { NumericStepper, withToast } from 'vtex.styleguide'
 import { orderFormConsumer } from 'vtex.store/OrderFormContext'
 import { debounce } from 'lodash'
 import { findIndex, propEq } from 'ramda'
+import { injectIntl } from 'react-intl'
 
 import { productShape } from '../propTypes'
 
@@ -17,6 +18,7 @@ class ProductQuantityStepper extends Component {
     super(props)
     this.state = {
       quantity: props.product.quantity,
+      canIncrease: true,
     }
     this.debouncedUpdate = debounce(this.updateItemQuantity, 1000)
   }
@@ -28,11 +30,22 @@ class ProductQuantityStepper extends Component {
     this.setState({ quantity: e.value }, () => this.debouncedUpdate && this.debouncedUpdate(this.state.quantity))
   }
 
+  checkUpdatedQuantity = (updateResponse, itemIndex, expectedQuant) => {
+    const { setUpdatingItemsState, showToast, intl } = this.props
+    const actualQuantity = updateResponse.items[itemIndex].quantity
+    if (actualQuantity !== expectedQuant) {
+      this.setState({ canIncrease: false, quantity: actualQuantity })
+      setUpdatingItemsState(false)
+      showToast({ message: intl.formatMessage({ id: 'editor.productSummary.quantity-error' }) })
+    }
+  }
+
   updateItemQuantity = async (quantity) => {
     const { product, orderFormContext } = this.props
+    this.setState({ canIncrease: true })
     const itemIndex = findIndex(propEq('id', product.sku.itemId))(orderFormContext.orderForm.items)
     try {
-      await orderFormContext.updateOrderForm({
+      const response = await orderFormContext.updateOrderForm({
         variables: {
           orderFormId: orderFormContext.orderForm.orderFormId,
           items: [{
@@ -43,6 +56,7 @@ class ProductQuantityStepper extends Component {
           }],
         },
       })
+      this.checkUpdatedQuantity(response.data.updateItems, itemIndex, quantity)
       await orderFormContext.refetch()
     } catch (err) {
       // gone wrong, rollback to old quantity value
@@ -52,17 +66,16 @@ class ProductQuantityStepper extends Component {
     this.props.setUpdatingItemsState(false)
   }
   render() {
-    // Review this maxValue, how to get
     return (
       <NumericStepper
         lean
         value={this.state.quantity}
         minValue={1}
-        maxValue={5}
+        maxValue={this.state.canIncrease ? undefined : this.state.quantity}
         onChange={this.handleOnChange}
       />
     )
   }
 }
 
-export default orderFormConsumer(ProductQuantityStepper)
+export default injectIntl(withToast(orderFormConsumer(ProductQuantityStepper)))
