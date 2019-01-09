@@ -332,7 +332,7 @@ class ProductSummary extends Component {
         <div className={elementClasses}>
           <Link
             className={linkClasses}
-            page={'store/product'}
+            page={'store.product'}
             params={{ slug: path(['linkText'], product) }}
             onClick={actionOnClick}
           >
