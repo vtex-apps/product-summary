@@ -31,11 +31,10 @@ class ProductQuantityStepper extends Component {
   }
 
   checkUpdatedQuantity = (updateResponse, itemIndex, expectedQuant) => {
-    const { setUpdatingItemsState, showToast, intl } = this.props
+    const { showToast, intl } = this.props
     const actualQuantity = updateResponse.items[itemIndex].quantity
     if (actualQuantity !== expectedQuant) {
       this.setState({ canIncrease: false, quantity: actualQuantity })
-      setUpdatingItemsState(false)
       showToast({ message: intl.formatMessage({ id: 'editor.productSummary.quantity-error' }) })
     }
   }
@@ -45,7 +44,7 @@ class ProductQuantityStepper extends Component {
     this.setState({ canIncrease: true })
     const itemIndex = findIndex(propEq('id', product.sku.itemId))(orderFormContext.orderForm.items)
     try {
-      const response = await orderFormContext.updateOrderForm({
+      await orderFormContext.updateOrderForm({
         variables: {
           orderFormId: orderFormContext.orderForm.orderFormId,
           items: [{
@@ -56,8 +55,8 @@ class ProductQuantityStepper extends Component {
           }],
         },
       })
-      this.checkUpdatedQuantity(response.data.updateItems, itemIndex, quantity)
-      await orderFormContext.refetch()
+      const orderForm = await orderFormContext.refetch()
+      this.checkUpdatedQuantity(orderForm.data.orderForm, itemIndex, quantity)
     } catch (err) {
       // gone wrong, rollback to old quantity value
       const oldQuantity = orderFormContext.orderForm.items[itemIndex].quantity
