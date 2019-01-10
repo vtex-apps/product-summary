@@ -13,5 +13,6 @@
   "editor.productSummary.displayBuyButton.option.none": "Nunca mostrar",
   "editor.productSummary.displayBuyButton.option.always": "Siempre mostrar",
   "editor.productSummary.displayBuyButton.option.hover": "Mostrar al pasar el ratón",
-  "editor.productSummary.quantity-error": "No se pudo seleccionar la cantidad especificada"
+  "editor.productSummary.quantity-error": "No se pudo seleccionar la cantidad especificada",
+  "editor.productSummary.unit": "Unidad"
 }
