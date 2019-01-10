@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { NumericStepper, withToast } from 'vtex.styleguide'
-import { orderFormConsumer } from 'vtex.store/OrderFormContext'
+import { orderFormConsumer } from 'vtex.store-resources/OrderFormContext'
 import { debounce } from 'lodash'
 import { findIndex, propEq } from 'ramda'
 import { injectIntl } from 'react-intl'
