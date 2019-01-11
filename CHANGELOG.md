@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed 
+- Replace generic html tags to html5 tags for a more semantic approach. 
 
 ## [2.9.2] - 2019-01-26
 - Use `ProductName` as H2 element.
