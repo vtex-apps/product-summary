@@ -178,6 +178,90 @@ class ProductSummary extends Component {
       showLabels,
       showInstallments,
       labelSellingPrice,
+      displayMode,
+      showBorders
+    } = this.props
+
+    const containerClasses = classNames('flex flex-column', {
+      'justify-end items-center': displayMode !== 'inline',
+      [`${productSummary.priceContainer} pv5`]: !showBorders
+    })
+
+    return (
+      <div className={containerClasses}>
+        <ProductPrice
+          className="flex flex-column justify-start"
+          listPriceContainerClass="pv1 normal c-muted-2"
+          listPriceLabelClass="dib strike t-small t-mini"
+          listPriceClass="dib ph2 strike t-small-ns t-mini"
+          sellingPriceContainerClass="pt1 pb3 c-on-base"
+          sellingPriceLabelClass="dib"
+          sellingPriceClass="dib ph2 t-heading-5-ns"
+          savingsContainerClass="t-small-ns c-muted-2"
+          savingsClass="dib"
+          interestRateClass="dib pl2"
+          installmentContainerClass="t-small-ns c-muted-2"
+          listPrice={path(['ListPrice'], this.commertialOffer)}
+          sellingPrice={path(['Price'], this.commertialOffer)}
+          installments={path(['Installments'], this.commertialOffer)}
+          showListPrice={showListPrice}
+          showLabels={showLabels}
+          showInstallments={showInstallments}
+          labelSellingPrice={labelSellingPrice}
+        />
+      </div>
+    )
+  }
+
+  get renderProductName() {
+    const {
+      displayMode,
+      product,
+      showBorders,
+      name: showFieldsProps
+    } = this.props
+
+    const containerClasses = classNames(
+      'flex items-start',
+      {
+        'justify-center': displayMode !== 'inline',
+        'justify-left w-100': displayMode === 'inline',
+        'pv5': displayMode === 'small',
+        't-mini pb2': displayMode !== 'normal',
+        'pv6': displayMode === 'normal',
+        [productSummary.nameContainer]: !showBorders,
+        'pb6': showBorders,
+      }
+    )
+
+    const productName = path(['productName'], product)
+    const skuName = path(['sku', 'name'], product)
+    const brandName = path(['brand'], product)
+
+    const brandNameClasses = classNames('t-body', {
+      't-mini': displayMode !== 'normal',
+    })
+    return (
+      <div className={containerClasses}>
+        <ProductName
+          className="overflow-hidden c-on-base"
+          brandNameClass={brandNameClasses}
+          skuNameClass="t-small"
+          loaderClass="pt5 overflow-hidden"
+          name={productName}
+          skuName={skuName}
+          brandName={brandName}
+          {...showFieldsProps}
+        />
+      </div>
+    );
+  }
+
+  get renderBuyButton() {
+
+    const {
+      product,
+      displayMode,
       displayBuyButton,
       isOneClickBuy,
       buyButtonText,
@@ -234,15 +318,15 @@ class ProductSummary extends Component {
     }
 
     return (
-      <div
+      <section
         className={classes}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <div className={elementClasses}>
+        <article className={elementClasses}>
           <Link
             className={linkClasses}
-            page={'store.product'}
+            page={'store/product'}
             params={{ slug: path(['linkText'], product) }}
             onClick={actionOnClick}
           >
@@ -265,9 +349,9 @@ class ProductSummary extends Component {
               </div>
             </div>
           </Link>
-          <ProductSummaryBuyButton {...buyButtonProps} />
-        </div>
-      </div>
+          {<ProductSummaryBuyButton {...buyButtonProps} />}
+        </article>
+      </section>
     )
   }
 }
