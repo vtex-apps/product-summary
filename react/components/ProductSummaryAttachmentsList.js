@@ -3,10 +3,15 @@ import { intlShape, injectIntl } from 'react-intl'
 import ProductPrice from 'vtex.store-components/ProductPrice'
 import { productShape } from '../propTypes'
 
+import { optionPricePerItem, parentPricePerUnit } from '../utils/attachmentHelper'
+
 class ProductSummaryAttachmentsList extends Component {
   static propTypes = {
     product: productShape,
     intl: intlShape,
+  }
+  componentDidMount() {
+    console.log('teste == ProductSummaryAttachmentsList: ', JSON.stringify(this.props.product))
   }
 
   // Achar maneira melhor de saber qual attachment nao mostrar
@@ -48,11 +53,11 @@ class ProductSummaryAttachmentsList extends Component {
 
     return (
       <Fragment>
-        {this.renderItem(intl.formatMessage({ id: 'editor.productSummary.unit' }), product, this.parentPrice())}
+        {this.renderItem(intl.formatMessage({ id: 'editor.productSummary.unit' }), product, parentPricePerUnit(product))}
         {product.addedOptions.filter(this.canShow).map(option => {
           const productText = 
             option.isSingleChoice ? option.productName : `+ ${option.quantity / product.quantity}× ${option.productName}`
-          const price = option.sku.seller.commertialOffer.Price / product.quantity
+          const price = optionPricePerItem(option, product)
           return this.renderItem(productText, option, price)
         })}
       </Fragment> 
