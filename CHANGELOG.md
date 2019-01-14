@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
-- Use smaller images to improve performance and replace background url by `<img>`.
+- Use smaller images to improve performance and replace background url with `<img>`.
 
 ## [2.4.1] - 2019-01-14
 ### Fixed
