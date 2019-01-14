@@ -1,9 +1,13 @@
 .imageContainer {}
+.container {}
 .containerSmall {}
 .containerInline {}
 .imageContainer {}
 .information {}
 .element {}
+.image {}
+.buyButtonContainer {}
+.buyButton {}
 
 .isHidden {
   visibility: hidden;
