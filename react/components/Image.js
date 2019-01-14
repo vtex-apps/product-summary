@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import productSummary from '../productSummary.css'
 
 /** Image component with 1:1 aspect ratio */
-export default function Image({ src, className, width = 'auto', height = 'auto'}) {
+export default function Image({ src, className, width, height }) {
   const resizeSrc = src => {
     //Check of src is already in a size defined by the client
     const isWithMeasures = new RegExp(/[1-9]+-(:?([1-9]+)|(auto))/);
@@ -26,13 +26,24 @@ export default function Image({ src, className, width = 'auto', height = 'auto'}
   )
 }
 
+Image.defaultProps = {
+  width: 'auto',
+  height: 'auto',
+}
+
 Image.propTypes = {
   /** Image url */
   src: PropTypes.string.isRequired,
   /** Custom classes */
   className: PropTypes.string,
   /** Image width */
-  width: PropTypes.number,
+  width: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.oneOf(['auto'])
+  ]),
   /** Image height */
-  height: PropTypes.number,
+  height: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.oneOf(['auto'])
+  ]),
 }

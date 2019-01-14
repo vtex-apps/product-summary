@@ -63,13 +63,13 @@ class ProductSummary extends Component {
     displayMode: PropTypes.oneOf(['normal', 'small', 'inline']),
     /** Function that is executed when a product is clicked */
     actionOnClick: PropTypes.func,
-    /** Image height */
-    imageHeight: PropTypes.oneOfType([
+    /** Image width */
+    imageWidth: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.oneOf(['auto'])
     ]),
-    /** Image width */
-    imageWidth: PropTypes.oneOfType([
+    /** Image height */
+    imageHeight: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.oneOf(['auto'])
     ]),
