@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {path} from 'ramda'
 
 import productSummary from '../productSummary.css'
 
@@ -12,7 +13,7 @@ export default function Image({ src, className, width, height, alt }) {
       return src
     }
 
-    const imageId = src.slice(src.indexOf("/ids/")).split("/")[2]
+    const imageId = path('2', src.slice(src.indexOf("/ids/")).split("/"))
     const withSuffix = `${imageId}-${width}-${height}`
 
     return src.replace(imageId, withSuffix)
