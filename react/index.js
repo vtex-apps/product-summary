@@ -91,7 +91,7 @@ class ProductSummary extends Component {
     },
     displayMode: 'normal',
     showBorders: false,
-    imageWidth: 500,
+    imageWidth: 546,
   }
 
   state = {
