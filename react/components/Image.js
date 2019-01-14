@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import productSummary from '../productSummary.css'
 
 /** Image component with 1:1 aspect ratio */
-export default function Image({ src, className, width, height }) {
+export default function Image({ src, className, width, height, alt }) {
   const resizeSrc = src => {
     //Check of src is already in a size defined by the client
     const isWithMeasures = new RegExp(/[1-9]+-(:?([1-9]+)|(auto))/);
@@ -19,9 +19,8 @@ export default function Image({ src, className, width, height }) {
   }
 
   return (
-    <div
-      className={`${className} ${productSummary.aspectRatio} w-100`}
-      style={{ backgroundImage: `url(${resizeSrc(src)})` }}
+    <img alt={alt}
+      className={`${className} ${productSummary.aspectRatio} w-100`} src={resizeSrc(src)}
     />
   )
 }

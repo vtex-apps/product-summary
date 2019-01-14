@@ -112,6 +112,7 @@ class ProductSummary extends Component {
 
   get renderImage() {
     const { product, showBadge, badgeText, showCollections, imageWidth, imageHeight } = this.props
+    
     const {
       productClusters,
       productName: name,
