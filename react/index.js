@@ -315,11 +315,11 @@ class ProductSummary extends Component {
       'w-40': displayMode === 'inline',
     })
 
-    const informationClasses = classNames(`${productSummary.informations}`, {
+    const informationClasses = classNames(`${productSummary.information}`, {
       'w-80 pb2 pl3 pr3 h-100': displayMode === 'inline'
     })
 
-    const elementClasses = classNames('pointer ph2 pt3 pb4 flex flex-column', {
+    const elementClasses = classNames(`${productSummary.element} pointer ph2 pt3 pb4 flex flex-column`, {
       'bb b--muted-4 mh2 mt2': showBorders
     })
 
