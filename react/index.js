@@ -60,13 +60,19 @@ class ProductSummary extends Component {
       }),
     }),
     /** Display mode of the summary used in the search result */
-    displayMode: PropTypes.oneOf([
-      'normal',
-      'small',
-      'inline',
-    ]),
+    displayMode: PropTypes.oneOf(['normal', 'small', 'inline']),
     /** Function that is executed when a product is clicked */
     actionOnClick: PropTypes.func,
+    /** Image height */
+    imageHeight: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.oneOf(['auto'])
+    ]),
+    /** Image width */
+    imageWidth: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.oneOf(['auto'])
+    ]),
   }
 
   static defaultProps = {
@@ -85,6 +91,7 @@ class ProductSummary extends Component {
     },
     displayMode: 'normal',
     showBorders: false,
+    imageWidth: 500,
   }
 
   state = {
@@ -104,7 +111,7 @@ class ProductSummary extends Component {
   }
 
   get renderImage() {
-    const { product, showBadge, badgeText, showCollections } = this.props
+    const { product, showBadge, badgeText, showCollections, imageWidth, imageHeight } = this.props
     const {
       productClusters,
       productName: name,
@@ -114,7 +121,7 @@ class ProductSummary extends Component {
     } = product
 
     let img = (
-      <Image className={`${productSummary.image}`} alt={name} src={imageUrl} />
+      <Image className={`${productSummary.image}`} alt={name} src={imageUrl} width={imageWidth} height={imageHeight}/>
     )
 
     if (showBadge) {
