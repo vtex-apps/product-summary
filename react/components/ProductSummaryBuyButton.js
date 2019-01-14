@@ -11,7 +11,7 @@ const ProductSummaryBuyButton = ({
   displayBuyButton,
   isOneClickBuy,
   buyButtonText,
-  runtime: { hints: { mobile } },
+  runtime: { hints: { mobile }},
   isHovering,
   containerClass,
 }) => {
