@@ -21,7 +21,7 @@ export default function Image({ src, className, width, height, alt }) {
 
   return (
     <img alt={alt}
-      className={`${className} ${productSummary.aspectRatio} w-100`} src={resizeSrc(src)}
+      className={`${className} ${productSummary.aspectRatio} ${productSummary.imageContainer} w-100`} src={resizeSrc(src)}
     />
   )
 }

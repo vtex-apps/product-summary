@@ -8,6 +8,7 @@
 .image {}
 .buyButtonContainer {}
 .buyButton {}
+.aspectRatio {}
 
 .isHidden {
   visibility: hidden;
@@ -20,11 +21,6 @@
 .clearLink {
   text-decoration: inherit;
   color: inherit;
-}
-
-.aspectRatio {
-  padding-top: 100%;
-  background: center / contain no-repeat;
 }
 
 .nameContainer {
