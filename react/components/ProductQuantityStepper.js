@@ -30,10 +30,10 @@ class ProductQuantityStepper extends Component {
     this.setState({ quantity: e.value }, () => this.debouncedUpdate && this.debouncedUpdate(this.state.quantity))
   }
 
-  checkUpdatedQuantity = (updateResponse, itemIndex, expectedQuant) => {
+  checkUpdatedQuantity = (updateResponse, itemIndex, expectedQuantity) => {
     const { showToast, intl } = this.props
     const actualQuantity = updateResponse.items[itemIndex].quantity
-    if (actualQuantity !== expectedQuant) {
+    if (actualQuantity !== expectedQuantity) {
       this.setState({ canIncrease: false, quantity: actualQuantity })
       showToast({ message: intl.formatMessage({ id: 'editor.productSummary.quantity-error' }) })
     }

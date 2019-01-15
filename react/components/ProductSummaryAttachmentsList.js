@@ -10,11 +10,8 @@ class ProductSummaryAttachmentsList extends Component {
     product: productShape,
     intl: intlShape,
   }
-  componentDidMount() {
-    console.log('teste == ProductSummaryAttachmentsList: ', JSON.stringify(this.props.product))
-  }
 
-  // Achar maneira melhor de saber qual attachment nao mostrar
+  // TODO:  not sure if it is the best way to define if an item should be displayed
   canShow = (option) => option.optionType !== 'Basic Toppings'
 
   parentPrice = () => {
