@@ -112,17 +112,18 @@ class ProductSummary extends Component {
 
   get renderImage() {
     const { product, showBadge, badgeText, showCollections, imageWidth, imageHeight } = this.props
-    
+    console.log(product)
     const {
       productClusters,
       productName: name,
       sku: {
         image: { imageUrl },
+        name: skuName,
       },
     } = product
 
     let img = (
-      <Image className={`${productSummary.image}`} alt={name} src={imageUrl} width={imageWidth} height={imageHeight}/>
+      <Image className={`${productSummary.image}`} alt={`${name} - ${skuName}`} src={imageUrl} width={imageWidth} height={imageHeight}/>
     )
 
     if (showBadge) {
