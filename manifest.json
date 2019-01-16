@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "product-summary",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "title": "Product Summary",
   "description": "Product summary component",
   "defaultLocale": "pt-BR",
@@ -20,6 +20,8 @@
     "postreleasy": "vtex publish --verbose"
   },
   "dependencies": {
-    "vtex.store-components": "3.x"
+    "vtex.store-components": "3.x",
+    "vtex.store-resources": "0.x",
+    "vtex.styleguide": "8.x"
   }
 }

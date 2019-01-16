@@ -12,5 +12,8 @@
   "editor.productSummary.displayBuyButton.title": "Modo de visualização dos botões de compra",
   "editor.productSummary.displayBuyButton.option.none": "Nunca mostrar",
   "editor.productSummary.displayBuyButton.option.always": "Sempre mostrar",
-  "editor.productSummary.displayBuyButton.option.hover": "Mostrar ao passar o mouse"
+  "editor.productSummary.displayBuyButton.option.hover": "Mostrar ao passar o mouse",
+  "editor.productSummary.quantity-error": "Não foi possível selecionar a quantidade especificada",
+  "editor.productSummary.unit": "Unidade",
+  "editor.productSummary.attachmentName": "+ {quantity}x {name}"
 }

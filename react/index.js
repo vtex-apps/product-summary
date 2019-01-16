@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types'
-import { path, equals } from 'ramda'
+import { path } from 'ramda'
 import React, { Component } from 'react'
 import ContentLoader from 'react-content-loader'
-import { FormattedMessage } from 'react-intl'
 import { Link, withRuntimeContext } from 'render'
 import classNames from 'classnames'
-import BuyButton from 'vtex.store-components/BuyButton'
 import CollectionBadges from 'vtex.store-components/CollectionBadges'
 import DiscountBadge from 'vtex.store-components/DiscountBadge'
 import ProductName from 'vtex.store-components/ProductName'
@@ -13,9 +11,15 @@ import ProductPrice from 'vtex.store-components/ProductPrice'
 
 import { productShape } from './propTypes'
 import Image from './components/Image'
+import ProductSummaryName from './components/ProductSummaryName'
+import ProductSummaryPrice from './components/ProductSummaryPrice'
+import ProductSummaryBuyButton from './components/ProductSummaryBuyButton'
+
 import displayButtonTypes, { getDisplayButtonNames, getDisplayButtonValues } from './DisplayButtonTypes'
 
 import productSummary from './productSummary.css'
+import ProductSummaryAttachmentsList from './components/ProductSummaryAttachmentsList'
+import ProductQuantityStepper from './components/ProductQuantityStepper';
 
 /**
  * Product Summary component. Summarizes the product information.
@@ -89,6 +93,7 @@ class ProductSummary extends Component {
 
   state = {
     isHovering: false,
+    isUpdatingItems: false,
   }
 
   handleMouseLeave = () => {
@@ -158,138 +163,7 @@ class ProductSummary extends Component {
     )
   }
 
-  get renderProductPrice() {
-
-    const {
-      showListPrice,
-      showLabels,
-      showInstallments,
-      labelSellingPrice,
-      displayMode,
-      showBorders
-    } = this.props
-
-    const containerClasses = classNames(`${productSummary.priceContainer} flex flex-column`, {
-      'justify-end items-center': displayMode !== 'inline',
-      'pv5': !showBorders
-    })
-
-    return (
-      <div className={containerClasses}>
-        <ProductPrice
-          className="flex flex-column justify-start"
-          listPriceContainerClass="pv1 normal c-muted-2"
-          listPriceLabelClass="dib strike t-small t-mini"
-          listPriceClass="dib ph2 strike t-small-ns t-mini"
-          sellingPriceContainerClass="pt1 pb3 c-on-base"
-          sellingPriceLabelClass="dib"
-          sellingPriceClass="dib ph2 t-heading-5-ns"
-          savingsContainerClass="t-small-ns c-muted-2"
-          savingsClass="dib"
-          interestRateClass="dib pl2"
-          installmentContainerClass="t-small-ns c-muted-2"
-          listPrice={path(['ListPrice'], this.commertialOffer)}
-          sellingPrice={path(['Price'], this.commertialOffer)}
-          installments={path(['Installments'], this.commertialOffer)}
-          showListPrice={showListPrice}
-          showLabels={showLabels}
-          showInstallments={showInstallments}
-          labelSellingPrice={labelSellingPrice}
-        />
-      </div>
-    )
-  }
-
-  get renderProductName() {
-    const {
-      displayMode,
-      product,
-      name: showFieldsProps
-    } = this.props
-
-    const containerClasses = classNames(
-      `${productSummary.nameContainer} flex items-start`,
-      {
-        'justify-center': displayMode !== 'inline',
-        'justify-left w-100': displayMode === 'inline',
-        'pv5': displayMode === 'small',
-        't-mini pb2': displayMode !== 'normal',
-        'pv6': displayMode === 'normal',
-      }
-    )
-
-    const productName = path(['productName'], product)
-    const skuName = path(['sku', 'name'], product)
-    const brandName = path(['brand'], product)
-
-    const brandNameClasses = classNames('t-body', {
-      't-mini': displayMode !== 'normal',
-    })
-    return (
-      <div className={containerClasses}>
-        <ProductName
-          className="overflow-hidden c-on-base"
-          brandNameClass={brandNameClasses}
-          skuNameClass="t-small"
-          loaderClass="pt5 overflow-hidden"
-          name={productName}
-          skuName={skuName}
-          brandName={brandName}
-          {...showFieldsProps}
-        />
-      </div>
-    );
-  }
-
-  get renderBuyButton() {
-
-    const {
-      product,
-      displayMode,
-      displayBuyButton,
-      isOneClickBuy,
-      buyButtonText,
-      runtime: { hints: { mobile } },
-    } = this.props
-
-    const buyButtonClasses = classNames(
-      `${productSummary.buyButtonContainer} pv3 w-100`,
-      {
-        'dn': displayMode === 'small' || displayMode === 'inline',
-        'dn db-ns': displayMode === 'normal',
-      }
-    )
-
-    const showBuyButton = !equals(displayBuyButton, displayButtonTypes.DISPLAY_ON_HOVER.value) || mobile || this.state.isHovering
-    const quantity = path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) || 0
-    const isAvailable = (quantity > 0)
-
-    return (
-      !equals(displayBuyButton, displayButtonTypes.DISPLAY_NONE.value) && (
-        <div className={buyButtonClasses}>
-          <div className={`${productSummary.buyButton} center mw-100 ${!showBuyButton && 'isHidden'}`}>
-            <BuyButton
-              available={isAvailable}
-              skuItems={
-                path(['sku', 'itemId'], product) && [
-                  {
-                    skuId: path(['sku', 'itemId'], product),
-                    quantity: 1,
-                    seller: path(['sku', 'seller', 'sellerId'], product),
-                  },
-                ]
-              }
-              isOneClickBuy={isOneClickBuy}
-            >
-              {buyButtonText || <FormattedMessage id="button-label" />}
-            </BuyButton>
-          </div>
-        </div>
-      )
-    )
-
-  }
-
+  handleUpdateItemsUpdate = isLoading => this.setState({ isUpdatingItems: isLoading })
 
   render() {
     const {
@@ -297,6 +171,15 @@ class ProductSummary extends Component {
       product,
       displayMode,
       actionOnClick,
+      name,
+      showListPrice,
+      showLabels,
+      showInstallments,
+      labelSellingPrice,
+      displayBuyButton,
+      isOneClickBuy,
+      buyButtonText,
+      runtime,
     } = this.props
 
     const classes = classNames(`${productSummary.container} overflow-hidden br3 w-100 h-100`, {
@@ -323,6 +206,31 @@ class ProductSummary extends Component {
       'bb b--muted-4 mh2 mt2': showBorders
     })
 
+    const priceWrapperClasses = classNames({
+      'flex justify-between items-center': displayMode === 'inline',
+    })
+
+    const priceProps = {
+      showListPrice,
+      showLabels,
+      showInstallments,
+      labelSellingPrice,
+      displayMode,
+      showBorders,
+      product,
+      isLoading: this.state.isUpdatingItems,
+    }
+
+    const buyButtonProps = {
+      product,
+      displayMode,
+      displayBuyButton,
+      isOneClickBuy,
+      buyButtonText,
+      runtime,
+      isHovering: this.state.isHovering,
+    }
+
     return (
       <div
         className={classes}
@@ -342,11 +250,21 @@ class ProductSummary extends Component {
                 : this.renderImageLoader}
             </div>
             <div className={informationClasses}>
-              {this.renderProductName}
-              {this.renderProductPrice}
+              <ProductSummaryName {...{ displayMode, product, name }} />
+              <ProductSummaryAttachmentsList product={product} />
+              <div className={priceWrapperClasses}>
+                {displayMode === 'inline' && (
+                  <ProductQuantityStepper 
+                    product={product} 
+                    setUpdatingItemsState={this.handleUpdateItemsUpdate}
+                  />)
+                }
+                <ProductSummaryPrice {...priceProps} />
+              </div>
+              
             </div>
           </Link>
-          {this.renderBuyButton}
+          {<ProductSummaryBuyButton {...buyButtonProps} />}
         </div>
       </div>
     )
