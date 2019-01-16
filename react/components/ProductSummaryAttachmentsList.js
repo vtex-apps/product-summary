@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { intlShape, injectIntl } from 'react-intl'
 import ProductPrice from 'vtex.store-components/ProductPrice'
 import { productShape } from '../propTypes'
@@ -11,18 +11,20 @@ class ProductSummaryAttachmentsList extends Component {
     intl: intlShape,
   }
 
+  formatAttachmentName = (quantity, name) => this.props.intl.formatMessage({ id: 'editor.productSummary.attachmentName'}, { quantity, name })
+
   // TODO:  not sure if it is the best way to define if an item should be displayed
   canShow = (option) => option.optionType !== 'Basic Toppings'
 
   renderItem = (productText, product, price) => {
     return (
-      <div className="flex items-center justify-between" key={product.productName}>
-        <span className="f5 c-muted-2">{productText}</span>
+      <div className="flex items-center justify-between pv1" key={product.productName}>
+        <span className="t-small c-muted-2">{productText}</span>
         <ProductPrice
           sellingPrice={price}
-          sellingPriceContainerClass="pt1 pb3 c-on-base"
+          sellingPriceContainerClass="c-on-base"
           sellingPriceLabelClass="dib"
-          sellingPriceClass="dib f5 c-muted-2"
+          sellingPriceClass="dib t-small c-muted-2"
           showListPrice={false}
           showLabels={false}
           showInstallments={false}
@@ -39,15 +41,15 @@ class ProductSummaryAttachmentsList extends Component {
     }
 
     return (
-      <Fragment>
+      <div className={'pb2'}>
         {this.renderItem(intl.formatMessage({ id: 'editor.productSummary.unit' }), product, parentPricePerUnit(product))}
         {product.addedOptions.filter(this.canShow).map(option => {
           const productText = 
-            option.isSingleChoice ? option.productName : `+ ${option.quantity / product.quantity}× ${option.productName}`
+            option.isSingleChoice ? option.productName : this.formatAttachmentName(option.quantity / product.quantity, option.productName)
           const price = optionPricePerItem(option, product)
           return this.renderItem(productText, option, price)
         })}
-      </Fragment> 
+      </div> 
     )
   }
 }
