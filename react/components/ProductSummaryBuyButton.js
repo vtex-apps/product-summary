@@ -16,6 +16,10 @@ const ProductSummaryBuyButton = ({
   runtime: { hints: { mobile } },
   isHovering,
 }) => {
+  if (equals(displayBuyButton, displayButtonTypes.DISPLAY_NONE.value)) {
+    return null
+  }
+
   const buyButtonClasses = classNames(
     `${productSummary.buyButtonContainer} pv3 w-100`,
     {
@@ -29,27 +33,25 @@ const ProductSummaryBuyButton = ({
   const isAvailable = (quantity > 0)
 
   return (
-    !equals(displayBuyButton, displayButtonTypes.DISPLAY_NONE.value) && (
-      <div className={buyButtonClasses}>
-        <div className={`${productSummary.buyButton} center mw-100 ${!showBuyButton && 'isHidden'}`}>
-          <BuyButton
-            available={isAvailable}
-            skuItems={
-              path(['sku', 'itemId'], product) && [
-                {
-                  skuId: path(['sku', 'itemId'], product),
-                  quantity: 1,
-                  seller: path(['sku', 'seller', 'sellerId'], product),
-                },
-              ]
-            }
-            isOneClickBuy={isOneClickBuy}
-          >
-            {buyButtonText || <FormattedMessage id="button-label" />}
-          </BuyButton>
-        </div>
+    <div className={buyButtonClasses}>
+      <div className={`${productSummary.buyButton} center mw-100 ${!showBuyButton && 'isHidden'}`}>
+        <BuyButton
+          available={isAvailable}
+          skuItems={
+            path(['sku', 'itemId'], product) && [
+              {
+                skuId: path(['sku', 'itemId'], product),
+                quantity: 1,
+                seller: path(['sku', 'seller', 'sellerId'], product),
+              },
+            ]
+          }
+          isOneClickBuy={isOneClickBuy}
+        >
+          {buyButtonText || <FormattedMessage id="button-label" />}
+        </BuyButton>
       </div>
-    )
+    </div>
   )
 }
 

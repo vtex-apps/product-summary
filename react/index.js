@@ -206,7 +206,7 @@ class ProductSummary extends Component {
       'bb b--muted-4 mh2 mt2': showBorders
     })
 
-    const priceWrapperClasses = classNames('', {
+    const priceWrapperClasses = classNames({
       'flex justify-between items-center': displayMode === 'inline',
     })
 

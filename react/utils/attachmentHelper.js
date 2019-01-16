@@ -1,11 +1,14 @@
+import { path } from 'ramda'
+
+const getProductPrice = (product) => path(['sku', 'seller', 'commertialOffer', 'Price'], product) || 0
+
 export const parentPricePerUnit = product => {
-  const wholePrice = product.sku.seller.commertialOffer.Price
-  const parentPrice = product.addedOptions.reduce((total, { sku }) => 
-    total - sku.seller.commertialOffer.Price,
+  const wholePrice = getProductPrice(product)
+  const parentPrice = product.addedOptions.reduce((total, option) => 
+    total - getProductPrice(option),
     wholePrice
     )
   return parentPrice / product.quantity
 }
 
-export const optionPricePerItem = (option, parent) => 
-  option.sku.seller.commertialOffer.Price / parent.quantity
+export const optionPricePerItem = (option, parent) => getProductPrice(option) / parent.quantity

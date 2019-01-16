@@ -27,7 +27,7 @@ class ProductQuantityStepper extends Component {
     e.stopPropagation()
     e.preventDefault()
     this.props.setUpdatingItemsState(true)
-    this.setState({ quantity: e.value }, () => this.debouncedUpdate && this.debouncedUpdate(this.state.quantity))
+    this.setState({ quantity: e.value }, () => this.debouncedUpdate(this.state.quantity))
   }
 
   checkUpdatedQuantity = (updateResponse, itemIndex, expectedQuantity) => {
@@ -64,6 +64,7 @@ class ProductQuantityStepper extends Component {
     }
     this.props.setUpdatingItemsState(false)
   }
+
   render() {
     return (
       <NumericStepper

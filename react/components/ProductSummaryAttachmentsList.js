@@ -14,16 +14,6 @@ class ProductSummaryAttachmentsList extends Component {
   // TODO:  not sure if it is the best way to define if an item should be displayed
   canShow = (option) => option.optionType !== 'Basic Toppings'
 
-  parentPrice = () => {
-    const { product } = this.props
-    const wholePrice = product.sku.seller.commertialOffer.Price
-    const parentPrice = product.addedOptions.reduce((total, { sku }) => 
-      total - sku.seller.commertialOffer.Price,
-      wholePrice
-      )
-    return parentPrice / product.quantity
-  }
-
   renderItem = (productText, product, price) => {
     return (
       <div className="flex items-center justify-between" key={product.productName}>

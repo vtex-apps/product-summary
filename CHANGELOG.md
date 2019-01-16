@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Quantity stepper for inline mode
+- Support for products with attachments (for delivery)
+
+### Changed
+- Break index file into smaller components
 
 ## [2.4.1] - 2019-01-14
 ### Fixed
