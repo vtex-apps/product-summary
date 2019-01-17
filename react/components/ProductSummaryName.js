@@ -34,6 +34,7 @@ const ProductSummaryName = ({ displayMode, product, name }) => {
         name={productName}
         skuName={skuName}
         brandName={brandName}
+        tag="h2"
         {...name}
       />
     </div>
