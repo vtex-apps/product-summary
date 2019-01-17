@@ -26,7 +26,6 @@ const ProductSummaryBuyButton = ({
     [productSummary.isHidden]: !hoverBuyButton,
   })
 
-  const showBuyButton = !equals(displayBuyButton, displayButtonTypes.DISPLAY_ON_HOVER.value) || mobile || isHovering
   const quantity = path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) || 0
   const isAvailable = (quantity > 0)
 

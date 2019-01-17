@@ -5,8 +5,16 @@ import ProductSummary from '../index'
 
 describe('<ProductSummary /> component', () => {
   function renderComponent(customProps) {
+    const product = {
+      addedOptions: {}
+    }
+    const intl = {
+      formatMessage: {}
+    }
     const props = {
       ...customProps,
+      product,
+      intl,
       runtime: { hints: {} },
     }
 
