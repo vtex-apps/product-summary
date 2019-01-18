@@ -8,7 +8,7 @@
   "builders": {
     "messages": "0.x",
     "store": "0.x",
-    "react": "2.x"
+    "react": "3.x"
   },
   "mustUpdateAt": "2019-04-02",
   "categories": [],
