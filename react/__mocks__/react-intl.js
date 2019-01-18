@@ -1,8 +1,12 @@
+import React from 'react'
 export function injectIntl(Comp) {
-
-  Comp.props = {
-    intl: {}
-  }
-  
   return Comp
+}
+
+export function intlShape() {
+  return "intlShape"
+}
+
+export function FormattedMessage() {
+  return "FormattedMessage"
 }

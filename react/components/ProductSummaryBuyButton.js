@@ -17,7 +17,7 @@ const ProductSummaryBuyButton = ({
 }) => {
   const hoverBuyButton = equals(displayBuyButton, displayButtonTypes.DISPLAY_ALWAYS.value) ||
     !equals(displayBuyButton, displayButtonTypes.DISPLAY_ON_HOVER.value) ||
-    (this.state.isHovering && !mobile)
+    (isHovering && !mobile)
     
   const showBuyButton = !equals(displayBuyButton, displayButtonTypes.DISPLAY_NONE.value) &&
     !(equals(displayBuyButton, displayButtonTypes.DISPLAY_ON_HOVER.value) && mobile)

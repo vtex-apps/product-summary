@@ -1,9 +1,11 @@
+import React from 'react'
+
 export function Price() {
-  return null
+  return <div></div>
 }
 
 export function ProductName() {
-  return null
+  return <div></div>
 }
 
 export function DiscountBadge({ children }) {
