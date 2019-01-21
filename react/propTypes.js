@@ -55,7 +55,7 @@ export const productShape = PropTypes.shape({
   /** If item is parent item, will contain added assembly options */
   addedOptions: PropTypes.arrayOf(addedOptionShape),
   /** Quantity of item in Minicart */
-  quantity: PropTypes.number.isRequired,
+  quantity: PropTypes.number,
 })
 
 const addedOptionShape = PropTypes.shape({
