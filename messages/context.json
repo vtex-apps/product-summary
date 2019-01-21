@@ -1,0 +1,19 @@
+{
+  "button-label": "button-label",
+  "editor.productSummary.title": "editor.productSummary.title",
+  "editor.productSummary.description": "editor.productSummary.description",
+  "editor.productSummary.isOneClickBuy.title": "editor.productSummary.isOneClickBuy.title",
+  "editor.productSummary.showBadge.title": "editor.productSummary.showBadge.title",
+  "editor.productSummary.badgeText.title": "editor.productSummary.badgeText.title",
+  "editor.productSummary.buyButtonText.title": "editor.productSummary.buyButtonText.title",
+  "editor.productSummary.hideBuyButton.title": "editor.productSummary.hideBuyButton.title",
+  "editor.productSummary.showButtonOnHover.title": "editor.productSummary.showButtonOnHover.title",
+  "editor.productSummary.showCollections.title": "editor.productSummary.showCollections.title",
+  "editor.productSummary.displayBuyButton.title": "editor.productSummary.displayBuyButton.title",
+  "editor.productSummary.displayBuyButton.option.none": "editor.productSummary.displayBuyButton.option.none",
+  "editor.productSummary.displayBuyButton.option.always": "editor.productSummary.displayBuyButton.option.always",
+  "editor.productSummary.displayBuyButton.option.hover": "editor.productSummary.displayBuyButton.option.hover",
+  "editor.productSummary.quantity-error": "editor.productSummary.quantity-error",
+  "editor.productSummary.unit": "editor.productSummary.unit",
+  "editor.productSummary.attachmentName": "editor.productSummary.attachmentName"
+}
