@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { intlShape, injectIntl } from 'react-intl'
 import ProductPrice from 'vtex.store-components/ProductPrice'
 import { productShape } from '../propTypes'
+import { path } from 'ramda'
 
 import { optionPricePerItem, parentPricePerUnit } from '../utils/attachmentHelper'
 
@@ -36,7 +37,7 @@ class ProductSummaryAttachmentsList extends Component {
   render() {
     const { product, intl } = this.props
 
-    if (!product || !product.addedOptions || product.addedOptions.length === 0) {
+    if (!path(['addedOptions', 'length'], product)) {
       return null
     }
 
