@@ -36,7 +36,7 @@ class ProductSummaryAttachmentsList extends Component {
   render() {
     const { product, intl } = this.props
 
-    if (!product.addedOptions || product.addedOptions.length === 0) {
+    if (!product || !product.addedOptions || product.addedOptions.length === 0) {
       return null
     }
 
