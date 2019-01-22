@@ -171,7 +171,6 @@ class ProductSummary extends Component {
     const {
       showBorders,
       product,
-      displayMode,
       actionOnClick,
       name,
       showListPrice,
@@ -179,7 +178,6 @@ class ProductSummary extends Component {
       showInstallments,
       labelSellingPrice,
       displayMode,
-      showBorders
     } = this.props
 
     const containerClasses = classNames('flex flex-column', {
