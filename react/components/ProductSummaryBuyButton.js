@@ -43,6 +43,10 @@ const ProductSummaryBuyButton = ({
                 skuId: path(['sku', 'itemId'], product),
                 quantity: 1,
                 seller: path(['sku', 'seller', 'sellerId'], product),
+                name: product.productName,
+                price: path(['sku', 'seller', 'commertialOffer', 'Price'], product),
+                variant: product.sku.name,
+                brand: product.branc,
               },
             ]
           }

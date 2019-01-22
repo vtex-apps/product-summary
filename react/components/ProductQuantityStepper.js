@@ -4,29 +4,27 @@ import { NumericStepper, withToast } from 'vtex.styleguide'
 import { orderFormConsumer } from 'vtex.store-resources/OrderFormContext'
 import { debounce } from 'lodash'
 import { findIndex, propEq } from 'ramda'
-import { injectIntl } from 'react-intl'
+import { injectIntl, intlShape } from 'react-intl'
 
 import { productShape } from '../propTypes'
 
 class ProductQuantityStepper extends Component {
   static propTypes = {
     product: productShape.isRequired,
-    setUpdatingItemsState: PropTypes.func.isRequired,
+    onUpdateItemsState: PropTypes.func.isRequired,
+    showToast: PropTypes.func,
+    intl: intlShape,
   }
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      quantity: props.product.quantity,
-      canIncrease: true,
-    }
-    this.debouncedUpdate = debounce(this.updateItemQuantity, 1000)
+  state = {
+    quantity: this.props.product.quantity,
+    canIncrease: true,
   }
 
   handleOnChange = (e) => {
     e.stopPropagation()
     e.preventDefault()
-    this.props.setUpdatingItemsState(true)
+    this.props.onUpdateItemsState(true)
     this.setState({ quantity: e.value }, () => this.debouncedUpdate(this.state.quantity))
   }
 
@@ -62,8 +60,10 @@ class ProductQuantityStepper extends Component {
       const oldQuantity = orderFormContext.orderForm.items[itemIndex].quantity
       this.setState({ quantity: oldQuantity })
     }
-    this.props.setUpdatingItemsState(false)
+    this.props.onUpdateItemsState(false)
   }
+
+  debouncedUpdate = debounce(this.updateItemQuantity, 1000)
 
   render() {
     return (
