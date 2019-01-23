@@ -182,15 +182,15 @@ class ProductSummary extends Component {
       isOneClickBuy,
       buyButtonText,
       runtime,
-      productSummaryClasses,
+      className,
     } = this.props
 
-    const classes = classNames(`${productSummaryClasses} ${productSummary.container} overflow-hidden br3 h-100`, {
+    const classes = classNames(`${className} ${productSummary.container} overflow-hidden br3 h-100`, {
       'flex flex-column justify-between center tc': displayMode !== 'inline',
-      [`${productSummary.containerNormal}`]: displayMode === 'normal' && !productSummaryClasses,
-      [`${productSummary.containerSmall}`]: displayMode === 'small',
-      [`${productSummary.containerInline}`]: displayMode === 'inline',
-      'w-100': !productSummaryClasses
+      [productSummary.containerNormal]: displayMode === 'normal' && !className,
+      [productSummary.containerSmall]: displayMode === 'small',
+      [productSummary.containerInline]: displayMode === 'inline',
+      'w-100': !className
     })
 
     const linkClasses = classNames(`${productSummary.clearLink} flex`, {

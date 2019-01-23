@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- Added props for custom classes. 
+- Add props for custom classes. 
 
 ## [2.8.0] - 2019-01-23
 
