@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- Add props for custom classes. 
+- Add `parallel` display mode type. 
 
 ## [2.8.0] - 2019-01-23
 
