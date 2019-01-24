@@ -17,6 +17,10 @@
   width: 281px;
 }
 
+.containerParallel {
+  width: 15rem;
+}
+
 .clearLink {
   text-decoration: inherit;
   color: inherit;

@@ -26,8 +26,6 @@ import ProductQuantityStepper from './components/ProductQuantityStepper';
  */
 class ProductSummary extends Component {
   static propTypes = {
-    /** Product summary classes */
-    productSummaryClasses: PropTypes.string,
     /** Product that owns the informations */
     product: productShape,
     /** Shows the product list price */
@@ -65,11 +63,12 @@ class ProductSummary extends Component {
         mobile: PropTypes.bool,
       }),
     }),
-    /** Display mode of the summary used in the search result */
+    /** Display mode of the summary */
     displayMode: PropTypes.oneOf([
       'normal',
       'small',
       'inline',
+      'parallel',
     ]),
     /** Function that is executed when a product is clicked */
     actionOnClick: PropTypes.func,
@@ -182,15 +181,14 @@ class ProductSummary extends Component {
       isOneClickBuy,
       buyButtonText,
       runtime,
-      className,
     } = this.props
 
-    const classes = classNames(`${className} ${productSummary.container} overflow-hidden br3 h-100`, {
+    const classes = classNames(`${productSummary.container} overflow-hidden br3 h-100`, {
       'flex flex-column justify-between center tc': displayMode !== 'inline',
-      [productSummary.containerNormal]: displayMode === 'normal' && !className,
+      [productSummary.containerNormal]: displayMode === 'normal',
       [productSummary.containerSmall]: displayMode === 'small',
       [productSummary.containerInline]: displayMode === 'inline',
-      'w-100': !className
+      [productSummary.containerParallel]: displayMode === 'parallel',
     })
 
     const linkClasses = classNames(`${productSummary.clearLink} flex`, {
