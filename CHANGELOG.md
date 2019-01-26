@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.9.3] - 2019-01-26
+### Fixed 
+- Replace generic html tags to html5 tags for a more semantic approach. 
+
 ## [2.9.2] - 2019-01-26
 - Use `ProductName` as H2 element.
 
