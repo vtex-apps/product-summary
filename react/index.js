@@ -4,10 +4,12 @@ import React, { Component } from 'react'
 import ContentLoader from 'react-content-loader'
 import { Link, withRuntimeContext } from 'vtex.render-runtime'
 import classNames from 'classnames'
-import CollectionBadges from 'vtex.store-components/CollectionBadges'
-import DiscountBadge from 'vtex.store-components/DiscountBadge'
-import ProductName from 'vtex.store-components/ProductName'
-import ProductPrice from 'vtex.store-components/ProductPrice'
+import {
+  CollectionBadges,
+  DiscountBadge,
+  ProductName,
+  ProductPrice,
+} from 'vtex.store-components'
 
 import { productShape } from './propTypes'
 import Image from './components/Image'
@@ -19,7 +21,7 @@ import displayButtonTypes, { getDisplayButtonNames, getDisplayButtonValues } fro
 
 import productSummary from './productSummary.css'
 import ProductSummaryAttachmentsList from './components/ProductSummaryAttachmentsList'
-import ProductQuantityStepper from './components/ProductQuantityStepper';
+import ProductQuantityStepper from './components/ProductQuantityStepper'
 
 /**
  * Product Summary component. Summarizes the product information.
@@ -108,7 +110,7 @@ class ProductSummary extends Component {
     return path(['sku', 'seller', 'commertialOffer'], this.props.product)
   }
 
-  get renderImage() {
+  renderImage = () => {
     const { product, showBadge, badgeText, showCollections } = this.props
     const {
       productClusters,
@@ -147,7 +149,7 @@ class ProductSummary extends Component {
     return img
   }
 
-  get renderImageLoader() {
+  renderImageLoader = () => {
     return (
       <ContentLoader
         style={{
@@ -163,7 +165,7 @@ class ProductSummary extends Component {
     )
   }
 
-  handleUpdateItemsUpdate = isLoading => this.setState({ isUpdatingItems: isLoading })
+  handleItemsStateUpdate = isLoading => this.setState({ isUpdatingItems: isLoading })
 
   render() {
     const {
@@ -199,11 +201,11 @@ class ProductSummary extends Component {
     })
 
     const informationClasses = classNames(`${productSummary.information}`, {
-      'w-80 pb2 pl3 pr3 h-100': displayMode === 'inline'
+      'w-80 pb2 pl3 pr3 h-100': displayMode === 'inline',
     })
 
     const elementClasses = classNames(`${productSummary.element} pointer ph2 pt3 pb4 flex flex-column`, {
-      'bb b--muted-4 mh2 mt2': showBorders
+      'bb b--muted-4 mh2 mt2': showBorders,
     })
 
     const priceWrapperClasses = classNames({
@@ -246,25 +248,24 @@ class ProductSummary extends Component {
           >
             <div className={imageContainerClasses}>
               {path(['sku', 'image', 'imageUrl'], product)
-                ? this.renderImage
-                : this.renderImageLoader}
+                ? this.renderImage()
+                : this.renderImageLoader()}
             </div>
             <div className={informationClasses}>
               <ProductSummaryName {...{ displayMode, product, name }} />
               <ProductSummaryAttachmentsList product={product} />
               <div className={priceWrapperClasses}>
                 {displayMode === 'inline' && (
-                  <ProductQuantityStepper 
-                    product={product} 
-                    setUpdatingItemsState={this.handleUpdateItemsUpdate}
-                  />)
-                }
+                  <ProductQuantityStepper
+                    product={product}
+                    onUpdateItemsState={this.handleItemsStateUpdate}
+                  />
+                )}
                 <ProductSummaryPrice {...priceProps} />
               </div>
-              
             </div>
           </Link>
-          {<ProductSummaryBuyButton {...buyButtonProps} />}
+          <ProductSummaryBuyButton {...buyButtonProps} />
         </div>
       </div>
     )
