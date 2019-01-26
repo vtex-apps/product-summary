@@ -11,11 +11,6 @@
     "react": "3.x"
   },
   "mustUpdateAt": "2019-04-02",
-  "categories": [],
-  "registries": [
-    "smartcheckout"
-  ],
-  "settingsSchema": {},
   "scripts": {
     "postreleasy": "vtex publish --verbose"
   },
