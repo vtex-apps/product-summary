@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.9.2] - 2019-01-26
+- Use `ProductName` as H2 element.
+
 ## [2.9.1] - 2019-01-26
 ### Fixed
 - Fix different images size in `ProductSummary`.
