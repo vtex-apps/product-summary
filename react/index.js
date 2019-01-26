@@ -184,7 +184,7 @@ class ProductSummary extends Component {
       runtime,
     } = this.props
 
-    const classes = classNames(`${productSummary.container} overflow-hidden br3 w-100 h-100`, {
+    const classes = classNames(`${productSummary.container} overflow-hidden br3 h-100`, {
       'flex flex-column justify-between center tc': displayMode !== 'inline',
       [`${productSummary.containerNormal}`]: displayMode === 'normal',
       [`${productSummary.containerSmall}`]: displayMode === 'small',
