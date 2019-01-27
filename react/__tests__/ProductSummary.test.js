@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 
-import ProductSummary from '../ProductSummary'
+import ProductSummary from '../index'
 
 describe('<ProductSummary /> component', () => {
   function renderComponent(customProps) {
