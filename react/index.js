@@ -11,16 +11,16 @@ import {
   ProductPrice,
 } from 'vtex.store-components'
 
-import { productShape } from './propTypes'
 import Image from './components/Image'
 import ProductSummaryBuyButton from './components/ProductSummaryBuyButton'
+import AttachmentList from './components/AttachmentList'
+import ProductQuantityStepper from './components/ProductQuantityStepper'
 import displayButtonTypes, {
   getDisplayButtonNames,
   getDisplayButtonValues,
-} from './DisplayButtonTypes'
+} from './utils/displayButtonTypes'
+import { productShape } from './utils/propTypes'
 import productSummary from './productSummary.css'
-import AttachmentList from './components/AttachmentList'
-import ProductQuantityStepper from './components/ProductQuantityStepper'
 
 /**
  * Product Summary component. Summarizes the product information.
