@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
-- Add w-100 to inline container
+- Make inline content occupy full width
+- While updating item quantity, show spinner over price
 
 ## [2.9.4] - 2019-01-28
 ### Fixed
