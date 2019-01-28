@@ -268,7 +268,7 @@ class ProductSummary extends Component {
       'flex flex-column justify-between center tc': displayMode !== 'inline',
       [`${productSummary.containerNormal}`]: displayMode === 'normal',
       [`${productSummary.containerSmall}`]: displayMode === 'small',
-      [`${productSummary.containerInline}`]: displayMode === 'inline',
+      [`${productSummary.containerInline} w-100`]: displayMode === 'inline',
     })
 
     const linkClasses = classNames(`${productSummary.clearLink} flex`, {
