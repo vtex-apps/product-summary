@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - Make inline content occupy full width
 - While updating item quantity, show spinner over price
+- Make price and quantity stepper align on baseline and not center
 
 ## [2.9.4] - 2019-01-28
 ### Fixed

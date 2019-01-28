@@ -298,7 +298,7 @@ class ProductSummary extends Component {
     })
 
     const priceWrapperClasses = classNames({
-      'flex justify-between items-center': displayMode === 'inline',
+      'flex justify-between items-baseline': displayMode === 'inline',
     })
 
     const buyButtonProps = {
