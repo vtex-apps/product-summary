@@ -3,6 +3,7 @@ import { path } from 'ramda'
 import React, { Component } from 'react'
 import ContentLoader from 'react-content-loader'
 import { Link, withRuntimeContext } from 'vtex.render-runtime'
+import { Spinner } from 'vtex.styleguide'
 import classNames from 'classnames'
 import {
   CollectionBadges,
@@ -175,6 +176,14 @@ class ProductSummary extends Component {
       labelSellingPrice,
       displayMode,
     } = this.props
+
+    if (this.state.isUpdatingItems) {
+      return (
+        <div className="flex items-center justify-center w-100">
+          <Spinner size={20} />
+        </div>
+      )
+    }
 
     const containerClasses = classNames('flex flex-column', {
       'justify-end items-center': displayMode !== 'inline',
