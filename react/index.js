@@ -11,17 +11,16 @@ import {
   ProductPrice,
 } from 'vtex.store-components'
 
-import { productShape } from './propTypes'
 import Image from './components/Image'
-import ProductSummaryName from './components/ProductSummaryName'
-import ProductSummaryPrice from './components/ProductSummaryPrice'
 import ProductSummaryBuyButton from './components/ProductSummaryBuyButton'
-
-import displayButtonTypes, { getDisplayButtonNames, getDisplayButtonValues } from './DisplayButtonTypes'
-
-import productSummary from './productSummary.css'
-import ProductSummaryAttachmentsList from './components/ProductSummaryAttachmentsList'
+import AttachmentList from './components/AttachmentList'
 import ProductQuantityStepper from './components/ProductQuantityStepper'
+import displayButtonTypes, {
+  getDisplayButtonNames,
+  getDisplayButtonValues,
+} from './utils/displayButtonTypes'
+import { productShape } from './utils/propTypes'
+import productSummary from './productSummary.css'
 
 /**
  * Product Summary component. Summarizes the product information.
@@ -110,7 +109,7 @@ class ProductSummary extends Component {
     return path(['sku', 'seller', 'commertialOffer'], this.props.product)
   }
 
-  renderImage = () => {
+  renderImage() {
     const { product, showBadge, badgeText, showCollections } = this.props
     const {
       productClusters,
@@ -149,7 +148,7 @@ class ProductSummary extends Component {
     return img
   }
 
-  renderImageLoader = () => {
+  renderImageLoader() {
     return (
       <ContentLoader
         style={{
@@ -167,12 +166,9 @@ class ProductSummary extends Component {
 
   handleItemsStateUpdate = isLoading => this.setState({ isUpdatingItems: isLoading })
 
-  render() {
+  renderPrice() {
     const {
       showBorders,
-      product,
-      actionOnClick,
-      name,
       showListPrice,
       showLabels,
       showInstallments,
@@ -182,7 +178,7 @@ class ProductSummary extends Component {
 
     const containerClasses = classNames('flex flex-column', {
       'justify-end items-center': displayMode !== 'inline',
-      [`${productSummary.priceContainer} pv5`]: !showBorders
+      [`${productSummary.priceContainer} pv5`]: !showBorders,
     })
 
     return (
@@ -211,12 +207,12 @@ class ProductSummary extends Component {
     )
   }
 
-  get renderProductName() {
+  renderProductName() {
     const {
       displayMode,
       product,
       showBorders,
-      name: showFieldsProps
+      name: showFieldsProps,
     } = this.props
 
     const containerClasses = classNames(
@@ -239,6 +235,7 @@ class ProductSummary extends Component {
     const brandNameClasses = classNames('t-body', {
       't-mini': displayMode !== 'normal',
     })
+
     return (
       <div className={containerClasses}>
         <ProductName
@@ -252,17 +249,18 @@ class ProductSummary extends Component {
           {...showFieldsProps}
         />
       </div>
-    );
+    )
   }
 
-  get renderBuyButton() {
-
+  render() {
     const {
+      actionOnClick,
       product,
       displayMode,
       displayBuyButton,
       isOneClickBuy,
       buyButtonText,
+      showBorders,
       runtime,
     } = this.props
 
@@ -294,17 +292,6 @@ class ProductSummary extends Component {
       'flex justify-between items-center': displayMode === 'inline',
     })
 
-    const priceProps = {
-      showListPrice,
-      showLabels,
-      showInstallments,
-      labelSellingPrice,
-      displayMode,
-      showBorders,
-      product,
-      isLoading: this.state.isUpdatingItems,
-    }
-
     const buyButtonProps = {
       product,
       displayMode,
@@ -334,8 +321,8 @@ class ProductSummary extends Component {
                 : this.renderImageLoader()}
             </div>
             <div className={informationClasses}>
-              <ProductSummaryName {...{ displayMode, product, name }} />
-              <ProductSummaryAttachmentsList product={product} />
+              {this.renderProductName()}
+              <AttachmentList product={product} />
               <div className={priceWrapperClasses}>
                 {displayMode === 'inline' && (
                   <ProductQuantityStepper
@@ -343,11 +330,11 @@ class ProductSummary extends Component {
                     onUpdateItemsState={this.handleItemsStateUpdate}
                   />
                 )}
-                <ProductSummaryPrice {...priceProps} />
+                {this.renderPrice()}
               </div>
             </div>
           </Link>
-          {<ProductSummaryBuyButton {...buyButtonProps} />}
+          <ProductSummaryBuyButton {...buyButtonProps} />
         </article>
       </section>
     )

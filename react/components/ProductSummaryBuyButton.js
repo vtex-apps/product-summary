@@ -4,7 +4,7 @@ import BuyButton from 'vtex.store-components/BuyButton'
 import { equals, path } from 'ramda'
 import { FormattedMessage } from 'react-intl'
 
-import displayButtonTypes from '../DisplayButtonTypes'
+import displayButtonTypes from '../utils/displayButtonTypes'
 import productSummary from '../productSummary.css'
 
 const ProductSummaryBuyButton = ({
