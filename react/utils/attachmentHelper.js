@@ -1,6 +1,12 @@
 import { path } from 'ramda'
 
-const getProductPrice = (product) => path(['sku', 'seller', 'commertialOffer', 'Price'], product) || 0
+export const CHOICE_TYPES = {
+  SINGLE: 'SINGLE',
+  MULTIPLE: 'MULTIPLE',
+  TOGGLE: 'TOGGLE',
+}
+
+export const getProductPrice = (product) => path(['sku', 'seller', 'commertialOffer', 'Price'], product) || 0
 
 export const parentPricePerUnit = product => {
   const wholePrice = getProductPrice(product)
