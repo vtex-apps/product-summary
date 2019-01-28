@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { intlShape, injectIntl } from 'react-intl'
 import ProductPrice from 'vtex.store-components/ProductPrice'
-import { productShape } from '../propTypes'
+import { productShape } from '../utils/propTypes'
 import { path } from 'ramda'
 
 import { optionPricePerItem, parentPricePerUnit } from '../utils/attachmentHelper'

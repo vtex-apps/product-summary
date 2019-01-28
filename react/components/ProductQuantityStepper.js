@@ -6,7 +6,7 @@ import { debounce } from 'lodash'
 import { findIndex, propEq } from 'ramda'
 import { injectIntl, intlShape } from 'react-intl'
 
-import { productShape } from '../propTypes'
+import { productShape } from '../utils/propTypes'
 
 class ProductQuantityStepper extends Component {
   static propTypes = {
