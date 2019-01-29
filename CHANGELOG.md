@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Changed
-- Extract internal components to better reuse
+- Extract internal components to better reuse.
 
 ## [2.9.6] - 2019-01-29
 ### Fixed
