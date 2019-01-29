@@ -6,16 +6,14 @@ import { Link, withRuntimeContext } from 'vtex.render-runtime'
 import { Spinner } from 'vtex.styleguide'
 import classNames from 'classnames'
 import {
-  CollectionBadges,
-  DiscountBadge,
   ProductName,
   ProductPrice,
 } from 'vtex.store-components'
 
-import Image from './components/Image'
 import ProductSummaryBuyButton from './components/ProductSummaryBuyButton'
 import AttachmentList from './components/AttachmentList'
 import ProductQuantityStepper from './components/ProductQuantityStepper'
+import ProductSummaryImage from './components/ProductSummaryImage'
 import displayButtonTypes, {
   getDisplayButtonNames,
   getDisplayButtonValues,
@@ -112,41 +110,7 @@ class ProductSummary extends Component {
 
   renderImage() {
     const { product, showBadge, badgeText, showCollections } = this.props
-    const {
-      productClusters,
-      productName: name,
-      sku: {
-        image: { imageUrl },
-      },
-    } = product
-
-    let img = (
-      <Image className={`${productSummary.image}`} alt={name} src={imageUrl} />
-    )
-
-    if (showBadge) {
-      img = (
-        <DiscountBadge
-          listPrice={this.commertialOffer.ListPrice}
-          sellingPrice={this.commertialOffer.Price}
-          label={badgeText}
-        >
-          {img}
-        </DiscountBadge>
-      )
-    }
-
-    if (showCollections && productClusters && productClusters.length > 0) {
-      const collections = productClusters.map(cl => cl.name)
-
-      return (
-        <CollectionBadges collectionBadgesText={collections}>
-          {img}
-        </CollectionBadges>
-      )
-    }
-
-    return img
+    return ProductSummaryImage({ product, showBadge, badgeText, showCollections })
   }
 
   renderImageLoader() {
