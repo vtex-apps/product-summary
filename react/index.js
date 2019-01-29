@@ -10,9 +10,9 @@ import {
 
 import AttachmentList from './components/AttachmentList'
 import ImageLoader from './components/ImageLoader'
+import ProductImage from './components/ProductImage'
 import ProductSummaryBuyButton from './components/ProductSummaryBuyButton'
 import ProductQuantityStepper from './components/ProductQuantityStepper'
-import ProductSummaryImage from './components/ProductSummaryImage'
 import ProductSummaryPrice from './components/ProductSummaryPrice'
 import ProductSummaryName from './components/ProductSummaryName'
 import displayButtonTypes, {
@@ -105,11 +105,6 @@ class ProductSummary extends Component {
     this.setState({ isHovering: true })
   }
 
-  renderImage() {
-    const { product, showBadge, badgeText, showCollections } = this.props
-    return ProductSummaryImage({ product, showBadge, badgeText, showCollections })
-  }
-
   handleItemsStateUpdate = isLoading => this.setState({ isUpdatingItems: isLoading })
 
   renderPrice() {
@@ -157,6 +152,9 @@ class ProductSummary extends Component {
       buyButtonText,
       showBorders,
       runtime,
+      showBadge,
+      badgeText,
+      showCollections,
     } = this.props
 
     const classes = classNames(`${productSummary.container} overflow-hidden br3 h-100`, {
@@ -187,6 +185,8 @@ class ProductSummary extends Component {
       'flex justify-between items-baseline': displayMode === 'inline',
     })
 
+    const imageProps = { product, showBadge, badgeText, showCollections }
+
     const buyButtonProps = {
       product,
       displayMode,
@@ -212,7 +212,7 @@ class ProductSummary extends Component {
           >
             <div className={imageContainerClasses}>
               {path(['sku', 'image', 'imageUrl'], product)
-                ? this.renderImage()
+                ? (<ProductImage {...imageProps} />)
                 : (<ImageLoader />)}
             </div>
             <div className={informationClasses}>

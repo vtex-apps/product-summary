@@ -9,7 +9,7 @@ import Image from './Image'
 
 import productSummary from '../productSummary.css'
 
-const ProductSummaryImage = ({ product, showBadge, badgeText, showCollections }) => {
+const ProductImage = ({ product, showBadge, badgeText, showCollections }) => {
   const {
     productClusters,
     productName: name,
@@ -49,4 +49,4 @@ const ProductSummaryImage = ({ product, showBadge, badgeText, showCollections })
   return img
 }
 
-export default ProductSummaryImage
+export default ProductImage
