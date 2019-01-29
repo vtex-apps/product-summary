@@ -1,11 +1,13 @@
 import React from 'react'
-import { path } from 'ramda'
+import { pathOr } from 'ramda'
+import PropTypes from 'prop-types'
 import {
   CollectionBadges,
   DiscountBadge,
 } from 'vtex.store-components'
 
 import Image from './Image'
+import { productShape } from './utils/propTypes'
 
 import productSummary from '../productSummary.css'
 
@@ -18,10 +20,10 @@ const ProductImage = ({ product, showBadge, badgeText, showCollections }) => {
     },
   } = product
 
-  const commertialOffer = path(['sku', 'seller', 'commertialOffer'], product)
+  const commertialOffer = pathOr({}, ['sku', 'seller', 'commertialOffer'], product)
 
   let img = (
-    <Image className={`${productSummary.image}`} alt={name} src={imageUrl} />
+    <Image className={productSummary.image} alt={name} src={imageUrl} />
   )
 
   if (showBadge) {
@@ -47,6 +49,17 @@ const ProductImage = ({ product, showBadge, badgeText, showCollections }) => {
   }
 
   return img
+}
+
+ProductImage.propTypes = {
+  /** Product that owns the informations */
+  product: productShape,
+  /** Set the discount badge's visibility */
+  showBadge: PropTypes.bool,
+  /** Text shown on badge */
+  badgeText: PropTypes.string,
+  /** Defines if the collection badges are shown */
+  showCollections: PropTypes.bool,
 }
 
 export default ProductImage
