@@ -7,7 +7,7 @@ import productSummary from '../productSummary.css'
 export default function Image({ src, className, description }) {
   return (
     <div>
-      <img className={`${className}`} src={src} alt={description} />
+      <img className={className} src={src} alt={description} />
     </div>
   )
 }
