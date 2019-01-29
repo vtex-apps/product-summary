@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
-- fix styles for inline mode broken by previous wrong rebases
+- Fix styles for inline mode broken by previous wrong rebases
 
 ### Changed
 - Adapt to use choiceType on assembly options as enums (SINGLE, TOGGLE, MULTIPLE)
