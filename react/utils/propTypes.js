@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { CHOICE_TYPES } from './attachmentHelper'
 
 export const productShape = PropTypes.shape({
   /** Product's link text */
@@ -60,6 +61,6 @@ export const productShape = PropTypes.shape({
 
 const addedOptionShape = PropTypes.shape({
   ...productShape,
-  /** If assembly option is of type "Single Choice", like Pizza Crust */
-  isSingleChoice: PropTypes.bool.isRequired,
+  choiceType: PropTypes.oneOf([CHOICE_TYPES.SINGLE, CHOICE_TYPES.MULTIPLE, CHOICE_TYPES.TOGGLE]).isRequired,
+  optionType: PropTypes.string.isRequired,
 })

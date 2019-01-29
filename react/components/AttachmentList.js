@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { intlShape, injectIntl } from 'react-intl'
 import ProductPrice from 'vtex.store-components/ProductPrice'
 import { productShape } from '../utils/propTypes'
-import { path } from 'ramda'
+import { pathOr } from 'ramda'
 
-import { optionPricePerItem, parentPricePerUnit } from '../utils/attachmentHelper'
+import { optionPricePerItem, parentPricePerUnit, getProductPrice, CHOICE_TYPES } from '../utils/attachmentHelper'
 
 class AttachmentList extends Component {
   static propTypes = {
@@ -15,8 +15,10 @@ class AttachmentList extends Component {
   formatAttachmentName = (quantity, name) =>
     this.props.intl.formatMessage({ id: 'editor.productSummary.attachmentName' }, { quantity, name })
 
-  // TODO:  not sure if it is the best way to define if an item should be displayed
-  canShow = (option) => option.optionType !== 'Basic Toppings'
+  // Not showing free stuff you get as a basic assembly option
+  // TODO: This option.optionType === 'Crust' is a quick fix to show a free crust, find the best way to determine if an assembly option
+  // should be shown
+  canShow = option => getProductPrice(option) > 0 || option.optionType === 'Crust'
 
   renderItem = (productText, product, price) => {
     return (
@@ -38,16 +40,19 @@ class AttachmentList extends Component {
   render() {
     const { product, intl } = this.props
 
-    if (!path(['addedOptions', 'length'], product)) {
+    const addedOptions = pathOr([], ['addedOptions'], product)
+    const filteredOption = addedOptions.filter(this.canShow)
+    if (filteredOption.length === 0) {
       return null
     }
 
     return (
       <div className={'pb2'}>
         {this.renderItem(intl.formatMessage({ id: 'editor.productSummary.unit' }), product, parentPricePerUnit(product))}
-        {product.addedOptions.filter(this.canShow).map(option => {
-          const productText =
-            option.isSingleChoice ? option.productName : this.formatAttachmentName(option.quantity / product.quantity, option.productName)
+        {filteredOption.map(option => {
+          const isSingle = option.choiceType === CHOICE_TYPES.SINGLE
+          const productText = 
+            isSingle ? option.productName : this.formatAttachmentName(option.quantity / product.quantity, option.productName)
           const price = optionPricePerItem(option, product)
           return this.renderItem(productText, option, price)
         })}

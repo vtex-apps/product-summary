@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.9.6] - 2019-01-29
+### Fixed
+- Fix styles for inline mode broken by previous wrong rebases
+- Remove `blocks.json`
+
+### Changed
+- Adapt to use choiceType on assembly options as enums (SINGLE, TOGGLE, MULTIPLE)
+
 ## [2.9.5] - 2019-01-28
 ### Fixed
 - Make inline content occupy full width

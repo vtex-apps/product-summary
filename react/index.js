@@ -227,13 +227,11 @@ class ProductSummary extends Component {
     const containerClasses = classNames(
       'flex items-start',
       {
-        'justify-center': displayMode !== 'inline',
-        'justify-left w-100': displayMode === 'inline',
+        [`${productSummary.nameContainer} justify-center`]: displayMode !== 'inline',
+        'justify-left w-100 pt5': displayMode === 'inline',
         'pv5': displayMode === 'small',
         't-mini pb2': displayMode !== 'normal',
         'pv6': displayMode === 'normal',
-        [productSummary.nameContainer]: !showBorders,
-        'pb6': showBorders,
       }
     )
 
@@ -242,7 +240,8 @@ class ProductSummary extends Component {
     const brandName = path(['brand'], product)
 
     const brandNameClasses = classNames('t-body', {
-      't-mini': displayMode !== 'normal',
+      't-mini': displayMode === 'small',
+      'c-on-base': displayMode === 'inline',
     })
 
     return (
@@ -290,7 +289,7 @@ class ProductSummary extends Component {
     })
 
     const informationClasses = classNames(`${productSummary.information}`, {
-      'w-80 pb2 pl3 pr3 h-100': displayMode === 'inline',
+      'w-80 pb2 pl3 pr3 flex flex-column justify-between': displayMode === 'inline',
     })
 
     const elementClasses = classNames(`${productSummary.element} pointer ph2 pt3 pb4 flex flex-column`, {
