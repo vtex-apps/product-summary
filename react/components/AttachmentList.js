@@ -16,6 +16,8 @@ class AttachmentList extends Component {
     this.props.intl.formatMessage({ id: 'editor.productSummary.attachmentName' }, { quantity, name })
 
   // Not showing free stuff you get as a basic assembly option
+  // TODO: This option.optionType === 'Crust' is a quick fix to show a free crust, find the best way to determine if an assembly option
+  // should be shown
   canShow = option => getProductPrice(option) > 0 || option.optionType === 'Crust'
 
   renderItem = (productText, product, price) => {

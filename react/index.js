@@ -289,7 +289,7 @@ class ProductSummary extends Component {
     })
 
     const informationClasses = classNames(`${productSummary.information}`, {
-      'w-80 pb2 pl3 pr3 flex flex-column': displayMode === 'inline',
+      'w-80 pb2 pl3 pr3 flex flex-column justify-between': displayMode === 'inline',
     })
 
     const elementClasses = classNames(`${productSummary.element} pointer ph2 pt3 pb4 flex flex-column`, {
@@ -299,8 +299,6 @@ class ProductSummary extends Component {
     const priceWrapperClasses = classNames({
       'flex justify-between items-baseline': displayMode === 'inline',
     })
-
-    const priceWrapperStyle = displayMode === 'inline' ? { marginTop: 'auto' } : {}
 
     const buyButtonProps = {
       product,
@@ -333,7 +331,7 @@ class ProductSummary extends Component {
             <div className={informationClasses}>
               {this.renderProductName()}
               <AttachmentList product={product} />
-              <div className={priceWrapperClasses} style={priceWrapperStyle}>
+              <div className={priceWrapperClasses}>
                 {displayMode === 'inline' && (
                   <ProductQuantityStepper
                     product={product}

@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- fix styles for inline mode broken by previous wrong rebases
+
+### Changed
+- Adapt to use choiceType on assembly options as enums (SINGLE, TOGGLE, MULTIPLE)
 
 ## [2.9.5] - 2019-01-28
 ### Fixed
