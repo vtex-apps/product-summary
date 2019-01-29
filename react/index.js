@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import React, { Component } from 'react'
 import { Link, withRuntimeContext } from 'vtex.render-runtime'
-import { Spinner } from 'vtex.styleguide'
 import classNames from 'classnames'
 import {
   ProductName,
@@ -14,6 +13,7 @@ import AttachmentList from './components/AttachmentList'
 import ProductQuantityStepper from './components/ProductQuantityStepper'
 import ProductSummaryImage from './components/ProductSummaryImage'
 import ProductSummaryImageLoader from './components/ProductSummaryImageLoader'
+import ProductSummaryPrice from './components/ProductSummaryPrice'
 import displayButtonTypes, {
   getDisplayButtonNames,
   getDisplayButtonValues,
@@ -119,6 +119,7 @@ class ProductSummary extends Component {
 
   renderPrice() {
     const {
+      product,
       showBorders,
       showListPrice,
       showLabels,
@@ -127,43 +128,18 @@ class ProductSummary extends Component {
       displayMode,
     } = this.props
 
-    if (this.state.isUpdatingItems) {
-      return (
-        <div className="flex items-center justify-center w-100">
-          <Spinner size={20} />
-        </div>
-      )
-    }
-
-    const containerClasses = classNames('flex flex-column', {
-      'justify-end items-center': displayMode !== 'inline',
-      [`${productSummary.priceContainer} pv5`]: !showBorders,
+    const { isUpdatingItems: isLoading } = this.state.isUpdatingItems
+    
+    return ProductSummaryPrice({
+      product,
+      showBorders,
+      showListPrice,
+      showLabels,
+      showInstallments,
+      labelSellingPrice,
+      displayMode,
+      isLoading,
     })
-
-    return (
-      <div className={containerClasses}>
-        <ProductPrice
-          className="flex flex-column justify-start"
-          listPriceContainerClass="pv1 normal c-muted-2"
-          listPriceLabelClass="dib strike t-small t-mini"
-          listPriceClass="dib ph2 strike t-small-ns t-mini"
-          sellingPriceContainerClass="pt1 pb3 c-on-base"
-          sellingPriceLabelClass="dib"
-          sellingPriceClass="dib ph2 t-heading-5-ns"
-          savingsContainerClass="t-small-ns c-muted-2"
-          savingsClass="dib"
-          interestRateClass="dib pl2"
-          installmentContainerClass="t-small-ns c-muted-2"
-          listPrice={path(['ListPrice'], this.commertialOffer)}
-          sellingPrice={path(['Price'], this.commertialOffer)}
-          installments={path(['Installments'], this.commertialOffer)}
-          showListPrice={showListPrice}
-          showLabels={showLabels}
-          showInstallments={showInstallments}
-          labelSellingPrice={labelSellingPrice}
-        />
-      </div>
-    )
   }
 
   renderProductName() {
