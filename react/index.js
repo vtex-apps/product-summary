@@ -107,41 +107,6 @@ class ProductSummary extends Component {
 
   handleItemsStateUpdate = isLoading => this.setState({ isUpdatingItems: isLoading })
 
-  renderPrice() {
-    const {
-      product,
-      showBorders,
-      showListPrice,
-      showLabels,
-      showInstallments,
-      labelSellingPrice,
-      displayMode,
-    } = this.props
-
-    const { isUpdatingItems: isLoading } = this.state.isUpdatingItems
-    
-    return ProductSummaryPrice({
-      product,
-      showBorders,
-      showListPrice,
-      showLabels,
-      showInstallments,
-      labelSellingPrice,
-      displayMode,
-      isLoading,
-    })
-  }
-
-  renderProductName() {
-    const {
-      displayMode,
-      product,
-      name: showFieldsProps,
-    } = this.props
-
-    return ProductSummaryName({ displayMode, product, showFieldsProps })
-  }
-
   render() {
     const {
       actionOnClick,
@@ -155,6 +120,11 @@ class ProductSummary extends Component {
       showBadge,
       badgeText,
       showCollections,
+      showListPrice,
+      showLabels,
+      showInstallments,
+      labelSellingPrice,
+      name: showFieldsProps,
     } = this.props
 
     const classes = classNames(`${productSummary.container} overflow-hidden br3 h-100`, {
@@ -186,7 +156,19 @@ class ProductSummary extends Component {
     })
 
     const imageProps = { product, showBadge, badgeText, showCollections }
-
+    const nameProps = { product, displayMode, showFieldsProps }
+    
+    const priceProps = {
+      product,
+      showBorders,
+      showListPrice,
+      showLabels,
+      showInstallments,
+      labelSellingPrice,
+      displayMode,
+      isLoading: this.state.isUpdatingItems,
+    }
+    
     const buyButtonProps = {
       product,
       displayMode,
@@ -216,7 +198,7 @@ class ProductSummary extends Component {
                 : <ImageLoader />}
             </div>
             <div className={informationClasses}>
-              {this.renderProductName()}
+              <ProductSummaryName {...nameProps} />
               <AttachmentList product={product} />
               <div className={priceWrapperClasses}>
                 {displayMode === 'inline' && (
@@ -225,7 +207,7 @@ class ProductSummary extends Component {
                     onUpdateItemsState={this.handleItemsStateUpdate}
                   />
                 )}
-                {this.renderPrice()}
+                <ProductSummaryPrice {...priceProps} />
               </div>
             </div>
           </Link>

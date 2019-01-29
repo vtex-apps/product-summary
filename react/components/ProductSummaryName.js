@@ -1,13 +1,15 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import classNames from 'classnames'
 import { ProductName } from 'vtex.store-components'
 
+import { productShape } from '../utils/propTypes'
 import productSummary from '../productSummary.css'
 
 const ProductSummaryName = ({
-  displayMode,
   product,
+  displayMode,
   showFieldsProps,
 }) => {
   // TODO: When the specific components for inline etc are created
@@ -47,6 +49,17 @@ const ProductSummaryName = ({
       />
     </div>
   )
+}
+
+ProductSummaryName.propTypes = {
+  /** Product that owns the informations */
+  product: productShape,
+  /** Display mode of the summary used in the search result */
+  displayMode: PropTypes.oneOf([
+    'normal',
+    'small',
+    'inline',
+  ]),
 }
 
 export default ProductSummaryName

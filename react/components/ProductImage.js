@@ -7,7 +7,7 @@ import {
 } from 'vtex.store-components'
 
 import Image from './Image'
-import { productShape } from './utils/propTypes'
+import { productShape } from '../utils/propTypes'
 
 import productSummary from '../productSummary.css'
 
