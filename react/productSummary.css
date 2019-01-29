@@ -22,6 +22,12 @@
 }
 .quantityStepperContainer {
 }
+.imageInline {
+  max-height: 7rem;
+}
+.imageNormal {
+  max-height: 281px;
+}
 
 .isHidden {
   visibility: hidden;
