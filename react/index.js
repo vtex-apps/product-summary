@@ -168,7 +168,7 @@ class ProductSummary extends Component {
       displayMode,
       isLoading: this.state.isUpdatingItems,
     }
-    
+
     const buyButtonProps = {
       product,
       displayMode,
