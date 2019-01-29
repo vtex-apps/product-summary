@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import React, { Component } from 'react'
-import ContentLoader from 'react-content-loader'
 import { Link, withRuntimeContext } from 'vtex.render-runtime'
 import { Spinner } from 'vtex.styleguide'
 import classNames from 'classnames'
@@ -14,6 +13,7 @@ import ProductSummaryBuyButton from './components/ProductSummaryBuyButton'
 import AttachmentList from './components/AttachmentList'
 import ProductQuantityStepper from './components/ProductQuantityStepper'
 import ProductSummaryImage from './components/ProductSummaryImage'
+import ProductSummaryImageLoader from './components/ProductSummaryImageLoader'
 import displayButtonTypes, {
   getDisplayButtonNames,
   getDisplayButtonValues,
@@ -113,21 +113,7 @@ class ProductSummary extends Component {
     return ProductSummaryImage({ product, showBadge, badgeText, showCollections })
   }
 
-  renderImageLoader() {
-    return (
-      <ContentLoader
-        style={{
-          width: '100%',
-          height: '100%',
-        }}
-        width={100}
-        height={56}
-        preserveAspectRatio="xMinYMin meet"
-      >
-        <rect width="100%" height="100%" />
-      </ContentLoader>
-    )
-  }
+  renderImageLoader = () => ProductSummaryImageLoader()
 
   handleItemsStateUpdate = isLoading => this.setState({ isUpdatingItems: isLoading })
 
