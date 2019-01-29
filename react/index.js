@@ -8,11 +8,11 @@ import {
   ProductPrice,
 } from 'vtex.store-components'
 
-import ProductSummaryBuyButton from './components/ProductSummaryBuyButton'
 import AttachmentList from './components/AttachmentList'
+import ImageLoader from './components/ImageLoader'
+import ProductSummaryBuyButton from './components/ProductSummaryBuyButton'
 import ProductQuantityStepper from './components/ProductQuantityStepper'
 import ProductSummaryImage from './components/ProductSummaryImage'
-import ProductSummaryImageLoader from './components/ProductSummaryImageLoader'
 import ProductSummaryPrice from './components/ProductSummaryPrice'
 import ProductSummaryName from './components/ProductSummaryName'
 import displayButtonTypes, {
@@ -105,16 +105,10 @@ class ProductSummary extends Component {
     this.setState({ isHovering: true })
   }
 
-  get commertialOffer() {
-    return path(['sku', 'seller', 'commertialOffer'], this.props.product)
-  }
-
   renderImage() {
     const { product, showBadge, badgeText, showCollections } = this.props
     return ProductSummaryImage({ product, showBadge, badgeText, showCollections })
   }
-
-  renderImageLoader = () => ProductSummaryImageLoader()
 
   handleItemsStateUpdate = isLoading => this.setState({ isUpdatingItems: isLoading })
 
@@ -219,7 +213,7 @@ class ProductSummary extends Component {
             <div className={imageContainerClasses}>
               {path(['sku', 'image', 'imageUrl'], product)
                 ? this.renderImage()
-                : this.renderImageLoader()}
+                : (<ImageLoader />)}
             </div>
             <div className={informationClasses}>
               {this.renderProductName()}
