@@ -60,6 +60,8 @@ ProductSummaryName.propTypes = {
     'small',
     'inline',
   ]),
+  /** Name schema props */
+  showFieldsProps: PropTypes.object,
 }
 
 export default ProductSummaryName
