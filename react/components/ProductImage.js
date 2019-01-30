@@ -11,6 +11,32 @@ import { productShape } from '../utils/propTypes'
 
 import productSummary from '../productSummary.css'
 
+const maybeBadge = ({ listPrice, price, label }) => condition => component => {
+  if (condition) {
+    return (
+      <DiscountBadge
+        listPrice={listPrice}
+        sellingPrice={price}
+        label={label}
+      >
+        {component}
+      </DiscountBadge>
+    )
+  }
+  return component
+}
+
+const maybeCollection = ({ collections }) => condition => component => {
+  if (condition) {
+    return (
+      <CollectionBadges collectionBadgesText={collections}>
+        {component}
+      </CollectionBadges>
+    )
+  }
+  return component
+}
+
 const ProductImage = ({ product, showBadge, badgeText, showCollections }) => {
   const {
     productClusters,
@@ -22,36 +48,11 @@ const ProductImage = ({ product, showBadge, badgeText, showCollections }) => {
 
   const commertialOffer = pathOr({}, ['sku', 'seller', 'commertialOffer'], product)
 
-  const maybeBadge = condition => component => {
-    if (condition) {
-      return (
-        <DiscountBadge
-          listPrice={commertialOffer.ListPrice}
-          sellingPrice={commertialOffer.Price}
-          label={badgeText}
-        >
-          {component}
-        </DiscountBadge>
-      )
-    }
-    return component
-  }
-
-  const maybeCollection = condition => component => {
-    if (condition) {
-      const collections = productClusters.map(cl => cl.name)
-      return (
-        <CollectionBadges collectionBadgesText={collections}>
-          {component}
-        </CollectionBadges>
-      )
-    }
-    return component
-  }
-
+  const withBadge = maybeBadge({ listPrice: commertialOffer.ListPrice, price: commertialOffer.Price, label: badgeText })
+  const withCollection = maybeCollection({ collections: productClusters.map(cl => cl.name) })
   const img = (<Image className={productSummary.image} alt={name} src={imageUrl} />)
 
-  return compose(maybeBadge(showBadge), maybeCollection(showCollections && !isEmpty(productClusters)))(img)
+  return compose(withBadge(showBadge), withCollection(showCollections && !isEmpty(productClusters)))(img)
 }
 
 ProductImage.propTypes = {
