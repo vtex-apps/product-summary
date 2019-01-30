@@ -156,7 +156,7 @@ class ProductSummary extends Component {
         showDescription={showDescription}
         handleMouseEnter={this.handleMouseEnter}
         handleMouseLeave={this.handleMouseLeave}
-        handleItemsStateUpdate={this.handleItemsStateUpdate}
+        handleItemsStateUpdate={this.handleItemsStateUpdate }
         actionOnClick={actionOnClick}
         imageProps={imageProps}
         nameProps={nameProps}
