@@ -26,8 +26,9 @@ const maybeBadge = ({ listPrice, price, label }) => condition => component => {
   return component
 }
 
-const maybeCollection = ({ collections }) => condition => component => {
+const maybeCollection = ({ productClusters }) => condition => component => {
   if (condition) {
+    const collections = productClusters.map(cl => cl.name)
     return (
       <CollectionBadges collectionBadgesText={collections}>
         {component}
@@ -49,7 +50,7 @@ const ProductImage = ({ product, showBadge, badgeText, showCollections }) => {
   const commertialOffer = pathOr({}, ['sku', 'seller', 'commertialOffer'], product)
 
   const withBadge = maybeBadge({ listPrice: commertialOffer.ListPrice, price: commertialOffer.Price, label: badgeText })
-  const withCollection = maybeCollection({ collections: productClusters.map(cl => cl.name) })
+  const withCollection = maybeCollection({ productClusters })
   const img = (<Image className={productSummary.image} alt={name} src={imageUrl} />)
 
   return compose(withBadge(showBadge), withCollection(showCollections && !isEmpty(productClusters)))(img)
