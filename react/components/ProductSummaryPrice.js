@@ -36,7 +36,7 @@ const ProductSummaryPrice = ({
     [`${productSummary.priceContainer} pv5`]: !showBorders,
   })
 
-  const sellingPrice = prop('Price')(commertialOffer)
+  const sellingPrice = prop('Price', commertialOffer)
   const sellingPriceClass = classNames('dib ph2 t-body t-heading-5-ns', {
     't-small t-body-ns': sellingPrice > 1000 && displayMode === 'inline',
   })
