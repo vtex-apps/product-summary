@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.9.7] - 2019-01-30
+### Changed
+- Extract internal components to better reuse.
+
 ## [2.9.6] - 2019-01-29
 ### Fixed
 - Fix styles for inline mode broken by previous wrong rebases
