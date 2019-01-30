@@ -25,9 +25,6 @@
 .imageInline {
   max-height: 7rem;
 }
-.imageNormal {
-  max-height: 281px;
-}
 
 .isHidden {
   visibility: hidden;
@@ -56,4 +53,8 @@
 }
 
 .attachmentItemContainer {
+}
+
+.imageNormal {
+  max-height: 17.56rem;
 }

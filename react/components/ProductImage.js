@@ -5,6 +5,7 @@ import {
   CollectionBadges,
   DiscountBadge,
 } from 'vtex.store-components'
+import classNames from 'classnames'
 
 import Image from './Image'
 import { productShape } from '../utils/propTypes'
@@ -38,7 +39,7 @@ const maybeCollection = ({ productClusters }) => shouldShow => component => {
   return component
 }
 
-const ProductImage = ({ product, showBadge, badgeText, showCollections }) => {
+const ProductImage = ({ product, showBadge, badgeText, showCollections, displayMode }) => {
   const {
     productClusters,
     productName: name,
@@ -47,11 +48,16 @@ const ProductImage = ({ product, showBadge, badgeText, showCollections }) => {
     },
   } = product
 
+  const imageClassName = classNames({
+    [productSummary.imageNormal]: displayMode !== 'inline',
+    [productSummary.imageInline]: displayMode === 'inline'
+  })
+
   const commertialOffer = pathOr({}, ['sku', 'seller', 'commertialOffer'], product)
 
   const withBadge = maybeBadge({ listPrice: commertialOffer.ListPrice, price: commertialOffer.Price, label: badgeText })
   const withCollection = maybeCollection({ productClusters })
-  const img = (<Image className={productSummary.image} alt={name} src={imageUrl} />)
+  const img = (<Image className={imageClassName} description={name} src={imageUrl} />)
 
   return compose(withBadge(showBadge), withCollection(showCollections))(img)
 }
@@ -65,6 +71,8 @@ ProductImage.propTypes = {
   badgeText: PropTypes.string,
   /** Defines if the collection badges are shown */
   showCollections: PropTypes.bool,
+  /** Display mode of the summary */
+  displayMode: PropTypes.string
 }
 
 export default ProductImage
