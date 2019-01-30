@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.9.8] - 2019-01-30
+### Fixed
+- Fix `ProductImage` crash with productClusters prop undefined.
+
 ## [2.9.7] - 2019-01-30
 ### Changed
 - Extract internal components to better reuse.
