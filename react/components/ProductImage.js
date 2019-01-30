@@ -1,5 +1,5 @@
 import React from 'react'
-import { pathOr, isEmpty } from 'ramda'
+import { pathOr, isEmpty, compose } from 'ramda'
 import PropTypes from 'prop-types'
 import {
   CollectionBadges,
@@ -22,36 +22,36 @@ const ProductImage = ({ product, showBadge, badgeText, showCollections }) => {
 
   const commertialOffer = pathOr({}, ['sku', 'seller', 'commertialOffer'], product)
 
-  const withBagde = img => (
-    showBadge ? (
-      <DiscountBadge
-        listPrice={commertialOffer.ListPrice}
-        sellingPrice={commertialOffer.Price}
-        label={badgeText}
-      >
-        {img}
-      </DiscountBadge>
-    ) : img
-  )
+  const maybeBadge = condition => component => {
+    if (condition) {
+      return (
+        <DiscountBadge
+          listPrice={commertialOffer.ListPrice}
+          sellingPrice={commertialOffer.Price}
+          label={badgeText}
+        >
+          {component}
+        </DiscountBadge>
+      )
+    }
+    return component
+  }
 
-  const withCollection = img => {
-    if (showCollections && !isEmpty(productClusters)) {
+  const maybeCollection = condition => component => {
+    if (condition) {
       const collections = productClusters.map(cl => cl.name)
-
       return (
         <CollectionBadges collectionBadgesText={collections}>
-          {img}
+          {component}
         </CollectionBadges>
       )
     }
-    return img
+    return component
   }
 
-  const img = (
-    <Image className={productSummary.image} alt={name} src={imageUrl} />
-  )
+  const img = (<Image className={productSummary.image} alt={name} src={imageUrl} />)
 
-  return withBagde(withCollection(img))
+  return compose(maybeBadge(showBadge), maybeCollection(showCollections && !isEmpty(productClusters)))(img)
 }
 
 ProductImage.propTypes = {
