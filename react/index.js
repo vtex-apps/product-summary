@@ -157,7 +157,7 @@ class ProductSummary extends Component {
 
     const imageProps = { product, showBadge, badgeText, showCollections }
     const nameProps = { product, displayMode, showFieldsProps }
-    
+
     const priceProps = {
       product,
       showBorders,

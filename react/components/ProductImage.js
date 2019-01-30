@@ -1,5 +1,5 @@
 import React from 'react'
-import { pathOr } from 'ramda'
+import { pathOr, isEmpty } from 'ramda'
 import PropTypes from 'prop-types'
 import {
   CollectionBadges,
@@ -22,12 +22,8 @@ const ProductImage = ({ product, showBadge, badgeText, showCollections }) => {
 
   const commertialOffer = pathOr({}, ['sku', 'seller', 'commertialOffer'], product)
 
-  let img = (
-    <Image className={productSummary.image} alt={name} src={imageUrl} />
-  )
-
-  if (showBadge) {
-    img = (
+  const withBagde = img => (
+    showBadge ? (
       <DiscountBadge
         listPrice={commertialOffer.ListPrice}
         sellingPrice={commertialOffer.Price}
@@ -35,20 +31,27 @@ const ProductImage = ({ product, showBadge, badgeText, showCollections }) => {
       >
         {img}
       </DiscountBadge>
-    )
+    ) : img
+  )
+
+  const withCollection = img => {
+    if (showCollections && !isEmpty(productClusters)) {
+      const collections = productClusters.map(cl => cl.name)
+
+      return (
+        <CollectionBadges collectionBadgesText={collections}>
+          {img}
+        </CollectionBadges>
+      )
+    }
+    return img
   }
 
-  if (showCollections && productClusters && productClusters.length > 0) {
-    const collections = productClusters.map(cl => cl.name)
+  const img = (
+    <Image className={productSummary.image} alt={name} src={imageUrl} />
+  )
 
-    return (
-      <CollectionBadges collectionBadgesText={collections}>
-        {img}
-      </CollectionBadges>
-    )
-  }
-
-  return img
+  return withBagde(withCollection(img))
 }
 
 ProductImage.propTypes = {
