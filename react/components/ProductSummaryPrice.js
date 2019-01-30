@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { path } from 'ramda'
+import { path, prop } from 'ramda'
 import classNames from 'classnames'
 import { Spinner } from 'vtex.styleguide'
 import { ProductPrice } from 'vtex.store-components'
@@ -36,6 +36,11 @@ const ProductSummaryPrice = ({
     [`${productSummary.priceContainer} pv5`]: !showBorders,
   })
 
+  const sellingPrice = prop('Price', commertialOffer)
+  const sellingPriceClass = classNames('dib ph2 t-body t-heading-5-ns', {
+    't-small t-body-ns': sellingPrice > 1000 && displayMode === 'inline',
+  })
+
   return (
     <div className={containerClasses}>
       <ProductPrice
@@ -45,14 +50,14 @@ const ProductSummaryPrice = ({
         listPriceClass="dib ph2 strike t-small-ns t-mini"
         sellingPriceContainerClass="pt1 pb3 c-on-base"
         sellingPriceLabelClass="dib"
-        sellingPriceClass="dib ph2 t-heading-5-ns"
+        sellingPriceClass={sellingPriceClass}
         savingsContainerClass="t-small-ns c-muted-2"
         savingsClass="dib"
         interestRateClass="dib pl2"
         installmentContainerClass="t-small-ns c-muted-2"
-        listPrice={path(['ListPrice'], commertialOffer)}
-        sellingPrice={path(['Price'], commertialOffer)}
-        installments={path(['Installments'], commertialOffer)}
+        listPrice={prop('ListPrice', commertialOffer)}
+        sellingPrice={sellingPrice}
+        installments={prop('Installments', commertialOffer)}
         showListPrice={showListPrice}
         showLabels={showLabels}
         showInstallments={showInstallments}

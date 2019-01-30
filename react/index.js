@@ -140,11 +140,11 @@ class ProductSummary extends Component {
 
     const imageContainerClasses = classNames(`${productSummary.imageContainer} db`, {
       'w-100 center': displayMode !== 'inline',
-      'w-40': displayMode === 'inline',
+      'w-30': displayMode === 'inline',
     })
 
     const informationClasses = classNames(`${productSummary.information}`, {
-      'w-80 pb2 pl3 pr3 flex flex-column justify-between': displayMode === 'inline',
+      'w-70 pb2 pl3 pr3 flex flex-column justify-between': displayMode === 'inline',
     })
 
     const elementClasses = classNames(`${productSummary.element} pointer ph2 pt3 pb4 flex flex-column`, {

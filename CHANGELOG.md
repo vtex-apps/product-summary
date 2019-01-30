@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.9.9] - 2019-01-30
+### Fixed
+- Image container and info size proportion for inline mode
+- Make price font smaller if price > 100 in inline mode
+
 ## [2.9.8] - 2019-01-30
 ### Fixed
 - Fix `ProductImage` crash with productClusters prop undefined.

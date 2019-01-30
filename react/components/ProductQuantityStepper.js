@@ -69,6 +69,7 @@ class ProductQuantityStepper extends Component {
     return (
       <NumericStepper
         lean
+        size="small"
         value={this.state.quantity}
         minValue={1}
         maxValue={this.state.canIncrease ? undefined : this.state.quantity}
