@@ -41,6 +41,13 @@ class ProductSummarySmall extends Component {
       brandNameClass: 't-body t-mini',
     }
 
+    const priceClasses = {
+      containerClass: classNames('flex flex-column justify-end items-center', {
+        [`${productSummary.priceContainer} pv5`]: !showBorders,
+      }),
+      sellingPriceClass: 'dib ph2 t-body t-heading-5-ns',
+    }
+
     return (
       <section
         className={classes}
@@ -63,7 +70,7 @@ class ProductSummarySmall extends Component {
               <ProductSummaryName {...nameProps} {...nameClasses} />
               <AttachmentList product={product} />
               <div>
-                <ProductSummaryPrice {...priceProps} />
+                <ProductSummaryPrice {...priceProps} {...priceClasses} />
               </div>
             </div>
           </Link>

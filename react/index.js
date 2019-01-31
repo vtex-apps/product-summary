@@ -133,12 +133,10 @@ class ProductSummary extends Component {
 
     const priceProps = {
       product,
-      showBorders,
       showListPrice,
       showLabels,
       showInstallments,
       labelSellingPrice,
-      displayMode,
       isLoading: this.state.isUpdatingItems,
     }
 
