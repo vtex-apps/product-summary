@@ -15,6 +15,12 @@ import displayButtonTypes, {
 } from './utils/displayButtonTypes'
 import { productShape } from './utils/propTypes'
 
+const DISPLAY_MODE_MAP = {
+  'normal': ProductSummaryNormal,
+  'small': ProductSummarySmall,
+  'inline': ProductSummaryInline,
+}
+
 /**
  * Product Summary component. Summarizes the product information.
  */
@@ -120,14 +126,6 @@ class ProductSummary extends Component {
       name: showFieldsProps,
     } = this.props
 
-    const displayModeMap = {
-      'normal': ProductSummaryNormal,
-      'small': ProductSummarySmall,
-      'inline': ProductSummaryInline,
-    }
-
-    const ProductSummaryComponent = displayModeMap[displayMode]
-
     const imageProps = { product, showBadge, badgeText, showCollections }
     const nameProps = { product, showFieldsProps }
 
@@ -142,7 +140,6 @@ class ProductSummary extends Component {
 
     const buyButtonProps = {
       product,
-      displayMode,
       displayBuyButton,
       isOneClickBuy,
       buyButtonText,
@@ -150,6 +147,7 @@ class ProductSummary extends Component {
       isHovering: this.state.isHovering,
     }
 
+    const ProductSummaryComponent = DISPLAY_MODE_MAP[displayMode]
     return (
       <ProductSummaryComponent
         product={product}
