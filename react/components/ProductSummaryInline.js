@@ -51,12 +51,12 @@ class ProductSummaryInline extends Component {
             params={{ slug: path(['linkText'], product) }}
             onClick={actionOnClick}
           >
-            <div className={`${productSummary.imageContainer} db w-40`}>
+            <div className={`${productSummary.imageContainer} db w-30`}>
               {path(['sku', 'image', 'imageUrl'], product)
                 ? <ProductImage {...imageProps} />
                 : <ImageLoader />}
             </div>
-            <div className={`${productSummary.information} w-80 pb2 pl3 pr3 flex flex-column justify-between`}>
+            <div className={`${productSummary.information} w-70 pb2 pl3 pr3 flex flex-column justify-between`}>
               <ProductSummaryName {...nameProps} />
               <AttachmentList product={product} />
               <div className="flex justify-between items-baseline">
