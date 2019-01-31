@@ -38,6 +38,11 @@ class ProductSummaryInline extends Component {
       'bb b--muted-4 mh2 mt2': showBorders,
     })
 
+    const nameClasses = {
+      containerClass: 'flex items-start justify-left w-100 pt5 t-mini pb2',
+      brandNameClass: 't-body c-on-base',
+    }
+
     return (
       <section
         className={classes}
@@ -57,7 +62,7 @@ class ProductSummaryInline extends Component {
                 : <ImageLoader />}
             </div>
             <div className={`${productSummary.information} w-70 pb2 pl3 pr3 flex flex-column justify-between`}>
-              <ProductSummaryName {...nameProps} />
+              <ProductSummaryName {...nameProps} {...nameClasses} />
               <AttachmentList product={product} />
               <div className="flex justify-between items-baseline">
                 <ProductQuantityStepper

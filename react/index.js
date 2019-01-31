@@ -129,7 +129,7 @@ class ProductSummary extends Component {
     const ProductSummaryComponent = displayModeMap[displayMode]
 
     const imageProps = { product, showBadge, badgeText, showCollections }
-    const nameProps = { product, displayMode, showFieldsProps }
+    const nameProps = { product, showFieldsProps }
 
     const priceProps = {
       product,

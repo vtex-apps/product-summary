@@ -36,6 +36,11 @@ class ProductSummaryNormal extends Component {
       'bb b--muted-4 mh2 mt2': showBorders,
     })
 
+    const nameClasses = {
+      containerClass: `flex items-start ${productSummary.nameContainer} justify-center pv6`,
+      brandNameClass: 't-body',
+    }
+
     return (
       <section
         className={classes}
@@ -55,7 +60,7 @@ class ProductSummaryNormal extends Component {
                 : <ImageLoader />}
             </div>
             <div className={productSummary.information}>
-              <ProductSummaryName {...nameProps} />
+              <ProductSummaryName {...nameProps} {...nameClasses} />
               <AttachmentList product={product} />
               <div>
                 <ProductSummaryPrice {...priceProps} />
@@ -70,4 +75,3 @@ class ProductSummaryNormal extends Component {
 }
 
 export default ProductSummaryNormal
-

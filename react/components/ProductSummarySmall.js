@@ -36,6 +36,11 @@ class ProductSummarySmall extends Component {
       'bb b--muted-4 mh2 mt2': showBorders,
     })
 
+    const nameClasses = {
+      containerClass: `flex items-start ${productSummary.nameContainer} justify-center pv5 t-mini pb2`,
+      brandNameClass: 't-body t-mini',
+    }
+
     return (
       <section
         className={classes}
@@ -55,7 +60,7 @@ class ProductSummarySmall extends Component {
                 : <ImageLoader />}
             </div>
             <div className={productSummary.information}>
-              <ProductSummaryName {...nameProps} />
+              <ProductSummaryName {...nameProps} {...nameClasses} />
               <AttachmentList product={product} />
               <div>
                 <ProductSummaryPrice {...priceProps} />
