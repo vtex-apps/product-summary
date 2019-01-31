@@ -53,6 +53,10 @@ class ProductSummaryInline extends Component {
       }),
     }
 
+    const buyButtonClasses = {
+      containerClass: `${productSummary.buyButtonContainer} pv3 w-100 dn`
+    }
+
     return (
       <section
         className={classes}
@@ -83,7 +87,7 @@ class ProductSummaryInline extends Component {
               </div>
             </div>
           </Link>
-          <ProductSummaryBuyButton {...buyButtonProps} />
+          <ProductSummaryBuyButton {...buyButtonProps} {... buyButtonClasses} />
         </article>
       </section>
     )
