@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.9.11] - 2019-02-01
+### Fixed
+- Fix misuse of `isEmpty` from `Ramda`.
+
 ## [2.9.10] - 2019-01-31
 ### Fixed
 - Add better guard in `ProductImage` when productClusters is empty.

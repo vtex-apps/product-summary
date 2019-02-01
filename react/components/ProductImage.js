@@ -1,5 +1,5 @@
 import React from 'react'
-import { pathOr, isEmpty, compose } from 'ramda'
+import { pathOr, compose } from 'ramda'
 import PropTypes from 'prop-types'
 import {
   CollectionBadges,
@@ -27,7 +27,7 @@ const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
 }
 
 const maybeCollection = ({ productClusters }) => shouldShow => component => {
-  if (shouldShow && !isEmpty(productClusters)) {
+  if (shouldShow && productClusters && productClusters.length > 0) {
     const collections = productClusters.map(cl => cl.name)
     return (
       <CollectionBadges collectionBadgesText={collections}>
