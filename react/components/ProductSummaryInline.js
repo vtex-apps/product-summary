@@ -28,13 +28,13 @@ class ProductSummaryInline extends Component {
       buyButtonProps,
     } = this.props
 
-    const classes = classNames(
+    const constainerClasses = classNames(
       productSummary.container,
       productSummary.containerInline,
       'overflow-hidden br3 h-100 w-100'
     )
 
-    const elementClasses = classNames(`${productSummary.element} pointer ph2 pt3 pb4 flex flex-column`, {
+    const summaryClasses = classNames(`${productSummary.element} pointer ph2 pt3 pb4 flex flex-column`, {
       'bb b--muted-4 mh2 mt2': showBorders,
     })
 
@@ -59,11 +59,11 @@ class ProductSummaryInline extends Component {
 
     return (
       <section
-        className={classes}
+        className={constainerClasses}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <article className={elementClasses}>
+        <article className={summaryClasses}>
           <Link
             className={`${productSummary.clearLink} flex`}
             page={'store.product'}
@@ -75,7 +75,7 @@ class ProductSummaryInline extends Component {
                 ? <ProductImage {...imageProps} />
                 : <ImageLoader />}
             </div>
-            <div className={`${productSummary.information} w-70 pb2 pl3 pr3 flex flex-column justify-between`}>
+            <div className={`${productSummary.information} w-70 pb2 ph3 flex flex-column justify-between`}>
               <ProductSummaryName {...nameProps} {...nameClasses} />
               <AttachmentList product={product} />
               <div className="flex justify-between items-baseline">
@@ -87,7 +87,7 @@ class ProductSummaryInline extends Component {
               </div>
             </div>
           </Link>
-          <ProductSummaryBuyButton {...buyButtonProps} {... buyButtonClasses} />
+          <ProductSummaryBuyButton {...buyButtonProps} {...buyButtonClasses} />
         </article>
       </section>
     )

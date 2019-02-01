@@ -147,7 +147,7 @@ class ProductSummary extends Component {
       isHovering: this.state.isHovering,
     }
 
-    const ProductSummaryComponent = DISPLAY_MODE_MAP[displayMode]
+    const ProductSummaryComponent = DISPLAY_MODE_MAP[displayMode] || ProductSummaryNormal
     return (
       <ProductSummaryComponent
         product={product}

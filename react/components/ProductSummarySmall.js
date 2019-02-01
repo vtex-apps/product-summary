@@ -26,13 +26,13 @@ class ProductSummarySmall extends Component {
       buyButtonProps,
     } = this.props
 
-    const classes = classNames(
+    const containerClasses = classNames(
       productSummary.container,
       productSummary.containerSmall,
       'overflow-hidden br3 h-100 flex flex-column justify-between center tc'
     )
 
-    const elementClasses = classNames(`${productSummary.element} pointer ph2 pt3 pb4 flex flex-column`, {
+    const summaryClasses = classNames(`${productSummary.element} pointer ph2 pt3 pb4 flex flex-column`, {
       'bb b--muted-4 mh2 mt2': showBorders,
     })
 
@@ -54,11 +54,11 @@ class ProductSummarySmall extends Component {
 
     return (
       <section
-        className={classes}
+        className={containerClasses}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <article className={elementClasses}>
+        <article className={summaryClasses}>
           <Link
             className={`${productSummary.clearLink} flex flex-column`}
             page={'store.product'}
