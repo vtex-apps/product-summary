@@ -48,7 +48,8 @@ class ProductSummaryInline extends Component {
       containerClass: classNames('flex flex-column', {
         [`${productSummary.priceContainer} pv5`]: !showBorders,
       }),
-      sellingPriceClass: classNames('dib ph2 t-body t-heading-5-ns', {
+      sellingPriceClass: classNames('dib ph2', {
+        't-body t-heading-5-ns': sellingPrice <= 1000,
         't-small t-body-ns': sellingPrice > 1000,
       }),
     }
