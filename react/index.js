@@ -1,26 +1,25 @@
 import PropTypes from 'prop-types'
-import { path } from 'ramda'
 import React, { Component } from 'react'
-import { Link, withRuntimeContext } from 'vtex.render-runtime'
-import classNames from 'classnames'
+import { withRuntimeContext } from 'vtex.render-runtime'
 import {
   ProductName,
   ProductPrice,
 } from 'vtex.store-components'
 
-import AttachmentList from './components/AttachmentList'
-import ImageLoader from './components/ImageLoader'
-import ProductImage from './components/ProductImage'
-import ProductSummaryBuyButton from './components/ProductSummaryBuyButton'
-import ProductQuantityStepper from './components/ProductQuantityStepper'
-import ProductSummaryPrice from './components/ProductSummaryPrice'
-import ProductSummaryName from './components/ProductSummaryName'
+import ProductSummaryNormal from './components/ProductSummaryNormal'
+import ProductSummarySmall from './components/ProductSummarySmall'
+import ProductSummaryInline from './components/ProductSummaryInline'
 import displayButtonTypes, {
   getDisplayButtonNames,
   getDisplayButtonValues,
 } from './utils/displayButtonTypes'
 import { productShape } from './utils/propTypes'
-import productSummary from './productSummary.css'
+
+const DISPLAY_MODE_MAP = {
+  'normal': ProductSummaryNormal,
+  'small': ProductSummarySmall,
+  'inline': ProductSummaryInline,
+}
 
 /**
  * Product Summary component. Summarizes the product information.
@@ -109,8 +108,8 @@ class ProductSummary extends Component {
 
   render() {
     const {
-      actionOnClick,
       product,
+      actionOnClick,
       displayMode,
       displayBuyButton,
       isOneClickBuy,
@@ -127,51 +126,20 @@ class ProductSummary extends Component {
       name: showFieldsProps,
     } = this.props
 
-    const classes = classNames(`${productSummary.container} overflow-hidden br3 h-100`, {
-      'flex flex-column justify-between center tc': displayMode !== 'inline',
-      [`${productSummary.containerNormal}`]: displayMode === 'normal',
-      [`${productSummary.containerSmall}`]: displayMode === 'small',
-      [`${productSummary.containerInline} w-100`]: displayMode === 'inline',
-    })
-
-    const linkClasses = classNames(`${productSummary.clearLink} flex`, {
-      'flex-column': displayMode !== 'inline',
-    })
-
-    const imageContainerClasses = classNames(`${productSummary.imageContainer} db`, {
-      'w-100 center': displayMode !== 'inline',
-      'w-30': displayMode === 'inline',
-    })
-
-    const informationClasses = classNames(`${productSummary.information}`, {
-      'w-70 pb2 pl3 pr3 flex flex-column justify-between': displayMode === 'inline',
-    })
-
-    const elementClasses = classNames(`${productSummary.element} pointer ph2 pt3 pb4 flex flex-column`, {
-      'bb b--muted-4 mh2 mt2': showBorders,
-    })
-
-    const priceWrapperClasses = classNames({
-      'flex justify-between items-baseline': displayMode === 'inline',
-    })
-
     const imageProps = { product, showBadge, badgeText, showCollections }
-    const nameProps = { product, displayMode, showFieldsProps }
+    const nameProps = { product, showFieldsProps }
 
     const priceProps = {
       product,
-      showBorders,
       showListPrice,
       showLabels,
       showInstallments,
       labelSellingPrice,
-      displayMode,
       isLoading: this.state.isUpdatingItems,
     }
 
     const buyButtonProps = {
       product,
-      displayMode,
       displayBuyButton,
       isOneClickBuy,
       buyButtonText,
@@ -179,41 +147,20 @@ class ProductSummary extends Component {
       isHovering: this.state.isHovering,
     }
 
+    const ProductSummaryComponent = DISPLAY_MODE_MAP[displayMode] || ProductSummaryNormal
     return (
-      <section
-        className={classes}
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-      >
-        <article className={elementClasses}>
-          <Link
-            className={linkClasses}
-            page={'store.product'}
-            params={{ slug: path(['linkText'], product) }}
-            onClick={actionOnClick}
-          >
-            <div className={imageContainerClasses}>
-              {path(['sku', 'image', 'imageUrl'], product)
-                ? <ProductImage {...imageProps} />
-                : <ImageLoader />}
-            </div>
-            <div className={informationClasses}>
-              <ProductSummaryName {...nameProps} />
-              <AttachmentList product={product} />
-              <div className={priceWrapperClasses}>
-                {displayMode === 'inline' && (
-                  <ProductQuantityStepper
-                    product={product}
-                    onUpdateItemsState={this.handleItemsStateUpdate}
-                  />
-                )}
-                <ProductSummaryPrice {...priceProps} />
-              </div>
-            </div>
-          </Link>
-          <ProductSummaryBuyButton {...buyButtonProps} />
-        </article>
-      </section>
+      <ProductSummaryComponent
+        product={product}
+        showBorders={showBorders}
+        handleMouseEnter={this.handleMouseEnter}
+        handleMouseLeave={this.handleMouseLeave}
+        handleItemsStateUpdate={this.handleItemsStateUpdate}
+        actionOnClick={actionOnClick}
+        imageProps={imageProps}
+        nameProps={nameProps}
+        priceProps={priceProps}
+        buyButtonProps={buyButtonProps}
+      />
     )
   }
 }

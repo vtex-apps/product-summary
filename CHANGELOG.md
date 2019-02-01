@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.9.12] - 2019-02-01
+### Changed
+- Create different components for each display mode (`ProductSummaryNormal`, `ProductSummarySmall` and `ProductSummaryInline`).
+
 ## [2.9.11] - 2019-02-01
 ### Fixed
 - Fix misuse of `isEmpty` from `Ramda`.
