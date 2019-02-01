@@ -34,8 +34,8 @@ class ProductSummaryNormal extends Component {
 
     const summaryClasses = classNames(
       `${productSummary.element} pointer ph2 pt3 pb4 flex flex-column`, {
-      'bb b--muted-4 mh2 mt2': showBorders,
-    })
+        'bb b--muted-4 mh2 mt2': showBorders,
+      })
 
     const nameClasses = {
       containerClass: `flex items-start ${productSummary.nameContainer} justify-center pv6`,
@@ -50,7 +50,7 @@ class ProductSummaryNormal extends Component {
     }
 
     const buyButtonClasses = {
-      containerClass: `${productSummary.buyButtonContainer} pv3 w-100 dn db-ns`
+      containerClass: `${productSummary.buyButtonContainer} pv3 w-100 dn db-ns`,
     }
 
     return (
