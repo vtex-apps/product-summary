@@ -11,8 +11,8 @@ import { productShape } from '../utils/propTypes'
 
 import productSummary from '../productSummary.css'
 
-const maybeBadge = ({ listPrice, price, label }) => condition => component => {
-  if (condition) {
+const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
+  if (shouldShow) {
     return (
       <DiscountBadge
         listPrice={listPrice}
@@ -26,8 +26,8 @@ const maybeBadge = ({ listPrice, price, label }) => condition => component => {
   return component
 }
 
-const maybeCollection = ({ productClusters }) => condition => component => {
-  if (condition) {
+const maybeCollection = ({ productClusters }) => shouldShow => component => {
+  if (shouldShow && !isEmpty(productClusters)) {
     const collections = productClusters.map(cl => cl.name)
     return (
       <CollectionBadges collectionBadgesText={collections}>
@@ -53,7 +53,7 @@ const ProductImage = ({ product, showBadge, badgeText, showCollections }) => {
   const withCollection = maybeCollection({ productClusters })
   const img = (<Image className={productSummary.image} alt={name} src={imageUrl} />)
 
-  return compose(withBadge(showBadge), withCollection(showCollections && !isEmpty(productClusters)))(img)
+  return compose(withBadge(showBadge), withCollection(showCollections))(img)
 }
 
 ProductImage.propTypes = {
