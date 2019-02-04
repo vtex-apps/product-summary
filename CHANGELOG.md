@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.9.13] - 2019-02-04
+### Fixed 
+- Buy button types not working properly.
+- Display buy button on mobile devices.
+### Changed
+- Storefront label names when option is only for web devices.
+
 ## [2.9.12] - 2019-02-01
 ### Changed
 - Create different components for each display mode (`ProductSummaryNormal`, `ProductSummarySmall` and `ProductSummaryInline`).

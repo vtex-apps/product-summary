@@ -1,3 +1,5 @@
+import Enzyme from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
 
 /* eslint-disable */
 window.matchMedia = window.matchMedia || function () {
@@ -7,3 +9,5 @@ window.matchMedia = window.matchMedia || function () {
     removeListener: function () { },
   }
 }
+
+Enzyme.configure({ adapter: new Adapter() })

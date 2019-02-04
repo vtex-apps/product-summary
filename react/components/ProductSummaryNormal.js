@@ -50,7 +50,7 @@ class ProductSummaryNormal extends Component {
     }
 
     const buyButtonClasses = {
-      containerClass: `${productSummary.buyButtonContainer} pv3 w-100 dn db-ns`,
+      containerClass: `${productSummary.buyButtonContainer} pv3 w-100 db`,
     }
 
     return (

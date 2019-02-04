@@ -1,6 +1,7 @@
 import React from 'react'
 import BuyButton from 'vtex.store-components/BuyButton'
 import { equals, path } from 'ramda'
+import classNames from 'classnames'
 import { FormattedMessage } from 'react-intl'
 
 import displayButtonTypes from '../utils/displayButtonTypes'
@@ -15,17 +16,24 @@ const ProductSummaryBuyButton = ({
   isHovering,
   containerClass,
 }) => {
-  if (equals(displayBuyButton, displayButtonTypes.DISPLAY_NONE.value)) {
-    return null
-  }
 
-  const showBuyButton = !equals(displayBuyButton, displayButtonTypes.DISPLAY_ON_HOVER.value) || mobile || isHovering
+  const hoverBuyButton = equals(displayBuyButton, displayButtonTypes.DISPLAY_ALWAYS.value) ||
+    !equals(displayBuyButton, displayButtonTypes.DISPLAY_ON_HOVER.value) ||
+    (isHovering && !mobile)
+    
+  const showBuyButton = !equals(displayBuyButton, displayButtonTypes.DISPLAY_NONE.value) &&
+    !(equals(displayBuyButton, displayButtonTypes.DISPLAY_ON_HOVER.value) && mobile)
+
+  const buyButtonClasses = classNames(`${productSummary.buyButton} center mw-100`, {
+    [productSummary.isHidden]: !hoverBuyButton,
+  })
+
   const quantity = path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) || 0
   const isAvailable = (quantity > 0)
 
-  return (
+  return (showBuyButton && 
     <div className={containerClass}>
-      <div className={`${productSummary.buyButton} center mw-100 ${!showBuyButton && 'isHidden'}`}>
+      <div className={buyButtonClasses}>
         <BuyButton
           available={isAvailable}
           skuItems={
@@ -45,9 +53,9 @@ const ProductSummaryBuyButton = ({
         >
           {buyButtonText || <FormattedMessage id="button-label" />}
         </BuyButton>
+        </div>
       </div>
-    </div>
-  )
+    )
 }
 
 export default ProductSummaryBuyButton
