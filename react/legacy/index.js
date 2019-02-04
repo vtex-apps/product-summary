@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
-import React, { Component, Fragment } from 'react'
-import { ExtensionPoint, withRuntimeContext } from 'vtex.render-runtime'
+import React, { Component } from 'react'
+import { withRuntimeContext } from 'vtex.render-runtime'
 import {
   ProductName,
   ProductPrice,
@@ -157,21 +157,22 @@ class ProductSummary extends Component {
       DISPLAY_MODE_MAP[displayMode] || ProductSummaryNormal
     return (
       <Fragment>
-        <ExtensionPoint id="my-list"/>
-      <ProductSummaryComponent
-        product={product}
-        showBorders={showBorders}
-        showDescription={showDescription}
-        handleMouseEnter={this.handleMouseEnter}
-        handleMouseLeave={this.handleMouseLeave}
-        handleItemsStateUpdate={this.handleItemsStateUpdate}
-        actionOnClick={actionOnClick}
-        imageProps={imageProps}
-        nameProps={nameProps}
-        priceProps={priceProps}
-        buyButtonProps={buyButtonProps}
-      />
+        <ExtensionPoint id="my-list" />
+        <ProductSummaryComponent
+          product={product}
+          showBorders={showBorders}
+          showDescription={showDescription}
+          handleMouseEnter={this.handleMouseEnter}
+          handleMouseLeave={this.handleMouseLeave}
+          handleItemsStateUpdate={this.handleItemsStateUpdate}
+          actionOnClick={actionOnClick}
+          imageProps={imageProps}
+          nameProps={nameProps}
+          priceProps={priceProps}
+          buyButtonProps={buyButtonProps}
+        />
       </Fragment>
+
     )
   }
 }

@@ -1,6 +1,7 @@
 {
   "product-summary": {
-    "component": "ProductSummaryLegacy"
+    "component": "ProductSummaryLegacy",
+    "required": ["add-to-list-btn"]
   },
   "product-summary.unstable--flex": {
     "allowed": [
