@@ -39,6 +39,12 @@ const ProductSummaryBuyButton = ({
           skuItems={
             path(['sku', 'itemId'], product) && [
               {
+                /* Optimistic props */
+                detailUrl: `/${product.linkText}/p`,
+                imageUrl: path(['sku', 'image', 'imageUrl'], product),
+                listPrice: path(['sku', 'seller', 'commertialOffer', 'ListPrice'], product),
+                /* End Optimistic props */
+
                 skuId: path(['sku', 'itemId'], product),
                 quantity: 1,
                 seller: path(['sku', 'seller', 'sellerId'], product),
