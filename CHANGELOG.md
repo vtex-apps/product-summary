@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed 
-- Buy button always showing with on hover option.
+- Buy button types not working properly.
 - Display buy button on mobile devices.
 ### Changed
 - Storefront label names when option is only for web devices.

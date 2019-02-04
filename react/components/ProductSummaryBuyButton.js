@@ -1,6 +1,7 @@
 import React from 'react'
 import BuyButton from 'vtex.store-components/BuyButton'
 import { equals, path } from 'ramda'
+import classNames from 'classnames'
 import { FormattedMessage } from 'react-intl'
 
 import displayButtonTypes from '../utils/displayButtonTypes'
@@ -11,10 +12,11 @@ const ProductSummaryBuyButton = ({
   displayBuyButton,
   isOneClickBuy,
   buyButtonText,
-  runtime: { hints: { mobile }},
+  runtime: { hints: { mobile } },
   isHovering,
   containerClass,
 }) => {
+
   const hoverBuyButton = equals(displayBuyButton, displayButtonTypes.DISPLAY_ALWAYS.value) ||
     !equals(displayBuyButton, displayButtonTypes.DISPLAY_ON_HOVER.value) ||
     (isHovering && !mobile)
