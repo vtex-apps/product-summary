@@ -26,7 +26,6 @@
     "identity-obj-proxy": "^3.0.0",
     "intl": "^1.2.5",
     "jest": "^24.0.0",
-    "jest-transform-graphql": "^2.1.0",
     "jsdom": "^11.10.0",
     "react": "^16.3.1",
     "react-dom": "^16.3.1"
@@ -37,7 +36,6 @@
   "jest": {
     "verbose": true,
     "transform": {
-      "\\.(gql|graphql)$": "jest-transform-graphql",
       "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest"
     },
     "setupFiles": [
