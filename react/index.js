@@ -40,6 +40,8 @@ class ProductSummary extends Component {
     showBorders: PropTypes.bool,
     /** Set the discount badge's visibility */
     showBadge: PropTypes.bool,
+    /** Set the product description visibility */
+    showDescription: PropTypes.bool,
     /** Text of selling Price's label */
     labelSellingPrice: PropTypes.string,
     /** Text shown on badge */
@@ -79,6 +81,7 @@ class ProductSummary extends Component {
     showLabels: true,
     showBadge: true,
     showCollections: false,
+    showDescription: false,
     displayBuyButton: displayButtonTypes.DISPLAY_ALWAYS.value,
     showOnHover: false,
     isOneClickBuy: false,
@@ -115,6 +118,7 @@ class ProductSummary extends Component {
       isOneClickBuy,
       buyButtonText,
       showBorders,
+      showDescription,
       runtime,
       showBadge,
       badgeText,
@@ -152,6 +156,7 @@ class ProductSummary extends Component {
       <ProductSummaryComponent
         product={product}
         showBorders={showBorders}
+        showDescription={showDescription}
         handleMouseEnter={this.handleMouseEnter}
         handleMouseLeave={this.handleMouseLeave}
         handleItemsStateUpdate={this.handleItemsStateUpdate}
