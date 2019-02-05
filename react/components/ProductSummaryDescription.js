@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
 
 const MAX_SIZE_DESCRIPTION = 120
 
-const ProductSummaryDescription = props => {
-  const { descriptionClasses, description } = props
-
+const ProductSummaryDescription = ({
+  descriptionClasses, 
+  description
+}) => {
   if (!description)
     return (<Fragment />)
 
@@ -18,6 +20,13 @@ const ProductSummaryDescription = props => {
       {descriptionTruncated}
     </div>
   )
+}
+
+ProductSummaryDescription.propTypes = {
+  /** Styles used in the description */  
+  descriptionClasses: PropTypes.string.isRequired,
+  /** Description of the product */  
+  description: PropTypes.string
 }
 
 export default ProductSummaryDescription
