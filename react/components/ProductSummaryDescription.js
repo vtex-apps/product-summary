@@ -16,9 +16,9 @@ const ProductSummaryDescription = ({
     : description
 
   return (
-    <div className={descriptionClasses}>
+    <span className={descriptionClasses}>
       {descriptionTruncated}
-    </div>
+    </span>
   )
 }
 
