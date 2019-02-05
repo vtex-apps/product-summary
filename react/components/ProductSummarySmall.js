@@ -58,13 +58,13 @@ class ProductSummarySmall extends Component {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <article className={summaryClasses}>
-          <Link
-            className={`${productSummary.clearLink} flex flex-column`}
-            page={'store.product'}
-            params={{ slug: path(['linkText'], product) }}
-            onClick={actionOnClick}
-          >
+        <Link
+          className={`${productSummary.clearLink} flex flex-column`}
+          page={'store.product'}
+          params={{ slug: path(['linkText'], product) }}
+          onClick={actionOnClick}
+        >
+          <article className={summaryClasses}>
             <div className={`${productSummary.imageContainer} db w-100 center`}>
               {path(['sku', 'image', 'imageUrl'], product)
                 ? <ProductImage {...imageProps} />
@@ -77,9 +77,9 @@ class ProductSummarySmall extends Component {
                 <ProductSummaryPrice {...priceProps} {...priceClasses} />
               </div>
             </div>
-          </Link>
+          </article>
           <ProductSummaryBuyButton {...buyButtonProps} {...buyButtonClasses} />
-        </article>
+        </Link>
       </section>
     )
   }
