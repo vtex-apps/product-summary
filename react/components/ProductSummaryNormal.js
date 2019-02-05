@@ -9,6 +9,7 @@ import ProductImage from './ProductImage'
 import ProductSummaryBuyButton from './ProductSummaryBuyButton'
 import ProductSummaryPrice from './ProductSummaryPrice'
 import ProductSummaryName from './ProductSummaryName'
+import ProductSummaryDescription from './ProductSummaryDescription'
 
 import productSummary from '../productSummary.css'
 
@@ -17,6 +18,7 @@ class ProductSummaryNormal extends Component {
     const {
       product,
       showBorders,
+      showDescription,
       handleMouseEnter,
       handleMouseLeave,
       actionOnClick,
@@ -53,6 +55,8 @@ class ProductSummaryNormal extends Component {
       containerClass: `${productSummary.buyButtonContainer} pv3 w-100 db`,
     }
 
+    const descriptionClasses = `${productSummary.description} c-muted-2 t-small`
+
     return (
       <section
         className={containerClasses}
@@ -74,6 +78,12 @@ class ProductSummaryNormal extends Component {
             <div className={productSummary.information}>
               <ProductSummaryName {...nameProps} {...nameClasses} />
               <AttachmentList product={product} />
+              {showDescription && 
+                <ProductSummaryDescription 
+                  description={product.description} 
+                  descriptionClasses={descriptionClasses}
+                />
+              }
               <div>
                 <ProductSummaryPrice {...priceProps} {...priceClasses} />
               </div>
