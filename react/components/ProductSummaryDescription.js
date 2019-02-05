@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 const MAX_SIZE_DESCRIPTION = 120
 
@@ -6,7 +6,7 @@ const ProductSummaryDescription = props => {
   const { descriptionClasses, description } = props
 
   if (!description)
-    return (<div />)
+    return (<Fragment />)
 
   const descriptionTruncated = 
     description.length > MAX_SIZE_DESCRIPTION 
