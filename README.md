@@ -28,10 +28,10 @@ To update the tests snapshots use
 $ npm t -- -u  # like this
 $ yarn test -u # or this
 ```
-## Troubleshooting
 
-You can check if others are experiencing similar issues [here](https://github.com/vtex-apps/product-summary/issues). Also feel free to [open issues](https://github.com/vtex-apps/product-summary/issues/new).
+### Blocks API
 
+#### Configuration
 | Prop name          | Type       | Description                                                                 |
 | ------------------ | ---------- | --------------------------------------------------------------------------- |
 | `product`          | `Product`  | Product that owns the informations                                          |
@@ -91,3 +91,6 @@ Instalment:
 | `TotalValuePlusInterestRate`     | `Number`   | Calculated total value                                        |
 | `NumberOfInstallments`           | `Number!`  | Number of installments                                        |
 | `Name`                           | `String`   | Installments offer name                                       |
+
+## Troubleshooting
+You can check if others are passing through similar issues [here](https://github.com/vtex-apps/product-summary/issues). Also feel free to [open issues](https://github.com/vtex-apps/product-summary/issues/new) or contribute with pull requests.
