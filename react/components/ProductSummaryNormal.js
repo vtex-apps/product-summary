@@ -35,7 +35,7 @@ class ProductSummaryNormal extends Component {
     )
 
     const summaryClasses = classNames(
-      `${productSummary.element} pointer ph2 pt3 pb4 flex flex-column`, {
+      `${productSummary.element} pointer ph2 pt3 pb4 flex flex-column h-100`, {
         'bb b--muted-4 mh2 mt2': showBorders,
       })
 
@@ -65,7 +65,7 @@ class ProductSummaryNormal extends Component {
       >
         <article className={summaryClasses}>
           <Link
-            className={`${productSummary.clearLink} flex flex-column`}
+            className={`${productSummary.clearLink} h-100 flex flex-column`}
             page={'store.product'}
             params={{ slug: path(['linkText'], product) }}
             onClick={actionOnClick}
@@ -75,7 +75,7 @@ class ProductSummaryNormal extends Component {
                 ? <ProductImage {...imageProps} />
                 : <ImageLoader />}
             </div>
-            <div className={productSummary.information}>
+            <div className={`${productSummary.information} h-100 flex flex-column justify-between`} >
               <ProductSummaryName {...nameProps} {...nameClasses} />
               <AttachmentList product={product} />
               {showDescription && 
