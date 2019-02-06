@@ -71,9 +71,11 @@ class ProductSummaryNormal extends Component {
         <div className="absolute z-max mh2 mt3">
           <ExtensionPoint
             id="add-to-list-btn"
-            skuId={path(['sku', 'itemId'], product)}
-            productId={path(['productId'], product)}
-            quantity={1}
+            product={{
+              skuId: path(['sku', 'itemId'], product),
+              productId: path(['productId'], product),
+              quantity: 1
+            }}
           />
         </div>
         <Link
