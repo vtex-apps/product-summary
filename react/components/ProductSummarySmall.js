@@ -32,7 +32,7 @@ class ProductSummarySmall extends Component {
       'overflow-hidden br3 h-100 flex flex-column justify-between center tc'
     )
 
-    const summaryClasses = classNames(`${productSummary.element} pointer ph2 pt3 pb4 flex flex-column`, {
+    const summaryClasses = classNames(`${productSummary.element} pointer pt3 pb4 flex flex-column`, {
       'bb b--muted-4 mh2 mt2': showBorders,
     })
 

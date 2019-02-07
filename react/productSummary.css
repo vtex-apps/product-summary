@@ -14,9 +14,7 @@
   visibility: hidden;
 }
 
-.containerNormal {
-  width: 281px;
-}
+.containerNormal {}
 
 .clearLink {
   text-decoration: inherit;

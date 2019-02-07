@@ -35,7 +35,7 @@ class ProductSummaryNormal extends Component {
     )
 
     const summaryClasses = classNames(
-      `${productSummary.element} pointer ph2 pt3 pb4 flex flex-column h-100`, {
+      `${productSummary.element} pointer pt3 pb4 flex flex-column h-100`, {
         'bb b--muted-4 mh2 mt2': showBorders,
       })
 
