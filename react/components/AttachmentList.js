@@ -23,7 +23,7 @@ class AttachmentList extends Component {
   renderItem = (productText, product, price) => {
     return (
       <div className="flex items-center justify-between pv1" key={product.productName}>
-        <span className="t-small c-muted-2">{productText}</span>
+        <span className="t-small c-muted-2 tl pr3">{productText}</span>
         <ProductPrice
           sellingPrice={price}
           sellingPriceContainerClass="c-on-base"
@@ -47,7 +47,7 @@ class AttachmentList extends Component {
     }
 
     return (
-      <div className={'pb2'}>
+      <div className={'pv2'}>
         {this.renderItem(intl.formatMessage({ id: 'editor.productSummary.unit' }), product, parentPricePerUnit(product))}
         {filteredOption.map(option => {
           const isSingle = option.choiceType === CHOICE_TYPES.SINGLE
