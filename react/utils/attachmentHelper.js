@@ -1,4 +1,4 @@
-import { path } from 'ramda'
+import { pathOr } from 'ramda'
 
 export const CHOICE_TYPES = {
   SINGLE: 'SINGLE',
@@ -6,7 +6,7 @@ export const CHOICE_TYPES = {
   TOGGLE: 'TOGGLE',
 }
 
-export const getProductPrice = (product) => path(['sku', 'seller', 'commertialOffer', 'Price'], product) || 0
+export const getProductPrice = (product) => pathOr(0, ['sku', 'seller', 'commertialOffer', 'Price'], product)
 
 export const parentPricePerUnit = product => {
   const wholePrice = getProductPrice(product)

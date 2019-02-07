@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { intlShape, injectIntl } from 'react-intl'
 import ProductPrice from 'vtex.store-components/ProductPrice'
 import { productShape } from '../utils/propTypes'
-import { pathOr } from 'ramda'
+import { propOr } from 'ramda'
 
 import { optionPricePerItem, parentPricePerUnit, getProductPrice, CHOICE_TYPES } from '../utils/attachmentHelper'
 
@@ -12,13 +12,24 @@ class AttachmentList extends Component {
     intl: intlShape,
   }
 
-  formatAttachmentName = (quantity, name) =>
-    this.props.intl.formatMessage({ id: 'editor.productSummary.attachmentName' }, { quantity, name })
+  getOptionExtraQuantity = (option) => {
+    const { product } = this.props
+    const { quantity, compositionItem } = option
+    const currentQuantity = quantity / product.quantity
+    const initialQuantity = propOr(0, 'initialQuantity', compositionItem)
+    return currentQuantity - initialQuantity
+  }
 
-  // Not showing free stuff you get as a basic assembly option
-  // TODO: This option.optionType === 'Crust' is a quick fix to show a free crust, find the best way to determine if an assembly option
-  // should be shown
-  canShow = option => getProductPrice(option) > 0 || option.optionType === 'Crust'
+  formatAttachmentName = (option) => {
+    const extraParams = {
+      name: option.productName,
+      quantity: this.getOptionExtraQuantity(option),
+    }
+    return this.props.intl.formatMessage({ id: 'editor.productSummary.attachmentName' }, extraParams)
+  }
+    
+
+  canShow = option => this.getOptionExtraQuantity(option) > 0 || getProductPrice(option) !== 0
 
   renderItem = (productText, product, price) => {
     return (
@@ -40,7 +51,7 @@ class AttachmentList extends Component {
   render() {
     const { product, intl } = this.props
 
-    const addedOptions = pathOr([], ['addedOptions'], product)
+    const addedOptions = propOr([], 'addedOptions', product)
     const filteredOption = addedOptions.filter(this.canShow)
     if (filteredOption.length === 0) {
       return null
@@ -51,8 +62,7 @@ class AttachmentList extends Component {
         {this.renderItem(intl.formatMessage({ id: 'editor.productSummary.unit' }), product, parentPricePerUnit(product))}
         {filteredOption.map(option => {
           const isSingle = option.choiceType === CHOICE_TYPES.SINGLE
-          const productText = 
-            isSingle ? option.productName : this.formatAttachmentName(option.quantity / product.quantity, option.productName)
+          const productText = isSingle ? option.productName : this.formatAttachmentName(option)
           const price = optionPricePerItem(option, product)
           return this.renderItem(productText, option, price)
         })}
