@@ -39,19 +39,15 @@ class ProductSummaryInline extends Component {
     })
 
     const nameClasses = {
-      containerClass: 'flex items-start justify-left w-100 pt5 t-mini pb2',
+      containerClass: 'flex items-start justify-left tl w-90 t-mini pb2',
       brandNameClass: 't-body c-on-base',
     }
 
-    const sellingPrice = path(['sku', 'seller', 'commertialOffer', 'Price'], product)
     const priceClasses = {
-      containerClass: classNames('flex flex-column', {
+      containerClass: classNames('flex flex-column items-end nr1 h1', {
         [`${productSummary.priceContainer} pv5`]: !showBorders,
       }),
-      sellingPriceClass: classNames('dib ph2', {
-        't-body t-heading-5-ns': sellingPrice <= 1000,
-        't-small t-body-ns': sellingPrice > 1000,
-      }),
+      sellingPriceClass: 'dib ph2 t-body t-heading-5-ns',
     }
 
     const buyButtonClasses = {
@@ -76,14 +72,16 @@ class ProductSummaryInline extends Component {
                 ? <ProductImage {...imageProps} />
                 : <ImageLoader />}
             </div>
-            <div className={`${productSummary.information} w-70 pb2 ph3 flex flex-column justify-between`}>
+            <div className={`${productSummary.information} w-70 pb2 pl3 pr3`}>
               <ProductSummaryName {...nameProps} {...nameClasses} />
               <AttachmentList product={product} />
-              <div className="flex justify-between items-baseline">
-                <ProductQuantityStepper
-                  product={product}
-                  onUpdateItemsState={handleItemsStateUpdate}
-                />
+              <div className="mt3 nr2">
+                <div className="flex justify-end nr4 mb2">
+                  <ProductQuantityStepper
+                    product={product}
+                    onUpdateItemsState={handleItemsStateUpdate}
+                  />
+                </div>
                 <ProductSummaryPrice {...priceProps} {...priceClasses} />
               </div>
             </div>

@@ -13,14 +13,13 @@ const ProductSummaryPrice = ({
   showInstallments,
   labelSellingPrice,
   isLoading,
-  containerClass,
-  sellingPriceClass,
+  containerClass
 }) => {
   const commertialOffer = path(['sku', 'seller', 'commertialOffer'], product)
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center w-100">
+      <div className="flex items-end justify-end w-100 h1 pr6">
         <Spinner size={20} />
       </div>
     )
@@ -35,7 +34,7 @@ const ProductSummaryPrice = ({
         listPriceClass="dib ph2 strike t-small-ns t-mini"
         sellingPriceContainerClass="pt1 pb3 c-on-base"
         sellingPriceLabelClass="dib"
-        sellingPriceClass={sellingPriceClass}
+        sellingPriceClass="dib ph2 t-body t-heading-5-ns"
         savingsContainerClass="t-small-ns c-muted-2"
         savingsClass="dib"
         interestRateClass="dib pl2"
