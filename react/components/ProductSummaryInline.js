@@ -45,7 +45,7 @@ class ProductSummaryInline extends Component {
 
     const sellingPrice = path(['sku', 'seller', 'commertialOffer', 'Price'], product)
     const priceClasses = {
-      containerClass: classNames('flex flex-column nr1 h1', {
+      containerClass: classNames('flex flex-column items-end nr1 h1', {
         [`${productSummary.priceContainer} pv5`]: !showBorders,
       }),
       sellingPriceClass: 'dib ph2 t-body t-heading-5-ns',
@@ -73,11 +73,11 @@ class ProductSummaryInline extends Component {
                 ? <ProductImage {...imageProps} />
                 : <ImageLoader />}
             </div>
-            <div className={`${productSummary.information} w-70 pb2 pl3 pr3 tr`}>
+            <div className={`${productSummary.information} w-70 pb2 pl3 pr3`}>
               <ProductSummaryName {...nameProps} {...nameClasses} />
               <AttachmentList product={product} />
               <div className="mt3 nr2">
-                <div className="flex justify-end nr4">
+                <div className="flex justify-end nr4 mb1">
                   <ProductQuantityStepper
                     product={product}
                     onUpdateItemsState={handleItemsStateUpdate}
