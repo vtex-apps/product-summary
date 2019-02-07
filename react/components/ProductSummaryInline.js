@@ -43,7 +43,6 @@ class ProductSummaryInline extends Component {
       brandNameClass: 't-body c-on-base',
     }
 
-    const sellingPrice = path(['sku', 'seller', 'commertialOffer', 'Price'], product)
     const priceClasses = {
       containerClass: classNames('flex flex-column items-end nr1 h1', {
         [`${productSummary.priceContainer} pv5`]: !showBorders,

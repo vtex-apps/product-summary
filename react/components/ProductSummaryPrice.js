@@ -13,8 +13,7 @@ const ProductSummaryPrice = ({
   showInstallments,
   labelSellingPrice,
   isLoading,
-  containerClass,
-  sellingPriceClass,
+  containerClass
 }) => {
   const commertialOffer = path(['sku', 'seller', 'commertialOffer'], product)
 
