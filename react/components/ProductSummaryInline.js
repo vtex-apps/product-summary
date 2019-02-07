@@ -76,7 +76,7 @@ class ProductSummaryInline extends Component {
               <ProductSummaryName {...nameProps} {...nameClasses} />
               <AttachmentList product={product} />
               <div className="mt3 nr2">
-                <div className="flex justify-end nr4 mb1">
+                <div className="flex justify-end nr4 mb2">
                   <ProductQuantityStepper
                     product={product}
                     onUpdateItemsState={handleItemsStateUpdate}

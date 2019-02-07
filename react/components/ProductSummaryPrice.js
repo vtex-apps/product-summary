@@ -19,7 +19,7 @@ const ProductSummaryPrice = ({
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center w-100 h1">
+      <div className="flex items-end justify-end w-100 h1 pr6">
         <Spinner size={20} />
       </div>
     )
