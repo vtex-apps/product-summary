@@ -21,11 +21,12 @@ class AttachmentList extends Component {
   }
 
   formatAttachmentName = (option) => {
+    const { product, intl } = this.props
     const extraParams = {
       name: option.productName,
-      quantity: this.getOptionExtraQuantity(option),
+      quantity: this.getOptionExtraQuantity(option) || (option.quantity / product.quantity),
     }
-    return this.props.intl.formatMessage({ id: 'editor.productSummary.attachmentName' }, extraParams)
+    return intl.formatMessage({ id: 'editor.productSummary.attachmentName' }, extraParams)
   }
     
 
