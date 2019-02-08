@@ -36,7 +36,7 @@ To use this app you need to import it in your dependencies on `manifest.json` fi
 ### Blocks API
 :construction: :construction: :construction:
 
-This app has an interface that describes what are the rules that the blocks must implement when you want to use the Product Summary block.
+This app has an interface that describes which rules must be implemented by a block when you want to use the product-summary.
 
 ```json
 {
@@ -49,6 +49,8 @@ This app has an interface that describes what are the rules that the blocks must
 Then, add `product-summary` block into our app theme, as we do in our [Minicart app](https://github.com/vtex-apps/minicart/blob/master/store/blocks.json). 
 
 #### Configuration
+Through the Storefront, you can change the behavior and interface of product-summary. However, you also can make in your theme app, as Dreamstore does.
+
 | Prop name           | Type       | Description                                                                 |
 | ------------------- | ---------- | --------------------------------------------------------------------------- |
 | `product`           | `Product`  | Product that owns the informations                                          |
