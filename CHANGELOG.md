@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.10.3] - 2019-02-08
+### Fixed
+- Use initialQuantity of item composition to decide what attachment to show
+
 ## [2.10.2] - 2019-02-07
 ### Fixed
 - Put the products' quantity selector in a different line of product price to avoid information overlapping.

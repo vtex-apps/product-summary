@@ -35,7 +35,7 @@ class ProductSummaryInline extends Component {
     )
 
     const summaryClasses = classNames(`${productSummary.element} pointer ph2 pt3 pb4 flex flex-column`, {
-      'bb b--muted-4 mh2 mt2': showBorders,
+      'bb b--muted-4 mh2 mh3-ns mt2': showBorders,
     })
 
     const nameClasses = {
