@@ -1,6 +1,10 @@
-# Product Summary
+# VTEX Product Summary
 
-Product summary is a canonical component that any VTEX store can install. 
+## Description
+The VTEX Prodcut Summary summarises the product informations such as name, price and picture.
+This is a VTEX app that is used by Dreamstore product.
+
+:loudspeaker: **Disclaimer:** Don't fork this project, use, contribute, or open issue with your feature request
 
 ## Release schedule
 | Release  | Status              | Initial Release | Maintenance LTS Start | End-of-life | Dreamstore Compatibility
@@ -8,43 +12,62 @@ Product summary is a canonical component that any VTEX store can install.
 | [1.x]    | **Maintenance LTS** |  2018-08-21     | 2018-11-28            | March 2019  | 1.x
 | [2.x]    | **Current Release** |  2018-11-28     |                       |             | 2.x
 
-## Continuous Integrations 
+See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for more information.
 
-### Travis CI 
-[![Build Status](https://travis-ci.org/vtex-apps/product-summary.svg?branch=master)](https://travis-ci.org/vtex-apps/product-summary)
+## Table of Contents
+- [Usage](#usage)
+  - [Blocks API](#blocks-api)
+    - [Configuration](#configuration)
+  - [Styles API](#styles-api)
+- [Troubleshooting](#troubleshooting)
 
-### Running Tests
+## Usage
 
-To run the test suit, type the following in the terminal, inside the folder `react`
+This app uses our store builder with the blocks architecture. To know more about Store Builder [click here.](https://help.vtex.com/en/tutorial/understanding-storebuilder-and-stylesbuilder#structuring-and-configuring-our-store-with-object-object)
 
-```sh
-$ npm t     # this
-$ yarn test # or this one
-```
+To use this app you need to import it in your dependencies on `manifest.json` file.
 
-To update the tests snapshots use
-
-```sh
-$ npm t -- -u  # like this
-$ yarn test -u # or this
-```
+```json
+"dependencies": {
+  "vtex.product-summary": "2.x"
+}
+``` 
 
 ### Blocks API
+:construction: :construction: :construction:
+
+This app has an interface that describes what are the rules that the blocks must implement when you want to use the Product Summary block.
+
+```json
+{
+  "product-summary": {
+    "component": "index"
+  }
+}
+```
+
+Then, add `product-summary` block into our app theme, as we do in our [Minicart app](https://github.com/vtex-apps/minicart/blob/master/store/blocks.json). 
 
 #### Configuration
-| Prop name          | Type       | Description                                                                 |
-| ------------------ | ---------- | --------------------------------------------------------------------------- |
-| `product`          | `Product`  | Product that owns the informations                                          |
-| `showListPrice`    | `Boolean`  | Shows the product list price                                                |
-| `isOneClickBuy`    | `Boolean`  | Should redirect to checkout after clicking on buy                           |
-| `showLabels`       | `Boolean`  | Set pricing labels' visibility                                              |
-| `showInstallments` | `Boolean`  | Set installments' visibility                                                |
-| `showBadge`        | `Boolean`  | Set the discount badge's visibility                                         |
-| `badgeText`        | `String`   | Text shown on badge                                                         |
-| `buyButtonText`    | `String`   | Custom buy button text                                                      |
-| `hideBuyButton`    | `Boolean`  | Hides the buybutton completely                                              |
-| `showButtonOnHover`| `Boolean`  | Defines if the button is shown only if the mouse is on the summary          |
-
+| Prop name           | Type       | Description                                                                 |
+| ------------------- | ---------- | --------------------------------------------------------------------------- |
+| `product`           | `Product`  | Product that owns the informations                                          |
+| `showListPrice`     | `Boolean`  | Shows the product list price                                                |
+| `isOneClickBuy`     | `Boolean`  | Should redirect to checkout after clicking on buy                           |
+| `showLabels`        | `Boolean`  | Set pricing labels' visibility                                              |
+| `showInstallments`  | `Boolean`  | Set installments' visibility                                                |
+| `showBorders`       | `Boolean`  | Set product's borders visibility                                            |
+| `showBadge`         | `Boolean`  | Set the discount badge's visibility                                         |
+| `showDescription`   | `Boolean`  | Set product's description visibility                                        |
+| `labelSellingPrice` | `String`   | Text of selling price's label                                               |
+| `badgeText`         | `String`   | Text shown on badge                                                         |
+| `buyButtonText`     | `String`   | Custom buy button text                                                      |
+| `displayBuyButton`  | `Enum`     | Set display mode of buy button (displayButtonAlways, displayButtonHover, displayButtonNone) |
+| `hideBuyButton`     | `Boolean`  | Hides the buybutton completely                                              |
+| `showButtonOnHover` | `Boolean`  | Defines if the button is shown only if the mouse is on the summary          |
+| `showCollections`   | `Boolean`  | Set collection badges' visibility                                           |
+| `displayMode`       | `Enum`     | Set display mode of product summary (normal, small or inline)               |
+| `actionOnClick`     | `Function` | Executes when the product is clicked                                        |
 
 Product: 
 
@@ -91,6 +114,9 @@ Instalment:
 | `TotalValuePlusInterestRate`     | `Number`   | Calculated total value                                        |
 | `NumberOfInstallments`           | `Number!`  | Number of installments                                        |
 | `Name`                           | `String`   | Installments offer name                                       |
+
+### Styles API
+:construction: :construction: :construction:
 
 ## Troubleshooting
 You can check if others are passing through similar issues [here](https://github.com/vtex-apps/product-summary/issues). Also feel free to [open issues](https://github.com/vtex-apps/product-summary/issues/new) or contribute with pull requests.
