@@ -7,7 +7,6 @@
   "editor.productSummary.badgeText.title": "Texto de la etiqueta",
   "editor.productSummary.buyButtonText.title": "Texto del botón de compra personalizado",
   "editor.productSummary.hideBuyButton.title": "Oculta el botón comprar por completo",
-  "editor.productSummary.showButtonOnHover.title": "Mostrar el botón de comprar solo al pasar el mouse",
   "editor.productSummary.showCollections.title": "Mostrar las insignias de las colecciones",
   "editor.productSummary.displayBuyButton.title": "Modo de visualización de los botones de compra",
   "editor.productSummary.displayBuyButton.option.none": "Nunca mostrar",
