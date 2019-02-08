@@ -66,7 +66,6 @@ Through the Storefront, you can change the behavior and interface of product-sum
 | `buyButtonText`     | `String`   | Custom buy button text                                                      |
 | `displayBuyButton`  | `Enum`     | Set display mode of buy button (displayButtonAlways, displayButtonHover, displayButtonNone) |
 | `hideBuyButton`     | `Boolean`  | Hides the buybutton completely                                              |
-| `showButtonOnHover` | `Boolean`  | Defines if the button is shown only if the mouse is on the summary          |
 | `showCollections`   | `Boolean`  | Set collection badges' visibility                                           |
 | `displayMode`       | `Enum`     | Set display mode of product summary (normal, small or inline)               |
 | `actionOnClick`     | `Function` | Executes when the product is clicked                                        |
