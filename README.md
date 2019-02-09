@@ -20,6 +20,7 @@ See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for mor
     - [Configuration](#configuration)
   - [Styles API](#styles-api)
 - [Troubleshooting](#troubleshooting)
+- [Tests](#tests)
 
 ## Usage
 
@@ -28,13 +29,14 @@ This app uses our store builder with the blocks architecture. To know more about
 To use this app you need add it in your dependencies on `manifest.json` file.
 
 ```json
-"dependencies": {
-  "vtex.product-summary": "2.x"
-}
-``` 
+  "dependencies": {
+    "vtex.product-summary": "2.x"
+  }
+```
+
+Then, add `product-summary` block into our app theme, as we do in our [Minicart app](https://github.com/vtex-apps/minicart/blob/master/store/blocks.json). 
 
 ### Blocks API
-:construction: :construction: :construction:
 
 This app has an interface that describes which rules must be implemented by a block when you want to use the product-summary.
 
@@ -45,8 +47,6 @@ This app has an interface that describes which rules must be implemented by a bl
   }
 }
 ```
-
-Then, add `product-summary` block into our app theme, as we do in our [Minicart app](https://github.com/vtex-apps/minicart/blob/master/store/blocks.json). 
 
 #### Configuration
 Through the Storefront, you can change the behavior and interface of product-summary. However, you also can make in your theme app, as Dreamstore does.
@@ -121,3 +121,6 @@ Instalment:
 
 ## Troubleshooting
 You can check if others are passing through similar issues [here](https://github.com/vtex-apps/product-summary/issues). Also feel free to [open issues](https://github.com/vtex-apps/product-summary/issues/new) or contribute with pull requests.
+
+## Tests
+To execute our tests go to `react/` folder and run `yarn test` 
