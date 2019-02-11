@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.10.4] - 2019-02-11
+#### Changed
+- Remove fixed width.
+
 ## [2.10.3] - 2019-02-08
 ### Fixed
 - Use initialQuantity of item composition to decide what attachment to show
