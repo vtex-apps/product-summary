@@ -1,7 +1,7 @@
 # VTEX Product Summary
 
 ## Description
-The VTEX Prodcut Summary summarises the product informations such as name, price and picture.
+The VTEX Product Summary summarises the product informations such as name, price and picture.
 This is a VTEX app that is used by Dreamstore product.
 
 :loudspeaker: **Disclaimer:** Don't fork this project, use, contribute, or open issue with your feature request
