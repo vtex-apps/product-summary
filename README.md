@@ -25,7 +25,7 @@ See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for mor
 ## Usage
 This app uses our store builder with the blocks architecture. To know more about Store Builder [click here.](https://help.vtex.com/en/tutorial/understanding-storebuilder-and-stylesbuilder#structuring-and-configuring-our-store-with-object-object)
 
-To use this app you need add it in your dependencies on `manifest.json` file.
+To use this app or override the default CSS you need add it in your dependencies on `manifest.json` file.
 
 ```json
   "dependencies": {
@@ -119,6 +119,17 @@ This app has CSS customization through `CSS Modules`. CSS Modules is a CSS file 
 
 We use it `css-loader` to generate a CSS token on a HTML element. For example, the builder generate a CSS token based on app vendor, name and major version. Like `container` token declared in `ProductSummary`, generate the classname `vtex.product-summary-2-x-container`.
 
+To override the default CSS, you need to add it in the `manifest.json` as described in the [Usage](#usage) section.
+Also, you need to import `styles` on your manifest:
+
+ ```json
+  "builders": {
+    "styles": "1.x"
+  }
+```
+
+Also, create a `vtex.product-summary.css` file in `styles/css` for your handlers customization.
+
 Below, we describe the tokens, their explanation and the component where it is located.
 
 | Token name | Component | Description |
@@ -139,16 +150,6 @@ Below, we describe the tokens, their explanation and the component where it is l
 | `buyButton` | [ProductSummaryBuyButton](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryBuyButton.js) | The buy button
 | `isHidden` | [ProductSummaryBuyButton](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryBuyButton.js) | Style used when buy button is hidden |
 | `description` | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js) | The product description |
-
-To override the default CSS, you need to import `styles` on your manifest:
-
- ```json
-  "builders": {
-    "styles": "1.x"
-  }
-```
-
- Also, create a `vtex.product-summary.css` file in `styles/css` for your handlers customization.
 
 ## Troubleshooting
 You can check if others are passing through similar issues [here](https://github.com/vtex-apps/product-summary/issues). Also feel free to [open issues](https://github.com/vtex-apps/product-summary/issues/new) or contribute with pull requests.
