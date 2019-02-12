@@ -117,7 +117,7 @@ Instalment:
 ### Styles API
 This app has CSS customization through `CSS Modules`. CSS Modules is a CSS file in which all class names and animation names are scoped locally by default. You can read more about CSS Modules [here](https://github.com/css-modules/css-modules) .
 
-We use it `css-loader` to generate a CSS token on a HTML element. For example, the builder generate a CSS token based on app vendor, name and major version. Like `container` token declared in minicart, generate the classname `vtex.product-summary-2-x-container`.
+We use it `css-loader` to generate a CSS token on a HTML element. For example, the builder generate a CSS token based on app vendor, name and major version. Like `container` token declared in `ProductSummary`, generate the classname `vtex.product-summary-2-x-container`.
 
 Below, we describe the tokens, their explanation and the component where it is located.
 
