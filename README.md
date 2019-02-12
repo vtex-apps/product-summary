@@ -25,7 +25,7 @@ See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for mor
 ## Usage
 This app uses our store builder with the blocks architecture. To know more about Store Builder [click here.](https://help.vtex.com/en/tutorial/understanding-storebuilder-and-stylesbuilder#structuring-and-configuring-our-store-with-object-object)
 
-To use this app or override the default CSS you need add it in your dependencies on `manifest.json` file.
+To use this app or override the default CSS you need import it in your dependencies on `manifest.json` file.
 
 ```json
   "dependencies": {
@@ -119,8 +119,7 @@ This app has CSS customization through `CSS Modules`. CSS Modules is a CSS file 
 
 We use it `css-loader` to generate a CSS token on a HTML element. For example, the builder generate a CSS token based on app vendor, name and major version. Like `container` token declared in `ProductSummary`, generate the classname `vtex.product-summary-2-x-container`.
 
-To override the default CSS, you need to add it in the `manifest.json` as described in the [Usage](#usage) section.
-Also, you need to import `styles` on your manifest:
+To override the default CSS, you need to add this block in the `manifest.json` as a dependency like in the [Usage](#usage) section. Then you need to import `styles` on your manifest:
 
  ```json
   "builders": {
