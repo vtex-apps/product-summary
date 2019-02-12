@@ -14,6 +14,11 @@ This is a VTEX app that is used by Dreamstore product.
 
 See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for more information.
 
+## Continuous Integrations
+
+### Travis CI
+[![Build Status](https://travis-ci.org/vtex-apps/product-summary.svg?branch=master)](https://travis-ci.org/vtex-apps/product-summary)
+
 ## Table of Contents
 - [Usage](#usage)
   - [Blocks API](#blocks-api)
