@@ -140,7 +140,15 @@ Below, we describe the tokens, their explanation and the component where it is l
 | `isHidden` | [ProductSummaryBuyButton](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryBuyButton.js) | Style used when buy button is hidden |
 | `description` | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js) | The product description |
 
+To override the default CSS, you need to import `styles` on your manifest:
 
+ ```json
+  "builders": {
+    "styles": "1.x"
+  }
+```
+
+ Also, create a `vtex.product-summary.css` file in `styles/css` for your handlers customization.
 
 ## Troubleshooting
 You can check if others are passing through similar issues [here](https://github.com/vtex-apps/product-summary/issues). Also feel free to [open issues](https://github.com/vtex-apps/product-summary/issues/new) or contribute with pull requests.
