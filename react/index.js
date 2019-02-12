@@ -52,8 +52,6 @@ class ProductSummary extends Component {
     displayBuyButton: PropTypes.oneOf(getDisplayButtonValues()),
     /** Hides the buy button completely . If active, the button will not be shown in any condition */
     hideBuyButton: PropTypes.bool,
-    /** Defines if the button is shown only if the mouse is on the summary */
-    showButtonOnHover: PropTypes.bool,
     /** Defines if the collection badges are shown */
     showCollections: PropTypes.bool,
     /** Name schema props */
@@ -83,7 +81,6 @@ class ProductSummary extends Component {
     showCollections: false,
     showDescription: false,
     displayBuyButton: displayButtonTypes.DISPLAY_ALWAYS.value,
-    showOnHover: false,
     isOneClickBuy: false,
     name: {
       showProductReference: false,
