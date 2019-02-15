@@ -2,15 +2,15 @@
 
 ## Description
 The VTEX Product Summary summarises the product informations such as name, price and picture.
-This is a VTEX app that is used by Dreamstore product.
+This is a VTEX app that is used by store theme product.
 
-:loudspeaker: **Disclaimer:** Don't fork this project, use, contribute, or open issue with your feature request
+:loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request
 
 ## Release schedule
-| Release  | Status              | Initial Release | Maintenance LTS Start | End-of-life | Dreamstore Compatibility
+| Release  | Status              | Initial Release | Maintenance LTS Start | End-of-life | Store Compatibility
 | :--:     | :---:               |  :---:          | :---:                 | :---:       | :---: 
-| [1.x]    | **Maintenance LTS** |  2018-08-21     | 2018-11-28            | March 2019  | 1.x
 | [2.x]    | **Current Release** |  2018-11-28     |                       |             | 2.x
+| [1.x]    | **Maintenance LTS** |  2018-08-21     | 2018-11-28            | March 2019  | 1.x
 
 See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for more information.
 
@@ -24,6 +24,7 @@ See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for mor
   - [Blocks API](#blocks-api)
     - [Configuration](#configuration)
   - [Styles API](#styles-api)
+    - [CSS Namespaces](#css-namespaces)
 - [Troubleshooting](#troubleshooting)
 - [Tests](#tests)
 
@@ -52,11 +53,10 @@ This app has an interface that describes which rules must be implemented by a bl
 ```
 
 #### Configuration
-Through the Storefront, you can change the behavior and interface of product-summary. However, you also can make in your theme app, as Dreamstore does.
+Through the Storefront, you can change the product-summary's behavior and interface. However, you also can make in your theme app, as Store theme does.
 
 | Prop name           | Type       | Description                                                                 |
 | ------------------- | ---------- | --------------------------------------------------------------------------- |
-| `product`           | `Product`  | Product that owns the informations                                          |
 | `showListPrice`     | `Boolean`  | Shows the product list price                                                |
 | `isOneClickBuy`     | `Boolean`  | Should redirect to checkout after clicking on buy                           |
 | `showLabels`        | `Boolean`  | Set pricing labels' visibility                                              |
@@ -71,70 +71,32 @@ Through the Storefront, you can change the behavior and interface of product-sum
 | `hideBuyButton`     | `Boolean`  | Hides the buybutton completely                                              |
 | `showCollections`   | `Boolean`  | Set collection badges' visibility                                           |
 | `displayMode`       | `Enum`     | Set display mode of product summary (normal, small or inline)               |
-| `actionOnClick`     | `Function` | Executes when the product is clicked                                        |
-
-Product: 
-
-| Prop name          | Type       | Description                                                                 |
-| ------------------ | ---------- | --------------------------------------------------------------------------- |
-| `linkText`         | `String!`  | Product's link text                                                         |
-| `productName`      | `String!`  | Product's name                                                              |
-| `brand`            | `String!`  | Product's brand                                                             |
-| `sku`              | `SKU`      | Product's SKU                                                               |
-| `buyButtonText`    | `String`   | Custom buy button text                                                      |
-| `hideBuyButton`    | `Boolean`  | Hides the buybutton completely                                              |
-| `showButtonOnHover`| `Boolean`  | Defines if the button is shown only if the mouse is on the summary          |
-
-Sku:
-
-| Prop name          | Type       | Description                                                                 |
-| ------------------ | ---------- | --------------------------------------------------------------------------- |
-| `name`             | `String!`  | SKU name                                                                    |
-| `itemId`           | `String!`  | SKU id                                                                      |
-| `image`            | `Image`    | SKU Image to be shown                                                       |
-| `seller`           | `Seller`   | SKU seller                                                                  |
-
-Image:
-
-| Prop name          | Type       | Description                                                                 |
-| ------------------ | ---------- | --------------------------------------------------------------------------- |
-| `imageUrl`         | `String!`  | Image URL                                                                   |
-| `imageTag`         | `String!`  | Image tag as string                                                         |
-
-Seller:
-
-| Prop name                     | Type                 | Description                                            |
-| ----------------------------- | -------------------- | ------------------------------------------------------ |
-| `commertialOffer`             | `CommertialOffer`    | Seller comertial offer                                 |
-| `commertialOffer.Installments`| `Array(Installment)` | Selling Price                                          |
-| `commertialOffer.Price`       | `Number`             | List Price                                             |
-
-Instalment:
-
-| Prop name                        | Type       | Description                                                   |
-| -------------------------------- | ---------- | ------------------------------------------------------------- |
-| `Value`                          | `Number!`  | Installment value                                             |
-| `InterestRate`                   | `Number!`  | Interest rate (zero if interest-free)                         |
-| `TotalValuePlusInterestRate`     | `Number`   | Calculated total value                                        |
-| `NumberOfInstallments`           | `Number!`  | Number of installments                                        |
-| `Name`                           | `String`   | Installments offer name                                       |
 
 ### Styles API
-This app has CSS customization through `CSS Modules`. CSS Modules is a CSS file in which all class names and animation names are scoped locally by default. You can read more about CSS Modules [here](https://github.com/css-modules/css-modules) .
 
-We use it `css-loader` to generate a CSS token on a HTML element. For example, the builder generate a CSS token based on app vendor, name and major version. Like `container` token declared in `ProductSummary`, generate the classname `vtex.product-summary-2-x-container`.
+This app provides some CSS classes as an API for style customization.
 
-To override the default CSS, you need to add this block in the `manifest.json` as a dependency like in the [Usage](#usage) section. Then you need to import `styles` on your manifest:
+To use this CSS API, you must add the `styles` builder and create an app styling CSS file.
 
- ```json
+1. Add the `styles` builder to your `manifest.json`:
+
+```json
   "builders": {
     "styles": "1.x"
   }
 ```
 
-Also, create a `vtex.product-summary.css` file in `styles/css` for your handlers customization.
+2. Create a file called `vtex.product-summary.css` inside the `styles/css` folder. Add your custom styles:
 
-Below, we describe the tokens, their explanation and the component where it is located.
+```css
+.container {
+  margin-top: 10px;
+}
+```
+
+#### CSS Namespaces
+
+Below, we describe the namespaces that are defined in the product-summary.
 
 | Token name | Component | Description |
 | ---------- | --------- |------------ |
