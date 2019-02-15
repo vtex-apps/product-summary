@@ -24,7 +24,7 @@ export const productShape = PropTypes.shape({
     /** SKU seller */
     seller: PropTypes.shape({
       /** Seller id */
-      sellerId: PropTypes.string.isRequired,
+      sellerId: PropTypes.string,
       /** Seller comertial offer */
       commertialOffer: PropTypes.shape({
         /** SKU installments */
