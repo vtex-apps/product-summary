@@ -2,7 +2,7 @@
 
 ## Description
 The VTEX Product Summary summarises the product informations such as name, price and picture.
-This is a VTEX app that is used by store theme product.
+This is a VTEX app that is used by store theme.
 
 :loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request
 
@@ -41,8 +41,27 @@ To use this app or override the default CSS you need import it in your dependenc
 
 Then, add `product-summary` block into our app theme, as we do in our [Minicart app](https://github.com/vtex-apps/minicart/blob/master/store/blocks.json). 
 
+Now, you can change the behavior of the `product-summary` block that is in the minicart. See an example of how to configure:
+
+```json
+"product-summary": {
+  "props": {
+    "isOneClickBuy": false,
+    "showBadge": true,
+    "badgeText": "OFF",
+    "displayBuyButton": "displayButtonHover",
+    "showCollections": false,
+    "showListPrice": true,
+    "showLabels": false,
+    "showInstallments": true,
+    "showSavings": true
+  }
+}
+```
+
 ### Blocks API
-This app has an interface that describes which rules must be implemented by a block when you want to use the product-summary.
+
+When implementing this app as a block, various inner blocks may be available. The following interface lists the available blocks within product summary and describes if they are required or optional.
 
 ```json
 {
@@ -51,6 +70,8 @@ This app has an interface that describes which rules must be implemented by a bl
   }
 }
 ```
+
+For now this block does not have any required or optional blocks.
 
 #### Configuration
 Through the Storefront, you can change the product-summary's behavior and interface. However, you also can make in your theme app, as Store theme does.
