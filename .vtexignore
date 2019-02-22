@@ -5,6 +5,9 @@ react/node_modules/
 package.json
 README.md
 CHANGELOG.md
-react/__tests__/**
-react/__mocks__/**
-react/setupTests.js
+react/**/__tests__/**
+react/**/__mocks__/**
+react/**/*.test.js
+react/testUtils/**/*
+react/.babelrc
+.prettierrc
