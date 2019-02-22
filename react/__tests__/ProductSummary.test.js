@@ -1,5 +1,5 @@
 import React from 'react'
-import { renderWithIntl } from 'test-utils'
+import { render } from 'test-utils'
 
 import ProductSummary from '../index'
 
@@ -41,7 +41,7 @@ describe('<ProductSummary /> component', () => {
       },
     }
 
-    return renderWithIntl(<ProductSummary {...props} />)
+    return render(<ProductSummary {...props} />)
   }
 
   it('should be match the snapshot for normal mode', () => {

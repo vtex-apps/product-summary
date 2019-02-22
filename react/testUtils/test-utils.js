@@ -3,7 +3,7 @@ import * as reactTestingLibrary from 'react-testing-library'
 import { IntlProvider } from 'react-intl'
 import defaultStrings from '../../messages/en-US.json'
 
-export const renderWithIntl = (node, options) => {
+const customRender = (node, options) => {
   const rendered = reactTestingLibrary.render(
     <IntlProvider messages={defaultStrings} locale="en-US">
       {node}
@@ -22,4 +22,7 @@ export const renderWithIntl = (node, options) => {
 }
 
 // re-export everything
-export default reactTestingLibrary
+module.exports = {
+  ...reactTestingLibrary,
+  render: customRender,
+}
