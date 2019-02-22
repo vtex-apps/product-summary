@@ -1,25 +1,29 @@
 # VTEX Product Summary
 
 ## Description
+
 The VTEX Product Summary summarises the product informations such as name, price and picture.
 This is a VTEX app that is used by store theme.
 
 :loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request
 
 ## Release schedule
-| Release  | Status              | Initial Release | Maintenance LTS Start | End-of-life | Store Compatibility
-| :--:     | :---:               |  :---:          | :---:                 | :---:       | :---: 
-| [2.x]    | **Current Release** |  2018-11-28     |                       |             | 2.x
-| [1.x]    | **Maintenance LTS** |  2018-08-21     | 2018-11-28            | March 2019  | 1.x
+
+| Release |       Status        | Initial Release | Maintenance LTS Start | End-of-life | Store Compatibility |
+| :-----: | :-----------------: | :-------------: | :-------------------: | :---------: | :-----------------: |
+|  [2.x]  | **Current Release** |   2018-11-28    |                       |             |         2.x         |
+|  [1.x]  | **Maintenance LTS** |   2018-08-21    |      2018-11-28       | March 2019  |         1.x         |
 
 See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for more information.
 
 ## Continuous Integrations
 
 ### Travis CI
+
 [![Build Status](https://travis-ci.org/vtex-apps/product-summary.svg?branch=master)](https://travis-ci.org/vtex-apps/product-summary)
 
 ## Table of Contents
+
 - [Usage](#usage)
   - [Blocks API](#blocks-api)
     - [Configuration](#configuration)
@@ -29,6 +33,7 @@ See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for mor
 - [Tests](#tests)
 
 ## Usage
+
 This app uses our store builder with the blocks architecture. To know more about Store Builder [click here.](https://help.vtex.com/en/tutorial/understanding-storebuilder-and-stylesbuilder#structuring-and-configuring-our-store-with-object-object)
 
 To use this app or override the default CSS you need import it in your dependencies on `manifest.json` file.
@@ -39,7 +44,7 @@ To use this app or override the default CSS you need import it in your dependenc
   }
 ```
 
-Then, add `product-summary` block into our app theme, as we do in our [Minicart app](https://github.com/vtex-apps/minicart/blob/master/store/blocks.json). 
+Then, add `product-summary` block into our app theme, as we do in our [Minicart app](https://github.com/vtex-apps/minicart/blob/master/store/blocks.json).
 
 Now, you can change the behavior of the `product-summary` block that is in the minicart. See an example of how to configure:
 
@@ -74,24 +79,25 @@ When implementing this app as a block, various inner blocks may be available. Th
 For now this block does not have any required or optional blocks.
 
 #### Configuration
+
 Through the Storefront, you can change the product-summary's behavior and interface. However, you also can make in your theme app, as Store theme does.
 
-| Prop name           | Type       | Description                                                                 |
-| ------------------- | ---------- | --------------------------------------------------------------------------- |
-| `showListPrice`     | `Boolean`  | Shows the product list price                                                |
-| `isOneClickBuy`     | `Boolean`  | Should redirect to checkout after clicking on buy                           |
-| `showLabels`        | `Boolean`  | Set pricing labels' visibility                                              |
-| `showInstallments`  | `Boolean`  | Set installments' visibility                                                |
-| `showBorders`       | `Boolean`  | Set product's borders visibility                                            |
-| `showBadge`         | `Boolean`  | Set the discount badge's visibility                                         |
-| `showDescription`   | `Boolean`  | Set product's description visibility                                        |
-| `labelSellingPrice` | `String`   | Text of selling price's label                                               |
-| `badgeText`         | `String`   | Text shown on badge                                                         |
-| `buyButtonText`     | `String`   | Custom buy button text                                                      |
-| `displayBuyButton`  | `Enum`     | Set display mode of buy button (displayButtonAlways, displayButtonHover, displayButtonNone) |
-| `hideBuyButton`     | `Boolean`  | Hides the buybutton completely                                              |
-| `showCollections`   | `Boolean`  | Set collection badges' visibility                                           |
-| `displayMode`       | `Enum`     | Set display mode of product summary (normal, small or inline)               |
+| Prop name           | Type      | Description                                                                                 |
+| ------------------- | --------- | ------------------------------------------------------------------------------------------- |
+| `showListPrice`     | `Boolean` | Shows the product list price                                                                |
+| `isOneClickBuy`     | `Boolean` | Should redirect to checkout after clicking on buy                                           |
+| `showLabels`        | `Boolean` | Set pricing labels' visibility                                                              |
+| `showInstallments`  | `Boolean` | Set installments' visibility                                                                |
+| `showBorders`       | `Boolean` | Set product's borders visibility                                                            |
+| `showBadge`         | `Boolean` | Set the discount badge's visibility                                                         |
+| `showDescription`   | `Boolean` | Set product's description visibility                                                        |
+| `labelSellingPrice` | `String`  | Text of selling price's label                                                               |
+| `badgeText`         | `String`  | Text shown on badge                                                                         |
+| `buyButtonText`     | `String`  | Custom buy button text                                                                      |
+| `displayBuyButton`  | `Enum`    | Set display mode of buy button (displayButtonAlways, displayButtonHover, displayButtonNone) |
+| `hideBuyButton`     | `Boolean` | Hides the buybutton completely                                                              |
+| `showCollections`   | `Boolean` | Set collection badges' visibility                                                           |
+| `displayMode`       | `Enum`    | Set display mode of product summary (normal, small or inline)                               |
 
 ### Styles API
 
@@ -119,27 +125,33 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 
 Below, we describe the namespaces that are defined in the product-summary.
 
-| Token name | Component | Description |
-| ---------- | --------- |------------ |
-| `container` | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js), [ProductSummarySmall](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummarySmall.js), [ProductSummaryInline](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryInline.js) | The main container of `ProductSummary` |
-| `containerNormal` | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js) | The main container of `ProductSummary` in normal display mode | 
-| `containerSmall` | [ProductSummarySmall](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummarySmall.js) | The main container of `ProductSummary` in small display mode | 
-| `containerInline`| [ProductSummaryInline](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryInline.js) | The main container of `ProductSummary` in inline display mode |
-| `element` | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js), [ProductSummarySmall](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummarySmall.js), [ProductSummaryInline](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryInline.js) | The subcontainer of `ProductSummary` |
-| `clearLink` | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js), [ProductSummarySmall](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummarySmall.js), [ProductSummaryInline](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryInline.js) | The link container of `ProductSummary`
-| `information` | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js), [ProductSummarySmall](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummarySmall.js), [ProductSummaryInline](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryInline.js) | The information container of `ProductSummary` | 
-| `imageContainer` | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js), [ProductSummarySmall](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummarySmall.js), [ProductSummaryInline](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryInline.js) | The image container |
-| `image` | [ProductImage](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductImage.js) | The product image |
-| `aspectRatio` | [Image](https://github.com/vtex-apps/product-summary/blob/master/react/components/Image.js) | The image aspect ratio | 
-| `nameContainer` | [ProductSummaryName](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryName.js) | The product name container
-| `priceContainer` | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js), [ProductSummarySmall](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummarySmall.js), [ProductSummaryInline](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryInline.js) | The product price container
-| `buyButtonContainer` | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js), [ProductSummarySmall](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummarySmall.js), [ProductSummaryInline](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryInline.js) | The buy button container
-| `buyButton` | [ProductSummaryBuyButton](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryBuyButton.js) | The buy button
-| `isHidden` | [ProductSummaryBuyButton](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryBuyButton.js) | Style used when buy button is hidden |
-| `description` | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js) | The product description |
+| Token name           | Component                                                                                                                                                                                                                                                                                                                                                                     | Description                                                   |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| `container`          | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js), [ProductSummarySmall](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummarySmall.js), [ProductSummaryInline](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryInline.js) | The main container of `ProductSummary`                        |
+| `containerNormal`    | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js)                                                                                                                                                                                                                                                     | The main container of `ProductSummary` in normal display mode |
+| `containerSmall`     | [ProductSummarySmall](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummarySmall.js)                                                                                                                                                                                                                                                       | The main container of `ProductSummary` in small display mode  |
+| `containerInline`    | [ProductSummaryInline](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryInline.js)                                                                                                                                                                                                                                                     | The main container of `ProductSummary` in inline display mode |
+| `element`            | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js), [ProductSummarySmall](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummarySmall.js), [ProductSummaryInline](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryInline.js) | The subcontainer of `ProductSummary`                          |
+| `clearLink`          | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js), [ProductSummarySmall](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummarySmall.js), [ProductSummaryInline](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryInline.js) | The link container of `ProductSummary`                        |
+| `information`        | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js), [ProductSummarySmall](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummarySmall.js), [ProductSummaryInline](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryInline.js) | The information container of `ProductSummary`                 |
+| `imageContainer`     | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js), [ProductSummarySmall](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummarySmall.js), [ProductSummaryInline](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryInline.js) | The image container                                           |
+| `image`              | [ProductImage](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductImage.js)                                                                                                                                                                                                                                                                     | The product image                                             |
+| `aspectRatio`        | [Image](https://github.com/vtex-apps/product-summary/blob/master/react/components/Image.js)                                                                                                                                                                                                                                                                                   | The image aspect ratio                                        |
+| `nameContainer`      | [ProductSummaryName](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryName.js)                                                                                                                                                                                                                                                         | The product name container                                    |
+| `priceContainer`     | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js), [ProductSummarySmall](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummarySmall.js), [ProductSummaryInline](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryInline.js) | The product price container                                   |
+| `buyButtonContainer` | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js), [ProductSummarySmall](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummarySmall.js), [ProductSummaryInline](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryInline.js) | The buy button container                                      |
+| `buyButton`          | [ProductSummaryBuyButton](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryBuyButton.js)                                                                                                                                                                                                                                               | The buy button                                                |
+| `isHidden`           | [ProductSummaryBuyButton](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryBuyButton.js)                                                                                                                                                                                                                                               | Style used when buy button is hidden                          |
+| `description`        | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js)                                                                                                                                                                                                                                                     | The product description                                       |
 
 ## Troubleshooting
+
 You can check if others are passing through similar issues [here](https://github.com/vtex-apps/product-summary/issues). Also feel free to [open issues](https://github.com/vtex-apps/product-summary/issues/new) or contribute with pull requests.
 
 ## Tests
-To execute our tests go to `react/` folder and run `yarn test` 
+
+To execute our tests go to `react/` folder and run `yarn test`
+
+### Travis CI
+
+[![Build Status](https://api.travis-ci.org/vtex-apps/store-components.svg?branch=master)](https://travis-ci.org/vtex-apps/store-components)

@@ -1,5 +1,5 @@
 import React from 'react'
 
-export function orderFormConsumer()  {
-    return <div></div>
+export function orderFormConsumer(Comp) {
+  return Comp
 }

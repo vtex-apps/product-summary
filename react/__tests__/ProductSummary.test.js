@@ -1,28 +1,61 @@
 import React from 'react'
-import { mount, shallow } from 'enzyme'
+import { render } from 'test-utils'
 
 import ProductSummary from '../index'
 
 describe('<ProductSummary /> component', () => {
   function renderComponent(customProps) {
-    const intl = {
-      formatMessage: {}
-    }
     const props = {
       ...customProps,
-      intl,
       runtime: { hints: {} },
+      product: {
+        linkText: 'linkText',
+        productName: 'productName',
+        sku: {
+          name: 'name',
+          itemId: 'itemId',
+          image: {
+            imageUrl: '',
+          },
+          seller: {
+            sellerId: 'sellerId',
+            commertialOffer: {
+              Installments: [
+                {
+                  Value: 1,
+                  InterestRate: 1,
+                  NumberOfInstallments: 1,
+                },
+              ],
+              Price: 1,
+              ListPrice: 1,
+            },
+          },
+        },
+        productClusters: [
+          {
+            name: 'name',
+          },
+        ],
+        quantity: 1,
+      },
     }
 
-    const component = shallow(<ProductSummary {...props} />)
-
-    return {
-      component,
-    }
+    return render(<ProductSummary {...props} />)
   }
 
-  it('should be mounted and not break', () => {
-    const { component } = renderComponent()
-    expect(component).toBeTruthy()
+  it('should match the snapshot for normal mode', () => {
+    const { asFragment } = renderComponent({ displayMode: 'normal' })
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('should match the snapshot for small mode', () => {
+    const { asFragment } = renderComponent({ displayMode: 'small' })
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('should match the snapshot for inline mode', () => {
+    const { asFragment } = renderComponent({ displayMode: 'inline' })
+    expect(asFragment()).toMatchSnapshot()
   })
 })

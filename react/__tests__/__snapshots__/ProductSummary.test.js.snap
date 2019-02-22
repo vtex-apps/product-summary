@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductSummary /> component should match the snapshot for inline mode 1`] = `
+<DocumentFragment>
+  <section
+    class="container containerInline overflow-hidden br3 h-100 w-100"
+  >
+    <article
+      class="element pointer ph2 pt3 pb4 flex flex-column"
+    >
+      <div
+        class="imageContainer db w-30"
+      >
+        <div>
+          ContentLoader
+        </div>
+      </div>
+      <div
+        class="information w-70 pb2 pl3 pr3"
+      >
+        <div
+          class="flex items-start justify-left tl w-90 t-mini pb2"
+        >
+          <div>
+            ProductName
+          </div>
+        </div>
+        <div
+          class="mt3 nr2"
+        >
+          <div
+            class="flex justify-end nr4 mb2"
+          >
+            <div>
+              NumericStepper
+            </div>
+          </div>
+          <div
+            class="flex flex-column items-end nr1 h1 priceContainer pv5"
+          >
+            <div>
+              ProductPrice
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="buyButtonContainer pv3 w-100 dn"
+      >
+        <div
+          class="buyButton center mw-100"
+        >
+          <div>
+            BuyButton
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`<ProductSummary /> component should match the snapshot for normal mode 1`] = `
+<DocumentFragment>
+  <section
+    class="container containerNormal overflow-hidden br3 h-100 flex flex-column justify-between center tc"
+  >
+    <article
+      class="element pointer pt3 pb4 flex flex-column h-100"
+    >
+      <div
+        class="imageContainer db w-100 center"
+      >
+        <div>
+          ContentLoader
+        </div>
+      </div>
+      <div
+        class="information h-100 flex flex-column justify-between"
+      >
+        <div
+          class="flex items-start nameContainer justify-center pv6"
+        >
+          <div>
+            ProductName
+          </div>
+        </div>
+        <div>
+          <div
+            class="flex flex-column justify-end items-center priceContainer pv5"
+          >
+            <div>
+              ProductPrice
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="buyButtonContainer pv3 w-100 db"
+      >
+        <div
+          class="buyButton center mw-100"
+        >
+          <div>
+            BuyButton
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`<ProductSummary /> component should match the snapshot for small mode 1`] = `
+<DocumentFragment>
+  <section
+    class="container containerSmall overflow-hidden br3 h-100 flex flex-column justify-between center tc"
+  >
+    <article
+      class="element pointer pt3 pb4 flex flex-column"
+    >
+      <div
+        class="imageContainer db w-100 center"
+      >
+        <div>
+          ContentLoader
+        </div>
+      </div>
+      <div
+        class="information"
+      >
+        <div
+          class="flex items-start nameContainer justify-center pv5 t-mini pb2"
+        >
+          <div>
+            ProductName
+          </div>
+        </div>
+        <div>
+          <div
+            class="flex flex-column justify-end items-center priceContainer pv5"
+          >
+            <div>
+              ProductPrice
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="buyButtonContainer pv3 w-100 dn"
+      >
+        <div
+          class="buyButton center mw-100"
+        >
+          <div>
+            BuyButton
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+</DocumentFragment>
+`;
