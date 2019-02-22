@@ -34,7 +34,7 @@ class ProductSummaryInline extends Component {
       'overflow-hidden br3 h-100 w-100'
     )
 
-    const summaryClasses = classNames(`${productSummary.element} pointer ph2 pt3 pb4 flex flex-column`, {
+    const summaryClasses = classNames(`${productSummary.element} ${productSummary.clearLink} pointer ph2 pt3 pb4 flex flex-column`, {
       'bb b--muted-4 mh2 mh3-ns mt2': showBorders,
     })
 
@@ -60,13 +60,13 @@ class ProductSummaryInline extends Component {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <article className={summaryClasses}>
-          <Link
-            className={`${productSummary.clearLink} flex`}
-            page={'store.product'}
-            params={{ slug: path(['linkText'], product) }}
-            onClick={actionOnClick}
-          >
+        <Link
+          className={summaryClasses}
+          page={'store.product'}
+          params={{ slug: path(['linkText'], product) }}
+          onClick={actionOnClick}
+        >
+          <article className="flex">
             <div className={`${productSummary.imageContainer} db w-30`}>
               {path(['sku', 'image', 'imageUrl'], product)
                 ? <ProductImage {...imageProps} />
@@ -85,9 +85,9 @@ class ProductSummaryInline extends Component {
                 <ProductSummaryPrice {...priceProps} {...priceClasses} />
               </div>
             </div>
-          </Link>
-          <ProductSummaryBuyButton {...buyButtonProps} {...buyButtonClasses} />
-        </article>
+          </article>
+          <ProductSummaryBuyButton {...buyButtonProps} {...buyButtonClasses} /> 
+        </Link>
       </section>
     )
   }
