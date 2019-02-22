@@ -44,17 +44,17 @@ describe('<ProductSummary /> component', () => {
     return render(<ProductSummary {...props} />)
   }
 
-  it('should be match the snapshot for normal mode', () => {
+  it('should match the snapshot for normal mode', () => {
     const { asFragment } = renderComponent({ displayMode: 'normal' })
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should be match the snapshot for small mode', () => {
+  it('should match the snapshot for small mode', () => {
     const { asFragment } = renderComponent({ displayMode: 'small' })
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should be match the snapshot for inline mode', () => {
+  it('should match the snapshot for inline mode', () => {
     const { asFragment } = renderComponent({ displayMode: 'inline' })
     expect(asFragment()).toMatchSnapshot()
   })

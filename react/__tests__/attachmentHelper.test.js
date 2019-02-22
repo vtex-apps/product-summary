@@ -3,7 +3,7 @@ import {
   parentPricePerUnit,
 } from '../utils/attachmentHelper'
 
-import { helperMock } from '../__mocks__/helperMock'
+import { helperMock } from 'helperMock'
 
 const createProductSummaryProduct = ({
   name,

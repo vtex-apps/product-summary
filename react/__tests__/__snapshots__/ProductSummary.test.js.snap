@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductSummary /> component should be match the snapshot for inline mode 1`] = `
+exports[`<ProductSummary /> component should match the snapshot for inline mode 1`] = `
 <DocumentFragment>
   <section
     class="container containerInline overflow-hidden br3 h-100 w-100"
@@ -60,7 +60,7 @@ exports[`<ProductSummary /> component should be match the snapshot for inline mo
 </DocumentFragment>
 `;
 
-exports[`<ProductSummary /> component should be match the snapshot for normal mode 1`] = `
+exports[`<ProductSummary /> component should match the snapshot for normal mode 1`] = `
 <DocumentFragment>
   <section
     class="container containerNormal overflow-hidden br3 h-100 flex flex-column justify-between center tc"
@@ -111,7 +111,7 @@ exports[`<ProductSummary /> component should be match the snapshot for normal mo
 </DocumentFragment>
 `;
 
-exports[`<ProductSummary /> component should be match the snapshot for small mode 1`] = `
+exports[`<ProductSummary /> component should match the snapshot for small mode 1`] = `
 <DocumentFragment>
   <section
     class="container containerSmall overflow-hidden br3 h-100 flex flex-column justify-between center tc"

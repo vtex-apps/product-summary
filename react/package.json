@@ -40,7 +40,8 @@
   },
   "jest": {
     "modulePaths": [
-      "<rootDir>/testUtils"
+      "<rootDir>/testUtils",
+      "<rootDir>/__mocks__"
     ],
     "setupFilesAfterEnv": [
       "<rootDir>/testUtils/setupTests.js"
