@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Start using assembly resolvers from `store-graphql`
+
+### Added
+- Show assembly options removed from item by user
 
 ## [2.11.3] - 2019-02-22
 ### Fixed 
