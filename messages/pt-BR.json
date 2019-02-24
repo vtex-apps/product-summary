@@ -13,6 +13,7 @@
   "editor.productSummary.displayBuyButton.option.always": "Sempre mostrar",
   "editor.productSummary.quantity-error": "Não foi possível selecionar a quantidade especificada",
   "editor.productSummary.unit": "Unidade",
-  "editor.productSummary.attachmentName": "+ {quantity}x {name}",
-  "editor.productSummary.displayBuyButton.option.hover": "Mostrar ao passar o mouse (web)"
+  "editor.productSummary.attachmentName": "{sign} {quantity}x {name}",
+  "editor.productSummary.displayBuyButton.option.hover": "Mostrar ao passar o mouse (web)",
+  "productSummary.missingOptionName": "Sem {name}"
 }

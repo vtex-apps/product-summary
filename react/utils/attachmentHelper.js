@@ -10,11 +10,9 @@ export const getProductPrice = (product) => pathOr(0, ['sku', 'seller', 'commert
 
 export const parentPricePerUnit = product => {
   const wholePrice = getProductPrice(product)
-  const parentPrice = product.addedOptions.reduce((total, option) => 
-    total - getProductPrice(option),
+  const parentPrice = product.assemblyOptions.added.reduce((total, option) => 
+    total - option.item.sellingPrice / 100 * option.item.quantity,
     wholePrice
     )
   return parentPrice / product.quantity
 }
-
-export const optionPricePerItem = (option, parent) => getProductPrice(option) / parent.quantity
