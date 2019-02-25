@@ -7,8 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix tests.
+
 ## [2.11.3] - 2019-02-22
-### Fixed 
+
+### Fixed
+
 - Incorrect click area on product.
 
 ### Added
