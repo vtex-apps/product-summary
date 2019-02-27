@@ -33,9 +33,10 @@ const RemovedAttachmentsList = ({
 
   return (
     <Fragment>
-      {removedOptions.map(removedOption => 
-        <AttachmentItem productText={formatAttachmentName(removedOption, intl)} key={productText} />
-      )}
+      {removedOptions.map(removedOption => {
+        const productText = formatAttachmentName(removedOption, intl)
+        return <AttachmentItem productText={productText} key={productText} />
+      })}
     </Fragment>
   )
 }
