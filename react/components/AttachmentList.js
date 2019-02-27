@@ -5,6 +5,8 @@ import { pathOr } from 'ramda'
 import RemovedAttachmentsList from './RemovedAttachmentsList'
 import AddedAttachmentsList from './AddedAttachmentsList'
 
+import styles from '../productSummary.css'
+
 const canShow = option => option.extraQuantity > 0 || option.item.sellingPrice !== 0 
 
 const AttachmentList = ({ product }) => {
@@ -19,7 +21,7 @@ const AttachmentList = ({ product }) => {
   }
 
   return (
-    <div className={'pv2'}>
+    <div className={`${styles.attachmentListContainer} pv2`}>
       <AddedAttachmentsList addedOptions={filteredOption} parentPrice={parentPrice} />
       <RemovedAttachmentsList removedOptions={removedOptions} />
     </div>
