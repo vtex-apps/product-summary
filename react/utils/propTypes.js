@@ -53,14 +53,29 @@ export const productShape = PropTypes.shape({
   productClusters: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
   })),
-  /** If item is parent item, will contain added assembly options */
-  addedOptions: PropTypes.arrayOf(addedOptionShape),
+  /** Contains relevant assembly options information */
+  assemblyOptions: PropTypes.shape({
+    added: PropTypes.arrayOf(addedOptionShape),
+    removed: PropTypes.arrayOf(removedOptionShape),
+    parentPrice: PropTypes.number,
+  }),
   /** Quantity of item in Minicart */
   quantity: PropTypes.number,
 })
 
-const addedOptionShape = PropTypes.shape({
-  ...productShape,
+export const addedOptionShape = PropTypes.shape({
+  item: PropTypes.shape({ 
+    name: PropTypes.string.isRequired, 
+    sellingPrice: PropTypes.number.isRequired,
+    quantity: PropTypes.number.isRequired,
+  }),
+  normalizedQuantity: PropTypes.number,
+  extraQuantity: PropTypes.number,
   choiceType: PropTypes.oneOf([CHOICE_TYPES.SINGLE, CHOICE_TYPES.MULTIPLE, CHOICE_TYPES.TOGGLE]).isRequired,
-  optionType: PropTypes.string.isRequired,
+})
+
+export const removedOptionShape = PropTypes.shape({
+  removedQuantity: PropTypes.number.isRequired,
+  initialQuantity: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
 })
