@@ -38,6 +38,7 @@ const AddedAttachmentsList = ({
           <AttachmentItem 
             productText={productText}
             price={option.item.sellingPrice * option.normalizedQuantity}
+            key={productText}
           />
         )
       })}
