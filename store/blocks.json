@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "product-summary.unstable--flex": {
     "children": [
@@ -15,3 +16,6 @@
     ]
   }
 }
+=======
+{}
+>>>>>>> Add interface to wish-list

@@ -1,7 +1,7 @@
 {
   "product-summary": {
     "component": "ProductSummaryLegacy",
-    "required": ["add-to-list-btn"]
+    "allowed": ["add-to-list-btn"]
   },
   "product-summary.unstable--flex": {
     "allowed": [
@@ -50,5 +50,8 @@
   },
   "product-summary-price": {
     "component": "ProductSummaryPrice"
+  },
+  "wish-list": {
+    "component": "*"
   }
 }
