@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { withRuntimeContext, ExtensionContainer } from 'vtex.render-runtime'
+import { withRuntimeContext } from 'vtex.render-runtime'
 import {
   ProductName,
   ProductPrice,
@@ -157,16 +157,6 @@ class ProductSummary extends Component {
       DISPLAY_MODE_MAP[displayMode] || ProductSummaryNormal
     return (
       <div>
-        <span>Oiii</span>
-        <ExtensionContainer
-          id="wish-list"
-          product={{
-            skuId: "32",
-            productId: "32",
-            quantity: 1
-          }}
-        />
-        <span>Oláaa</span>
         <ProductSummaryComponent
           product={product}
           showBorders={showBorders}
