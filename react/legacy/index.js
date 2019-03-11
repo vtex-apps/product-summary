@@ -44,6 +44,8 @@ class ProductSummary extends Component {
     showBadge: PropTypes.bool,
     /** Set the product description visibility */
     showDescription: PropTypes.bool,
+    /** Set the quantity selector visibility */
+    showQuantitySelector: PropTypes.bool,
     /** Text of selling Price's label */
     labelSellingPrice: PropTypes.string,
     /** Text shown on badge */
@@ -76,6 +78,7 @@ class ProductSummary extends Component {
     showInstallments: true,
     showLabels: true,
     showBadge: true,
+    showQuantitySelector: true,
     showCollections: false,
     showDescription: false,
     displayBuyButton: displayButtonTypes.DISPLAY_ALWAYS.value,
@@ -124,6 +127,7 @@ class ProductSummary extends Component {
       showInstallments,
       labelSellingPrice,
       name: showFieldsProps,
+      showQuantitySelector,
     } = this.props
 
     const imageProps = {
@@ -169,6 +173,7 @@ class ProductSummary extends Component {
           nameProps={nameProps}
           priceProps={priceProps}
           buyButtonProps={buyButtonProps}
+          showQuantitySelector={showQuantitySelector}
         />
       </div>
 
