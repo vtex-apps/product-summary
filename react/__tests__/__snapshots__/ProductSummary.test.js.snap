@@ -6,7 +6,7 @@ exports[`<ProductSummary /> component should match the snapshot for inline norma
     class="container containerInline overflow-hidden br3 h-100 w-100"
   >
     <article
-      class="element pointer ph2 pt3 pb4 flex flex-column"
+      class="flex"
     >
       <div
         class="imageContainer db w-30"
@@ -63,7 +63,7 @@ exports[`<ProductSummary /> component should match the snapshot for inline price
     class="container containerInline overflow-hidden br3 h-100 w-100"
   >
     <article
-      class="flex"
+      class="element pointer ph2 pt3 pb4 flex flex-column"
     >
       <div
         class="imageContainer db w-30"
@@ -101,18 +101,18 @@ exports[`<ProductSummary /> component should match the snapshot for inline price
           </div>
         </div>
       </div>
-    </article>
-    <div
-      class="buyButtonContainer pv3 w-100 dn"
-    >
       <div
-        class="buyButton center mw-100"
+        class="buyButtonContainer pv3 w-100 dn"
       >
-        <div>
-          BuyButton
+        <div
+          class="buyButton center mw-100"
+        >
+          <div>
+            BuyButton
+          </div>
         </div>
       </div>
-    </div>
+    </article>
   </section>
 </DocumentFragment>
 `;
