@@ -3,7 +3,7 @@
 exports[`<ProductSummary /> component should match the snapshot for inline normal mode 1`] = `
 <DocumentFragment>
   <section
-    class="container containerInline overflow-hidden br3 h-100 w-100"
+    class="container containerInlinePrice overflow-hidden br3 h-100 w-100"
   >
     <article
       class="flex"
