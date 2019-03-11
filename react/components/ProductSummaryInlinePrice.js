@@ -34,14 +34,9 @@ class ProductSummaryInline extends Component {
       'overflow-hidden br3 h-100 w-100'
     )
 
-    const summaryClasses = classNames(
-      `${productSummary.element} ${
-        productSummary.clearLink
-      } pointer ph2 pt3 pb4 flex flex-column`,
-      {
-        'bb b--muted-4 mh2 mh3-ns mt2': showBorders,
-      }
-    )
+    const summaryClasses = classNames(`${productSummary.element} pointer ph2 pt3 pb4 flex flex-column`, {
+      'bb b--muted-4 mh2 mh3-ns mt2': showBorders,
+    })
 
     const nameClasses = {
       containerClass: 'flex items-start justify-left tl w-90 t-mini pb2',
@@ -49,14 +44,14 @@ class ProductSummaryInline extends Component {
     }
 
     const priceClasses = {
-      containerClass: classNames('flex flex-column nr1', {
-        [`${productSummary.priceContainer}`]: !showBorders,
+      containerClass: classNames('flex flex-column items-end nr1 h1', {
+        [`${productSummary.priceContainer} pv5`]: !showBorders,
       }),
       sellingPriceClass: 'dib ph2 t-body t-heading-5-ns',
     }
 
     const buyButtonClasses = {
-      containerClass: `${productSummary.buyButtonContainer} pv3 w-100`,
+      containerClass: `${productSummary.buyButtonContainer} pv3 w-100 dn`,
     }
 
     return (
@@ -65,35 +60,34 @@ class ProductSummaryInline extends Component {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <Link
-          className={summaryClasses}
-          page={'store.product'}
-          params={{ slug: path(['linkText'], product) }}
-          onClick={actionOnClick}
-        >
-          <article className="flex">
+        <article className={summaryClasses}>
+          <Link
+            className={`${productSummary.clearLink} flex`}
+            page={'store.product'}
+            params={{ slug: path(['linkText'], product) }}
+            onClick={actionOnClick}
+          >
             <div className={`${productSummary.imageContainer} db w-30`}>
-              {path(['sku', 'image', 'imageUrl'], product) ? (
-                <ProductImage {...imageProps} />
-              ) : (
-                <ImageLoader />
-              )}
+              {path(['sku', 'image', 'imageUrl'], product)
+                ? <ProductImage {...imageProps} />
+                : <ImageLoader />}
             </div>
             <div className={`${productSummary.information} w-70 pb2 pl3 pr3`}>
               <ProductSummaryName {...nameProps} {...nameClasses} />
               <AttachmentList product={product} />
-              <div className="nr2">
+              <div className="mt3 nr2">
+                <div className="flex justify-end nr4 mb2">
+                  <ProductQuantityStepper
+                    product={product}
+                    onUpdateItemsState={handleItemsStateUpdate}
+                  />
+                </div>
                 <ProductSummaryPrice {...priceProps} {...priceClasses} />
               </div>
-              <div className="flex">
-                <ProductSummaryBuyButton
-                  {...buyButtonProps}
-                  {...buyButtonClasses}
-                />
-              </div>
             </div>
-          </article>
-        </Link>
+          </Link>
+          <ProductSummaryBuyButton {...buyButtonProps} {...buyButtonClasses} />
+        </article>
       </section>
     )
   }

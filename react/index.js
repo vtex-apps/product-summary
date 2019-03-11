@@ -1,14 +1,12 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { withRuntimeContext } from 'vtex.render-runtime'
-import {
-  ProductName,
-  ProductPrice,
-} from 'vtex.store-components'
+import { ProductName, ProductPrice } from 'vtex.store-components'
 
 import ProductSummaryNormal from './components/ProductSummaryNormal'
 import ProductSummarySmall from './components/ProductSummarySmall'
 import ProductSummaryInline from './components/ProductSummaryInline'
+import ProductSummaryInlinePrice from './components/ProductSummaryInlinePrice'
 import displayButtonTypes, {
   getDisplayButtonNames,
   getDisplayButtonValues,
@@ -16,9 +14,10 @@ import displayButtonTypes, {
 import { productShape } from './utils/propTypes'
 
 const DISPLAY_MODE_MAP = {
-  'normal': ProductSummaryNormal,
-  'small': ProductSummarySmall,
-  'inline': ProductSummaryInline,
+  normal: ProductSummaryNormal,
+  small: ProductSummarySmall,
+  inline: ProductSummaryInline,
+  inlinePrice: ProductSummaryInlinePrice,
 }
 
 /**
@@ -64,11 +63,7 @@ class ProductSummary extends Component {
       }),
     }),
     /** Display mode of the summary used in the search result */
-    displayMode: PropTypes.oneOf([
-      'normal',
-      'small',
-      'inline',
-    ]),
+    displayMode: PropTypes.oneOf(['normal', 'small', 'inline', 'inlinePrice']),
     /** Function that is executed when a product is clicked */
     actionOnClick: PropTypes.func,
   }
@@ -104,7 +99,8 @@ class ProductSummary extends Component {
     this.setState({ isHovering: true })
   }
 
-  handleItemsStateUpdate = isLoading => this.setState({ isUpdatingItems: isLoading })
+  handleItemsStateUpdate = isLoading =>
+    this.setState({ isUpdatingItems: isLoading })
 
   render() {
     const {
@@ -148,7 +144,8 @@ class ProductSummary extends Component {
       isHovering: this.state.isHovering,
     }
 
-    const ProductSummaryComponent = DISPLAY_MODE_MAP[displayMode] || ProductSummaryNormal
+    const ProductSummaryComponent =
+      DISPLAY_MODE_MAP[displayMode] || ProductSummaryNormal
     return (
       <ProductSummaryComponent
         product={product}
