@@ -28,9 +28,9 @@ class ProductSummaryInline extends Component {
       buyButtonProps,
     } = this.props
 
-    const constainerClasses = classNames(
+    const containerClasses = classNames(
       productSummary.container,
-      productSummary.containerInline,
+      productSummary.containerInlinePrice,
       'overflow-hidden br3 h-100 w-100'
     )
 
@@ -61,7 +61,7 @@ class ProductSummaryInline extends Component {
 
     return (
       <section
-        className={constainerClasses}
+        className={containerClasses}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >

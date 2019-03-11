@@ -1,19 +1,32 @@
-.imageContainer {}
-.container {}
-.containerSmall {}
-.containerInline {}
-.information {}
-.element {}
-.image {}
-.buyButtonContainer {}
-.buyButton {}
-.description {}
+.imageContainer {
+}
+.container {
+}
+.containerSmall {
+}
+.containerInline {
+}
+.containerInlinePrice {
+}
+.information {
+}
+.element {
+}
+.image {
+}
+.buyButtonContainer {
+}
+.buyButton {
+}
+.description {
+}
 
 .isHidden {
   visibility: hidden;
 }
 
-.containerNormal {}
+.containerNormal {
+}
 
 .clearLink {
   text-decoration: inherit;
@@ -25,10 +38,14 @@
   background: center / contain no-repeat;
 }
 
-.nameContainer {}
+.nameContainer {
+}
 
-.priceContainer {}
+.priceContainer {
+}
 
-.attachmentListContainer {}
+.attachmentListContainer {
+}
 
-.attachmentItemContainer {}
+.attachmentItemContainer {
+}
