@@ -37,7 +37,7 @@ class ProductSummaryInline extends Component {
     const summaryClasses = classNames(
       `${productSummary.element} ${
         productSummary.clearLink
-      } pointer ph2 pt3 pb4 flex flex-column`,
+      } pointer pt3 pb4 flex flex-column`,
       {
         'bb b--muted-4 mh2 mh3-ns mt2': showBorders,
       }
@@ -56,7 +56,7 @@ class ProductSummaryInline extends Component {
     }
 
     const buyButtonClasses = {
-      containerClass: `${productSummary.buyButtonContainer} pv3 w-100`,
+      containerClass: `${productSummary.buyButtonContainer} pt3 w-100`,
     }
 
     return (
@@ -72,20 +72,26 @@ class ProductSummaryInline extends Component {
           onClick={actionOnClick}
         >
           <article className="flex">
-            <div className={`${productSummary.imageContainer} db w-30`}>
+            <div className={`${productSummary.imageContainer} db w-70`}>
               {path(['sku', 'image', 'imageUrl'], product) ? (
                 <ProductImage {...imageProps} />
               ) : (
                 <ImageLoader />
               )}
             </div>
-            <div className={`${productSummary.information} w-70 pb2 pl3 pr3`}>
-              <ProductSummaryName {...nameProps} {...nameClasses} />
-              <AttachmentList product={product} />
-              <div className="nr2">
-                <ProductSummaryPrice {...priceProps} {...priceClasses} />
+            <div
+              className={`${
+                productSummary.information
+              } w-80 pb2 pl3 flex flex-wrap flex-column justify-between`}
+            >
+              <div className="flex flex-column">
+                <ProductSummaryName {...nameProps} {...nameClasses} />
+                <AttachmentList product={product} />
+                <div className="nr2">
+                  <ProductSummaryPrice {...priceProps} {...priceClasses} />
+                </div>
               </div>
-              <div className="flex">
+              <div className="flex flex-column-reverse">
                 <ProductSummaryBuyButton
                   {...buyButtonProps}
                   {...buyButtonClasses}
