@@ -92,6 +92,8 @@ Through the Storefront, you can change the product-summary's behavior and interf
 | `hideBuyButton`     | `Boolean` | Hides the buybutton completely                                                              |
 | `showCollections`   | `Boolean` | Set collection badges' visibility                                                           |
 | `displayMode`       | `Enum`    | Set display mode of product summary (normal, small, inlinePrice or inline)                  |
+                  |
+| `showQuantitySelector`       | `Boolean`    | Set the quantity selector visibility                               |
 
 ### Styles API
 
