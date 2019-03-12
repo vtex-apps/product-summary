@@ -44,8 +44,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Remove spread on `getSchema` that was crashing site editor.
 
 ### Added
-
 - Add tests.
+- Add block to inject the `wish-list` plugin.
+- Add `showQuantitySelector` props to set the quantity selector visibility in the inline mode.
 
 ## [2.14.0] - 2019-03-21
 
