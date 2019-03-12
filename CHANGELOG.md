@@ -45,7 +45,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - Add tests.
-- Add block to inject the `wish-list` plugin.
+- Add interface to inject the `wish-list` plugin in the normal mode.
 - Add `showQuantitySelector` props to set the quantity selector visibility in the inline mode.
 
 ## [2.14.0] - 2019-03-21
