@@ -7,6 +7,7 @@ describe('<ProductSummary /> component', () => {
   const props = {
     runtime: { hints: {} },
     product: {
+      productId: '123456789',
       linkText: 'linkText',
       productName: 'productName',
       sku: {
