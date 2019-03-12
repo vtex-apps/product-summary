@@ -160,23 +160,20 @@ class ProductSummary extends Component {
     const ProductSummaryComponent =
       DISPLAY_MODE_MAP[displayMode] || ProductSummaryNormal
     return (
-      <div>
-        <ProductSummaryComponent
-          product={product}
-          showBorders={showBorders}
-          showDescription={showDescription}
-          handleMouseEnter={this.handleMouseEnter}
-          handleMouseLeave={this.handleMouseLeave}
-          handleItemsStateUpdate={this.handleItemsStateUpdate}
-          actionOnClick={actionOnClick}
-          imageProps={imageProps}
-          nameProps={nameProps}
-          priceProps={priceProps}
-          buyButtonProps={buyButtonProps}
-          showQuantitySelector={showQuantitySelector}
-        />
-      </div>
-
+      <ProductSummaryComponent
+        product={product}
+        showBorders={showBorders}
+        showDescription={showDescription}
+        handleMouseEnter={this.handleMouseEnter}
+        handleMouseLeave={this.handleMouseLeave}
+        handleItemsStateUpdate={this.handleItemsStateUpdate}
+        actionOnClick={actionOnClick}
+        imageProps={imageProps}
+        nameProps={nameProps}
+        priceProps={priceProps}
+        buyButtonProps={buyButtonProps}
+        showQuantitySelector={showQuantitySelector}
+      />
     )
   }
 }
