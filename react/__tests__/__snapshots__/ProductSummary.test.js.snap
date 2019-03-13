@@ -1,12 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductSummary /> component should match the snapshot for inline mode 1`] = `
+exports[`<ProductSummary /> component should match the snapshot for inline normal mode 1`] = `
+<DocumentFragment>
+  <section
+    class="container containerInlinePrice overflow-hidden br3 h-100 w-100"
+  >
+    <article
+      class="flex"
+    >
+      <div
+        class="imageContainer db w-70"
+      >
+        <div>
+          ContentLoader
+        </div>
+      </div>
+      <div
+        class="information w-80 pb2 pl3 flex flex-wrap flex-column justify-between"
+      >
+        <div
+          class="flex flex-column"
+        >
+          <div
+            class="flex items-start justify-left tl w-90 t-mini pb2"
+          >
+            <div>
+              ProductName
+            </div>
+          </div>
+          <div
+            class="nr2"
+          >
+            <div
+              class="flex flex-column nr1 priceContainer"
+            >
+              <div>
+                ProductPrice
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-column-reverse"
+        >
+          <div
+            class="buyButtonContainer pt3 w-100"
+          >
+            <div
+              class="buyButton center mw-100"
+            >
+              <div>
+                BuyButton
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`<ProductSummary /> component should match the snapshot for inline price mode 1`] = `
 <DocumentFragment>
   <section
     class="container containerInline overflow-hidden br3 h-100 w-100"
   >
     <article
-      class="flex"
+      class="element pointer ph2 pt3 pb4 flex flex-column"
     >
       <div
         class="imageContainer db w-30"
@@ -44,18 +105,18 @@ exports[`<ProductSummary /> component should match the snapshot for inline mode 
           </div>
         </div>
       </div>
-    </article>
-    <div
-      class="buyButtonContainer pv3 w-100 dn"
-    >
       <div
-        class="buyButton center mw-100"
+        class="buyButtonContainer pv3 w-100 dn"
       >
-        <div>
-          BuyButton
+        <div
+          class="buyButton center mw-100"
+        >
+          <div>
+            BuyButton
+          </div>
         </div>
       </div>
-    </div>
+    </article>
   </section>
 </DocumentFragment>
 `;

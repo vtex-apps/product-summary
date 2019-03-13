@@ -54,8 +54,13 @@ describe('<ProductSummary /> component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should match the snapshot for inline mode', () => {
+  it('should match the snapshot for inline normal mode', () => {
     const { asFragment } = renderComponent({ displayMode: 'inline' })
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('should match the snapshot for inline price mode', () => {
+    const { asFragment } = renderComponent({ displayMode: 'inlinePrice' })
     expect(asFragment()).toMatchSnapshot()
   })
 })

@@ -7,11 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.13.0] - 2019-03-13
+
+### Added
+
+- Add new type of product summary (inline price).
+
 ## [2.12.0] - 2019-02-27
+
 ### Changed
+
 - Start using assembly resolvers from `store-graphql`
 
 ### Added
+
 - Show assembly options removed from item by user
 
 ### Fixed
