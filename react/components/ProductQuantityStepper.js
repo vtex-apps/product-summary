@@ -9,6 +9,33 @@ import gql from 'graphql-tag'
 
 import { productShape } from '../utils/propTypes'
 
+export const MINICART_ITEMS_QUERY = gql`
+  query {
+    minicart @client {
+      items {
+        id
+        name
+        imageUrl
+        detailUrl
+        skuName
+        quantity
+        sellingPrice
+        listPrice
+        seller
+        index
+        parentItemIndex
+        parentAssemblyBinding
+      }
+    }
+  }
+`
+
+export const UPDATE_ITEMS_MUTATION = gql`
+  mutation updateItems($items: [MinicartItem]) {
+    updateItems(items: $items) @client
+  }
+`
+
 class ProductQuantityStepper extends Component {
   static propTypes = {
     product: productShape.isRequired,
@@ -94,46 +121,17 @@ class ProductQuantityStepper extends Component {
   }
 }
 
-const withLinkStateItemsQuery = graphql(
-  gql`
-    query {
-      minicart @client {
-        items {
-          id
-          name
-          imageUrl
-          detailUrl
-          skuName
-          quantity
-          sellingPrice
-          listPrice
-          seller
-          index
-          parentItemIndex
-          parentAssemblyBinding
-        }
-      }
-    }
-  `,
-  {
-    props: ({ data: { minicart } }) => ({
-      minicartItems: minicart && minicart.items,
-    }),
-  }
-)
+const withLinkStateItemsQuery = graphql(MINICART_ITEMS_QUERY, {
+  props: ({ data: { minicart } }) => ({
+    minicartItems: minicart && minicart.items,
+  }),
+})
 
-const withUpdateItemsMutation = graphql(
-  gql`
-    mutation updateItems($items: [MinicartItem]) {
-      updateItems(items: $items) @client
-    }
-  `,
-  {
-    props: ({ mutate }) => ({
-      updateItems: items => mutate({ variables: { items } }),
-    }),
-  }
-)
+const withUpdateItemsMutation = graphql(UPDATE_ITEMS_MUTATION, {
+  props: ({ mutate }) => ({
+    updateItems: items => mutate({ variables: { items } }),
+  }),
+})
 
 export default compose(
   injectIntl,
