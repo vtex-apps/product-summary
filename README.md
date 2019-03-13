@@ -65,12 +65,16 @@ When implementing this app as a block, various inner blocks may be available. Th
 ```json
 {
   "product-summary": {
-    "component": "index"
+    "component": "index",
+    "allowed": ["add-to-list-btn#product-summary"]
+  },
+  "add-to-list-btn#product-summary": {
+    "component": "*"
   }
 }
 ```
 
-For now this block does not have any required or optional blocks.
+This block has as allowed block the `add-to-list-btn#product-summary` one.
 
 #### Configuration
 
@@ -91,9 +95,11 @@ Through the Storefront, you can change the product-summary's behavior and interf
 | `displayBuyButton`  | `Enum`    | Set display mode of buy button (displayButtonAlways, displayButtonHover, displayButtonNone) |
 | `hideBuyButton`     | `Boolean` | Hides the buybutton completely                                                              |
 | `showCollections`   | `Boolean` | Set collection badges' visibility                                                           |
-| `displayMode`       | `Enum`    | Set display mode of product summary (normal, small, inlinePrice or inline)                  |
-                  |
-| `showQuantitySelector`       | `Boolean`    | Set the quantity selector visibility                               |
+| `displayMode`       | `Enum`    | Set display mode of product summary (normal, small, inline or inlinePrice)                               |
+| `showQuantitySelector`       | `Boolean`    | Set the quantity selector visibility              
+|
+
+Also, you can configure the block [add-to-list-btn#product-summary](https://github.com/vtex-apps/wishlist) defined on product-summary.
 
 ### Styles API
 

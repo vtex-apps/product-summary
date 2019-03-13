@@ -19,13 +19,11 @@ class ProductSummaryInline extends Component {
       showBorders,
       handleMouseEnter,
       handleMouseLeave,
-      handleItemsStateUpdate,
       actionOnClick,
       imageProps,
       nameProps,
       priceProps,
       buyButtonProps,
-      showQuantitySelector,
     } = this.props
 
     const containerClasses = classNames(

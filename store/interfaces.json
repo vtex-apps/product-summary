@@ -51,7 +51,7 @@
   "product-summary-price": {
     "component": "ProductSummaryPrice"
   },
-  "wish-list": {
+  "add-to-list-btn": {
     "component": "*"
   }
 }
