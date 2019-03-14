@@ -6,7 +6,6 @@ import { Link } from 'vtex.render-runtime'
 import AttachmentList from './AttachmentList'
 import ImageLoader from './ImageLoader'
 import ProductImage from './ProductImage'
-import ProductSummaryBuyButton from './ProductSummaryBuyButton'
 import ProductQuantityStepper from './ProductQuantityStepper'
 import ProductSummaryPrice from './ProductSummaryPrice'
 import ProductSummaryName from './ProductSummaryName'
@@ -23,7 +22,6 @@ const ProductSummaryInline = ({
   imageProps,
   nameProps,
   priceProps,
-  buyButtonProps,
 }) => {
   const containerClasses = classNames(
     productSummary.container,
@@ -50,10 +48,6 @@ const ProductSummaryInline = ({
     sellingPriceClass: 'dib ph2 t-body t-heading-5-ns',
   }
 
-  const buyButtonClasses = {
-    containerClass: `${productSummary.buyButtonContainer} pv3 w-100 dn`,
-  }
-
   return (
     <section
       className={containerClasses}
@@ -78,7 +72,11 @@ const ProductSummaryInline = ({
             <ProductSummaryName {...nameProps} {...nameClasses} />
             <AttachmentList product={product} />
             <div className="mt3 nr2">
-              <div className="flex justify-end nr4 mb2">
+              <div
+                className={`flex justify-end nr4 mb2 ${
+                  productSummary.quantityStepperContainer
+                }`}
+              >
                 <ProductQuantityStepper
                   product={product}
                   onUpdateItemsState={handleItemsStateUpdate}
@@ -88,7 +86,6 @@ const ProductSummaryInline = ({
             </div>
           </div>
         </Link>
-        <ProductSummaryBuyButton {...buyButtonProps} {...buyButtonClasses} />
       </article>
     </section>
   )
