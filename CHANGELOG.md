@@ -7,8 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Add tests.
+
 ## [2.13.1] - 2019-03-14
+
 ### Changed
+
 - Use most generic language files.
 
 ## [2.13.0] - 2019-03-13
