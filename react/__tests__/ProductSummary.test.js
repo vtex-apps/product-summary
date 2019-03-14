@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from 'test-utils'
+import { render } from '@vtex/test-tools/react'
 
 import ProductSummary from '../index'
 
@@ -62,5 +62,19 @@ describe('<ProductSummary /> component', () => {
   it('should match the snapshot for inline price mode', () => {
     const { asFragment } = renderComponent({ displayMode: 'inlinePrice' })
     expect(asFragment()).toMatchSnapshot()
+  })
+  
+  it('should render buy button in all modes', () => {
+    const { getByText } = renderComponent({ displayMode: 'normal' })
+    const buyButton = getByText('Buy')
+    expect(buyButton).toBeTruthy()
+
+    const { getByText } = renderComponent({ displayMode: 'small' })
+    const buyButton = getByText('Buy')
+    expect(buyButton).toBeTruthy()
+
+    const { getByText } = renderComponent({ displayMode: 'inline' })
+    const buyButton = getByText('Buy')
+    expect(buyButton).toBeTruthy()
   })
 })
