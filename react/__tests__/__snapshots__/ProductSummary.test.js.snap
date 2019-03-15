@@ -50,7 +50,7 @@ exports[`<ProductSummary /> component should match the snapshot for inline norma
               class="buyButton center mw-100"
             >
               <div
-                class="buy-button-mock"
+                class="buy-button-mock undefined"
               >
                 <span>
                   Buy
@@ -157,7 +157,7 @@ exports[`<ProductSummary /> component should match the snapshot for normal mode 
         class="buyButton center mw-100"
       >
         <div
-          class="buy-button-mock"
+          class="buy-button-mock undefined"
         >
           <span>
             Buy
@@ -212,7 +212,7 @@ exports[`<ProductSummary /> component should match the snapshot for small mode 1
         class="buyButton center mw-100"
       >
         <div
-          class="buy-button-mock"
+          class="buy-button-mock undefined"
         >
           <span>
             Buy
