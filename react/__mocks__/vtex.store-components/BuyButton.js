@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 /**
  * BuyButton Mocked Component.
  */
-const BuyButton = ({ children }) => {
-  return <div className="buy-button-mock">{children}</div>
+const BuyButton = ({ children, className }) => {
+  return <div className={`buy-button-mock ${className}`}>{children}</div>
 }
 
 export default BuyButton
