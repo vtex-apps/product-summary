@@ -9,27 +9,6 @@ import gql from 'graphql-tag'
 
 import { productShape } from '../utils/propTypes'
 
-export const MINICART_ITEMS_QUERY = gql`
-  query {
-    minicart @client {
-      items {
-        id
-        name
-        imageUrl
-        detailUrl
-        skuName
-        quantity
-        sellingPrice
-        listPrice
-        seller
-        index
-        parentItemIndex
-        parentAssemblyBinding
-      }
-    }
-  }
-`
-
 export const UPDATE_ITEMS_MUTATION = gql`
   mutation updateItems($items: [MinicartItem]) {
     updateItems(items: $items) @client
@@ -86,16 +65,14 @@ class ProductQuantityStepper extends Component {
   }
 
   updateItemQuantity = async quantity => {
-    const { product, minicartItems, updateItems } = this.props
+    const { product, updateItems } = this.props
     this.setState({ canIncrease: true })
-    const itemIndex = findIndex(propEq('id', product.sku.itemId), minicartItems)
+    const { sku: { itemId: id } } = product
     try {
       await updateItems([
         {
-          ...minicartItems[itemIndex],
-          index: itemIndex,
+          id,
           quantity,
-          seller: product.sku.sellerId,
         },
       ])
     } catch (err) {
@@ -121,12 +98,6 @@ class ProductQuantityStepper extends Component {
   }
 }
 
-const withLinkStateItemsQuery = graphql(MINICART_ITEMS_QUERY, {
-  props: ({ data: { minicart } }) => ({
-    minicartItems: minicart && minicart.items,
-  }),
-})
-
 const withUpdateItemsMutation = graphql(UPDATE_ITEMS_MUTATION, {
   props: ({ mutate }) => ({
     updateItems: items => mutate({ variables: { items } }),
@@ -136,6 +107,5 @@ const withUpdateItemsMutation = graphql(UPDATE_ITEMS_MUTATION, {
 export default compose(
   injectIntl,
   withToast,
-  withUpdateItemsMutation,
-  withLinkStateItemsQuery
+  withUpdateItemsMutation
 )(ProductQuantityStepper)
