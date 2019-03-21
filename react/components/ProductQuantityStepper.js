@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { NumericStepper, withToast } from 'vtex.styleguide'
 import { debounce } from 'lodash'
-import { findIndex, propEq } from 'ramda'
 import { injectIntl, intlShape } from 'react-intl'
 import { compose, graphql } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -66,12 +65,14 @@ class ProductQuantityStepper extends Component {
     this.setState({ canIncrease: true })
     const {
       sku: { itemId: id },
+      seller = {},
     } = product
     try {
       await updateItems([
         {
           id,
           quantity,
+          seller: seller.sellerId,
         },
       ])
     } catch (err) {
