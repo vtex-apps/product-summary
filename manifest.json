@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "product-summary",
-  "version": "2.13.1",
+  "version": "2.14.0",
   "title": "Product Summary",
   "description": "Product summary component",
   "defaultLocale": "pt-BR",
@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "vtex.store-components": "3.x",
-    "vtex.store-resources": "0.x",
     "vtex.styleguide": "9.x"
   }
 }

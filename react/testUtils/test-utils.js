@@ -1,13 +1,16 @@
 import React from 'react'
+import { MockedProvider } from 'react-apollo/test-utils'
 import * as reactTestingLibrary from 'react-testing-library'
 import { IntlProvider } from 'react-intl'
 import defaultStrings from '../../messages/en.json'
 
 const customRender = (node, options) => {
   const rendered = reactTestingLibrary.render(
-    <IntlProvider messages={defaultStrings} locale="en-US">
-      {node}
-    </IntlProvider>,
+    <MockedProvider>
+      <IntlProvider messages={defaultStrings} locale="en-US">
+        {node}
+      </IntlProvider>
+    </MockedProvider>,
     options
   )
 

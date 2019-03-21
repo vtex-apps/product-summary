@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { NumericStepper, withToast } from 'vtex.styleguide'
-import { orderFormConsumer } from 'vtex.store-resources/OrderFormContext'
 import { debounce } from 'lodash'
-import { findIndex, propEq } from 'ramda'
 import { injectIntl, intlShape } from 'react-intl'
+import { compose, graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
 import { productShape } from '../utils/propTypes'
+
+export const UPDATE_ITEMS_MUTATION = gql`
+  mutation updateItems($items: [MinicartItem]) {
+    updateItems(items: $items) @client
+  }
+`
 
 class ProductQuantityStepper extends Component {
   static propTypes = {
@@ -14,6 +20,8 @@ class ProductQuantityStepper extends Component {
     onUpdateItemsState: PropTypes.func.isRequired,
     showToast: PropTypes.func,
     intl: intlShape,
+    minicartItems: PropTypes.array,
+    updateItems: PropTypes.func.isRequired,
   }
 
   state = {
@@ -21,44 +29,55 @@ class ProductQuantityStepper extends Component {
     canIncrease: true,
   }
 
-  handleOnChange = (e) => {
-    e.stopPropagation()
-    e.preventDefault()
-    this.props.onUpdateItemsState(true)
-    this.setState({ quantity: e.value }, () => this.debouncedUpdate(this.state.quantity))
-  }
-
-  checkUpdatedQuantity = (updateResponse, itemIndex, expectedQuantity) => {
-    const { showToast, intl } = this.props
-    const actualQuantity = updateResponse.items[itemIndex].quantity
-    if (actualQuantity !== expectedQuantity) {
-      this.setState({ canIncrease: false, quantity: actualQuantity })
-      showToast({ message: intl.formatMessage({ id: 'editor.productSummary.quantity-error' }) })
+  componentDidUpdate = prevProps => {
+    const {
+      product: { quantity: prevQuantity },
+    } = prevProps
+    const {
+      product: { quantity },
+      showToast,
+      intl,
+    } = this.props
+    if (prevQuantity !== quantity) {
+      const canIncrease = quantity === this.state.quantity
+      this.setState({ quantity, canIncrease })
+      if (!canIncrease) {
+        showToast({
+          message: intl.formatMessage({
+            id: 'editor.productSummary.quantity-error',
+          }),
+        })
+      }
     }
   }
 
-  updateItemQuantity = async (quantity) => {
-    const { product, orderFormContext } = this.props
+  handleOnChange = e => {
+    e.stopPropagation()
+    e.preventDefault()
+    this.props.onUpdateItemsState(true)
+    this.setState({ quantity: e.value }, () =>
+      this.debouncedUpdate(this.state.quantity)
+    )
+  }
+
+  updateItemQuantity = async quantity => {
+    const { product, updateItems } = this.props
     this.setState({ canIncrease: true })
-    const itemIndex = findIndex(propEq('id', product.sku.itemId))(orderFormContext.orderForm.items)
+    const {
+      sku: { itemId: id },
+      seller = {},
+    } = product
     try {
-      await orderFormContext.updateOrderForm({
-        variables: {
-          orderFormId: orderFormContext.orderForm.orderFormId,
-          items: [{
-            index: itemIndex,
-            id: product.sku.itemId,
-            quantity,
-            seller: product.sku.sellerId,
-          }],
+      await updateItems([
+        {
+          id,
+          quantity,
+          seller: seller.sellerId,
         },
-      })
-      const orderForm = await orderFormContext.refetch()
-      this.checkUpdatedQuantity(orderForm.data.orderForm, itemIndex, quantity)
+      ])
     } catch (err) {
       // gone wrong, rollback to old quantity value
-      const oldQuantity = orderFormContext.orderForm.items[itemIndex].quantity
-      this.setState({ quantity: oldQuantity })
+      console.error(err)
     }
     this.props.onUpdateItemsState(false)
   }
@@ -79,4 +98,14 @@ class ProductQuantityStepper extends Component {
   }
 }
 
-export default injectIntl(withToast(orderFormConsumer(ProductQuantityStepper)))
+const withUpdateItemsMutation = graphql(UPDATE_ITEMS_MUTATION, {
+  props: ({ mutate }) => ({
+    updateItems: items => mutate({ variables: { items } }),
+  }),
+})
+
+export default compose(
+  injectIntl,
+  withToast,
+  withUpdateItemsMutation
+)(ProductQuantityStepper)
