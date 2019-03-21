@@ -36,9 +36,19 @@ class ProductQuantityStepper extends Component {
     } = prevProps
     const {
       product: { quantity },
+      showToast,
+      intl,
     } = this.props
     if (prevQuantity !== quantity) {
-      this.setState({ quantity })
+      const canIncrease = quantity === this.state.quantity
+      this.setState({ quantity, canIncrease })
+      if (!canIncrease) {
+        showToast({
+          message: intl.formatMessage({
+            id: 'editor.productSummary.quantity-error',
+          }),
+        })
+      }
     }
   }
 
@@ -51,23 +61,12 @@ class ProductQuantityStepper extends Component {
     )
   }
 
-  checkUpdatedQuantity = (updateResponse, itemIndex, expectedQuantity) => {
-    const { showToast, intl } = this.props
-    const actualQuantity = updateResponse.items[itemIndex].quantity
-    if (actualQuantity !== expectedQuantity) {
-      this.setState({ canIncrease: false, quantity: actualQuantity })
-      showToast({
-        message: intl.formatMessage({
-          id: 'editor.productSummary.quantity-error',
-        }),
-      })
-    }
-  }
-
   updateItemQuantity = async quantity => {
     const { product, updateItems } = this.props
     this.setState({ canIncrease: true })
-    const { sku: { itemId: id } } = product
+    const {
+      sku: { itemId: id },
+    } = product
     try {
       await updateItems([
         {
