@@ -49,8 +49,12 @@ exports[`<ProductSummary /> component should match the snapshot for inline norma
             <div
               class="buyButton center mw-100"
             >
-              <div>
-                BuyButton
+              <div
+                class="buy-button-mock"
+              >
+                <span>
+                  Buy
+                </span>
               </div>
             </div>
           </div>
@@ -90,7 +94,7 @@ exports[`<ProductSummary /> component should match the snapshot for inline price
           class="mt3 nr2"
         >
           <div
-            class="flex justify-end nr4 mb2"
+            class="flex justify-end nr4 mb2 quantityStepperContainer"
           >
             <div>
               NumericStepper
@@ -102,17 +106,6 @@ exports[`<ProductSummary /> component should match the snapshot for inline price
             <div>
               ProductPrice
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="buyButtonContainer pv3 w-100 dn"
-      >
-        <div
-          class="buyButton center mw-100"
-        >
-          <div>
-            BuyButton
           </div>
         </div>
       </div>
@@ -163,8 +156,12 @@ exports[`<ProductSummary /> component should match the snapshot for normal mode 
       <div
         class="buyButton center mw-100"
       >
-        <div>
-          BuyButton
+        <div
+          class="buy-button-mock"
+        >
+          <span>
+            Buy
+          </span>
         </div>
       </div>
     </div>
@@ -214,8 +211,12 @@ exports[`<ProductSummary /> component should match the snapshot for small mode 1
       <div
         class="buyButton center mw-100"
       >
-        <div>
-          BuyButton
+        <div
+          class="buy-button-mock"
+        >
+          <span>
+            Buy
+          </span>
         </div>
       </div>
     </div>
