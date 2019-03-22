@@ -16,10 +16,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Use Apollo local state managment into the `ProductQuantityStepper` instead of the `orderFormConsumer`.
 
-### Added
-
-- Add tests.
-
 ## [2.13.1] - 2019-03-14
 
 ### Changed
