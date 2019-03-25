@@ -24,6 +24,7 @@ class ProductSummarySmall extends Component {
       nameProps,
       priceProps,
       buyButtonProps,
+      fixedPriceProps,
     } = this.props
 
     const containerClasses = classNames(
@@ -73,9 +74,13 @@ class ProductSummarySmall extends Component {
             <div className={productSummary.information}>
               <ProductSummaryName {...nameProps} {...nameClasses} />
               <AttachmentList product={product} />
-              <div>
-                <ProductSummaryPrice {...priceProps} {...priceClasses} />
-              </div>
+              {
+                fixedPriceProps.showFixedPrices ? (<div>
+                  <FixedPrices {...fixedPriceProps} />
+                </div>) : (<div>
+                  <ProductSummaryPrice {...priceProps} {...priceClasses} />
+                </div>)
+              }
             </div>
           </article>
           <ProductSummaryBuyButton {...buyButtonProps} {...buyButtonClasses} />

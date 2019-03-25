@@ -10,7 +10,7 @@ import ProductSummaryBuyButton from './ProductSummaryBuyButton'
 import ProductSummaryPrice from './ProductSummaryPrice'
 import ProductSummaryName from './ProductSummaryName'
 import ProductSummaryDescription from './ProductSummaryDescription'
-
+import FixedPrices from 'vtex.store-components/FixedPrices'
 import productSummary from '../productSummary.css'
 
 class ProductSummaryNormal extends Component {
@@ -26,6 +26,7 @@ class ProductSummaryNormal extends Component {
       nameProps,
       priceProps,
       buyButtonProps,
+      fixedPriceProps,
     } = this.props
 
     const containerClasses = classNames(
@@ -84,9 +85,13 @@ class ProductSummaryNormal extends Component {
                   descriptionClasses={descriptionClasses}
                 />
               }
-              <div>
-                <ProductSummaryPrice {...priceProps} {...priceClasses} />
-              </div>
+              {
+                fixedPriceProps.showFixedPrices ? (<div>
+                  <FixedPrices {...fixedPriceProps} />
+                </div>) : (<div>
+                  <ProductSummaryPrice {...priceProps} {...priceClasses} />
+                </div>)
+              }
             </div>
           </article>
           <ProductSummaryBuyButton {...buyButtonProps} {...buyButtonClasses} />

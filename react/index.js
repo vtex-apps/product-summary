@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import { path } from 'ramda'
 import { withRuntimeContext } from 'vtex.render-runtime'
 import { ProductName, ProductPrice } from 'vtex.store-components'
 
@@ -66,6 +67,8 @@ class ProductSummary extends Component {
     displayMode: PropTypes.oneOf(['normal', 'small', 'inline', 'inlinePrice']),
     /** Function that is executed when a product is clicked */
     actionOnClick: PropTypes.func,
+    /** Show hide displaying fixed prices instead of normal pricing */
+    showFixedPrices: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -84,6 +87,7 @@ class ProductSummary extends Component {
     },
     displayMode: 'normal',
     showBorders: false,
+    showFixedPrices: false,
   }
 
   state = {
@@ -121,7 +125,10 @@ class ProductSummary extends Component {
       showInstallments,
       labelSellingPrice,
       name: showFieldsProps,
+      showFixedPrices,
     } = this.props
+
+    const fixedPrices = path(['sku', 'seller', 'fixedPrices'], product)
 
     const imageProps = { product, showBadge, badgeText, showCollections }
     const nameProps = { product, showFieldsProps }
@@ -144,6 +151,11 @@ class ProductSummary extends Component {
       isHovering: this.state.isHovering,
     }
 
+    const fixedPriceProps = {
+      showFixedPrices,
+      fixedPriceList: fixedPrices,
+    }
+
     const ProductSummaryComponent =
       DISPLAY_MODE_MAP[displayMode] || ProductSummaryNormal
     return (
@@ -159,6 +171,7 @@ class ProductSummary extends Component {
         nameProps={nameProps}
         priceProps={priceProps}
         buyButtonProps={buyButtonProps}
+        fixedPriceProps={fixedPriceProps}
       />
     )
   }
@@ -204,6 +217,12 @@ const defaultSchema = {
       title: 'editor.productSummary.showCollections.title',
       default: false,
       isLayout: true,
+    },
+    showFieldsProps: {
+      type: 'boolean',
+      title: 'editor.productSummary.showFixedPrices.title',
+      default: false,
+      isLayout: false,
     },
     ...ProductPrice.schema.properties,
   },

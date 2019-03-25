@@ -15,5 +15,6 @@
   "editor.productSummary.unit": "Unidad",
   "editor.productSummary.attachmentName": "{sign} {quantity}x {name}",
   "editor.productSummary.displayBuyButton.option.hover": "Mostrar al pasar el ratón (web)",
-  "productSummary.missingOptionName": "Sin {name}"
+  "productSummary.missingOptionName": "Sin {name}",
+  "editor.productSummary.showFixedPrices.title": "Show fixed prices"
 }
