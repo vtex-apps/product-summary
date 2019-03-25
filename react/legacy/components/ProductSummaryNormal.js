@@ -67,7 +67,7 @@ class ProductSummaryNormal extends Component {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="absolute z-1 mt3">
+        <div className={`${productSummary.addToListBtn}absolute z-1 mt3`}>
           <ExtensionPoint
             id="add-to-list-btn#product-summary"
             product={{
