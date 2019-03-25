@@ -218,7 +218,7 @@ const defaultSchema = {
       default: false,
       isLayout: true,
     },
-    showFieldsProps: {
+    showFixedPrices: {
       type: 'boolean',
       title: 'editor.productSummary.showFixedPrices.title',
       default: false,
