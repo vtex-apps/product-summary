@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Add tachyons class `w-100` to `ProductSummaryNormal` container.
+
 ## [2.14.1] - 2019-03-27
 
 ### Fixed
@@ -20,7 +24,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [2.14.0] - 2019-03-21
 
 ## [2.12.1-hkignore] - 2019-03-11
+
 ### Changed
+
 - Use Apollo local state managment into the `ProductQuantityStepper` instead of the `orderFormConsumer`.
 
 ## [2.13.1] - 2019-03-14
