@@ -92,4 +92,15 @@ describe('<ProductSummary /> component', () => {
     rerender(<ProductSummary {...props} displayMode="inline" />)
     expect(container.querySelector('.quantityStepperContainer')).toBeFalsy()
   })
+
+  it(`should not break Shelf getSchema`, () => {
+    expect(ProductSummary.getSchema).toEqual(expect.any(Function))
+  })
+
+  describe('Site editor editable', () => {
+    it('should export getSchema and return object with title', () => {
+      const schema = ProductSummary.schema || ProductSummary.getSchema({})
+      expect(schema).toEqual(expect.objectContaining({title: expect.any(String)}))
+    })
+  })
 })

@@ -209,13 +209,12 @@ const defaultSchema = {
   },
 }
 
-ProductSummary.getSchema = ({ displayBuyButton }) => {
+ProductSummary.getSchema = () => {
   const nameSchema = ProductName.schema
   return {
     ...defaultSchema,
     properties: {
       ...defaultSchema.properties,
-      ...displayBuyButton,
       name: nameSchema,
     },
   }
