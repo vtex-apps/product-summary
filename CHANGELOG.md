@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.14.1] - 2019-03-27
+
 ### Fixed
 
 - Remove spread on `getSchema` that was crashing site editor.
