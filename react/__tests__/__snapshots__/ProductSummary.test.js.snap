@@ -117,7 +117,7 @@ exports[`<ProductSummary /> component should match the snapshot for inline price
 exports[`<ProductSummary /> component should match the snapshot for normal mode 1`] = `
 <DocumentFragment>
   <section
-    class="container containerNormal overflow-hidden br3 h-100 flex flex-column justify-between center tc"
+    class="container containerNormal overflow-hidden br3 h-100 w-100 flex flex-column justify-between center tc"
   >
     <article
       class="element pointer pt3 pb4 flex flex-column h-100"

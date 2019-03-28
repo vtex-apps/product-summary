@@ -31,16 +31,20 @@ class ProductSummaryNormal extends Component {
     const containerClasses = classNames(
       productSummary.container,
       productSummary.containerNormal,
-      'overflow-hidden br3 h-100 flex flex-column justify-between center tc'
+      'overflow-hidden br3 h-100 w-100 flex flex-column justify-between center tc'
     )
 
     const summaryClasses = classNames(
-      `${productSummary.element} pointer pt3 pb4 flex flex-column h-100`, {
+      `${productSummary.element} pointer pt3 pb4 flex flex-column h-100`,
+      {
         'bb b--muted-4 mh2 mt2': showBorders,
-      })
+      }
+    )
 
     const nameClasses = {
-      containerClass: `flex items-start ${productSummary.nameContainer} justify-center pv6`,
+      containerClass: `flex items-start ${
+        productSummary.nameContainer
+      } justify-center pv6`,
       brandNameClass: 't-body',
     }
 
@@ -71,19 +75,25 @@ class ProductSummaryNormal extends Component {
         >
           <article className={summaryClasses}>
             <div className={`${productSummary.imageContainer} db w-100 center`}>
-              {path(['sku', 'image', 'imageUrl'], product)
-                ? <ProductImage {...imageProps} />
-                : <ImageLoader />}
+              {path(['sku', 'image', 'imageUrl'], product) ? (
+                <ProductImage {...imageProps} />
+              ) : (
+                <ImageLoader />
+              )}
             </div>
-            <div className={`${productSummary.information} h-100 flex flex-column justify-between`} >
+            <div
+              className={`${
+                productSummary.information
+              } h-100 flex flex-column justify-between`}
+            >
               <ProductSummaryName {...nameProps} {...nameClasses} />
               <AttachmentList product={product} />
-              {showDescription && 
-                <ProductSummaryDescription 
-                  description={product.description} 
+              {showDescription && (
+                <ProductSummaryDescription
+                  description={product.description}
                   descriptionClasses={descriptionClasses}
                 />
-              }
+              )}
               <div>
                 <ProductSummaryPrice {...priceProps} {...priceClasses} />
               </div>
