@@ -1,12 +1,9 @@
 import React from 'react'
 import { pathOr, compose } from 'ramda'
 import PropTypes from 'prop-types'
-import {
-  CollectionBadges,
-  DiscountBadge,
-} from 'vtex.store-components'
+import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
+import classNames from 'classnames'
 
-import Image from './Image'
 import { productShape } from '../utils/propTypes'
 
 import productSummary from '../productSummary.css'
@@ -14,11 +11,7 @@ import productSummary from '../productSummary.css'
 const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
   if (shouldShow) {
     return (
-      <DiscountBadge
-        listPrice={listPrice}
-        sellingPrice={price}
-        label={label}
-      >
+      <DiscountBadge listPrice={listPrice} sellingPrice={price} label={label}>
         {component}
       </DiscountBadge>
     )
@@ -38,7 +31,13 @@ const maybeCollection = ({ productClusters }) => shouldShow => component => {
   return component
 }
 
-const ProductImage = ({ product, showBadge, badgeText, showCollections }) => {
+const ProductImage = ({
+  product,
+  showBadge,
+  badgeText,
+  showCollections,
+  displayMode,
+}) => {
   const {
     productClusters,
     productName: name,
@@ -47,13 +46,29 @@ const ProductImage = ({ product, showBadge, badgeText, showCollections }) => {
     },
   } = product
 
-  const commertialOffer = pathOr({}, ['sku', 'seller', 'commertialOffer'], product)
+  const imageClassName = classNames({
+    [productSummary.imageNormal]: displayMode !== 'inline',
+    [productSummary.imageInline]: displayMode === 'inline',
+  })
 
-  const withBadge = maybeBadge({ listPrice: commertialOffer.ListPrice, price: commertialOffer.Price, label: badgeText })
+  const commertialOffer = pathOr(
+    {},
+    ['sku', 'seller', 'commertialOffer'],
+    product
+  )
+
+  const withBadge = maybeBadge({
+    listPrice: commertialOffer.ListPrice,
+    price: commertialOffer.Price,
+    label: badgeText,
+  })
   const withCollection = maybeCollection({ productClusters })
-  const img = (<Image className={productSummary.image} alt={name} src={imageUrl} />)
+  const img = <img className={imageClassName} src={imageUrl} alt={name} />
 
-  return compose(withBadge(showBadge), withCollection(showCollections))(img)
+  return compose(
+    withBadge(showBadge),
+    withCollection(showCollections)
+  )(img)
 }
 
 ProductImage.propTypes = {
@@ -65,6 +80,8 @@ ProductImage.propTypes = {
   badgeText: PropTypes.string,
   /** Defines if the collection badges are shown */
   showCollections: PropTypes.bool,
+  /** Display mode of the summary */
+  displayMode: PropTypes.string,
 }
 
 export default ProductImage

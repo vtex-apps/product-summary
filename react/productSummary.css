@@ -22,6 +22,9 @@
 }
 .quantityStepperContainer {
 }
+.imageInline {
+  max-height: 7rem;
+}
 
 .isHidden {
   visibility: hidden;
@@ -50,4 +53,8 @@
 }
 
 .attachmentItemContainer {
+}
+
+.imageNormal {
+  max-height: 17.56rem;
 }
