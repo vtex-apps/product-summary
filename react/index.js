@@ -123,7 +123,13 @@ class ProductSummary extends Component {
       name: showFieldsProps,
     } = this.props
 
-    const imageProps = { product, showBadge, badgeText, showCollections }
+    const imageProps = {
+      product,
+      showBadge,
+      badgeText,
+      showCollections,
+      displayMode,
+    }
     const nameProps = { product, showFieldsProps }
 
     const priceProps = {
