@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.14.2] - 2019-03-28
+
 ### Added
 
 - Add tachyons class `w-100` to `ProductSummaryNormal` container.
