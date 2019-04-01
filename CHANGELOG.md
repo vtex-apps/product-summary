@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.14.4] - 2019-04-01
+### Changed
+- Use `cartIndex` to correctly update items quantity on cart.
+
 ## [2.14.3] - 2019-03-28
 ### Fixed
 - Replace `background-image` for `img` on Image component.

@@ -66,6 +66,7 @@ class ProductQuantityStepper extends Component {
     const {
       sku: { itemId: id },
       seller = {},
+      cartIndex,
     } = product
     try {
       await updateItems([
@@ -73,6 +74,7 @@ class ProductQuantityStepper extends Component {
           id,
           quantity,
           seller: seller.sellerId,
+          index: cartIndex,
         },
       ])
     } catch (err) {
