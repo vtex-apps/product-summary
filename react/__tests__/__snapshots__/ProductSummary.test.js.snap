@@ -120,10 +120,10 @@ exports[`<ProductSummary /> component should match the snapshot for normal mode 
     class="container containerNormal overflow-hidden br3 h-100 w-100 flex flex-column justify-between center tc"
   >
     <div
-      class="absolute z-1 mt3"
+      class="addToListBtn absolute z-1 mt3"
     >
       <div
-        id="wish-list"
+        id="add-to-list-btn#product-summary"
         product="[object Object]"
       />
     </div>

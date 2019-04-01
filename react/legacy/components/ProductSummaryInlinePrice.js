@@ -74,7 +74,11 @@ const ProductSummaryInline = ({
             <ProductSummaryName {...nameProps} {...nameClasses} />
             <AttachmentList product={product} />
             <div className="mt3 nr2">
-              <div className="flex justify-end nr4 mb2">
+              <div
+                className={`flex justify-end nr4 mb2 ${
+                  productSummary.quantityStepperContainer
+                  }`}
+              >
                 {showQuantitySelector && (
                   <ProductQuantityStepper
                     product={product}
