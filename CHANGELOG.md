@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
-- Fix product shape prop types.
+- Product shape prop-types.
 
 ## [2.14.4] - 2019-04-01
 ### Changed
