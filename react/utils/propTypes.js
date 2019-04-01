@@ -1,6 +1,23 @@
 import PropTypes from 'prop-types'
 import { CHOICE_TYPES } from './attachmentHelper'
 
+export const addedOptionShape = PropTypes.shape({
+  item: PropTypes.shape({ 
+    name: PropTypes.string.isRequired, 
+    sellingPrice: PropTypes.number.isRequired,
+    quantity: PropTypes.number.isRequired,
+  }),
+  normalizedQuantity: PropTypes.number,
+  extraQuantity: PropTypes.number,
+  choiceType: PropTypes.oneOf([CHOICE_TYPES.SINGLE, CHOICE_TYPES.MULTIPLE, CHOICE_TYPES.TOGGLE]).isRequired,
+})
+
+export const removedOptionShape = PropTypes.shape({
+  removedQuantity: PropTypes.number.isRequired,
+  initialQuantity: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+})
+
 export const productShape = PropTypes.shape({
   /** Product's link text */
   linkText: PropTypes.string.isRequired,
@@ -61,21 +78,4 @@ export const productShape = PropTypes.shape({
   }),
   /** Quantity of item in Minicart */
   quantity: PropTypes.number,
-})
-
-export const addedOptionShape = PropTypes.shape({
-  item: PropTypes.shape({ 
-    name: PropTypes.string.isRequired, 
-    sellingPrice: PropTypes.number.isRequired,
-    quantity: PropTypes.number.isRequired,
-  }),
-  normalizedQuantity: PropTypes.number,
-  extraQuantity: PropTypes.number,
-  choiceType: PropTypes.oneOf([CHOICE_TYPES.SINGLE, CHOICE_TYPES.MULTIPLE, CHOICE_TYPES.TOGGLE]).isRequired,
-})
-
-export const removedOptionShape = PropTypes.shape({
-  removedQuantity: PropTypes.number.isRequired,
-  initialQuantity: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
 })
