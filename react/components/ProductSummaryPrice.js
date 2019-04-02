@@ -1,20 +1,24 @@
-import React from 'react'
+import React, { FunctionComponent, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { path, prop } from 'ramda'
 import { Spinner } from 'vtex.styleguide'
 import { ProductPrice } from 'vtex.store-components'
 
+import ProductSummaryContext from './ProductSummaryContext'
 import { productShape } from '../utils/propTypes'
 
-const ProductSummaryPrice = ({
-  product,
-  showListPrice,
-  showLabels,
-  showInstallments,
-  labelSellingPrice,
-  isLoading,
-  containerClass
-}) => {
+const ProductSummaryPrice : FunctionComponent<any> = () => {
+  const {
+    product,
+    priceProps: {
+      showListPrice,
+      showLabels,
+      showInstallments,
+      labelSellingPrice,
+      isLoading,
+      containerClass
+    }
+  } = useContext(ProductSummaryContext)
   const commertialOffer = path(['sku', 'seller', 'commertialOffer'], product)
 
   if (isLoading) {
@@ -66,7 +70,7 @@ ProductSummaryPrice.propTypes = {
   isLoading: PropTypes.bool,
   /** Styles used in the container div */
   containerClass: PropTypes.string,
-  /** Styles used in the selling price */  
+  /** Styles used in the selling price */
   sellingPriceClass: PropTypes.string,
 }
 

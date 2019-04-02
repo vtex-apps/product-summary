@@ -1,16 +1,20 @@
-import React from 'react'
+import React, { FunctionComponent, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import { ProductName } from 'vtex.store-components'
 
+import ProductSummaryContext from './ProductSummaryContext'
 import { productShape } from '../utils/propTypes'
 
-const ProductSummaryName = ({
-  product,
-  showFieldsProps,
-  containerClass,
-  brandNameClass,
-}) => {
+const ProductSummaryName : FunctionComponent<any> = () => {
+  const {
+    product,
+    nameProps: {
+      showFieldsProps,
+      containerClass,
+      brandNameClass
+    }
+  } = useContext(ProductSummaryContext)
   const productName = path(['productName'], product)
   const skuName = path(['sku', 'name'], product)
   const brandName = path(['brand'], product)
@@ -38,7 +42,7 @@ ProductSummaryName.propTypes = {
   showFieldsProps: PropTypes.object,
   /** Styles used in the container div */
   containerClass: PropTypes.string,
-  /** Styles used in the brand name */  
+  /** Styles used in the brand name */
   brandNameClass: PropTypes.string,
 }
 

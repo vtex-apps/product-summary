@@ -1,9 +1,11 @@
-import React from 'react'
-import { pathOr, compose } from 'ramda'
+import React, { FunctionComponent, useContext } from 'react'
+import { pathOr, compose, path } from 'ramda'
 import PropTypes from 'prop-types'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
 
+import ProductSummaryContext from './ProductSummaryContext'
+import ImageLoader from './ImageLoader'
 import { productShape } from '../utils/propTypes'
 
 import productSummary from '../productSummary.css'
@@ -31,7 +33,7 @@ const maybeCollection = ({ productClusters }) => shouldShow => component => {
   return component
 }
 
-const ProductImage = ({
+const ProductImageContent = ({
   product,
   showBadge,
   badgeText,
@@ -71,7 +73,7 @@ const ProductImage = ({
   )(img)
 }
 
-ProductImage.propTypes = {
+ProductImageContent.propTypes = {
   /** Product that owns the informations */
   product: productShape,
   /** Set the discount badge's visibility */
@@ -82,6 +84,19 @@ ProductImage.propTypes = {
   showCollections: PropTypes.bool,
   /** Display mode of the summary */
   displayMode: PropTypes.string,
+}
+
+const ProductImage : FunctionComponent<any> = () => {
+  const { product, imageProps } = useContext(ProductSummaryContext)
+  return (
+    <div className={`${productSummary.imageContainer} db w-100 center`}>
+      {path(['sku', 'image', 'imageUrl'], product) ? (
+        <ProductImageContent {...imageProps} product={product} />
+      ) : (
+        <ImageLoader />
+      )}
+    </div>
+  )
 }
 
 export default ProductImage

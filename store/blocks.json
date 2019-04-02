@@ -1,0 +1,30 @@
+{
+  "unstable--product-summary-layout": {
+    "children": [
+      "unstable--product-summary-row#1",
+      "unstable--product-summary-row#2",
+      "unstable--product-summary-row#3"
+    ]
+  },
+  "unstable--product-summary-row#1": {
+    "children": [
+      "product-summary-image"
+    ],
+    "props": {
+      "fullWidth": true
+    }
+  },
+  "unstable--product-summary-row#2": {
+    "children": [
+      "product-summary-name"
+    ],
+    "props": {
+      "sticky": true
+    }
+  },
+  "unstable--product-summary-row#3": {
+    "children": [
+      "product-summary-buy-button"
+    ]
+  }
+}

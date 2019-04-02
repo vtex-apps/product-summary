@@ -7,6 +7,7 @@ import ProductSummaryNormal from './components/ProductSummaryNormal'
 import ProductSummarySmall from './components/ProductSummarySmall'
 import ProductSummaryInline from './components/ProductSummaryInline'
 import ProductSummaryInlinePrice from './components/ProductSummaryInlinePrice'
+import ProductSummaryContext from './components/ProductSummaryContext'
 import displayButtonTypes, {
   getDisplayButtonNames,
   getDisplayButtonValues,
@@ -124,16 +125,14 @@ class ProductSummary extends Component {
     } = this.props
 
     const imageProps = {
-      product,
       showBadge,
       badgeText,
       showCollections,
       displayMode,
     }
-    const nameProps = { product, showFieldsProps }
+    const nameProps = { showFieldsProps }
 
     const priceProps = {
-      product,
       showListPrice,
       showLabels,
       showInstallments,
@@ -142,7 +141,6 @@ class ProductSummary extends Component {
     }
 
     const buyButtonProps = {
-      product,
       displayBuyButton,
       isOneClickBuy,
       buyButtonText,
@@ -150,22 +148,28 @@ class ProductSummary extends Component {
       isHovering: this.state.isHovering,
     }
 
+    const contextProps = {
+      product,
+      imageProps,
+      nameProps,
+      priceProps,
+      buyButtonProps
+    }
+
     const ProductSummaryComponent =
       DISPLAY_MODE_MAP[displayMode] || ProductSummaryNormal
     return (
-      <ProductSummaryComponent
-        product={product}
-        showBorders={showBorders}
-        showDescription={showDescription}
-        handleMouseEnter={this.handleMouseEnter}
-        handleMouseLeave={this.handleMouseLeave}
-        handleItemsStateUpdate={this.handleItemsStateUpdate}
-        actionOnClick={actionOnClick}
-        imageProps={imageProps}
-        nameProps={nameProps}
-        priceProps={priceProps}
-        buyButtonProps={buyButtonProps}
-      />
+      <ProductSummaryContext.Provider value={contextProps}>
+        <ProductSummaryComponent
+          product={product}
+          showBorders={showBorders}
+          showDescription={showDescription}
+          handleMouseEnter={this.handleMouseEnter}
+          handleMouseLeave={this.handleMouseLeave}
+          handleItemsStateUpdate={this.handleItemsStateUpdate}
+          actionOnClick={actionOnClick}
+        />
+      </ProductSummaryContext.Provider>
     )
   }
 }

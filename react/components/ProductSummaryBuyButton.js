@@ -1,23 +1,28 @@
-import React from 'react'
+import React, { FunctionComponent, useContext } from 'react'
 import BuyButton from 'vtex.store-components/BuyButton'
 import { equals, path } from 'ramda'
 import classNames from 'classnames'
 import { FormattedMessage } from 'react-intl'
 
+import ProductSummaryContext from './ProductSummaryContext'
 import displayButtonTypes from '../utils/displayButtonTypes'
 import productSummary from '../productSummary.css'
 
-const ProductSummaryBuyButton = ({
-  product,
-  displayBuyButton,
-  isOneClickBuy,
-  buyButtonText,
-  runtime: {
-    hints: { mobile },
-  },
-  isHovering,
-  containerClass,
-}) => {
+const ProductSummaryBuyButton : FunctionComponent<any> = () => {
+  const {
+    product,
+    buyButtonProps: {
+      displayBuyButton,
+      isOneClickBuy,
+      buyButtonText,
+      runtime: {
+        hints: { mobile },
+      },
+      isHovering,
+      containerClass  
+    }
+  } = useContext(ProductSummaryContext)
+
   const hoverBuyButton =
     equals(displayBuyButton, displayButtonTypes.DISPLAY_ALWAYS.value) ||
     !equals(displayBuyButton, displayButtonTypes.DISPLAY_ON_HOVER.value) ||
