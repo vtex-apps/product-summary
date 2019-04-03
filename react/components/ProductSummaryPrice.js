@@ -1,11 +1,9 @@
 import React, { FunctionComponent, useContext } from 'react'
-import PropTypes from 'prop-types'
 import { path, prop } from 'ramda'
 import { Spinner } from 'vtex.styleguide'
 import { ProductPrice } from 'vtex.store-components'
 
-import ProductSummaryContext from './ProductSummaryContext'
-import { productShape } from '../utils/propTypes'
+import ProductSummaryContext, { ProductSummaryPriceContext } from './ProductSummaryContext'
 
 const ProductSummaryPrice : FunctionComponent<any> = () => {
   const {
@@ -16,9 +14,14 @@ const ProductSummaryPrice : FunctionComponent<any> = () => {
       showInstallments,
       labelSellingPrice,
       isLoading,
-      containerClass
+      showBorders
     }
   } = useContext(ProductSummaryContext)
+  const {
+    containerClass,
+    sellingPriceClass
+  } = useContext(ProductSummaryPriceContext)
+
   const commertialOffer = path(['sku', 'seller', 'commertialOffer'], product)
 
   if (isLoading) {
@@ -53,25 +56,6 @@ const ProductSummaryPrice : FunctionComponent<any> = () => {
       />
     </div>
   )
-}
-
-ProductSummaryPrice.propTypes = {
-  /** Product that owns the informations */
-  product: productShape,
-  /** Set the product list price's visibility */
-  showListPrice: PropTypes.bool,
-  /** Set pricing labels' visibility */
-  showLabels: PropTypes.bool,
-  /** Set installments' visibility */
-  showInstallments: PropTypes.bool,
-  /** Text of selling Price's label */
-  labelSellingPrice: PropTypes.string,
-  /** Defines if the loading spinner is shown */
-  isLoading: PropTypes.bool,
-  /** Styles used in the container div */
-  containerClass: PropTypes.string,
-  /** Styles used in the selling price */
-  sellingPriceClass: PropTypes.string,
 }
 
 export default ProductSummaryPrice

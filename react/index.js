@@ -138,6 +138,7 @@ class ProductSummary extends Component {
       showInstallments,
       labelSellingPrice,
       isLoading: this.state.isUpdatingItems,
+      showBorders,
     }
 
     const buyButtonProps = {
@@ -148,12 +149,17 @@ class ProductSummary extends Component {
       isHovering: this.state.isHovering,
     }
 
+    const descriptionProps = {
+      showDescription
+    }
+
     const contextProps = {
       product,
       imageProps,
       nameProps,
       priceProps,
-      buyButtonProps
+      buyButtonProps,
+      descriptionProps
     }
 
     const ProductSummaryComponent =
@@ -163,7 +169,6 @@ class ProductSummary extends Component {
         <ProductSummaryComponent
           product={product}
           showBorders={showBorders}
-          showDescription={showDescription}
           handleMouseEnter={this.handleMouseEnter}
           handleMouseLeave={this.handleMouseLeave}
           handleItemsStateUpdate={this.handleItemsStateUpdate}

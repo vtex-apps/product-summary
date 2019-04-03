@@ -4,7 +4,7 @@ import { equals, path } from 'ramda'
 import classNames from 'classnames'
 import { FormattedMessage } from 'react-intl'
 
-import ProductSummaryContext from './ProductSummaryContext'
+import ProductSummaryContext, { ProductSummaryBuyButtonContext } from './ProductSummaryContext'
 import displayButtonTypes from '../utils/displayButtonTypes'
 import productSummary from '../productSummary.css'
 
@@ -18,10 +18,12 @@ const ProductSummaryBuyButton : FunctionComponent<any> = () => {
       runtime: {
         hints: { mobile },
       },
-      isHovering,
-      containerClass  
+      isHovering
     }
   } = useContext(ProductSummaryContext)
+  const {
+    containerClass
+  } = useContext(ProductSummaryBuyButtonContext)
 
   const hoverBuyButton =
     equals(displayBuyButton, displayButtonTypes.DISPLAY_ALWAYS.value) ||
