@@ -1,0 +1,24 @@
+{
+  "product-summary.custom": {
+    "children": [
+      "unstable--product-summary-row#1",
+      "unstable--product-summary-row#2",
+      "unstable--product-summary-row#3"
+    ]
+  },
+  "unstable--product-summary-row#1": {
+    "children": [
+      "product-summary-image"
+    ]
+  },
+  "unstable--product-summary-row#2": {
+    "children": [
+      "product-summary-name"
+    ]
+  },
+  "unstable--product-summary-row#3": {
+    "children": [
+      "product-summary-buy-button"
+    ]
+  }
+}

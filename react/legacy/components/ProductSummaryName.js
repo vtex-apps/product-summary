@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import { ProductName } from 'vtex.store-components'
 
-import { productShape } from './../utils/propTypes'
+import { productShape } from './../../utils/propTypes'
 
 const ProductSummaryName = ({
   product,
