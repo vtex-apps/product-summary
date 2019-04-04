@@ -1,9 +1,11 @@
-import React from 'react'
-import { pathOr, compose } from 'ramda'
+import React, { FunctionComponent, useContext } from 'react'
+import { pathOr, compose, path } from 'ramda'
 import PropTypes from 'prop-types'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
 
+import ProductSummaryContext from './ProductSummaryContext'
+import ImageLoader from './ImageLoader'
 import { productShape } from './../utils/propTypes'
 
 import productSummary from './../productSummary.css'
@@ -31,7 +33,7 @@ const maybeCollection = ({ productClusters }) => shouldShow => component => {
   return component
 }
 
-const ProductImage = ({
+const ProductImageContent = ({
   product,
   showBadge,
   badgeText,
@@ -46,7 +48,7 @@ const ProductImage = ({
     },
   } = product
 
-  const imageClassName = classNames({
+  const imageContentClassName = classNames({
     [productSummary.imageNormal]: displayMode !== 'inline',
     [productSummary.imageInline]: displayMode === 'inline',
   })
@@ -63,7 +65,7 @@ const ProductImage = ({
     label: badgeText,
   })
   const withCollection = maybeCollection({ productClusters })
-  const img = <img className={imageClassName} src={imageUrl} alt={name} />
+  const img = <img className={imageContentClassName} src={imageUrl} alt={name} />
 
   return compose(
     withBadge(showBadge),
@@ -71,9 +73,23 @@ const ProductImage = ({
   )(img)
 }
 
+const ProductImage : FunctionComponent<any> = (props) => {
+  const { product } = useContext(ProductSummaryContext)
+  const imageClassName = classNames(productSummary.imageContainer, {
+    'db w-100 center': props.displayMode !== 'inline',
+  })
+  return (
+    <div className={imageClassName}>
+      {path(['sku', 'image', 'imageUrl'], product) ? (
+        <ProductImageContent {...props} product={product} />
+      ) : (
+        <ImageLoader />
+      )}
+    </div>
+  )
+}
+
 ProductImage.propTypes = {
-  /** Product that owns the informations */
-  product: productShape,
   /** Set the discount badge's visibility */
   showBadge: PropTypes.bool,
   /** Text shown on badge */
@@ -81,7 +97,47 @@ ProductImage.propTypes = {
   /** Defines if the collection badges are shown */
   showCollections: PropTypes.bool,
   /** Display mode of the summary */
-  displayMode: PropTypes.string,
+  displayMode: PropTypes.oneOf(['normal', 'inline']),
+}
+
+ProductImage.defaultProps = {
+  showBadge: true,
+  showCollections: false,
+  displayMode: 'normal'
+}
+
+ProductImage.getSchema = () => {
+  return {
+    title: 'editor.productSummary.title',
+    description: 'editor.productSummary.description',
+    type: 'object',
+    properties: {
+      showBadge: {
+        type: 'boolean',
+        title: 'editor.productSummary.showBadge.title',
+        default: ProductImage.defaultProps.showBadge,
+        isLayout: true,
+      },
+      badgeText: {
+        type: 'string',
+        title: 'editor.productSummary.badgeText.title',
+        isLayout: false,
+      },
+      showCollections: {
+        type: 'boolean',
+        title: 'editor.productSummary.showCollections.title',
+        default: ProductImage.defaultProps.showCollections,
+        isLayout: true,
+      },
+      displayMode: {
+        title: 'editor.productSummary.displayMode.title',
+        type: 'string',
+        enum: ['normal', 'inline'],
+        default: ProductImage.defaultProps.displayMode,
+        isLayout: true,
+      },
+    },
+  }
 }
 
 export default ProductImage

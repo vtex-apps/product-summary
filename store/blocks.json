@@ -13,7 +13,10 @@
   },
   "unstable--product-summary-row#2": {
     "children": [
-      "product-summary-name"
+      "product-summary-name",
+      "product-summary-attachment-list",
+      "product-summary-description",
+      "product-summary-price"
     ]
   },
   "unstable--product-summary-row#3": {
