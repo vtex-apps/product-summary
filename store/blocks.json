@@ -1,25 +1,16 @@
 {
-  "product-summary.custom": {
+  "product-summary.flex": {
     "children": [
-      "unstable--product-summary-row#1",
-      "unstable--product-summary-row#2",
-      "unstable--product-summary-row#3"
-    ]
-  },
-  "unstable--product-summary-row#1": {
-    "children": [
-      "product-summary-image"
-    ]
-  },
-  "unstable--product-summary-row#2": {
-    "children": [
+      "product-summary-image",
       "product-summary-name",
       "product-summary-attachment-list",
-      "product-summary-price"
+      "_",
+      "unstable--product-summary-column#1"
     ]
   },
-  "unstable--product-summary-row#3": {
+  "unstable--product-summary-column#1": {
     "children": [
+      "product-summary-price",
       "product-summary-buy-button"
     ]
   }

@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 
-const Row : FunctionComponent = ({ children }) => {
+const Column : FunctionComponent = ({ children }) => {
   return (
-    <div className="">
+    <div className="flex items-center">
       {children}
     </div>
   )
 }
 
-export default Row
+export default Column

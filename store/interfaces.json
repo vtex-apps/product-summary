@@ -2,9 +2,9 @@
   "product-summary": {
     "component": "ProductSummaryLegacy"
   },
-  "product-summary.custom": {
+  "product-summary.flex": {
     "allowed": [
-      "unstable--product-summary-row",
+      "unstable--product-summary-column",
       "product-summary-attachment-list",
       "product-summary-buy-button",
       "product-summary-description",
@@ -16,7 +16,7 @@
     "component": "ProductSummaryCustom",
     "composition": "children"
   },
-  "unstable--product-summary-row": {
+  "unstable--product-summary-column": {
     "allowed": [
       "product-summary-attachment-list",
       "product-summary-buy-button",
@@ -26,7 +26,7 @@
       "product-summary-price",
       "_"
     ],
-    "component": "Row",
+    "component": "Column",
     "composition": "children"
   },
   "_": {
