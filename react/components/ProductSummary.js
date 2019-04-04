@@ -11,10 +11,14 @@ class ProductSummaryCustom extends Component {
   static propTypes = {
     /** Product that owns the informations */
     product: productShape,
-    /** Name schema props */
-    name: PropTypes.object,
     /** Function that is executed when a product is clicked */
     actionOnClick: PropTypes.func,
+    /** Styles used in the link component */
+    linkClasses: PropTypes.string,
+  }
+
+  static defaultProps = {
+    linkClasses: 'h-100 flex flex-column',
   }
 
   state = {
@@ -35,16 +39,17 @@ class ProductSummaryCustom extends Component {
 
   render() {
     const {
+      children,
       product,
       actionOnClick,
-      name: showFieldsProps
+      linkClasses
     } = this.props
 
     const contextProps = {
       product,
       isLoading: this.state.isUpdatingItems,
       isHovering: this.state.isHovering,
-      // this.handleItemsStateUpdate,
+      handleItemsStateUpdate: this.handleItemsStateUpdate,
     }
 
     const containerClasses = classNames(
@@ -53,7 +58,9 @@ class ProductSummaryCustom extends Component {
       'overflow-hidden br3 h-100 w-100 flex flex-column justify-between center tc'
     )
 
-    // Link Normal = h-100 flex flex-column
+    const linkComponentClasses = classNames(productSummary.clearLink, {
+      [linkClasses]: !!linkClasses
+    })
 
     return (
       <ProductSummaryContext.Provider value={contextProps}>
@@ -63,12 +70,12 @@ class ProductSummaryCustom extends Component {
           onMouseLeave={this.handleMouseLeave}
         >
           <Link
-            className={`${productSummary.clearLink}`}
+            className={linkComponentClasses}
             page={'store.product'}
             params={{ slug: path(['linkText'], product) }}
             onClick={actionOnClick}
           >
-            {this.props.children}
+            {children}
           </Link>
         </section>
       </ProductSummaryContext.Provider>
@@ -80,6 +87,14 @@ ProductSummaryCustom.getSchema = () => {
   return {
     title: 'editor.productSummary.title',
     description: 'editor.productSummary.description',
+    type: 'object',
+    properties: {
+      linkClasses: {
+        type: 'string',
+        title: 'editor.productSummary.linkClasses.title',
+        isLayout: true,
+      },
+    }
   }
 }
 

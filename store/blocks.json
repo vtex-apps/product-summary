@@ -9,19 +9,27 @@
   "unstable--product-summary-row#1": {
     "children": [
       "product-summary-image"
-    ]
+    ],
+    "props": {
+      "rowClasses": ""
+    }
   },
   "unstable--product-summary-row#2": {
     "children": [
       "product-summary-name",
       "product-summary-attachment-list",
-      "product-summary-description",
       "product-summary-price"
-    ]
+    ],
+    "props": {
+      "rowClasses": "h-100 flex flex-column justify-between"
+    }
   },
   "unstable--product-summary-row#3": {
     "children": [
       "product-summary-buy-button"
-    ]
+    ],
+    "props": {
+      "rowClasses": ""
+    }
   }
 }
