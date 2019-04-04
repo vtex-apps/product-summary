@@ -4,10 +4,10 @@ import { path } from 'ramda'
 import { ProductName } from 'vtex.store-components'
 
 import ProductSummaryContext from './ProductSummaryContext'
-import { productShape } from './../utils/propTypes'
-import productSummary from './../productSummary.css'
+import { productShape } from '../utils/propTypes'
+import productSummary from '../productSummary.css'
 
-const ProductSummaryName : FunctionComponent<any> = ({
+const ProductSummaryName : FunctionComponent = ({
   showFieldsProps
 }) => {
   const { product } = useContext(ProductSummaryContext)
@@ -52,13 +52,12 @@ ProductSummaryName.propTypes = {
 }
 
 ProductSummaryName.getSchema = () => {
-  const nameSchema = ProductName.schema
   return {
     title: 'editor.productSummary.title',
     description: 'editor.productSummary.description',
     type: 'object',
     properties: {
-      showFieldsProps: nameSchema,
+      showFieldsProps: ProductName.schema,
     },
   }
 }

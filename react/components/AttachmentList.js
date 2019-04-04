@@ -10,7 +10,7 @@ import styles from '../productSummary.css'
 
 const shouldShowOption = option => option.extraQuantity > 0 || option.item.sellingPrice !== 0
 
-const AttachmentList : FunctionComponent<any> = () => {
+const AttachmentList : FunctionComponent = () => {
   const { product } = useContext(ProductSummaryContext)
   const addedOptions = pathOr([], ['assemblyOptions', 'added'], product)
   const removedOptions = pathOr([], ['assemblyOptions', 'removed'], product)

@@ -4,8 +4,8 @@ import { equals, path } from 'ramda'
 import classNames from 'classnames'
 import { FormattedMessage } from 'react-intl'
 
-import displayButtonTypes from './../../utils/displayButtonTypes'
-import productSummary from './../../productSummary.css'
+import displayButtonTypes from '../../utils/displayButtonTypes'
+import productSummary from '../../productSummary.css'
 
 const ProductSummaryBuyButton = ({
   product,

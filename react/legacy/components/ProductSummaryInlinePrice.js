@@ -3,14 +3,14 @@ import { path } from 'ramda'
 import classNames from 'classnames'
 import { Link } from 'vtex.render-runtime'
 
-import AttachmentList from './../../components/AttachmentList'
-import ImageLoader from './../../components/ImageLoader'
+import AttachmentList from '../../components/AttachmentList'
+import ImageLoader from '../../components/ImageLoader'
 import ProductImage from './ProductImage'
-import ProductQuantityStepper from './../../components/ProductQuantityStepper'
+import ProductQuantityStepper from '../../components/ProductQuantityStepper'
 import ProductSummaryPrice from './ProductSummaryPrice'
 import ProductSummaryName from './ProductSummaryName'
 
-import productSummary from './../../productSummary.css'
+import productSummary from '../../productSummary.css'
 
 const ProductSummaryInline = ({
   product,

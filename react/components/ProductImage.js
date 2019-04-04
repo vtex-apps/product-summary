@@ -6,9 +6,9 @@ import classNames from 'classnames'
 
 import ProductSummaryContext from './ProductSummaryContext'
 import ImageLoader from './ImageLoader'
-import { productShape } from './../utils/propTypes'
+import { productShape } from '../utils/propTypes'
 
-import productSummary from './../productSummary.css'
+import productSummary from '../productSummary.css'
 
 const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
   if (shouldShow) {
@@ -73,7 +73,7 @@ const ProductImageContent = ({
   )(img)
 }
 
-const ProductImage : FunctionComponent<any> = (props) => {
+const ProductImage : FunctionComponent = (props) => {
   const { product } = useContext(ProductSummaryContext)
   const imageClassName = classNames(productSummary.imageContainer, {
     'db w-100 center': props.displayMode !== 'inline',

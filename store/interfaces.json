@@ -4,7 +4,14 @@
   },
   "product-summary.custom": {
     "allowed": [
-      "unstable--product-summary-row"
+      "unstable--product-summary-row",
+      "product-summary-attachment-list",
+      "product-summary-buy-button",
+      "product-summary-description",
+      "product-summary-image",
+      "product-summary-name",
+      "product-summary-price",
+      "_"
     ],
     "component": "ProductSummaryCustom",
     "composition": "children"
@@ -16,10 +23,14 @@
       "product-summary-description",
       "product-summary-image",
       "product-summary-name",
-      "product-summary-price"
+      "product-summary-price",
+      "_"
     ],
     "component": "Row",
     "composition": "children"
+  },
+  "_": {
+    "component": "Spacer"
   },
   "product-summary-attachment-list": {
     "component": "ProductSummaryAttachmentList"

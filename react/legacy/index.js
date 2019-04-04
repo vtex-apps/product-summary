@@ -10,8 +10,8 @@ import ProductSummaryInlinePrice from './components/ProductSummaryInlinePrice'
 import displayButtonTypes, {
   getDisplayButtonNames,
   getDisplayButtonValues,
-} from './../utils/displayButtonTypes'
-import { productShape } from './../utils/propTypes'
+} from '../utils/displayButtonTypes'
+import { productShape } from '../utils/propTypes'
 
 const DISPLAY_MODE_MAP = {
   normal: ProductSummaryNormal,

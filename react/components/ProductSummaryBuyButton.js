@@ -9,10 +9,10 @@ import ProductSummaryContext from './ProductSummaryContext'
 import displayButtonTypes, {
   getDisplayButtonNames,
   getDisplayButtonValues,
-} from './../utils/displayButtonTypes'
-import productSummary from './../productSummary.css'
+} from '../utils/displayButtonTypes'
+import productSummary from '../productSummary.css'
 
-const ProductSummaryBuyButton : FunctionComponent<any> = ({
+const ProductSummaryBuyButton : FunctionComponent = ({
   displayBuyButton,
   isOneClickBuy,
   buyButtonText,
