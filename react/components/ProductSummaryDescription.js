@@ -1,17 +1,21 @@
-import React, { Fragment } from 'react'
+import React, { FunctionComponent, Fragment, useContext } from 'react'
 import PropTypes from 'prop-types'
+
+import ProductSummaryContext from './ProductSummaryContext'
+import productSummary from './../productSummary.css'
 
 const MAX_SIZE_DESCRIPTION = 120
 
-const ProductSummaryDescription = ({
-  descriptionClasses, 
-  description
-}) => {
+const ProductSummaryDescription : FunctionComponent<any> = () => {
+  const { product: { description } } = useContext(ProductSummaryContext)
+
   if (!description)
     return (<Fragment />)
 
-  const descriptionTruncated = 
-    description.length > MAX_SIZE_DESCRIPTION 
+  const descriptionClasses = `${productSummary.description} c-muted-2 t-small`
+
+  const descriptionTruncated =
+    description.length > MAX_SIZE_DESCRIPTION
     ? `${description.substring(0, MAX_SIZE_DESCRIPTION)}...`
     : description
 
@@ -20,13 +24,6 @@ const ProductSummaryDescription = ({
       {descriptionTruncated}
     </span>
   )
-}
-
-ProductSummaryDescription.propTypes = {
-  /** Styles used in the description */  
-  descriptionClasses: PropTypes.string.isRequired,
-  /** Description of the product */  
-  description: PropTypes.string
 }
 
 export default ProductSummaryDescription

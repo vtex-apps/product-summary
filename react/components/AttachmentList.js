@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { FunctionComponent, useContext } from 'react'
 import { productShape } from '../utils/propTypes'
 import { pathOr } from 'ramda'
 
+import ProductSummaryContext from './ProductSummaryContext'
 import RemovedAttachmentsList from './RemovedAttachmentsList'
 import AddedAttachmentsList from './AddedAttachmentsList'
 
 import styles from '../productSummary.css'
 
-const shouldShowOption = option => option.extraQuantity > 0 || option.item.sellingPrice !== 0 
+const shouldShowOption = option => option.extraQuantity > 0 || option.item.sellingPrice !== 0
 
-const AttachmentList = ({ product }) => {
+const AttachmentList : FunctionComponent<any> = () => {
+  const { product } = useContext(ProductSummaryContext)
   const addedOptions = pathOr([], ['assemblyOptions', 'added'], product)
   const removedOptions = pathOr([], ['assemblyOptions', 'removed'], product)
   const parentPrice = pathOr(0, ['assemblyOptions', 'parentPrice'], product)
@@ -26,10 +28,6 @@ const AttachmentList = ({ product }) => {
       <RemovedAttachmentsList removedOptions={removedOptions} />
     </div>
   )
-}
-
-AttachmentList.propTypes = {
-  product: productShape,
 }
 
 export default AttachmentList

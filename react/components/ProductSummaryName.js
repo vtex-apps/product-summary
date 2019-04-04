@@ -7,7 +7,7 @@ import ProductSummaryContext from './ProductSummaryContext'
 import { productShape } from './../utils/propTypes'
 import productSummary from './../productSummary.css'
 
-const ProductSummaryName = ({
+const ProductSummaryName : FunctionComponent<any> = ({
   showFieldsProps
 }) => {
   const { product } = useContext(ProductSummaryContext)
