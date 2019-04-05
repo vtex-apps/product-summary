@@ -1,3 +1,3 @@
-import AttachmentList from './components/AttachmentList'
+import AttachmentList from './components/ProductSummaryAttachmentList/AttachmentList'
 
 export default AttachmentList

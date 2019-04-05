@@ -1,3 +1,3 @@
-import ProductImage from './components/ProductImage'
+import ProductImage from './components/ProductSummaryImage/ProductImage'
 
 export default ProductImage

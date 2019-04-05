@@ -6,7 +6,7 @@ import { injectIntl, intlShape } from 'react-intl'
 import { compose, graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
-import { productShape } from '../utils/propTypes'
+import { productShape } from '../../utils/propTypes'
 
 export const UPDATE_ITEMS_MUTATION = gql`
   mutation updateItems($items: [MinicartItem]) {

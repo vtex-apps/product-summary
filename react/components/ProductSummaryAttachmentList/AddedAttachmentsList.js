@@ -4,9 +4,9 @@ import { intlShape, injectIntl } from 'react-intl'
 
 import AttachmentItem from './AttachmentItem'
 
-import { CHOICE_TYPES } from '../utils/attachmentHelper'
+import { CHOICE_TYPES } from '../../utils/attachmentHelper'
 
-import { addedOptionShape } from '../utils/propTypes'
+import { addedOptionShape } from '../../utils/propTypes'
 
 const formatAttachmentName = (option, intl) => {
   const extraParams = {
@@ -27,7 +27,7 @@ const AddedAttachmentsList = ({
   }
   return (
     <Fragment>
-      <AttachmentItem 
+      <AttachmentItem
         productText={intl.formatMessage({ id: 'editor.productSummary.unit' })}
         price={parentPrice}
       />
@@ -35,7 +35,7 @@ const AddedAttachmentsList = ({
         const isSingle = option.choiceType === CHOICE_TYPES.SINGLE
         const productText = isSingle ? option.item.name : formatAttachmentName(option, intl)
         return (
-          <AttachmentItem 
+          <AttachmentItem
             productText={productText}
             price={option.item.sellingPrice * option.normalizedQuantity}
             key={productText}

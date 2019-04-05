@@ -1,3 +1,3 @@
-import ProductSummaryPrice from './components/ProductSummaryPrice'
+import ProductSummaryPrice from './components/ProductSummaryPrice/ProductSummaryPrice'
 
 export default ProductSummaryPrice

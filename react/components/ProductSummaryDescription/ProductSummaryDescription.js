@@ -1,8 +1,8 @@
 import React, { FunctionComponent, Fragment, useContext } from 'react'
 import PropTypes from 'prop-types'
 
-import ProductSummaryContext from './ProductSummaryContext'
-import productSummary from '../productSummary.css'
+import ProductSummaryContext from '../ProductSummaryContext'
+import productSummary from '../../productSummary.css'
 
 const MAX_SIZE_DESCRIPTION = 120
 

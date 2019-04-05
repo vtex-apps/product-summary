@@ -51,6 +51,10 @@ class ProductSummaryCustom extends Component {
       'overflow-hidden br3 h-100 w-100 flex flex-column justify-between center tc'
     )
 
+    const summaryClasses = classNames(
+      `${productSummary.element} pointer pt3 pb4 flex flex-column h-100`
+    )
+
     return (
       <ProductSummaryContext.Provider value={contextProps}>
         <section
@@ -64,7 +68,9 @@ class ProductSummaryCustom extends Component {
             params={{ slug: path(['linkText'], product) }}
             onClick={actionOnClick}
           >
-            {children}
+            <article className={summaryClasses}>
+              {children}
+            </article>
           </Link>
         </section>
       </ProductSummaryContext.Provider>

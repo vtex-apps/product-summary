@@ -1,12 +1,12 @@
 import React, { FunctionComponent, useContext } from 'react'
-import { productShape } from '../utils/propTypes'
+import { productShape } from '../../utils/propTypes'
 import { pathOr } from 'ramda'
 
-import ProductSummaryContext from './ProductSummaryContext'
+import ProductSummaryContext from '../ProductSummaryContext'
 import RemovedAttachmentsList from './RemovedAttachmentsList'
 import AddedAttachmentsList from './AddedAttachmentsList'
 
-import styles from '../productSummary.css'
+import styles from '../../productSummary.css'
 
 const shouldShowOption = option => option.extraQuantity > 0 || option.item.sellingPrice !== 0
 

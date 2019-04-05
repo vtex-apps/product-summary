@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
 
-import ProductSummaryContext from './ProductSummaryContext'
+import ProductSummaryContext from '../ProductSummaryContext'
 import ImageLoader from './ImageLoader'
-import { productShape } from '../utils/propTypes'
+import { productShape } from '../../utils/propTypes'
 
-import productSummary from '../productSummary.css'
+import productSummary from '../../productSummary.css'
 
 const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
   if (shouldShow) {

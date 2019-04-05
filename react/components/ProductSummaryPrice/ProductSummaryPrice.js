@@ -5,9 +5,9 @@ import classNames from 'classnames'
 import { Spinner } from 'vtex.styleguide'
 import { ProductPrice } from 'vtex.store-components'
 
-import ProductSummaryContext from './ProductSummaryContext'
-import { productShape } from '../utils/propTypes'
-import productSummary from '../productSummary.css'
+import ProductSummaryContext from '../ProductSummaryContext'
+import { productShape } from '../../utils/propTypes'
+import productSummary from '../../productSummary.css'
 
 const ProductSummaryPrice : FunctionComponent = ({
   showListPrice,

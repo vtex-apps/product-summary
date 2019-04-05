@@ -38,7 +38,41 @@ To use this app or override the default CSS you need import it in your dependenc
   }
 ```
 
-Then, add `product-summary` block into our app theme, as we do in our [Minicart app](https://github.com/vtex-apps/minicart/blob/master/store/blocks.json).
+Then, add `product-summary.flex` block into your app theme. See an example of how to configure:
+
+```json
+"shelf#home": {
+  "blocks": [
+    "product-summary.flex"
+  ]
+},
+"product-summary.flex": {
+  "children": [
+    "product-summary-image",
+    "product-summary-name",
+    "product-summary-attachment-list",
+    "_",
+    "unstable--product-summary-column#1"
+  ]
+},
+"unstable--product-summary-column#1": {
+  "children": [
+    "product-summary-price",
+    "product-summary-buy-button"
+  ]
+},
+"product-summary-price": {
+  "props": {
+    "showListPrice": true,
+    "showInstallments": true,
+    "showSavings": true
+  }
+}
+```
+
+## Legacy Usage
+
+Add `product-summary` block into our app theme, as we do in our [Minicart app](https://github.com/vtex-apps/minicart/blob/master/store/blocks.json).
 
 Now, you can change the behavior of the `product-summary` block that is in the minicart. See an example of how to configure:
 
@@ -65,14 +99,38 @@ When implementing this app as a block, various inner blocks may be available. Th
 ```json
 {
   "product-summary": {
-    "component": "index"
+    "component": "ProductSummaryLegacy"
+  },
+  "product-details.flex": {
+    "allowed": [
+      "unstable--product-summary-column",
+      "product-summary-attachment-list",
+      "product-summary-buy-button",
+      "product-summary-description",
+      "product-summary-image",
+      "product-summary-name",
+      "product-summary-price",
+      "_"
+    ],
+    "component": "ProductSummaryCustom"
   }
 }
 ```
 
-For now this block does not have any required or optional blocks.
+`product-summary` does not have any required or optional blocks, and `product-details.flex` has just optional blocks.
 
-#### Configuration
+## Components Specs
+
+Below we have a README for each component of this project that explains how to use them.
+
+- [ProductSummaryAttachmentList](/react/components/ProductSummaryAttachmentList/README.md)
+- [ProductSummaryBuyButton](/react/components/ProductSummaryBuyButton/README.md)
+- [ProductSummaryDescription](/react/components/ProductSummaryDescription/README.md)
+- [ProductSummaryImage](/react/components/ProductSummaryImage/README.md)
+- [ProductSummaryName](/react/components/ProductSummaryName/README.md)
+- [ProductSummaryPrice](/react/components/ProductSummaryPrice/README.md)
+
+#### Legacy Configuration
 
 Through the Storefront, you can change the product-summary's behavior and interface. However, you also can make in your theme app, as Store theme does.
 

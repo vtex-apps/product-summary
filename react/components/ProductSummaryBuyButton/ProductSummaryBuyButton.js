@@ -5,12 +5,12 @@ import { equals, path } from 'ramda'
 import classNames from 'classnames'
 import { FormattedMessage } from 'react-intl'
 
-import ProductSummaryContext from './ProductSummaryContext'
+import ProductSummaryContext from '../ProductSummaryContext'
 import displayButtonTypes, {
   getDisplayButtonNames,
   getDisplayButtonValues,
-} from '../utils/displayButtonTypes'
-import productSummary from '../productSummary.css'
+} from '../../utils/displayButtonTypes'
+import productSummary from '../../productSummary.css'
 
 const ProductSummaryBuyButton : FunctionComponent = ({
   displayBuyButton,

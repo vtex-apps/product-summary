@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import { string, number } from 'prop-types'
 import ProductPrice from 'vtex.store-components/ProductPrice'
 
-import styles from '../productSummary.css'
+import styles from '../../productSummary.css'
 
 const AttachmentItem = ({
   productText,
