@@ -2,7 +2,7 @@
   "product-summary": {
     "component": "ProductSummaryLegacy"
   },
-  "product-summary.flex": {
+  "product-summary.unstable--flex": {
     "allowed": [
       "unstable--product-summary-column",
       "product-summary-attachment-list",

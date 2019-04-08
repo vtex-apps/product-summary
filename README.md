@@ -38,15 +38,15 @@ To use this app or override the default CSS you need import it in your dependenc
   }
 ```
 
-Then, add `product-summary.flex` block into your app theme. See an example of how to configure:
+Then, add `product-summary.unstable--flex` block into your app theme. See an example of how to configure:
 
 ```json
 "shelf#home": {
   "blocks": [
-    "product-summary.flex"
+    "product-summary.unstable--flex"
   ]
 },
-"product-summary.flex": {
+"product-summary.unstable--flex": {
   "children": [
     "product-summary-image",
     "product-summary-name",
@@ -101,7 +101,7 @@ When implementing this app as a block, various inner blocks may be available. Th
   "product-summary": {
     "component": "ProductSummaryLegacy"
   },
-  "product-details.flex": {
+  "product-details.unstable--flex": {
     "allowed": [
       "unstable--product-summary-column",
       "product-summary-attachment-list",
@@ -117,7 +117,7 @@ When implementing this app as a block, various inner blocks may be available. Th
 }
 ```
 
-`product-summary` does not have any required or optional blocks, and `product-details.flex` has just optional blocks.
+`product-summary` does not have any required or optional blocks, and `product-details.unstable--flex` has just optional blocks.
 
 ## Components Specs
 

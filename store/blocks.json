@@ -1,5 +1,5 @@
 {
-  "product-summary.flex": {
+  "product-summary.unstable--flex": {
     "children": [
       "product-summary-image",
       "product-summary-name",
