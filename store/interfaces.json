@@ -11,7 +11,7 @@
       "product-summary-image",
       "product-summary-name",
       "product-summary-price",
-      "_"
+      "product-summary-space"
     ],
     "component": "ProductSummaryCustom",
     "composition": "children"
@@ -24,12 +24,12 @@
       "product-summary-image",
       "product-summary-name",
       "product-summary-price",
-      "_"
+      "product-summary-space"
     ],
     "component": "Column",
     "composition": "children"
   },
-  "_": {
+  "product-summary-space": {
     "component": "Spacer"
   },
   "product-summary-attachment-list": {
