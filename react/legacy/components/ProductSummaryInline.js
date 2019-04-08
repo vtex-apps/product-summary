@@ -3,7 +3,7 @@ import { path } from 'ramda'
 import classNames from 'classnames'
 import { Link } from 'vtex.render-runtime'
 
-import AttachmentList from '../../components/ProductSummaryAttachmentList/AttachmentList'
+import AttachmentList from './AttachmentList'
 import ImageLoader from '../../components/ProductSummaryImage/ImageLoader'
 import ProductImage from './ProductImage'
 import ProductSummaryBuyButton from './ProductSummaryBuyButton'

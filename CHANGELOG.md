@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.15.2] - 2019-04-08
+### Fixed
+- Legacy should use attachment list component from legacy.
+
 ## [2.15.1] - 2019-04-08
 ### Fixed
 - Rename interface `_` to `product-summary-space` to prevent conflict.
