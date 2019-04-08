@@ -4,7 +4,7 @@ import { path, prop } from 'ramda'
 import { Spinner } from 'vtex.styleguide'
 import { ProductPrice } from 'vtex.store-components'
 
-import { productShape } from '../utils/propTypes'
+import { productShape } from '../../utils/propTypes'
 
 const ProductSummaryPrice = ({
   product,
@@ -66,7 +66,7 @@ ProductSummaryPrice.propTypes = {
   isLoading: PropTypes.bool,
   /** Styles used in the container div */
   containerClass: PropTypes.string,
-  /** Styles used in the selling price */  
+  /** Styles used in the selling price */
   sellingPriceClass: PropTypes.string,
 }
 

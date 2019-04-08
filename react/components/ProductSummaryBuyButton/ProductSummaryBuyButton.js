@@ -1,23 +1,28 @@
-import React from 'react'
+import React, { FunctionComponent, useContext } from 'react'
 import BuyButton from 'vtex.store-components/BuyButton'
+import { withRuntimeContext } from 'vtex.render-runtime'
 import { equals, path } from 'ramda'
 import classNames from 'classnames'
 import { FormattedMessage } from 'react-intl'
 
-import displayButtonTypes from '../utils/displayButtonTypes'
-import productSummary from '../productSummary.css'
+import ProductSummaryContext from '../ProductSummaryContext'
+import displayButtonTypes, {
+  getDisplayButtonNames,
+  getDisplayButtonValues,
+} from '../../utils/displayButtonTypes'
+import productSummary from '../../productSummary.css'
 
-const ProductSummaryBuyButton = ({
-  product,
+const ProductSummaryBuyButton : FunctionComponent = ({
   displayBuyButton,
   isOneClickBuy,
   buyButtonText,
   runtime: {
     hints: { mobile },
   },
-  isHovering,
-  containerClass,
+  isHovering
 }) => {
+  const { product } = useContext(ProductSummaryContext)
+
   const hoverBuyButton =
     equals(displayBuyButton, displayButtonTypes.DISPLAY_ALWAYS.value) ||
     !equals(displayBuyButton, displayButtonTypes.DISPLAY_ON_HOVER.value) ||
@@ -36,6 +41,8 @@ const ProductSummaryBuyButton = ({
       [productSummary.isHidden]: !hoverBuyButton,
     }
   )
+
+  const containerClass = `${productSummary.buyButtonContainer} pv3 w-100 db`
 
   const quantity =
     path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) ||
@@ -80,4 +87,54 @@ const ProductSummaryBuyButton = ({
   )
 }
 
-export default ProductSummaryBuyButton
+ProductSummaryBuyButton.propTypes = {
+  /** Runtime context */
+  runtime: PropTypes.shape({
+    hints: PropTypes.shape({
+      /** Indicates if is on a mobile device */
+      mobile: PropTypes.bool,
+    }),
+  }),
+  /** Should redirect to checkout after clicking on buy */
+  isOneClickBuy: PropTypes.bool,
+  /** Custom buy button text */
+  buyButtonText: PropTypes.string,
+  /** Defines the display mode of buy button */
+  displayBuyButton: PropTypes.oneOf(getDisplayButtonValues()),
+}
+
+ProductSummaryBuyButton.defaultProps = {
+  displayBuyButton: displayButtonTypes.DISPLAY_ALWAYS.value,
+  isOneClickBuy: false
+}
+
+ProductSummaryBuyButton.getSchema = () => {
+  return {
+    title: 'editor.productSummary.title',
+    description: 'editor.productSummary.description',
+    type: 'object',
+    properties: {
+      isOneClickBuy: {
+        type: 'boolean',
+        title: 'editor.productSummary.isOneClickBuy.title',
+        default: false,
+        isLayout: true,
+      },
+      displayBuyButton: {
+        title: 'editor.productSummary.displayBuyButton.title',
+        type: 'string',
+        enum: getDisplayButtonValues(),
+        enumNames: getDisplayButtonNames(),
+        default: displayButtonTypes.DISPLAY_ALWAYS.value,
+        isLayout: true,
+      },
+      buyButtonText: {
+        type: 'string',
+        title: 'editor.productSummary.buyButtonText.title',
+        isLayout: false,
+      },
+    },
+  }
+}
+
+export default withRuntimeContext(ProductSummaryBuyButton)

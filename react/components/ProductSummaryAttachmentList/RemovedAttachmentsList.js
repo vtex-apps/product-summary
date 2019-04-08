@@ -4,9 +4,9 @@ import { arrayOf } from 'prop-types'
 
 import AttachmentItem from './AttachmentItem'
 
-import { removedOptionShape } from '../utils/propTypes'
+import { removedOptionShape } from '../../utils/propTypes'
 
-const wasCompletelyRemoved = ({ removedQuantity, initialQuantity }) => 
+const wasCompletelyRemoved = ({ removedQuantity, initialQuantity }) =>
 removedQuantity === 1 && removedQuantity === initialQuantity
 
 const formatAttachmentName = (missingOption, intl) => {

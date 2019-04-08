@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@vtex/test-tools/react'
 
-import ProductSummary from '../index'
+import ProductSummary from '../legacy/index'
 
 describe('<ProductSummary /> component', () => {
   const props = {

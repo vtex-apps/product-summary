@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import { ProductName } from 'vtex.store-components'
 
-import { productShape } from '../utils/propTypes'
+import { productShape } from '../../utils/propTypes'
 
 const ProductSummaryName = ({
   product,
@@ -38,7 +38,7 @@ ProductSummaryName.propTypes = {
   showFieldsProps: PropTypes.object,
   /** Styles used in the container div */
   containerClass: PropTypes.string,
-  /** Styles used in the brand name */  
+  /** Styles used in the brand name */
   brandNameClass: PropTypes.string,
 }
 
