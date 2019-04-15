@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.15.3-beta] - 2019-04-15
+
 ## [2.15.2] - 2019-04-08
 ### Fixed
 - Legacy should use attachment list component from legacy.
