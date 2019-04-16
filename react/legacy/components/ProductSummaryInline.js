@@ -7,7 +7,6 @@ import AttachmentList from './AttachmentList'
 import ImageLoader from '../../components/ProductSummaryImage/ImageLoader'
 import ProductImage from './ProductImage'
 import ProductSummaryBuyButton from './ProductSummaryBuyButton'
-import ProductQuantityStepper from './ProductQuantityStepper'
 import ProductSummaryPrice from './ProductSummaryPrice'
 import ProductSummaryName from './ProductSummaryName'
 
@@ -20,7 +19,6 @@ class ProductSummaryInline extends Component {
       showBorders,
       handleMouseEnter,
       handleMouseLeave,
-      handleItemsStateUpdate,
       actionOnClick,
       imageProps,
       nameProps,

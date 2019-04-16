@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.16.0] - 2019-04-15
+
+## [2.15.3-beta] - 2019-04-15
+
 ## [2.15.2] - 2019-04-08
 ### Fixed
 - Legacy should use attachment list component from legacy.
@@ -44,8 +48,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Remove spread on `getSchema` that was crashing site editor.
 
 ### Added
-
 - Add tests.
+- Add interface to inject the `wish-list` plugin in the normal mode.
+- Add `showQuantitySelector` props to set the quantity selector visibility in the inline mode.
 
 ## [2.14.0] - 2019-03-21
 

@@ -1,4 +1,5 @@
 export const helperMock = {
+  productId: '123',
   productName: 'Super Suprema Large',
   linkText: 'super-suprema',
   sku: {
@@ -16,6 +17,7 @@ export const helperMock = {
   },
   addedOptions: [
     {
+      productId: '123',
       productName: 'Ham',
       linkText: 'ham',
       sku: {
@@ -37,6 +39,7 @@ export const helperMock = {
       optionType: 'Toppings',
     },
     {
+      productId: '123',
       productName: 'Ham',
       linkText: 'ham',
       sku: {
@@ -58,6 +61,7 @@ export const helperMock = {
       optionType: 'Basic Toppings',
     },
     {
+      productId: '1234',
       productName: 'Pepperoni',
       linkText: 'pepperoni',
       sku: {
@@ -79,6 +83,7 @@ export const helperMock = {
       optionType: 'Toppings',
     },
     {
+      productId: '1234',
       productName: 'Pepperoni',
       linkText: 'pepperoni',
       sku: {
@@ -100,6 +105,7 @@ export const helperMock = {
       optionType: 'Basic Toppings',
     },
     {
+      productId: '12356',
       productName: 'Green Pepper',
       linkText: 'green-pepper',
       sku: {
@@ -121,6 +127,7 @@ export const helperMock = {
       optionType: 'Toppings',
     },
     {
+      productId: '12356',
       productName: 'Green Pepper',
       linkText: 'green-pepper',
       sku: {
@@ -142,6 +149,7 @@ export const helperMock = {
       optionType: 'Basic Toppings',
     },
     {
+      productId: '123568',
       productName: 'Black Olives',
       linkText: 'black-olives',
       sku: {
@@ -163,6 +171,7 @@ export const helperMock = {
       optionType: 'Basic Toppings',
     },
     {
+      productId: '1235645',
       productName: 'Champignon',
       linkText: 'champignon',
       sku: {
@@ -184,6 +193,7 @@ export const helperMock = {
       optionType: 'Basic Toppings',
     },
     {
+      productId: '1235655',
       productName: 'Onion',
       linkText: 'onion',
       sku: {
@@ -205,6 +215,7 @@ export const helperMock = {
       optionType: 'Basic Toppings',
     },
     {
+      productId: '1235655',
       productName: 'Hut Cheese',
       linkText: 'hut-cheese',
       sku: {

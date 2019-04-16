@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { path } from 'ramda'
 import classNames from 'classnames'
-import { Link } from 'vtex.render-runtime'
+import { ExtensionPoint, Link } from 'vtex.render-runtime'
 
 import AttachmentList from './AttachmentList'
 import ImageLoader from '../../components/ProductSummaryImage/ImageLoader'
@@ -49,7 +49,7 @@ class ProductSummaryNormal extends Component {
     }
 
     const priceClasses = {
-      containerClass: classNames('flex flex-column justify-end items-center', {
+      containerClass: classNames('flex flex-column justify-end items-center relative', {
         [`${productSummary.priceContainer} pv5`]: !showBorders,
       }),
       sellingPriceClass: 'dib ph2 t-body t-heading-5-ns',
@@ -67,6 +67,16 @@ class ProductSummaryNormal extends Component {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
+        <div className={`${productSummary.addToListBtn} absolute z-1 mt3`}>
+          <ExtensionPoint
+            id="add-to-list-btn#product-summary"
+            product={{
+              skuId: path(['sku', 'itemId'], product),
+              productId: path(['productId'], product),
+              quantity: 1
+            }}
+          />
+        </div>
         <Link
           className={`${productSummary.clearLink} h-100 flex flex-column`}
           page={'store.product'}

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { path } from 'ramda'
 import classNames from 'classnames'
 import { Link } from 'vtex.render-runtime'
@@ -22,6 +22,8 @@ const ProductSummaryInline = ({
   imageProps,
   nameProps,
   priceProps,
+  buyButtonProps,
+  showQuantitySelector,
 }) => {
   const containerClasses = classNames(
     productSummary.container,
@@ -65,8 +67,8 @@ const ProductSummaryInline = ({
             {path(['sku', 'image', 'imageUrl'], product) ? (
               <ProductImage {...imageProps} />
             ) : (
-              <ImageLoader />
-            )}
+                <ImageLoader />
+              )}
           </div>
           <div className={`${productSummary.information} w-70 pb2 pl3 pr3`}>
             <ProductSummaryName {...nameProps} {...nameClasses} />
@@ -75,12 +77,14 @@ const ProductSummaryInline = ({
               <div
                 className={`flex justify-end nr4 mb2 ${
                   productSummary.quantityStepperContainer
-                }`}
+                  }`}
               >
-                <ProductQuantityStepper
-                  product={product}
-                  onUpdateItemsState={handleItemsStateUpdate}
-                />
+                {showQuantitySelector && (
+                  <ProductQuantityStepper
+                    product={product}
+                    onUpdateItemsState={handleItemsStateUpdate}
+                  />
+                )}
               </div>
               <ProductSummaryPrice {...priceProps} {...priceClasses} />
             </div>
