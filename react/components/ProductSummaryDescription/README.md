@@ -2,7 +2,7 @@
 
 ## Description
 
-`ProductSummaryDescription` is a VTEX Component that render the buy button.
+`ProductSummaryDescription` is a VTEX Component that render the product description.
 This Component can be imported and used by any VTEX App.
 
 :loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
