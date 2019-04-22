@@ -49,9 +49,12 @@ class ProductSummaryNormal extends Component {
     }
 
     const priceClasses = {
-      containerClass: classNames('flex flex-column justify-end items-center relative', {
-        [`${productSummary.priceContainer} pv5`]: !showBorders,
-      }),
+      containerClass: classNames(
+        'flex flex-column justify-end items-center relative',
+        {
+          [`${productSummary.priceContainer} pv5`]: !showBorders,
+        }
+      ),
       sellingPriceClass: 'dib ph2 t-body t-heading-5-ns',
     }
 
@@ -69,11 +72,11 @@ class ProductSummaryNormal extends Component {
       >
         <div className={`${productSummary.addToListBtn} absolute z-1 mt3`}>
           <ExtensionPoint
-            id="add-to-list-btn#product-summary"
+            id="add-btn"
             product={{
               skuId: path(['sku', 'itemId'], product),
               productId: path(['productId'], product),
-              quantity: 1
+              quantity: 1,
             }}
           />
         </div>
