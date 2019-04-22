@@ -72,7 +72,7 @@ class ProductSummaryNormal extends Component {
       >
         <div className={`${productSummary.addToListBtn} absolute z-1 mt3`}>
           <ExtensionPoint
-            id="add-btn"
+            id="addon-summary-btn"
             product={{
               skuId: path(['sku', 'itemId'], product),
               productId: path(['productId'], product),
