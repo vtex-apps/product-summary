@@ -17,6 +17,7 @@
   "dependencies": {
     "vtex.store-components": "3.x",
     "vtex.store-resources": "0.x",
+    "vtex.product-review-interfaces": "1.x",
     "vtex.styleguide": "9.x"
   }
 }
