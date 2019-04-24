@@ -179,34 +179,34 @@ class ProductSummary extends Component {
 }
 
 const defaultSchema = {
-  title: 'editor.productSummary.title',
-  description: 'editor.productSummary.description',
+  title: 'admin/editor.productSummary.title',
+  description: 'admin/editor.productSummary.description',
   type: 'object',
   properties: {
     isOneClickBuy: {
       type: 'boolean',
-      title: 'editor.productSummary.isOneClickBuy.title',
+      title: 'admin/editor.productSummary.isOneClickBuy.title',
       default: false,
       isLayout: true,
     },
     showBadge: {
       type: 'boolean',
-      title: 'editor.productSummary.showBadge.title',
+      title: 'admin/editor.productSummary.showBadge.title',
       default: true,
       isLayout: true,
     },
     badgeText: {
       type: 'string',
-      title: 'editor.productSummary.badgeText.title',
+      title: 'admin/editor.productSummary.badgeText.title',
       isLayout: false,
     },
     buyButtonText: {
       type: 'string',
-      title: 'editor.productSummary.buyButtonText.title',
+      title: 'admin/editor.productSummary.buyButtonText.title',
       isLayout: false,
     },
     displayBuyButton: {
-      title: 'editor.productSummary.displayBuyButton.title',
+      title: 'admin/editor.productSummary.displayBuyButton.title',
       type: 'string',
       enum: getDisplayButtonValues(),
       enumNames: getDisplayButtonNames(),
@@ -215,7 +215,7 @@ const defaultSchema = {
     },
     showCollections: {
       type: 'boolean',
-      title: 'editor.productSummary.showCollections.title',
+      title: 'admin/editor.productSummary.showCollections.title',
       default: false,
       isLayout: true,
     },

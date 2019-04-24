@@ -108,29 +108,29 @@ ProductImage.defaultProps = {
 
 ProductImage.getSchema = () => {
   return {
-    title: 'editor.productSummary.title',
-    description: 'editor.productSummary.description',
+    title: 'admin/editor.productSummary.title',
+    description: 'admin/editor.productSummary.description',
     type: 'object',
     properties: {
       showBadge: {
         type: 'boolean',
-        title: 'editor.productSummary.showBadge.title',
+        title: 'admin/editor.productSummary.showBadge.title',
         default: ProductImage.defaultProps.showBadge,
         isLayout: true,
       },
       badgeText: {
         type: 'string',
-        title: 'editor.productSummary.badgeText.title',
+        title: 'admin/editor.productSummary.badgeText.title',
         isLayout: false,
       },
       showCollections: {
         type: 'boolean',
-        title: 'editor.productSummary.showCollections.title',
+        title: 'admin/editor.productSummary.showCollections.title',
         default: ProductImage.defaultProps.showCollections,
         isLayout: true,
       },
       displayMode: {
-        title: 'editor.productSummary.displayMode.title',
+        title: 'admin/editor.productSummary.displayMode.title',
         type: 'string',
         enum: ['normal', 'inline'],
         default: ProductImage.defaultProps.displayMode,

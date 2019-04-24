@@ -2,15 +2,15 @@ import { values, map } from 'ramda'
 
 const displayButtonTypes = {
   DISPLAY_ALWAYS: {
-    name: 'editor.productSummary.displayBuyButton.option.always',
+    name: 'admin/editor.productSummary.displayBuyButton.option.always',
     value: 'displayButtonAlways',
   },
   DISPLAY_ON_HOVER: {
-    name: 'editor.productSummary.displayBuyButton.option.hover',
+    name: 'admin/editor.productSummary.displayBuyButton.option.hover',
     value: 'displayButtonHover',
   },
   DISPLAY_NONE: {
-    name: 'editor.productSummary.displayBuyButton.option.none',
+    name: 'admin/editor.productSummary.displayBuyButton.option.none',
     value: 'displayButtonNone',
   },
 }
