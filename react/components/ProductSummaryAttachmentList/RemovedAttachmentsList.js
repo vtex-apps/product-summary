@@ -12,7 +12,7 @@ removedQuantity === 1 && removedQuantity === initialQuantity
 const formatAttachmentName = (missingOption, intl) => {
   const { name, removedQuantity } = missingOption
   if (wasCompletelyRemoved(missingOption)) {
-    return intl.formatMessage({ id: 'productSummary.missingOptionName' }, { name })
+    return intl.formatMessage({ id: 'store/productSummary.missingOptionName' }, { name })
   }
 
   const extraParams = {
@@ -20,7 +20,7 @@ const formatAttachmentName = (missingOption, intl) => {
     name,
     quantity: removedQuantity,
   }
-  return intl.formatMessage({ id: 'editor.productSummary.attachmentName' }, extraParams)
+  return intl.formatMessage({ id: 'admin/editor.productSummary.attachmentName' }, extraParams)
 }
 
 const RemovedAttachmentsList = ({

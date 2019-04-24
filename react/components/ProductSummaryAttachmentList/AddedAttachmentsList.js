@@ -14,7 +14,7 @@ const formatAttachmentName = (option, intl) => {
     name: option.item.name,
     quantity: option.extraQuantity || option.normalizedQuantity,
   }
-  return intl.formatMessage({ id: 'editor.productSummary.attachmentName' }, extraParams)
+  return intl.formatMessage({ id: 'admin/editor.productSummary.attachmentName' }, extraParams)
 }
 
 const AddedAttachmentsList = ({
@@ -28,7 +28,7 @@ const AddedAttachmentsList = ({
   return (
     <Fragment>
       <AttachmentItem
-        productText={intl.formatMessage({ id: 'editor.productSummary.unit' })}
+        productText={intl.formatMessage({ id: 'admin/editor.productSummary.unit' })}
         price={parentPrice}
       />
       {addedOptions.map(option => {

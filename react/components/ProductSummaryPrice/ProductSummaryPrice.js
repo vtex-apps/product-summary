@@ -83,36 +83,36 @@ ProductSummaryPrice.defaultProps = {
 
 ProductSummaryPrice.getSchema = () => {
   return {
-    title: 'editor.productSummary.title',
-    description: 'editor.productSummary.description',
+    title: 'admin/editor.productSummary.title',
+    description: 'admin/editor.productSummary.description',
     type: 'object',
     properties: {
       showListPrice: {
         type: 'boolean',
-        title: 'editor.productSummary.showListPrice.title',
+        title: 'admin/editor.productSummary.showListPrice.title',
         default: ProductSummaryPrice.defaultProps.showListPrice,
         isLayout: true,
       },
       showInstallments: {
         type: 'boolean',
-        title: 'editor.productSummary.showInstallments.title',
+        title: 'admin/editor.productSummary.showInstallments.title',
         default: ProductSummaryPrice.defaultProps.showInstallments,
         isLayout: true,
       },
       showLabels: {
         type: 'boolean',
-        title: 'editor.productSummary.showLabels.title',
+        title: 'admin/editor.productSummary.showLabels.title',
         default: ProductSummaryPrice.defaultProps.showLabels,
         isLayout: true,
       },
       labelSellingPrice: {
         type: 'string',
-        title: 'editor.productSummary.labelSellingPrice.title',
+        title: 'admin/editor.productSummary.labelSellingPrice.title',
         isLayout: false,
       },
       showBorders: {
         type: 'boolean',
-        title: 'editor.productSummary.showBorders.title',
+        title: 'admin/editor.productSummary.showBorders.title',
         default: ProductSummaryPrice.defaultProps.showBorders,
         isLayout: true,
       },

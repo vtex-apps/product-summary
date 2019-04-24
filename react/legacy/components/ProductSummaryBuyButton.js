@@ -72,7 +72,7 @@ const ProductSummaryBuyButton = ({
             }
             isOneClickBuy={isOneClickBuy}
           >
-            {buyButtonText || <FormattedMessage id="button-label" />}
+            {buyButtonText || <FormattedMessage id="store/button-label" />}
           </BuyButton>
         </div>
       </div>

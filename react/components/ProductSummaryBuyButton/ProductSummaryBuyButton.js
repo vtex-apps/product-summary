@@ -79,7 +79,7 @@ const ProductSummaryBuyButton : FunctionComponent = ({
             }
             isOneClickBuy={isOneClickBuy}
           >
-            {buyButtonText || <FormattedMessage id="button-label" />}
+            {buyButtonText || <FormattedMessage id="store/button-label" />}
           </BuyButton>
         </div>
       </div>
@@ -110,18 +110,18 @@ ProductSummaryBuyButton.defaultProps = {
 
 ProductSummaryBuyButton.getSchema = () => {
   return {
-    title: 'editor.productSummary.title',
-    description: 'editor.productSummary.description',
+    title: 'admin/editor.productSummary.title',
+    description: 'admin/editor.productSummary.description',
     type: 'object',
     properties: {
       isOneClickBuy: {
         type: 'boolean',
-        title: 'editor.productSummary.isOneClickBuy.title',
+        title: 'admin/editor.productSummary.isOneClickBuy.title',
         default: false,
         isLayout: true,
       },
       displayBuyButton: {
-        title: 'editor.productSummary.displayBuyButton.title',
+        title: 'admin/editor.productSummary.displayBuyButton.title',
         type: 'string',
         enum: getDisplayButtonValues(),
         enumNames: getDisplayButtonNames(),
@@ -130,7 +130,7 @@ ProductSummaryBuyButton.getSchema = () => {
       },
       buyButtonText: {
         type: 'string',
-        title: 'editor.productSummary.buyButtonText.title',
+        title: 'admin/editor.productSummary.buyButtonText.title',
         isLayout: false,
       },
     },
