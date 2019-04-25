@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.18.0] - 2019-04-25
+
+### Added
+- Allow `product-rating-inline` in `product-summary.unstable--flex`.
+
 ## [2.17.0] - 2019-04-24
 ### Changed
 - Scope Messages
