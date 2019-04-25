@@ -71,6 +71,8 @@ class ProductSummary extends Component {
     displayMode: PropTypes.oneOf(['normal', 'small', 'inline', 'inlinePrice']),
     /** Function that is executed when a product is clicked */
     actionOnClick: PropTypes.func,
+    /** Set the price align to left */
+    priceAlignLeft: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -128,6 +130,7 @@ class ProductSummary extends Component {
       labelSellingPrice,
       name: showFieldsProps,
       showQuantitySelector,
+      priceAlignLeft,
     } = this.props
 
     const imageProps = {
@@ -173,6 +176,7 @@ class ProductSummary extends Component {
         priceProps={priceProps}
         buyButtonProps={buyButtonProps}
         showQuantitySelector={showQuantitySelector}
+        priceAlignLeft={priceAlignLeft}
       />
     )
   }
