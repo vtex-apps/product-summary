@@ -1,8 +1,8 @@
-.imageContainer {
+.containerInline .imageContainer {
   max-width: 30%;
 }
 
-.imageContainer > img {
+.containerInline .imageContainer > img {
   max-height: 100%;
 }
 
