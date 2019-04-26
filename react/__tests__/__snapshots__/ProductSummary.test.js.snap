@@ -71,10 +71,10 @@ exports[`<ProductSummary /> component should match the snapshot for inline price
     class="container containerInline overflow-hidden br3 h-100 w-100"
   >
     <article
-      class="element pointer ph2 pt3 pb4 flex flex-column"
+      class="element pointer ph2 pt3 pb4 flex flex-column h-100"
     >
       <div
-        class="imageContainer db w-30"
+        class="imageContainer db h-100"
       >
         <div>
           ContentLoader
@@ -101,7 +101,7 @@ exports[`<ProductSummary /> component should match the snapshot for inline price
             </div>
           </div>
           <div
-            class="flex flex-column items-end nr1 h1 priceContainer pv5"
+            class="flex flex-column nr1 h1 items-end priceContainer pv5"
           >
             <div>
               ProductPrice
@@ -123,7 +123,7 @@ exports[`<ProductSummary /> component should match the snapshot for normal mode 
       class="addToListBtn absolute z-1 mt3"
     >
       <div
-        id="add-to-list-btn#product-summary"
+        id="addon-summary-btn"
         product="[object Object]"
       />
     </div>
