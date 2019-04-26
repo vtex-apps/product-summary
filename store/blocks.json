@@ -1,4 +1,19 @@
 {
+  "product-summary.shelf": {
+    "children": [
+      "product-summary-image",
+      "product-summary-name",
+      "product-summary-attachment-list",
+      "product-summary-space",
+      "product-summary-column#1"
+    ]
+  },
+  "product-summary-column#1": {
+    "children": [
+      "product-summary-price",
+      "product-summary-buy-button"
+    ]
+  },
   "product-summary.unstable--flex": {
     "children": [
       "product-summary-image",
