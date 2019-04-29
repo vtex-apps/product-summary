@@ -1,7 +1,7 @@
 {
   "product-summary": {
     "component": "ProductSummaryLegacy",
-    "allowed": ["add-to-list-btn#product-summary"]
+    "allowed": ["addon-summary-btn"]
   },
   "product-summary.shelf": {
     "allowed": [
@@ -80,7 +80,7 @@
   "product-summary-price": {
     "component": "ProductSummaryPrice"
   },
-  "add-to-list-btn#product-summary": {
+  "addon-summary-btn": {
     "component": "*"
   }
 }

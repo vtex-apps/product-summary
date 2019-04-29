@@ -22,8 +22,8 @@ const ProductSummaryInline = ({
   imageProps,
   nameProps,
   priceProps,
-  buyButtonProps,
   showQuantitySelector,
+  priceAlignLeft,
 }) => {
   const containerClasses = classNames(
     productSummary.container,
@@ -32,7 +32,7 @@ const ProductSummaryInline = ({
   )
 
   const summaryClasses = classNames(
-    `${productSummary.element} pointer ph2 pt3 pb4 flex flex-column`,
+    `${productSummary.element} pointer ph2 pt3 pb4 flex flex-column h-100`,
     {
       'bb b--muted-4 mh2 mh3-ns mt2': showBorders,
     }
@@ -44,7 +44,9 @@ const ProductSummaryInline = ({
   }
 
   const priceClasses = {
-    containerClass: classNames('flex flex-column items-end nr1 h1', {
+    containerClass: classNames('flex flex-column nr1 h1', {
+      'items-start': priceAlignLeft,
+      'items-end': !priceAlignLeft,
       [`${productSummary.priceContainer} pv5`]: !showBorders,
     }),
     sellingPriceClass: 'dib ph2 t-body t-heading-5-ns',
@@ -58,12 +60,12 @@ const ProductSummaryInline = ({
     >
       <article className={summaryClasses}>
         <Link
-          className={`${productSummary.clearLink} flex`}
+          className={`${productSummary.clearLink} flex h-100`}
           page={'store.product'}
           params={{ slug: path(['linkText'], product) }}
           onClick={actionOnClick}
         >
-          <div className={`${productSummary.imageContainer} db w-30`}>
+          <div className={`${productSummary.imageContainer} db h-100`}>
             {path(['sku', 'image', 'imageUrl'], product) ? (
               <ProductImage {...imageProps} />
             ) : (

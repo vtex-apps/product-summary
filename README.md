@@ -98,6 +98,8 @@ Through the Storefront, you can change the product-summary's behavior and interf
 | `displayMode`       | `Enum`    | Set display mode of product summary (normal, small, inline or inlinePrice)                               |
 | `showQuantitySelector`       | `Boolean`    | Set the quantity selector visibility              
 |
+| `priceAlignLeft`       | `Boolean`    | Set the price to be left aligned              
+|
 
 Also, you can configure the block [add-to-list-btn#product-summary](https://github.com/vtex-apps/wishlist) defined on product-summary.
 

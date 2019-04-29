@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.19.0] - 2019-04-29
+### Fixed
+- Interfaces to inject the `wishlist` plugins.
+- `inlinePrice` height to fit its parent's height.
+
 ## [2.18.1] - 2019-04-26
 ### Changed
 - Rename `product-summary.unstable--flex` to `product-summary.shelf`
