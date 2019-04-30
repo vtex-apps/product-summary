@@ -39,6 +39,10 @@ const ProductImage = ({
   showCollections,
   displayMode,
 }) => {
+  if (!path(['sku', 'image', 'imageUrl'], product)) {
+    return <ImagePlaceholder />
+  }
+
   const {
     productClusters,
     productName: name,
@@ -46,10 +50,6 @@ const ProductImage = ({
       image: { imageUrl },
     },
   } = product
-
-  if (!path(['sku', 'image', 'imageUrl'], product)) {
-    return <ImagePlaceholder />
-  }
 
   const imageClassName = classNames({
     [productSummary.imageNormal]: displayMode !== 'inline',
