@@ -9,7 +9,7 @@ import ProductSummaryBuyButton from './ProductSummaryBuyButton'
 import ProductSummaryPrice from './ProductSummaryPrice'
 import ProductSummaryName from './ProductSummaryName'
 
-import productSummary from '../../productSummary.css'
+import styles from '../../productSummary.css'
 
 class ProductSummarySmall extends Component {
   render() {
@@ -26,13 +26,14 @@ class ProductSummarySmall extends Component {
     } = this.props
 
     const containerClasses = classNames(
-      productSummary.container,
-      productSummary.containerSmall,
+      styles.container,
+      styles.containerSmall,
       'overflow-hidden br3 h-100 flex flex-column justify-between center tc'
     )
 
     const summaryClasses = classNames(
-      `${productSummary.element} pointer pt3 pb4 flex flex-column`,
+      styles.element,
+      'pointer pt3 pb4 flex flex-column',
       {
         'bb b--muted-4 mh2 mt2': showBorders,
       }
@@ -40,20 +41,20 @@ class ProductSummarySmall extends Component {
 
     const nameClasses = {
       containerClass: `flex items-start ${
-        productSummary.nameContainer
+        styles.nameContainer
       } justify-center pv5 t-mini pb2`,
       brandNameClass: 't-body t-mini',
     }
 
     const priceClasses = {
       containerClass: classNames('flex flex-column justify-end items-center', {
-        [`${productSummary.priceContainer} pv5`]: !showBorders,
+        [`${styles.priceContainer} pv5`]: !showBorders,
       }),
       sellingPriceClass: 'dib ph2 t-body t-heading-5-ns',
     }
 
     const buyButtonClasses = {
-      containerClass: `${productSummary.buyButtonContainer} pv3 w-100 dn`,
+      containerClass: `${styles.buyButtonContainer} pv3 w-100 dn`,
     }
 
     return (
@@ -63,16 +64,16 @@ class ProductSummarySmall extends Component {
         onMouseLeave={handleMouseLeave}
       >
         <Link
-          className={`${productSummary.clearLink} flex flex-column`}
+          className={`${styles.clearLink} flex flex-column`}
           page={'store.product'}
           params={{ slug: path(['linkText'], product) }}
           onClick={actionOnClick}
         >
           <article className={summaryClasses}>
-            <div className={`${productSummary.imageContainer} db w-100 center`}>
+            <div className={`${styles.imageContainer} db w-100 center`}>
               <ProductImage {...imageProps} />
             </div>
-            <div className={productSummary.information}>
+            <div className={styles.information}>
               <ProductSummaryName {...nameProps} {...nameClasses} />
               <AttachmentList product={product} />
               <div>
