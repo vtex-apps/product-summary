@@ -13,7 +13,7 @@ const ProductSummaryPrice = ({
   showInstallments,
   labelSellingPrice,
   isLoading,
-  containerClass
+  containerClass,
 }) => {
   const commertialOffer = path(['sku', 'seller', 'commertialOffer'], product)
 
@@ -25,28 +25,32 @@ const ProductSummaryPrice = ({
     )
   }
 
+  const sellingPrice = prop('Price', commertialOffer)
+
   return (
     <div className={containerClass}>
-      <ProductPrice
-        className="flex flex-column justify-start"
-        listPriceContainerClass="pv1 normal c-muted-2"
-        listPriceLabelClass="dib strike t-small t-mini"
-        listPriceClass="dib ph2 strike t-small-ns t-mini"
-        sellingPriceContainerClass="pt1 pb3 c-on-base"
-        sellingPriceLabelClass="dib"
-        sellingPriceClass="dib ph2 t-body t-heading-5-ns"
-        savingsContainerClass="t-small-ns c-muted-2"
-        savingsClass="dib"
-        interestRateClass="dib pl2"
-        installmentContainerClass="t-small-ns c-muted-2"
-        listPrice={prop('ListPrice', commertialOffer)}
-        sellingPrice={prop('Price', commertialOffer)}
-        installments={prop('Installments', commertialOffer)}
-        showListPrice={showListPrice}
-        showLabels={showLabels}
-        showInstallments={showInstallments}
-        labelSellingPrice={labelSellingPrice}
-      />
+      {sellingPrice !== 0 && (
+        <ProductPrice
+          className="flex flex-column justify-start"
+          listPriceContainerClass="pv1 normal c-muted-2"
+          listPriceLabelClass="dib strike t-small t-mini"
+          listPriceClass="dib ph2 strike t-small-ns t-mini"
+          sellingPriceContainerClass="pt1 pb3 c-on-base"
+          sellingPriceLabelClass="dib"
+          sellingPriceClass="dib ph2 t-body t-heading-5-ns"
+          savingsContainerClass="t-small-ns c-muted-2"
+          savingsClass="dib"
+          interestRateClass="dib pl2"
+          installmentContainerClass="t-small-ns c-muted-2"
+          listPrice={prop('ListPrice', commertialOffer)}
+          sellingPrice={prop('Price', commertialOffer)}
+          installments={prop('Installments', commertialOffer)}
+          showListPrice={showListPrice}
+          showLabels={showLabels}
+          showInstallments={showInstallments}
+          labelSellingPrice={labelSellingPrice}
+        />
+      )}
     </div>
   )
 }

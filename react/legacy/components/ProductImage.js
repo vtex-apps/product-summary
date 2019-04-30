@@ -1,10 +1,11 @@
 import React from 'react'
-import { pathOr, compose } from 'ramda'
+import { path, pathOr, compose } from 'ramda'
 import PropTypes from 'prop-types'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
 
 import { productShape } from '../../utils/propTypes'
+import { ImagePlaceholder } from '../../components/ProductSummaryImage/ProductImage'
 
 import productSummary from '../../productSummary.css'
 
@@ -45,6 +46,10 @@ const ProductImage = ({
       image: { imageUrl },
     },
   } = product
+
+  if (!path(['sku', 'image', 'imageUrl'], product)) {
+    return <ImagePlaceholder />
+  }
 
   const imageClassName = classNames({
     [productSummary.imageNormal]: displayMode !== 'inline',

@@ -4,8 +4,7 @@ import classNames from 'classnames'
 import { ExtensionPoint, Link } from 'vtex.render-runtime'
 
 import AttachmentList from './AttachmentList'
-import ImageLoader from '../../components/ProductSummaryImage/ImageLoader'
-import ProductImage from './ProductImage'
+import ProductImage, { ImagePlaceholder } from './ProductImage'
 import ProductSummaryBuyButton from './ProductSummaryBuyButton'
 import ProductSummaryPrice from './ProductSummaryPrice'
 import ProductSummaryName from './ProductSummaryName'
@@ -88,11 +87,7 @@ class ProductSummaryNormal extends Component {
         >
           <article className={summaryClasses}>
             <div className={`${productSummary.imageContainer} db w-100 center`}>
-              {path(['sku', 'image', 'imageUrl'], product) ? (
-                <ProductImage {...imageProps} />
-              ) : (
-                <ImageLoader />
-              )}
+              <ProductImage {...imageProps} />
             </div>
             <div
               className={`${

@@ -4,7 +4,6 @@ import classNames from 'classnames'
 import { Link } from 'vtex.render-runtime'
 
 import AttachmentList from './AttachmentList'
-import ImageLoader from '../../components/ProductSummaryImage/ImageLoader'
 import ProductImage from './ProductImage'
 import ProductQuantityStepper from './ProductQuantityStepper'
 import ProductSummaryPrice from './ProductSummaryPrice'
@@ -66,11 +65,7 @@ const ProductSummaryInline = ({
           onClick={actionOnClick}
         >
           <div className={`${productSummary.imageContainer} db h-100`}>
-            {path(['sku', 'image', 'imageUrl'], product) ? (
-              <ProductImage {...imageProps} />
-            ) : (
-                <ImageLoader />
-              )}
+            <ProductImage {...imageProps} />
           </div>
           <div className={`${productSummary.information} w-70 pb2 pl3 pr3`}>
             <ProductSummaryName {...nameProps} {...nameClasses} />
@@ -79,7 +74,7 @@ const ProductSummaryInline = ({
               <div
                 className={`flex justify-end nr4 mb2 ${
                   productSummary.quantityStepperContainer
-                  }`}
+                }`}
               >
                 {showQuantitySelector && (
                   <ProductQuantityStepper

@@ -4,7 +4,6 @@ import classNames from 'classnames'
 import { Link } from 'vtex.render-runtime'
 
 import AttachmentList from './AttachmentList'
-import ImageLoader from '../../components/ProductSummaryImage/ImageLoader'
 import ProductImage from './ProductImage'
 import ProductSummaryBuyButton from './ProductSummaryBuyButton'
 import ProductSummaryPrice from './ProductSummaryPrice'
@@ -32,12 +31,17 @@ class ProductSummarySmall extends Component {
       'overflow-hidden br3 h-100 flex flex-column justify-between center tc'
     )
 
-    const summaryClasses = classNames(`${productSummary.element} pointer pt3 pb4 flex flex-column`, {
-      'bb b--muted-4 mh2 mt2': showBorders,
-    })
+    const summaryClasses = classNames(
+      `${productSummary.element} pointer pt3 pb4 flex flex-column`,
+      {
+        'bb b--muted-4 mh2 mt2': showBorders,
+      }
+    )
 
     const nameClasses = {
-      containerClass: `flex items-start ${productSummary.nameContainer} justify-center pv5 t-mini pb2`,
+      containerClass: `flex items-start ${
+        productSummary.nameContainer
+      } justify-center pv5 t-mini pb2`,
       brandNameClass: 't-body t-mini',
     }
 
@@ -66,9 +70,7 @@ class ProductSummarySmall extends Component {
         >
           <article className={summaryClasses}>
             <div className={`${productSummary.imageContainer} db w-100 center`}>
-              {path(['sku', 'image', 'imageUrl'], product)
-                ? <ProductImage {...imageProps} />
-                : <ImageLoader />}
+              <ProductImage {...imageProps} />
             </div>
             <div className={productSummary.information}>
               <ProductSummaryName {...nameProps} {...nameClasses} />
