@@ -4,7 +4,6 @@ import classNames from 'classnames'
 import { Link } from 'vtex.render-runtime'
 
 import AttachmentList from './AttachmentList'
-import ImageLoader from '../../components/ProductSummaryImage/ImageLoader'
 import ProductImage from './ProductImage'
 import ProductSummaryBuyButton from './ProductSummaryBuyButton'
 import ProductSummaryPrice from './ProductSummaryPrice'
@@ -71,11 +70,7 @@ class ProductSummaryInline extends Component {
         >
           <article className="flex">
             <div className={`${productSummary.imageContainer} db w-70`}>
-              {path(['sku', 'image', 'imageUrl'], product) ? (
-                <ProductImage {...imageProps} />
-              ) : (
-                <ImageLoader />
-              )}
+              <ProductImage {...imageProps} />
             </div>
             <div
               className={`${
