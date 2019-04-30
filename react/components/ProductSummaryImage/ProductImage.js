@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext } from 'react'
+import React, { useContext } from 'react'
 import { pathOr, compose, path } from 'ramda'
 import PropTypes from 'prop-types'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
@@ -47,20 +47,20 @@ export const ImagePlaceholder = () => (
       width="144.286"
       height="150.474"
       stroke="#CACBCC"
-      stroke-width="2"
+      strokeWidth="2"
     />
-    <path d="M183.78 303.688H328.214" stroke="#CACBCC" stroke-width="2" />
+    <path d="M183.78 303.688H328.214" stroke="#CACBCC" strokeWidth="2" />
     <path
       d="M205.082 279.563L223.599 240.507L242.116 260.035L269.892 220.979L306.926 279.563H205.082Z"
       stroke="#CACBCC"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M252.225 213.939C252.225 219.822 247.66 224.52 242.114 224.52C236.569 224.52 232.004 219.822 232.004 213.939C232.004 208.057 236.569 203.359 242.114 203.359C247.66 203.359 252.225 208.057 252.225 213.939Z"
       stroke="#CACBCC"
-      stroke-width="2"
+      strokeWidth="2"
     />
   </svg>
 )
@@ -107,7 +107,7 @@ const ProductImageContent = ({
   )(img)
 }
 
-const ProductImage: FunctionComponent = props => {
+const ProductImage = props => {
   const { product } = useContext(ProductSummaryContext)
   const imageClassName = classNames(productSummary.imageContainer, {
     'db w-100 center': props.displayMode !== 'inline',
