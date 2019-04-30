@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext } from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import { ProductName } from 'vtex.store-components'
@@ -7,7 +7,7 @@ import ProductSummaryContext from '../ProductSummaryContext'
 import { productShape } from '../../utils/propTypes'
 import productSummary from '../../productSummary.css'
 
-const ProductSummaryName : FunctionComponent = ({
+const ProductSummaryName = ({
   showFieldsProps
 }) => {
   const { product } = useContext(ProductSummaryContext)
