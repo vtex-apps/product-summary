@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext } from 'react'
+import React, { useContext } from 'react'
 import BuyButton from 'vtex.store-components/BuyButton'
 import { withRuntimeContext } from 'vtex.render-runtime'
 import { equals, path } from 'ramda'
@@ -12,7 +12,7 @@ import displayButtonTypes, {
 } from '../../utils/displayButtonTypes'
 import productSummary from '../../productSummary.css'
 
-const ProductSummaryBuyButton : FunctionComponent = ({
+const ProductSummaryBuyButton = ({
   displayBuyButton,
   isOneClickBuy,
   buyButtonText,

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext } from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { path, prop } from 'ramda'
 import classNames from 'classnames'
@@ -9,7 +9,7 @@ import ProductSummaryContext from '../ProductSummaryContext'
 import { productShape } from '../../utils/propTypes'
 import productSummary from '../../productSummary.css'
 
-const ProductSummaryPrice: FunctionComponent = ({
+const ProductSummaryPrice = ({
   showListPrice,
   showLabels,
   showInstallments,
