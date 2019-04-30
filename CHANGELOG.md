@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.19.2] - 2019-04-30
+### Fixed
+- Fix `ProductImage` product evaluation.
+
 ## [2.19.1] - 2019-04-30
 ### Fixed
 - Do not render `ProductPrice` when selling price is zero.
