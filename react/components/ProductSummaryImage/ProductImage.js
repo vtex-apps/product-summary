@@ -33,7 +33,12 @@ const maybeCollection = ({ productClusters }) => shouldShow => component => {
 }
 
 export const ImagePlaceholder = () => (
-  <div className={productSummary.imagePlaceholder}>
+  <div className="relative">
+    <div
+      className={`absolute w-100 h-100 contain bg-center ${
+        productSummary.imagePlaceholder
+      }`}
+    />
     <svg
       width="100%"
       height="100%"
