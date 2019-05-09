@@ -6,7 +6,7 @@ This is a VTEX app that is used by store theme.
 
 :loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request
 
-## Release schedule
+## Release scheduleasdasdad
 
 | Release |       Status        | Initial Release | Maintenance LTS Start | End-of-life | Store Compatibility |
 | :-----: | :-----------------: | :-------------: | :-------------------: | :---------: | :-----------------: |
