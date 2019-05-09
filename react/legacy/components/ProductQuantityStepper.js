@@ -44,7 +44,7 @@ class ProductQuantityStepper extends Component {
       if (!canIncrease) {
         showToast({
           message: intl.formatMessage({
-            id: 'admin/editor.productSummary.quantity-error',
+            id: 'store/productSummary.quantity-error',
           }),
         })
       }

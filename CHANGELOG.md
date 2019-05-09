@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.20.1] - 2019-05-09
+### Fixed
+- Attachment related messages had IDs like storefront props and were not showing properly after message scope change.
+
 ## [2.20.0] - 2019-05-08
 ### Added
 - Add a `imagePlaceholder` CSS handler.

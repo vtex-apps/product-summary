@@ -20,7 +20,7 @@ const formatAttachmentName = (missingOption, intl) => {
     name,
     quantity: removedQuantity,
   }
-  return intl.formatMessage({ id: 'admin/editor.productSummary.attachmentName' }, extraParams)
+  return intl.formatMessage({ id: 'store/productSummary.attachmentName' }, extraParams)
 }
 
 const RemovedAttachmentsList = ({

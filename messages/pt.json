@@ -11,9 +11,9 @@
   "admin/editor.productSummary.displayBuyButton.title": "Modo de visualização dos botões de compra",
   "admin/editor.productSummary.displayBuyButton.option.none": "Nunca mostrar",
   "admin/editor.productSummary.displayBuyButton.option.always": "Sempre mostrar",
-  "admin/editor.productSummary.quantity-error": "Não foi possível selecionar a quantidade especificada",
-  "admin/editor.productSummary.unit": "Unidade",
-  "admin/editor.productSummary.attachmentName": "{sign} {quantity}x {name}",
   "admin/editor.productSummary.displayBuyButton.option.hover": "Mostrar ao passar o mouse (web)",
+  "store/productSummary.quantity-error": "Não foi possível selecionar a quantidade especificada",
+  "store/productSummary.unit": "Unidade",
+  "store/productSummary.attachmentName": "{sign} {quantity}x {name}",
   "store/productSummary.missingOptionName": "Sem {name}"
 }
