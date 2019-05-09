@@ -12,8 +12,8 @@
   "admin/editor.productSummary.displayBuyButton.option.none": "admin/editor.productSummary.displayBuyButton.option.none",
   "admin/editor.productSummary.displayBuyButton.option.always": "admin/editor.productSummary.displayBuyButton.option.always",
   "admin/editor.productSummary.displayBuyButton.option.hover": "admin/editor.productSummary.displayBuyButton.option.hover",
-  "admin/editor.productSummary.quantity-error": "admin/editor.productSummary.quantity-error",
-  "admin/editor.productSummary.unit": "admin/editor.productSummary.unit",
-  "admin/editor.productSummary.attachmentName": "admin/editor.productSummary.attachmentName",
+  "store/productSummary.quantity-error": "store/productSummary.quantity-error",
+  "store/productSummary.unit": "store/productSummary.unit",
+  "store/productSummary.attachmentName": "store/productSummary.attachmentName",
   "store/productSummary.missingOptionName": "String displayed when the assembly option was removed by user"
 }
