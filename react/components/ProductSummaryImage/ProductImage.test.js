@@ -21,5 +21,5 @@ test('should show placeholder on error', () => {
   const image = getByAltText(productName)
 
   fireEvent.error(image)
-  getByTestId('image-placeholder')
+  expect(getByTestId('image-placeholder')).toBeDefined()
 })
