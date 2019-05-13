@@ -8,19 +8,18 @@ test('should show placeholder on error', () => {
   const mock = {
     product: {
       productName,
-      sku: {image: { imageUrl: 'foo'} }
-    }
+      sku: { image: { imageUrl: 'foo' } },
+    },
   }
 
-  const { getByAltText, debug } = render(
+  const { getByAltText, getByTestId } = render(
     <ProductSummaryContext.Provider value={mock}>
       <ProductImage />
     </ProductSummaryContext.Provider>
   )
 
   const image = getByAltText(productName)
-  
-  fireEvent.error(image)
 
-  debug()
+  fireEvent.error(image)
+  getByTestId('image-placeholder')
 })

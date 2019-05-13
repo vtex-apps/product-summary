@@ -45,6 +45,7 @@ export const ImagePlaceholder = () => (
       viewBox="0 0 512 512"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      data-testid="image-placeholder"
     >
       <rect width="512" height="512" fill="#F2F2F2" />
       <rect
@@ -122,7 +123,7 @@ const ProductImageContent = ({
 
 const ProductImage = props => {
   const { product } = useContext(ProductSummaryContext)
-  
+
   const [error, setError] = useState(false)
   const imageClassName = classNames(productSummary.imageContainer, {
     'db w-100 center': props.displayMode !== 'inline',
