@@ -18,6 +18,7 @@ exports[`<ProductSummary /> component should match the snapshot for inline norma
             class="imagePlaceholder absolute w-100 h-100 contain bg-center"
           />
           <svg
+            data-testid="image-placeholder"
             fill="none"
             height="100%"
             viewBox="0 0 512 512"
@@ -125,6 +126,7 @@ exports[`<ProductSummary /> component should match the snapshot for inline price
             class="imagePlaceholder absolute w-100 h-100 contain bg-center"
           />
           <svg
+            data-testid="image-placeholder"
             fill="none"
             height="100%"
             viewBox="0 0 512 512"
@@ -224,6 +226,7 @@ exports[`<ProductSummary /> component should match the snapshot for normal mode 
             class="imagePlaceholder absolute w-100 h-100 contain bg-center"
           />
           <svg
+            data-testid="image-placeholder"
             fill="none"
             height="100%"
             viewBox="0 0 512 512"
@@ -321,6 +324,7 @@ exports[`<ProductSummary /> component should match the snapshot for small mode 1
             class="imagePlaceholder absolute w-100 h-100 contain bg-center"
           />
           <svg
+            data-testid="image-placeholder"
             fill="none"
             height="100%"
             viewBox="0 0 512 512"
