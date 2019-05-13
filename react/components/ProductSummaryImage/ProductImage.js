@@ -108,7 +108,7 @@ const ProductImageContent = ({
   const img = (
     <img
       className={imageContentClassName}
-      src={`${imageUrl}/dasdasdasa`}
+      src={imageUrl}
       alt={name}
       onError={onError}
     />
