@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { pathOr, compose, path } from 'ramda'
 import PropTypes from 'prop-types'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
@@ -78,6 +78,7 @@ const ProductImageContent = ({
   badgeText,
   showCollections,
   displayMode,
+  onError,
 }) => {
   const {
     productClusters,
@@ -105,7 +106,12 @@ const ProductImageContent = ({
   })
   const withCollection = maybeCollection({ productClusters })
   const img = (
-    <img className={imageContentClassName} src={imageUrl} alt={name} />
+    <img
+      className={imageContentClassName}
+      src={`${imageUrl}/dasdasdasa`}
+      alt={name}
+      onError={onError}
+    />
   )
 
   return compose(
@@ -116,13 +122,19 @@ const ProductImageContent = ({
 
 const ProductImage = props => {
   const { product } = useContext(ProductSummaryContext)
+  const [error, setError] = useState(false)
   const imageClassName = classNames(productSummary.imageContainer, {
     'db w-100 center': props.displayMode !== 'inline',
   })
+
   return (
     <div className={imageClassName}>
-      {path(['sku', 'image', 'imageUrl'], product) ? (
-        <ProductImageContent {...props} product={product} />
+      {path(['sku', 'image', 'imageUrl'], product) && !error ? (
+        <ProductImageContent
+          {...props}
+          product={product}
+          onError={() => setError(true)}
+        />
       ) : (
         <ImagePlaceholder />
       )}

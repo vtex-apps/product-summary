@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { path, pathOr, compose } from 'ramda'
 import PropTypes from 'prop-types'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
@@ -39,7 +39,8 @@ const ProductImage = ({
   showCollections,
   displayMode,
 }) => {
-  if (!path(['sku', 'image', 'imageUrl'], product)) {
+  const [error, setError] = useState(false)
+  if (!path(['sku', 'image', 'imageUrl'], product) || error) {
     return <ImagePlaceholder />
   }
 
@@ -68,7 +69,14 @@ const ProductImage = ({
     label: badgeText,
   })
   const withCollection = maybeCollection({ productClusters })
-  const img = <img className={imageClassName} src={imageUrl} alt={name} />
+  const img = (
+    <img
+      className={imageClassName}
+      src={imageUrl}
+      alt={name}
+      onError={() => setError(true)}
+    />
+  )
 
   return compose(
     withBadge(showBadge),
