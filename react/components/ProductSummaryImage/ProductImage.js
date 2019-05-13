@@ -122,6 +122,7 @@ const ProductImageContent = ({
 
 const ProductImage = props => {
   const { product } = useContext(ProductSummaryContext)
+  
   const [error, setError] = useState(false)
   const imageClassName = classNames(productSummary.imageContainer, {
     'db w-100 center': props.displayMode !== 'inline',
