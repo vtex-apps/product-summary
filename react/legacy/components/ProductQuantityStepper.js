@@ -64,8 +64,7 @@ class ProductQuantityStepper extends Component {
     const { product, updateItems } = this.props
     this.setState({ canIncrease: true })
     const {
-      sku: { itemId: id },
-      seller = {},
+      sku: { itemId: id, seller = {} },
       cartIndex,
     } = product
     try {

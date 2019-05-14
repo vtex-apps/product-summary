@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.20.3] - 2019-05-14
+### Fixed
+- ProductQuantityStepper was sending undefined seller param to updateItems mutation.
+
 ## [2.20.2] - 2019-05-13
 ### Fixed
 - Show `ImagePlaceholder` when the image cannot be fetched (e.g.: offline).
