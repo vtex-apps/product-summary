@@ -63,11 +63,12 @@ class ProductQuantityStepper extends Component {
   updateItemQuantity = async quantity => {
     const { product, updateItems } = this.props
     this.setState({ canIncrease: true })
+    console.log('teste product: ', product)
     const {
-      sku: { itemId: id },
-      seller = {},
+      sku: { itemId: id, seller={} },
       cartIndex,
     } = product
+
     try {
       await updateItems([
         {
