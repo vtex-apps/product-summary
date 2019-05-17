@@ -1,6 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { path, prop } from 'ramda'
+import { 
+  path, 
+  prop, 
+  compose, 
+  sort, 
+  head, 
+  last,
+  flatten,
+  map,
+  pluck,
+  uniq,
+  equals,
+  filter
+} from 'ramda'
 import { Spinner } from 'vtex.styleguide'
 import { ProductPrice } from 'vtex.store-components'
 
@@ -24,6 +37,48 @@ const ProductSummaryPrice = ({
         <Spinner size={20} />
       </div>
     )
+  }
+
+  const lowestPrice = compose(
+    head,
+    sort(
+      (priceA, priceB) =>
+        priceA - priceB
+    )
+  )
+
+  const highestPrice = compose(
+    last,
+    sort(
+      (priceA, priceB) =>
+        priceA - priceB
+    )
+  )
+
+  const getListPrices = prices => {
+    const lowPrice = lowestPrice(prices)
+    const highPrice = highestPrice(prices)
+    return [
+      lowPrice,
+      highPrice,
+    ]
+  }
+
+  const isAvailableProduct = price => price !== 0;
+
+  const getRangePrices = () => {
+    const items = prop('items', product)
+    const sellers = flatten(pluck('sellers', items))
+    const prices = map(path(['commertialOffer', 'Price']), sellers)
+    const availableProductsPrices = filter(isAvailableProduct, prices)
+
+    return getListPrices(availableProductsPrices)
+  }
+
+  const rangePrices = getRangePrices()
+  
+  if (equals(uniq(rangePrices), rangePrices)) {
+    console.log(rangePrices)
   }
 
   const sellingPrice = prop('Price', commertialOffer)
