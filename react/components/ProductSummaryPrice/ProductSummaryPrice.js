@@ -61,7 +61,7 @@ const ProductSummaryPrice = ({
     ]
   }
 
-  const isAvailableProduct = price => price !== 0;
+  const isAvailableProduct = price => price !== 0
 
   const getRangePrices = () => {
     const items = prop('items', product)
