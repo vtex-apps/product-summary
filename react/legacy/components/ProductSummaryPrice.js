@@ -12,8 +12,7 @@ import {
   pluck,
   uniq,
   equals,
-  filter,
-  join
+  filter
 } from 'ramda'
 import { Spinner } from 'vtex.styleguide'
 import { ProductPrice } from 'vtex.store-components'
