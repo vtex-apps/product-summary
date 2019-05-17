@@ -12,7 +12,8 @@ import {
   pluck,
   uniq,
   equals,
-  filter
+  filter,
+  join
 } from 'ramda'
 import { Spinner } from 'vtex.styleguide'
 import { ProductPrice } from 'vtex.store-components'
@@ -39,21 +40,9 @@ const ProductSummaryPrice = ({
     )
   }
 
-  const lowestPrice = compose(
-    head,
-    sort(
-      (priceA, priceB) =>
-        priceA - priceB
-    )
-  )
-
-  const highestPrice = compose(
-    last,
-    sort(
-      (priceA, priceB) =>
-        priceA - priceB
-    )
-  )
+  const sortPrices = (priceA, priceB) => priceA - priceB
+  const lowestPrice = compose(head, sort(sortPrices))
+  const highestPrice = compose(last, sort(sortPrices))
 
   const getListPrices = prices => {
     const lowPrice = lowestPrice(prices)
@@ -68,18 +57,19 @@ const ProductSummaryPrice = ({
 
   const getRangePrices = () => {
     const items = prop('items', product)
-    const sellers = flatten(pluck('sellers', items))
-    const prices = map(path(['commertialOffer', 'Price']), sellers)
-    const availableProductsPrices = filter(isAvailableProduct, prices)
+    if (items) {
+      const sellers = flatten(pluck('sellers', items))
+      const prices = map(path(['commertialOffer', 'Price']), sellers)
+      const availableProductsPrices = filter(isAvailableProduct, prices)
+      
+      return getListPrices(availableProductsPrices)
+    }
 
-    return getListPrices(availableProductsPrices)
+    return []
   }
 
   const rangePrices = getRangePrices()
-  
-  if (equals(uniq(rangePrices), rangePrices)) {
-    console.log(rangePrices)
-  }
+  const showRangePrices = equals(uniq(rangePrices), rangePrices)
 
   const sellingPrice = prop('Price', commertialOffer)
 
@@ -99,9 +89,11 @@ const ProductSummaryPrice = ({
           interestRateClass="dib pl2"
           installmentContainerClass="t-small-ns c-muted-2"
           listPrice={prop('ListPrice', commertialOffer)}
+          rangePrices={rangePrices}
           sellingPrice={prop('Price', commertialOffer)}
           installments={prop('Installments', commertialOffer)}
           showListPrice={showListPrice}
+          showRangePrices={showRangePrices}
           showLabels={showLabels}
           showInstallments={showInstallments}
           labelSellingPrice={labelSellingPrice}
