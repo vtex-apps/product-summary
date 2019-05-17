@@ -41,21 +41,16 @@ const ProductSummaryPrice = ({
     )
   }
 
-  const lowestPrice = compose(
-    head,
-    sort(
-      (priceA, priceB) =>
-        priceA - priceB
-    )
-  )
+  const priceClasses = {
+    containerClass: classNames('flex flex-column justify-end items-center', {
+      [`${productSummary.priceContainer} pv5`]: !showBorders,
+    }),
+    sellingPriceClass: 'dib ph2 t-body t-heading-5-ns',
+  }
 
-  const highestPrice = compose(
-    last,
-    sort(
-      (priceA, priceB) =>
-        priceA - priceB
-    )
-  )
+  const sortPrices = (priceA, priceB) => priceA - priceB
+  const lowestPrice = compose(head, sort(sortPrices))
+  const highestPrice = compose(last, sort(sortPrices))
 
   const getListPrices = prices => {
     const lowPrice = lowestPrice(prices)
@@ -70,25 +65,19 @@ const ProductSummaryPrice = ({
 
   const getRangePrices = () => {
     const items = prop('items', product)
-    const sellers = flatten(pluck('sellers', items))
-    const prices = map(path(['commertialOffer', 'Price']), sellers)
-    const availableProductsPrices = filter(isAvailableProduct, prices)
+    if (items) {
+      const sellers = flatten(pluck('sellers', items))
+      const prices = map(path(['commertialOffer', 'Price']), sellers)
+      const availableProductsPrices = filter(isAvailableProduct, prices)
+      
+      return getListPrices(availableProductsPrices)
+    }
 
-    return getListPrices(availableProductsPrices)
+    return []
   }
 
   const rangePrices = getRangePrices()
-  
-  if (equals(uniq(rangePrices), rangePrices)) {
-    console.log(rangePrices)
-  }
-
-  const priceClasses = {
-    containerClass: classNames('flex flex-column justify-end items-center', {
-      [`${productSummary.priceContainer} pv5`]: !showBorders,
-    }),
-    sellingPriceClass: 'dib ph2 t-body t-heading-5-ns',
-  }
+  const showRangePrices = equals(uniq(rangePrices), rangePrices)
 
   const sellingPrice = prop('Price', commertialOffer)
 
@@ -108,8 +97,10 @@ const ProductSummaryPrice = ({
           interestRateClass="dib pl2"
           installmentContainerClass="t-small-ns c-muted-2"
           listPrice={prop('ListPrice', commertialOffer)}
+          rangePrices={rangePrices}
           sellingPrice={prop('Price', commertialOffer)}
           installments={prop('Installments', commertialOffer)}
+          showRangePrices={showRangePrices}
           showListPrice={showListPrice}
           showLabels={showLabels}
           showInstallments={showInstallments}
