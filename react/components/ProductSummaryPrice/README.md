@@ -39,6 +39,7 @@ Through the Storefront, you can change the `ProductSummaryPrice`'s behavior and 
 | `showInstallments`  | `Boolean` | Set installments' visibility     | `true`        |
 | `showLabels`        | `Boolean` | Set pricing labels' visibility   | `true`        |
 | `labelSellingPrice` | `String`  | Text of selling price's label    |               |
+| `labelListPrice`    | `String`  | Text of list price's label       |               |   
 | `showBorders`       | `Boolean` | Set product's borders visibility | `false`       |
 
 ### Styles API
