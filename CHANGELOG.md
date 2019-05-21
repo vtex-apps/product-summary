@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.21.0] - 2019-05-21
+### Fixed
+- Include `labelListPrice` prop in `productSummaryPrice`.
+
 ## [2.20.3] - 2019-05-14
 ### Fixed
 - ProductQuantityStepper was sending undefined seller param to updateItems mutation.

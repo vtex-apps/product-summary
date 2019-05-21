@@ -91,6 +91,7 @@ Through the Storefront, you can change the product-summary's behavior and interf
 | `showBadge`         | `Boolean` | Set the discount badge's visibility                                                         |
 | `showDescription`   | `Boolean` | Set product's description visibility                                                        |
 | `labelSellingPrice` | `String`  | Text of selling price's label                                                               |
+| `labelListPrice`    | `String`  | Text of list price's label                                                                  |
 | `badgeText`         | `String`  | Text shown on badge                                                                         |
 | `buyButtonText`     | `String`  | Custom buy button text                                                                      |
 | `displayBuyButton`  | `Enum`    | Set display mode of buy button (displayButtonAlways, displayButtonHover, displayButtonNone) |

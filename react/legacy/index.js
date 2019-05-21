@@ -48,6 +48,8 @@ class ProductSummary extends Component {
     showQuantitySelector: PropTypes.bool,
     /** Text of selling Price's label */
     labelSellingPrice: PropTypes.string,
+    /** Text of list Price's label */
+    labelListPrice: PropTypes.string,
     /** Text shown on badge */
     badgeText: PropTypes.string,
     /** Custom buy button text */
@@ -128,6 +130,7 @@ class ProductSummary extends Component {
       showLabels,
       showInstallments,
       labelSellingPrice,
+      labelListPrice,
       name: showFieldsProps,
       showQuantitySelector,
       priceAlignLeft,
@@ -148,6 +151,7 @@ class ProductSummary extends Component {
       showLabels,
       showInstallments,
       labelSellingPrice,
+      labelListPrice,
       isLoading: this.state.isUpdatingItems,
     }
 
