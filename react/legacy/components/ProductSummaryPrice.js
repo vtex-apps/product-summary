@@ -54,7 +54,7 @@ const ProductSummaryPrice = ({
 
   const isAvailableProduct = price => price !== 0
 
-  const getRangePrices = () => {
+  const getPriceRange = () => {
     const items = prop('items', product)
     if (items) {
       const sellers = flatten(pluck('sellers', items))
@@ -67,8 +67,8 @@ const ProductSummaryPrice = ({
     return []
   }
 
-  const rangePrices = getRangePrices()
-  const showRangePrices = equals(uniq(rangePrices), rangePrices)
+  const priceRange = getPriceRange()
+  const showPriceRange = equals(uniq(priceRange), priceRange)
 
   const sellingPrice = prop('Price', commertialOffer)
 
@@ -88,11 +88,12 @@ const ProductSummaryPrice = ({
           interestRateClass="dib pl2"
           installmentContainerClass="t-small-ns c-muted-2"
           listPrice={prop('ListPrice', commertialOffer)}
-          rangePrices={rangePrices}
+          priceRange={priceRange}
+          priceRangeClass="dib ph2 t-small-ns"
           sellingPrice={prop('Price', commertialOffer)}
           installments={prop('Installments', commertialOffer)}
           showListPrice={showListPrice}
-          showRangePrices={showRangePrices}
+          showPriceRange={showPriceRange}
           showLabels={showLabels}
           showInstallments={showInstallments}
           labelSellingPrice={labelSellingPrice}
