@@ -114,6 +114,8 @@ const ProductSummaryPrice = ({
 ProductSummaryPrice.propTypes = {
   /** Set the product list price's visibility */
   showListPrice: PropTypes.bool,
+  /** Set visibility of prices' range */
+  showPriceRange: PropTypes.bool,
   /** Set pricing labels' visibility */
   showLabels: PropTypes.bool,
   /** Set installments' visibility */
@@ -127,7 +129,9 @@ ProductSummaryPrice.propTypes = {
 }
 
 ProductSummaryPrice.defaultProps = {
+  showPriceRange: true,
   showListPrice: true,
+  showPriceRange: true,
   showInstallments: true,
   showLabels: true,
   labelSellingPrice: '',
@@ -145,6 +149,12 @@ ProductSummaryPrice.getSchema = () => {
         type: 'boolean',
         title: 'admin/editor.productSummary.showListPrice.title',
         default: ProductSummaryPrice.defaultProps.showListPrice,
+        isLayout: true,
+      },
+      showPriceRange: {
+        type: 'boolean',
+        title: 'admin/editor.productSummary.showPriceRange.title',
+        default: ProductSummaryPrice.defaultProps.showPriceRange,
         isLayout: true,
       },
       showInstallments: {

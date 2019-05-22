@@ -107,6 +107,8 @@ ProductSummaryPrice.propTypes = {
   product: productShape,
   /** Set the product list price's visibility */
   showListPrice: PropTypes.bool,
+  /** Set visibility of prices' range */
+  showPriceRange: PropTypes.bool,
   /** Set pricing labels' visibility */
   showLabels: PropTypes.bool,
   /** Set installments' visibility */
