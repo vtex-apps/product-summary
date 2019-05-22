@@ -9,9 +9,6 @@ import {
   last,
   flatten,
   map,
-  pluck,
-  uniq,
-  equals,
   filter
 } from 'ramda'
 import { Spinner } from 'vtex.styleguide'
@@ -57,7 +54,7 @@ const ProductSummaryPrice = ({
   const getPriceRange = () => {
     const items = prop('items', product)
     if (items) {
-      const sellers = flatten(pluck('sellers', items))
+      const sellers = flatten(map('sellers', items))
       const prices = map(path(['commertialOffer', 'Price']), sellers)
       const availableProductsPrices = filter(isAvailableProduct, prices)
       
@@ -68,7 +65,8 @@ const ProductSummaryPrice = ({
   }
 
   const priceRange = getPriceRange()
-  const showPriceRange = equals(uniq(priceRange), priceRange)
+  const [lowPrice, highPrice] = priceRange
+  const showPriceRange = lowPrice !== highPrice
 
   const sellingPrice = prop('Price', commertialOffer)
 
