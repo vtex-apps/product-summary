@@ -61,9 +61,9 @@ const ProductSummaryPrice = ({
   const isAvailableProduct = price => price !== 0
 
   const getPriceRange = () => {
-    const items = prop('items', product)
+    const { items } = product
     if (items) {
-      const sellers = flatten(map('sellers', items))
+      const sellers = flatten(map(prop('sellers'), items))
       const prices = map(path(['commertialOffer', 'Price']), sellers)
       const availableProductsPrices = filter(isAvailableProduct, prices)
       
@@ -75,7 +75,7 @@ const ProductSummaryPrice = ({
 
   const priceRange = getPriceRange()
   const [lowPrice, highPrice] = priceRange
-  const showPriceRange = lowPrice !== highPrice
+  const showPriceRange = priceRange.length === 2 && lowPrice !== highPrice
 
   const sellingPrice = prop('Price', commertialOffer)
 
