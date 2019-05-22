@@ -129,7 +129,6 @@ ProductSummaryPrice.propTypes = {
 }
 
 ProductSummaryPrice.defaultProps = {
-  showPriceRange: true,
   showListPrice: true,
   showPriceRange: true,
   showInstallments: true,
