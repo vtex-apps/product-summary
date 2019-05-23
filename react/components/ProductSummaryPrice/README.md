@@ -8,10 +8,14 @@ This Component can be imported and used by any VTEX App.
 :loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
 
 ## Table of Contents
-- [Usage](#usage)
-  - [Blocks API](#blocks-api)
-  - [Configuration](#configuration)
-  - [Styles API](#styles-api)
+- [Product Summary Price](#product-summary-price)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Usage](#usage)
+    - [Blocks API](#blocks-api)
+    - [Configuration](#configuration)
+    - [Styles API](#styles-api)
+      - [CSS namespaces](#css-namespaces)
 
 ## Usage
 
@@ -36,6 +40,7 @@ Through the Storefront, you can change the `ProductSummaryPrice`'s behavior and 
 | Prop name           | Type      | Description                      | Default value |
 | ------------------- | --------- | -------------------------------- | ------------- |
 | `showListPrice`     | `Boolean` | Shows the product list price     | `true`        |
+| `showPriceRange`    | `Boolean` | Shows the product price range    | `true`        |
 | `showInstallments`  | `Boolean` | Set installments' visibility     | `true`        |
 | `showLabels`        | `Boolean` | Set pricing labels' visibility   | `true`        |
 | `labelSellingPrice` | `String`  | Text of selling price's label    |               |

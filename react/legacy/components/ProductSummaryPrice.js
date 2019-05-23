@@ -2,13 +2,9 @@ import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { 
   path, 
-  prop, 
-  compose,
-  head,
-  last,
+  prop,
   flatten,
   map,
-  sort,
   filter
 } from 'ramda'
 import { Spinner } from 'vtex.styleguide'
