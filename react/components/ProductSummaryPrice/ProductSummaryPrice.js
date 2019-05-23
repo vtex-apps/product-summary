@@ -15,10 +15,14 @@ import ProductSummaryContext from '../ProductSummaryContext'
 import { productShape } from '../../utils/propTypes'
 import productSummary from '../../productSummary.css'
 
+const sortPrices = (priceA, priceB) => priceA - priceB
+const lowestPrice = compose(head, sort(sortPrices))
+const highestPrice = compose(last, sort(sortPrices))
+
 const isAvailableProduct = price => price !== 0
 const getListPrices = prices => {
-  const sortPrices = prices.sort()
-  const [lowPrice, _, highPrice] = sortPrices
+  const lowPrice = lowestPrice(prices)
+  const highPrice = highestPrice(prices)
   return [
     lowPrice,
     highPrice,
@@ -51,7 +55,9 @@ const ProductSummaryPrice = ({
     sellingPriceClass: 'dib ph2 t-body t-heading-5-ns',
   }
 
-  const listPrices = useMemo((availableProductsPrices) => getListPrices(availableProductsPrices))
+  const listPrices = useMemo(() => availableProductsPrices =>
+    getListPrices(availableProductsPrices)
+  )
 
   const getPriceRange = () => {
     const { items } = product
