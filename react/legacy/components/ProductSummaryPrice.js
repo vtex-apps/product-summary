@@ -6,8 +6,6 @@ import {
   flatten,
   map,
   filter,
-  sort,
-  compose,
   head,
   last
 } from 'ramda'
@@ -16,14 +14,11 @@ import { ProductPrice } from 'vtex.store-components'
 
 import { productShape } from '../../utils/propTypes'
 
-const sortPrices = (priceA, priceB) => priceA - priceB
-const lowestPrice = compose(head, sort(sortPrices))
-const highestPrice = compose(last, sort(sortPrices))
-
 const isAvailableProduct = price => price !== 0
 const getListPrices = prices => {
-  const lowPrice = lowestPrice(prices)
-  const highPrice = highestPrice(prices)
+  const sortPrices = prices.sort()
+  const lowPrice = head(sortPrices)
+  const highPrice = last(sortPrices)
   return [
     lowPrice,
     highPrice,

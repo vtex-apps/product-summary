@@ -5,7 +5,9 @@ import {
   prop,
   flatten,
   map,
-  filter
+  filter,
+  head,
+  last
 } from 'ramda'
 import classNames from 'classnames'
 import { Spinner } from 'vtex.styleguide'
@@ -15,14 +17,11 @@ import ProductSummaryContext from '../ProductSummaryContext'
 import { productShape } from '../../utils/propTypes'
 import productSummary from '../../productSummary.css'
 
-const sortPrices = (priceA, priceB) => priceA - priceB
-const lowestPrice = compose(head, sort(sortPrices))
-const highestPrice = compose(last, sort(sortPrices))
-
 const isAvailableProduct = price => price !== 0
 const getListPrices = prices => {
-  const lowPrice = lowestPrice(prices)
-  const highPrice = highestPrice(prices)
+  const sortPrices = prices.sort()
+  const lowPrice = head(sortPrices)
+  const highPrice = last(sortPrices)
   return [
     lowPrice,
     highPrice,
