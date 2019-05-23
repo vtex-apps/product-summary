@@ -2,11 +2,7 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { 
   path, 
-  prop, 
-  compose, 
-  sort, 
-  head, 
-  last,
+  prop,
   flatten,
   map,
   filter
@@ -18,6 +14,16 @@ import { ProductPrice } from 'vtex.store-components'
 import ProductSummaryContext from '../ProductSummaryContext'
 import { productShape } from '../../utils/propTypes'
 import productSummary from '../../productSummary.css'
+
+const isAvailableProduct = price => price !== 0
+const getListPrices = prices => {
+  const sortPrices = prices.sort()
+  const [lowPrice, _, highPrice] = sortPrices
+  return [
+    lowPrice,
+    highPrice,
+  ]
+}
 
 const ProductSummaryPrice = ({
   showListPrice,
@@ -45,20 +51,7 @@ const ProductSummaryPrice = ({
     sellingPriceClass: 'dib ph2 t-body t-heading-5-ns',
   }
 
-  const sortPrices = (priceA, priceB) => priceA - priceB
-  const lowestPrice = compose(head, sort(sortPrices))
-  const highestPrice = compose(last, sort(sortPrices))
-
-  const getListPrices = prices => {
-    const lowPrice = lowestPrice(prices)
-    const highPrice = highestPrice(prices)
-    return [
-      lowPrice,
-      highPrice,
-    ]
-  }
-
-  const isAvailableProduct = price => price !== 0
+  const listPrices = useMemo((availableProductsPrices) => getListPrices(availableProductsPrices))
 
   const getPriceRange = () => {
     const { items } = product
@@ -66,14 +59,14 @@ const ProductSummaryPrice = ({
       const sellers = flatten(map(prop('sellers'), items))
       const prices = map(path(['commertialOffer', 'Price']), sellers)
       const availableProductsPrices = filter(isAvailableProduct, prices)
-      
-      return getListPrices(availableProductsPrices)
+
+      return listPrices(availableProductsPrices)
     }
 
     return []
   }
 
-  const priceRange = getPriceRange()
+  const priceRange = useMemo(() => getPriceRange(), [product])
   const [lowPrice, highPrice] = priceRange
   const showPriceRange = priceRange.length === 2 && lowPrice !== highPrice
 
