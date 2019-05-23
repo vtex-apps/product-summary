@@ -18,14 +18,19 @@ See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for mor
 
 ## Table of Contents
 
-- [Usage](#usage)
-  - [Blocks API](#blocks-api)
-    - [Configuration](#configuration)
-  - [Styles API](#styles-api)
-    - [CSS Namespaces](#css-namespaces)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [Tests](#tests)
+- [VTEX Product Summary](#vtex-product-summary)
+  - [Description](#description)
+  - [Release schedule](#release-schedule)
+  - [Table of Contents](#table-of-contents)
+  - [Usage](#usage)
+    - [Blocks API](#blocks-api)
+      - [Configuration](#configuration)
+    - [Styles API](#styles-api)
+      - [CSS Namespaces](#css-namespaces)
+  - [Troubleshooting](#troubleshooting)
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+    - [Travis CI](#travis-ci)
 
 ## Usage
 
@@ -52,6 +57,7 @@ Now, you can change the behavior of the `product-summary` block that is in the m
     "displayBuyButton": "displayButtonHover",
     "showCollections": false,
     "showListPrice": true,
+    "showRangePrice": true,
     "showLabels": false,
     "showInstallments": true,
     "showSavings": true
@@ -84,6 +90,7 @@ Through the Storefront, you can change the product-summary's behavior and interf
 | Prop name           | Type      | Description                                                                                 |
 | ------------------- | --------- | ------------------------------------------------------------------------------------------- |
 | `showListPrice`     | `Boolean` | Shows the product list price                                                                |
+| `showRangePrice`    | `Boolean` | Shows the product price range                                                               |
 | `isOneClickBuy`     | `Boolean` | Should redirect to checkout after clicking on buy                                           |
 | `showLabels`        | `Boolean` | Set pricing labels' visibility                                                              |
 | `showInstallments`  | `Boolean` | Set installments' visibility                                                                |
