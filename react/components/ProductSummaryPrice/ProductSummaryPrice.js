@@ -18,6 +18,7 @@ import { productShape } from '../../utils/propTypes'
 import productSummary from '../../productSummary.css'
 
 const isAvailableProduct = price => price !== 0
+
 const getListPrices = prices => {
   const sortPrices = prices.sort()
   const lowPrice = head(sortPrices)
@@ -27,6 +28,12 @@ const getListPrices = prices => {
     highPrice,
   ]
 }
+
+const isPriceRange = (prices) => {
+  const [lowPrice, highPrice] = prices
+  return prices.length === 2 && lowPrice !== highPrice
+}
+
 
 const ProductSummaryPrice = ({
   showListPrice,
@@ -58,22 +65,25 @@ const ProductSummaryPrice = ({
     getListPrices(availableProductsPrices)
   )
 
-  const getPriceRange = () => {
+  const getPriceRange = (prop) => {
     const { items } = product
-    if (items) {
-      const sellers = flatten(map(prop('sellers'), items))
-      const prices = map(path(['commertialOffer', 'Price']), sellers)
-      const availableProductsPrices = filter(isAvailableProduct, prices)
-
-      return listPrices(availableProductsPrices)
+    if (!items) {
+      return []
     }
 
-    return []
+    const sellers = flatten(map(prop('sellers'), items))
+    const prices = map(path(['commertialOffer', prop]), sellers)
+    const availableProductsPrices = filter(isAvailableProduct, prices)
+
+    return listPrices(availableProductsPrices)
   }
 
-  const priceRange = useMemo(() => getPriceRange(), [product])
-  const [lowPrice, highPrice] = priceRange
-  const showPriceRange = priceRange.length === 2 && lowPrice !== highPrice
+  const priceRangeSellingPrice = useMemo(() => getPriceRange('Price'), [product])
+  const priceRangeListPrice = useMemo(() => getPriceRange('ListPrice'), [product])
+  const showPriceRangeSellingPrice = isPriceRange(priceRangeSellingPrice)
+  const showPriceRangeListPrice = isPriceRange(priceRangeListPrice)
+  console.log(showPriceRangeListPrice)
+  console.log(showPriceRangeSellingPrice)
 
   const sellingPrice = prop('Price', commertialOffer)
 
@@ -97,7 +107,7 @@ const ProductSummaryPrice = ({
           priceRangeClass="dib ph2 t-small-ns"
           sellingPrice={prop('Price', commertialOffer)}
           installments={prop('Installments', commertialOffer)}
-          showPriceRange={showPriceRange}
+          showPriceRange={showPriceRangeSellingPrice}
           showListPrice={showListPrice}
           showLabels={showLabels}
           showInstallments={showInstallments}
