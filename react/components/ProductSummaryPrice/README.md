@@ -40,7 +40,6 @@ Through the Storefront, you can change the `ProductSummaryPrice`'s behavior and 
 | Prop name           | Type      | Description                      | Default value |
 | ------------------- | --------- | -------------------------------- | ------------- |
 | `showListPrice`     | `Boolean` | Shows the product list price     | `true`        |
-| `showPriceRange`    | `Boolean` | Shows the product price range    | `true`        |
 | `showInstallments`  | `Boolean` | Set installments' visibility     | `true`        |
 | `showLabels`        | `Boolean` | Set pricing labels' visibility   | `true`        |
 | `labelSellingPrice` | `String`  | Text of selling price's label    |               |
