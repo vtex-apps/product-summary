@@ -19,6 +19,7 @@ const isAvailableProduct = price => price !== 0
 
 const ProductSummaryPrice = ({
   showListPrice,
+  showSellingPriceRange,
   showLabels,
   showInstallments,
   labelSellingPrice,
@@ -80,6 +81,7 @@ const ProductSummaryPrice = ({
           sellingPrice={prop('Price', commertialOffer)}
           installments={prop('Installments', commertialOffer)}
           showListPrice={showListPrice}
+          showSellingPriceRange={showSellingPriceRange}
           showLabels={showLabels}
           showInstallments={showInstallments}
           labelSellingPrice={labelSellingPrice}
@@ -91,6 +93,8 @@ const ProductSummaryPrice = ({
 }
 
 ProductSummaryPrice.propTypes = {
+  /** Set the product selling price range visibility */
+  showSellingPriceRange: PropTypes.bool,
   /** Set the product list price's visibility */
   showListPrice: PropTypes.bool,
   /** Set pricing labels' visibility */
@@ -106,6 +110,7 @@ ProductSummaryPrice.propTypes = {
 }
 
 ProductSummaryPrice.defaultProps = {
+  showSellingPriceRange: true,
   showListPrice: true,
   showInstallments: true,
   showLabels: true,
@@ -124,6 +129,12 @@ ProductSummaryPrice.getSchema = () => {
         type: 'boolean',
         title: 'admin/editor.productSummary.showListPrice.title',
         default: ProductSummaryPrice.defaultProps.showListPrice,
+        isLayout: true,
+      },
+      showSellingPriceRange: {
+        type: 'boolean',
+        title: 'admin/editor.productSummary.showSellingPriceRange.title',
+        default: ProductSummaryPrice.defaultProps.showSellingPriceRange,
         isLayout: true,
       },
       showInstallments: {

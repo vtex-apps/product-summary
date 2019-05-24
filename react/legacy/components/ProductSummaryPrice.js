@@ -16,6 +16,7 @@ const isAvailableProduct = price => price !== 0
 
 const ProductSummaryPrice = ({
   product,
+  showSellingPriceRange,
   showListPrice,
   showLabels,
   showInstallments,
@@ -71,6 +72,7 @@ const ProductSummaryPrice = ({
           sellingPrice={prop('Price', commertialOffer)}
           installments={prop('Installments', commertialOffer)}
           showListPrice={showListPrice}
+          showSellingPriceRange={showSellingPriceRange}
           showLabels={showLabels}
           showInstallments={showInstallments}
           labelSellingPrice={labelSellingPrice}
@@ -84,6 +86,8 @@ const ProductSummaryPrice = ({
 ProductSummaryPrice.propTypes = {
   /** Product that owns the informations */
   product: productShape,
+  /** Set the product selling price range visibility */
+  showSellingPriceRange: PropTypes.bool,
   /** Set the product list price's visibility */
   showListPrice: PropTypes.bool,
   /** Set pricing labels' visibility */

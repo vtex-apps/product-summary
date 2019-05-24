@@ -30,6 +30,8 @@ class ProductSummary extends Component {
   static propTypes = {
     /** Product that owns the informations */
     product: productShape,
+    /** Shows the product selling price range */
+    showSellingPriceRange: PropTypes.bool,
     /** Shows the product list price */
     showListPrice: PropTypes.bool,
     /** Should redirect to checkout after clicking on buy */
@@ -79,6 +81,7 @@ class ProductSummary extends Component {
 
   static defaultProps = {
     showListPrice: true,
+    showSellingPriceRange: true,
     showInstallments: true,
     showLabels: true,
     showBadge: true,
@@ -127,6 +130,7 @@ class ProductSummary extends Component {
       badgeText,
       showCollections,
       showListPrice,
+      showSellingPriceRange,
       showLabels,
       showInstallments,
       labelSellingPrice,
@@ -152,6 +156,7 @@ class ProductSummary extends Component {
       showInstallments,
       labelSellingPrice,
       labelListPrice,
+      showSellingPriceRange,
       isLoading: this.state.isUpdatingItems,
     }
 
