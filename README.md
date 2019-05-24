@@ -57,7 +57,6 @@ Now, you can change the behavior of the `product-summary` block that is in the m
     "displayBuyButton": "displayButtonHover",
     "showCollections": false,
     "showListPrice": true,
-    "showRangePrice": true,
     "showLabels": false,
     "showInstallments": true,
     "showSavings": true
@@ -90,7 +89,6 @@ Through the Storefront, you can change the product-summary's behavior and interf
 | Prop name           | Type      | Description                                                                                 |
 | ------------------- | --------- | ------------------------------------------------------------------------------------------- |
 | `showListPrice`     | `Boolean` | Shows the product list price                                                                |
-| `showRangePrice`    | `Boolean` | Shows the product price range                                                               |
 | `isOneClickBuy`     | `Boolean` | Should redirect to checkout after clicking on buy                                           |
 | `showLabels`        | `Boolean` | Set pricing labels' visibility                                                              |
 | `showInstallments`  | `Boolean` | Set installments' visibility                                                                |
