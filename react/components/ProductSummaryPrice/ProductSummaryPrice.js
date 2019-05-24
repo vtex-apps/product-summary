@@ -5,9 +5,7 @@ import {
   prop,
   flatten,
   map,
-  filter,
-  head,
-  last
+  filter
 } from 'ramda'
 import classNames from 'classnames'
 import { Spinner } from 'vtex.styleguide'
@@ -18,22 +16,6 @@ import { productShape } from '../../utils/propTypes'
 import productSummary from '../../productSummary.css'
 
 const isAvailableProduct = price => price !== 0
-
-const getListPrices = prices => {
-  const sortPrices = prices.sort()
-  const lowPrice = head(sortPrices)
-  const highPrice = last(sortPrices)
-  return [
-    lowPrice,
-    highPrice,
-  ]
-}
-
-const isPriceRange = (prices) => {
-  const [lowPrice, highPrice] = prices
-  return prices.length === 2 && lowPrice !== highPrice
-}
-
 
 const ProductSummaryPrice = ({
   showListPrice,
@@ -61,30 +43,20 @@ const ProductSummaryPrice = ({
     sellingPriceClass: 'dib ph2 t-body t-heading-5-ns',
   }
 
-  const listPrices = useMemo(() => availableProductsPrices =>
-    getListPrices(availableProductsPrices)
-  )
-
-  const getPriceRange = (prop) => {
+  const getPrices = (attribute) => {
     const { items } = product
     if (!items) {
       return []
     }
 
     const sellers = flatten(map(prop('sellers'), items))
-    const prices = map(path(['commertialOffer', prop]), sellers)
+    const prices = map(path(['commertialOffer', attribute]), sellers)
     const availableProductsPrices = filter(isAvailableProduct, prices)
 
-    return listPrices(availableProductsPrices)
+    return availableProductsPrices
   }
 
-  const priceRangeSellingPrice = useMemo(() => getPriceRange('Price'), [product])
-  const priceRangeListPrice = useMemo(() => getPriceRange('ListPrice'), [product])
-  const showPriceRangeSellingPrice = isPriceRange(priceRangeSellingPrice)
-  const showPriceRangeListPrice = isPriceRange(priceRangeListPrice)
-  console.log(showPriceRangeListPrice)
-  console.log(showPriceRangeSellingPrice)
-
+  const sellingPrices = useMemo(() => getPrices('Price'), [product])
   const sellingPrice = prop('Price', commertialOffer)
 
   return (
@@ -103,11 +75,10 @@ const ProductSummaryPrice = ({
           interestRateClass="dib pl2"
           installmentContainerClass="t-small-ns c-muted-2"
           listPrice={prop('ListPrice', commertialOffer)}
-          priceRange={priceRange}
+          sellingPrices={sellingPrices}
           priceRangeClass="dib ph2 t-small-ns"
           sellingPrice={prop('Price', commertialOffer)}
           installments={prop('Installments', commertialOffer)}
-          showPriceRange={showPriceRangeSellingPrice}
           showListPrice={showListPrice}
           showLabels={showLabels}
           showInstallments={showInstallments}
@@ -122,8 +93,6 @@ const ProductSummaryPrice = ({
 ProductSummaryPrice.propTypes = {
   /** Set the product list price's visibility */
   showListPrice: PropTypes.bool,
-  /** Set visibility of prices' range */
-  showPriceRange: PropTypes.bool,
   /** Set pricing labels' visibility */
   showLabels: PropTypes.bool,
   /** Set installments' visibility */
@@ -156,12 +125,6 @@ ProductSummaryPrice.getSchema = () => {
         type: 'boolean',
         title: 'admin/editor.productSummary.showListPrice.title',
         default: ProductSummaryPrice.defaultProps.showListPrice,
-        isLayout: true,
-      },
-      showPriceRange: {
-        type: 'boolean',
-        title: 'admin/editor.productSummary.showPriceRange.title',
-        default: ProductSummaryPrice.defaultProps.showPriceRange,
         isLayout: true,
       },
       showInstallments: {
