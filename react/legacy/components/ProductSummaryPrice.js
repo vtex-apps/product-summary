@@ -1,22 +1,13 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { 
-  path, 
-  prop,
-  flatten,
-  map,
-  filter
-} from 'ramda'
+import { path, prop } from 'ramda' 
 import { Spinner } from 'vtex.styleguide'
 import { ProductPrice } from 'vtex.store-components'
 
 import { productShape } from '../../utils/propTypes'
 
-const isAvailableProduct = price => price !== 0
-
 const ProductSummaryPrice = ({
   product,
-  showSellingPriceRange,
   showListPrice,
   showLabels,
   showInstallments,
@@ -35,20 +26,6 @@ const ProductSummaryPrice = ({
     )
   }
 
-  const getPrices = (attribute) => {
-    const { items } = product
-    if (!items) {
-      return []
-    }
-
-    const sellers = flatten(map(prop('sellers'), items))
-    const prices = map(path(['commertialOffer', attribute]), sellers)
-    const availableProductsPrices = filter(isAvailableProduct, prices)
-
-    return availableProductsPrices
-  }
-
-  const sellingPrices = useMemo(() => getPrices('Price'), [product])
   const sellingPrice = prop('Price', commertialOffer)
 
   return (
@@ -67,12 +44,9 @@ const ProductSummaryPrice = ({
           interestRateClass="dib pl2"
           installmentContainerClass="t-small-ns c-muted-2"
           listPrice={prop('ListPrice', commertialOffer)}
-          sellingPrices={sellingPrices}
-          priceRangeClass="dib ph2 t-small-ns"
           sellingPrice={prop('Price', commertialOffer)}
           installments={prop('Installments', commertialOffer)}
           showListPrice={showListPrice}
-          showSellingPriceRange={showSellingPriceRange}
           showLabels={showLabels}
           showInstallments={showInstallments}
           labelSellingPrice={labelSellingPrice}
@@ -86,8 +60,6 @@ const ProductSummaryPrice = ({
 ProductSummaryPrice.propTypes = {
   /** Product that owns the informations */
   product: productShape,
-  /** Set the product selling price range visibility */
-  showSellingPriceRange: PropTypes.bool,
   /** Set the product list price's visibility */
   showListPrice: PropTypes.bool,
   /** Set pricing labels' visibility */
