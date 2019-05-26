@@ -221,8 +221,6 @@ const defaultSchema = {
   },
 }
 
-// const ProductSummary = () => <div>OI</div>
-
 ProductSummary.getSchema = () => {
   const nameSchema = ProductName.schema
   return {
