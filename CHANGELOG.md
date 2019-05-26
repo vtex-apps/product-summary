@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- Add `sellingPrices` in `productPrice` component.
+- List and Selling price range feature to `ProductSummaryPrice`.
 
 ## [2.23.1] - 2019-05-27
 ### Changed
