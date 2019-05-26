@@ -20,7 +20,7 @@
   "admin/editor.productSummaryPrice.description": "Componente que mostra o preço do produto",
   "admin/editor.productSummaryPrice.showListPrice.title": "Mostrar preço listado",
   "admin/editor.productSummaryPrice.showSellingPriceRange.title": "Mostrar faixa de preços de venda",
-  "admin/editor.productSummaryPrice.showListPriceRange.title": "Mostrar faixa de preços listados",
+  "admin/editor.productSummaryPrice.showListPriceRange.title": "Mostrar faixa de preços de tabela",
   "admin/editor.productSummaryPrice.showInstallments.title": "Mostrar parcelas",
   "admin/editor.productSummaryPrice.showLabels.title": "Mostrar rótulos",
   "admin/editor.productSummaryPrice.labelSellingPrice.title": "Rótulo para preço de venda",
