@@ -1,3 +1,3 @@
-import ProductSummary from './components/ProductSummary'
+import ProductSummaryCustom from './components/ProductSummary'
 
-export default ProductSummary
+export default ProductSummaryCustom
