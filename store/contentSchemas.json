@@ -1,0 +1,17 @@
+{
+  "definitions": {
+    "ProductSummary": {
+      "properties": {
+        "badgeText": {
+          "title": "admin/editor.productSummary.badgeText.title",
+          "$ref": "app:vtex.native-types#/definitions/text"
+        },
+        "buyButtonText": {
+          "title": "admin/editor.productSummary.buyButtonText.title",
+          "$ref": "app:vtex.native-types#/definitions/text",
+          "default": "store/button-label"
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,9 @@
 {
   "product-summary": {
     "component": "ProductSummaryLegacy",
+    "content": {
+      "$ref": "#/definitions/ProductSummary"
+    },
     "allowed": ["addon-summary-btn"]
   },
   "product-summary.shelf": {
@@ -66,13 +69,27 @@
     "component": "ProductSummaryAttachmentList"
   },
   "product-summary-buy-button": {
-    "component": "ProductSummaryBuyButton"
+    "component": "ProductSummaryBuyButton",
+    "content": {
+      "properties": {
+        "buyButtonText": {
+          "$ref": "#/definitions/ProductSummary/properties/buyButtonText"
+        }
+      }
+    }
   },
   "product-summary-description": {
     "component": "ProductSummaryDescription"
   },
   "product-summary-image": {
-    "component": "ProductSummaryImage"
+    "component": "ProductSummaryImage",
+    "content": {
+      "properties": {
+        "badgeText": {
+          "$ref": "#/definitions/ProductSummary/properties/badgeText"
+        }
+      }
+    }
   },
   "product-summary-name": {
     "component": "ProductSummaryName"

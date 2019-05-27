@@ -173,11 +173,6 @@ ProductImage.getSchema = () => {
         default: ProductImage.defaultProps.showBadge,
         isLayout: true,
       },
-      badgeText: {
-        type: 'string',
-        title: 'admin/editor.productSummary.badgeText.title',
-        isLayout: false,
-      },
       showCollections: {
         type: 'boolean',
         title: 'admin/editor.productSummary.showCollections.title',

@@ -63,6 +63,7 @@ class ProductSummaryNormal extends Component {
 
     const descriptionClasses = `${productSummary.description} c-muted-2 t-small`
 
+
     return (
       <section
         className={containerClasses}
