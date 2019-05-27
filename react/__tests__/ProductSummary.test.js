@@ -1,11 +1,19 @@
 import React from 'react'
 import { render } from '@vtex/test-tools/react'
+const fs = require('fs')
 
 import ProductSummary from '../legacy/index'
 
 describe('<ProductSummary /> component', () => {
+  // TODO: Remove this later when we have a better way to resolve contentSchemas.json at test-tools
+  const rawData = fs.readFileSync('../store/contentSchemas.json')
+  const contentSchema = JSON.parse(rawData)
+  const buyButtonText =
+    contentSchema.definitions.ProductSummary.properties.buyButtonText.default
+
   const props = {
     runtime: { hints: {} },
+    buyButtonText,
     product: {
       productId: '123456789',
       linkText: 'linkText',
@@ -101,7 +109,9 @@ describe('<ProductSummary /> component', () => {
   describe('Site editor editable', () => {
     it('should export getSchema and return object with title', () => {
       const schema = ProductSummary.schema || ProductSummary.getSchema({})
-      expect(schema).toEqual(expect.objectContaining({title: expect.any(String)}))
+      expect(schema).toEqual(
+        expect.objectContaining({ title: expect.any(String) })
+      )
     })
   })
 })
