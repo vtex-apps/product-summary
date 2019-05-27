@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { path } from 'ramda'
 import PropTypes from 'prop-types'
 import { NumericStepper, withToast } from 'vtex.styleguide'
+import { Pixel } from 'vtex.pixel-manager/PixelContext'
 import { debounce } from 'lodash'
 import { injectIntl, intlShape } from 'react-intl'
 import { compose, graphql } from 'react-apollo'
@@ -29,6 +31,28 @@ class ProductQuantityStepper extends Component {
     canIncrease: true,
   }
 
+  pushPixelCartEvents = ({ isAdditionOfProd, product }) => {
+    const updatedProduct = {
+      id: path(['sku', 'itemId'], product),
+      name: path(['productName'], product),
+      skuName: path(['sku', 'name'], product),
+      price: path(['assemblyOptions', 'parentPrice'], product),
+      quantity: path(['quantity'], product),
+    }
+    if (isAdditionOfProd) {
+      this.props.push({
+        event: 'addToCart',
+        items: [updatedProduct],
+      })
+    } else {
+      // removal of product
+      this.props.push({
+        event: 'removeFromCart',
+        items: [updatedProduct],
+      })
+    }
+  }
+
   componentDidUpdate = prevProps => {
     const {
       product: { quantity: prevQuantity },
@@ -39,6 +63,10 @@ class ProductQuantityStepper extends Component {
       intl,
     } = this.props
     if (prevQuantity !== quantity) {
+      this.pushPixelCartEvents({
+        isAdditionOfProd: prevQuantity < quantity,
+        product: this.props.product,
+      })
       const canIncrease = quantity === this.state.quantity
       this.setState({ quantity, canIncrease })
       if (!canIncrease) {
@@ -106,6 +134,7 @@ const withUpdateItemsMutation = graphql(UPDATE_ITEMS_MUTATION, {
 })
 
 export default compose(
+  Pixel,
   injectIntl,
   withToast,
   withUpdateItemsMutation
