@@ -203,16 +203,6 @@ const defaultSchema = {
       default: true,
       isLayout: true,
     },
-    badgeText: {
-      type: 'string',
-      title: 'admin/editor.productSummary.badgeText.title',
-      isLayout: false,
-    },
-    buyButtonText: {
-      type: 'string',
-      title: 'admin/editor.productSummary.buyButtonText.title',
-      isLayout: false,
-    },
     displayBuyButton: {
       title: 'admin/editor.productSummary.displayBuyButton.title',
       type: 'string',

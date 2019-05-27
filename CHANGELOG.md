@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.22.0] - 2019-05-27
+### Added
+- `contentSchemas.json` for definition of content properties.
+- i18n content edition support through CMS.
+
 ## [2.21.0] - 2019-05-21
 ### Fixed
 - Include `labelListPrice` prop in `productSummaryPrice`.

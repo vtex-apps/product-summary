@@ -2,7 +2,7 @@ import React from 'react'
 import BuyButton from 'vtex.store-components/BuyButton'
 import { equals, path } from 'ramda'
 import classNames from 'classnames'
-import { FormattedMessage } from 'react-intl'
+import { IOMessage } from 'vtex.native-types'
 
 import displayButtonTypes from '../../utils/displayButtonTypes'
 import productSummary from '../../productSummary.css'
@@ -72,7 +72,7 @@ const ProductSummaryBuyButton = ({
             }
             isOneClickBuy={isOneClickBuy}
           >
-            {buyButtonText || <FormattedMessage id="store/button-label" />}
+            <IOMessage id={buyButtonText} />
           </BuyButton>
         </div>
       </div>

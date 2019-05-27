@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "product-summary",
-  "version": "2.21.0",
+  "version": "2.22.0",
   "title": "Product Summary",
   "description": "Product summary component",
   "defaultLocale": "pt-BR",
@@ -15,9 +15,11 @@
     "postreleasy": "vtex publish --verbose"
   },
   "dependencies": {
+    "vtex.native-types": "0.x",
     "vtex.store-components": "3.x",
     "vtex.store-resources": "0.x",
     "vtex.product-review-interfaces": "1.x",
     "vtex.styleguide": "9.x"
-  }
+  },
+  "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
