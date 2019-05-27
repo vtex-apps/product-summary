@@ -79,7 +79,7 @@ const ProductSummaryBuyButton = ({
             }
             isOneClickBuy={isOneClickBuy}
           >
-            <IOMessage id="store/button-label" />
+            <IOMessage id={buyButtonText} />
           </BuyButton>
         </div>
       </div>
