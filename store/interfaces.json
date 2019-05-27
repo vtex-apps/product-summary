@@ -2,7 +2,7 @@
   "product-summary": {
     "component": "ProductSummaryLegacy",
     "content": {
-      "$ref": "app:vtex.product-summary#/definitions/ProductSummary"
+      "$ref": "#/definitions/ProductSummary"
     },
     "allowed": ["addon-summary-btn"]
   },
@@ -73,7 +73,7 @@
     "content": {
       "properties": {
         "buyButtonText": {
-          "$ref": "app:vtex.product-summary#/definitions/ProductSummary/properties/buyButtonText"
+          "$ref": "#/definitions/ProductSummary/properties/buyButtonText"
         }
       }
     }
@@ -86,7 +86,7 @@
     "content": {
       "properties": {
         "badgeText": {
-          "$ref": "app:vtex.product-summary#/definitions/ProductSummary/properties/badgeText"
+          "$ref": "#/definitions/ProductSummary/properties/badgeText"
         }
       }
     }
