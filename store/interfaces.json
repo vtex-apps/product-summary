@@ -69,43 +69,19 @@
     "component": "ProductSummaryAttachmentList"
   },
   "product-summary-buy-button": {
-    "component": "ProductSummaryBuyButton",
-    "content": {
-      "properties": {
-        "buyButtonText": {
-          "$ref": "app:vtex.product-summary#/definitions/ProductSummary/properties/buyButtonText"
-        }
-      }
-    }
+    "component": "ProductSummaryBuyButton"
   },
   "product-summary-description": {
     "component": "ProductSummaryDescription"
   },
   "product-summary-image": {
-    "component": "ProductSummaryImage",
-    "content": {
-      "properties": {
-        "badgeText": {
-          "$ref": "app:vtex.product-summary#/definitions/ProductSummary/properties/badgeText"
-        }
-      }
-    }
+    "component": "ProductSummaryImage"
   },
   "product-summary-name": {
     "component": "ProductSummaryName"
   },
   "product-summary-price": {
-    "component": "ProductSummaryPrice",
-    "content": {
-      "properties": {
-        "labelSellingPrice": {
-          "$ref": "app:vtex.product-summary#/definitions/ProductSummaryPrice/properties/labelSellingPrice"
-        },
-        "labelListPrice": {
-          "$ref": "app:vtex.product-summary#/definitions/ProductSummaryPrice/properties/labelListPrice"
-        }
-      }
-    }
+    "component": "ProductSummaryPrice"
   },
   "addon-summary-btn": {
     "component": "*"
