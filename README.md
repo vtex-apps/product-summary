@@ -18,14 +18,19 @@ See our [LTS policy](https://github.com/vtex-apps/awesome-io#lts-policy) for mor
 
 ## Table of Contents
 
-- [Usage](#usage)
-  - [Blocks API](#blocks-api)
-    - [Configuration](#configuration)
-  - [Styles API](#styles-api)
-    - [CSS Namespaces](#css-namespaces)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [Tests](#tests)
+- [VTEX Product Summary](#vtex-product-summary)
+  - [Description](#description)
+  - [Release schedule](#release-schedule)
+  - [Table of Contents](#table-of-contents)
+  - [Usage](#usage)
+    - [Blocks API](#blocks-api)
+      - [Configuration](#configuration)
+    - [Styles API](#styles-api)
+      - [CSS Namespaces](#css-namespaces)
+  - [Troubleshooting](#troubleshooting)
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+    - [Travis CI](#travis-ci)
 
 ## Usage
 

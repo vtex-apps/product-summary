@@ -8,10 +8,14 @@ This Component can be imported and used by any VTEX App.
 :loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
 
 ## Table of Contents
-- [Usage](#usage)
-  - [Blocks API](#blocks-api)
-  - [Configuration](#configuration)
-  - [Styles API](#styles-api)
+- [Product Summary Price](#product-summary-price)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Usage](#usage)
+    - [Blocks API](#blocks-api)
+    - [Configuration](#configuration)
+    - [Styles API](#styles-api)
+      - [CSS namespaces](#css-namespaces)
 
 ## Usage
 
@@ -41,6 +45,8 @@ Through the Storefront, you can change the `ProductSummaryPrice`'s behavior and 
 | `labelSellingPrice` | `String`  | Text of selling price's label    |               |
 | `labelListPrice`    | `String`  | Text of list price's label       |               |   
 | `showBorders`       | `Boolean` | Set product's borders visibility | `false`       |
+| `showListPriceRange`       | `Boolean` | Set if you want to see list price as range (lowest - highest) when available | `false`       |
+| `showSellingPriceRange`       | `Boolean` | Set if you want to see selling price as range (lowest - highest) when available | `false`       |
 
 ### Styles API
 

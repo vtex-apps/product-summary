@@ -15,5 +15,15 @@
   "store/productSummary.quantity-error": "store/productSummary.quantity-error",
   "store/productSummary.unit": "store/productSummary.unit",
   "store/productSummary.attachmentName": "store/productSummary.attachmentName",
-  "store/productSummary.missingOptionName": "String displayed when the assembly option was removed by user"
+  "store/productSummary.missingOptionName": "String displayed when the assembly option was removed by user",
+  "admin/editor.productSummaryPrice.title": "Title of ProductSummaryPrice component",
+  "admin/editor.productSummaryPrice.description": "Description of ProductSummaryPrice component",
+  "admin/editor.productSummaryPrice.showListPrice.title": "Title of showListPrice prop",
+  "admin/editor.productSummaryPrice.showSellingPriceRange.title": "Title of showSellingPriceRange prop",
+  "admin/editor.productSummaryPrice.showListPriceRange.title": "Title of showListPriceRange prop",
+  "admin/editor.productSummaryPrice.showInstallments.title": "Title of showInstallments prop",
+  "admin/editor.productSummaryPrice.showLabels.title": "Title of showLabels prop",
+  "admin/editor.productSummaryPrice.labelSellingPrice.title": "Title of labelSellingPrice prop",
+  "admin/editor.productSummaryPrice.labelListPrice.title": "Title of labelListPrice prop",
+  "admin/editor.productSummaryPrice.showBorders.title": "Title of showBorders prop"
 }

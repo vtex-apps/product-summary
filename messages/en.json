@@ -15,5 +15,15 @@
   "store/productSummary.quantity-error": "It wasn't possible to select the specified amount",
   "store/productSummary.unit": "Unit",
   "store/productSummary.attachmentName": "{sign} {quantity}x {name}",
-  "store/productSummary.missingOptionName": "No {name}"
+  "store/productSummary.missingOptionName": "No {name}",
+  "admin/editor.productSummaryPrice.title": "Product Summary Price",
+  "admin/editor.productSummaryPrice.description": "Component that shows product price inside the product summary",
+  "admin/editor.productSummaryPrice.showListPrice.title": "Show list price",
+  "admin/editor.productSummaryPrice.showSellingPriceRange.title": "Show selling price range",
+  "admin/editor.productSummaryPrice.showListPriceRange.title": "Show list price range",
+  "admin/editor.productSummaryPrice.showInstallments.title": "Show installments",
+  "admin/editor.productSummaryPrice.showLabels.title": "Show labels",
+  "admin/editor.productSummaryPrice.labelSellingPrice.title": "Label for selling price",
+  "admin/editor.productSummaryPrice.labelListPrice.title": "Label for list price",
+  "admin/editor.productSummaryPrice.showBorders.title": "Show borders"
 }
