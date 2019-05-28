@@ -9,10 +9,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - ProductSummaryPrice content properties to `contentSchemas.json`.
 
-### Changed
-
-- Removed ref definitions in `product-summary-buy-button` and `product-summary-image`.
-
 ## [2.24.0] - 2019-05-28
 ### Added
 - List and Selling price range feature to `ProductSummaryPrice`.
