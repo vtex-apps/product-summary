@@ -161,16 +161,6 @@ ProductSummaryPrice.schema = {
       default: ProductSummaryPrice.defaultProps.showLabels,
       isLayout: true,
     },
-    labelSellingPrice: {
-      type: 'string',
-      title: 'admin/editor.productSummaryPrice.labelSellingPrice.title',
-      isLayout: false,
-    },
-    labelListPrice: {
-      type: 'string',
-      title: 'admin/editor.productSummaryPrice.labelListPrice.title',
-      isLayout: false,
-    },
     showBorders: {
       type: 'boolean',
       title: 'admin/editor.productSummaryPrice.showBorders.title',

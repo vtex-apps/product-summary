@@ -10,6 +10,16 @@
           "title": "admin/editor.productSummary.buyButtonText.title",
           "$ref": "app:vtex.native-types#/definitions/text",
           "default": "store/button-label"
+        },
+        "labelSellingPrice": {
+          "title": "admin/editor.productSummaryPrice.labelSellingPrice.title",
+          "$ref": "app:vtex.native-types#/definitions/text",
+          "default": "store/pricing.to"
+        },
+        "labelListPrice": {
+          "title": "admin/editor.productSummaryPrice.labelListPrice.title",
+          "$ref": "app:vtex.native-types#/definitions/text",
+          "default": "store/pricing.from"
         }
       }
     }

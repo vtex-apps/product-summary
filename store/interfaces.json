@@ -95,7 +95,17 @@
     "component": "ProductSummaryName"
   },
   "product-summary-price": {
-    "component": "ProductSummaryPrice"
+    "component": "ProductSummaryPrice",
+    "content": {
+      "properties": {
+        "labelSellingPrice": {
+          "$ref": "app:vtex.product-summary#/definitions/ProductSummary/properties/labelSellingPrice"
+        },
+        "labelListPrice": {
+          "$ref": "app:vtex.product-summary#/definitions/ProductSummary/properties/labelListPrice"
+        }
+      }
+    }
   },
   "addon-summary-btn": {
     "component": "*"
