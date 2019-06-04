@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.24.2] - 2019-06-04
+### Changed
+- Updated `vtex.pixel-manager`.
+
 ## [2.24.1] - 2019-05-28
 ### Added
 - ProductSummaryPrice content properties to `contentSchemas.json`.
