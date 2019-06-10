@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.25.0] - 2019-06-10
+
+### Added
+
+- Missing interface to handle Wishlist button when using `product-summary.shelf`.
+
+### Fixed
+
+- Add `product-rating-inline` to `product-summary-column`.
+
 ## [2.24.2] - 2019-06-04
 ### Changed
 - Updated `vtex.pixel-manager`.
