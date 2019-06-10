@@ -16,6 +16,7 @@
       "product-summary-name",
       "product-summary-price",
       "product-summary-space",
+      "product-summary-add-to-list-button",
       "product-rating-inline"
     ],
     "component": "ProductSummaryCustom",
@@ -29,7 +30,9 @@
       "product-summary-image",
       "product-summary-name",
       "product-summary-price",
-      "product-summary-space"
+      "product-summary-space",
+      "product-summary-add-to-list-button",
+      "product-rating-inline"
     ],
     "component": "Column",
     "composition": "children"
@@ -106,6 +109,12 @@
         }
       }
     }
+  },
+  "product-summary-add-to-list-button": {
+    "component": "ProductSummaryAddToListButton",
+    "allowed": [
+      "addon-summary-btn"
+    ]
   },
   "addon-summary-btn": {
     "component": "*"
