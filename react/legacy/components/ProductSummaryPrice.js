@@ -15,6 +15,7 @@ const ProductSummaryPrice = ({
   labelListPrice,
   isLoading,
   containerClass,
+  sellingPriceClass,
 }) => {
   const commertialOffer = path(['sku', 'seller', 'commertialOffer'], product)
 
@@ -38,7 +39,7 @@ const ProductSummaryPrice = ({
           listPriceClass="dib ph2 strike t-small-ns t-mini"
           sellingPriceContainerClass="pt1 pb3 c-on-base"
           sellingPriceLabelClass="dib"
-          sellingPriceClass="dib ph2 t-body t-heading-5-ns"
+          sellingPriceClass={sellingPriceClass}
           savingsContainerClass="t-small-ns c-muted-2"
           savingsClass="dib"
           interestRateClass="dib pl2"
