@@ -92,7 +92,7 @@ class ProductSummary extends Component {
     },
     displayMode: 'normal',
     showBorders: false,
-    isPartial: false,
+    muted: false,
   }
 
   state = {
@@ -133,7 +133,7 @@ class ProductSummary extends Component {
       nameSchema: showFieldsProps,
       showQuantitySelector,
       priceAlignLeft,
-      isPartial,
+      muted,
     } = this.props
 
     const imageProps = {
@@ -182,7 +182,7 @@ class ProductSummary extends Component {
         buyButtonProps={buyButtonProps}
         showQuantitySelector={showQuantitySelector}
         priceAlignLeft={priceAlignLeft}
-        isPartial={isPartial}
+        muted={muted}
       />
     )
   }

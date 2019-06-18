@@ -1,7 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
 import { Link } from 'vtex.render-runtime'
-import { Spinner } from 'vtex.styleguide'
 
 import AttachmentList from './AttachmentList'
 import ProductImage from './ProductImage'
@@ -23,7 +22,7 @@ const ProductSummaryInlinePrice = ({
   priceProps,
   showQuantitySelector,
   priceAlignLeft,
-  isPartial,
+  muted,
 }) => {
   const containerClasses = classNames(
     styles.container,
@@ -41,14 +40,14 @@ const ProductSummaryInlinePrice = ({
   const nameClasses = {
     containerClass: classNames(
       'flex items-start justify-left tl w-90 t-mini pb2',
-      { 'c-muted-1': isPartial }
+      { 'c-muted-1': muted }
     ),
     brandNameClass: classNames('t-body', {
-      'c-muted-1': isPartial,
-      'c-on-base': !isPartial,
+      'c-muted-1': muted,
+      'c-on-base': !muted,
     }),
     skuNameClass: classNames('t-small', {
-      'c-muted-2': isPartial,
+      'c-muted-2': muted,
     }),
   }
 
@@ -59,7 +58,7 @@ const ProductSummaryInlinePrice = ({
       [`${styles.priceContainer} pv5`]: !showBorders,
     }),
     sellingPriceClass: classNames('dib ph2 t-body t-heading-5-ns', {
-      'c-muted-1': isPartial,
+      'c-muted-1': muted,
     }),
   }
 
@@ -79,14 +78,8 @@ const ProductSummaryInlinePrice = ({
           }}
           onClick={actionOnClick}
         >
-          <div className={`${styles.imageContainer} db h-100 relative`}>
+          <div className={`${styles.imageContainer} db h-100`}>
             <ProductImage {...imageProps} />
-
-            {isPartial && (
-              <div className="absolute left-0 top-0 w-100 h-100 flex items-center justify-center">
-                <Spinner />
-              </div>
-            )}
           </div>
           <div className={`${styles.information} w-70 pb2 pl3 pr3`}>
             <ProductSummaryName {...nameProps} {...nameClasses} />
