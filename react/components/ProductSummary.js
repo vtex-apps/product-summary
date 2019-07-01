@@ -65,7 +65,10 @@ class ProductSummaryCustom extends Component {
           <Link
             className={`${productSummary.clearLink} h-100 flex flex-column`}
             page={'store.product'}
-            params={{ slug: path(['linkText'], product) }}
+            params={{
+              slug: product && product.linkText, 
+              id: product && product.productId
+            }}
             onClick={actionOnClick}
           >
             <article className={summaryClasses}>
