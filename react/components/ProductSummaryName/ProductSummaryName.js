@@ -3,15 +3,16 @@ import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import { ProductName } from 'vtex.store-components'
 
-import ProductSummaryContext from '../ProductSummaryContext'
+import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 import { productShape } from '../../utils/propTypes'
 import productSummary from '../../productSummary.css'
 
 const ProductSummaryName = ({
   showFieldsProps
 }) => {
-  const { product } = useContext(ProductSummaryContext)
+  const { product } = useProductSummary()
   const productName = path(['productName'], product)
+  // TODO: change ProductSummaryContext to have `selectedSku` field instead of `sku`
   const skuName = path(['sku', 'name'], product)
   const brandName = path(['brand'], product)
 

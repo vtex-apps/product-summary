@@ -1,13 +1,13 @@
 import React, { Fragment, useContext } from 'react'
 import PropTypes from 'prop-types'
 
-import ProductSummaryContext from '../ProductSummaryContext'
+import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 import productSummary from '../../productSummary.css'
 
 const MAX_SIZE_DESCRIPTION = 120
 
 const ProductSummaryDescription = () => {
-  const { product: { description } } = useContext(ProductSummaryContext)
+  const { product: { description } } = useProductSummary()
 
   if (!description)
     return (<Fragment />)

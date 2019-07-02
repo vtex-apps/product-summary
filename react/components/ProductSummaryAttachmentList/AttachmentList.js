@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { productShape } from '../../utils/propTypes'
 import { pathOr } from 'ramda'
 
-import ProductSummaryContext from '../ProductSummaryContext'
+import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 import RemovedAttachmentsList from './RemovedAttachmentsList'
 import AddedAttachmentsList from './AddedAttachmentsList'
 
@@ -11,7 +11,7 @@ import styles from '../../productSummary.css'
 const shouldShowOption = option => option.extraQuantity > 0 || option.item.sellingPrice !== 0
 
 const AttachmentList = () => {
-  const { product } = useContext(ProductSummaryContext)
+  const { product } = useProductSummary()
   const addedOptions = pathOr([], ['assemblyOptions', 'added'], product)
   const removedOptions = pathOr([], ['assemblyOptions', 'removed'], product)
   const parentPrice = pathOr(0, ['assemblyOptions', 'parentPrice'], product)

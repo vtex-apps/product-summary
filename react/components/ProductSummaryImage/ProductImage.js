@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
 
-import ProductSummaryContext from '../ProductSummaryContext'
+import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 import { productShape } from '../../utils/propTypes'
 
 import productSummary from '../../productSummary.css'
@@ -94,6 +94,7 @@ const ProductImageContent = ({
     [productSummary.imageInline]: displayMode === 'inline',
   })
 
+  // TODO: change ProductSummaryContext to have `selectedSku` field instead of `sku`
   const commertialOffer = pathOr(
     {},
     ['sku', 'seller', 'commertialOffer'],
@@ -122,7 +123,7 @@ const ProductImageContent = ({
 }
 
 const ProductImage = props => {
-  const { product } = useContext(ProductSummaryContext)
+  const { product } = useProductSummary()
 
   const [error, setError] = useState(false)
   const imageClassName = classNames(productSummary.imageContainer, {

@@ -10,8 +10,8 @@ import {
 import classNames from 'classnames'
 import { Spinner } from 'vtex.styleguide'
 import { ProductPrice } from 'vtex.store-components'
+import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
-import ProductSummaryContext from '../ProductSummaryContext'
 import productSummary from '../../productSummary.css'
 
 const isAvailableProduct = price => price !== 0
@@ -26,7 +26,8 @@ const ProductSummaryPrice = ({
   showBorders,
   showListPriceRange,
 }) => {
-  const { product, isLoading } = useContext(ProductSummaryContext)
+  const { product, isLoading } = useProductSummary()
+  // TODO: change ProductSummaryContext to have `selectedSku` field instead of `sku`
   const commertialOffer = path(['sku', 'seller', 'commertialOffer'], product)
 
   if (isLoading) {

@@ -1,7 +1,7 @@
 import React, { Children } from 'react'
 import { render, fireEvent } from '@vtex/test-tools/react'
 import ProductImage from './ProductImage'
-import ProductSummaryContext from '../ProductSummaryContext'
+import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
 test('should show placeholder on error', () => {
   const productName = 'Ball'

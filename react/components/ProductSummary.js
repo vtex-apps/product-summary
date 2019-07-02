@@ -1,90 +1,124 @@
-import React, { Component } from 'react'
+import React, {
+  Component,
+  useCallback,
+  useState,
+  useMemo,
+  useReducer,
+  useEffect,
+} from 'react'
+import { path } from 'ramda'
 import classNames from 'classnames'
 import { Link } from 'vtex.render-runtime'
 import ProductSummaryContext from './ProductSummaryContext'
+import {
+  ProductSummaryProvider,
+  useProductSummaryDispatch,
+  useProductSummary,
+} from 'vtex.product-summary-context/ProductSummaryContext'
 import productSummary from '../productSummary.css'
 import { productShape } from '../utils/propTypes'
 
-class ProductSummaryCustom extends Component {
-  static propTypes = {
-    /** Product that owns the informations */
-    product: productShape,
-    /** Function that is executed when a product is clicked */
-    actionOnClick: PropTypes.func,
-  }
+const ProductSummaryCustom = ({ product, actionOnClick, children }) => {
+  const { isLoading, isHovering } = useProductSummary()
+  const dispatch = useProductSummaryDispatch()
 
-  state = {
-    isHovering: false,
-    isUpdatingItems: false,
-  }
-
-  handleMouseLeave = () => {
-    this.setState({ isHovering: false })
-  }
-
-  handleMouseEnter = () => {
-    this.setState({ isHovering: true })
-  }
-
-  handleItemsStateUpdate = isLoading =>
-    this.setState({ isUpdatingItems: isLoading })
-
-  render() {
-    const {
-      children,
-      product,
-      actionOnClick
-    } = this.props
-
-    const contextProps = {
-      product,
-      isLoading: this.state.isUpdatingItems,
-      isHovering: this.state.isHovering,
-      handleItemsStateUpdate: this.handleItemsStateUpdate,
+  useEffect(() => {
+    if (product) {
+      dispatch({
+        type: 'SET_PRODUCT',
+        args: { product },
+      })
     }
+  }, [product, dispatch])
 
-    const containerClasses = classNames(
-      productSummary.container,
-      productSummary.containerNormal,
-      'overflow-hidden br3 h-100 w-100 flex flex-column justify-between center tc'
-    )
+  const handleMouseLeave = useCallback(() => {
+    dispatch({
+      type: 'SET_HOVER',
+      args: { isHovering: false },
+    })
+  }, [dispatch])
 
-    const summaryClasses = classNames(
-      `${productSummary.element} pointer pt3 pb4 flex flex-column h-100`
-    )
+  const handleMouseEnter = useCallback(() => {
+    dispatch({
+      type: 'SET_HOVER',
+      args: { isHovering: true },
+    })
+  }, [dispatch])
 
-    return (
-      <ProductSummaryContext.Provider value={contextProps}>
-        <section
-          className={containerClasses}
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
+  const handleItemsStateUpdate = useCallback(
+    isLoading => {
+      dispatch({
+        type: 'SET_LOADING',
+        args: { isLoading },
+      })
+    },
+    [dispatch]
+  )
+
+  const oldContextProps = useMemo(
+    () => ({
+      product,
+      isLoading,
+      isHovering,
+      handleItemsStateUpdate: handleItemsStateUpdate,
+    }),
+    [product, isLoading, isHovering, handleItemsStateUpdate]
+  )
+
+  const containerClasses = classNames(
+    productSummary.container,
+    productSummary.containerNormal,
+    'overflow-hidden br3 h-100 w-100 flex flex-column justify-between center tc'
+  )
+
+  const summaryClasses = classNames(
+    `${productSummary.element} pointer pt3 pb4 flex flex-column h-100`
+  )
+
+  return (
+    <ProductSummaryContext.Provider value={oldContextProps}>
+      <section
+        className={containerClasses}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <Link
+          className={`${productSummary.clearLink} h-100 flex flex-column`}
+          page="store.product"
+          params={{
+            slug: product && product.linkText,
+            // WARNING: this enables links with translatable slugs
+            // id: product && product.productId,
+          }}
+          onClick={actionOnClick}
         >
-          <Link
-            className={`${productSummary.clearLink} h-100 flex flex-column`}
-            page={'store.product'}
-            params={{
-              slug: product && product.linkText, 
-              // WARNING: this enables links with translatable slugs
-              // id: product && product.productId
-            }}
-            onClick={actionOnClick}
-          >
-            <article className={summaryClasses}>
-              {children}
-            </article>
-          </Link>
-        </section>
-      </ProductSummaryContext.Provider>
-    )
-  }
+          <article className={summaryClasses}>{children}</article>
+        </Link>
+      </section>
+    </ProductSummaryContext.Provider>
+  )
 }
 
-ProductSummaryCustom.getSchema = () => {
+ProductSummaryCustom.propTypes = {
+  /** Product that owns the informations */
+  product: productShape,
+  /** Function that is executed when a product is clicked */
+  actionOnClick: PropTypes.func,
+}
+
+function ProductSummaryWrapper(props) {
+  return (
+    <ProductSummaryProvider {...props}>
+      <ProductSummaryCustom {...props} />
+    </ProductSummaryProvider>
+  )
+}
+
+ProductSummaryWrapper.getSchema = () => {
   return {
     title: 'admin/editor.productSummary.title',
     description: 'admin/editor.productSummary.description',
   }
 }
 
-export default ProductSummaryCustom
+export default ProductSummaryWrapper

@@ -5,7 +5,7 @@ import { equals, path } from 'ramda'
 import classNames from 'classnames'
 import { IOMessage } from 'vtex.native-types'
 
-import ProductSummaryContext from '../ProductSummaryContext'
+import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 import displayButtonTypes, {
   getDisplayButtonNames,
   getDisplayButtonValues,
@@ -21,7 +21,7 @@ const ProductSummaryBuyButton = ({
   },
   isHovering
 }) => {
-  const { product } = useContext(ProductSummaryContext)
+  const { product } = useProductSummary()
 
   const hoverBuyButton =
     equals(displayBuyButton, displayButtonTypes.DISPLAY_ALWAYS.value) ||
@@ -44,6 +44,7 @@ const ProductSummaryBuyButton = ({
 
   const containerClass = `${productSummary.buyButtonContainer} pv3 w-100 db`
 
+  // TODO: change ProductSummaryContext to have `selectedSku` field instead of `sku`
   const quantity =
     path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) ||
     0
