@@ -6,13 +6,26 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Deprecated
+
+- `ProductSummaryContext`.
+
+### Changed
+
+- Use `vtex.product-summary-context` instead of local context.
+
+### Added
+
+- `product-identifier` as allowed block.
 
 ## [2.26.2] - 2019-07-03
 
 ## [2.26.1] - 2019-07-03
 
 ## [2.26.0] - 2019-07-02
+
 ### Changed
+
 - Uses product id to link to product page
 
 ## [2.25.1] - 2019-06-27
@@ -32,75 +45,108 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add `product-rating-inline` to `product-summary-column`.
 
 ## [2.24.2] - 2019-06-04
+
 ### Changed
+
 - Updated `vtex.pixel-manager`.
 
 ## [2.24.1] - 2019-05-28
+
 ### Added
+
 - ProductSummaryPrice content properties to `contentSchemas.json`.
 
 ## [2.24.0] - 2019-05-28
+
 ### Added
+
 - List and Selling price range feature to `ProductSummaryPrice`.
 
 ## [2.23.1] - 2019-05-27
+
 ### Changed
+
 - Use absolute path for definitions in `interfaces.json`.
 
 ## [2.23.0] - 2019-05-27
+
 ### Added
+
 - Send cart events to Pixel Manager when updating quantity of product.
 
 ## [2.22.0] - 2019-05-27
+
 ### Added
+
 - `contentSchemas.json` for definition of content properties.
 - i18n content edition support through CMS.
 
 ## [2.21.0] - 2019-05-21
+
 ### Fixed
+
 - Include `labelListPrice` prop in `productSummaryPrice`.
 
 ## [2.20.3] - 2019-05-14
+
 ### Fixed
+
 - ProductQuantityStepper was sending undefined seller param to updateItems mutation.
 
 ## [2.20.2] - 2019-05-13
+
 ### Fixed
+
 - Show `ImagePlaceholder` when the image cannot be fetched (e.g.: offline).
 
 ## [2.20.1] - 2019-05-09
+
 ### Fixed
+
 - Attachment related messages had IDs like storefront props and were not showing properly after message scope change.
 
 ## [2.20.0] - 2019-05-08
+
 ### Added
+
 - Add a `imagePlaceholder` CSS handler.
 
 ## [2.19.2] - 2019-04-30
+
 ### Fixed
+
 - Fix `ProductImage` product evaluation.
 
 ## [2.19.1] - 2019-04-30
+
 ### Fixed
+
 - Do not render `ProductPrice` when selling price is zero.
 - Remove content loader from `ProductImage` and put a placeholder when the product has no image.
 
 ## [2.19.0] - 2019-04-29
+
 ### Fixed
+
 - Interfaces to inject the `wishlist` plugins.
 - `inlinePrice` height to fit its parent's height.
 
 ## [2.18.1] - 2019-04-26
+
 ### Changed
+
 - Rename `product-summary.unstable--flex` to `product-summary.shelf`
 
 ## [2.18.0] - 2019-04-25
 
 ### Added
+
 - Allow `product-rating-inline` in `product-summary.unstable--flex`.
 
 ## [2.17.0] - 2019-04-24
+
 ### Changed
+
 - Scope Messages
 
 ## [2.16.0] - 2019-04-15
@@ -108,27 +154,39 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [2.15.3-beta] - 2019-04-15
 
 ## [2.15.2] - 2019-04-08
+
 ### Fixed
+
 - Legacy should use attachment list component from legacy.
 
 ## [2.15.1] - 2019-04-08
+
 ### Fixed
+
 - Rename interface `_` to `product-summary-space` to prevent conflict.
 
 ## [2.15.0] - 2019-04-08
+
 ### Added
+
 - Added new experimental `product-summary.unstable--flex`, under an `unstable--` flag.
 
 ## [2.14.5] - 2019-04-01
+
 ### Fixed
+
 - Product shape prop-types.
 
 ## [2.14.4] - 2019-04-01
+
 ### Changed
+
 - Use `cartIndex` to correctly update items quantity on cart.
 
 ## [2.14.3] - 2019-03-28
+
 ### Fixed
+
 - Replace `background-image` for `img` on Image component.
 
 ## [2.14.2] - 2019-03-28
@@ -144,6 +202,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Remove spread on `getSchema` that was crashing site editor.
 
 ### Added
+
 - Add tests.
 - Add interface to inject the `wish-list` plugin in the normal mode.
 - Add `showQuantitySelector` props to set the quantity selector visibility in the inline mode.
