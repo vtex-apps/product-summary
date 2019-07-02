@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { path } from 'ramda'
 import classNames from 'classnames'
 import { Link } from 'vtex.render-runtime'
-import { ProductName, ProductPrice } from 'vtex.store-components'
 import ProductSummaryContext from './ProductSummaryContext'
 import productSummary from '../productSummary.css'
 import { productShape } from '../utils/propTypes'
@@ -65,7 +63,10 @@ class ProductSummaryCustom extends Component {
           <Link
             className={`${productSummary.clearLink} h-100 flex flex-column`}
             page={'store.product'}
-            params={{ slug: path(['linkText'], product) }}
+            params={{
+              slug: product && product.linkText, 
+              id: product && product.productId
+            }}
             onClick={actionOnClick}
           >
             <article className={summaryClasses}>
