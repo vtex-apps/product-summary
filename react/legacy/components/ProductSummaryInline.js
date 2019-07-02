@@ -65,7 +65,10 @@ class ProductSummaryInline extends Component {
         <Link
           className={summaryClasses}
           page={'store.product'}
-          params={{ slug: path(['linkText'], product) }}
+          params={{ 
+            slug: product && product.linkText,
+            id: product && product.productId,
+          }}
           onClick={actionOnClick}
         >
           <article className="flex">

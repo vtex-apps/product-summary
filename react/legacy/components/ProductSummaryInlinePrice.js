@@ -61,7 +61,10 @@ const ProductSummaryInline = ({
         <Link
           className={`${productSummary.clearLink} flex h-100`}
           page={'store.product'}
-          params={{ slug: path(['linkText'], product) }}
+          params={{ 
+            slug: product && product.linkText,
+            id: product && product.productId,
+          }}
           onClick={actionOnClick}
         >
           <div className={`${productSummary.imageContainer} db h-100`}>
