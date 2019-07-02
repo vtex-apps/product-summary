@@ -1,7 +1,7 @@
 import React, { Children } from 'react'
 import { render, fireEvent } from '@vtex/test-tools/react'
 import ProductImage from './ProductImage'
-import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
+import { ProductSummaryProvider } from 'vtex.product-summary-context/ProductSummaryContext'
 
 test('should show placeholder on error', () => {
   const productName = 'Ball'
@@ -13,9 +13,9 @@ test('should show placeholder on error', () => {
   }
 
   const { getByAltText, getByTestId } = render(
-    <ProductSummaryContext.Provider value={mock}>
+    <ProductSummaryProvider value={mock}>
       <ProductImage />
-    </ProductSummaryContext.Provider>
+    </ProductSummaryProvider>
   )
 
   const image = getByAltText(productName)
