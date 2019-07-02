@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { path } from 'ramda'
 import classNames from 'classnames'
 import { Link } from 'vtex.render-runtime'
-import { ProductName, ProductPrice } from 'vtex.store-components'
 import ProductSummaryContext from './ProductSummaryContext'
 import productSummary from '../productSummary.css'
 import { productShape } from '../utils/propTypes'
