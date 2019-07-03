@@ -65,7 +65,8 @@ class ProductSummaryCustom extends Component {
             page={'store.product'}
             params={{
               slug: product && product.linkText, 
-              id: product && product.productId
+              // WARNING: this enables links with translatable slugs
+              // id: product && product.productId
             }}
             onClick={actionOnClick}
           >
