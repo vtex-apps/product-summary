@@ -1,4 +1,4 @@
-import React, { useMemo, useContext } from 'react'
+import React, { useMemo } from 'react'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { path } from 'ramda'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
@@ -14,18 +14,29 @@ const captureClick = e => {
   e.stopPropagation()
 }
 
-function ProductSummaryAddToListButton({ product }) {
+function ProductSummaryAddToListButton() {
   const productContext = useProductSummary()
 
   const skuId = getSkuId(productContext.product)
   const productId = getProductId(productContext.product)
 
-  const productProp = useMemo(() => ({
-    skuId, productId, quantity: 1
-  }), [skuId, productId])
+  const productProp = useMemo(
+    () => ({
+      skuId,
+      productId,
+      quantity: 1,
+    }),
+    [skuId, productId]
+  )
 
   return (
-    <div className={`${productSummary.addToListBtn} absolute z-1`} onClick={captureClick}>
+    <div
+      role="button"
+      tabIndex="-1"
+      onKeyDown={() => {}}
+      className={`${productSummary.addToListBtn} absolute z-1`}
+      onClick={captureClick}
+    >
       <ExtensionPoint id="addon-summary-btn" product={productProp} />
     </div>
   )

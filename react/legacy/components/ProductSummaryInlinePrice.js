@@ -1,5 +1,4 @@
 import React from 'react'
-import { path } from 'ramda'
 import classNames from 'classnames'
 import { Link } from 'vtex.render-runtime'
 
@@ -61,7 +60,7 @@ const ProductSummaryInline = ({
         <Link
           className={`${productSummary.clearLink} flex h-100`}
           page={'store.product'}
-          params={{ 
+          params={{
             slug: product && product.linkText,
             // WARNING: this enables links with translatable slugs
             // id: product && product.productId,
@@ -76,9 +75,7 @@ const ProductSummaryInline = ({
             <AttachmentList product={product} />
             <div className="mt3 nr2">
               <div
-                className={`flex justify-end nr4 mb2 ${
-                  productSummary.quantityStepperContainer
-                }`}
+                className={`flex justify-end nr4 mb2 ${productSummary.quantityStepperContainer}`}
               >
                 {showQuantitySelector && (
                   <ProductQuantityStepper

@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React from 'react'
 import { render, fireEvent } from '@vtex/test-tools/react'
 import ProductImage from './ProductImage'
 import { ProductSummaryProvider } from 'vtex.product-summary-context/ProductSummaryContext'

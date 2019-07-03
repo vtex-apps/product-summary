@@ -1,12 +1,6 @@
-import React, { useMemo, useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { 
-  path, 
-  prop,
-  flatten,
-  map,
-  filter
-} from 'ramda'
+import { path, prop, flatten, map, filter } from 'ramda'
 import classNames from 'classnames'
 import { Spinner } from 'vtex.styleguide'
 import { ProductPrice } from 'vtex.store-components'
@@ -15,6 +9,18 @@ import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryCo
 import productSummary from '../../productSummary.css'
 
 const isAvailableProduct = price => price !== 0
+
+const getPrices = (items, attribute) => {
+  if (!items) {
+    return []
+  }
+
+  const sellers = flatten(map(prop('sellers'), items))
+  const prices = map(path(['commertialOffer', attribute]), sellers)
+  const availableProductsPrices = filter(isAvailableProduct, prices)
+
+  return availableProductsPrices
+}
 
 const ProductSummaryPrice = ({
   showListPrice,
@@ -45,21 +51,8 @@ const ProductSummaryPrice = ({
     sellingPriceClass: 'dib ph2 t-body t-heading-5-ns',
   }
 
-  const getPrices = attribute => {
-    const { items } = product
-    if (!items) {
-      return []
-    }
-
-    const sellers = flatten(map(prop('sellers'), items))
-    const prices = map(path(['commertialOffer', attribute]), sellers)
-    const availableProductsPrices = filter(isAvailableProduct, prices)
-
-    return availableProductsPrices
-  }
-
-  const sellingPriceList = useMemo(() => getPrices('Price'), [product])
-  const listPriceList = useMemo(() => getPrices('ListPrice'), [product])
+  const sellingPriceList = getPrices(product.items, 'Price')
+  const listPriceList = getPrices(product.items, 'ListPrice')
   const sellingPrice = prop('Price', commertialOffer)
 
   return (

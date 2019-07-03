@@ -40,9 +40,7 @@ class ProductSummarySmall extends Component {
     )
 
     const nameClasses = {
-      containerClass: `flex items-start ${
-        styles.nameContainer
-      } justify-center pv5 t-mini pb2`,
+      containerClass: `flex items-start ${styles.nameContainer} justify-center pv5 t-mini pb2`,
       brandNameClass: 't-body t-mini',
     }
 

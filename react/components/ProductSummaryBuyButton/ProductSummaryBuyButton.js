@@ -1,4 +1,5 @@
-import React, { useContext } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import BuyButton from 'vtex.store-components/BuyButton'
 import { withRuntimeContext } from 'vtex.render-runtime'
 import { equals, path } from 'ramda'
@@ -19,7 +20,7 @@ const ProductSummaryBuyButton = ({
   runtime: {
     hints: { mobile },
   },
-  isHovering
+  isHovering,
 }) => {
   const { product } = useProductSummary()
 
@@ -106,7 +107,7 @@ ProductSummaryBuyButton.propTypes = {
 
 ProductSummaryBuyButton.defaultProps = {
   displayBuyButton: displayButtonTypes.DISPLAY_ALWAYS.value,
-  isOneClickBuy: false
+  isOneClickBuy: false,
 }
 
 ProductSummaryBuyButton.getSchema = () => {

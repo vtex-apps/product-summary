@@ -2,14 +2,18 @@ import PropTypes from 'prop-types'
 import { CHOICE_TYPES } from './attachmentHelper'
 
 export const addedOptionShape = PropTypes.shape({
-  item: PropTypes.shape({ 
-    name: PropTypes.string.isRequired, 
+  item: PropTypes.shape({
+    name: PropTypes.string.isRequired,
     sellingPrice: PropTypes.number.isRequired,
     quantity: PropTypes.number.isRequired,
   }),
   normalizedQuantity: PropTypes.number,
   extraQuantity: PropTypes.number,
-  choiceType: PropTypes.oneOf([CHOICE_TYPES.SINGLE, CHOICE_TYPES.MULTIPLE, CHOICE_TYPES.TOGGLE]).isRequired,
+  choiceType: PropTypes.oneOf([
+    CHOICE_TYPES.SINGLE,
+    CHOICE_TYPES.MULTIPLE,
+    CHOICE_TYPES.TOGGLE,
+  ]).isRequired,
 })
 
 export const removedOptionShape = PropTypes.shape({
@@ -69,9 +73,11 @@ export const productShape = PropTypes.shape({
     }).isRequired,
   }).isRequired,
   /** Product's collections */
-  productClusters: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-  })),
+  productClusters: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    })
+  ),
   /** Contains relevant assembly options information */
   assemblyOptions: PropTypes.shape({
     added: PropTypes.arrayOf(addedOptionShape),

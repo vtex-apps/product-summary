@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { path } from 'ramda'
 import classNames from 'classnames'
 import { Link } from 'vtex.render-runtime'
 
@@ -32,9 +31,7 @@ class ProductSummaryInline extends Component {
     )
 
     const summaryClasses = classNames(
-      `${productSummary.element} ${
-        productSummary.clearLink
-      } pointer pt3 pb4 flex flex-column`,
+      `${productSummary.element} ${productSummary.clearLink} pointer pt3 pb4 flex flex-column`,
       {
         'bb b--muted-4 mh2 mh3-ns mt2': showBorders,
       }
@@ -65,7 +62,7 @@ class ProductSummaryInline extends Component {
         <Link
           className={summaryClasses}
           page={'store.product'}
-          params={{ 
+          params={{
             slug: product && product.linkText,
             // WARNING: this enables links with translatable slugs
             // id: product && product.productId,
@@ -77,9 +74,7 @@ class ProductSummaryInline extends Component {
               <ProductImage {...imageProps} />
             </div>
             <div
-              className={`${
-                productSummary.information
-              } w-80 pb2 pl3 flex flex-wrap flex-column justify-between`}
+              className={`${productSummary.information} w-80 pb2 pl3 flex flex-wrap flex-column justify-between`}
             >
               <div className="flex flex-column">
                 <ProductSummaryName {...nameProps} {...nameClasses} />

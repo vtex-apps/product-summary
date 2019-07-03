@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import { productShape } from '../../utils/propTypes'
+import React from 'react'
 import { pathOr } from 'ramda'
 
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
@@ -8,7 +7,8 @@ import AddedAttachmentsList from './AddedAttachmentsList'
 
 import styles from '../../productSummary.css'
 
-const shouldShowOption = option => option.extraQuantity > 0 || option.item.sellingPrice !== 0
+const shouldShowOption = option =>
+  option.extraQuantity > 0 || option.item.sellingPrice !== 0
 
 const AttachmentList = () => {
   const { product } = useProductSummary()
@@ -24,7 +24,10 @@ const AttachmentList = () => {
 
   return (
     <div className={`${styles.attachmentListContainer} pv2`}>
-      <AddedAttachmentsList addedOptions={filteredOption} parentPrice={parentPrice} />
+      <AddedAttachmentsList
+        addedOptions={filteredOption}
+        parentPrice={parentPrice}
+      />
       <RemovedAttachmentsList removedOptions={removedOptions} />
     </div>
   )

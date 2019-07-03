@@ -5,8 +5,6 @@ import React, { Component } from 'react'
  */
 export default class ContentLoader extends Component {
   render() {
-    return (
-      <div>ContentLoader</div>
-    )
+    return <div>ContentLoader</div>
   }
 }

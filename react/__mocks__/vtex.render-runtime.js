@@ -5,9 +5,7 @@ export function Link({ children }) {
 }
 
 export function ExtensionPoint(props) {
-  return (
-    <div {...props} />
-  )
+  return <div {...props} />
 }
 
 export function withRuntimeContext(Comp) {

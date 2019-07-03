@@ -1,11 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { pathOr, compose, path } from 'ramda'
 import PropTypes from 'prop-types'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
 
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
-import { productShape } from '../../utils/propTypes'
 
 import productSummary from '../../productSummary.css'
 
@@ -35,9 +34,7 @@ const maybeCollection = ({ productClusters }) => shouldShow => component => {
 export const ImagePlaceholder = () => (
   <div className="relative">
     <div
-      className={`${
-        productSummary.imagePlaceholder
-      } absolute w-100 h-100 contain bg-center`}
+      className={`${productSummary.imagePlaceholder} absolute w-100 h-100 contain bg-center`}
     />
     <svg
       width="100%"

@@ -1,12 +1,5 @@
-import React, {
-  Component,
-  useCallback,
-  useState,
-  useMemo,
-  useReducer,
-  useEffect,
-} from 'react'
-import { path } from 'ramda'
+import React, { useCallback, useMemo, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Link } from 'vtex.render-runtime'
 import ProductSummaryContext from './ProductSummaryContext'
@@ -104,6 +97,7 @@ ProductSummaryCustom.propTypes = {
   product: productShape,
   /** Function that is executed when a product is clicked */
   actionOnClick: PropTypes.func,
+  children: PropTypes.node,
 }
 
 function ProductSummaryWrapper(props) {
