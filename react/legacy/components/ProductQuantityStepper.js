@@ -3,7 +3,7 @@ import { path } from 'ramda'
 import PropTypes from 'prop-types'
 import { NumericStepper, withToast } from 'vtex.styleguide'
 import { Pixel } from 'vtex.pixel-manager/PixelContext'
-import { debounce } from 'lodash'
+import debounce from 'lodash/debounce'
 import { injectIntl, intlShape } from 'react-intl'
 import { compose, graphql } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -24,6 +24,7 @@ class ProductQuantityStepper extends Component {
     intl: intlShape,
     minicartItems: PropTypes.array,
     updateItems: PropTypes.func.isRequired,
+    push: PropTypes.func.isRequired,
   }
 
   state = {

@@ -4,12 +4,11 @@ import ProductPrice from 'vtex.store-components/ProductPrice'
 
 import styles from '../../productSummary.css'
 
-const AttachmentItem = ({
-  productText,
-  price
-}) => {
+const AttachmentItem = ({ productText, price }) => {
   return (
-    <div className={`${styles.attachmentItemContainer} flex items-center justify-between pv1`}>
+    <div
+      className={`${styles.attachmentItemContainer} flex items-center justify-between pv1`}
+    >
       <span className="t-small c-muted-2 tl pr3">{productText}</span>
       {price != null && (
         <ProductPrice

@@ -1,11 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { pathOr, compose, path } from 'ramda'
 import PropTypes from 'prop-types'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
 
-import ProductSummaryContext from '../ProductSummaryContext'
-import { productShape } from '../../utils/propTypes'
+import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
 import productSummary from '../../productSummary.css'
 
@@ -35,9 +34,7 @@ const maybeCollection = ({ productClusters }) => shouldShow => component => {
 export const ImagePlaceholder = () => (
   <div className="relative">
     <div
-      className={`${
-        productSummary.imagePlaceholder
-      } absolute w-100 h-100 contain bg-center`}
+      className={`${productSummary.imagePlaceholder} absolute w-100 h-100 contain bg-center`}
     />
     <svg
       width="100%"
@@ -94,6 +91,7 @@ const ProductImageContent = ({
     [productSummary.imageInline]: displayMode === 'inline',
   })
 
+  // TODO: change ProductSummaryContext to have `selectedSku` field instead of `sku`
   const commertialOffer = pathOr(
     {},
     ['sku', 'seller', 'commertialOffer'],
@@ -122,7 +120,7 @@ const ProductImageContent = ({
 }
 
 const ProductImage = props => {
-  const { product } = useContext(ProductSummaryContext)
+  const { product } = useProductSummary()
 
   const [error, setError] = useState(false)
   const imageClassName = classNames(productSummary.imageContainer, {

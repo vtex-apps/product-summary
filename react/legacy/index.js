@@ -1,10 +1,8 @@
+/* eslint-disable react/jsx-handler-names */
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { withRuntimeContext } from 'vtex.render-runtime'
-import {
-  ProductName,
-  ProductPrice,
-} from 'vtex.store-components'
+import { ProductName, ProductPrice } from 'vtex.store-components'
 
 import ProductSummaryNormal from './components/ProductSummaryNormal'
 import ProductSummarySmall from './components/ProductSummarySmall'

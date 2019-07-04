@@ -7,12 +7,15 @@ import AttachmentItem from './AttachmentItem'
 import { removedOptionShape } from '../../utils/propTypes'
 
 const wasCompletelyRemoved = ({ removedQuantity, initialQuantity }) =>
-removedQuantity === 1 && removedQuantity === initialQuantity
+  removedQuantity === 1 && removedQuantity === initialQuantity
 
 const formatAttachmentName = (missingOption, intl) => {
   const { name, removedQuantity } = missingOption
   if (wasCompletelyRemoved(missingOption)) {
-    return intl.formatMessage({ id: 'store/productSummary.missingOptionName' }, { name })
+    return intl.formatMessage(
+      { id: 'store/productSummary.missingOptionName' },
+      { name }
+    )
   }
 
   const extraParams = {
@@ -20,13 +23,13 @@ const formatAttachmentName = (missingOption, intl) => {
     name,
     quantity: removedQuantity,
   }
-  return intl.formatMessage({ id: 'store/productSummary.attachmentName' }, extraParams)
+  return intl.formatMessage(
+    { id: 'store/productSummary.attachmentName' },
+    extraParams
+  )
 }
 
-const RemovedAttachmentsList = ({
-  removedOptions,
-  intl,
-}) => {
+const RemovedAttachmentsList = ({ removedOptions, intl }) => {
   if (removedOptions.length === 0) {
     return null
   }

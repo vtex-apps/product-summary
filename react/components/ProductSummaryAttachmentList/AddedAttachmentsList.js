@@ -14,14 +14,13 @@ const formatAttachmentName = (option, intl) => {
     name: option.item.name,
     quantity: option.extraQuantity || option.normalizedQuantity,
   }
-  return intl.formatMessage({ id: 'store/productSummary.attachmentName' }, extraParams)
+  return intl.formatMessage(
+    { id: 'store/productSummary.attachmentName' },
+    extraParams
+  )
 }
 
-const AddedAttachmentsList = ({
-  addedOptions,
-  parentPrice,
-  intl
-}) => {
+const AddedAttachmentsList = ({ addedOptions, parentPrice, intl }) => {
   if (addedOptions.length === 0) {
     return null
   }
@@ -33,7 +32,9 @@ const AddedAttachmentsList = ({
       />
       {addedOptions.map(option => {
         const isSingle = option.choiceType === CHOICE_TYPES.SINGLE
-        const productText = isSingle ? option.item.name : formatAttachmentName(option, intl)
+        const productText = isSingle
+          ? option.item.name
+          : formatAttachmentName(option, intl)
         return (
           <AttachmentItem
             productText={productText}

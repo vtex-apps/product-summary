@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@vtex/test-tools/react'
-const fs = require('fs')
+import fs from 'fs'
 
 import ProductSummary from '../legacy/index'
 

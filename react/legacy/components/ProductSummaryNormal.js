@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { ExtensionPoint, Link } from 'vtex.render-runtime'
 
 import AttachmentList from './AttachmentList'
-import ProductImage, { ImagePlaceholder } from './ProductImage'
+import ProductImage from './ProductImage'
 import ProductSummaryBuyButton from './ProductSummaryBuyButton'
 import ProductSummaryPrice from './ProductSummaryPrice'
 import ProductSummaryName from './ProductSummaryName'
@@ -41,9 +41,7 @@ class ProductSummaryNormal extends Component {
     )
 
     const nameClasses = {
-      containerClass: `flex items-start ${
-        productSummary.nameContainer
-      } justify-center pv6`,
+      containerClass: `flex items-start ${productSummary.nameContainer} justify-center pv6`,
       brandNameClass: 't-body',
     }
 
@@ -62,7 +60,6 @@ class ProductSummaryNormal extends Component {
     }
 
     const descriptionClasses = `${productSummary.description} c-muted-2 t-small`
-
 
     return (
       <section
@@ -83,7 +80,7 @@ class ProductSummaryNormal extends Component {
         <Link
           className={`${productSummary.clearLink} h-100 flex flex-column`}
           page={'store.product'}
-          params={{ 
+          params={{
             slug: product && product.linkText,
             id: product && product.productId,
           }}
@@ -94,9 +91,7 @@ class ProductSummaryNormal extends Component {
               <ProductImage {...imageProps} />
             </div>
             <div
-              className={`${
-                productSummary.information
-              } h-100 flex flex-column justify-between`}
+              className={`${productSummary.information} h-100 flex flex-column justify-between`}
             >
               <ProductSummaryName {...nameProps} {...nameClasses} />
               <AttachmentList product={product} />

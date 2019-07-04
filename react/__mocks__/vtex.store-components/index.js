@@ -4,24 +4,16 @@ export const DiscountBadge = ({ children }) => {
   return <div className="discount-badge-mock">{children}</div>
 }
 
-const CollectionBadges = ({ children }) => {
-  return <div className="collection-badges-mock">{children}</div>
-}
-
 export class ProductPrice extends Component {
-  static schema = {properties: {}}
+  static schema = { properties: {} }
 
   render() {
-    return (
-      <div>ProductPrice</div>
-    )
+    return <div>ProductPrice</div>
   }
 }
 
 export class ProductName extends Component {
   render() {
-    return (
-      <div>ProductName</div>
-    )
+    return <div>ProductName</div>
   }
 }

@@ -7,7 +7,8 @@ import AddedAttachmentsList from '../../components/ProductSummaryAttachmentList/
 
 import styles from '../../productSummary.css'
 
-const shouldShowOption = option => option.extraQuantity > 0 || option.item.sellingPrice !== 0
+const shouldShowOption = option =>
+  option.extraQuantity > 0 || option.item.sellingPrice !== 0
 
 const AttachmentList = ({ product }) => {
   const addedOptions = pathOr([], ['assemblyOptions', 'added'], product)
@@ -22,7 +23,10 @@ const AttachmentList = ({ product }) => {
 
   return (
     <div className={`${styles.attachmentListContainer} pv2`}>
-      <AddedAttachmentsList addedOptions={filteredOption} parentPrice={parentPrice} />
+      <AddedAttachmentsList
+        addedOptions={filteredOption}
+        parentPrice={parentPrice}
+      />
       <RemovedAttachmentsList removedOptions={removedOptions} />
     </div>
   )

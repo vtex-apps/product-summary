@@ -15,6 +15,7 @@
       "product-summary-image",
       "product-summary-name",
       "product-summary-price",
+      "product-identifier",
       "product-summary-space",
       "product-summary-add-to-list-button",
       "product-rating-inline"
@@ -30,6 +31,7 @@
       "product-summary-image",
       "product-summary-name",
       "product-summary-price",
+      "product-identifier",
       "product-summary-space",
       "product-summary-add-to-list-button",
       "product-rating-inline"
