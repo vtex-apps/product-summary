@@ -80,8 +80,7 @@ const ProductSummaryCustom = ({ product, actionOnClick, children }) => {
           page="store.product"
           params={{
             slug: product && product.linkText,
-            // WARNING: this enables links with translatable slugs
-            // id: product && product.productId,
+            id: product && product.productId,
           }}
           onClick={actionOnClick}
         >
