@@ -10,6 +10,7 @@ const ProductSummaryName = ({
   showFieldsProps,
   containerClass,
   brandNameClass,
+  skuNameClass,
 }) => {
   const productName = path(['productName'], product)
   const skuName = path(['sku', 'name'], product)
@@ -20,7 +21,7 @@ const ProductSummaryName = ({
       <ProductName
         className="overflow-hidden c-on-base"
         brandNameClass={brandNameClass}
-        skuNameClass="t-small"
+        skuNameClass={skuNameClass}
         loaderClass="pt5 overflow-hidden"
         name={productName}
         skuName={skuName}

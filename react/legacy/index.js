@@ -59,7 +59,7 @@ class ProductSummary extends Component {
     /** Defines if the collection badges are shown */
     showCollections: PropTypes.bool,
     /** Name schema props */
-    name: PropTypes.object,
+    nameSchema: PropTypes.object,
     /** Runtime context */
     runtime: PropTypes.shape({
       hints: PropTypes.shape({
@@ -85,13 +85,14 @@ class ProductSummary extends Component {
     showDescription: false,
     displayBuyButton: displayButtonTypes.DISPLAY_ALWAYS.value,
     isOneClickBuy: false,
-    name: {
+    nameSchema: {
       showProductReference: false,
       showBrandName: false,
       showSku: false,
     },
     displayMode: 'normal',
     showBorders: false,
+    muted: false,
   }
 
   state = {
@@ -129,9 +130,10 @@ class ProductSummary extends Component {
       showInstallments,
       labelSellingPrice,
       labelListPrice,
-      name: showFieldsProps,
+      nameSchema: showFieldsProps,
       showQuantitySelector,
       priceAlignLeft,
+      muted,
     } = this.props
 
     const imageProps = {
@@ -164,6 +166,7 @@ class ProductSummary extends Component {
 
     const ProductSummaryComponent =
       DISPLAY_MODE_MAP[displayMode] || ProductSummaryNormal
+
     return (
       <ProductSummaryComponent
         product={product}
@@ -179,6 +182,7 @@ class ProductSummary extends Component {
         buyButtonProps={buyButtonProps}
         showQuantitySelector={showQuantitySelector}
         priceAlignLeft={priceAlignLeft}
+        muted={muted}
       />
     )
   }
@@ -225,7 +229,7 @@ ProductSummary.getSchema = () => {
     ...defaultSchema,
     properties: {
       ...defaultSchema.properties,
-      name: nameSchema,
+      nameSchema,
     },
   }
 }
