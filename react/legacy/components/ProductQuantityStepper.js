@@ -16,6 +16,12 @@ export const UPDATE_ITEMS_MUTATION = gql`
   }
 `
 
+export const UPDATE_LOCAL_ITEMS_MUTATION = gql`
+  mutation updateLocalItems($items: [MinicartItem]) {
+    updateLocalItems(items: $items) @client
+  }
+`
+
 class ProductQuantityStepper extends Component {
   static propTypes = {
     product: productShape.isRequired,
@@ -24,7 +30,9 @@ class ProductQuantityStepper extends Component {
     intl: intlShape,
     minicartItems: PropTypes.array,
     updateItems: PropTypes.func.isRequired,
+    updateLocalItems: PropTypes.func.isRequired,
     push: PropTypes.func.isRequired,
+    index: PropTypes.number,
   }
 
   state = {
@@ -90,21 +98,32 @@ class ProductQuantityStepper extends Component {
   }
 
   updateItemQuantity = async quantity => {
-    const { product, updateItems } = this.props
+    const { product, updateItems, updateLocalItems, index } = this.props
     this.setState({ canIncrease: true })
     const {
       sku: { itemId: id, seller = {} },
       cartIndex,
     } = product
     try {
-      await updateItems([
-        {
-          id,
-          quantity,
-          seller: seller.sellerId,
-          index: cartIndex,
-        },
-      ])
+      if (cartIndex != null) {
+        await updateItems([
+          {
+            id,
+            quantity,
+            seller: seller.sellerId,
+            index: cartIndex,
+          },
+        ])
+      } else {
+        await updateLocalItems([
+          {
+            id,
+            quantity,
+            seller: seller.sellerId,
+            index,
+          },
+        ])
+      }
     } catch (err) {
       // gone wrong, rollback to old quantity value
       console.error(err)
@@ -134,9 +153,16 @@ const withUpdateItemsMutation = graphql(UPDATE_ITEMS_MUTATION, {
   }),
 })
 
+const withUpdateLocalItemsMutation = graphql(UPDATE_LOCAL_ITEMS_MUTATION, {
+  props: ({ mutate }) => ({
+    updateLocalItems: items => mutate({ variables: { items } }),
+  }),
+})
+
 export default compose(
   Pixel,
   injectIntl,
   withToast,
-  withUpdateItemsMutation
+  withUpdateItemsMutation,
+  withUpdateLocalItemsMutation
 )(ProductQuantityStepper)
