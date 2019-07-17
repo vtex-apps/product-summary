@@ -10,13 +10,13 @@ import gql from 'graphql-tag'
 
 import { productShape } from '../../utils/propTypes'
 
-export const UPDATE_ITEMS_MUTATION = gql`
+const UPDATE_ITEMS_MUTATION = gql`
   mutation updateItems($items: [MinicartItem]) {
     updateItems(items: $items) @client
   }
 `
 
-export const UPDATE_LOCAL_ITEMS_MUTATION = gql`
+const UPDATE_LOCAL_ITEMS_MUTATION = gql`
   mutation updateLocalItems($items: [MinicartItem]) {
     updateLocalItems(items: $items) @client
   }
