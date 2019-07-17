@@ -3,6 +3,7 @@ import BuyButton from 'vtex.store-components/BuyButton'
 import { equals, path } from 'ramda'
 import classNames from 'classnames'
 import { IOMessage } from 'vtex.native-types'
+import { useRuntime } from 'vtex.render-runtime'
 
 import displayButtonTypes from '../../utils/displayButtonTypes'
 import productSummary from '../../productSummary.css'
@@ -12,12 +13,13 @@ const ProductSummaryBuyButton = ({
   displayBuyButton,
   isOneClickBuy,
   buyButtonText,
-  runtime: {
-    hints: { mobile },
-  },
   isHovering,
   containerClass,
 }) => {
+  const {
+    hints: { mobile },
+  } = useRuntime()
+
   const hoverBuyButton =
     equals(displayBuyButton, displayButtonTypes.DISPLAY_ALWAYS.value) ||
     !equals(displayBuyButton, displayButtonTypes.DISPLAY_ON_HOVER.value) ||

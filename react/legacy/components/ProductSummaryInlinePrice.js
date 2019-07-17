@@ -23,6 +23,7 @@ const ProductSummaryInlinePrice = ({
   showQuantitySelector,
   priceAlignLeft,
   muted,
+  index,
 }) => {
   const containerClasses = classNames(
     styles.container,
@@ -86,14 +87,13 @@ const ProductSummaryInlinePrice = ({
             <AttachmentList product={product} />
             <div className="mt3 nr2">
               <div
-                className={`flex justify-end nr4 mb2 ${
-                  styles.quantityStepperContainer
-                }`}
+                className={`flex justify-end nr4 mb2 ${styles.quantityStepperContainer}`}
               >
                 {showQuantitySelector && (
                   <ProductQuantityStepper
                     product={product}
                     onUpdateItemsState={handleItemsStateUpdate}
+                    index={index}
                   />
                 )}
               </div>

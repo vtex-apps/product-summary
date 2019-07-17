@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-handler-names */
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { withRuntimeContext } from 'vtex.render-runtime'
 import { ProductName, ProductPrice } from 'vtex.store-components'
 
 import ProductSummaryNormal from './components/ProductSummaryNormal'
@@ -60,19 +59,14 @@ class ProductSummary extends Component {
     showCollections: PropTypes.bool,
     /** Name schema props */
     nameSchema: PropTypes.object,
-    /** Runtime context */
-    runtime: PropTypes.shape({
-      hints: PropTypes.shape({
-        /** Indicates if is on a mobile device */
-        mobile: PropTypes.bool,
-      }),
-    }),
     /** Display mode of the summary used in the search result */
     displayMode: PropTypes.oneOf(['normal', 'small', 'inline', 'inlinePrice']),
     /** Function that is executed when a product is clicked */
     actionOnClick: PropTypes.func,
     /** Set the price align to left */
     priceAlignLeft: PropTypes.bool,
+    muted: PropTypes.bool,
+    index: PropTypes.number,
   }
 
   static defaultProps = {
@@ -121,7 +115,6 @@ class ProductSummary extends Component {
       buyButtonText,
       showBorders,
       showDescription,
-      runtime,
       showBadge,
       badgeText,
       showCollections,
@@ -134,6 +127,7 @@ class ProductSummary extends Component {
       showQuantitySelector,
       priceAlignLeft,
       muted,
+      index,
     } = this.props
 
     const imageProps = {
@@ -160,7 +154,6 @@ class ProductSummary extends Component {
       displayBuyButton,
       isOneClickBuy,
       buyButtonText,
-      runtime,
       isHovering: this.state.isHovering,
     }
 
@@ -183,6 +176,7 @@ class ProductSummary extends Component {
         showQuantitySelector={showQuantitySelector}
         priceAlignLeft={priceAlignLeft}
         muted={muted}
+        index={index}
       />
     )
   }
@@ -234,4 +228,4 @@ ProductSummary.getSchema = () => {
   }
 }
 
-export default withRuntimeContext(ProductSummary)
+export default ProductSummary
