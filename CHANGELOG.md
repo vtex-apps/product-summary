@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.29.1] - 2019-07-17
+
 ## [2.29.0] - 2019-07-10
 ### Added
 - Prop to show muted state.
