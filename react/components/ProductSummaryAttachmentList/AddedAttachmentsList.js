@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { arrayOf, number } from 'prop-types'
+import { arrayOf, bool } from 'prop-types'
 import { intlShape, injectIntl } from 'react-intl'
 
 import AttachmentItem from './AttachmentItem'
@@ -9,10 +9,13 @@ import { CHOICE_TYPES } from '../../utils/attachmentHelper'
 import { addedOptionShape } from '../../utils/propTypes'
 
 const formatAttachmentName = (option, intl) => {
+  const quantity = option.item.sellingPriceWithAssemblies
+    ? option.normalizedQuantity
+    : option.extraQuantity
   const extraParams = {
     sign: '+',
     name: option.item.name,
-    quantity: option.extraQuantity || option.normalizedQuantity,
+    quantity,
   }
   return intl.formatMessage(
     { id: 'store/productSummary.attachmentName' },
@@ -20,16 +23,12 @@ const formatAttachmentName = (option, intl) => {
   )
 }
 
-const AddedAttachmentsList = ({ addedOptions, parentPrice, intl }) => {
+const AddedAttachmentsList = ({ addedOptions, intl, showItemPrice }) => {
   if (addedOptions.length === 0) {
     return null
   }
   return (
     <Fragment>
-      <AttachmentItem
-        productText={intl.formatMessage({ id: 'store/productSummary.unit' })}
-        price={parentPrice}
-      />
       {addedOptions.map(option => {
         const isSingle = option.choiceType === CHOICE_TYPES.SINGLE
         const productText = isSingle
@@ -38,8 +37,12 @@ const AddedAttachmentsList = ({ addedOptions, parentPrice, intl }) => {
         return (
           <AttachmentItem
             productText={productText}
-            price={option.item.sellingPrice * option.normalizedQuantity}
+            price={
+              option.item.sellingPriceWithAssemblies * option.normalizedQuantity
+            }
             key={productText}
+            assemblyOptions={option.item.assemblyOptions}
+            showItemPrice={showItemPrice}
           />
         )
       })}
@@ -47,10 +50,14 @@ const AddedAttachmentsList = ({ addedOptions, parentPrice, intl }) => {
   )
 }
 
+AddedAttachmentsList.defaultProps = {
+  showItemPrice: true,
+}
+
 AddedAttachmentsList.propTypes = {
   intl: intlShape,
   addedOptions: arrayOf(addedOptionShape).isRequired,
-  parentPrice: number.isRequired,
+  showItemPrice: bool,
 }
 
 export default injectIntl(AddedAttachmentsList)
