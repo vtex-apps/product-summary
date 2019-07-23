@@ -39,10 +39,19 @@ const ProductSummaryBuyButton = ({
     }
   )
 
-  const quantity =
-    path(['sku', 'seller', 'commertialOffer', 'AvailableQuantity'], product) ||
-    0
-  const isAvailable = quantity > 0
+  // TODO: change ProductSummaryContext to have `selectedSku` field instead of `sku`
+  const selectedItem = product.sku
+  const selectedSeller = path(['seller'], selectedItem)
+  const isAvailable =
+    selectedSeller &&
+    selectedSeller.commertialOffer &&
+    selectedSeller.commertialOffer.AvailableQuantity > 0
+  const skuItems = BuyButton.mapCatalogItemToCart({
+    product,
+    selectedItem,
+    selectedSeller,
+    selectedQuantity: 1,
+  })
 
   return (
     showBuyButton && (
@@ -50,28 +59,7 @@ const ProductSummaryBuyButton = ({
         <div className={buyButtonClasses}>
           <BuyButton
             available={isAvailable}
-            skuItems={
-              path(['sku', 'itemId'], product) && [
-                {
-                  detailUrl: `/${product.linkText}/p`,
-                  imageUrl: path(['sku', 'image', 'imageUrl'], product),
-                  listPrice: path(
-                    ['sku', 'seller', 'commertialOffer', 'ListPrice'],
-                    product
-                  ),
-                  skuId: path(['sku', 'itemId'], product),
-                  quantity: 1,
-                  seller: path(['sku', 'seller', 'sellerId'], product),
-                  name: product.productName,
-                  price: path(
-                    ['sku', 'seller', 'commertialOffer', 'Price'],
-                    product
-                  ),
-                  variant: product.sku.name,
-                  brand: product.brand,
-                },
-              ]
-            }
+            skuItems={skuItems}
             isOneClickBuy={isOneClickBuy}
           >
             <IOMessage id={buyButtonText} />
