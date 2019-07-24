@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { arrayOf, bool } from 'prop-types'
-import { intlShape, injectIntl } from 'react-intl'
+import { FormattedMessage } from 'react-intl'
 
 import AttachmentItem from './AttachmentItem'
 
@@ -8,22 +8,18 @@ import { CHOICE_TYPES } from '../../utils/attachmentHelper'
 
 import { addedOptionShape } from '../../utils/propTypes'
 
-const formatAttachmentName = (option, intl) => {
-  const quantity = option.item.sellingPriceWithAssemblies
-    ? option.normalizedQuantity
-    : option.extraQuantity
-  const extraParams = {
-    sign: '+',
-    name: option.item.name,
-    quantity,
-  }
-  return intl.formatMessage(
-    { id: 'store/productSummary.attachmentName' },
-    extraParams
-  )
-}
+const formatAttachmentName = option => (
+  <FormattedMessage
+    id="store/productSummary.attachmentName"
+    values={{
+      sign: '+',
+      name: option.item.name,
+      quantity: option.normalizedQuantity,
+    }}
+  />
+)
 
-const AddedAttachmentsList = ({ addedOptions, intl, showItemPrice }) => {
+const AddedAttachmentsList = ({ addedOptions, showItemPrice }) => {
   if (addedOptions.length === 0) {
     return null
   }
@@ -33,14 +29,14 @@ const AddedAttachmentsList = ({ addedOptions, intl, showItemPrice }) => {
         const isSingle = option.choiceType === CHOICE_TYPES.SINGLE
         const productText = isSingle
           ? option.item.name
-          : formatAttachmentName(option, intl)
+          : formatAttachmentName(option)
         return (
           <AttachmentItem
             productText={productText}
             price={
               option.item.sellingPriceWithAssemblies * option.normalizedQuantity
             }
-            key={productText}
+            key={`${option.item.name}-${option.choiceType}`}
             assemblyOptions={option.item.assemblyOptions}
             showItemPrice={showItemPrice}
           />
@@ -55,9 +51,8 @@ AddedAttachmentsList.defaultProps = {
 }
 
 AddedAttachmentsList.propTypes = {
-  intl: intlShape,
   addedOptions: arrayOf(addedOptionShape).isRequired,
   showItemPrice: bool,
 }
 
-export default injectIntl(AddedAttachmentsList)
+export default AddedAttachmentsList
