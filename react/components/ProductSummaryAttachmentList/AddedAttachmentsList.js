@@ -26,10 +26,10 @@ const AddedAttachmentsList = ({ addedOptions, showItemPrice }) => {
   return (
     <Fragment>
       {addedOptions.map(option => {
-        const isSingle = option.choiceType === CHOICE_TYPES.SINGLE
-        const productText = isSingle
-          ? option.item.name
-          : formatAttachmentName(option)
+        const isMultiple = option.choiceType === CHOICE_TYPES.MULTIPLE
+        const productText = isMultiple
+          ? formatAttachmentName(option)
+          : option.item.name
         return (
           <AttachmentItem
             productText={productText}

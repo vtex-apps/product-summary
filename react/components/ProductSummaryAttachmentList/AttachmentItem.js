@@ -1,9 +1,13 @@
 import React, { memo } from 'react'
 import { string, number, object, bool } from 'prop-types'
 import ProductPrice from 'vtex.store-components/ProductPrice'
+import { reject } from 'ramda'
 
 import styles from '../../productSummary.css'
 import AttachmentChildren from './AttachmentChildren'
+
+const itemShouldHide = ({ item, extraQuantity }) =>
+  extraQuantity === 0 && item.sellingPriceWithAssemblies === 0
 
 const AttachmentItem = ({
   productText,
@@ -13,9 +17,11 @@ const AttachmentItem = ({
 }) => {
   const childrenAdded = (assemblyOptions && assemblyOptions.added) || []
   const childrenRemoved = (assemblyOptions && assemblyOptions.removed) || []
-  const filteredChildrenAdded = childrenAdded
+  const filteredChildrenAdded = reject(itemShouldHide, childrenAdded)
   const fatherColor =
-    filteredChildrenAdded.length > 0 ? 'c-on-base' : 'c-muted-2'
+    filteredChildrenAdded.length > 0 || childrenRemoved.length > 0
+      ? 'c-on-base'
+      : 'c-muted-2'
 
   return (
     <div className={`${styles.attachmentItemContainer} flex flex-column pv1`}>
