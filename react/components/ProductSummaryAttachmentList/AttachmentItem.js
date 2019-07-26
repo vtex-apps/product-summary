@@ -18,7 +18,7 @@ const AttachmentItem = ({
   const childrenAdded = (assemblyOptions && assemblyOptions.added) || []
   const childrenRemoved = (assemblyOptions && assemblyOptions.removed) || []
   const filteredChildrenAdded = reject(itemShouldHide, childrenAdded)
-  const fatherColor =
+  const parentColor =
     filteredChildrenAdded.length > 0 || childrenRemoved.length > 0
       ? 'c-on-base'
       : 'c-muted-2'
@@ -26,7 +26,7 @@ const AttachmentItem = ({
   return (
     <div className={`${styles.attachmentItemContainer} flex flex-column pv1`}>
       <div className={`flex items-center justify-between`}>
-        <span className={`t-small ${fatherColor} tl pr3`}>{productText}</span>
+        <span className={`t-small ${parentColor} tl pr3`}>{productText}</span>
         {price != null && showItemPrice && price > 0 && (
           <ProductPrice
             sellingPrice={price}
