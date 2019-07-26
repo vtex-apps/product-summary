@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
-import { arrayOf, number } from 'prop-types'
-import { intlShape, injectIntl } from 'react-intl'
+import { arrayOf, bool } from 'prop-types'
+import { FormattedMessage } from 'react-intl'
 
 import AttachmentItem from './AttachmentItem'
 
@@ -8,38 +8,37 @@ import { CHOICE_TYPES } from '../../utils/attachmentHelper'
 
 import { addedOptionShape } from '../../utils/propTypes'
 
-const formatAttachmentName = (option, intl) => {
-  const extraParams = {
-    sign: '+',
-    name: option.item.name,
-    quantity: option.extraQuantity || option.normalizedQuantity,
-  }
-  return intl.formatMessage(
-    { id: 'store/productSummary.attachmentName' },
-    extraParams
-  )
-}
+const formatAttachmentName = option => (
+  <FormattedMessage
+    id="store/productSummary.attachmentName"
+    values={{
+      sign: '+',
+      name: option.item.name,
+      quantity: option.normalizedQuantity,
+    }}
+  />
+)
 
-const AddedAttachmentsList = ({ addedOptions, parentPrice, intl }) => {
+const AddedAttachmentsList = ({ addedOptions, showItemPrice }) => {
   if (addedOptions.length === 0) {
     return null
   }
   return (
     <Fragment>
-      <AttachmentItem
-        productText={intl.formatMessage({ id: 'store/productSummary.unit' })}
-        price={parentPrice}
-      />
       {addedOptions.map(option => {
-        const isSingle = option.choiceType === CHOICE_TYPES.SINGLE
-        const productText = isSingle
-          ? option.item.name
-          : formatAttachmentName(option, intl)
+        const isMultiple = option.choiceType === CHOICE_TYPES.MULTIPLE
+        const productText = isMultiple
+          ? formatAttachmentName(option)
+          : option.item.name
         return (
           <AttachmentItem
             productText={productText}
-            price={option.item.sellingPrice * option.normalizedQuantity}
-            key={productText}
+            price={
+              option.item.sellingPriceWithAssemblies * option.normalizedQuantity
+            }
+            key={`${option.item.name}-${option.choiceType}`}
+            assemblyOptions={option.item.assemblyOptions}
+            showItemPrice={showItemPrice}
           />
         )
       })}
@@ -47,10 +46,13 @@ const AddedAttachmentsList = ({ addedOptions, parentPrice, intl }) => {
   )
 }
 
-AddedAttachmentsList.propTypes = {
-  intl: intlShape,
-  addedOptions: arrayOf(addedOptionShape).isRequired,
-  parentPrice: number.isRequired,
+AddedAttachmentsList.defaultProps = {
+  showItemPrice: true,
 }
 
-export default injectIntl(AddedAttachmentsList)
+AddedAttachmentsList.propTypes = {
+  addedOptions: arrayOf(addedOptionShape).isRequired,
+  showItemPrice: bool,
+}
+
+export default AddedAttachmentsList
