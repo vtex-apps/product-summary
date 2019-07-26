@@ -28,7 +28,7 @@ const ProductSummaryInlinePrice = ({
   const containerClasses = classNames(
     styles.container,
     styles.containerInline,
-    'overflow-hidden br3 h-100 w-100 overflow-y-auto'
+    'br3 h-100 w-100'
   )
 
   const summaryClasses = classNames(
@@ -82,7 +82,7 @@ const ProductSummaryInlinePrice = ({
           <div className={`${styles.imageContainer} db h-100`}>
             <ProductImage {...imageProps} />
           </div>
-          <div className={`${styles.information} w-70 pb2 ph3 overflow-y-auto`}>
+          <div className={`${styles.information} w-70 pb2 ph3`}>
             <ProductSummaryName {...nameProps} {...nameClasses} />
             <AttachmentList product={product} />
             <div className="mv3 nr2">
