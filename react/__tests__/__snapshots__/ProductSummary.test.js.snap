@@ -111,7 +111,7 @@ exports[`<ProductSummary /> component should match the snapshot for inline norma
 exports[`<ProductSummary /> component should match the snapshot for inline price mode 1`] = `
 <DocumentFragment>
   <section
-    class="container containerInline overflow-hidden br3 h-100 w-100"
+    class="container containerInline overflow-hidden br3 h-100 w-100 overflow-y-auto"
   >
     <article
       class="element pointer ph2 pt3 pb4 flex flex-column h-100"
@@ -167,7 +167,7 @@ exports[`<ProductSummary /> component should match the snapshot for inline price
         </div>
       </div>
       <div
-        class="information w-70 pb2 pl3 pr3"
+        class="information w-70 pb2 ph3 overflow-y-auto"
       >
         <div
           class="flex items-start justify-left tl w-90 t-mini pb2"
@@ -177,7 +177,7 @@ exports[`<ProductSummary /> component should match the snapshot for inline price
           </div>
         </div>
         <div
-          class="mt3 nr2"
+          class="mv3 nr2"
         >
           <div
             class="flex justify-end nr4 mb2 quantityStepperContainer"
