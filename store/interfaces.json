@@ -18,7 +18,8 @@
       "product-identifier",
       "product-summary-space",
       "product-summary-add-to-list-button",
-      "product-rating-inline"
+      "product-rating-inline",
+      "product-teaser.summary"
     ],
     "component": "ProductSummaryCustom",
     "composition": "children"
