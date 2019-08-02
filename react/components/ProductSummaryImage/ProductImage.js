@@ -190,18 +190,18 @@ ProductImage.getSchema = () => {
     properties: {
       showBadge: {
         type: 'boolean',
-        title: 'admin/editor.productSummaryImage.showBadge.title',
+        title: 'admin/editor.productSummary.showBadge.title',
         default: ProductImage.defaultProps.showBadge,
         isLayout: true,
       },
       showCollections: {
         type: 'boolean',
-        title: 'admin/editor.productSummaryImage.showCollections.title',
+        title: 'admin/editor.productSummary.showCollections.title',
         default: ProductImage.defaultProps.showCollections,
         isLayout: true,
       },
       displayMode: {
-        title: 'admin/editor.productSummaryImage.displayMode.title',
+        title: 'admin/editor.productSummary.displayMode.title',
         type: 'string',
         enum: ['normal', 'inline'],
         default: ProductImage.defaultProps.displayMode,
