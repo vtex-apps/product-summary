@@ -77,7 +77,10 @@
 .imageStackContainer {
 }
 
-.imageStackContainer:hover .hoverImage {
+.hoverEffect {
+}
+
+.hoverEffect:hover .hoverImage {
   display: inline;
 }
 

@@ -111,8 +111,13 @@ const ProductImageContent = ({
     productSummary.hoverImage
   )
 
+  const imgStackClasses = classNames(
+    'dib relative',
+    productSummary.imageStackContainer,
+    productSummary.hoverEffect
+  )
   const img = (
-    <div className={`dib relative ${productSummary.imageStackContainer}`}>
+    <div className={imgStackClasses}>
       <img
         className={imageContentClassName}
         src={imageUrl}
