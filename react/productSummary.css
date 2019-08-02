@@ -73,3 +73,13 @@
 
 .attachmentChildrenContainer {
 }
+
+.imageStackContainer {
+}
+
+.imageStackContainer:hover .hoverImage {
+  display: inline;
+}
+
+.hoverImage {
+}

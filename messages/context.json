@@ -25,5 +25,8 @@
   "admin/editor.productSummaryPrice.showLabels.title": "Title of showLabels prop",
   "admin/editor.productSummaryPrice.labelSellingPrice.title": "Title of labelSellingPrice prop",
   "admin/editor.productSummaryPrice.labelListPrice.title": "Title of labelListPrice prop",
-  "admin/editor.productSummaryPrice.showBorders.title": "Title of showBorders prop"
+  "admin/editor.productSummaryPrice.showBorders.title": "Title of showBorders prop",
+  "admin/editor.productSummaryImage.title": "admin/editor.productSummaryImage.title",
+  "admin/editor.productSummaryImage.description": "admin/editor.productSummaryImage.description",
+  "admin/editor.productSummaryImage.changeOnHover.title": "admin/editor.productSummaryImage.changeOnHover.title"
 }

@@ -25,5 +25,8 @@
   "admin/editor.productSummaryPrice.showLabels.title": "Mostrar rótulos",
   "admin/editor.productSummaryPrice.labelSellingPrice.title": "Rótulo para preço de venda",
   "admin/editor.productSummaryPrice.labelListPrice.title": "Rótulo para preço listado",
-  "admin/editor.productSummaryPrice.showBorders.title": "Mostrar bordas"
+  "admin/editor.productSummaryPrice.showBorders.title": "Mostrar bordas",
+  "admin/editor.productSummaryImage.title": "Imagem do Resumo do produto",
+  "admin/editor.productSummaryImage.description": "O componente que mostra a imagem do produto",
+  "admin/editor.productSummaryImage.changeOnHover.title": "Trocar imagem ao passar mouse"
 }

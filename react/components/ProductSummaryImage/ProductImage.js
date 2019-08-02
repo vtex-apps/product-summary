@@ -77,12 +77,13 @@ const ProductImageContent = ({
   showCollections,
   displayMode,
   onError,
+  changeOnHover,
 }) => {
   const {
     productClusters,
     productName: name,
     sku: {
-      image: { imageUrl },
+      image: { imageUrl, imageLabel },
     },
   } = product
 
@@ -104,13 +105,24 @@ const ProductImageContent = ({
     label: badgeText,
   })
   const withCollection = maybeCollection({ productClusters })
+  const hoverImgClasses = classNames(
+    'dn absolute top-0 left-0 z-999',
+    imageContentClassName,
+    productSummary.hoverImage
+  )
+
   const img = (
-    <img
-      className={imageContentClassName}
-      src={imageUrl}
-      alt={name}
-      onError={onError}
-    />
+    <div className={`dib relative ${productSummary.imageStackContainer}`}>
+      <img
+        className={imageContentClassName}
+        src={imageUrl}
+        alt={name}
+        onError={onError}
+      />
+      {imageLabel && changeOnHover && (
+        <img src={imageLabel} alt={name} className={hoverImgClasses} />
+      )}
+    </div>
   )
 
   return compose(
@@ -119,21 +131,31 @@ const ProductImageContent = ({
   )(img)
 }
 
-const ProductImage = props => {
+const ProductImage = ({
+  showBadge,
+  badgeText,
+  showCollections,
+  displayMode,
+  changeOnHover,
+}) => {
   const { product } = useProductSummary()
 
   const [error, setError] = useState(false)
   const imageClassName = classNames(productSummary.imageContainer, {
-    'db w-100 center': props.displayMode !== 'inline',
+    'db w-100 center': displayMode !== 'inline',
   })
 
   return (
     <div className={imageClassName}>
       {path(['sku', 'image', 'imageUrl'], product) && !error ? (
         <ProductImageContent
-          {...props}
+          showBadge={showBadge}
+          badgeText={badgeText}
+          showCollections={showCollections}
+          displayMode={displayMode}
           product={product}
           onError={() => setError(true)}
+          changeOnHover={changeOnHover}
         />
       ) : (
         <ImagePlaceholder />
@@ -157,31 +179,38 @@ ProductImage.defaultProps = {
   showBadge: true,
   showCollections: false,
   displayMode: 'normal',
+  changeOnHover: false,
 }
 
 ProductImage.getSchema = () => {
   return {
-    title: 'admin/editor.productSummary.title',
-    description: 'admin/editor.productSummary.description',
+    title: 'admin/editor.productSummaryImage.title',
+    description: 'admin/editor.productSummaryImage.description',
     type: 'object',
     properties: {
       showBadge: {
         type: 'boolean',
-        title: 'admin/editor.productSummary.showBadge.title',
+        title: 'admin/editor.productSummaryImage.showBadge.title',
         default: ProductImage.defaultProps.showBadge,
         isLayout: true,
       },
       showCollections: {
         type: 'boolean',
-        title: 'admin/editor.productSummary.showCollections.title',
+        title: 'admin/editor.productSummaryImage.showCollections.title',
         default: ProductImage.defaultProps.showCollections,
         isLayout: true,
       },
       displayMode: {
-        title: 'admin/editor.productSummary.displayMode.title',
+        title: 'admin/editor.productSummaryImage.displayMode.title',
         type: 'string',
         enum: ['normal', 'inline'],
         default: ProductImage.defaultProps.displayMode,
+        isLayout: true,
+      },
+      changeOnHover: {
+        title: 'admin/editor.productSummaryImage.changeOnHover.title',
+        type: 'boolean',
+        default: false,
         isLayout: true,
       },
     },
