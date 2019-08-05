@@ -10,6 +10,7 @@ import {
 } from 'vtex.product-summary-context/ProductSummaryContext'
 import productSummary from '../productSummary.css'
 import { productShape } from '../utils/propTypes'
+import { mapCatalogProductToProductSummary } from '../utils/normarlize'
 
 const ProductSummaryCustom = ({ product, actionOnClick, children }) => {
   const { isLoading, isHovering } = useProductSummary()
@@ -113,5 +114,9 @@ ProductSummaryWrapper.getSchema = () => {
     description: 'admin/editor.productSummary.description',
   }
 }
+
+// This function is public available to be used only by vtex.shelf and vtex.search-result.
+// We do not garantee this API will not change and might happen breaking change anytime.
+ProductSummaryWrapper.mapCatalogProductToProductSummary = mapCatalogProductToProductSummary
 
 export default ProductSummaryWrapper

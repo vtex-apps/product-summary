@@ -34,13 +34,13 @@ This component has an interface that describes which rules must be implemented b
 
 Through the Storefront, you can change the `ProductSummaryImage`'s behavior and interface. However, you also can make in your theme app.
 
-| Prop name         | Type      | Description                                                                            | Default value |
-| ----------------- | --------- | -------------------------------------------------------------------------------------- | ------------- |
-| `showBadge`       | `Boolean` | Set the discount badge's visibility                                                    | `true`        |
-| `badgeText`       | `String`  | Text shown on badge                                                                    |               |
-| `showCollections` | `Boolean` | Set collection badges' visibility                                                      | `false`       |
-| `displayMode`     | `Enum`    | Set display mode of product summary (normal, inline)                                   | `normal`      |
-| `changeOnHover`   | `Boolean` | Set to true if you want product image to be switched when user hovers image with mouse | `false`       |
+| Prop name         | Type      | Description                                                                                                                                                              | Default value |
+| ----------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- |
+| `showBadge`       | `Boolean` | Set the discount badge's visibility                                                                                                                                      | `true`        |
+| `badgeText`       | `String`  | Text shown on badge                                                                                                                                                      |               |
+| `showCollections` | `Boolean` | Set collection badges' visibility                                                                                                                                        | `false`       |
+| `displayMode`     | `Enum`    | Set display mode of product summary (normal, inline)                                                                                                                     | `normal`      |
+| `hoverImageLabel` | `String`  | Set this value to match the value of the `imageLabel` field of a product image, so this "secondary" image will be showed when user hovers its mouse over this component. | `""`          |
 
 ### Styles API
 

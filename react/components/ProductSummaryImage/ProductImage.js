@@ -70,6 +70,13 @@ export const ImagePlaceholder = () => (
   </div>
 )
 
+const findHoverImage = (images, hoverImageLabel) => {
+  if (!hoverImageLabel) {
+    return null
+  }
+  return images.find(({ imageLabel }) => imageLabel === hoverImageLabel)
+}
+
 const ProductImageContent = ({
   product,
   showBadge,
@@ -77,13 +84,14 @@ const ProductImageContent = ({
   showCollections,
   displayMode,
   onError,
-  changeOnHover,
+  hoverImageLabel,
 }) => {
   const {
     productClusters,
     productName: name,
     sku: {
-      image: { imageUrl, imageLabel },
+      image: { imageUrl },
+      images,
     },
   } = product
 
@@ -105,6 +113,9 @@ const ProductImageContent = ({
     label: badgeText,
   })
   const withCollection = maybeCollection({ productClusters })
+
+  const hoverImage = findHoverImage(images, hoverImageLabel)
+
   const hoverImgClasses = classNames(
     'dn absolute top-0 left-0 z-999',
     imageContentClassName,
@@ -124,8 +135,8 @@ const ProductImageContent = ({
         alt={name}
         onError={onError}
       />
-      {imageLabel && changeOnHover && (
-        <img src={imageLabel} alt={name} className={hoverImgClasses} />
+      {hoverImage && (
+        <img src={hoverImage} alt={name} className={hoverImgClasses} />
       )}
     </div>
   )
@@ -141,9 +152,10 @@ const ProductImage = ({
   badgeText,
   showCollections,
   displayMode,
-  changeOnHover,
+  hoverImageLabel,
 }) => {
   const { product } = useProductSummary()
+  console.log('teste product: ', product)
 
   const [error, setError] = useState(false)
   const imageClassName = classNames(productSummary.imageContainer, {
@@ -160,7 +172,7 @@ const ProductImage = ({
           displayMode={displayMode}
           product={product}
           onError={() => setError(true)}
-          changeOnHover={changeOnHover}
+          hoverImageLabel={hoverImageLabel}
         />
       ) : (
         <ImagePlaceholder />
@@ -178,13 +190,14 @@ ProductImage.propTypes = {
   showCollections: PropTypes.bool,
   /** Display mode of the summary */
   displayMode: PropTypes.oneOf(['normal', 'inline']),
+  hoverImageLabel: PropTypes.string,
 }
 
 ProductImage.defaultProps = {
   showBadge: true,
   showCollections: false,
   displayMode: 'normal',
-  changeOnHover: false,
+  hoverImageLabel: '',
 }
 
 ProductImage.getSchema = () => {
@@ -212,11 +225,11 @@ ProductImage.getSchema = () => {
         default: ProductImage.defaultProps.displayMode,
         isLayout: true,
       },
-      changeOnHover: {
-        title: 'admin/editor.productSummaryImage.changeOnHover.title',
-        type: 'boolean',
-        default: false,
-        isLayout: true,
+      hoverImageLabel: {
+        title: 'admin/editor.productSummaryImage.hoverImageLabel.title',
+        type: 'string',
+        default: '',
+        isLayout: false,
       },
     },
   }

@@ -28,5 +28,5 @@
   "admin/editor.productSummaryPrice.showBorders.title": "Mostrar bordes",
   "admin/editor.productSummaryImage.title": "Imagen de resumen del producto",
   "admin/editor.productSummaryImage.description": "El componente que muestra la imagen del producto",
-  "admin/editor.productSummaryImage.changeOnHover.title": "Cambiar imagen al pasar el mouse"
+  "admin/editor.productSummaryImage.hoverImageLabel.title": "Etiqueta de imagen secundaria"
 }

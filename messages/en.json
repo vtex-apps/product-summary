@@ -28,5 +28,5 @@
   "admin/editor.productSummaryPrice.showBorders.title": "Show borders",
   "admin/editor.productSummaryImage.title": "Product Summary Image",
   "admin/editor.productSummaryImage.description": "The component that shows the product image",
-  "admin/editor.productSummaryImage.changeOnHover.title": "Change image on hover"
+  "admin/editor.productSummaryImage.hoverImageLabel.title": "Hover Image Label"
 }
