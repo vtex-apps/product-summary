@@ -117,7 +117,7 @@ const ProductImageContent = ({
   const hoverImage = findHoverImage(images, hoverImageLabel)
 
   const hoverImgClasses = classNames(
-    'dn absolute top-0 left-0 z-999',
+    'w-100 dn absolute top-0 left-0 z-999',
     imageContentClassName,
     productSummary.hoverImage
   )
