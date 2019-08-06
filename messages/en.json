@@ -25,5 +25,8 @@
   "admin/editor.productSummaryPrice.showLabels.title": "Show labels",
   "admin/editor.productSummaryPrice.labelSellingPrice.title": "Label for selling price",
   "admin/editor.productSummaryPrice.labelListPrice.title": "Label for list price",
-  "admin/editor.productSummaryPrice.showBorders.title": "Show borders"
+  "admin/editor.productSummaryPrice.showBorders.title": "Show borders",
+  "admin/editor.productSummaryImage.title": "Product Summary Image",
+  "admin/editor.productSummaryImage.description": "The component that shows the product image",
+  "admin/editor.productSummaryImage.hoverImageLabel.title": "Hover Image Label"
 }

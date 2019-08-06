@@ -8,6 +8,7 @@ This Component can be imported and used by any VTEX App.
 :loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
 
 ## Table of Contents
+
 - [Usage](#usage)
   - [Blocks API](#blocks-api)
   - [Configuration](#configuration)
@@ -33,12 +34,13 @@ This component has an interface that describes which rules must be implemented b
 
 Through the Storefront, you can change the `ProductSummaryImage`'s behavior and interface. However, you also can make in your theme app.
 
-| Prop name         | Type      | Description                                          | Default value |
-| ----------------- | --------- | ---------------------------------------------------- | ------------- |
-| `showBadge`       | `Boolean` | Set the discount badge's visibility                  | `true`        |
-| `badgeText`       | `String`  | Text shown on badge                                  |               |
-| `showCollections` | `Boolean` | Set collection badges' visibility                    | `false`       |
-| `displayMode`     | `Enum`    | Set display mode of product summary (normal, inline) | `normal`      |
+| Prop name         | Type      | Description                                                                                                                                                              | Default value |
+| ----------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- |
+| `showBadge`       | `Boolean` | Set the discount badge's visibility                                                                                                                                      | `true`        |
+| `badgeText`       | `String`  | Text shown on badge                                                                                                                                                      |               |
+| `showCollections` | `Boolean` | Set collection badges' visibility                                                                                                                                        | `false`       |
+| `displayMode`     | `Enum`    | Set display mode of product summary (normal, inline)                                                                                                                     | `normal`      |
+| `hoverImageLabel` | `String`  | Set this value to match the value of the `imageLabel` field of a product image, so this "secondary" image will be showed when user hovers its mouse over this component. | `""`          |
 
 ### Styles API
 
@@ -66,8 +68,11 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 
 Below, we describe the namespaces that are defined in the menu.
 
-| Token name   | Description                                          | Component Source                     |
-| ------------ | ---------------------------------------------------- | ------------------------------------ |
-| `imageContainer` | The main container of image | [index](/react/components/ProductSummaryImage/ProductSummaryImage.js) |
-| `imageNormal` | Class when display mode is normal | [index](/react/components/ProductSummaryImage/ProductSummaryImage.js) |
-| `imageInline` | Class when display mode is inline | [index](/react/components/ProductSummaryImage/ProductSummaryImage.js) |
+| Token name            | Description                                                             | Component Source                                                      |
+| --------------------- | ----------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `imageContainer`      | The main container of image                                             | [index](/react/components/ProductSummaryImage/ProductSummaryImage.js) |
+| `imageNormal`         | Class when display mode is normal                                       | [index](/react/components/ProductSummaryImage/ProductSummaryImage.js) |
+| `imageInline`         | Class when display mode is inline                                       | [index](/react/components/ProductSummaryImage/ProductSummaryImage.js) |
+| `imageStackContainer` | Class for container with product images to be shown                     | [index](/react/components/ProductSummaryImage/ProductSummaryImage.js) |
+| `hoverImage`          | Class for image that appears when user hovers mouse                     | [index](/react/components/ProductSummaryImage/ProductSummaryImage.js) |
+| `hoverEffect`         | Class that applies hover effect and changes images. Override carefully. | [index](/react/components/ProductSummaryImage/ProductSummaryImage.js) |

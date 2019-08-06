@@ -213,6 +213,7 @@ const defaultSchema = {
       default: false,
       isLayout: true,
     },
+
     ...ProductPrice.schema.properties,
   },
 }

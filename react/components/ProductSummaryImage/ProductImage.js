@@ -3,6 +3,7 @@ import { pathOr, compose, path } from 'ramda'
 import PropTypes from 'prop-types'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
+import { useDevice } from 'vtex.device-detector'
 
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
@@ -70,6 +71,13 @@ export const ImagePlaceholder = () => (
   </div>
 )
 
+const findHoverImage = (images, hoverImageLabel) => {
+  if (!hoverImageLabel) {
+    return null
+  }
+  return images.find(({ imageLabel }) => imageLabel === hoverImageLabel)
+}
+
 const ProductImageContent = ({
   product,
   showBadge,
@@ -77,14 +85,18 @@ const ProductImageContent = ({
   showCollections,
   displayMode,
   onError,
+  hoverImageLabel,
 }) => {
   const {
     productClusters,
     productName: name,
     sku: {
       image: { imageUrl },
+      images,
     },
   } = product
+
+  const { isMobile } = useDevice()
 
   const imageContentClassName = classNames({
     [productSummary.imageNormal]: displayMode !== 'inline',
@@ -104,13 +116,32 @@ const ProductImageContent = ({
     label: badgeText,
   })
   const withCollection = maybeCollection({ productClusters })
+
+  const hoverImage = findHoverImage(images, hoverImageLabel)
+
+  const hoverImgClasses = classNames(
+    'w-100 h-100 dn absolute top-0 left-0 z-999',
+    imageContentClassName,
+    productSummary.hoverImage
+  )
+
+  const imgStackClasses = classNames(
+    'dib relative',
+    productSummary.imageStackContainer,
+    productSummary.hoverEffect
+  )
   const img = (
-    <img
-      className={imageContentClassName}
-      src={imageUrl}
-      alt={name}
-      onError={onError}
-    />
+    <div className={imgStackClasses}>
+      <img
+        className={imageContentClassName}
+        src={imageUrl}
+        alt={name}
+        onError={onError}
+      />
+      {hoverImage && !isMobile && (
+        <img src={hoverImage.imageUrl} alt={name} className={hoverImgClasses} />
+      )}
+    </div>
   )
 
   return compose(
@@ -119,21 +150,31 @@ const ProductImageContent = ({
   )(img)
 }
 
-const ProductImage = props => {
+const ProductImage = ({
+  showBadge,
+  badgeText,
+  showCollections,
+  displayMode,
+  hoverImageLabel,
+}) => {
   const { product } = useProductSummary()
 
   const [error, setError] = useState(false)
   const imageClassName = classNames(productSummary.imageContainer, {
-    'db w-100 center': props.displayMode !== 'inline',
+    'db w-100 center': displayMode !== 'inline',
   })
 
   return (
     <div className={imageClassName}>
       {path(['sku', 'image', 'imageUrl'], product) && !error ? (
         <ProductImageContent
-          {...props}
+          showBadge={showBadge}
+          badgeText={badgeText}
+          showCollections={showCollections}
+          displayMode={displayMode}
           product={product}
           onError={() => setError(true)}
+          hoverImageLabel={hoverImageLabel}
         />
       ) : (
         <ImagePlaceholder />
@@ -151,18 +192,20 @@ ProductImage.propTypes = {
   showCollections: PropTypes.bool,
   /** Display mode of the summary */
   displayMode: PropTypes.oneOf(['normal', 'inline']),
+  hoverImageLabel: PropTypes.string,
 }
 
 ProductImage.defaultProps = {
   showBadge: true,
   showCollections: false,
   displayMode: 'normal',
+  hoverImageLabel: '',
 }
 
 ProductImage.getSchema = () => {
   return {
-    title: 'admin/editor.productSummary.title',
-    description: 'admin/editor.productSummary.description',
+    title: 'admin/editor.productSummaryImage.title',
+    description: 'admin/editor.productSummaryImage.description',
     type: 'object',
     properties: {
       showBadge: {
@@ -183,6 +226,12 @@ ProductImage.getSchema = () => {
         enum: ['normal', 'inline'],
         default: ProductImage.defaultProps.displayMode,
         isLayout: true,
+      },
+      hoverImageLabel: {
+        title: 'admin/editor.productSummaryImage.hoverImageLabel.title',
+        type: 'string',
+        default: '',
+        isLayout: false,
       },
     },
   }

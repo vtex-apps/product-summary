@@ -25,5 +25,8 @@
   "admin/editor.productSummaryPrice.showLabels.title": "Mostrar las etiquetas",
   "admin/editor.productSummaryPrice.labelSellingPrice.title": "Etiqueta para el precio de venta",
   "admin/editor.productSummaryPrice.labelListPrice.title": "Etiqueta para el precio indicado",
-  "admin/editor.productSummaryPrice.showBorders.title": "Mostrar bordes"
+  "admin/editor.productSummaryPrice.showBorders.title": "Mostrar bordes",
+  "admin/editor.productSummaryImage.title": "Imagen de resumen del producto",
+  "admin/editor.productSummaryImage.description": "El componente que muestra la imagen del producto",
+  "admin/editor.productSummaryImage.hoverImageLabel.title": "Etiqueta de imagen secundaria"
 }
