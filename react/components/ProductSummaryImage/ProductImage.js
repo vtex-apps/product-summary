@@ -136,7 +136,7 @@ const ProductImageContent = ({
         onError={onError}
       />
       {hoverImage && (
-        <img src={hoverImage} alt={name} className={hoverImgClasses} />
+        <img src={hoverImage.imageUrl} alt={name} className={hoverImgClasses} />
       )}
     </div>
   )
