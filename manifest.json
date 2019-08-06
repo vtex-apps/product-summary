@@ -23,7 +23,8 @@
     "vtex.product-identifier": "0.x",
     "vtex.styleguide": "9.x",
     "vtex.pixel-manager": "1.x",
-    "vtex.product-teaser-interfaces": "1.x"
+    "vtex.product-teaser-interfaces": "1.x",
+    "vtex.device-detector": "0.x"
   },
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }

@@ -3,6 +3,7 @@ import { pathOr, compose, path } from 'ramda'
 import PropTypes from 'prop-types'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
+import { useDevice } from 'vtex.device-detector'
 
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
@@ -95,6 +96,8 @@ const ProductImageContent = ({
     },
   } = product
 
+  const { isMobile } = useDevice()
+
   const imageContentClassName = classNames({
     [productSummary.imageNormal]: displayMode !== 'inline',
     [productSummary.imageInline]: displayMode === 'inline',
@@ -117,7 +120,7 @@ const ProductImageContent = ({
   const hoverImage = findHoverImage(images, hoverImageLabel)
 
   const hoverImgClasses = classNames(
-    'w-100 dn absolute top-0 left-0 z-999',
+    'w-100 h-100 dn absolute top-0 left-0 z-999',
     imageContentClassName,
     productSummary.hoverImage
   )
@@ -135,7 +138,7 @@ const ProductImageContent = ({
         alt={name}
         onError={onError}
       />
-      {hoverImage && (
+      {hoverImage && !isMobile && (
         <img src={hoverImage.imageUrl} alt={name} className={hoverImgClasses} />
       )}
     </div>
