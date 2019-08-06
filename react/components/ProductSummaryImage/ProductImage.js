@@ -155,7 +155,6 @@ const ProductImage = ({
   hoverImageLabel,
 }) => {
   const { product } = useProductSummary()
-  console.log('teste product: ', product)
 
   const [error, setError] = useState(false)
   const imageClassName = classNames(productSummary.imageContainer, {
