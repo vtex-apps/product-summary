@@ -115,5 +115,3 @@ describe('<ProductSummary /> component', () => {
     })
   })
 })
-
-// mapCatalogProductToProductSummary
