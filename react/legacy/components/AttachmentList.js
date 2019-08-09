@@ -22,7 +22,9 @@ const AttachmentList = ({ product }) => {
 
   return (
     <div className={`${styles.attachmentListContainer} pv2`}>
-      <AddedAttachmentsList addedOptions={filteredOption} />
+      <AddedAttachmentsList
+        addedOptions={filteredOption}
+      />
       <RemovedAttachmentsList removedOptions={removedOptions} />
     </div>
   )
