@@ -87,6 +87,11 @@ const ProductSummaryInlinePrice = ({
             <AttachmentList product={product} />
             <div className="mv3 nr2">
               <div
+                onClick={e => {
+                  e.preventDefault()
+                  // Stop propagation so it doesn't trigger the Link component above
+                  e.stopPropagation()
+                }}
                 className={`flex justify-end nr4 mb2 ${styles.quantityStepperContainer}`}
               >
                 {showQuantitySelector && (
