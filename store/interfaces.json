@@ -19,7 +19,8 @@
       "product-summary-space",
       "product-summary-add-to-list-button",
       "product-rating-inline",
-      "product-teaser.summary"
+      "product-teaser.summary",
+      "product-summary-brand"
     ],
     "component": "ProductSummaryCustom",
     "composition": "children"
@@ -99,6 +100,9 @@
   },
   "product-summary-name": {
     "component": "ProductSummaryName"
+  },
+  "product-summary-brand": {
+    "component": "ProductSummaryBrand"
   },
   "product-summary-price": {
     "component": "ProductSummaryPrice",
