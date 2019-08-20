@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- `ProductSummaryBrand` component
+
 ## [2.32.2] - 2019-08-09
 ### Fixed
 - Interaction with the quantity input in the minicart was trigerring the link.
