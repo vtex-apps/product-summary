@@ -20,7 +20,8 @@
       "product-summary-add-to-list-button",
       "product-rating-inline",
       "product-teaser.summary",
-      "product-summary-brand"
+      "product-summary-brand",
+      "product-summary-quantity"
     ],
     "component": "ProductSummaryCustom",
     "composition": "children"

@@ -23,7 +23,7 @@ const ProductSummaryBuyButton = ({
   },
   isHovering,
 }) => {
-  const { product } = useProductSummary()
+  const { product, selectedItem, selectedQuantity } = useProductSummary()
 
   const hoverBuyButton =
     equals(displayBuyButton, displayButtonTypes.DISPLAY_ALWAYS.value) ||
@@ -46,8 +46,6 @@ const ProductSummaryBuyButton = ({
 
   const containerClass = `${productSummary.buyButtonContainer} pv3 w-100 db`
 
-  // TODO: change ProductSummaryContext to have `selectedSku` field instead of `sku`
-  const selectedItem = product.sku
   const selectedSeller = path(['seller'], selectedItem)
   const isAvailable =
     selectedSeller &&
@@ -57,7 +55,7 @@ const ProductSummaryBuyButton = ({
     product,
     selectedItem,
     selectedSeller,
-    selectedQuantity: 1,
+    selectedQuantity,
   })
 
   return (
