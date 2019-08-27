@@ -24,7 +24,8 @@
     "vtex.styleguide": "9.x",
     "vtex.pixel-manager": "1.x",
     "vtex.product-teaser-interfaces": "1.x",
-    "vtex.device-detector": "0.x"
+    "vtex.device-detector": "0.x",
+    "vtex.product-quantity": "1.x"
   },
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }

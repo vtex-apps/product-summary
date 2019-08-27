@@ -6,11 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- `product-summary-quantity` to the shelf's allowed array
 
 ## [2.33.0] - 2019-08-20
-
 ### Added
-
 - `ProductSummaryBrand` component
 
 ## [2.32.2] - 2019-08-09
