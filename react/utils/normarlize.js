@@ -76,14 +76,14 @@ export function mapCatalogProductToProductSummary(product, imageSize = 500) {
   const items = normalizedProduct.items || []
   const sku = items.find(findAvailableProduct) || items[0]
   if (sku) {
-    const [seller] = pathOr([defaultSeller], ['sellers'], sku)
-    const [referenceId] = pathOr([defaultReference], ['referenceId'], sku)
-    const catalogImages = pathOr([defaultImage], ['images'], sku)
+    const [seller = defaultSeller] = pathOr([], ['sellers'], sku)
+    const [referenceId = defaultReference] = pathOr([], ['referenceId'], sku)
+    const catalogImages = pathOr([], ['images'], sku)
     const normalizedImages = catalogImages.map(image => ({
       ...image,
       imageUrl: resizeImage(image.imageUrl, imageSize),
     }))
-    const [image] = normalizedImages
+    const [image = defaultImage] = normalizedImages
     normalizedProduct.sku = {
       ...sku,
       seller,
