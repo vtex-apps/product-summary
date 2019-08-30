@@ -28,5 +28,7 @@
   "admin/editor.productSummaryPrice.showBorders.title": "Title of showBorders prop",
   "admin/editor.productSummaryImage.title": "admin/editor.productSummaryImage.title",
   "admin/editor.productSummaryImage.description": "admin/editor.productSummaryImage.description",
-  "admin/editor.productSummaryImage.hoverImageLabel.title": "admin/editor.productSummaryImage.hoverImageLabel.title"
+  "admin/editor.productSummaryImage.hoverImageLabel.title": "admin/editor.productSummaryImage.hoverImageLabel.title",
+  "admin/editor.productSummaryBuyButton.title": "admin/editor.productSummaryBuyButton.title",
+  "admin/editor.productSummaryName.title": "admin/editor.productSummaryName.title"
 }

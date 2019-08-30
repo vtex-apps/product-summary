@@ -98,8 +98,7 @@ ProductSummaryBuyButton.defaultProps = {
 
 ProductSummaryBuyButton.getSchema = () => {
   return {
-    title: 'admin/editor.productSummary.title',
-    description: 'admin/editor.productSummary.description',
+    title: 'admin/editor.productSummaryBuyButton.title',
     type: 'object',
     properties: {
       isOneClickBuy: {
