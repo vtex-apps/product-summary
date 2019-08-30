@@ -28,5 +28,7 @@
   "admin/editor.productSummaryPrice.showBorders.title": "Show borders",
   "admin/editor.productSummaryImage.title": "Product Summary Image",
   "admin/editor.productSummaryImage.description": "The component that shows the product image",
-  "admin/editor.productSummaryImage.hoverImageLabel.title": "Hover Image Label"
+  "admin/editor.productSummaryImage.hoverImageLabel.title": "Hover Image Label",
+  "admin/editor.productSummaryBuyButton.title": "Product Summary Buy Button",
+  "admin/editor.productSummaryName.title": "Product Summary Name"
 }

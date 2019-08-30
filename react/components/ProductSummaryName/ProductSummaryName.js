@@ -49,8 +49,7 @@ ProductSummaryName.propTypes = {
 
 ProductSummaryName.getSchema = () => {
   return {
-    title: 'admin/editor.productSummary.title',
-    description: 'admin/editor.productSummary.description',
+    title: 'admin/editor.productSummaryName.title',
     type: 'object',
     properties: {
       showFieldsProps: ProductName.schema,
