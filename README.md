@@ -103,10 +103,8 @@ Through the Storefront, you can change the product-summary's behavior and interf
 | `hideBuyButton`     | `Boolean` | Hides the buybutton completely                                                              |
 | `showCollections`   | `Boolean` | Set collection badges' visibility                                                           |
 | `displayMode`       | `Enum`    | Set display mode of product summary (normal, small, inline or inlinePrice)                               |
-| `showQuantitySelector`       | `Boolean`    | Set the quantity selector visibility              
-|
-| `priceAlignLeft`       | `Boolean`    | Set the price to be left aligned              
-|
+| `showQuantitySelector`       | `Boolean`    | Set the quantity selector visibility              |
+| `priceAlignLeft`       | `Boolean`    | Set the price to be left aligned              |
 
 Also, you can configure the block [add-to-list-btn#product-summary](https://github.com/vtex-apps/wishlist) defined on product-summary.
 
@@ -156,6 +154,8 @@ Below, we describe the namespaces that are defined in the product-summary.
 | `description`              | [ProductSummaryNormal](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryNormal.js)                                                                                                                                                                                                                                                     | The product description                                       |
 | `quantityStepperContainer` | [ProductSummaryInlinePrice](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryInlinePrice.js)                                                                                                                                                                                                                                           | The quantity stepper container                                |
 | `imagePlaceholder`         | [ProductImage](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryImage/ProductImage.js)                                                                                                                                                                                                                                           | Product image placeholder class                        |
+| `hoverEffect`         | [ProductImage](https://github.com/vtex-apps/product-summary/blob/master/react/components/ProductSummaryImage/ProductImage.js)                                                                                                                                                                                                                                           | Product image wrapper class                        |
+
 
 ## Troubleshooting
 
