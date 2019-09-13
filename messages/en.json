@@ -1,4 +1,6 @@
 {
+  "store/pricing.from": "From",
+  "store/pricing.to": "To",
   "store/button-label": "Buy",
   "admin/editor.productSummary.title": "Product Summary",
   "admin/editor.productSummary.description": "The product summary showing the main product informations",

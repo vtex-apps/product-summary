@@ -1,4 +1,6 @@
 {
+  "store/pricing.from": "store/pricing.from",
+  "store/pricing.to": "store/pricing.to",
   "store/button-label": "store/button-label",
   "admin/editor.productSummary.title": "admin/editor.productSummary.title",
   "admin/editor.productSummary.description": "admin/editor.productSummary.description",
