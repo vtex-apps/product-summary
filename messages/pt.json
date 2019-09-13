@@ -1,4 +1,6 @@
 {
+  "store/pricing.from": "De",
+  "store/pricing.to": "Para",
   "store/button-label": "Comprar",
   "admin/editor.productSummary.title": "Resumo do Produto",
   "admin/editor.productSummary.description": "O resumo do produto mostrando as principais informações do produto",
