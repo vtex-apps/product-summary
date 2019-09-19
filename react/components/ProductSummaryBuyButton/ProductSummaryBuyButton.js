@@ -18,6 +18,7 @@ const ProductSummaryBuyButton = ({
   displayBuyButton,
   isOneClickBuy,
   buyButtonText,
+  customToastURL,
   runtime: {
     hints: { mobile },
   },
@@ -63,6 +64,7 @@ const ProductSummaryBuyButton = ({
       <div className={containerClass}>
         <div className={buyButtonClasses}>
           <BuyButton
+            customToastURL={customToastURL}
             available={isAvailable}
             skuItems={skuItems}
             isOneClickBuy={isOneClickBuy}
@@ -89,6 +91,8 @@ ProductSummaryBuyButton.propTypes = {
   buyButtonText: PropTypes.string,
   /** Defines the display mode of buy button */
   displayBuyButton: PropTypes.oneOf(getDisplayButtonValues()),
+  /** A custom URL for the `VIEW CART` button inside the toast created by BuyButton */
+  customToastURL: PropTypes.string,
 }
 
 ProductSummaryBuyButton.defaultProps = {

@@ -38,6 +38,7 @@ Through the Storefront, you can change the `ProductSummaryBuyButton`'s behavior 
 | `isOneClickBuy`     | `Boolean` | Should redirect to checkout after clicking on buy                                           | `false`               |
 | `buyButtonText`     | `String`  | Custom buy button text                                                                      |                       |
 | `displayBuyButton`  | `Enum`    | Set display mode of buy button (displayButtonAlways, displayButtonHover, displayButtonNone) | `displayButtonAlways` |
+| `customToastURL`  | `String`    | Set the link associated with the Toast created when adding an item to your cart.  | `/checkout/#/cart` |
 
 ### Styles API
 
