@@ -8,9 +8,9 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "debounce": "^1.2.0",
     "graphql": "^14.1.1",
     "graphql-tag": "^2.10.1",
-    "lodash": "^4.17.11",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-apollo": "^2.4.1",
@@ -23,7 +23,7 @@
     "apollo-client": "^2.5.1",
     "coveralls": "^3.0.3",
     "eslint": "5",
-    "eslint-config-vtex-react": "^4.1.0",
+    "eslint-config-vtex-react": "^5.0.1",
     "intl": "^1.2.5",
     "prettier": "^1.18.2",
     "typescript": "3.5.2"
