@@ -3,15 +3,21 @@ import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryCo
 
 const ProductSummarySpecificationBadges = ({
   groupName,
-  conditions,
+  visibleWhen,
+  specificationsOptions,
+  specificationName,
+  displayValue,
   blockClass,
-  orientation
+  orientation,
 }) => {
   const { product } = useProductSummary()
   return (
     <BaseSpecificationBadges
       product={product}
-      conditions={conditions}
+      visibleWhen={visibleWhen}
+      specificationsOptions={specificationsOptions}
+      specificationName={specificationName}
+      displayValue={displayValue}
       blockClass={blockClass}
       orientation={orientation}
       groupName={groupName}
