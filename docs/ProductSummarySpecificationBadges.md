@@ -6,15 +6,15 @@ Use this component to show badges based on your product specifications inside yo
 
 This component must be configured to be able to display the specifications properly. Its props can be configured via `blocks.json` and they are:
 
-| Prop name               | Type                                                      | Description                                                                                                                                                                                                                                                                             | Default value |
-| ----------------------- | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `groupName`             | `String`                                                  | The name of the specification group in which the desired specifications are                                                                                                                                                                                                             | ""            |
-| `specificationName`     | `String`                                                  | Pass the name of the specification you want to target. If left empy, will target all of the group                                                                                                                                                                                       | ""            |
-| `visibleWhen`           | `String`                                                  | Pass this if you want the specification to be displayed only if it has this exact value. If left empty, the badge will be showed regardless of the specification value.                                                                                                                 | ""            |
-| `displayValue`          | `SPECIFICATION_NAME` or `SPECIFICATION_VALUE` or `string` | Choose the value that will appear if the specification condition is met and the badge will be showed. Pass `SPECIFICATION_NAME` if you want to display the specification name. Pass `SPECIFICATION_VALUE` if you want to display its value. Pass any other custom string to display it. | `null`        |
-| `specificationsOptions` | `Object<string, Option>`                                  | Pass this if you want to control the conditions to show certain specifications. The key to each object entry should be the specification name and the value should be an object in the `Option` format                                                                                  | `null`        |
-| `orientation`           | `vertical` or `horizontal`                                | Determines if the group of specifications are showed horizontally or vertically                                                                                                                                                                                                         | `vertical`    |
-| `blockClass`            | `string`                                                  | Allows to pass a custom name to be added to component css classes                                                                                                                                                                                                                       | `null`        |
+| Prop name                | Type                                                      | Description                                                                                                                                                                                                                                                                             | Default value |
+| ------------------------ | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `specificationGroupName` | `String`                                                  | The name of the specification group in which the desired specifications are                                                                                                                                                                                                             | ""            |
+| `specificationName`      | `String`                                                  | Pass the name of the specification you want to target. If left empy, will target all of the group                                                                                                                                                                                       | ""            |
+| `visibleWhen`            | `String`                                                  | Pass this if you want the specification to be displayed only if it has this exact value. If left empty, the badge will be showed regardless of the specification value.                                                                                                                 | ""            |
+| `displayValue`           | `SPECIFICATION_NAME` or `SPECIFICATION_VALUE` or `string` | Choose the value that will appear if the specification condition is met and the badge will be showed. Pass `SPECIFICATION_NAME` if you want to display the specification name. Pass `SPECIFICATION_VALUE` if you want to display its value. Pass any other custom string to display it. | `null`        |
+| `specificationsOptions`  | `Object<string, Option>`                                  | Pass this if you want to control the conditions to show certain specifications. The key to each object entry should be the specification name and the value should be an object in the `Option` format                                                                                  | `null`        |
+| `orientation`            | `vertical` or `horizontal`                                | Determines if the group of specifications are showed horizontally or vertically                                                                                                                                                                                                         | `vertical`    |
+| `blockClass`             | `string`                                                  | Allows to pass a custom name to be added to component css classes                                                                                                                                                                                                                       | `null`        |
 
 `Option` type:
 | Prop name | Type | Description | Default value |
@@ -79,7 +79,7 @@ If you want to display all specifications with the value `True`, you could then 
 ```
 "product-summary-specification-badges": {
     "props": {
-      "groupName": "allSpecifications",
+      "specificationGroupName": "allSpecifications",
       "displayValue": "SPECIFICATION_NAME",
       "visibleWhen": "True"
     }
@@ -95,7 +95,7 @@ Using the specification groups from example 1, we can get the same result with t
 ```
   "product-summary-specification-badges": {
     "props": {
-      "groupName": "allSpecifications",
+      "specificationGroupName": "allSpecifications",
       "specificationsOptions": {
         "On Sale": {
           "displayValue": "SPECIFICATION_NAME",
@@ -162,7 +162,7 @@ If you want to show the value for the `Demo` specification, you could pass:
 ```
   "product-summary-specification-badges": {
     "props": {
-      "groupName": "allSpecifications",
+      "specificationGroupName": "allSpecifications",
       "specificationsOptions": {
         "On Sale": {
           "displayValue": "SPECIFICATION_NAME",
@@ -189,7 +189,7 @@ To show a custom string you could do:
 ```
   "product-summary-specification-badges": {
     "props": {
-      "groupName": "allSpecifications",
+      "specificationGroupName": "allSpecifications",
       "specificationsOptions": {
         "On Sale": {
           "displayValue": "SPECIFICATION_NAME",
@@ -237,7 +237,7 @@ You can use our `stack-layout` to show the badges over your product image for ex
 
   "product-summary-specification-badges": {
     "props": {
-      "groupName": "Group",
+      "specificationGroupName": "Group",
       "specificationName": "On Sale",
       "visibleWhen": "True",
       "displayValue": "SPECIFICATION_NAME"

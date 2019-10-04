@@ -2,12 +2,11 @@ import BaseSpecificationBadges from 'vtex.product-specification-badges/BaseSpeci
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
 const ProductSummarySpecificationBadges = ({
-  groupName,
+  specificationGroupName,
   visibleWhen,
   specificationsOptions,
   specificationName,
   displayValue,
-  blockClass,
   orientation,
 }) => {
   const { product } = useProductSummary()
@@ -18,9 +17,8 @@ const ProductSummarySpecificationBadges = ({
       specificationsOptions={specificationsOptions}
       specificationName={specificationName}
       displayValue={displayValue}
-      blockClass={blockClass}
       orientation={orientation}
-      groupName={groupName}
+      specificationGroupName={specificationGroupName}
     />
   )
 }
