@@ -10,7 +10,7 @@ import {
 } from 'vtex.product-summary-context/ProductSummaryContext'
 import productSummary from '../productSummary.css'
 import { productShape } from '../utils/propTypes'
-import { mapCatalogProductToProductSummary } from '../utils/normarlize'
+import { mapCatalogProductToProductSummary } from '../utils/normalize'
 
 const ProductSummaryCustom = ({ product, actionOnClick, children }) => {
   const { isLoading, isHovering } = useProductSummary()
