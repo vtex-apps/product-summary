@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
 import { useDevice } from 'vtex.device-detector'
+import { useResponsiveValues } from 'vtex.responsive-values'
 
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
 import productSummary from '../../productSummary.css'
 
 import { changeImageUrlSize } from '../../utils/normalize'
-import { useResponsiveValues } from 'vtex.responsive-values'
 
 const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
   if (shouldShow) {
@@ -34,10 +34,6 @@ const maybeCollection = ({ productClusters }) => shouldShow => component => {
   }
   return component
 }
-
-export const ImagePlaceholder = ({ width, height }) => (
-  <div style={{ width, height }} />
-)
 
 const findHoverImage = (images, hoverImageLabel) => {
   if (!hoverImageLabel) {
@@ -203,7 +199,7 @@ const ProductImage = ({
           height={height}
         />
       ) : (
-        <ImagePlaceholder width={width} height={height} />
+        <div style={{ width, height }} />
       )}
     </div>
   )
