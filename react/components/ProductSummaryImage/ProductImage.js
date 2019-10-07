@@ -52,28 +52,16 @@ const Image = ({ src, width, height, onError, alt, className }) => {
 
   const shouldResize = !!(width || height)
 
-  const [normalizedWidth, normalizedHeight] = [
-    // fallsback to the other remaining value, if not defined
-    parseFloat(width || height || 0),
-    parseFloat(height || width || 0),
-  ]
-
   return (
     <img
       src={
-        shouldResize
-          ? changeImageUrlSize(
-              src,
-              normalizedWidth * dpi,
-              normalizedHeight * dpi
-            )
-          : src
+        shouldResize ? changeImageUrlSize(src, width * dpi, height * dpi) : src
       }
       style={
         shouldResize
           ? {
-              width: normalizedWidth,
-              height: normalizedHeight,
+              width,
+              height,
               maxHeight: 'unset',
               maxWidth: 'unset',
             }
@@ -94,20 +82,29 @@ const ProductImageContent = ({
   displayMode,
   onError,
   hoverImageLabel,
-  width,
-  height,
+  width: widthProp,
+  height: heightProp,
+  hasError,
 }) => {
-  const {
-    productClusters,
-    productName: name,
-    sku: {
-      image: { imageUrl },
-      images,
-    },
-  } = product
+  const { productClusters, productName: name } = product || {}
+
+  const sku = product && product.sku
+
+  const imageUrl = path(['image', 'imageUrl'], sku)
+  const images = path(['images'], sku)
 
   const { isMobile } = useDevice()
   const handles = useCssHandles(CSS_HANDLES)
+
+  const [width, height] = [
+    // fallsback to the other remaining value, if not defined
+    parseFloat(widthProp || heightProp || 0),
+    parseFloat(heightProp || widthProp || 0),
+  ]
+
+  if (!sku || hasError) {
+    return <ImagePlaceholder width={width} height={height} />
+  }
 
   const legacyImageClasses = classNames({
     [productSummary.imageNormal]: displayMode !== 'inline',
@@ -180,6 +177,15 @@ const ProductImageContent = ({
   )(img)
 }
 
+const ImagePlaceholder = ({ width, height }) => (
+  <div style={{ width, height }}>
+    <div
+      className={`${productSummary.imagePlaceholder} absolute w-100 h-100 contain bg-center`}
+      data-testid="image-placeholder"
+    />
+  </div>
+)
+
 const ProductImage = ({
   showBadge,
   badgeText,
@@ -197,27 +203,25 @@ const ProductImage = ({
   })
 
   const [error, setError] = useState(false)
+
   const imageClassName = classNames(productSummary.imageContainer, {
     'db w-100 center': displayMode !== 'inline',
   })
 
   return (
     <div className={imageClassName}>
-      {path(['sku', 'image', 'imageUrl'], product) && !error ? (
-        <ProductImageContent
-          showBadge={showBadge}
-          badgeText={badgeText}
-          showCollections={showCollections}
-          displayMode={displayMode}
-          product={product}
-          onError={() => setError(true)}
-          hoverImageLabel={hoverImageLabel}
-          width={width}
-          height={height}
-        />
-      ) : (
-        <div style={{ width, height }} />
-      )}
+      <ProductImageContent
+        showBadge={showBadge}
+        badgeText={badgeText}
+        showCollections={showCollections}
+        displayMode={displayMode}
+        product={product}
+        onError={() => setError(true)}
+        hoverImageLabel={hoverImageLabel}
+        width={width}
+        height={height}
+        hasError={error}
+      />
     </div>
   )
 }
