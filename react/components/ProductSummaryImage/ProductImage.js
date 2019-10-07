@@ -5,12 +5,15 @@ import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
 import { useDevice } from 'vtex.device-detector'
 import { useResponsiveValues } from 'vtex.responsive-values'
+import { useCssHandles, applyModifiers } from 'vtex.css-handles'
 
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
 import productSummary from '../../productSummary.css'
 
 import { changeImageUrlSize } from '../../utils/normalize'
+
+const CSS_HANDLES = ['image', 'imageContainer']
 
 const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
   if (shouldShow) {
@@ -99,8 +102,9 @@ const ProductImageContent = ({
   } = product
 
   const { isMobile } = useDevice()
+  const handles = useCssHandles(CSS_HANDLES)
 
-  const imageContentClassName = classNames({
+  const legacyImageClasses = classNames({
     [productSummary.imageNormal]: displayMode !== 'inline',
     [productSummary.imageInline]: displayMode === 'inline',
   })
@@ -122,26 +126,34 @@ const ProductImageContent = ({
 
   const hoverImage = findHoverImage(images, hoverImageLabel)
 
-  const hoverImgClasses = classNames(
+  const imageClassname = classNames(legacyImageClasses, handles.image)
+
+  const hoverImageClassname = classNames(
     'w-100 h-100 dn absolute top-0 left-0 z-999',
-    imageContentClassName,
+    applyModifiers(handles.image, 'hover'),
+    legacyImageClasses,
     productSummary.hoverImage
   )
 
-  const imgStackClasses = classNames(
-    'dib relative',
+  const legacyContainerClasses = classNames(
     productSummary.imageStackContainer,
     productSummary.hoverEffect
   )
 
+  const containerClassname = classNames(
+    'dib relative',
+    handles.imageContainer,
+    legacyContainerClasses
+  )
+
   const img = (
-    <div className={imgStackClasses}>
+    <div className={containerClassname}>
       <Image
         src={imageUrl}
         width={width}
         height={height}
         alt={name}
-        className={imageContentClassName}
+        className={imageClassname}
         onError={onError}
       />
       {hoverImage && !isMobile && (
@@ -150,7 +162,7 @@ const ProductImageContent = ({
           width={width}
           height={height}
           alt={name}
-          className={hoverImgClasses}
+          className={hoverImageClassname}
           onError={onError}
         />
       )}
