@@ -236,8 +236,8 @@ ProductImage.propTypes = {
   /** Display mode of the summary */
   displayMode: PropTypes.oneOf(['normal', 'inline']),
   hoverImageLabel: PropTypes.string,
-  width: PropTypes.number,
-  height: PropTypes.number,
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
 }
 
 ProductImage.defaultProps = {
