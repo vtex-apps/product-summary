@@ -1,6 +1,6 @@
-# VTEX Product Summary Specification Badges
+# VTEX Product Specification Badges
 
-Use this component to show badges based on your product specifications inside your product summary block.
+Use this component to show badges based on your product specifications inside your product page.
 
 ### Configuration
 
@@ -12,13 +12,14 @@ This component must be configured to be able to display the specifications prope
 | `specificationName`      | `String`                                                  | Pass the name of the specification you want to target. If left empy, will target all of the group                                                                                                                                                                                       | ""            |
 | `visibleWhen`            | `String`                                                  | Pass this if you want the specification to be displayed only if it has this exact value. If left empty, the badge will be showed regardless of the specification value.                                                                                                                 | ""            |
 | `displayValue`           | `SPECIFICATION_NAME` or `SPECIFICATION_VALUE` or `string` | Choose the value that will appear if the specification condition is met and the badge will be showed. Pass `SPECIFICATION_NAME` if you want to display the specification name. Pass `SPECIFICATION_VALUE` if you want to display its value. Pass any other custom string to display it. | `null`        |
-| `specificationsOptions`  | `Object<string, Option>`                                  | Pass this if you want to control the conditions to show certain specifications. The key to each object entry should be the specification name and the value should be an object in the `Option` format                                                                                  | `null`        |
+| `specificationsOptions`  | `Array<Option>`                                           | Pass this if you want to control the conditions to show certain specifications. Each value of the array should be a valid object of the `Option` format.                                                                                                                                | `null`        |
 | `orientation`            | `vertical` or `horizontal`                                | Determines if the group of specifications are showed horizontally or vertically                                                                                                                                                                                                         | `vertical`    |
 | `blockClass`             | `string`                                                  | Allows to pass a custom name to be added to component css classes                                                                                                                                                                                                                       | `null`        |
 
 `Option` type:
 | Prop name | Type | Description | Default value |
 | --------- | -------- | ------------------------------------------------ | ------------- |
+| `specificationName` | `String` | Pass the name of the specification you want to target. If empty, option will not be checked. | "" |
 | `visibleWhen` | `string` | Pass this if you want this option to be applied when the specification has the exactly same value as specified in `visibleWhen`. If left empty, the badge will be showed regardless of the specification value. | `null` |
 | `displayValue` | `SPECIFICATION_NAME` or `SPECIFICATION_VALUE` or `string` | Choose the value that will appear if the option condition is met and the badge will be showed. Pass `SPECIFICATION_NAME` if you want to show the specification name. Pass `SPECIFICATION_VALUE` if you want to show its value. Pass any other custom string to show it. | `null` |
 
@@ -77,7 +78,7 @@ Let's say your product has this specification groups:
 If you want to display all specifications with the value `True`, you could then pass:
 
 ```
-"product-summary-specification-badges": {
+"product-specification-badges": {
     "props": {
       "specificationGroupName": "allSpecifications",
       "displayValue": "SPECIFICATION_NAME",
@@ -93,19 +94,19 @@ In this case, it will appear the `On Sale` and `Demo` badges (because you passed
 Using the specification groups from example 1, we can get the same result with the specificationOptions prop:
 
 ```
-  "product-summary-specification-badges": {
+  "product-specification-badges": {
     "props": {
       "specificationGroupName": "allSpecifications",
-      "specificationsOptions": {
-        "On Sale": {
-          "displayValue": "SPECIFICATION_NAME",
-          "visibleWhen": "True"
-        },
-        "Demo": {
-          "displayValue": "SPECIFICATION_NAME",
-          "visibleWhen": "True"
-        },
-      }
+      "specificationsOptions": [{
+        "specificationName": "On Sale",
+        "displayValue": "SPECIFICATION_NAME",
+        "visibleWhen": "True"
+      },
+      {
+        "specificationName": "Demo",
+        "displayValue": "SPECIFICATION_NAME",
+        "visibleWhen": "True"
+      }]
     }
   },
 ```
@@ -160,18 +161,18 @@ Using the specification groups from example 1, we can get the same result with t
 If you want to show the value for the `Demo` specification, you could pass:
 
 ```
-  "product-summary-specification-badges": {
+  "product-specification-badges": {
     "props": {
       "specificationGroupName": "allSpecifications",
-      "specificationsOptions": {
-        "On Sale": {
-          "displayValue": "SPECIFICATION_NAME",
-          "visibleWhen": "True"
-        },
-        "Demo": {
-          "displayValue": "SPECIFICATION_VALUE",
-        },
-      }
+      "specificationsOptions": [{
+        "specificationName": "On Sale",
+        "displayValue": "SPECIFICATION_NAME",
+        "visibleWhen": "True"
+      },
+      {
+        "specificationName": "Demo",
+        "displayValue": "SPECIFICATION_VALUE",
+      }]
     }
   },
 ```
@@ -187,21 +188,22 @@ Using the example given in example 3.
 To show a custom string you could do:
 
 ```
-  "product-summary-specification-badges": {
+  "product-specification-badges": {
     "props": {
       "specificationGroupName": "allSpecifications",
-      "specificationsOptions": {
-        "On Sale": {
-          "displayValue": "SPECIFICATION_NAME",
-          "visibleWhen": "True"
-        },
-        "Demo": {
-          "displayValue": "SPECIFICATION_VALUE",
-        },
-        "PromoExclusion": {
-          "displayValue": "Cool Promo",
-        }
-      }
+      "specificationsOptions": [{
+        "specificationName": "On Sale",
+        "displayValue": "SPECIFICATION_NAME",
+        "visibleWhen": "True"
+      },
+      {
+        "specificationName": "Demo",
+        "displayValue": "SPECIFICATION_VALUE",
+      },
+      {
+        "specificationName": "PromoExclusion",
+        "displayValue": "Cool Promo",
+      }]
     }
   },
 ```
@@ -215,33 +217,23 @@ Note the usage of a custom value in the `displayValue` config.
 You can use our `stack-layout` to show the badges over your product image for example.
 
 ```
-  "product-summary.shelf": {
+  "stack-layout": {
     "children": [
-      "product-summary-add-to-list-button",
-      "stack-layout#prodsum",
-      "product-summary-name",
-      "product-rating-inline",
-      "product-summary-space",
-      "product-summary-price",
-      "product-identifier.summary",
-      "product-summary-buy-button"
+      "product-images",
+      "product-specification-badges"
     ]
   },
 
-  "stack-layout#prodsum": {
-    "children": [
-      "product-summary-image",
-      "product-summary-specification-badges"
-    ]
-  },
-
-  "product-summary-specification-badges": {
+  "product-specification-badges": {
     "props": {
-      "specificationGroupName": "Group",
-      "specificationName": "On Sale",
-      "visibleWhen": "True",
-      "displayValue": "SPECIFICATION_NAME"
+      "specificationGroupName": "allSpecifications",
+      "displayValue": "SPECIFICATION_NAME",
+      "specificationName: "On Sale",
+      "visibleWhen": "True"
     }
+  },
+  "flex-layout.row#product-image": {
+    "children": ["product-images"]
   },
 ```
 

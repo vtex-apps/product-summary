@@ -23,4 +23,9 @@ const ProductSummarySpecificationBadges = ({
   )
 }
 
+ProductSummarySpecificationBadges.schema = {
+  ...BaseSpecificationBadges.schema,
+  title: 'admin/editor.product-summary-specification-badges.title',
+}
+
 export default ProductSummarySpecificationBadges

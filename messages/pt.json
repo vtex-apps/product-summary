@@ -32,5 +32,6 @@
   "admin/editor.productSummaryImage.description": "O componente que mostra a imagem do produto",
   "admin/editor.productSummaryImage.hoverImageLabel.title": "Rótulo da imagem secundária",
   "admin/editor.productSummaryBuyButton.title": "Botão de compra",
-  "admin/editor.productSummaryName.title": "Nome do resumo do produto"
+  "admin/editor.productSummaryName.title": "Nome do resumo do produto",
+  "admin/editor.product-summary-specification-badges.title": "Medalhas de Especificação do resumo do produto"
 }
