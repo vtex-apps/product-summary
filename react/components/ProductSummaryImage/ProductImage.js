@@ -9,6 +9,9 @@ import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryCo
 
 import productSummary from '../../productSummary.css'
 
+import { changeImageUrlSize } from '../../utils/normalize'
+import { useResponsiveValues } from 'vtex.responsive-values'
+
 const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
   if (shouldShow) {
     return (
@@ -78,6 +81,42 @@ const findHoverImage = (images, hoverImageLabel) => {
   return images.find(({ imageLabel }) => imageLabel === hoverImageLabel)
 }
 
+const Image = ({ src, width, height, onError, alt, className }) => {
+  const { isMobile } = useDevice()
+
+  const dpi = window.devicePixelRatio || (isMobile ? 2 : 1)
+
+  const shouldResize = !!(width || height)
+
+  const [normalizedWidth, normalizedHeight] = [
+    // fallsback to the other remaining value, if not defined
+    parseFloat(width || height || 0),
+    parseFloat(height || width || 0),
+  ]
+
+  return (
+    <img
+      src={
+        shouldResize
+          ? changeImageUrlSize(
+              src,
+              normalizedWidth * dpi,
+              normalizedHeight * dpi
+            )
+          : src
+      }
+      style={
+        shouldResize
+          ? { width: normalizedWidth, height: normalizedHeight }
+          : null
+      }
+      alt={alt}
+      className={className}
+      onError={onError}
+    />
+  )
+}
+
 const ProductImageContent = ({
   product,
   showBadge,
@@ -86,6 +125,8 @@ const ProductImageContent = ({
   displayMode,
   onError,
   hoverImageLabel,
+  width,
+  height,
 }) => {
   const {
     productClusters,
@@ -97,6 +138,11 @@ const ProductImageContent = ({
   } = product
 
   const { isMobile } = useDevice()
+
+  const { width: widthProp, height: heightProp } = useResponsiveValues({
+    width,
+    height,
+  })
 
   const imageContentClassName = classNames({
     [productSummary.imageNormal]: displayMode !== 'inline',
@@ -115,6 +161,7 @@ const ProductImageContent = ({
     price: commertialOffer.Price,
     label: badgeText,
   })
+
   const withCollection = maybeCollection({ productClusters })
 
   const hoverImage = findHoverImage(images, hoverImageLabel)
@@ -130,16 +177,26 @@ const ProductImageContent = ({
     productSummary.imageStackContainer,
     productSummary.hoverEffect
   )
+
   const img = (
     <div className={imgStackClasses}>
-      <img
-        className={imageContentClassName}
+      <Image
         src={imageUrl}
+        width={widthProp}
+        height={heightProp}
         alt={name}
+        className={imageContentClassName}
         onError={onError}
       />
       {hoverImage && !isMobile && (
-        <img src={hoverImage.imageUrl} alt={name} className={hoverImgClasses} />
+        <Image
+          src={hoverImage.imageUrl}
+          width={widthProp}
+          height={heightProp}
+          alt={name}
+          className={hoverImgClasses}
+          onError={onError}
+        />
       )}
     </div>
   )
@@ -156,6 +213,8 @@ const ProductImage = ({
   showCollections,
   displayMode,
   hoverImageLabel,
+  width,
+  height,
 }) => {
   const { product } = useProductSummary()
 
@@ -175,6 +234,8 @@ const ProductImage = ({
           product={product}
           onError={() => setError(true)}
           hoverImageLabel={hoverImageLabel}
+          width={width}
+          height={height}
         />
       ) : (
         <ImagePlaceholder />
@@ -193,6 +254,8 @@ ProductImage.propTypes = {
   /** Display mode of the summary */
   displayMode: PropTypes.oneOf(['normal', 'inline']),
   hoverImageLabel: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
 }
 
 ProductImage.defaultProps = {
