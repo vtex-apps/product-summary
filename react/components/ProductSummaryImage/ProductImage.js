@@ -71,7 +71,12 @@ const Image = ({ src, width, height, onError, alt, className }) => {
       }
       style={
         shouldResize
-          ? { width: normalizedWidth, height: normalizedHeight }
+          ? {
+              width: normalizedWidth,
+              height: normalizedHeight,
+              maxHeight: 'unset',
+              maxWidth: 'unset',
+            }
           : null
       }
       alt={alt}
