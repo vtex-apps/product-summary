@@ -13,7 +13,7 @@ import productSummary from '../../productSummary.css'
 
 import { changeImageUrlSize } from '../../utils/normalize'
 
-const CSS_HANDLES = ['image', 'imageContainer']
+const CSS_HANDLES = ['image', 'imageContainer', 'product', 'imagePlaceholder']
 
 const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
   if (shouldShow) {
@@ -103,7 +103,13 @@ const ProductImageContent = ({
   ]
 
   if (!sku || hasError) {
-    return <ImagePlaceholder width={width} height={height} />
+    return (
+      <ImagePlaceholder
+        width={width}
+        height={height}
+        handle={handles.productImage}
+      />
+    )
   }
 
   const legacyImageClasses = classNames({
@@ -177,10 +183,10 @@ const ProductImageContent = ({
   )(img)
 }
 
-const ImagePlaceholder = ({ width, height }) => (
+const ImagePlaceholder = ({ width, height, handle }) => (
   <div style={{ width, height }}>
     <div
-      className={`${productSummary.imagePlaceholder} absolute w-100 h-100 contain bg-center`}
+      className={`${handle} absolute w-100 h-100 contain bg-center`}
       data-testid="image-placeholder"
     />
   </div>
