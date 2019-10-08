@@ -32,5 +32,6 @@
   "admin/editor.productSummaryImage.description": "The component that shows the product image",
   "admin/editor.productSummaryImage.hoverImageLabel.title": "Hover Image Label",
   "admin/editor.productSummaryBuyButton.title": "Product Summary Buy Button",
-  "admin/editor.productSummaryName.title": "Product Summary Name"
+  "admin/editor.productSummaryName.title": "Product Summary Name",
+  "admin/editor.product-summary-specification-badges.title": "Product Summary Specification Badges"
 }

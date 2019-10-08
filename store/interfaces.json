@@ -21,7 +21,9 @@
       "product-rating-inline",
       "product-teaser.summary",
       "product-summary-brand",
-      "product-summary-quantity"
+      "product-summary-quantity",
+      "product-summary-specification-badges",
+      "stack-layout"
     ],
     "component": "ProductSummaryCustom",
     "composition": "children"
@@ -37,7 +39,8 @@
       "product-identifier",
       "product-summary-space",
       "product-summary-add-to-list-button",
-      "product-rating-inline"
+      "product-rating-inline",
+      "product-summary-specification-badges"
     ],
     "component": "Column",
     "composition": "children"
@@ -118,11 +121,12 @@
       }
     }
   },
+  "product-summary-specification-badges": {
+    "component": "ProductSummarySpecificationBadges"
+  },
   "product-summary-add-to-list-button": {
     "component": "ProductSummaryAddToListButton",
-    "allowed": [
-      "addon-summary-btn"
-    ]
+    "allowed": ["addon-summary-btn"]
   },
   "addon-summary-btn": {
     "component": "*"

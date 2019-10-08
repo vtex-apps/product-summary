@@ -32,5 +32,6 @@
   "admin/editor.productSummaryImage.description": "El componente que muestra la imagen del producto",
   "admin/editor.productSummaryImage.hoverImageLabel.title": "Etiqueta de imagen secundaria",
   "admin/editor.productSummaryBuyButton.title": "Botón de compra",
-  "admin/editor.productSummaryName.title": "Nombre de Resumen del producto"
+  "admin/editor.productSummaryName.title": "Nombre de Resumen del producto",
+  "admin/editor.product-summary-specification-badges.title": "Resumen del producto Especificaciones Medallas"
 }

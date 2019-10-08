@@ -32,5 +32,6 @@
   "admin/editor.productSummaryImage.description": "admin/editor.productSummaryImage.description",
   "admin/editor.productSummaryImage.hoverImageLabel.title": "admin/editor.productSummaryImage.hoverImageLabel.title",
   "admin/editor.productSummaryBuyButton.title": "admin/editor.productSummaryBuyButton.title",
-  "admin/editor.productSummaryName.title": "admin/editor.productSummaryName.title"
+  "admin/editor.productSummaryName.title": "admin/editor.productSummaryName.title",
+  "admin/editor.product-summary-specification-badges.title": "admin/editor.product-summary-specification-badges.title"
 }
