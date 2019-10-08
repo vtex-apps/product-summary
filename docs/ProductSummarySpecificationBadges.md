@@ -158,7 +158,7 @@ Using the specification groups from example 1, we can get the same result with t
   ]
 ```
 
-If you want to show the value for the `Demo` specification, you could pass:
+If you want to show the value for the `Demo` specification, you could pass:
 
 ```
   "product-specification-badges": {
