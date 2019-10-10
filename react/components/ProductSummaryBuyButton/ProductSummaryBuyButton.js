@@ -5,6 +5,8 @@ import { withRuntimeContext } from 'vtex.render-runtime'
 import { equals, path } from 'ramda'
 import classNames from 'classnames'
 import { IOMessage } from 'vtex.native-types'
+import { Button } from 'vtex.styleguide'
+import { Link } from 'vtex.render-runtime'
 
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 import displayButtonTypes, {
@@ -13,6 +15,18 @@ import displayButtonTypes, {
 } from '../../utils/displayButtonTypes'
 
 import productSummary from '../../productSummary.css'
+
+function checkSKUAvailability(seller) {
+  return path(['commertialOffer', 'AvailableQuantity'], seller) > 0
+}
+
+function checkAvailableSKUsInSellers(item) {
+  return item.sellers && item.sellers.filter(checkSKUAvailability).length > 0
+}
+
+function hasOnlyOneSKU(items) {
+  return items.filter(checkAvailableSKUsInSellers).length === 1
+}
 
 const ProductSummaryBuyButton = ({
   displayBuyButton,
@@ -59,18 +73,36 @@ const ProductSummaryBuyButton = ({
     selectedQuantity,
   })
 
+  const { items = [] } = product
+  const shouldBeALink = hasOnlyOneSKU(items)
+
   return (
     showBuyButton && (
       <div className={containerClass}>
         <div className={buyButtonClasses}>
-          <BuyButton
-            customToastURL={customToastURL}
-            available={isAvailable}
-            skuItems={skuItems}
-            isOneClickBuy={isOneClickBuy}
-          >
-            <IOMessage id={buyButtonText} />
-          </BuyButton>
+          {shouldBeALink ? (
+            <Link
+              className="dib"
+              page="store.product"
+              params={{
+                slug: product && product.linkText,
+                id: product && product.productId,
+              }}
+            >
+              <Button>
+                <IOMessage id={buyButtonText} />
+              </Button>
+            </Link>
+          ) : (
+            <BuyButton
+              customToastURL={customToastURL}
+              available={isAvailable}
+              skuItems={skuItems}
+              isOneClickBuy={isOneClickBuy}
+            >
+              <IOMessage id={buyButtonText} />
+            </BuyButton>
+          )}
         </div>
       </div>
     )
