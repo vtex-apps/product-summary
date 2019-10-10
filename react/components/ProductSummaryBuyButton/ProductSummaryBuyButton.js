@@ -16,17 +16,12 @@ import displayButtonTypes, {
 
 import productSummary from '../../productSummary.css'
 
-function checkSKUAvailability(seller) {
-  return path(['commertialOffer', 'AvailableQuantity'], seller) > 0
-}
-
-function checkAvailableSKUsInSellers(item) {
-  return item.sellers && item.sellers.filter(checkSKUAvailability).length > 0
-}
-
-function hasOnlyOneSKU(items) {
-  return items.filter(checkAvailableSKUsInSellers).length === 1
-}
+const ALWAYS_GO_TO_PRODUCT = 'alwaysGoToProduct'
+const DEFAULT_BUTTON_BEHAVIOR = 'default'
+const BUY_BUTTON_BEHAVIOR_OPTIONS = [
+  ALWAYS_GO_TO_PRODUCT,
+  DEFAULT_BUTTON_BEHAVIOR,
+]
 
 const ProductSummaryBuyButton = ({
   displayBuyButton,
@@ -36,6 +31,7 @@ const ProductSummaryBuyButton = ({
   runtime: {
     hints: { mobile },
   },
+  buyButtonBehavior,
   isHovering,
 }) => {
   const { product, selectedItem, selectedQuantity } = useProductSummary()
@@ -74,7 +70,11 @@ const ProductSummaryBuyButton = ({
   })
 
   const { items = [] } = product
-  const shouldBeALink = hasOnlyOneSKU(items)
+  // if the item is not available the behavior is just show the disabled BuyButton,
+  // but you still can go to the product page clicking in the summary
+  const shouldBeALink =
+    (items.length !== 1 || buyButtonBehavior !== BUY_BUTTON_BEHAVIOR_OPTIONS) &&
+    isAvailable
 
   return (
     showBuyButton && (
@@ -83,6 +83,7 @@ const ProductSummaryBuyButton = ({
           {shouldBeALink ? (
             <Link
               className="dib"
+              disabled
               page="store.product"
               params={{
                 slug: product && product.linkText,
@@ -117,6 +118,8 @@ ProductSummaryBuyButton.propTypes = {
       mobile: PropTypes.bool,
     }),
   }),
+  /** What the buy button should do when you click it, if you pass default it will add to cart only if there is only one SKU of that product */
+  buyButtonBehavior: PropTypes.oneOf(BUY_BUTTON_BEHAVIOR_OPTIONS),
   /** Should redirect to checkout after clicking on buy */
   isOneClickBuy: PropTypes.bool,
   /** Custom buy button text */
@@ -130,6 +133,7 @@ ProductSummaryBuyButton.propTypes = {
 ProductSummaryBuyButton.defaultProps = {
   displayBuyButton: displayButtonTypes.DISPLAY_ALWAYS.value,
   isOneClickBuy: false,
+  buyButtonBehavior: DEFAULT_BUTTON_BEHAVIOR,
 }
 
 ProductSummaryBuyButton.getSchema = () => {

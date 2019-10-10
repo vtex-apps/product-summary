@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Prop `buyButtonBehavior` to `ProductSummaryBuyButton`. 
+
 ### Fixed
 - `BuyButton`adding to cart when the product has more than one SKU.
 
