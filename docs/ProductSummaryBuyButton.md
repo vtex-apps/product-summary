@@ -39,6 +39,7 @@ Through the Storefront, you can change the `ProductSummaryBuyButton`'s behavior 
 | `buyButtonText`     | `String`  | Custom buy button text                                                                      |                       |
 | `displayBuyButton`  | `Enum`    | Set display mode of buy button (displayButtonAlways, displayButtonHover, displayButtonNone) | `displayButtonAlways` |
 | `customToastURL`  | `String`    | Set the link associated with the Toast created when adding an item to your cart.  | `/checkout/#/cart` |
+| `buyButtonBehavior` | `Enum` | What the buy button should do when you click it, if you pass `default` it will add to cart only if there is only one SKU of that product (default, alwaysGoToProduct) | `default`
 
 ### Styles API
 
