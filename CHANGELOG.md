@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- `BuyButton`adding to cart when the product has more than one SKU.
+
 ## [2.36.0] - 2019-10-08
 ### Added
 - Create `product-summary-specification-badges`.
