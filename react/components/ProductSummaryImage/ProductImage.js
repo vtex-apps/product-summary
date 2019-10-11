@@ -4,10 +4,16 @@ import PropTypes from 'prop-types'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
 import { useDevice } from 'vtex.device-detector'
+import { useResponsiveValues } from 'vtex.responsive-values'
+import { useCssHandles, applyModifiers } from 'vtex.css-handles'
 
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
 import productSummary from '../../productSummary.css'
+
+import { changeImageUrlSize } from '../../utils/normalize'
+
+const CSS_HANDLES = ['image', 'imageContainer', 'product', 'imagePlaceholder']
 
 const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
   if (shouldShow) {
@@ -32,50 +38,40 @@ const maybeCollection = ({ productClusters }) => shouldShow => component => {
   return component
 }
 
-export const ImagePlaceholder = () => (
-  <div className="relative">
-    <div
-      className={`${productSummary.imagePlaceholder} absolute w-100 h-100 contain bg-center`}
-    />
-    <svg
-      width="100%"
-      height="100%"
-      viewBox="0 0 512 512"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      data-testid="image-placeholder"
-    >
-      <rect width="512" height="512" fill="#F2F2F2" />
-      <rect
-        x="183.857"
-        y="180.2"
-        width="144.286"
-        height="150.474"
-        stroke="#CACBCC"
-        strokeWidth="2"
-      />
-      <path d="M183.78 303.688H328.214" stroke="#CACBCC" strokeWidth="2" />
-      <path
-        d="M205.082 279.563L223.599 240.507L242.116 260.035L269.892 220.979L306.926 279.563H205.082Z"
-        stroke="#CACBCC"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M252.225 213.939C252.225 219.822 247.66 224.52 242.114 224.52C236.569 224.52 232.004 219.822 232.004 213.939C232.004 208.057 236.569 203.359 242.114 203.359C247.66 203.359 252.225 208.057 252.225 213.939Z"
-        stroke="#CACBCC"
-        strokeWidth="2"
-      />
-    </svg>
-  </div>
-)
-
 const findHoverImage = (images, hoverImageLabel) => {
   if (!hoverImageLabel) {
     return null
   }
   return images.find(({ imageLabel }) => imageLabel === hoverImageLabel)
+}
+
+const Image = ({ src, width, height, onError, alt, className }) => {
+  const { isMobile } = useDevice()
+
+  const dpi = window.devicePixelRatio || (isMobile ? 2 : 1)
+
+  const shouldResize = !!(width || height)
+
+  return (
+    <img
+      src={
+        shouldResize ? changeImageUrlSize(src, width * dpi, height * dpi) : src
+      }
+      style={
+        shouldResize
+          ? {
+              width,
+              height,
+              maxHeight: 'unset',
+              maxWidth: 'unset',
+            }
+          : null
+      }
+      alt={alt}
+      className={className}
+      onError={onError}
+    />
+  )
 }
 
 const ProductImageContent = ({
@@ -86,19 +82,37 @@ const ProductImageContent = ({
   displayMode,
   onError,
   hoverImageLabel,
+  width: widthProp,
+  height: heightProp,
+  hasError,
 }) => {
-  const {
-    productClusters,
-    productName: name,
-    sku: {
-      image: { imageUrl },
-      images,
-    },
-  } = product
+  const { productClusters, productName: name } = product || {}
+
+  const sku = product && product.sku
+
+  const imageUrl = path(['image', 'imageUrl'], sku)
+  const images = path(['images'], sku)
 
   const { isMobile } = useDevice()
+  const handles = useCssHandles(CSS_HANDLES)
 
-  const imageContentClassName = classNames({
+  const [width, height] = [
+    // fallsback to the other remaining value, if not defined
+    parseFloat(widthProp || heightProp || 0),
+    parseFloat(heightProp || widthProp || 0),
+  ]
+
+  if (!sku || hasError) {
+    return (
+      <ImagePlaceholder
+        width={width}
+        height={height}
+        handle={handles.productImage}
+      />
+    )
+  }
+
+  const legacyImageClasses = classNames({
     [productSummary.imageNormal]: displayMode !== 'inline',
     [productSummary.imageInline]: displayMode === 'inline',
   })
@@ -115,31 +129,50 @@ const ProductImageContent = ({
     price: commertialOffer.Price,
     label: badgeText,
   })
+
   const withCollection = maybeCollection({ productClusters })
 
   const hoverImage = findHoverImage(images, hoverImageLabel)
 
-  const hoverImgClasses = classNames(
+  const imageClassname = classNames(legacyImageClasses, handles.image)
+
+  const hoverImageClassname = classNames(
     'w-100 h-100 dn absolute top-0 left-0 z-999',
-    imageContentClassName,
+    applyModifiers(handles.image, 'hover'),
+    legacyImageClasses,
     productSummary.hoverImage
   )
 
-  const imgStackClasses = classNames(
-    'dib relative',
+  const legacyContainerClasses = classNames(
     productSummary.imageStackContainer,
     productSummary.hoverEffect
   )
+
+  const containerClassname = classNames(
+    'dib relative',
+    handles.imageContainer,
+    legacyContainerClasses
+  )
+
   const img = (
-    <div className={imgStackClasses}>
-      <img
-        className={imageContentClassName}
+    <div className={containerClassname}>
+      <Image
         src={imageUrl}
+        width={width}
+        height={height}
         alt={name}
+        className={imageClassname}
         onError={onError}
       />
       {hoverImage && !isMobile && (
-        <img src={hoverImage.imageUrl} alt={name} className={hoverImgClasses} />
+        <Image
+          src={hoverImage.imageUrl}
+          width={width}
+          height={height}
+          alt={name}
+          className={hoverImageClassname}
+          onError={onError}
+        />
       )}
     </div>
   )
@@ -150,35 +183,51 @@ const ProductImageContent = ({
   )(img)
 }
 
+const ImagePlaceholder = ({ width, height, handle }) => (
+  <div style={{ width, height }}>
+    <div
+      className={`${handle} absolute w-100 h-100 contain bg-center`}
+      data-testid="image-placeholder"
+    />
+  </div>
+)
+
 const ProductImage = ({
   showBadge,
   badgeText,
   showCollections,
   displayMode,
   hoverImageLabel,
+  width: widthProp,
+  height: heightProp,
 }) => {
   const { product } = useProductSummary()
 
+  const { widthProp: width, heightProp: height } = useResponsiveValues({
+    widthProp,
+    heightProp,
+  })
+
   const [error, setError] = useState(false)
+
   const imageClassName = classNames(productSummary.imageContainer, {
     'db w-100 center': displayMode !== 'inline',
   })
 
   return (
     <div className={imageClassName}>
-      {path(['sku', 'image', 'imageUrl'], product) && !error ? (
-        <ProductImageContent
-          showBadge={showBadge}
-          badgeText={badgeText}
-          showCollections={showCollections}
-          displayMode={displayMode}
-          product={product}
-          onError={() => setError(true)}
-          hoverImageLabel={hoverImageLabel}
-        />
-      ) : (
-        <ImagePlaceholder />
-      )}
+      <ProductImageContent
+        showBadge={showBadge}
+        badgeText={badgeText}
+        showCollections={showCollections}
+        displayMode={displayMode}
+        product={product}
+        onError={() => setError(true)}
+        hoverImageLabel={hoverImageLabel}
+        width={width}
+        height={height}
+        hasError={error}
+      />
     </div>
   )
 }
@@ -193,6 +242,8 @@ ProductImage.propTypes = {
   /** Display mode of the summary */
   displayMode: PropTypes.oneOf(['normal', 'inline']),
   hoverImageLabel: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
 }
 
 ProductImage.defaultProps = {

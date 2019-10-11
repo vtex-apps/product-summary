@@ -38,7 +38,7 @@ function replaceLegacyFileManagerUrl(imageUrl, width, height) {
   return `${cleanImageUrl(imageUrl)}-${width}-${height}`
 }
 
-function changeImageUrlSize(
+export function changeImageUrlSize(
   imageUrl,
   width = DEFAULT_WIDTH,
   height = DEFAULT_HEIGHT

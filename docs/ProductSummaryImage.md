@@ -9,10 +9,14 @@ This Component can be imported and used by any VTEX App.
 
 ## Table of Contents
 
-- [Usage](#usage)
-  - [Blocks API](#blocks-api)
-  - [Configuration](#configuration)
-  - [Styles API](#styles-api)
+- [Product Summary Image](#product-summary-image)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Usage](#usage)
+    - [Blocks API](#blocks-api)
+    - [Configuration](#configuration)
+    - [Styles API](#styles-api)
+      - [CSS namespaces](#css-namespaces)
 
 ## Usage
 
@@ -41,6 +45,8 @@ Through the Storefront, you can change the `ProductSummaryImage`'s behavior and 
 | `showCollections` | `Boolean` | Set collection badges' visibility                                                                                                                                        | `false`       |
 | `displayMode`     | `Enum`    | Set display mode of product summary (normal, inline)                                                                                                                     | `normal`      |
 | `hoverImageLabel` | `String`  | Set this value to match the value of the `imageLabel` field of a product image, so this "secondary" image will be showed when user hovers its mouse over this component. | `""`          |
+| `width` | `[ResponsiveInput<Number>](https://github.com/vtex-apps/responsive-values#vtexresponsive-values)`  | Sets the image width. | `undefined`          |
+| `height` | `[ResponsiveInput<Number>](https://github.com/vtex-apps/responsive-values#vtexresponsive-values)`  | Sets the image height. | `undefined`          |
 
 ### Styles API
 
