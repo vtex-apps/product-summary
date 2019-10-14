@@ -102,13 +102,26 @@ const ProductImageContent = ({
     parseFloat(heightProp || widthProp || 0),
   ]
 
+  const legacyContainerClasses = classNames(
+    productSummary.imageStackContainer,
+    productSummary.hoverEffect
+  )
+
+  const containerClassname = classNames(
+    'dib relative',
+    handles.imageContainer,
+    legacyContainerClasses
+  )
+
   if (!sku || hasError) {
     return (
-      <ImagePlaceholder
-        width={width}
-        height={height}
-        handle={handles.productImage}
-      />
+      <div className={containerClassname}>
+        <ImagePlaceholder
+          width={width}
+          height={height}
+          handle={handles.productImage}
+        />
+      </div>
     )
   }
 
@@ -141,17 +154,6 @@ const ProductImageContent = ({
     applyModifiers(handles.image, 'hover'),
     legacyImageClasses,
     productSummary.hoverImage
-  )
-
-  const legacyContainerClasses = classNames(
-    productSummary.imageStackContainer,
-    productSummary.hoverEffect
-  )
-
-  const containerClassname = classNames(
-    'dib relative',
-    handles.imageContainer,
-    legacyContainerClasses
   )
 
   const img = (
