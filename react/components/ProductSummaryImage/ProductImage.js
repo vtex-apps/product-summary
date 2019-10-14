@@ -74,7 +74,7 @@ const Image = ({ src, width, height, onError, alt, className }) => {
             }
           : null
       }
-      lazy
+      lazy={shouldResize}
       alt={alt}
       className={className}
       onError={onError}
