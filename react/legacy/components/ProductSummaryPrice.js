@@ -68,9 +68,9 @@ ProductSummaryPrice.propTypes = {
   /** Set installments' visibility */
   showInstallments: PropTypes.bool,
   /** Text of selling Price's label */
-  labelSellingPrice: PropTypes.string,
+  labelSellingPrice: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /** Text of selling Price's label */
-  labelListPrice: PropTypes.string,
+  labelListPrice: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /** Defines if the loading spinner is shown */
   isLoading: PropTypes.bool,
   /** Styles used in the container div */
