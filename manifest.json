@@ -21,6 +21,7 @@
     "vtex.store-resources": "0.x",
     "vtex.product-review-interfaces": "1.x",
     "vtex.product-summary-context": "0.x",
+    "vtex.product-context": "0.x",
     "vtex.product-identifier": "0.x",
     "vtex.styleguide": "9.x",
     "vtex.pixel-manager": "1.x",

@@ -16,6 +16,7 @@
       "product-summary-name",
       "product-summary-price",
       "product-identifier",
+      "product-summary-sku-selector",
       "product-summary-space",
       "product-summary-add-to-list-button",
       "product-rating-inline",
@@ -120,6 +121,9 @@
         }
       }
     }
+  },
+  "product-summary-sku-selector": {
+    "component": "ProductSummarySKUSelector"
   },
   "product-summary-specification-badges": {
     "component": "ProductSummarySpecificationBadges"

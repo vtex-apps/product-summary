@@ -3,10 +3,8 @@ import PropTypes from 'prop-types'
 import BuyButton from 'vtex.store-components/BuyButton'
 import { withRuntimeContext } from 'vtex.render-runtime'
 import { equals, path } from 'ramda'
-import classNames from 'classnames'
+import classnames from 'classnames'
 import { IOMessage } from 'vtex.native-types'
-import { Button } from 'vtex.styleguide'
-import { Link } from 'vtex.render-runtime'
 
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 import displayButtonTypes, {
@@ -48,14 +46,18 @@ const ProductSummaryBuyButton = ({
       mobile
     )
 
-  const buyButtonClasses = classNames(
-    `${productSummary.buyButton} center mw-100`,
+  const buyButtonClasses = classnames(
+    productSummary.buyButton,
+    'center mw-100',
     {
       [productSummary.isHidden]: !hoverBuyButton,
     }
   )
 
-  const containerClass = `${productSummary.buyButtonContainer} pv3 w-100 db`
+  const containerClass = classnames(
+    productSummary.buyButtonContainer,
+    'pv3 w-100 db'
+  )
 
   const selectedSeller = path(['seller'], selectedItem)
   const isAvailable =
@@ -73,37 +75,22 @@ const ProductSummaryBuyButton = ({
   // if the item is not available the behavior is just show the disabled BuyButton,
   // but you still can go to the product page clicking in the summary
   const shouldBeALink =
-    (items.length !== 1 || buyButtonBehavior !== BUY_BUTTON_BEHAVIOR_OPTIONS) &&
+    (items.length !== 1 || buyButtonBehavior !== DEFAULT_BUTTON_BEHAVIOR) &&
     isAvailable
 
   return (
     showBuyButton && (
       <div className={containerClass}>
         <div className={buyButtonClasses}>
-          {shouldBeALink ? (
-            <Link
-              className="dib"
-              disabled
-              page="store.product"
-              params={{
-                slug: product && product.linkText,
-                id: product && product.productId,
-              }}
-            >
-              <Button>
-                <IOMessage id={buyButtonText} />
-              </Button>
-            </Link>
-          ) : (
-            <BuyButton
-              customToastURL={customToastURL}
-              available={isAvailable}
-              skuItems={skuItems}
-              isOneClickBuy={isOneClickBuy}
-            >
-              <IOMessage id={buyButtonText} />
-            </BuyButton>
-          )}
+          <BuyButton
+            skuItems={skuItems}
+            available={isAvailable}
+            isOneClickBuy={isOneClickBuy}
+            customToastURL={customToastURL}
+            shouldAddToCart={!shouldBeALink}
+          >
+            <IOMessage id={buyButtonText} />
+          </BuyButton>
         </div>
       </div>
     )

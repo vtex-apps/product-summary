@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import { pathOr, path } from 'ramda'
 import { Link } from 'vtex.render-runtime'
 import ProductSummaryContext from './ProductSummaryContext'
 import {
@@ -8,6 +9,7 @@ import {
   useProductSummaryDispatch,
   useProductSummary,
 } from 'vtex.product-summary-context/ProductSummaryContext'
+import { ProductContextProvider } from 'vtex.product-context'
 import productSummary from '../productSummary.css'
 import { productShape } from '../utils/propTypes'
 import { mapCatalogProductToProductSummary } from '../utils/normalize'
@@ -15,7 +17,7 @@ import { mapCatalogProductToProductSummary } from '../utils/normalize'
 const PRODUCT_SUMMARY_MAX_WIDTH = 300
 
 const ProductSummaryCustom = ({ product, actionOnClick, children }) => {
-  const { isLoading, isHovering } = useProductSummary()
+  const { isLoading, isHovering, selectedItem, query } = useProductSummary()
   const dispatch = useProductSummaryDispatch()
 
   useEffect(() => {
@@ -68,29 +70,44 @@ const ProductSummaryCustom = ({ product, actionOnClick, children }) => {
   )
 
   const summaryClasses = classNames(
-    `${productSummary.element} pointer pt3 pb4 flex flex-column h-100`
+    productSummary.element,
+    'pointer pt3 pb4 flex flex-column h-100'
+  )
+
+  const linkClasses = classNames(
+    productSummary.clearLink,
+    'h-100 flex flex-column'
+  )
+
+  const skuId = pathOr(
+    path(['sku', 'itemId'], product),
+    ['itemId'],
+    selectedItem
   )
 
   return (
     <ProductSummaryContext.Provider value={oldContextProps}>
-      <section
-        className={containerClasses}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
-      >
-        <Link
-          className={`${productSummary.clearLink} h-100 flex flex-column`}
-          page="store.product"
-          params={{
-            slug: product && product.linkText,
-            id: product && product.productId,
-          }}
-          onClick={actionOnClick}
+      <ProductContextProvider product={product} query={{ skuId }}>
+        <section
+          className={containerClasses}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
         >
-          <article className={summaryClasses}>{children}</article>
-        </Link>
-      </section>
+          <Link
+            className={linkClasses}
+            page="store.product"
+            params={{
+              slug: product && product.linkText,
+              id: product && product.productId,
+            }}
+            query={query}
+            onClick={actionOnClick}
+          >
+            <article className={summaryClasses}>{children}</article>
+          </Link>
+        </section>
+      </ProductContextProvider>
     </ProductSummaryContext.Provider>
   )
 }
