@@ -6,6 +6,7 @@ import classNames from 'classnames'
 import { useDevice } from 'vtex.device-detector'
 import { useResponsiveValues } from 'vtex.responsive-values'
 import { useCssHandles, applyModifiers } from 'vtex.css-handles'
+import ImagePlaceholder from './ImagePlaceholder'
 
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
@@ -116,11 +117,7 @@ const ProductImageContent = ({
   if (!sku || hasError) {
     return (
       <div className={containerClassname}>
-        <ImagePlaceholder
-          width={width}
-          height={height}
-          handle={handles.productImage}
-        />
+        <ImagePlaceholder cssHandle={handles.productImage} />
       </div>
     )
   }
@@ -184,15 +181,6 @@ const ProductImageContent = ({
     withCollection(showCollections)
   )(img)
 }
-
-const ImagePlaceholder = ({ width, height, handle }) => (
-  <div style={{ width, height }}>
-    <div
-      className={`${handle} absolute w-100 h-100 contain bg-center`}
-      data-testid="image-placeholder"
-    />
-  </div>
-)
 
 const ProductImage = ({
   showBadge,
