@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Prop `buyButtonBehavior` to `ProductSummaryBuyButton`.
+- `ProductSummarySKUSelector` component.
 
 ## [2.38.1] - 2019-10-22
 ### Fixed
@@ -30,9 +33,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [2.37.0] - 2019-10-11
 ### Added
 - `width` and `height` props on `product-summary-image`.
-
-### Added
-- Prop `buyButtonBehavior` to `ProductSummaryBuyButton`. 
 
 ### Fixed
 - `BuyButton`adding to cart when the product has more than one SKU.
