@@ -77,7 +77,7 @@ const ProductSummaryCustom = ({ product, actionOnClick, children }) => {
         className={containerClasses}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        style={{ maxWidth: `${PRODUCT_SUMMARY_MAX_WIDTH}px` }}
+        style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
       >
         <Link
           className={`${productSummary.clearLink} h-100 flex flex-column`}
