@@ -12,6 +12,8 @@ import productSummary from '../productSummary.css'
 import { productShape } from '../utils/propTypes'
 import { mapCatalogProductToProductSummary } from '../utils/normalize'
 
+const PRODUCT_SUMMARY_MAX_WIDTH = 300
+
 const ProductSummaryCustom = ({ product, actionOnClick, children }) => {
   const { isLoading, isHovering } = useProductSummary()
   const dispatch = useProductSummaryDispatch()
@@ -75,6 +77,7 @@ const ProductSummaryCustom = ({ product, actionOnClick, children }) => {
         className={containerClasses}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        style={{ maxWidth: `${PRODUCT_SUMMARY_MAX_WIDTH}px` }}
       >
         <Link
           className={`${productSummary.clearLink} h-100 flex flex-column`}
