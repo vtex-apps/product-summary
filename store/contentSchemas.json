@@ -22,6 +22,11 @@
           "default": "store/pricing.from"
         }
       }
+    },
+    "ProductSummaryList": {
+      "title": "admin/editor.productSummary.buyButtonText.title",
+      "$ref": "app:vtex.native-types#/definitions/text",
+      "default": "store/button-label"
     }
   }
 }
