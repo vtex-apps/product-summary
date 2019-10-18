@@ -1,5 +1,7 @@
 import React, { createContext, useContext } from 'react'
 import { compose, graphql } from 'react-apollo'
+import { injectIntl } from 'react-intl'
+import { formatIOMessage } from 'vtex.native-types'
 
 import ProductSummary from './components/ProductSummary'
 import ProductSummaryName from './components/ProductSummaryName/ProductSummaryName'
@@ -13,7 +15,8 @@ import productsQuery from './graphql/products.graphql'
 
 const ProductSummaryListStateContext = createContext(undefined)
 
-const ProductSummaryList = ({ children, data }) => {
+const ProductSummaryList = ({ children, data, intl, buyButtonText }) => {
+  const formattedBuyButtonText = formatIOMessage({ id: buyButtonText, intl })
   const componentList = data.products.map(product => {
     const normalizedProduct = mapCatalogProductToProductSummary(product)
 
@@ -23,7 +26,7 @@ const ProductSummaryList = ({ children, data }) => {
         <ProductSummaryName />
         <Spacer />
         <ProductSummaryPrice />
-        <ProductSummaryBuyButton buyButtonText="Add to cart" />
+        <ProductSummaryBuyButton buyButtonText={formattedBuyButtonText} />
       </ProductSummary>
     )
   })
@@ -121,7 +124,8 @@ function getOrdinationValues() {
 }
 
 const EnhancedProductList = compose(
-  graphql(productsQuery, productQueryOptions)
+  graphql(productsQuery, productQueryOptions),
+  injectIntl
 )(ProductSummaryList)
 
 EnhancedProductList.getSchema = () => ({
