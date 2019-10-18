@@ -45,11 +45,7 @@ function ProductSummarySKUSelector(props) {
   return (
     // eslint-disable-next-line
     <div className={productSummary.SKUSelectorContainer} onClick={stopBubblingUp}>
-      <SKUSelector
-        bottomMargin="none"
-        onSKUSelected={handleSKUSelected}
-        {...props}
-      />
+      <SKUSelector onSKUSelected={handleSKUSelected} {...props} />
     </div>
   )
 }
