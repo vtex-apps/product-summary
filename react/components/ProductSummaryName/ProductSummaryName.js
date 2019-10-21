@@ -23,9 +23,9 @@ const ProductSummaryName = ({ showFieldsProps }) => {
   const skuName = path(['sku', 'name'], product)
   const brandName = path(['brand'], product)
 
-  const containerClasses = `flex items-start ${handles.nameContainer} justify-center pv6`
+  const containerClasses = `${handles.nameContainer} flex items-start justify-center pv6`
   const wrapperClasses = `${handles.nameWrapper} overflow-hidden c-on-base`
-  const brandNameClasses = `t-body ${handles.brandName}`
+  const brandNameClasses = `${handles.brandName} t-body`
   const skuNameClasses = `${handles.skuName} t-small`
   const loaderClasses = `${handles.productNameLoader} pt5 overflow-hidden`
 

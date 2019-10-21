@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- Css handle to `ProductSummaryName`.
+- CSS handle to `ProductSummaryName`.
 
 ## [2.37.3] - 2019-10-17
 ### Changed
