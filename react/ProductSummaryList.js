@@ -1,7 +1,8 @@
-import React, { createContext, useContext } from 'react'
+import React from 'react'
 import { compose, graphql } from 'react-apollo'
 import { injectIntl } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
+import { useListContext, ListContextProvider } from 'vtex.list-context'
 
 import ProductSummary from './components/ProductSummary'
 import ProductSummaryName from './components/ProductSummaryName/ProductSummaryName'
@@ -13,34 +14,32 @@ import { mapCatalogProductToProductSummary } from './utils/normalize'
 
 import productsQuery from './graphql/products.graphql'
 
-const ProductSummaryListStateContext = createContext(undefined)
-
 const ProductSummaryList = ({ children, data, intl, buyButtonText }) => {
   const formattedBuyButtonText = formatIOMessage({ id: buyButtonText, intl })
-  const componentList = data.products.map(product => {
-    const normalizedProduct = mapCatalogProductToProductSummary(product)
+  const { list } = useListContext()
+  const componentList =
+    data.products &&
+    data.products.map(product => {
+      const normalizedProduct = mapCatalogProductToProductSummary(product)
 
-    return (
-      <ProductSummary key={product.productId} product={normalizedProduct}>
-        <ProductSummaryImage />
-        <ProductSummaryName />
-        <Spacer />
-        <ProductSummaryPrice />
-        <ProductSummaryBuyButton buyButtonText={formattedBuyButtonText} />
-      </ProductSummary>
-    )
-  })
+      return (
+        <ProductSummary key={product.productId} product={normalizedProduct}>
+          <ProductSummaryImage />
+          <ProductSummaryName />
+          <Spacer />
+          <ProductSummaryPrice />
+          <ProductSummaryBuyButton buyButtonText={formattedBuyButtonText} />
+        </ProductSummary>
+      )
+    })
+
+  const newListContextValue = list.concat(componentList)
 
   return (
-    <ProductSummaryListStateContext.Provider value={componentList}>
+    <ListContextProvider list={newListContextValue}>
       {children}
-    </ProductSummaryListStateContext.Provider>
+    </ListContextProvider>
   )
-}
-
-function useProductSummaryListState() {
-  const context = useContext(ProductSummaryListStateContext)
-  return context
 }
 
 const parseFilters = ({ id, value }) => `specificationFilter_${id}:${value}`
@@ -189,5 +188,3 @@ EnhancedProductList.getSchema = () => ({
 })
 
 export default EnhancedProductList
-
-export { useProductSummaryListState }
