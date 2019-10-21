@@ -41,7 +41,6 @@ class ProductQuantityStepper extends Component {
   }
 
   pushPixelCartEvents = ({ isAdditionOfProd, product }) => {
-    // TODO: update these events
     const updatedProduct = {
       skuId: path(['sku', 'itemId'], product),
       variant: path(['sku', 'name'], product),
