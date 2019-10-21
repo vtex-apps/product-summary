@@ -130,5 +130,17 @@
   },
   "addon-summary-btn": {
     "component": "*"
+  },
+  "list-context.product-list": {
+    "component": "ProductSummaryList",
+    "composition": "children",
+    "allowed": "*",
+    "content": {
+      "properties": {
+        "buyButtonText": {
+          "$ref": "app:vtex.product-summary#/definitions/ProductSummaryList"
+        }
+      }
+    }
   }
 }
