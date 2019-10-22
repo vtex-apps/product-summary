@@ -1,44 +1,38 @@
 import React from 'react'
-import { compose, graphql } from 'react-apollo'
-import { injectIntl } from 'react-intl'
-import { formatIOMessage } from 'vtex.native-types'
-import { useListContext, ListContextProvider } from 'vtex.list-context'
+import { graphql } from 'react-apollo'
+import { useListContext } from 'vtex.list-context'
+import { ExtensionPoint, useTreePath } from 'vtex.render-runtime'
 
-import ProductSummary from './components/ProductSummary'
-import ProductSummaryName from './components/ProductSummaryName/ProductSummaryName'
-import ProductSummaryPrice from './components/ProductSummaryPrice/ProductSummaryPrice'
-import ProductSummaryBuyButton from './components/ProductSummaryBuyButton/ProductSummaryBuyButton'
-import ProductSummaryImage from './components/ProductSummaryImage/ProductImage'
-import Spacer from './Spacer'
 import { mapCatalogProductToProductSummary } from './utils/normalize'
 
 import { productSearchV2 } from 'vtex.store-resources/Queries'
 
-const ProductSummaryList = ({ children, data, intl, buyButtonText }) => {
-  const formattedBuyButtonText = formatIOMessage({ id: buyButtonText, intl })
+const ProductSummaryList = ({ data }) => {
   const { list } = useListContext()
+  const { treePath } = useTreePath()
+
   const componentList =
     data.productSearch &&
     data.productSearch.products.map(product => {
       const normalizedProduct = mapCatalogProductToProductSummary(product)
 
       return (
-        <ProductSummary key={product.productId} product={normalizedProduct}>
-          <ProductSummaryImage />
-          <ProductSummaryName />
-          <Spacer />
-          <ProductSummaryPrice />
-          <ProductSummaryBuyButton buyButtonText={formattedBuyButtonText} />
-        </ProductSummary>
+        <ExtensionPoint
+          key={product.id}
+          id="product-summary"
+          treePath={treePath}
+          product={normalizedProduct}
+        />
       )
     })
 
   const newListContextValue = list.concat(componentList)
 
   return (
-    <ListContextProvider list={newListContextValue}>
-      {children}
-    </ListContextProvider>
+    <ExtensionPoint
+      id="list-context.product-list"
+      newList={newListContextValue}
+    />
   )
 }
 
@@ -114,10 +108,9 @@ function getOrdinationProp(attribute) {
   )
 }
 
-const EnhancedProductList = compose(
-  graphql(productSearchV2, productQueryOptions),
-  injectIntl
-)(ProductSummaryList)
+const EnhancedProductList = graphql(productSearchV2, productQueryOptions)(
+  ProductSummaryList
+)
 
 EnhancedProductList.getSchema = () => ({
   title: 'admin/editor.productSummaryList.title',
