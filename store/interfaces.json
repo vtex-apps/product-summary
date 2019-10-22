@@ -140,8 +140,12 @@
   "addon-summary-btn": {
     "component": "*"
   },
-  "list-context.product-list": {
+  "product-list-block": {
     "component": "ProductSummaryList",
+    "required": ["product-summary", "list-context.product-list"]
+  },
+  "list-context.product-list": {
+    "component": "ProductSummaryListChildren",
     "composition": "children",
     "allowed": "*",
     "content": {
