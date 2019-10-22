@@ -158,7 +158,6 @@ ProductSummaryPrice.schema = {
       type: 'boolean',
       title: 'admin/editor.productSummaryPrice.showSavings.title',
       default: ProductSummaryPrice.defaultProps.showSavings,
-      isLayout: true,
     },
     showLabels: {
       type: 'boolean',
