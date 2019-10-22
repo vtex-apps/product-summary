@@ -24,6 +24,7 @@
   "admin/editor.productSummaryPrice.showSellingPriceRange.title": "Mostrar rango de precios de venta",
   "admin/editor.productSummaryPrice.showListPriceRange.title": "Mostrar rango de precios de tabla",
   "admin/editor.productSummaryPrice.showInstallments.title": "Mostrar parcelas",
+  "admin/editor.productSummaryPrice.showSavings.title": "Mostrar descuento",
   "admin/editor.productSummaryPrice.showLabels.title": "Mostrar las etiquetas",
   "admin/editor.productSummaryPrice.labelSellingPrice.title": "Etiqueta para el precio de venta",
   "admin/editor.productSummaryPrice.labelListPrice.title": "Etiqueta para el precio indicado",

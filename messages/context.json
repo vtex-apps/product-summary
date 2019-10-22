@@ -24,6 +24,7 @@
   "admin/editor.productSummaryPrice.showSellingPriceRange.title": "Title of showSellingPriceRange prop",
   "admin/editor.productSummaryPrice.showListPriceRange.title": "Title of showListPriceRange prop",
   "admin/editor.productSummaryPrice.showInstallments.title": "Title of showInstallments prop",
+  "admin/editor.productSummaryPrice.showSavings.title": "Title of showSavings prop",
   "admin/editor.productSummaryPrice.showLabels.title": "Title of showLabels prop",
   "admin/editor.productSummaryPrice.labelSellingPrice.title": "Title of labelSellingPrice prop",
   "admin/editor.productSummaryPrice.labelListPrice.title": "Title of labelListPrice prop",

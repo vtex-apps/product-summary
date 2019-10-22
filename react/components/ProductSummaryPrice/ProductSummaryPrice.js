@@ -27,6 +27,7 @@ const ProductSummaryPrice = ({
   showSellingPriceRange,
   showLabels,
   showInstallments,
+  showSavings,
   labelSellingPrice,
   labelListPrice,
   showBorders,
@@ -84,6 +85,7 @@ const ProductSummaryPrice = ({
           labelListPrice={labelListPrice}
           listPriceList={listPriceList}
           showListPriceRange={showListPriceRange}
+          showSavings={showSavings}
         />
       )}
     </div>
@@ -101,6 +103,8 @@ ProductSummaryPrice.propTypes = {
   showLabels: PropTypes.bool,
   /** Set installments' visibility */
   showInstallments: PropTypes.bool,
+  /** Set savings' visibility*/
+  showSavings: PropTypes.bool,
   /** Text of selling Price's label */
   labelSellingPrice: PropTypes.string,
   /** Text of list Price's label */
@@ -111,6 +115,7 @@ ProductSummaryPrice.propTypes = {
 
 ProductSummaryPrice.defaultProps = {
   showSellingPriceRange: false,
+  showSavings: false,
   showListPriceRange: false,
   showListPrice: true,
   showInstallments: true,
@@ -147,6 +152,12 @@ ProductSummaryPrice.schema = {
       type: 'boolean',
       title: 'admin/editor.productSummaryPrice.showInstallments.title',
       default: ProductSummaryPrice.defaultProps.showInstallments,
+      isLayout: true,
+    },
+    showSavings: {
+      type: 'boolean',
+      title: 'admin/editor.productSummaryPrice.showSavings.title',
+      default: ProductSummaryPrice.defaultProps.showSavings,
       isLayout: true,
     },
     showLabels: {

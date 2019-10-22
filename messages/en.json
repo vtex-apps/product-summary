@@ -24,6 +24,7 @@
   "admin/editor.productSummaryPrice.showSellingPriceRange.title": "Show selling price range",
   "admin/editor.productSummaryPrice.showListPriceRange.title": "Show list price range",
   "admin/editor.productSummaryPrice.showInstallments.title": "Show installments",
+  "admin/editor.productSummaryPrice.showSavings.title": "Show savings",
   "admin/editor.productSummaryPrice.showLabels.title": "Show labels",
   "admin/editor.productSummaryPrice.labelSellingPrice.title": "Label for selling price",
   "admin/editor.productSummaryPrice.labelListPrice.title": "Label for list price",
