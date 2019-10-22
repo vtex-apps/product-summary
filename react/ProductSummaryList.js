@@ -106,20 +106,10 @@ const productQueryOptions = {
   }),
 }
 
-function getOrdinationNames() {
-  const names = []
-  for (const key in ORDER_BY_OPTIONS) {
-    names.push(ORDER_BY_OPTIONS[key].name)
-  }
-  return names
-}
-
-function getOrdinationValues() {
-  const values = []
-  for (const key in ORDER_BY_OPTIONS) {
-    values.push(ORDER_BY_OPTIONS[key].value)
-  }
-  return values
+function getOrdinationProp(attribute) {
+  return Object.keys(ORDER_BY_OPTIONS).map(
+    key => ORDER_BY_OPTIONS[key][attribute]
+  )
 }
 
 const EnhancedProductList = compose(
@@ -167,8 +157,8 @@ EnhancedProductList.getSchema = () => ({
     orderBy: {
       title: 'admin/editor.productSummaryList.orderBy.title',
       type: 'string',
-      enum: getOrdinationValues(),
-      enumNames: getOrdinationNames(),
+      enum: getOrdinationProp('value'),
+      enumNames: getOrdinationProp('name'),
       default: ORDER_BY_OPTIONS.ORDER_BY_TOP_SALE_DESC.value,
       isLayout: false,
     },
