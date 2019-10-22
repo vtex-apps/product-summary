@@ -40,7 +40,7 @@
   "admin/editor.productSummaryList.category.title": "Category Id",
   "admin/editor.productSummaryList.category.description": "For sub-categories, use \"/\" (e.g. 1/2/3)",
   "admin/editor.productSummaryList.collection.title": "Collection",
-  "admin/editor.productSummaryList.orderBy.title": "List Ordenation",
+  "admin/editor.productSummaryList.orderBy.title": "List Ordination",
   "admin/editor.productSummaryList.hideUnavailableItems": "Hide unavailable items",
   "admin/editor.productSummaryList.maxItems.title": "Max Items",
   "admin/editor.productSummaryList.specificationFilters.title": "Specification Filters",
