@@ -12,14 +12,14 @@ import ProductSummaryImage from './components/ProductSummaryImage/ProductImage'
 import Spacer from './Spacer'
 import { mapCatalogProductToProductSummary } from './utils/normalize'
 
-import productsQuery from './graphql/products.graphql'
+import { productSearchV2 } from 'vtex.store-resources/Queries'
 
 const ProductSummaryList = ({ children, data, intl, buyButtonText }) => {
   const formattedBuyButtonText = formatIOMessage({ id: buyButtonText, intl })
   const { list } = useListContext()
   const componentList =
-    data.products &&
-    data.products.map(product => {
+    data.productSearch &&
+    data.productSearch.products.map(product => {
       const normalizedProduct = mapCatalogProductToProductSummary(product)
 
       return (
@@ -87,6 +87,7 @@ const productQueryOptions = {
     orderBy = ORDER_BY_OPTIONS.ORDER_BY_TOP_SALE_DESC.value,
     specificationFilters = [],
     maxItems = 10,
+    withFacets = false,
   }) => ({
     ssr: true,
     name: 'productList',
@@ -102,6 +103,7 @@ const productQueryOptions = {
       from: 0,
       to: maxItems - 1,
       hideUnavailableItems,
+      withFacets,
     },
   }),
 }
@@ -113,7 +115,7 @@ function getOrdinationProp(attribute) {
 }
 
 const EnhancedProductList = compose(
-  graphql(productsQuery, productQueryOptions),
+  graphql(productSearchV2, productQueryOptions),
   injectIntl
 )(ProductSummaryList)
 
