@@ -43,8 +43,11 @@ function ProductSummarySKUSelector(props) {
   }
 
   return (
-    // eslint-disable-next-line
-    <div className={productSummary.SKUSelectorContainer} onClick={stopBubblingUp}>
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+    <div
+      onClick={stopBubblingUp}
+      className={productSummary.SKUSelectorContainer}
+    >
       <SKUSelector onSKUSelected={handleSKUSelected} {...props} />
     </div>
   )
