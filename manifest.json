@@ -30,7 +30,8 @@
     "vtex.product-specification-badges": "0.x",
     "vtex.stack-layout": "0.x",
     "vtex.responsive-values": "0.x",
-    "vtex.css-handles": "0.x"
+    "vtex.css-handles": "0.x",
+    "vtex.product-context": "0.x"
   },
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
