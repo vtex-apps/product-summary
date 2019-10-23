@@ -41,6 +41,7 @@ Through the Storefront, you can change the `ProductSummaryPrice`'s behavior and 
 | ------------------- | --------- | -------------------------------- | ------------- |
 | `showListPrice`     | `Boolean` | Shows the product list price     | `true`        |
 | `showInstallments`  | `Boolean` | Set installments' visibility     | `true`        |
+| `showSavings`  | `Boolean` | Set savings' visibility     | `false`        |
 | `showLabels`        | `Boolean` | Set pricing labels' visibility   | `true`        |
 | `labelSellingPrice` | `String`  | Text of selling price's label    |               |
 | `labelListPrice`    | `String`  | Text of list price's label       |               |   
