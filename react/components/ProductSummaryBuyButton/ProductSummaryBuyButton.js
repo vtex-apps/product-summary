@@ -80,7 +80,10 @@ const ProductSummaryBuyButton = ({
 
   return (
     showBuyButton && (
-      <div className={containerClass}>
+      <div
+        className={containerClass}
+        data-testid="product-summary__buy-button-container"
+      >
         <div className={buyButtonClasses}>
           <BuyButton
             skuItems={skuItems}
