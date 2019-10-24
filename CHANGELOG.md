@@ -6,10 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Add `data-testid` to `ProductSummaryBuyButton` to make it easier to test the component.
 
 ## [2.42.0] - 2019-10-24
 ### Added
-- Allow `product-teaser.summary` on `product-summary-column`
+- Allow `product-teaser.summary` on `product-summary-column`.
 
 ## [2.41.0] - 2019-10-23
 ### Changed
