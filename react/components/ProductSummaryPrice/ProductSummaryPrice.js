@@ -27,7 +27,7 @@ const ProductSummaryPrice = ({
   showSellingPriceRange,
   showLabels,
   showInstallments,
-  showSavings,
+  //showSavings,
   labelSellingPrice,
   labelListPrice,
   showBorders,
@@ -85,7 +85,7 @@ const ProductSummaryPrice = ({
           labelListPrice={labelListPrice}
           listPriceList={listPriceList}
           showListPriceRange={showListPriceRange}
-          showSavings={showSavings}
+          showSavings={false}
         />
       )}
     </div>
