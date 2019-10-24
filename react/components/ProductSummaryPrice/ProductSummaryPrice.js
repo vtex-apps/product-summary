@@ -27,7 +27,8 @@ const ProductSummaryPrice = ({
   showSellingPriceRange,
   showLabels,
   showInstallments,
-  showSavings,
+  // This prop has been disabled temporarily, because it was causing undesired behavior
+  //showSavings,
   labelSellingPrice,
   labelListPrice,
   showBorders,
@@ -85,7 +86,7 @@ const ProductSummaryPrice = ({
           labelListPrice={labelListPrice}
           listPriceList={listPriceList}
           showListPriceRange={showListPriceRange}
-          showSavings={showSavings}
+          showSavings={false}
         />
       )}
     </div>
