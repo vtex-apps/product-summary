@@ -27,6 +27,7 @@ const ProductSummaryPrice = ({
   showSellingPriceRange,
   showLabels,
   showInstallments,
+  // This prop has been disabled temporarily, because it was causing undesired behavior
   //showSavings,
   labelSellingPrice,
   labelListPrice,
