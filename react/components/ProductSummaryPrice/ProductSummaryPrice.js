@@ -27,8 +27,7 @@ const ProductSummaryPrice = ({
   showSellingPriceRange,
   showLabels,
   showInstallments,
-  // This prop has been disabled temporarily, because it was causing undesired behavior
-  //showSavings,
+  showDiscountValue,
   labelSellingPrice,
   labelListPrice,
   showBorders,
@@ -86,7 +85,7 @@ const ProductSummaryPrice = ({
           labelListPrice={labelListPrice}
           listPriceList={listPriceList}
           showListPriceRange={showListPriceRange}
-          showSavings={false}
+          showSavings={showDiscountValue}
         />
       )}
     </div>
@@ -105,7 +104,7 @@ ProductSummaryPrice.propTypes = {
   /** Set installments' visibility */
   showInstallments: PropTypes.bool,
   /** Set savings' visibility*/
-  showSavings: PropTypes.bool,
+  showDiscountValue: PropTypes.bool,
   /** Text of selling Price's label */
   labelSellingPrice: PropTypes.string,
   /** Text of list Price's label */
@@ -116,7 +115,7 @@ ProductSummaryPrice.propTypes = {
 
 ProductSummaryPrice.defaultProps = {
   showSellingPriceRange: false,
-  showSavings: false,
+  showDiscountValue: false,
   showListPriceRange: false,
   showListPrice: true,
   showInstallments: true,
@@ -155,10 +154,10 @@ ProductSummaryPrice.schema = {
       default: ProductSummaryPrice.defaultProps.showInstallments,
       isLayout: true,
     },
-    showSavings: {
+    showDiscountValue: {
       type: 'boolean',
-      title: 'admin/editor.productSummaryPrice.showSavings.title',
-      default: ProductSummaryPrice.defaultProps.showSavings,
+      title: 'admin/editor.productSummaryPrice.showDiscountValue.title',
+      default: ProductSummaryPrice.defaultProps.showDiscountValue,
     },
     showLabels: {
       type: 'boolean',
