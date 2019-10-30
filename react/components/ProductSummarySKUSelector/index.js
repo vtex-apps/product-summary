@@ -1,11 +1,13 @@
 import React from 'react'
 import { head } from 'ramda'
 import { SKUSelector } from 'vtex.store-components'
-import productSummary from '../../productSummary.css'
+import { useCssHandles } from 'vtex.css-handles'
 import {
   useProductSummaryDispatch,
   useProductSummary,
 } from 'vtex.product-summary-context/ProductSummaryContext'
+
+const CSS_HANDLES = ['SKUSelectorContainer']
 
 function ProductSummarySKUSelector(props) {
   const stopBubblingUp = e => {
@@ -42,11 +44,12 @@ function ProductSummarySKUSelector(props) {
     })
   }
 
+  const handles = useCssHandles(CSS_HANDLES)
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div
       onClick={stopBubblingUp}
-      className={productSummary.SKUSelectorContainer}
+      className={handles.SKUSelectorContainer}
     >
       <SKUSelector onSKUSelected={handleSKUSelected} {...props} />
     </div>

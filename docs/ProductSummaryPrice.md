@@ -75,6 +75,20 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 
 Below, we describe the namespaces that are defined in the menu.
 
-| Token name   | Description                                          | Component Source                     |
-| ------------ | ---------------------------------------------------- | ------------------------------------ |
-| `priceContainer` | The main container of price | [index](/react/components/ProductSummaryPrice/ProductSummaryPrice.js) |
+| Token name           |
+| ------------------- |
+| `priceContainer` |
+| `productPriceClass` |
+| `listPriceContainer` |
+| `listPriceLabel` |
+| `listPrice` |
+| `sellingPriceContainer` |
+| `sellingPriceLabel` |
+| `sellingPrice` |
+| `savingsContainer` |
+| `savings` |
+| `interestRate` |
+| `installmentContainer` |
+| `listPriceRange` |
+| `sellingPriceRange` |
+| `priceLoading` |

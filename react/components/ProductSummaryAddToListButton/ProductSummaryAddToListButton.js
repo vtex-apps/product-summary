@@ -2,11 +2,12 @@ import React, { useMemo } from 'react'
 import { ExtensionPoint } from 'vtex.render-runtime'
 import { path } from 'ramda'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
-import productSummary from '../../productSummary.css'
+import { useCssHandles } from 'vtex.css-handles'
 
 // TODO: change ProductSummaryContext to have `selectedSku` field instead of `sku`
 const getSkuId = path(['sku', 'itemId'])
 const getProductId = path(['productId'])
+const CSS_HANDLES = ['addToListBtn']
 
 // This avoids triggering the link to the product page
 const captureClick = e => {
@@ -15,6 +16,7 @@ const captureClick = e => {
 }
 
 function ProductSummaryAddToListButton() {
+  const handles = useCssHandles(CSS_HANDLES)
   const productContext = useProductSummary()
 
   const skuId = getSkuId(productContext.product)
@@ -34,7 +36,7 @@ function ProductSummaryAddToListButton() {
       role="button"
       tabIndex="-1"
       onKeyDown={() => {}}
-      className={`${productSummary.addToListBtn} absolute z-1`}
+      className={`${handles.addToListBtn} absolute z-1`}
       onClick={captureClick}
     >
       <ExtensionPoint id="addon-summary-btn" product={productProp} />

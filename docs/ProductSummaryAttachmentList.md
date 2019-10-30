@@ -59,7 +59,9 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 
 Below, we describe the namespaces that are defined in the menu.
 
-| Token name   | Description                                          | Component Source                     |
-| ------------ | ---------------------------------------------------- | ------------------------------------ |
-| `attachmentListContainer` | The main container of attachment list | [index](/react/components/ProductSummaryAttachmentList/AttachmentList.js) |
-| `attachmentItemContainer` | Class of attachment item container | [index](/react/components/ProductSummaryAttachmentList/AttachmentItem.js) |
+| Token name   |
+| ------------ |
+| `attachmentListContainer`   |
+| `attachmentItemContainer`   |
+| `attachmentItem`            |
+| `attachmentItemProductText` |

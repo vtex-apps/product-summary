@@ -6,7 +6,9 @@ import { Spinner } from 'vtex.styleguide'
 import { ProductPrice } from 'vtex.store-components'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
-import productSummary from '../../productSummary.css'
+import { useCssHandles } from 'vtex.css-handles'
+
+const CSS_HANDLES = ['priceContainer', 'productPriceClass', 'listPriceContainer', 'listPriceLabel', 'listPrice', 'sellingPriceContainer', 'sellingPriceLabel', 'sellingPrice', 'savingsContainer', 'savings', 'interestRate', 'installmentContainer', 'listPriceRange', 'sellingPriceRange', 'priceLoading']
 
 const isAvailableProduct = price => price !== 0
 
@@ -34,12 +36,13 @@ const ProductSummaryPrice = ({
   showListPriceRange,
 }) => {
   const { product, isLoading } = useProductSummary()
+  const handles = useCssHandles(CSS_HANDLES)
   // TODO: change ProductSummaryContext to have `selectedSku` field instead of `sku`
   const commertialOffer = path(['sku', 'seller', 'commertialOffer'], product)
 
   if (isLoading) {
     return (
-      <div className="flex items-end justify-end w-100 h1 pr6">
+      <div className={`${handles.priceLoading} flex items-end justify-end w-100 h1 pr6`}>
         <Spinner size={20} />
       </div>
     )
@@ -47,9 +50,9 @@ const ProductSummaryPrice = ({
 
   const priceClasses = {
     containerClass: classNames('flex flex-column justify-end items-center', {
-      [`${productSummary.priceContainer} pv5`]: !showBorders,
+      [`${handles.priceContainer} pv5`]: !showBorders,
     }),
-    sellingPriceClass: 'dib ph2 t-body t-heading-5-ns',
+    sellingPriceClass: `${handles.sellingPrice} vdib ph2 t-body t-heading-5-ns`,
   }
 
   const sellingPriceList = getPrices(product.items, 'Price')
@@ -60,21 +63,21 @@ const ProductSummaryPrice = ({
     <div className={priceClasses.containerClass}>
       {sellingPrice !== 0 && (
         <ProductPrice
-          className="flex flex-column justify-start"
-          listPriceContainerClass="pv1 normal c-muted-2"
-          listPriceLabelClass="dib strike t-small t-mini"
-          listPriceClass="dib ph2 strike t-small-ns t-mini"
-          sellingPriceContainerClass="pt1 pb3 c-on-base"
-          sellingPriceLabelClass="dib"
+          className={`${handles.productPriceClass} flex flex-column justify-start`}
+          listPriceContainerClass={`${handles.listPriceContainer} pv1 normal c-muted-2`}
+          listPriceLabelClass={`${handles.listPriceLabel} dib strike t-small t-mini`}
+          listPriceClass={`${handles.listPrice} dib ph2 strike t-small-ns t-mini`}
+          sellingPriceContainerClass={`${handles.sellingPriceContainer} pt1 pb3 c-on-base`}
+          sellingPriceLabelClass={`${handles.sellingPriceLabel} dib`}
           sellingPriceClass={priceClasses.sellingPriceClass}
-          savingsContainerClass="t-small-ns c-muted-2"
-          savingsClass="dib"
-          interestRateClass="dib pl2"
-          installmentContainerClass="t-small-ns c-muted-2"
+          savingsContainerClass={`${handles.savingsContainer} t-small-ns c-muted-2`}
+          savingsClass={`${handles.savings} dib`}
+          interestRateClass={`${handles.interestRate} dib pl2`}
+          installmentContainerClass={`${handles.installmentContainer} t-small-ns c-muted-2`}
           listPrice={prop('ListPrice', commertialOffer)}
           sellingPriceList={sellingPriceList}
-          listPriceRangeClass="dib ph2 t-small-ns strike"
-          sellingPriceRangeClass="dib ph2 t-small-ns"
+          listPriceRangeClass={`${handles.listPriceRange} dib ph2 t-small-ns strike`}
+          sellingPriceRangeClass={`${handles.sellingPriceRange} dib ph2 t-small-ns`}
           sellingPrice={prop('Price', commertialOffer)}
           installments={prop('Installments', commertialOffer)}
           showListPrice={showListPrice}

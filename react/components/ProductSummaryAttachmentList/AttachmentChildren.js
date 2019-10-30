@@ -2,15 +2,18 @@ import React from 'react'
 import AddedAttachmentsList from './AddedAttachmentsList'
 import RemovedAttachmentsList from './RemovedAttachmentsList'
 
-import styles from '../../productSummary.css'
+import { useCssHandles } from 'vtex.css-handles'
+
+const CSS_HANDLES = ['attachmentChildrenContainer']
 
 const AttachmentChildren = ({ addedOptions, removedOptions }) => {
+  const handles = useCssHandles(CSS_HANDLES)
   if (addedOptions.length === 0 && removedOptions.length === 0) {
     return null
   }
 
   return (
-    <div className={`${styles.attachmentChildrenContainer} ml3`}>
+    <div className={`${handles.attachmentChildrenContainer} ml3`}>
       <AddedAttachmentsList addedOptions={addedOptions} showItemPrice={false} />
       <RemovedAttachmentsList removedOptions={removedOptions} />
     </div>
