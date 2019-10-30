@@ -59,8 +59,6 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 
 #### CSS namespaces
 
-Below, we describe the namespaces that are defined in the menu.
-
 | Token name   | Description                                          | Component Source                     |
 | ------------ | ---------------------------------------------------- | ------------------------------------ |
 | `nameContainer` | The main container of name | [index](/react/components/ProductSummaryName/ProductSummaryName.js) |

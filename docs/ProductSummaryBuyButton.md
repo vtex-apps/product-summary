@@ -65,8 +65,6 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 
 #### CSS Handles
 
-Below, we describe the namespaces that are defined in the menu.
-
 | CSS Handles   | Description                                          | Component Source                     |
 | ------------ | ---------------------------------------------------- | ------------------------------------ |
 | `buyButtonContainer` | The main container of buy button | [index](/react/components/ProductSummaryBuyButton/ProductSummaryBuyButton.js) |
