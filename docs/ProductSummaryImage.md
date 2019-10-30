@@ -70,9 +70,9 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 }
 ```
 
-#### CSS namespaces
+#### CSS Handles
 
-| Token name            | Description                                                             | Component Source                                                      |
+| CSS Handles           | Description                                                             | Component Source                                                      |
 | --------------------- | ----------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `imageContainer`      | The main container of image                                             | [index](/react/components/ProductSummaryImage/ProductSummaryImage.js) |
 | `imageNormal`         | Class when display mode is normal                                       | [index](/react/components/ProductSummaryImage/ProductSummaryImage.js) |
