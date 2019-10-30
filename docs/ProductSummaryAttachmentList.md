@@ -55,11 +55,11 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 }
 ```
 
-#### CSS namespaces
+#### CSS Handles
 
 Below, we describe the namespaces that are defined in the menu.
 
-| Token name   |
+| CSS Handles  |
 | ------------ |
 | `attachmentListContainer`   |
 | `attachmentItemContainer`   |

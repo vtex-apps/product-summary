@@ -63,11 +63,11 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 }
 ```
 
-#### CSS namespaces
+#### CSS Handles
 
 Below, we describe the namespaces that are defined in the menu.
 
-| Token name   | Description                                          | Component Source                     |
+| CSS Handles   | Description                                          | Component Source                     |
 | ------------ | ---------------------------------------------------- | ------------------------------------ |
 | `buyButtonContainer` | The main container of buy button | [index](/react/components/ProductSummaryBuyButton/ProductSummaryBuyButton.js) |
 | `buyButton` | Class right before buy button | [index](/react/components/ProductSummaryBuyButton/ProductSummaryBuyButton.js) |

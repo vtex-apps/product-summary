@@ -237,9 +237,9 @@ You can use our `stack-layout` to show the badges over your product image for ex
   },
 ```
 
-### CSS API
+### CSS Handles
 
-| CSS class        | Description                                 |
+| CSS Handles       | Description                                 |
 | ---------------- | ------------------------------------------- |
 | `groupContainer` | Container that wrapps the whole badge group |
 | `badgeContainer` | Container for each badge                    |

@@ -8,7 +8,23 @@ import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryCo
 
 import { useCssHandles } from 'vtex.css-handles'
 
-const CSS_HANDLES = ['priceContainer', 'productPriceClass', 'listPriceContainer', 'listPriceLabel', 'listPrice', 'sellingPriceContainer', 'sellingPriceLabel', 'sellingPrice', 'savingsContainer', 'savings', 'interestRate', 'installmentContainer', 'listPriceRange', 'sellingPriceRange', 'priceLoading']
+const CSS_HANDLES = [
+  'priceContainer',
+  'productPriceClass',
+  'listPriceContainer',
+  'listPriceLabel',
+  'listPrice',
+  'sellingPriceContainer',
+  'sellingPriceLabel',
+  'sellingPrice',
+  'savingsContainer',
+  'savings',
+  'interestRate',
+  'installmentContainer',
+  'listPriceRange',
+  'sellingPriceRange',
+  'priceLoading',
+]
 
 const isAvailableProduct = price => price !== 0
 
@@ -42,7 +58,9 @@ const ProductSummaryPrice = ({
 
   if (isLoading) {
     return (
-      <div className={`${handles.priceLoading} flex items-end justify-end w-100 h1 pr6`}>
+      <div
+        className={`${handles.priceLoading} flex items-end justify-end w-100 h1 pr6`}
+      >
         <Spinner size={20} />
       </div>
     )
@@ -52,7 +70,7 @@ const ProductSummaryPrice = ({
     containerClass: classNames('flex flex-column justify-end items-center', {
       [`${handles.priceContainer} pv5`]: !showBorders,
     }),
-    sellingPriceClass: `${handles.sellingPrice} vdib ph2 t-body t-heading-5-ns`,
+    sellingPriceClass: `${handles.sellingPrice} dib ph2 t-body t-heading-5-ns`,
   }
 
   const sellingPriceList = getPrices(product.items, 'Price')
