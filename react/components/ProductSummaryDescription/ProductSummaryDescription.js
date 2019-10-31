@@ -1,18 +1,20 @@
 import React, { Fragment } from 'react'
 
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
-import productSummary from '../../productSummary.css'
+import { useCssHandles } from 'vtex.css-handles'
 
 const MAX_SIZE_DESCRIPTION = 120
+const CSS_HANDLES = ['description']
 
 const ProductSummaryDescription = () => {
   const {
     product: { description },
   } = useProductSummary()
+  const handles = useCssHandles(CSS_HANDLES)
 
   if (!description) return <Fragment />
 
-  const descriptionClasses = `${productSummary.description} c-muted-2 t-small`
+  const descriptionClasses = `${handles.description} c-muted-2 t-small`
 
   const descriptionTruncated =
     description.length > MAX_SIZE_DESCRIPTION

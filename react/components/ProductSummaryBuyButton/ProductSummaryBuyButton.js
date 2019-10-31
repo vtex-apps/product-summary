@@ -13,6 +13,7 @@ import displayButtonTypes, {
 } from '../../utils/displayButtonTypes'
 
 import productSummary from '../../productSummary.css'
+import { useCssHandles } from 'vtex.css-handles'
 
 const ALWAYS_GO_TO_PRODUCT = 'alwaysGoToProduct'
 const DEFAULT_BUTTON_BEHAVIOR = 'default'
@@ -20,6 +21,7 @@ const BUY_BUTTON_BEHAVIOR_OPTIONS = [
   ALWAYS_GO_TO_PRODUCT,
   DEFAULT_BUTTON_BEHAVIOR,
 ]
+const CSS_HANDLES = ['buyButton', 'buyButtonContainer']
 
 const ProductSummaryBuyButton = ({
   displayBuyButton,
@@ -33,6 +35,7 @@ const ProductSummaryBuyButton = ({
   isHovering,
 }) => {
   const { product, selectedItem, selectedQuantity } = useProductSummary()
+  const handles = useCssHandles(CSS_HANDLES)
 
   const hoverBuyButton =
     equals(displayBuyButton, displayButtonTypes.DISPLAY_ALWAYS.value) ||
@@ -47,7 +50,7 @@ const ProductSummaryBuyButton = ({
     )
 
   const buyButtonClasses = classnames(
-    productSummary.buyButton,
+    handles.buyButton,
     'center mw-100',
     {
       [productSummary.isHidden]: !hoverBuyButton,
@@ -55,7 +58,7 @@ const ProductSummaryBuyButton = ({
   )
 
   const containerClass = classnames(
-    productSummary.buyButtonContainer,
+    handles.buyButtonContainer,
     'pv3 w-100 db'
   )
 

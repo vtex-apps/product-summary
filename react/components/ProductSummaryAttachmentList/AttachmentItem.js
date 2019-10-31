@@ -3,8 +3,10 @@ import { string, number, object, bool } from 'prop-types'
 import ProductPrice from 'vtex.store-components/ProductPrice'
 import { reject } from 'ramda'
 
-import styles from '../../productSummary.css'
+import { useCssHandles } from 'vtex.css-handles'
 import AttachmentChildren from './AttachmentChildren'
+
+const CSS_HANDLES = ['attachmentItemContainer', 'attachmentItem', 'attachmentItemProductText']
 
 const itemShouldHide = ({ item, extraQuantity }) =>
   extraQuantity === 0 && item.sellingPriceWithAssemblies === 0
@@ -15,6 +17,7 @@ const AttachmentItem = ({
   assemblyOptions,
   showItemPrice,
 }) => {
+  const handles = useCssHandles(CSS_HANDLES)
   const childrenAdded = (assemblyOptions && assemblyOptions.added) || []
   const childrenRemoved = (assemblyOptions && assemblyOptions.removed) || []
   const filteredChildrenAdded = reject(itemShouldHide, childrenAdded)
@@ -24,9 +27,9 @@ const AttachmentItem = ({
       : 'c-muted-2'
 
   return (
-    <div className={`${styles.attachmentItemContainer} flex flex-column pv1`}>
-      <div className={`flex items-center justify-between`}>
-        <span className={`t-small ${parentColor} tl pr3`}>{productText}</span>
+    <div className={`${handles.attachmentItemContainer} flex flex-column pv1`}>
+      <div className={`${handles.attachmentItem} flex items-center justify-between`}>
+        <span className={`${handles.attachmentItemProductText} t-small ${parentColor} tl pr3`}>{productText}</span>
         {price != null && showItemPrice && price > 0 && (
           <ProductPrice
             sellingPrice={price}

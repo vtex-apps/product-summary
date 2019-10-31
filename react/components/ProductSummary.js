@@ -10,15 +10,17 @@ import {
   useProductSummary,
 } from 'vtex.product-summary-context/ProductSummaryContext'
 import { ProductContextProvider } from 'vtex.product-context'
-import productSummary from '../productSummary.css'
 import { productShape } from '../utils/propTypes'
 import { mapCatalogProductToProductSummary } from '../utils/normalize'
+import { useCssHandles } from 'vtex.css-handles'
 
 const PRODUCT_SUMMARY_MAX_WIDTH = 300
+const CSS_HANDLES = ['container', 'containerNormal', 'element', 'clearLink']
 
 const ProductSummaryCustom = ({ product, actionOnClick, children }) => {
   const { isLoading, isHovering, selectedItem, query } = useProductSummary()
   const dispatch = useProductSummaryDispatch()
+  const handles = useCssHandles(CSS_HANDLES)
 
   useEffect(() => {
     if (product) {
@@ -64,18 +66,18 @@ const ProductSummaryCustom = ({ product, actionOnClick, children }) => {
   )
 
   const containerClasses = classNames(
-    productSummary.container,
-    productSummary.containerNormal,
+    handles.container,
+    handles.containerNormal,
     'overflow-hidden br3 h-100 w-100 flex flex-column justify-between center tc'
   )
 
   const summaryClasses = classNames(
-    productSummary.element,
+    handles.element,
     'pointer pt3 pb4 flex flex-column h-100'
   )
 
   const linkClasses = classNames(
-    productSummary.clearLink,
+    handles.clearLink,
     'h-100 flex flex-column'
   )
 
