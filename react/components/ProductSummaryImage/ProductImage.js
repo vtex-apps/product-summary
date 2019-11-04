@@ -69,6 +69,7 @@ const Image = ({ src, width, height, onError, alt, className }) => {
           ? {
               width,
               height,
+              objectFit: 'contain',
               maxHeight: 'unset',
               maxWidth: 'unset',
             }
