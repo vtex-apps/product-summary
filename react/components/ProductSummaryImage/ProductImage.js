@@ -67,11 +67,11 @@ const Image = ({ src, width, height, onError, alt, className }) => {
       style={
         shouldResize
           ? {
-              width,
+              width: '100%',
               height,
               objectFit: 'contain',
               maxHeight: 'unset',
-              maxWidth: 'unset',
+              maxWidth: width,
             }
           : null
       }
