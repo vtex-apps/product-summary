@@ -53,12 +53,6 @@ const Image = ({ src, width, height, onError, alt, className }) => {
 
   const shouldResize = !!(width || height)
 
-  if (!shouldResize) {
-    console.warn(
-      'ProductSummaryImage: It is recommended that the props `width` and `height` of the block `product-summary-image` should be set, in order to be able to load the image with the optimal resolution, and to prevent contents from shifting around.'
-    )
-  }
-
   return (
     <img
       src={
