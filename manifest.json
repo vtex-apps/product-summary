@@ -33,7 +33,8 @@
     "vtex.css-handles": "0.x",
     "vtex.product-context": "0.x",
     "vtex.flex-layout": "0.x",
-    "vtex.rich-text": "0.x"
+    "vtex.rich-text": "0.x",
+    "vtex.add-to-cart-button": "0.x"
   },
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
