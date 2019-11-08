@@ -1,8 +1,8 @@
-# Product Summary Name
+# Product Summary SKU Selector
 
 ## Description
 
-`ProductSummarySKUSelector` is a VTEX Component that renders the product's name.
+`ProductSummarySKUSelector` is a VTEX Component that renders a selector of SKUs.
 This Component can be imported and used by any VTEX App.
 
 ## Table of Contents
