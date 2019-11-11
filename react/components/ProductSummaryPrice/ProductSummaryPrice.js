@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { path, prop, flatten, map, filter } from 'ramda'
+import { path, prop, flatten, pluck } from 'ramda'
 import classNames from 'classnames'
 import { Spinner } from 'vtex.styleguide'
 import { ProductPrice } from 'vtex.store-components'
@@ -28,15 +28,20 @@ const CSS_HANDLES = [
 
 const isAvailableProduct = price => price !== 0
 
-const getPrices = (items, attribute) => {
-  if (!items) {
+const getPrices = (product, attribute) => {
+  if (!product || (!product.items && !product.priceRange)) {
     return []
   }
+  if (product.priceRange) {
+    const values = product.priceRange[attribute]
+    return values ? [values.lowPrice, values.highPrice] : []
+  }
 
-  const sellers = flatten(map(prop('sellers'), items))
-  const prices = map(path(['commertialOffer', attribute]), sellers)
-  const availableProductsPrices = filter(isAvailableProduct, prices)
-
+  // No priceRange resolver provided, use sku information
+  const sellers = flatten(pluck('sellers', product.items))
+  const offerAttribute = attribute === 'sellingPrice' ? 'Price' : 'ListPrice'
+  const prices = sellers.map(path(['commertialOffer', offerAttribute]))
+  const availableProductsPrices = prices.filter(isAvailableProduct)
   return availableProductsPrices
 }
 
@@ -73,8 +78,12 @@ const ProductSummaryPrice = ({
     sellingPriceClass: `${handles.sellingPrice} dib ph2 t-body t-heading-5-ns`,
   }
 
-  const sellingPriceList = getPrices(product.items, 'Price')
-  const listPriceList = getPrices(product.items, 'ListPrice')
+  const sellingPriceList = showSellingPriceRange
+    ? getPrices(product, 'sellingPrice')
+    : []
+  const listPriceList = showListPriceRange
+    ? getPrices(product, 'listPrice')
+    : []
   const sellingPrice = prop('Price', commertialOffer)
 
   return (
