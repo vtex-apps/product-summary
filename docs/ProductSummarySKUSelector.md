@@ -1,62 +1,44 @@
-# Product Summary Name
+# Product Summary SKU Selector
 
-## Description
+The `product-summary-sku-selector` is a VTEX block that's tasked with rendering the [SKU Selector](https://vtex.io/docs/app/vtex.store-components/sku-selector) component in a Product Summary component, such as the Shelf or the Search Results Page.
 
-`ProductSummarySKUSelector` is a VTEX Component that renders the product's name.
-This Component can be imported and used by any VTEX App.
+![product-summary-sku-selector](https://user-images.githubusercontent.com/52087100/68625690-87f9a580-04b8-11ea-835d-009ac768805f.gif)
 
-## Table of Contents
-- [Usage](#usage)
-  - [Blocks API](#blocks-api)
-  - [Configuration](#configuration)
-  - [Styles API](#styles-api)
 
-## Usage
+## Configuration
 
-You should follow the usage instruction in the main [README](https://github.com/vtex-apps/product-summary/blob/master/README.md#usage).
+1. Follow the [Product Summary](https://vtex.io/docs/app/vtex.product-summary) app's configuration instruction.
+2. Add the `product-summary-sku-selector` to the Product Summary's desired block. In the following example, we'll use a Shelf:
 
-Then, add `product-summary-sku-selector` block into your app theme, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
-
-### Blocks API
-
-This component has an interface that describes which rules must be implemented by a block when you want to use the `ProductSummarySKUSelector`.
-
-```json
+```
+"product-summary.shelf": {
+   "children": [
+     "product-summary-add-to-list-button",
+     "stack-layout#prodsum",
+     "product-summary-name",
+     "product-rating-inline",
+     "product-summary-space",
+     "product-summary-sku-selector",
+     "product-summary-price",
+     "product-identifier.summary",
+     "product-summary-buy-button"
+   ]
+ },
+ ```
+ 
+ 3. Below, declare the `product-summary-sku-selector` block. The props that it uses are the same that are available for the [SKU Selector](https://vtex.io/docs/app/vtex.store-components/sku-selector). For example:
+ 
+ ```
   "product-summary-sku-selector": {
-    "component": "ProductSummarySKUSelector"
-  }
-```
+   "props":{
+     "showVariationsLabels": ["false"]
+   }
+ },
+ ```
+:warning: This block can only be configured through the source code. You're not yet able to edit using the Site Editor. 
 
-### Configuration
-
-You can't configure anything of this component through Site Etor at the moment, only using the block of it.
-
-You can find all options available in [Store Components SKU Selector app](https://github.com/vtex-apps/store-components/blob/master/docs/SKUSelector.md).
-
-### Styles API
-
-This app provides some CSS classes as an API for style customization.
-
-To use this CSS API, you must add the `styles` builder and create an app styling CSS file.
-
-1. Add the `styles` builder to your `manifest.json`:
-
-```json
-  "builders": {
-    "styles": "1.x"
-  }
-```
-
-2. Create a file called `vtex.product-summary.css` inside the `styles/css` folder. Add your custom styles:
-
-```css
-.SKUSelectorContainer {
-  margin-top: 10px;
-}
-```
-
-#### CSS Handles
+#### Customization
 
 | CSS Handles   | Description                                          | Component Source                     |
 | ------------ | ---------------------------------------------------- | ------------------------------------ |
-| `SKUSelectorContainer` | The main container of SKUSelector | [index](/react/components/ProductSummarySKUSelector/index.js) |
+| `SKUSelectorContainer` | SKU Selector main container | [index](/react/components/ProductSummarySKUSelector/index.js) |
