@@ -44,7 +44,8 @@
       "product-summary-add-to-list-button",
       "product-rating-inline",
       "product-summary-specification-badges",
-      "product-teaser.summary"
+      "product-teaser.summary",
+      "product-summary-brand"
     ],
     "component": "Column",
     "composition": "children"
