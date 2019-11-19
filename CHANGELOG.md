@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [2.46.0] - 2019-11-19
 ### Added
 - `add-to-cart-button` to the allowed list for product-summary.shelf interface.
 
