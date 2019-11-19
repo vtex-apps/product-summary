@@ -31,6 +31,8 @@ export const productShape = PropTypes.shape({
   productName: PropTypes.string.isRequired,
   /** Product's brand */
   brand: PropTypes.string,
+  /** Product's brand id */
+  brandId: PropTypes.number,
   /** Product's SKU */
   sku: PropTypes.shape({
     /** SKU name */
