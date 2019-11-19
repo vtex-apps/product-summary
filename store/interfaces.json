@@ -26,7 +26,8 @@
       "product-summary-specification-badges",
       "rich-text",
       "flex-layout",
-      "stack-layout"
+      "stack-layout",
+      "add-to-cart-button"
     ],
     "component": "ProductSummaryCustom",
     "composition": "children"
