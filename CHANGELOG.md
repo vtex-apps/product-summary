@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.46.1] - 2019-11-25
+
 ## [2.46.0] - 2019-11-19
 ### Added
 - `add-to-cart-button` to the allowed list for product-summary.shelf interface.
