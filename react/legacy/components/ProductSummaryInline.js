@@ -22,6 +22,7 @@ class ProductSummaryInline extends Component {
       nameProps,
       priceProps,
       buyButtonProps,
+      inViewRef,
     } = this.props
 
     const containerClasses = classNames(
@@ -58,6 +59,7 @@ class ProductSummaryInline extends Component {
         className={containerClasses}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        ref={inViewRef}
       >
         <Link
           className={summaryClasses}

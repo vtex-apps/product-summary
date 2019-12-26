@@ -17,7 +17,7 @@ import { useCssHandles } from 'vtex.css-handles'
 const PRODUCT_SUMMARY_MAX_WIDTH = 300
 const CSS_HANDLES = ['container', 'containerNormal', 'element', 'clearLink']
 
-const ProductSummaryCustom = ({ product, actionOnClick, children }) => {
+const ProductSummaryCustom = ({ product, actionOnClick, children, inViewRef }) => {
   const { isLoading, isHovering, selectedItem, query } = useProductSummary()
   const dispatch = useProductSummaryDispatch()
   const handles = useCssHandles(CSS_HANDLES)
@@ -95,6 +95,7 @@ const ProductSummaryCustom = ({ product, actionOnClick, children }) => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
+          ref={inViewRef}
         >
           <Link
             className={linkClasses}
