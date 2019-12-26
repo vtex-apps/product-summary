@@ -23,7 +23,6 @@ class ProductSummarySmall extends Component {
       nameProps,
       priceProps,
       buyButtonProps,
-      inViewRef,
     } = this.props
 
     const containerClasses = classNames(
@@ -61,7 +60,6 @@ class ProductSummarySmall extends Component {
         className={containerClasses}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        ref={inViewRef}
       >
         <Link
           className={`${styles.clearLink} flex flex-column`}

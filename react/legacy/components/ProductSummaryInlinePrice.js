@@ -24,7 +24,6 @@ const ProductSummaryInlinePrice = ({
   priceAlignLeft,
   muted,
   index,
-  inViewRef,
 }) => {
   const containerClasses = classNames(
     styles.container,
@@ -69,7 +68,6 @@ const ProductSummaryInlinePrice = ({
       className={containerClasses}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      ref={inViewRef}
     >
       <article className={summaryClasses}>
         <Link

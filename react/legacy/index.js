@@ -163,7 +163,6 @@ class ProductSummary extends Component {
     return (
       <ProductSummaryComponent
         product={product}
-        inViewRef={inViewRef}
         showBorders={showBorders}
         showDescription={showDescription}
         handleMouseEnter={this.handleMouseEnter}
