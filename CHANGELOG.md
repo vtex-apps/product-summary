@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- `inViewRef` prop to the `product-summary`.
+- `containerRef` prop to the `product-summary`.
 
 ## [2.46.2] - 2019-12-05
 
