@@ -45,6 +45,7 @@ Through the Storefront, you can change the `ProductSummaryImage`'s behavior and 
 | `showCollections` | `Boolean` | Set collection badges' visibility                                                                                                                                        | `false`       |
 | `displayMode`     | `Enum`    | Set display mode of product summary (normal, inline)                                                                                                                     | `normal`      |
 | `hoverImageLabel` | `String`  | Set this value to match the value of the `imageLabel` field of a product image, so this "secondary" image will be showed when user hovers its mouse over this component. | `""`          |
+| `mainImageLabel` | `String` | Works the same way as `hoverImageLabel` but to set the main image to display. If you pass a label and no image has that label, it will show the main image of the product | `""`|
 | `width` | `[ResponsiveInput<Number>](https://github.com/vtex-apps/responsive-values#vtexresponsive-values)`  | Sets the image width. | `undefined`          |
 | `height` | `[ResponsiveInput<Number>](https://github.com/vtex-apps/responsive-values#vtexresponsive-values)`  | Sets the image height. | `undefined`          |
 
