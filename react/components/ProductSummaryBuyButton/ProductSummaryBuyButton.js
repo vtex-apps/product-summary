@@ -93,7 +93,7 @@ const ProductSummaryBuyButton = ({
             available={isAvailable}
             isOneClickBuy={isOneClickBuy}
             customToastURL={customToastURL}
-            shouldAddToCart={!shouldBeALink}
+            shouldAddToCart={selectedItem || !shouldBeALink}
           >
             <IOMessage id={buyButtonText} />
           </BuyButton>
