@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { pathOr, compose, path } from 'ramda'
 import PropTypes from 'prop-types'
+import { pathOr, compose } from 'ramda'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
 import { useDevice } from 'vtex.device-detector'
@@ -39,11 +39,11 @@ const maybeCollection = ({ productClusters }) => shouldShow => component => {
   return component
 }
 
-const findHoverImage = (images, hoverImageLabel) => {
-  if (!hoverImageLabel) {
+const findImageByLabel = (images, selectedLabel) => {
+  if (!selectedLabel) {
     return null
   }
-  return images.find(({ imageLabel }) => imageLabel === hoverImageLabel)
+  return images.find(({ imageLabel }) => imageLabel === selectedLabel)
 }
 
 const Image = ({ src, width, height, onError, alt, className }) => {
@@ -79,22 +79,20 @@ const Image = ({ src, width, height, onError, alt, className }) => {
 
 const ProductImageContent = ({
   product,
+  onError,
+  hasError,
   showBadge,
   badgeText,
-  showCollections,
   displayMode,
-  onError,
+  mainImageLabel,
   hoverImageLabel,
+  showCollections,
   width: widthProp,
   height: heightProp,
-  hasError,
 }) => {
   const { productClusters, productName: name } = product || {}
 
   const sku = product && product.sku
-
-  const imageUrl = path(['image', 'imageUrl'], sku)
-  const images = path(['images'], sku)
 
   const { isMobile } = useDevice()
   const handles = useCssHandles(CSS_HANDLES)
@@ -124,6 +122,17 @@ const ProductImageContent = ({
     )
   }
 
+  const images = pathOr([], ['images'], sku)
+  const hoverImage = findImageByLabel(images, hoverImageLabel)
+
+  let imageUrl = pathOr({}, ['image', 'imageUrl'], sku)
+  if (mainImageLabel) {
+    const mainImage = findImageByLabel(images, mainImageLabel)
+    if (mainImage) {
+      imageUrl = mainImage.imageUrl
+    }
+  }
+
   const legacyImageClasses = classNames({
     [productSummary.imageNormal]: displayMode !== 'inline',
     [productSummary.imageInline]: displayMode === 'inline',
@@ -143,8 +152,6 @@ const ProductImageContent = ({
   })
 
   const withCollection = maybeCollection({ productClusters })
-
-  const hoverImage = findHoverImage(images, hoverImageLabel)
 
   const imageClassname = classNames(legacyImageClasses, handles.image)
 
@@ -187,9 +194,10 @@ const ProductImageContent = ({
 const ProductImage = ({
   showBadge,
   badgeText,
-  showCollections,
   displayMode,
+  mainImageLabel,
   hoverImageLabel,
+  showCollections,
   width: widthProp,
   height: heightProp,
 }) => {
@@ -209,16 +217,17 @@ const ProductImage = ({
   return (
     <div className={imageClassName}>
       <ProductImageContent
-        showBadge={showBadge}
-        badgeText={badgeText}
-        showCollections={showCollections}
-        displayMode={displayMode}
-        product={product}
-        onError={() => setError(true)}
-        hoverImageLabel={hoverImageLabel}
         width={width}
         height={height}
         hasError={error}
+        product={product}
+        badgeText={badgeText}
+        showBadge={showBadge}
+        displayMode={displayMode}
+        onError={() => setError(true)}
+        mainImageLabel={mainImageLabel}
+        hoverImageLabel={hoverImageLabel}
+        showCollections={showCollections}
       />
     </div>
   )
@@ -234,6 +243,7 @@ ProductImage.propTypes = {
   /** Display mode of the summary */
   displayMode: PropTypes.oneOf(['normal', 'inline']),
   hoverImageLabel: PropTypes.string,
+  mainImageLabel: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
 }
@@ -243,6 +253,7 @@ ProductImage.defaultProps = {
   showCollections: false,
   displayMode: 'normal',
   hoverImageLabel: '',
+  mainImageLabel: '',
 }
 
 ProductImage.getSchema = () => {
