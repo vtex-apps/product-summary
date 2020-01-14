@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.49.0] - 2020-01-14
+
 ## [2.48.1] - 2020-01-10
 ### Fixed
 - Add missing `nameContainer` CSS handle.
