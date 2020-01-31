@@ -1,13 +1,13 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
-import { useListContext } from 'vtex.list-context'
 import { ExtensionPoint, useTreePath } from 'vtex.render-runtime'
+import { useListContext, ListContextProvider } from 'vtex.list-context'
 
 import { mapCatalogProductToProductSummary } from './utils/normalize'
 
 import { productSearchV2 } from 'vtex.store-resources/Queries'
 
-const ProductSummaryList = ({ data }) => {
+const ProductSummaryList = ({ data, children }) => {
   const { list } = useListContext()
   const { treePath } = useTreePath()
 
@@ -29,10 +29,9 @@ const ProductSummaryList = ({ data }) => {
   const newListContextValue = list.concat(componentList)
 
   return (
-    <ExtensionPoint
-      id="list-context.product-list"
-      newList={newListContextValue}
-    />
+    <ListContextProvider list={newListContextValue}>
+      {children}
+    </ListContextProvider>
   )
 }
 
