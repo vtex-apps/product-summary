@@ -1,41 +1,13 @@
 import React from 'react'
-import { graphql } from 'react-apollo'
+import { useQuery } from 'react-apollo'
+import { ProductListContext } from 'vtex.product-list-context'
 import { ExtensionPoint, useTreePath } from 'vtex.render-runtime'
 import { useListContext, ListContextProvider } from 'vtex.list-context'
 
 import { mapCatalogProductToProductSummary } from './utils/normalize'
+import ProductListEventCaller from './components/ProductListEventCaller'
 
 import { productSearchV2 } from 'vtex.store-resources/Queries'
-
-const ProductSummaryList = ({ data, children }) => {
-  const { list } = useListContext()
-  const { treePath } = useTreePath()
-
-  const componentList =
-    data.productSearch &&
-    data.productSearch.products.map(product => {
-      const normalizedProduct = mapCatalogProductToProductSummary(product)
-
-      return (
-        <ExtensionPoint
-          key={product.id}
-          id="product-summary"
-          treePath={treePath}
-          product={normalizedProduct}
-        />
-      )
-    })
-
-  const newListContextValue = list.concat(componentList)
-
-  return (
-    <ListContextProvider list={newListContextValue}>
-      {children}
-    </ListContextProvider>
-  )
-}
-
-const parseFilters = ({ id, value }) => `specificationFilter_${id}:${value}`
 
 const ORDER_BY_OPTIONS = {
   ORDER_BY_RELEVANCE: {
@@ -71,17 +43,25 @@ const ORDER_BY_OPTIONS = {
     value: 'OrderByBestDiscountDESC',
   },
 }
+const parseFilters = ({ id, value }) => `specificationFilter_${id}:${value}`
 
-const productQueryOptions = {
-  options: ({
-    category = '',
-    collection,
-    hideUnavailableItems = false,
-    orderBy = ORDER_BY_OPTIONS.ORDER_BY_TOP_SALE_DESC.value,
-    specificationFilters = [],
-    maxItems = 10,
-    withFacets = false,
-  }) => ({
+function getOrdinationProp(attribute) {
+  return Object.keys(ORDER_BY_OPTIONS).map(
+    key => ORDER_BY_OPTIONS[key][attribute]
+  )
+}
+
+const ProductSummaryList = ({
+  children,
+  category = '',
+  collection,
+  hideUnavailableItems = false,
+  orderBy = ORDER_BY_OPTIONS.ORDER_BY_TOP_SALE_DESC.value,
+  specificationFilters = [],
+  maxItems = 10,
+  withFacets = false,
+}) => {
+  const { data, loading, error } = useQuery(productSearchV2, {
     ssr: true,
     name: 'productList',
     variables: {
@@ -98,18 +78,48 @@ const productQueryOptions = {
       hideUnavailableItems,
       withFacets,
     },
-  }),
-}
+  })
 
-function getOrdinationProp(attribute) {
-  return Object.keys(ORDER_BY_OPTIONS).map(
-    key => ORDER_BY_OPTIONS[key][attribute]
+  const { list } = useListContext()
+  const { treePath } = useTreePath()
+  // useProductImpression()
+
+  if (loading) return null
+
+  const componentList =
+    data.productSearch &&
+    data.productSearch.products.map(product => {
+      const normalizedProduct = mapCatalogProductToProductSummary(product)
+
+      return (
+        <ExtensionPoint
+          id="product-summary"
+          key={product.id}
+          treePath={treePath}
+          product={normalizedProduct}
+        />
+      )
+    })
+
+  const newListContextValue = list.concat(componentList)
+
+  return (
+    <ListContextProvider list={newListContextValue}>
+      {children}
+    </ListContextProvider>
   )
 }
 
-const EnhancedProductList = graphql(productSearchV2, productQueryOptions)(
-  ProductSummaryList
-)
+const EnhancedProductList = ({ children }) => {
+  const { ProductListProvider } = ProductListContext
+
+  return (
+    <ProductListProvider>
+      <ProductSummaryList>{children}</ProductSummaryList>
+      <ProductListEventCaller />
+    </ProductListProvider>
+  )
+}
 
 EnhancedProductList.getSchema = () => ({
   title: 'admin/editor.productSummaryList.title',

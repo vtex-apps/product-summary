@@ -2,7 +2,9 @@ import React, { useCallback, useMemo, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { pathOr, path } from 'ramda'
+import { useInView } from 'react-intersection-observer'
 import { Link } from 'vtex.render-runtime'
+import { ProductListContext } from 'vtex.product-list-context'
 import ProductSummaryContext from './ProductSummaryContext'
 import {
   ProductSummaryProvider,
@@ -17,10 +19,33 @@ import { useCssHandles } from 'vtex.css-handles'
 const PRODUCT_SUMMARY_MAX_WIDTH = 300
 const CSS_HANDLES = ['container', 'containerNormal', 'element', 'clearLink']
 
-const ProductSummaryCustom = ({ product, actionOnClick, children, containerRef }) => {
+const ProductSummaryCustom = ({
+  product,
+  actionOnClick,
+  children,
+  containerRef,
+}) => {
   const { isLoading, isHovering, selectedItem, query } = useProductSummary()
   const dispatch = useProductSummaryDispatch()
   const handles = useCssHandles(CSS_HANDLES)
+
+  // Use ProductListContext to send pixel events
+  const { useProductListDispatch } = ProductListContext
+  const productListDispatch = useProductListDispatch()
+  const [inViewRef, inView] = useInView({
+    // Triggers the event when the element is 75% visible
+    threshold: 0.75,
+    triggerOnce: true,
+  })
+  useEffect(() => {
+    if (inView) {
+      productListDispatch &&
+        productListDispatch({
+          type: 'SEND_IMPRESSION',
+          args: { product: product },
+        })
+    }
+  }, [productListDispatch, inView, product])
 
   useEffect(() => {
     if (product) {
@@ -76,10 +101,7 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, containerRef }
     'pointer pt3 pb4 flex flex-column h-100'
   )
 
-  const linkClasses = classNames(
-    handles.clearLink,
-    'h-100 flex flex-column'
-  )
+  const linkClasses = classNames(handles.clearLink, 'h-100 flex flex-column')
 
   const skuId = pathOr(
     path(['sku', 'itemId'], product),
@@ -95,7 +117,8 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, containerRef }
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
-          ref={containerRef}
+          // If containerRef is passed, it should be used
+          ref={containerRef || inViewRef}
         >
           <Link
             className={linkClasses}
@@ -121,6 +144,12 @@ ProductSummaryCustom.propTypes = {
   /** Function that is executed when a product is clicked */
   actionOnClick: PropTypes.func,
   children: PropTypes.node,
+  containerRef: PropTypes.oneOfType([
+    // Either a function
+    PropTypes.func,
+    // Or the instance of a DOM native element
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]),
 }
 
 function ProductSummaryWrapper(props) {
