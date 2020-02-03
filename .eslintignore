@@ -1,0 +1,5 @@
+node_modules/
+coverage/
+legacy/
+__mocks__
+*.snap.ts

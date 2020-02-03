@@ -5,15 +5,14 @@ import { withRuntimeContext } from 'vtex.render-runtime'
 import { equals, path } from 'ramda'
 import classnames from 'classnames'
 import { IOMessage } from 'vtex.native-types'
-
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
+import { useCssHandles } from 'vtex.css-handles'
+
 import displayButtonTypes, {
   getDisplayButtonNames,
   getDisplayButtonValues,
 } from '../../utils/displayButtonTypes'
-
 import productSummary from '../../productSummary.css'
-import { useCssHandles } from 'vtex.css-handles'
 
 const ALWAYS_GO_TO_PRODUCT = 'alwaysGoToProduct'
 const DEFAULT_BUTTON_BEHAVIOR = 'default'
@@ -49,18 +48,11 @@ const ProductSummaryBuyButton = ({
       mobile
     )
 
-  const buyButtonClasses = classnames(
-    handles.buyButton,
-    'center mw-100',
-    {
-      [productSummary.isHidden]: !hoverBuyButton,
-    }
-  )
+  const buyButtonClasses = classnames(handles.buyButton, 'center mw-100', {
+    [productSummary.isHidden]: !hoverBuyButton,
+  })
 
-  const containerClass = classnames(
-    handles.buyButtonContainer,
-    'pv3 w-100 db'
-  )
+  const containerClass = classnames(handles.buyButtonContainer, 'pv3 w-100 db')
 
   const selectedSeller = path(['seller'], selectedItem)
   const isAvailable =
@@ -121,6 +113,7 @@ ProductSummaryBuyButton.propTypes = {
   displayBuyButton: PropTypes.oneOf(getDisplayButtonValues()),
   /** A custom URL for the `VIEW CART` button inside the toast created by BuyButton */
   customToastURL: PropTypes.string,
+  isHovering: PropTypes.bool,
 }
 
 ProductSummaryBuyButton.defaultProps = {

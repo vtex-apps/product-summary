@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { ProductBrand } from 'vtex.store-components'
-
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
 const DISPLAY_MODE = {
@@ -41,7 +40,7 @@ ProductSummaryBrand.propTypes = {
   ),
   /** Height of the logo */
   height: PropTypes.number,
-  /** If the logo should have a link*/
+  /** If the logo should have a link */
   logoWithLink: PropTypes.bool,
 }
 

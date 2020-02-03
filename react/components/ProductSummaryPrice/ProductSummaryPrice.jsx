@@ -5,7 +5,6 @@ import classNames from 'classnames'
 import { Spinner } from 'vtex.styleguide'
 import { ProductPrice } from 'vtex.store-components'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
-
 import { useCssHandles } from 'vtex.css-handles'
 
 const CSS_HANDLES = [
@@ -133,7 +132,7 @@ ProductSummaryPrice.propTypes = {
   showLabels: PropTypes.bool,
   /** Set installments' visibility */
   showInstallments: PropTypes.bool,
-  /** Set savings' visibility*/
+  /** Set savings' visibility */
   showDiscountValue: PropTypes.bool,
   /** Text of selling Price's label */
   labelSellingPrice: PropTypes.string,

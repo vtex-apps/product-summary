@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+
 import { CHOICE_TYPES } from './attachmentHelper'
 
 export const addedOptionShape = PropTypes.shape({

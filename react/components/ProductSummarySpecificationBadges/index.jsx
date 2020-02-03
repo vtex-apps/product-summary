@@ -1,3 +1,4 @@
+import { React } from 'react'
 import BaseSpecificationBadges from 'vtex.product-specification-badges/BaseSpecificationBadges'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 

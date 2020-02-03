@@ -6,12 +6,10 @@ import classNames from 'classnames'
 import { useDevice } from 'vtex.device-detector'
 import { useResponsiveValues } from 'vtex.responsive-values'
 import { useCssHandles, applyModifiers } from 'vtex.css-handles'
-import ImagePlaceholder from './ImagePlaceholder'
-
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
+import ImagePlaceholder from './ImagePlaceholder'
 import productSummary from '../../productSummary.css'
-
 import { changeImageUrlSize } from '../../utils/normalize'
 
 const CSS_HANDLES = ['image', 'imageContainer', 'product', 'imagePlaceholder']
@@ -185,10 +183,7 @@ const ProductImageContent = ({
     </div>
   )
 
-  return compose(
-    withBadge(showBadge),
-    withCollection(showCollections)
-  )(img)
+  return compose(withBadge(showBadge), withCollection(showCollections))(img)
 }
 
 const ProductImage = ({

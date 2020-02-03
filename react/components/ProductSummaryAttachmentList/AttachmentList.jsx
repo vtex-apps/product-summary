@@ -1,11 +1,10 @@
 import React from 'react'
 import { pathOr, reject } from 'ramda'
-
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
+import { useCssHandles } from 'vtex.css-handles'
+
 import RemovedAttachmentsList from './RemovedAttachmentsList'
 import AddedAttachmentsList from './AddedAttachmentsList'
-
-import { useCssHandles } from 'vtex.css-handles'
 
 const CSS_HANDLES = ['attachmentListContainer']
 

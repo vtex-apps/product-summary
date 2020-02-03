@@ -1,6 +1,8 @@
+// eslint-disable-next-line import/no-nodejs-modules
+import fs from 'fs'
+
 import React from 'react'
 import { render } from '@vtex/test-tools/react'
-import fs from 'fs'
 
 import ProductSummary from '../legacy/index'
 

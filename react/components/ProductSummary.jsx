@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useCallback, useMemo, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
@@ -5,16 +6,17 @@ import { pathOr, path } from 'ramda'
 import { useInView } from 'react-intersection-observer'
 import { Link } from 'vtex.render-runtime'
 import { ProductListContext } from 'vtex.product-list-context'
-import ProductSummaryContext from './ProductSummaryContext'
 import {
   ProductSummaryProvider,
   useProductSummaryDispatch,
   useProductSummary,
 } from 'vtex.product-summary-context/ProductSummaryContext'
 import { ProductContextProvider } from 'vtex.product-context'
+import { useCssHandles } from 'vtex.css-handles'
+
+import ProductSummaryContext from './ProductSummaryContext'
 import { productShape } from '../utils/propTypes'
 import { mapCatalogProductToProductSummary } from '../utils/normalize'
-import { useCssHandles } from 'vtex.css-handles'
 
 const PRODUCT_SUMMARY_MAX_WIDTH = 300
 const CSS_HANDLES = ['container', 'containerNormal', 'element', 'clearLink']
@@ -47,7 +49,7 @@ const ProductSummaryCustom = ({
       productListDispatch &&
         productListDispatch({
           type: 'SEND_IMPRESSION',
-          args: { product: product },
+          args: { product },
         })
     }
   }, [productListDispatch, inView, product])
@@ -76,10 +78,10 @@ const ProductSummaryCustom = ({
   }, [dispatch])
 
   const handleItemsStateUpdate = useCallback(
-    isLoading => {
+    loading => {
       dispatch({
         type: 'SET_LOADING',
-        args: { isLoading },
+        args: { loading },
       })
     },
     [dispatch]
@@ -90,7 +92,7 @@ const ProductSummaryCustom = ({
       product,
       isLoading,
       isHovering,
-      handleItemsStateUpdate: handleItemsStateUpdate,
+      handleItemsStateUpdate,
     }),
     [product, isLoading, isHovering, handleItemsStateUpdate]
   )
