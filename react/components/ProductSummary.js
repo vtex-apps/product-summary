@@ -29,7 +29,12 @@ const ProductSummaryCustom = ({
   const dispatch = useProductSummaryDispatch()
   const handles = useCssHandles(CSS_HANDLES)
 
-  // Use ProductListContext to send pixel events
+  /*
+    Use ProductListContext to send pixel events.
+    Beware that productListDispatch could be undefined if
+    this component is not wrapped by a <ProductListContextProvider/>.
+    In that case we don't need to send events.
+  */
   const { useProductListDispatch } = ProductListContext
   const productListDispatch = useProductListDispatch()
   const [inViewRef, inView] = useInView({
