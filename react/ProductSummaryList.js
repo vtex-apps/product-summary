@@ -12,7 +12,7 @@ import { productSearchV2 } from 'vtex.store-resources/Queries'
 const ORDER_BY_OPTIONS = {
   ORDER_BY_RELEVANCE: {
     name: 'admin/editor.productSummaryList.orderType.relevance',
-    value: '',
+    value: 'OrderByScoreDESC',
   },
   ORDER_BY_TOP_SALE_DESC: {
     name: 'admin/editor.productSummaryList.orderType.sales',
