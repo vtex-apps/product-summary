@@ -13,8 +13,12 @@ import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryCo
 import productSummary from '../../productSummary.css'
 
 import { changeImageUrlSize } from '../../utils/normalize'
+import { imageUrl } from '../../utils/aspectRatioUtil'
 
 const CSS_HANDLES = ['image', 'imageContainer', 'product', 'imagePlaceholder']
+
+const MAX_SIZE = 300
+const DEFAULT_SIZE = 200
 
 const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
   if (shouldShow) {
@@ -46,7 +50,38 @@ const findImageByLabel = (images, selectedLabel) => {
   return images.find(({ imageLabel }) => imageLabel === selectedLabel)
 }
 
-const Image = ({ src, width, height, onError, alt, className }) => {
+const getImageSrc = (src, width, height, dpi, aspectRatio) => {
+  if (width || height) {
+    return changeImageUrlSize(src, width * dpi, height * dpi)
+  } else if (aspectRatio !== 'auto' && width) {
+    return imageUrl(src, width, MAX_SIZE, aspectRatio)
+  } else {
+    return src
+  }
+}
+
+const getStyle = (width, height, aspectRatio, maxHeight) => {
+  if (width && height) {
+    return {
+      width: '100%',
+      height,
+      objectFit: 'contain',
+      maxHeight: 'unset',
+      maxWidth: width,
+    }
+  } else if (aspectRatio !== 'auto' && width) {
+    return {
+      width: '100%',
+      height: '100%',
+      objectFit: 'contain',
+      maxHeight: maxHeight || 'unset',
+    }
+  } else {
+    return null
+  }
+}
+
+const Image = ({ src, width, height, onError, alt, className, aspectRatio, maxHeight }) => {
   const { isMobile } = useDevice()
 
   const dpi = window.devicePixelRatio || (isMobile ? 2 : 1)
@@ -55,20 +90,8 @@ const Image = ({ src, width, height, onError, alt, className }) => {
 
   return (
     <img
-      src={
-        shouldResize ? changeImageUrlSize(src, width * dpi, height * dpi) : src
-      }
-      style={
-        shouldResize
-          ? {
-              width: '100%',
-              height,
-              objectFit: 'contain',
-              maxHeight: 'unset',
-              maxWidth: width,
-            }
-          : null
-      }
+      src = { getImageSrc(src, width, height, dpi, aspectRatio) }
+      style={ getStyle(width, height, aspectRatio, maxHeight) }
       loading={shouldResize ? 'lazy' : 'auto'}
       alt={alt}
       className={className}
@@ -89,6 +112,8 @@ const ProductImageContent = ({
   showCollections,
   width: widthProp,
   height: heightProp,
+  aspectRatio,
+  maxHeight,
 }) => {
   const { productClusters, productName: name } = product || {}
 
@@ -168,6 +193,8 @@ const ProductImageContent = ({
         src={imageUrl}
         width={width}
         height={height}
+        aspectRatio={aspectRatio}
+        maxHeight={maxHeight}
         alt={name}
         className={imageClassname}
         onError={onError}
@@ -177,6 +204,8 @@ const ProductImageContent = ({
           src={hoverImage.imageUrl}
           width={width}
           height={height}
+          aspectRatio={aspectRatio}
+          maxHeight={maxHeight}
           alt={name}
           className={hoverImageClassname}
           onError={onError}
@@ -200,6 +229,8 @@ const ProductImage = ({
   showCollections,
   width: widthProp,
   height: heightProp,
+  aspectRatio,
+  maxHeight,
 }) => {
   const { product } = useProductSummary()
 
@@ -219,6 +250,8 @@ const ProductImage = ({
       <ProductImageContent
         width={width}
         height={height}
+        aspectRatio={aspectRatio}
+        maxHeight={maxHeight}
         hasError={error}
         product={product}
         badgeText={badgeText}
