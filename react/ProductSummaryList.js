@@ -10,35 +10,35 @@ import ProductListEventCaller from './components/ProductListEventCaller'
 import { productSearchV2 } from 'vtex.store-resources/Queries'
 
 const ORDER_BY_OPTIONS = {
-  ORDER_BY_RELEVANCE: {
+  RELEVANCE: {
     name: 'admin/editor.productSummaryList.orderType.relevance',
     value: 'OrderByScoreDESC',
   },
-  ORDER_BY_TOP_SALE_DESC: {
+  TOP_SALE_DESC: {
     name: 'admin/editor.productSummaryList.orderType.sales',
     value: 'OrderByTopSaleDESC',
   },
-  ORDER_BY_PRICE_DESC: {
+  PRICE_DESC: {
     name: 'admin/editor.productSummaryList.orderType.priceDesc',
     value: 'OrderByPriceDESC',
   },
-  ORDER_BY_PRICE_ASC: {
+  PRICE_ASC: {
     name: 'admin/editor.productSummaryList.orderType.priceAsc',
     value: 'OrderByPriceASC',
   },
-  ORDER_BY_NAME_ASC: {
+  NAME_ASC: {
     name: 'admin/editor.productSummaryList.orderType.nameAsc',
     value: 'OrderByNameASC',
   },
-  ORDER_BY_NAME_DESC: {
+  NAME_DESC: {
     name: 'admin/editor.productSummaryList.orderType.nameDesc',
     value: 'OrderByNameDESC',
   },
-  ORDER_BY_RELEASE_DATE_DESC: {
+  RELEASE_DATE_DESC: {
     name: 'admin/editor.productSummaryList.orderType.releaseDate',
     value: 'OrderByReleaseDateDESC',
   },
-  ORDER_BY_BEST_DISCOUNT_DESC: {
+  BEST_DISCOUNT_DESC: {
     name: 'admin/editor.productSummaryList.orderType.discount',
     value: 'OrderByBestDiscountDESC',
   },
@@ -56,12 +56,12 @@ const ProductSummaryList = ({
   category = '',
   collection,
   hideUnavailableItems = false,
-  orderBy = ORDER_BY_OPTIONS.ORDER_BY_TOP_SALE_DESC.value,
+  orderBy = ORDER_BY_OPTIONS.TOP_SALE_DESC.value,
   specificationFilters = [],
   maxItems = 10,
   withFacets = false,
 }) => {
-  const { data, loading, error } = useQuery(productSearchV2, {
+  const { data } = useQuery(productSearchV2, {
     ssr: true,
     name: 'productList',
     variables: {
@@ -82,9 +82,6 @@ const ProductSummaryList = ({
 
   const { list } = useListContext()
   const { treePath } = useTreePath()
-  // useProductImpression()
-
-  if (loading) return null
 
   const componentList =
     data.productSearch &&
@@ -163,7 +160,7 @@ EnhancedProductList.getSchema = () => ({
       type: 'string',
       enum: getOrdinationProp('value'),
       enumNames: getOrdinationProp('name'),
-      default: ORDER_BY_OPTIONS.ORDER_BY_TOP_SALE_DESC.value,
+      default: ORDER_BY_OPTIONS.TOP_SALE_DESC.value,
       isLayout: false,
     },
     hideUnavailableItems: {
