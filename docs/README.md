@@ -1,60 +1,68 @@
-📢 Don't fork this project. Use, [contribute](https://github.com/vtex-apps/awesome-io#contributing), or open issues through [Store Discussion](https://github.com/vtex-apps/store-discussion).
+📢 Use this project, [contribute](https://github.com/vtex-apps/breadcrumb) to it or open issues to help evolve it using [Store Discussion](https://github.com/vtex-apps/store-discussion).
 
 # Product Summary
 
-Product Summary summarises the product informations such as name, price and picture.
-This is a VTEX app that is used by store theme.
+Product Summary is an app responsible for summarizing product information (such as name, price and image) in other store blocks, such as the [Shelf](https://vtex.io/docs/components/all/vtex.shelf/) and the [Minicart](https://vtex.io/docs/components/all/vtex.minicart/).
 
 ![image](https://user-images.githubusercontent.com/284515/70235170-1a503a80-1741-11ea-952d-07b178995f92.png)
 
 ## Configuration
 
-1. Import the vtex.store-component's app to your theme's dependencies in the manifest.json, for example:
+1. Import the `vtex.product-summary` app to your theme's dependencies in the `manifest.json`:
 
 ```json
   dependencies: {
     "vtex.product-summary": "2.x"
   }
 ```
-2. Add the `product-summary` block. For example:
+
+Now, you are able to use all blocks exported by the `product-summary` app. Check out the full list below:
+
+| Block name     | 
+| -------------- | 
+| `product-summary.shelf` | 
+| `product-summary-attachment-list` | 
+| `product-summary-brand`         | 
+| `product-summary-buy-button` | 
+| `product-summary-description` | 
+| `product-summary-image` |
+| `product-summary-name` | 
+| `product-summary-price` | 
+| `product-summary-sku-selector` | 
+| `product-specification-badges` | 
+
+
+2. Add the `product-summary.shelf` block to the block that will host the product information, such as the Shelf. Notice that although the block's name refers to the Shelf block, it can and should be used in any block that is able to render product information, such as the Minicart and those found on the [Search Results](https://vtex.io/docs/components/all/vtex.search-result/) page.
 
 ```json
-"product-summary": {
-  "props": {
-    "isOneClickBuy": false,
-    "showBadge": true,
-    "badgeText": "OFF",
-    "displayBuyButton": "displayButtonHover",
-    "showCollections": false,
-    "showListPrice": true,
-    "showLabels": false,
-    "showInstallments": true,
-    "showSavings": true
+    "shelf#home": {
+    "blocks": [
+      "product-summary.shelf"
+    ],
+    
+```
+    
+3. Then, based on the product information you desire to have rendered, choose which blocks from the exported list above will be sent as the `product-summary.shelf` children. For example:
+
+```json
+    "shelf#home": {
+    "blocks": [
+      "product-summary.shelf"
+    ],
+    "product-summary.shelf": {
+    "children": [
+      "product-summary-name",
+      "product-summary-description"
+      "product-summary-image",
+      "product-summary-price",
+      "product-summary-sku-selector",
+      "product-summary-buy-button"
+    ]
   }
 }
 ```
 
-| Prop name           | Type      | Description                                                                                 |
-| ------------------- | --------- | ------------------------------------------------------------------------------------------- |
-| `showListPrice`     | `Boolean` | Shows the product list price                                                                |
-| `isOneClickBuy`     | `Boolean` | Should redirect to checkout after clicking on buy                                           |
-| `showLabels`        | `Boolean` | Set pricing labels' visibility                                                              |
-| `showInstallments`  | `Boolean` | Set installments' visibility                                                                |
-| `showBorders`       | `Boolean` | Set product's borders visibility                                                            |
-| `showBadge`         | `Boolean` | Set the discount badge's visibility                                                         |
-| `showDescription`   | `Boolean` | Set product's description visibility                                                        |
-| `labelSellingPrice` | `String`  | Text of selling price's label                                                               |
-| `labelListPrice`    | `String`  | Text of list price's label                                                                  |
-| `badgeText`         | `String`  | Text shown on badge                                                                         |
-| `buyButtonText`     | `String`  | Custom buy button text                                                                      |
-| `displayBuyButton`  | `Enum`    | Set display mode of buy button (displayButtonAlways, displayButtonHover, displayButtonNone) |
-| `hideBuyButton`     | `Boolean` | Hides the buybutton completely                                                              |
-| `showCollections`   | `Boolean` | Set collection badges' visibility                                                           |
-| `displayMode`       | `Enum`    | Set display mode of product summary (normal, small, inline or inlinePrice)                               |
-| `showQuantitySelector`       | `Boolean`    | Set the quantity selector visibility              
-|
-| `priceAlignLeft`       | `Boolean`    | Set the price to be left aligned              
-|
+In order to configure and better understand each of the Product Summary exported blocks, go through their respective documentation in the [Docs](https://github.com/vtex-apps/product-summary/tree/master/docs) folder.
 
 #### Customization
 
