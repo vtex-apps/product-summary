@@ -39,7 +39,7 @@ Now, you are able to use all blocks exported by the `product-summary` app. Check
     "blocks": [
       "product-summary.shelf"
     ],
-    
+    }
 ```
     
 3. Then, based on the product information you desire to have rendered, choose which blocks from the exported list above will be sent as the `product-summary.shelf` children. For example:
