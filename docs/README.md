@@ -11,7 +11,7 @@ Product Summary is an app responsible for summarizing product information (such 
 1. Import the `vtex.product-summary` app to your theme's dependencies in the `manifest.json`:
 
 ```json
-  dependencies: {
+  "dependencies": {
     "vtex.product-summary": "2.x"
   }
 ```
