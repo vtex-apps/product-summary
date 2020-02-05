@@ -42,17 +42,18 @@ Now, you are able to use all blocks exported by the `product-summary` app. Check
     }
 ```
     
-3. Then, based on the product information you desire to have rendered, choose which blocks from the exported list above will be sent as the `product-summary.shelf` children. For example:
+3. Then, based on the product information you desire to have rendered, choose which blocks from the exported list above will be sent as the `product-summary.shelf` children. In a scenario in which we want to display the product name, description, image, price, a SKU selector and then a Buy Button, it would go as follows:
 
 ```json
-    "shelf#home": {
-    "blocks": [
-      "product-summary.shelf"
-    ],
-    "product-summary.shelf": {
+   {
+  "shelf#home": {
+    "blocks": ["product-summary.shelf"]
+  },
+
+  "product-summary.shelf": {
     "children": [
       "product-summary-name",
-      "product-summary-description"
+      "product-summary-description",
       "product-summary-image",
       "product-summary-price",
       "product-summary-sku-selector",
