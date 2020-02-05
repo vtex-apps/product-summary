@@ -1,6 +1,6 @@
 # ProductSummaryList
 
-The `list-context.product-list` interface is a stance of the `list-context` interfaces, which means its part of a set of special interfaces that enables you to create lists of content that can be edited via Site Editor.
+The `list-context.product-list` interface is a instance of the `list-context` interfaces, which means its part of a set of special interfaces that enables you to create lists of content that can be edited via Site Editor.
 
 In order to create a list of products, you need to use the `list-context.product-list` block and a `product-summary.shelf`.
 
