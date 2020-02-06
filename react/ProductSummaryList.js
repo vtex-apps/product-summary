@@ -61,7 +61,7 @@ const ProductSummaryList = ({
   maxItems = 10,
   withFacets = false,
 }) => {
-  const { data } = useQuery(productSearchV2, {
+  const { data, loading, error } = useQuery(productSearchV2, {
     ssr: true,
     name: 'productList',
     variables: {
@@ -79,6 +79,11 @@ const ProductSummaryList = ({
       withFacets,
     },
   })
+
+  // TODO Improve this error handling in the future
+  if (loading || error) {
+    return null
+  }
 
   const { list } = useListContext()
   const { treePath } = useTreePath()
