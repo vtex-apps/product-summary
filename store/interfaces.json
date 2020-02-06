@@ -7,75 +7,18 @@
     "allowed": ["addon-summary-btn"]
   },
   "product-summary.shelf": {
-    "allowed": [
-      "product-summary-column",
-      "product-summary-attachment-list",
-      "product-summary-buy-button",
-      "product-summary-description",
-      "product-summary-image",
-      "product-summary-name",
-      "product-summary-price",
-      "product-identifier",
-      "product-summary-sku-selector",
-      "product-summary-space",
-      "product-summary-add-to-list-button",
-      "product-rating-inline",
-      "product-teaser.summary",
-      "product-summary-brand",
-      "product-summary-quantity",
-      "product-summary-specification-badges",
-      "product-bookmark",
-      "rich-text",
-      "flex-layout",
-      "stack-layout",
-      "add-to-cart-button"
-    ],
     "component": "ProductSummaryCustom",
     "composition": "children"
   },
   "product-summary-column": {
-    "allowed": [
-      "product-summary-attachment-list",
-      "product-summary-buy-button",
-      "product-summary-description",
-      "product-summary-image",
-      "product-summary-name",
-      "product-summary-price",
-      "product-identifier",
-      "product-summary-space",
-      "product-summary-add-to-list-button",
-      "product-rating-inline",
-      "product-summary-specification-badges",
-      "product-teaser.summary"
-    ],
     "component": "Column",
     "composition": "children"
   },
   "product-summary.unstable--flex": {
-    "allowed": [
-      "unstable--product-summary-column",
-      "product-summary-attachment-list",
-      "product-summary-buy-button",
-      "product-summary-description",
-      "product-summary-image",
-      "product-summary-name",
-      "product-summary-price",
-      "product-summary-space",
-      "product-rating-inline"
-    ],
     "component": "ProductSummaryCustom",
     "composition": "children"
   },
   "unstable--product-summary-column": {
-    "allowed": [
-      "product-summary-attachment-list",
-      "product-summary-buy-button",
-      "product-summary-description",
-      "product-summary-image",
-      "product-summary-name",
-      "product-summary-price",
-      "product-summary-space"
-    ],
     "component": "Column",
     "composition": "children"
   },
@@ -139,5 +82,10 @@
   },
   "addon-summary-btn": {
     "component": "*"
+  },
+  "list-context.product-list": {
+    "allowed": ["product-summary"],
+    "composition": "children",
+    "component": "ProductSummaryList"
   }
 }
