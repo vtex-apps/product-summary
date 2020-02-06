@@ -23,7 +23,6 @@ const ProductSummaryCustom = ({
   product,
   actionOnClick,
   children,
-  containerRef,
 }) => {
   const { isLoading, isHovering, selectedItem, query } = useProductSummary()
   const dispatch = useProductSummaryDispatch()
@@ -122,8 +121,7 @@ const ProductSummaryCustom = ({
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
-          // If containerRef is passed, it should be used
-          ref={containerRef || inViewRef}
+          ref={inViewRef}
         >
           <Link
             className={linkClasses}
