@@ -80,7 +80,7 @@ const ProductSummaryList = ({
     },
   })
 
-  // TODO Improve this error handling in the future
+  // https://github.com/vtex-apps/product-summary/issues/235
   if (loading || error) {
     return null
   }
