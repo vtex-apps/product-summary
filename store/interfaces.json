@@ -86,6 +86,10 @@
   "list-context.product-list": {
     "allowed": ["product-summary"],
     "composition": "children",
-    "component": "ProductSummaryList"
+    "component": "ProductSummaryList",
+    "preview": {
+      "type": "grid",
+      "height": 550
+    }
   }
 }
