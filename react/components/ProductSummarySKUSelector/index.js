@@ -47,10 +47,7 @@ function ProductSummarySKUSelector(props) {
   const handles = useCssHandles(CSS_HANDLES)
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-    <div
-      onClick={stopBubblingUp}
-      className={handles.SKUSelectorContainer}
-    >
+    <div onClick={stopBubblingUp} className={handles.SKUSelectorContainer}>
       <SKUSelector onSKUSelected={handleSKUSelected} {...props} />
     </div>
   )
