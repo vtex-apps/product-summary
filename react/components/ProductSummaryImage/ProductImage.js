@@ -95,7 +95,7 @@ const ProductImageContent = ({
   const handles = useCssHandles(CSS_HANDLES)
   const { isMobile } = useDevice()
   const {
-    skuSelector: { selectedColorVariationSKU },
+    skuSelector: { selectedImageVariationSKU },
   } = useProduct()
 
   const { productClusters, productName: name } = product || {}
@@ -131,7 +131,7 @@ const ProductImageContent = ({
 
   let imageUrl = pathOr({}, ['image', 'imageUrl'], sku)
 
-  if (selectedColorVariationSKU == null && mainImageLabel) {
+  if (selectedImageVariationSKU == null && mainImageLabel) {
     const mainImage = findImageByLabel(images, mainImageLabel)
     if (mainImage) {
       imageUrl = mainImage.imageUrl
