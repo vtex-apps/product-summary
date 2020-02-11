@@ -6,6 +6,8 @@ import classNames from 'classnames'
 import { useDevice } from 'vtex.device-detector'
 import { useResponsiveValues } from 'vtex.responsive-values'
 import { useCssHandles, applyModifiers } from 'vtex.css-handles'
+import { useProduct } from 'vtex.product-context'
+
 import ImagePlaceholder from './ImagePlaceholder'
 
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
@@ -90,12 +92,14 @@ const ProductImageContent = ({
   width: widthProp,
   height: heightProp,
 }) => {
-  const { productClusters, productName: name } = product || {}
-
-  const sku = product && product.sku
-
-  const { isMobile } = useDevice()
   const handles = useCssHandles(CSS_HANDLES)
+  const { isMobile } = useDevice()
+  const {
+    skuSelector: { selectedImageVariationSKU },
+  } = useProduct()
+
+  const { productClusters, productName: name } = product || {}
+  const sku = product && product.sku
 
   const [width, height] = [
     // fallsback to the other remaining value, if not defined
@@ -126,7 +130,8 @@ const ProductImageContent = ({
   const hoverImage = findImageByLabel(images, hoverImageLabel)
 
   let imageUrl = pathOr({}, ['image', 'imageUrl'], sku)
-  if (mainImageLabel) {
+
+  if (selectedImageVariationSKU == null && mainImageLabel) {
     const mainImage = findImageByLabel(images, mainImageLabel)
     if (mainImage) {
       imageUrl = mainImage.imageUrl
