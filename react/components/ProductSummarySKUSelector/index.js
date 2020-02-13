@@ -18,6 +18,14 @@ function ProductSummarySKUSelector(props) {
   const { product } = useProductSummary()
 
   const handleSKUSelected = skuId => {
+    if (skuId == null) {
+      dispatch({
+        type: 'SET_PRODUCT_QUERY',
+        args: { query: '' },
+      })
+      return
+    }
+
     const selectedItem =
       product.items && product.items.find(item => item.itemId === skuId)
 
