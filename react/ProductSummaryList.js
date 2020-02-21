@@ -7,7 +7,7 @@ import { useListContext, ListContextProvider } from 'vtex.list-context'
 import { mapCatalogProductToProductSummary } from './utils/normalize'
 import ProductListEventCaller from './components/ProductListEventCaller'
 
-import productSearchV2 from 'vtex.store-resources/QueryProductSearchV2'
+import productsQuery from 'vtex.store-resources/QueryProducts'
 
 const ORDER_BY_OPTIONS = {
   RELEVANCE: {
@@ -59,10 +59,9 @@ const ProductSummaryList = ({
   orderBy = ORDER_BY_OPTIONS.TOP_SALE_DESC.value,
   specificationFilters = [],
   maxItems = 10,
-  withFacets = false,
+  skusFilter,
 }) => {
-  const { data, loading, error } = useQuery(productSearchV2, {
-    ssr: true,
+  const { data, loading, error } = useQuery(productsQuery, {
     name: 'productList',
     variables: {
       category,
@@ -76,7 +75,7 @@ const ProductSummaryList = ({
       from: 0,
       to: maxItems - 1,
       hideUnavailableItems,
-      withFacets,
+      skusFilter,
     },
   })
 
@@ -88,7 +87,7 @@ const ProductSummaryList = ({
   const { list } = useListContext()
   const { treePath } = useTreePath()
 
-  const products = data.productSearch && data.productSearch.products
+  const { products } = data
 
   const newListContextValue = useMemo(() => {
     const componentList =
