@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useQuery } from 'react-apollo'
 import { ProductListContext } from 'vtex.product-list-context'
 import { ExtensionPoint, useTreePath } from 'vtex.render-runtime'
@@ -7,7 +7,7 @@ import { useListContext, ListContextProvider } from 'vtex.list-context'
 import { mapCatalogProductToProductSummary } from './utils/normalize'
 import ProductListEventCaller from './components/ProductListEventCaller'
 
-import { productSearchV2 } from 'vtex.store-resources/Queries'
+import productSearchV2 from 'vtex.store-resources/QueryProductSearchV2'
 
 const ORDER_BY_OPTIONS = {
   RELEVANCE: {
@@ -68,8 +68,8 @@ const ProductSummaryList = ({
       category,
       ...(collection != null
         ? {
-            collection,
-          }
+          collection,
+        }
         : {}),
       specificationFilters: specificationFilters.map(parseFilters),
       orderBy,
@@ -88,22 +88,25 @@ const ProductSummaryList = ({
   const { list } = useListContext()
   const { treePath } = useTreePath()
 
-  const componentList =
-    data.productSearch &&
-    data.productSearch.products.map(product => {
-      const normalizedProduct = mapCatalogProductToProductSummary(product)
+  const products = data.productSearch && data.productSearch.products
 
-      return (
-        <ExtensionPoint
-          id="product-summary"
-          key={product.id}
-          treePath={treePath}
-          product={normalizedProduct}
-        />
-      )
-    })
+  const newListContextValue = useMemo(() => {
+    const componentList =
+      products &&
+      products.map(product => {
+        const normalizedProduct = mapCatalogProductToProductSummary(product)
 
-  const newListContextValue = list.concat(componentList)
+        return (
+          <ExtensionPoint
+            id="product-summary"
+            key={product.id}
+            treePath={treePath}
+            product={normalizedProduct}
+          />
+        )
+      })
+    return list.concat(componentList)
+  }, [products, treePath, list])
 
   return (
     <ListContextProvider list={newListContextValue}>
