@@ -51,7 +51,14 @@ const findImageByLabel = (images, selectedLabel) => {
 const Image = ({ src, width, height, onError, alt, className }) => {
   const { isMobile } = useDevice()
 
+  /** TODO: Previously it was as follows :
+   * 
   const dpi = window.devicePixelRatio || (isMobile ? 2 : 1)
+   *
+   * it seems good, because it takes the actual user's screen density
+   * into account, but causes images to be re-downloaded if the initial
+   * device-based guess was wrong. Has to be looked into */
+  const dpi = isMobile ? 2 : 1
 
   const shouldResize = !!(width || height)
 
