@@ -58,6 +58,7 @@ const ProductSummaryList = ({
   hideUnavailableItems = false,
   orderBy = ORDER_BY_OPTIONS.TOP_SALE_DESC.value,
   specificationFilters = [],
+  skusFilter,
   maxItems = 10,
   withFacets = false,
 }) => {
@@ -65,6 +66,7 @@ const ProductSummaryList = ({
     ssr: true,
     name: 'productList',
     variables: {
+      skusFilter,
       category,
       ...(collection != null
         ? {
@@ -115,12 +117,12 @@ const ProductSummaryList = ({
   )
 }
 
-const EnhancedProductList = ({ children }) => {
+const EnhancedProductList = ({ children, ...props }) => {
   const { ProductListProvider } = ProductListContext
 
   return (
     <ProductListProvider>
-      <ProductSummaryList>{children}</ProductSummaryList>
+      <ProductSummaryList {...props}>{children}</ProductSummaryList>
       <ProductListEventCaller />
     </ProductListProvider>
   )
