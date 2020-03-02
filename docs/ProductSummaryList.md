@@ -35,3 +35,21 @@ This block is used to specify what variation of `product-summary` to be used to 
 | `orderBy`              | `Enum`                                 | Ordination type of the items. Possible values: `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, `OrderByNameDESC` | `OrderByTopSaleDESC`          |
 | `hideUnavailableItems` | `Boolean`                              | Hides items that are unavailable.                                                                                                                                                                                                         | `false`       |
 | `maxItems` | `Number`                              | Maximum items to be fetched.                                                                                                                                                                                                         | `10`       |
+| `skusFilter`               | `SkusFilterEnum`                 | Control SKUs returned for each product in the query. The less SKUs needed to be returned, the more performant your shelf query will be.                                                                                                    | `"ALL_AVAILABLE"` |
+| `installmentCriteria`               | `InstallmentCriteriaEnum`                 | ControlControl what pricee to be shown when price has different installments options.                                                                                                    | `"MAX_WITHOUT_INTEREST"` |
+
+For `SkusFilterEnum`:
+
+| Name | Value | Description |
+| ---- | ----- | ----------- |
+| First Available | `FIRST_AVAILABLE` | Most performant, ideal if you do not have a SKU selector in your shelf. Will return only the first available SKU for that product in your shelf query. |
+| All Available | `ALL_AVAILABLE` | A bit better performace, will only return SKUs that are available, ideal if you have a SKU selector but still want a better performance. |
+| All | `ALL` | Returns all SKUs related to that product, least performant option. |
+
+For `InstallmentCriteriaEnum`:
+
+| Name | Value | Description |
+| ---- | ----- | ----------- |
+| Maximum without interest | `MAX_WITHOUT_INTEREST` | Will display price with maximum value before interest. |
+| Maximum with interest | `MAX_WITH_INTEREST` | Will display price with maximum value after interest applied. |
+| Minimum | `MIN` | Will display the lowest price before interest. |
