@@ -60,9 +60,9 @@ const ProductSummaryList = ({
   specificationFilters = [],
   maxItems = 10,
   skusFilter,
+  installmentCriteria,
 }) => {
   const { data, loading, error } = useQuery(productsQuery, {
-    name: 'productList',
     variables: {
       category,
       ...(collection != null
@@ -76,6 +76,7 @@ const ProductSummaryList = ({
       to: maxItems - 1,
       hideUnavailableItems,
       skusFilter,
+      installmentCriteria,
     },
   })
 
@@ -181,6 +182,30 @@ EnhancedProductList.getSchema = () => ({
       type: 'number',
       isLayout: false,
       default: 10,
+    },
+    skusFilter: {
+      title: 'admin/editor.productSummaryList.skusFilter.title',
+      description: 'admin/editor.productSummaryList.skusFilter.description',
+      type: 'string',
+      default: 'ALL_AVAILABLE',
+      enum: ['ALL_AVAILABLE', 'ALL', 'FIRST_AVAILABLE'],
+      enumNames: [
+        'admin/editor.productSummaryList.skusFilter.all-available',
+        'admin/editor.productSummaryList.skusFilter.none',
+        'admin/editor.productSummaryList.skusFilter.first-available'
+      ]
+    },
+    installmentCriteria: {
+      title: 'admin/editor.productSummaryList.installmentCriteria.title',
+      description: 'admin/editor.productSummaryList.installmentCriteria.description',
+      type: 'string',
+      default: 'MAX_WITHOUT_INTEREST',
+      enum: ['MAX_WITHOUT_INTEREST', 'MAX_WITH_INTEREST', 'MIN'],
+      enumNames: [
+        'admin/editor.productSummaryList.installmentCriteria.max-without-interest',
+        'admin/editor.productSummaryList.installmentCriteria.max-with-interest',
+        'admin/editor.productSummaryList.installmentCriteria.min'
+      ]
     },
   },
 })

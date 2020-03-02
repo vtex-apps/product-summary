@@ -54,5 +54,15 @@
   "admin/editor.productSummaryList.orderType.nameDesc": "Name, descending",
   "admin/editor.productSummaryList.orderType.releaseDate": "Release Date",
   "admin/editor.productSummaryList.orderType.discount": "Discount",
-  "admin/editor.productSummaryList.orderType.relevance": "Relevance"
+  "admin/editor.productSummaryList.orderType.relevance": "Relevance",
+  "admin/editor.productSummaryList.skusFilter.title": "SKUs Filter",
+  "admin/editor.productSummaryList.skusFilter.description": "Setting the first available filter might make your query much faster!",
+  "admin/editor.productSummaryList.skusFilter.none": "None",
+  "admin/editor.productSummaryList.skusFilter.first-available": "First available",
+  "admin/editor.productSummaryList.skusFilter.all-available": "All available",
+  "admin/editor.productSummaryList.installmentCriteria.title": "Prices with Installment",
+  "admin/editor.productSummaryList.installmentCriteria.description": "Choose what type of prices to be showed in the products displayed (e.g.: maximum without interest or with interest, etc).",
+  "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum without interest",
+  "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum with interest",
+  "admin/editor.productSummaryList.installmentCriteria.min": "Minimum"
 }

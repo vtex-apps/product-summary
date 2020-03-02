@@ -54,5 +54,15 @@
   "admin/editor.productSummaryList.orderType.nameDesc": "Nome, decrescente",
   "admin/editor.productSummaryList.orderType.releaseDate": "Data de lançamento",
   "admin/editor.productSummaryList.orderType.discount": "Desconto",
-  "admin/editor.productSummaryList.orderType.relevance": "Relevância"
+  "admin/editor.productSummaryList.orderType.relevance": "Relevância",
+  "admin/editor.productSummaryList.skusFilter.title": "Filtro de SKUs",
+  "admin/editor.productSummaryList.skusFilter.description": "Configurando o valor de primeiro disponível pode fazer sua query ser mais rápida!",
+  "admin/editor.productSummaryList.skusFilter.none": "Nenhum",
+  "admin/editor.productSummaryList.skusFilter.first-available": "Primeiro Disponível",
+  "admin/editor.productSummaryList.skusFilter.all-available": "Todos Disponíveis",
+  "admin/editor.productSummaryList.installmentCriteria.title": "Preços com Parcelas",
+  "admin/editor.productSummaryList.installmentCriteria.description": "Escolha qual tipo de preço a ser mostrado nos produtos (ex.: máximo sem juros, ou com juros, etc).",
+  "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Máximo sem juros",
+  "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Máximo com juros",
+  "admin/editor.productSummaryList.installmentCriteria.min": "Mínimo"
 }
