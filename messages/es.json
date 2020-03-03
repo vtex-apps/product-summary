@@ -54,5 +54,14 @@
   "admin/editor.productSummaryList.orderType.nameDesc": "Nombre, descendiendo",
   "admin/editor.productSummaryList.orderType.releaseDate": "Fecha de lanzamiento",
   "admin/editor.productSummaryList.orderType.discount": "Descuento",
-  "admin/editor.productSummaryList.orderType.relevance": "Relevancia"
+  "admin/editor.productSummaryList.orderType.relevance": "Relevancia",
+  "admin/editor.productSummaryList.skusFilter.title": "Filtro de SKUs",
+  "admin/editor.productSummaryList.skusFilter.description": "¡Establecer el primer iten disponible agiliza su consulta!",
+  "admin/editor.productSummaryList.skusFilter.none": "Ninguno",
+  "admin/editor.productSummaryList.skusFilter.first-available": "Primero disponible",
+  "admin/editor.productSummaryList.skusFilter.all-available": "Todos disponibles",
+  "admin/editor.productSummaryList.installmentCriteria.title": "Criterio de cuotas",
+  "admin/editor.productSummaryList.installmentCriteria.description": "Elija qué tipo de cuota se mostrará en los productos (p. Ej., Máximo sin interés o con interés).",
+  "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Máximo sin interés",
+  "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Máximo"
 }

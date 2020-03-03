@@ -54,5 +54,14 @@
   "admin/editor.productSummaryList.orderType.nameDesc": "Name, descending",
   "admin/editor.productSummaryList.orderType.releaseDate": "Release Date",
   "admin/editor.productSummaryList.orderType.discount": "Discount",
-  "admin/editor.productSummaryList.orderType.relevance": "Relevance"
+  "admin/editor.productSummaryList.orderType.relevance": "Relevance",
+  "admin/editor.productSummaryList.skusFilter.title": "Title of skus filter property",
+  "admin/editor.productSummaryList.skusFilter.description": "Description of skus filter property",
+  "admin/editor.productSummaryList.skusFilter.none": "Value none of skus filter enum",
+  "admin/editor.productSummaryList.skusFilter.first-available": "Value first available of skus filter enum",
+  "admin/editor.productSummaryList.skusFilter.all-available": "Value all available of skus filter enum",
+  "admin/editor.productSummaryList.installmentCriteria.title": "Title of installment criteria property",
+  "admin/editor.productSummaryList.installmentCriteria.description": "Description of installment criteria property",
+  "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum without interest enum name",
+  "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum with interest enum name"
 }
