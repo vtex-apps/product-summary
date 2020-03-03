@@ -63,6 +63,5 @@
   "admin/editor.productSummaryList.installmentCriteria.title": "Criterio de precio a plazos",
   "admin/editor.productSummaryList.installmentCriteria.description": "Elija qué tipo de precio se mostrará en los productos (por ejemplo, máximo sin interés, o con interés, etc.)",
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Máximo sin interés",
-  "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Máximo con interés",
-  "admin/editor.productSummaryList.installmentCriteria.min": "Mínimo"
+  "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Máximo con interés"
 }

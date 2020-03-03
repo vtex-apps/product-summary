@@ -63,6 +63,5 @@
   "admin/editor.productSummaryList.installmentCriteria.title": "Prices with Installment",
   "admin/editor.productSummaryList.installmentCriteria.description": "Choose what type of prices to be showed in the products displayed (e.g.: maximum without interest or with interest, etc).",
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum without interest",
-  "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum with interest",
-  "admin/editor.productSummaryList.installmentCriteria.min": "Minimum"
+  "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum with interest"
 }

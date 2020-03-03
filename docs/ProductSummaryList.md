@@ -52,4 +52,3 @@ For `InstallmentCriteriaEnum`:
 | ---- | ----- | ----------- |
 | Maximum without interest | `MAX_WITHOUT_INTEREST` | Will display price with maximum value before interest. |
 | Maximum with interest | `MAX_WITH_INTEREST` | Will display price with maximum value after interest applied. |
-| Minimum | `MIN` | Will display the lowest price before interest. |

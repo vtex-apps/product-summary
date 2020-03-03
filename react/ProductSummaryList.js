@@ -203,8 +203,7 @@ EnhancedProductList.getSchema = () => ({
       enum: ['MAX_WITHOUT_INTEREST', 'MAX_WITH_INTEREST', 'MIN'],
       enumNames: [
         'admin/editor.productSummaryList.installmentCriteria.max-without-interest',
-        'admin/editor.productSummaryList.installmentCriteria.max-with-interest',
-        'admin/editor.productSummaryList.installmentCriteria.min'
+        'admin/editor.productSummaryList.installmentCriteria.max-with-interest'
       ]
     },
   },
