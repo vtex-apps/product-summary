@@ -50,5 +50,5 @@ For `InstallmentCriteriaEnum`:
 
 | Name | Value | Description |
 | ---- | ----- | ----------- |
-| Maximum without interest | `MAX_WITHOUT_INTEREST` | Will display price with maximum value before interest. |
-| Maximum with interest | `MAX_WITH_INTEREST` | Will display price with maximum value after interest applied. |
+| Maximum without interest | `MAX_WITHOUT_INTEREST` | Will display the maximum installment option with no interest. |
+| Maximum | `MAX_WITH_INTEREST` | Will display the maximum installment option having interest or not. |
