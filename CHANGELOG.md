@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `ProductSummaryList`: `installmentCriteria` prop to use in `products` query.
 - `ProductSummaryList`: Messages and translations to be able to edit `skusFilter` and `installmentCriteria` in site editor.
 
+### Fixed
+- Props passed to `ProductSummaryList`
+
 ## [2.51.7] - 2020-03-02
 ### Changed
 - `ProductSummaryList`: Consume new products query.
