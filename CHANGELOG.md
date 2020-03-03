@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Add Product Summary List in the Product Summary README
+- Add descriptions for each exported block
+
 ## [2.51.7] - 2020-03-02
 ### Changed
 - `ProductSummaryList`: Consume new products query.
