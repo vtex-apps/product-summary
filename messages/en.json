@@ -60,8 +60,8 @@
   "admin/editor.productSummaryList.skusFilter.none": "None",
   "admin/editor.productSummaryList.skusFilter.first-available": "First available",
   "admin/editor.productSummaryList.skusFilter.all-available": "All available",
-  "admin/editor.productSummaryList.installmentCriteria.title": "Prices with Installment",
-  "admin/editor.productSummaryList.installmentCriteria.description": "Choose what type of prices to be showed in the products displayed (e.g.: maximum without interest or with interest, etc).",
+  "admin/editor.productSummaryList.installmentCriteria.title": "Displayed installments",
+  "admin/editor.productSummaryList.installmentCriteria.description": "Choose what type of installments to be showed (e.g.: maximum without interest or with interest).",
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum without interest",
-  "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum with interest"
+  "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum"
 }

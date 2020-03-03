@@ -60,8 +60,8 @@
   "admin/editor.productSummaryList.skusFilter.none": "Nenhum",
   "admin/editor.productSummaryList.skusFilter.first-available": "Primeiro Disponível",
   "admin/editor.productSummaryList.skusFilter.all-available": "Todos Disponíveis",
-  "admin/editor.productSummaryList.installmentCriteria.title": "Preços com Parcelas",
-  "admin/editor.productSummaryList.installmentCriteria.description": "Escolha qual tipo de preço a ser mostrado nos produtos (ex.: máximo sem juros, ou com juros, etc).",
-  "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Máximo sem juros",
-  "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Máximo com juros"
+  "admin/editor.productSummaryList.installmentCriteria.title": "Parcelamento",
+  "admin/editor.productSummaryList.installmentCriteria.description": "Escolha qual tipo de parcelamento a ser mostrado nos produtos (ex.: máximo sem juros, ou com juros).",
+  "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Máxima sem juros",
+  "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Máxima"
 }
