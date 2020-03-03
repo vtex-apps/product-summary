@@ -115,12 +115,12 @@ const ProductSummaryList = ({
   )
 }
 
-const EnhancedProductList = ({ children }) => {
+const EnhancedProductList = ({ children, ...props }) => {
   const { ProductListProvider } = ProductListContext
 
   return (
     <ProductListProvider>
-      <ProductSummaryList>{children}</ProductSummaryList>
+      <ProductSummaryList {...props}>{children}</ProductSummaryList>
       <ProductListEventCaller />
     </ProductListProvider>
   )
