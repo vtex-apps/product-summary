@@ -63,6 +63,5 @@
   "admin/editor.productSummaryList.installmentCriteria.title": "Preços com Parcelas",
   "admin/editor.productSummaryList.installmentCriteria.description": "Escolha qual tipo de preço a ser mostrado nos produtos (ex.: máximo sem juros, ou com juros, etc).",
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Máximo sem juros",
-  "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Máximo com juros",
-  "admin/editor.productSummaryList.installmentCriteria.min": "Mínimo"
+  "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Máximo com juros"
 }
