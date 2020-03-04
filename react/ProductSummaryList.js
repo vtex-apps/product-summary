@@ -67,8 +67,8 @@ const ProductSummaryList = ({
       category,
       ...(collection != null
         ? {
-          collection,
-        }
+            collection,
+          }
         : {}),
       specificationFilters: specificationFilters.map(parseFilters),
       orderBy,
@@ -80,15 +80,10 @@ const ProductSummaryList = ({
     },
   })
 
-  // https://github.com/vtex-apps/product-summary/issues/235
-  if (loading || error) {
-    return null
-  }
-
   const { list } = useListContext()
   const { treePath } = useTreePath()
 
-  const { products } = data
+  const { products } = data || {}
 
   const newListContextValue = useMemo(() => {
     const componentList =
@@ -107,6 +102,11 @@ const ProductSummaryList = ({
       })
     return list.concat(componentList)
   }, [products, treePath, list])
+
+  // https://github.com/vtex-apps/product-summary/issues/235
+  if (loading || error) {
+    return null
+  }
 
   return (
     <ListContextProvider list={newListContextValue}>
