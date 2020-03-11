@@ -151,21 +151,15 @@ class ProductQuantityStepper extends Component {
 }
 
 const withUpdateItemsMutation = graphql(UPDATE_ITEMS_MUTATION, {
-  props: ({ mutate }) => {
-    debugger
-    console.log('MUTATION withUpdateItemsMutation')
-    return ({
+  props: ({ mutate }) => ({
     updateItems: items => mutate({ variables: { items } }),
-  })},
+  }),
 })
 
 const withUpdateLocalItemsMutation = graphql(UPDATE_LOCAL_ITEMS_MUTATION, {
-  props: ({ mutate }) => {
-    debugger
-    console.log('MUTATION withUpdateLocalItemsMutation')
-    return ({
+  props: ({ mutate }) => ({
     updateLocalItems: items => mutate({ variables: { items } }),
-  })},
+  }),
 })
 
 export default compose(
