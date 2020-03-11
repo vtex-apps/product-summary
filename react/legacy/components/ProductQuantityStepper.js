@@ -6,21 +6,21 @@ import { Pixel } from 'vtex.pixel-manager/PixelContext'
 import { debounce } from 'debounce'
 import { injectIntl, intlShape } from 'react-intl'
 import { compose, graphql } from 'react-apollo'
-import gql from 'graphql-tag'
+import { parse } from 'graphql'
 
 import { productShape } from '../../utils/propTypes'
 
-const UPDATE_ITEMS_MUTATION = gql`
+const UPDATE_ITEMS_MUTATION = parse(`
   mutation updateItems($items: [MinicartItem]) {
     updateItems(items: $items) @client
   }
-`
+`)
 
-const UPDATE_LOCAL_ITEMS_MUTATION = gql`
+const UPDATE_LOCAL_ITEMS_MUTATION = parse(`
   mutation updateLocalItems($items: [MinicartItem]) {
     updateLocalItems(items: $items) @client
   }
-`
+`)
 
 class ProductQuantityStepper extends Component {
   static propTypes = {
