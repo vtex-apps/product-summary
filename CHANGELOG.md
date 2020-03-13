@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+- Added fixed Width and Height props 
+
 ## [2.52.2] - 2020-03-11
 ### Removed
 - graphql-tag removed from deps since `parse`, from graphql-js already does the job. It is not ideal to use gql from 'graphql-tag' since our current webpack config only strips away the gql when explicitly importing, and not using gql in the code. 
