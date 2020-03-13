@@ -22,6 +22,8 @@ class ProductSummaryInline extends Component {
       nameProps,
       priceProps,
       buyButtonProps,
+      fixedHeight,
+      fixedWidth
     } = this.props
 
     const containerClasses = classNames(
@@ -70,7 +72,7 @@ class ProductSummaryInline extends Component {
         >
           <article className="flex">
             <div className={`${productSummary.imageContainer} db w-70`}>
-              <ProductImage {...imageProps} />
+              <ProductImage {...imageProps} fixedHeight={fixedHeight} fixedWidth={fixedWidth} />
             </div>
             <div
               className={`${productSummary.information} w-80 pb2 pl3 flex flex-wrap flex-column justify-between`}

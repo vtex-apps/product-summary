@@ -48,7 +48,7 @@ const findImageByLabel = (images, selectedLabel) => {
   return images.find(({ imageLabel }) => imageLabel === selectedLabel)
 }
 
-const Image = ({ src, width, height, onError, alt, className }) => {
+const Image = ({ src, fixedWidth, fixedHeight, width, height, onError, alt, className }) => {
   const { isMobile } = useDevice()
 
   /** TODO: Previously it was as follows :
@@ -65,7 +65,7 @@ const Image = ({ src, width, height, onError, alt, className }) => {
   return (
     <img
       src={
-        shouldResize ? changeImageUrlSize(src, width * dpi, height * dpi) : src
+        (fixedWidth && fixedHeight) ? changeImageUrlSize(src, fixedWidth, fixedHeight) : shouldResize ? changeImageUrlSize(src, width * dpi, height * dpi) : src
       }
       style={
         shouldResize
