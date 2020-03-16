@@ -29,7 +29,7 @@ Now, you are able to use all blocks exported by the `product-summary` app. Check
 | `product-summary-buy-button` | Renders the Buy Button | 
 | `product-summary-description` | Renders the product's description | 
 | `product-summary-image` | Renders the product's image | 
-| `product-summary-list` | Renders a list of products in the Product Summary | 
+| `list-context.product-list` | Renders a list of products in the Product Summary | 
 | `product-summary-name` | Renders the product's name | 
 | `product-summary-price` | Renders the product's price | 
 | `product-summary-sku-selector` | Renders the SKU Selector block | 
