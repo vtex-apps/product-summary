@@ -1,37 +1,38 @@
-# Product Summary Buy Button
+📢 Use this project, [contribute](https://github.com/vtex-apps/product-summary) to it or open issues to help evolve it using [Store Discussion](https://github.com/vtex-apps/store-discussion).
 
-## Description
+# Product Summary Buy Button
 
 `ProductSummaryBuyButton` is a VTEX Component that renders the buy button.
 This Component can be imported and used by any VTEX App.
 
-:loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
+## Configuration
 
-## Table of Contents
-- [Usage](#usage)
-  - [Blocks API](#blocks-api)
-  - [Configuration](#configuration)
-  - [Styles API](#styles-api)
-
-## Usage
-
-You should follow the usage instruction in the main [README](https://github.com/vtex-apps/product-summary/blob/master/README.md#usage).
-
-Then, add `product-summary-buy-button` block into your app theme, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
-
-### Blocks API
-
-This component has an interface that describes which rules must be implemented by a block when you want to use the `ProductSummaryBuyButton`.
+1. Import the Shelf app to your theme's dependencies on the `manifest.json`, for example:
 
 ```json
-  "product-summary-buy-button": {
-    "component": "ProductSummaryBuyButton"
+  dependencies: {
+    "vtex.product-summary": "2.x"
   }
 ```
 
-### Configuration
+2. Add `product-summary-buy-button` anywhere inside the `product-summary.shelf`:
 
-Through the Storefront, you can change the `ProductSummaryBuyButton`'s behavior and interface. However, you also can make in your theme app.
+```diff
+ {
+   "product-summary.shelf": {
+       "children": [
+           "product-summary-image",
+           "product-summary-name",
+           "product-rating-inline",
+           "product-summary-space",
+           "product-summary-price",
++          "product-summary-buy-button"
+       ]
+   },
+ }
+```
+
+### Props
 
 | Prop name           | Type      | Description                                                                                 | Default value         |
 | ------------------- | --------- | ------------------------------------------------------------------------------------------- | --------------------- |
@@ -39,34 +40,23 @@ Through the Storefront, you can change the `ProductSummaryBuyButton`'s behavior 
 | `buyButtonText`     | `String`  | Custom buy button text                                                                      |                       |
 | `displayBuyButton`  | `Enum`    | Set display mode of buy button (displayButtonAlways, displayButtonHover, displayButtonNone) | `displayButtonAlways` |
 | `customToastURL`  | `String`    | Set the link associated with the Toast created when adding an item to your cart.  | `/checkout/#/cart` |
-| `buyButtonBehavior` | `Enum` | What the buy button should do when you click it, if you pass `default` it will add to cart only if there is only one SKU of that product (default, alwaysGoToProduct) | `default`
+| `buyButtonBehavior` | `Enum` | What will happen when the user clicks on the button. Check the options bellow. | `default`
 
-### Styles API
+- Possible values for `buyButtonBehavior`:
 
-This app provides some CSS classes as an API for style customization.
+| Value | Description |
+| --- | --- |
+| `default` | It will add to cart if the product has one SKU. It will link to the product page if it has more than one SKU. |
+| `alwaysGoToProduct` | It will always link to the product page. |
+| `alwaysAddToCart` | It will always add the selected item to cart. Be careful: use this option only if the user is able to select all variations of the product. Example: if the product has Color and Size, you should show the SKU Selector of both variations so the user can select the color and size they want, otherwise the button will add a product that the user was not able to choose, for example, the first Size option. |
 
-To use this CSS API, you must add the `styles` builder and create an app styling CSS file.
+## Customization
 
-1. Add the `styles` builder to your `manifest.json`:
+In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
 
-```json
-  "builders": {
-    "styles": "1.x"
-  }
-```
+| CSS Handles |
+| --- |
+| `buyButtonContainer` |
+| `buyButton` |
+| `isHidden` |
 
-2. Create a file called `vtex.product-summary.css` inside the `styles/css` folder. Add your custom styles:
-
-```css
-.buyButtonContainer {
-  margin-top: 10px;
-}
-```
-
-#### CSS Handles
-
-| CSS Handles   | Description                                          | Component Source                     |
-| ------------ | ---------------------------------------------------- | ------------------------------------ |
-| `buyButtonContainer` | The main container of buy button | [index](/react/components/ProductSummaryBuyButton/ProductSummaryBuyButton.js) |
-| `buyButton` | Class right before buy button | [index](/react/components/ProductSummaryBuyButton/ProductSummaryBuyButton.js) |
-| `isHidden` | Class when button is hidden | [index](/react/components/ProductSummaryBuyButton/ProductSummaryBuyButton.js) |
