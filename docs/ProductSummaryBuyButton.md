@@ -2,12 +2,13 @@
 
 # Product Summary Buy Button
 
-`ProductSummaryBuyButton` is a VTEX Component that renders the buy button.
-This Component can be imported and used by any VTEX App.
+Product Summary Buy Button is a block exported by the Product Summary app responsible for rendering a buy button in the Product Summary Shelf block.
+
+![](https://user-images.githubusercontent.com/52087100/76864047-38006600-683f-11ea-8a4e-74dc91712984.png)
 
 ## Configuration
 
-1. Import the Shelf app to your theme's dependencies on the `manifest.json`, for example:
+1. Add the [Product Summary app](https://vtex.io/docs/components/content-blocks/vtex.product-summary/) to your theme's dependencies on the `manifest.json`, for example:
 
 ```json
   dependencies: {
@@ -15,7 +16,7 @@ This Component can be imported and used by any VTEX App.
   }
 ```
 
-2. Add `product-summary-buy-button` anywhere inside the `product-summary.shelf`:
+2. Add the `product-summary-buy-button` block as a children of the `product-summary.shelf` block:
 
 ```diff
  {
@@ -32,23 +33,28 @@ This Component can be imported and used by any VTEX App.
  }
 ```
 
+3. Then, declare the `product-summary-buy-button` and configure its behavior using the props stated below.
+
+```json
+{
+  "product-summary-buy-button": {
+    "props": {
+      "isOneClickBuy": false
+    }
+  }
+}
+```
+
+
 ### Props
 
 | Prop name           | Type      | Description                                                                                 | Default value         |
 | ------------------- | --------- | ------------------------------------------------------------------------------------------- | --------------------- |
-| `isOneClickBuy`     | `Boolean` | Should redirect to checkout after clicking on buy                                           | `false`               |
-| `buyButtonText`     | `String`  | Custom buy button text                                                                      |                       |
-| `displayBuyButton`  | `Enum`    | Set display mode of buy button (displayButtonAlways, displayButtonHover, displayButtonNone) | `displayButtonAlways` |
-| `customToastURL`  | `String`    | Set the link associated with the Toast created when adding an item to your cart.  | `/checkout/#/cart` |
-| `buyButtonBehavior` | `Enum` | What will happen when the user clicks on the button. Check the options bellow. | `default`
-
-- Possible values for `buyButtonBehavior`:
-
-| Value | Description |
-| --- | --- |
-| `default` | It will add to cart if the product has one SKU. It will link to the product page if it has more than one SKU. |
-| `alwaysGoToProduct` | It will always link to the product page. |
-| `alwaysAddToCart` | It will always add the selected item to cart. Be careful: use this option only if the user is able to select all variations of the product. Example: if the product has Color and Size, you should show the SKU Selector of both variations so the user can select the color and size they want, otherwise the button will add a product that the user was not able to choose, for example, the first Size option. |
+| `isOneClickBuy`     | `Boolean` | Whether the user should be redirected to Checkout after clicking on the Buy Button (`true`) or not (`false`) | `false` |
+| `buyButtonText`     | `String`  | Custom text that overwrites the default Buy Button text                                     | `undefined`           |
+| `displayBuyButton`  | `Enum`    | Sets the Buy Button display mode by defining whether it will always be displayed (`displayButtonAlways`), only displayed on hover (`displayButtonHover`) or if it will be hidden for users (`displayButtonNone`) | `displayButtonAlways` |
+| `customToastURL`    | `String`  | Defines a redirect link to the Toast displayed when an item is added to your cart. | `/checkout/#/cart` |
+| `buyButtonBehavior` | `Enum`    | Sets the Buy Button behavior when it is clicked on. You can choose between the following scenarios: <ul><li>`alwaysGoToProduct` - Redirect users to the product page;</li><li>`default` - Redirect users to the Product Page when there are several SKUs available. In scenarios in which there is only one SKU available, it will be add to the cart ;</li><li>`alwaysAddToTheCart` - Always add the selected SKU to the cart. When choosing this option, be careful: use it only if there are SKU Selectors for each product variation, so users can properly select their desired SKU. </li></ul> | `default` |
 
 ## Customization
 
