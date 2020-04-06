@@ -53,8 +53,8 @@ const findImageByLabel = (images, selectedLabel) => {
 const getImageSrc = (src, width, height, dpi, aspectRatio) => {
   if (width || height) {
     return changeImageUrlSize(src, width * dpi, height * dpi)
-  } else if (aspectRatio !== 'auto' && width) {
-    return imageUrl(src, width, MAX_SIZE, aspectRatio)
+  } else if (aspectRatio !== 'auto') {
+    return imageUrl(src, DEFAULT_SIZE, MAX_SIZE, aspectRatio)
   } else {
     return src
   }
