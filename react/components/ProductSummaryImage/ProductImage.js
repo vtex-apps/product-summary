@@ -19,8 +19,8 @@ import { imageUrl } from '../../utils/aspectRatioUtil'
 
 const CSS_HANDLES = ['image', 'imageContainer', 'product', 'imagePlaceholder']
 
-const MAX_SIZE = 300
-const DEFAULT_SIZE = 200
+const MAX_SIZE = 400
+const DEFAULT_SIZE = 300
 
 const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
   if (shouldShow) {
@@ -71,7 +71,7 @@ const getStyle = (width, height, aspectRatio, maxHeight) => {
       maxHeight: 'unset',
       maxWidth: width,
     }
-  } else if (aspectRatio !== 'auto' && width) {
+  } else if (aspectRatio !== 'auto') {
     return {
       width: '100%',
       height: '100%',
