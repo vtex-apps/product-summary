@@ -7,16 +7,47 @@ import { useDevice } from 'vtex.device-detector'
 import { useResponsiveValues } from 'vtex.responsive-values'
 import { useCssHandles, applyModifiers } from 'vtex.css-handles'
 import { useProduct } from 'vtex.product-context'
-
-import ImagePlaceholder from './ImagePlaceholder'
-
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
+import ImagePlaceholder from './ImagePlaceholder'
 import productSummary from '../../productSummary.css'
-
 import { changeImageUrlSize } from '../../utils/normalize'
+import { imageUrl } from '../../utils/aspectRatioUtil'
 
 const CSS_HANDLES = ['image', 'imageContainer', 'product', 'imagePlaceholder']
+const MAX_SIZE = 500
+const DEFAULT_SIZE = 300
+
+const getImageSrc = (src, width, height, dpi, aspectRatio) => {
+  if (width || height) {
+    return changeImageUrlSize(src, width * dpi, height * dpi)
+  } else if (aspectRatio) {
+    return imageUrl(src, DEFAULT_SIZE, MAX_SIZE, aspectRatio)
+  } else {
+    return src
+  }
+}
+
+const getStyle = (width, height, aspectRatio, maxHeight) => {
+  if (width || height) {
+    return {
+      width: '100%',
+      height,
+      objectFit: 'contain',
+      maxHeight: 'unset',
+      maxWidth: width,
+    }
+  } else if (aspectRatio || maxHeight) {
+    return {
+      width: '100%',
+      height: '100%',
+      objectFit: 'contain',
+      maxHeight: maxHeight || 'unset',
+    }
+  } else {
+    return null
+  }
+}
 
 const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
   if (shouldShow) {
@@ -48,7 +79,16 @@ const findImageByLabel = (images, selectedLabel) => {
   return images.find(({ imageLabel }) => imageLabel === selectedLabel)
 }
 
-const Image = ({ src, width, height, onError, alt, className }) => {
+const Image = ({
+  src,
+  width,
+  height,
+  onError,
+  alt,
+  className,
+  aspectRatio,
+  maxHeight,
+}) => {
   const { isMobile } = useDevice()
 
   /** TODO: Previously it was as follows :
@@ -64,20 +104,8 @@ const Image = ({ src, width, height, onError, alt, className }) => {
 
   return (
     <img
-      src={
-        shouldResize ? changeImageUrlSize(src, width * dpi, height * dpi) : src
-      }
-      style={
-        shouldResize
-          ? {
-              width: '100%',
-              height,
-              objectFit: 'contain',
-              maxHeight: 'unset',
-              maxWidth: width,
-            }
-          : null
-      }
+      src={getImageSrc(src, width, height, dpi, aspectRatio)}
+      style={getStyle(width, height, aspectRatio, maxHeight)}
       loading={shouldResize ? 'lazy' : 'auto'}
       alt={alt}
       className={className}
@@ -98,6 +126,8 @@ const ProductImageContent = ({
   showCollections,
   width: widthProp,
   height: heightProp,
+  aspectRatio,
+  maxHeight,
 }) => {
   const handles = useCssHandles(CSS_HANDLES)
   const { isMobile } = useDevice()
@@ -180,6 +210,8 @@ const ProductImageContent = ({
         src={imageUrl}
         width={width}
         height={height}
+        aspectRatio={aspectRatio}
+        maxHeight={maxHeight}
         alt={name}
         className={imageClassname}
         onError={onError}
@@ -189,6 +221,8 @@ const ProductImageContent = ({
           src={hoverImage.imageUrl}
           width={width}
           height={height}
+          aspectRatio={aspectRatio}
+          maxHeight={maxHeight}
           alt={name}
           className={hoverImageClassname}
           onError={onError}
@@ -212,12 +246,21 @@ const ProductImage = ({
   showCollections,
   width: widthProp,
   height: heightProp,
+  aspectRatio: aspectRatioProp,
+  maxHeight: maxHeightProp,
 }) => {
   const { product } = useProductSummary()
 
-  const { widthProp: width, heightProp: height } = useResponsiveValues({
+  const {
+    widthProp: width,
+    heightProp: height,
+    aspectRatioProp: aspectRatio,
+    maxHeightProp: maxHeight,
+  } = useResponsiveValues({
     widthProp,
     heightProp,
+    aspectRatioProp,
+    maxHeightProp,
   })
 
   const [error, setError] = useState(false)
@@ -231,6 +274,8 @@ const ProductImage = ({
       <ProductImageContent
         width={width}
         height={height}
+        aspectRatio={aspectRatio}
+        maxHeight={maxHeight}
         hasError={error}
         product={product}
         badgeText={badgeText}
