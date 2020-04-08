@@ -21,11 +21,11 @@ const DEFAULT_SIZE = 300
 const getImageSrc = (src, width, height, dpi, aspectRatio) => {
   if (width || height) {
     return changeImageUrlSize(src, width * dpi, height * dpi)
-  } else if (aspectRatio) {
+  } 
+  if (aspectRatio) {
     return imageUrl(src, DEFAULT_SIZE, MAX_SIZE, aspectRatio)
-  } else {
-    return src
-  }
+  } 
+  return src
 }
 
 const getStyle = (width, height, aspectRatio, maxHeight) => {
@@ -37,16 +37,16 @@ const getStyle = (width, height, aspectRatio, maxHeight) => {
       maxHeight: 'unset',
       maxWidth: width,
     }
-  } else if (aspectRatio || maxHeight) {
+  } 
+  if (aspectRatio || maxHeight) {
     return {
       width: '100%',
       height: '100%',
       objectFit: 'contain',
       maxHeight: maxHeight || 'unset',
     }
-  } else {
-    return null
-  }
+  } 
+  return null
 }
 
 const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
