@@ -46,7 +46,7 @@ const getStyle = (width, height, aspectRatio, maxHeight) => {
       maxHeight: maxHeight || 'unset',
     }
   } 
-  return null
+  return undefined
 }
 
 const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
