@@ -48,6 +48,8 @@ Through the Storefront, you can change the `ProductSummaryImage`'s behavior and 
 | `mainImageLabel` | `String` | Works the same way as `hoverImageLabel` but to set the main image to display. If you pass a label and no image has that label, it will show the main image of the product | `""`|
 | `width` | `[ResponsiveInput<Number>](https://github.com/vtex-apps/responsive-values#vtexresponsive-values)`  | Sets the image width. | `undefined`          |
 | `height` | `[ResponsiveInput<Number>](https://github.com/vtex-apps/responsive-values#vtexresponsive-values)`  | Sets the image height. | `undefined`          |
+| `aspectRatio`             | `[ResponsiveInput<String>](https://github.com/vtex-apps/responsive-values#vtexresponsive-values)`                                   | Sets the aspect ratio of the image, that is, whether the image should be square, portrait, landscape, etc. The value should follow the [common aspect ratio notation](https://en.wikipedia.org/wiki/Aspect_ratio_(image)) i.e. two numbers separated by a colon such as `1:1` for square, `3:4` for upright portrait, or `1920:1080` for even large values). Note that this prop won't work if you use `width` or `height`. | `undefined`          |
+| `maxHeight` | `[ResponsiveInput<Number>](https://github.com/vtex-apps/responsive-values#vtexresponsive-values)`  | Sets the image max height. Note that this prop won't work if you use `width` or `height`.| `undefined`          |
 
 ### Styles API
 
