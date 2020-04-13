@@ -25,12 +25,11 @@
       ]
     },
     "product-summary-image": {
-      "props": [
-        "showBadge": "true",
+      "props": {
+        "showBadge": true,
         "height": 220
-      ]
-    },
-...
+      }
+    }
 }
 ```
 
