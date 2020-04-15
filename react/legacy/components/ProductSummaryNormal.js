@@ -25,6 +25,7 @@ class ProductSummaryNormal extends Component {
       nameProps,
       priceProps,
       buyButtonProps,
+      inViewRef,
     } = this.props
 
     const containerClasses = classNames(
@@ -66,6 +67,7 @@ class ProductSummaryNormal extends Component {
         className={containerClasses}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        ref={inViewRef}
       >
         <div className={`${productSummary.addToListBtn} absolute z-1 mt3`}>
           <ExtensionPoint
