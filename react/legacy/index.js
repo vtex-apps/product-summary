@@ -121,12 +121,11 @@ class ProductSummary extends Component {
 
   sendImpressionEvent = () => {
     const {inView, productListDispatch} = this.props
-    if (inView) {
-      productListDispatch &&
-        productListDispatch({
-          type: 'SEND_IMPRESSION',
-          args: { product: this.props.product },
-        })
+    if (inView && productListDispatch) {
+      productListDispatch({
+        type: 'SEND_IMPRESSION',
+        args: { product: this.props.product },
+      })
     }
   }
 
