@@ -2,6 +2,8 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { ProductName, ProductPrice } from 'vtex.store-components'
+import { ProductListContext } from 'vtex.product-list-context'
+import { useInView } from 'react-intersection-observer'
 
 import ProductSummaryNormal from './components/ProductSummaryNormal'
 import ProductSummarySmall from './components/ProductSummarySmall'
@@ -105,6 +107,28 @@ class ProductSummary extends Component {
   handleItemsStateUpdate = isLoading =>
     this.setState({ isUpdatingItems: isLoading })
 
+  componentDidMount = () => {
+    this.sendImpressionEvent()
+  }
+
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.productListDispatch !== this.props.productListDispatch ||
+      prevProps.inView !== this.props.inView ||
+      prevProps.product !== this.props.product) {
+        this.sendImpressionEvent()
+      }
+  }
+
+  sendImpressionEvent = () => {
+    const {inView, productListDispatch} = this.props
+    if (inView && productListDispatch) {
+      productListDispatch({
+        type: 'SEND_IMPRESSION',
+        args: { product: this.props.product },
+      })
+    }
+  }
+
   render() {
     const {
       product,
@@ -128,6 +152,7 @@ class ProductSummary extends Component {
       priceAlignLeft,
       muted,
       index,
+      inViewRef,
     } = this.props
 
     const imageProps = {
@@ -177,9 +202,30 @@ class ProductSummary extends Component {
         priceAlignLeft={priceAlignLeft}
         muted={muted}
         index={index}
+        inViewRef={inViewRef}
       />
     )
   }
+}
+
+
+const ProductSummaryWrapper = props => {
+  const { useProductListDispatch } = ProductListContext
+  const productListDispatch = useProductListDispatch()
+  const [inViewRef, inView] = useInView({
+    // Triggers the event when the element is 75% visible
+    threshold: 0.75,
+    triggerOnce: true,
+  })
+
+  return (
+    <ProductSummary
+      { ...props }
+      productListDispatch={productListDispatch}
+      inView={inView}
+      inViewRef={inViewRef}
+    />
+  )
 }
 
 const defaultSchema = {
@@ -218,7 +264,7 @@ const defaultSchema = {
   },
 }
 
-ProductSummary.getSchema = () => {
+ProductSummaryWrapper.getSchema = () => {
   const nameSchema = ProductName.schema
   return {
     ...defaultSchema,
@@ -229,4 +275,4 @@ ProductSummary.getSchema = () => {
   }
 }
 
-export default ProductSummary
+export default ProductSummaryWrapper
