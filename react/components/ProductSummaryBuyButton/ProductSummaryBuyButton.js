@@ -49,18 +49,11 @@ const ProductSummaryBuyButton = ({
       mobile
     )
 
-  const buyButtonClasses = classnames(
-    handles.buyButton,
-    'center mw-100',
-    {
-      [productSummary.isHidden]: !hoverBuyButton,
-    }
-  )
+  const buyButtonClasses = classnames(handles.buyButton, 'center mw-100', {
+    [productSummary.isHidden]: !hoverBuyButton,
+  })
 
-  const containerClass = classnames(
-    handles.buyButtonContainer,
-    'pv3 w-100 db'
-  )
+  const containerClass = classnames(handles.buyButtonContainer, 'pv3 w-100 db')
 
   const selectedSeller = path(['seller'], selectedItem)
   const isAvailable =
@@ -77,9 +70,11 @@ const ProductSummaryBuyButton = ({
   const { items = [] } = product
   // if the item is not available the behavior is just show the disabled BuyButton,
   // but you still can go to the product page clicking in the summary
-  const shouldBeALink =
-    (items.length !== 1 || buyButtonBehavior !== DEFAULT_BUTTON_BEHAVIOR) &&
-    isAvailable
+
+  const shouldAddToCart =
+    ((items.length !== 1 || buyButtonBehavior !== DEFAULT_BUTTON_BEHAVIOR) &&
+      isAvailable) ||
+    selectedItem
 
   return (
     showBuyButton && (
@@ -93,7 +88,7 @@ const ProductSummaryBuyButton = ({
             available={isAvailable}
             isOneClickBuy={isOneClickBuy}
             customToastURL={customToastURL}
-            shouldAddToCart={!shouldBeALink}
+            shouldAddToCart={shouldAddToCart}
           >
             <IOMessage id={buyButtonText} />
           </BuyButton>
