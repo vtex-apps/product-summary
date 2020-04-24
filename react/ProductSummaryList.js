@@ -160,7 +160,7 @@ EnhancedProductList.getSchema = () => ({
     },
     collection: {
       title: 'admin/editor.productSummaryList.collection.title',
-      type: 'number',
+      type: 'string',
       isLayout: false,
     },
     orderBy: {
@@ -192,19 +192,20 @@ EnhancedProductList.getSchema = () => ({
       enumNames: [
         'admin/editor.productSummaryList.skusFilter.all-available',
         'admin/editor.productSummaryList.skusFilter.none',
-        'admin/editor.productSummaryList.skusFilter.first-available'
-      ]
+        'admin/editor.productSummaryList.skusFilter.first-available',
+      ],
     },
     installmentCriteria: {
       title: 'admin/editor.productSummaryList.installmentCriteria.title',
-      description: 'admin/editor.productSummaryList.installmentCriteria.description',
+      description:
+        'admin/editor.productSummaryList.installmentCriteria.description',
       type: 'string',
       default: 'MAX_WITHOUT_INTEREST',
       enum: ['MAX_WITHOUT_INTEREST', 'MAX_WITH_INTEREST'],
       enumNames: [
         'admin/editor.productSummaryList.installmentCriteria.max-without-interest',
-        'admin/editor.productSummaryList.installmentCriteria.max-with-interest'
-      ]
+        'admin/editor.productSummaryList.installmentCriteria.max-with-interest',
+      ],
     },
   },
 })
