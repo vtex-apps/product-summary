@@ -84,7 +84,6 @@
     "component": "*"
   },
   "list-context.product-list": {
-    "allowed": ["product-summary"],
     "composition": "children",
     "component": "ProductSummaryList",
     "preview": {

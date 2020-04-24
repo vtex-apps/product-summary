@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-apollo'
 import { ProductListContext } from 'vtex.product-list-context'
-import { ExtensionPoint, useTreePath } from 'vtex.render-runtime'
 import { useListContext, ListContextProvider } from 'vtex.list-context'
 
 import { mapCatalogProductToProductSummary } from './utils/normalize'
@@ -61,6 +60,7 @@ const ProductSummaryList = ({
   maxItems = 10,
   skusFilter,
   installmentCriteria,
+  Product,
 }) => {
   const { data, loading, error } = useQuery(productsQuery, {
     variables: {
@@ -81,7 +81,6 @@ const ProductSummaryList = ({
   })
 
   const { list } = useListContext()
-  const { treePath } = useTreePath()
 
   const { products } = data || {}
 
@@ -92,16 +91,11 @@ const ProductSummaryList = ({
         const normalizedProduct = mapCatalogProductToProductSummary(product)
 
         return (
-          <ExtensionPoint
-            id="product-summary"
-            key={product.id}
-            treePath={treePath}
-            product={normalizedProduct}
-          />
+          Product && <Product key={product.id} product={normalizedProduct} />
         )
       })
     return list.concat(componentList)
-  }, [products, treePath, list])
+  }, [products, list, Product])
 
   // https://github.com/vtex-apps/product-summary/issues/235
   if (loading || error) {
