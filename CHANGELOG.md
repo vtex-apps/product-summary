@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [2.53.3] - 2020-04-24
 ### Fixed
 - `collection` prop in `ProductSummaryList`'s schema had the wrong type, which caused it to receive invalid values from CMS.
 
