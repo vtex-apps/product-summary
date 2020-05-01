@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { path } from 'ramda'
+import { path, compose } from 'ramda'
 import PropTypes from 'prop-types'
 import { NumericStepper, withToast } from 'vtex.styleguide'
 import { Pixel } from 'vtex.pixel-manager/PixelContext'
 import { debounce } from 'debounce'
-import { injectIntl, intlShape } from 'react-intl'
-import { compose, graphql } from 'react-apollo'
+import { injectIntl } from 'react-intl'
+import { graphql } from 'react-apollo'
 import { parse } from 'graphql'
 
 import { productShape } from '../../utils/propTypes'
@@ -27,7 +27,7 @@ class ProductQuantityStepper extends Component {
     product: productShape.isRequired,
     onUpdateItemsState: PropTypes.func.isRequired,
     showToast: PropTypes.func,
-    intl: intlShape,
+    intl: PropTypes.object,
     minicartItems: PropTypes.array,
     updateItems: PropTypes.func.isRequired,
     updateLocalItems: PropTypes.func.isRequired,
