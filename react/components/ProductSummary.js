@@ -158,6 +158,8 @@ ProductSummaryCustom.propTypes = {
     // Or the instance of a DOM native element
     PropTypes.shape({ current: PropTypes.instanceOf(PropTypes.Element) }),
   ]),
+  /** Should be only used by custom components, never by blocks */
+  customPath: PropTypes.string,
 }
 
 function ProductSummaryWrapper(props) {
