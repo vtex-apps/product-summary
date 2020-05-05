@@ -114,6 +114,19 @@ const ProductSummaryCustom = ({
     selectedItem
   )
 
+  const linkProps = customPath
+    ? {
+        to: customPath,
+      }
+    : {
+        page: 'store.product',
+        params: {
+          slug: product && product.linkText,
+          id: product && product.productId,
+        },
+        query: query,
+      }
+
   return (
     <ProductSummaryContext.Provider value={oldContextProps}>
       <ProductContextProvider product={product} query={{ skuId }}>
@@ -124,28 +137,9 @@ const ProductSummaryCustom = ({
           style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
           ref={inViewRef}
         >
-          {customPath ? (
-            <Link
-              className={linkClasses}
-              to={customPath}
-              onClick={actionOnClick}
-            >
-              <article className={summaryClasses}>{children}</article>
-            </Link>
-          ) : (
-            <Link
-              className={linkClasses}
-              page="store.product"
-              params={{
-                slug: product && product.linkText,
-                id: product && product.productId,
-              }}
-              query={query}
-              onClick={actionOnClick}
-            >
-              <article className={summaryClasses}>{children}</article>
-            </Link>
-          )}
+          <Link className={linkClasses} {...linkProps} onClick={actionOnClick}>
+            <article className={summaryClasses}>{children}</article>
+          </Link>
         </section>
       </ProductContextProvider>
     </ProductSummaryContext.Provider>
