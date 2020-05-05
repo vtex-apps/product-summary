@@ -23,6 +23,7 @@ const ProductSummaryCustom = ({
   product,
   actionOnClick,
   children,
+  customPath,
 }) => {
   const { isLoading, isHovering, selectedItem, query } = useProductSummary()
   const dispatch = useProductSummaryDispatch()
@@ -123,18 +124,28 @@ const ProductSummaryCustom = ({
           style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
           ref={inViewRef}
         >
-          <Link
-            className={linkClasses}
-            page="store.product"
-            params={{
-              slug: product && product.linkText,
-              id: product && product.productId,
-            }}
-            query={query}
-            onClick={actionOnClick}
-          >
-            <article className={summaryClasses}>{children}</article>
-          </Link>
+          {customPath ? (
+            <Link
+              className={linkClasses}
+              to={customPath}
+              onClick={actionOnClick}
+            >
+              <article className={summaryClasses}>{children}</article>
+            </Link>
+          ) : (
+            <Link
+              className={linkClasses}
+              page="store.product"
+              params={{
+                slug: product && product.linkText,
+                id: product && product.productId,
+              }}
+              query={query}
+              onClick={actionOnClick}
+            >
+              <article className={summaryClasses}>{children}</article>
+            </Link>
+          )}
         </section>
       </ProductContextProvider>
     </ProductSummaryContext.Provider>
