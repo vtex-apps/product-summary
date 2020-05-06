@@ -23,7 +23,7 @@ const ProductSummaryCustom = ({
   product,
   actionOnClick,
   children,
-  customPath,
+  href,
 }) => {
   const { isLoading, isHovering, selectedItem, query } = useProductSummary()
   const dispatch = useProductSummaryDispatch()
@@ -114,9 +114,9 @@ const ProductSummaryCustom = ({
     selectedItem
   )
 
-  const linkProps = customPath
+  const linkProps = href
     ? {
-        to: customPath,
+        to: href,
       }
     : {
         page: 'store.product',
@@ -159,7 +159,7 @@ ProductSummaryCustom.propTypes = {
     PropTypes.shape({ current: PropTypes.instanceOf(PropTypes.Element) }),
   ]),
   /** Should be only used by custom components, never by blocks */
-  customPath: PropTypes.string,
+  href: PropTypes.string,
 }
 
 function ProductSummaryWrapper(props) {

@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- `customPath` prop in `ProductSummaryCustom` 
+- `href` prop in `ProductSummaryCustom` 
 
 ## [2.53.3] - 2020-04-24
 ### Fixed
