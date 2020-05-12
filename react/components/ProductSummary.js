@@ -23,6 +23,7 @@ const ProductSummaryCustom = ({
   product,
   actionOnClick,
   children,
+  href,
 }) => {
   const { isLoading, isHovering, selectedItem, query } = useProductSummary()
   const dispatch = useProductSummaryDispatch()
@@ -113,6 +114,19 @@ const ProductSummaryCustom = ({
     selectedItem
   )
 
+  const linkProps = href
+    ? {
+        to: href,
+      }
+    : {
+        page: 'store.product',
+        params: {
+          slug: product && product.linkText,
+          id: product && product.productId,
+        },
+        query: query,
+      }
+
   return (
     <ProductSummaryContext.Provider value={oldContextProps}>
       <ProductContextProvider product={product} query={{ skuId }}>
@@ -123,16 +137,7 @@ const ProductSummaryCustom = ({
           style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
           ref={inViewRef}
         >
-          <Link
-            className={linkClasses}
-            page="store.product"
-            params={{
-              slug: product && product.linkText,
-              id: product && product.productId,
-            }}
-            query={query}
-            onClick={actionOnClick}
-          >
+          <Link className={linkClasses} {...linkProps} onClick={actionOnClick}>
             <article className={summaryClasses}>{children}</article>
           </Link>
         </section>
@@ -153,6 +158,8 @@ ProductSummaryCustom.propTypes = {
     // Or the instance of a DOM native element
     PropTypes.shape({ current: PropTypes.instanceOf(PropTypes.Element) }),
   ]),
+  /** Should be only used by custom components, never by blocks */
+  href: PropTypes.string,
 }
 
 function ProductSummaryWrapper(props) {
