@@ -9,3 +9,7 @@ export const ProductSummaryProvider = ({ product, ...rest }) => {
 export const useProductSummary = () => {
   return useContext(ProductSummaryContext)
 }
+
+export const useProductSummaryDispatch = () => {
+  return () => {}
+}
