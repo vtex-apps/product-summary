@@ -21,10 +21,10 @@ const DEFAULT_SIZE = 300
 const getImageSrc = (src, width, height, dpi, aspectRatio) => {
   if (width || height) {
     return changeImageUrlSize(src, width * dpi, height * dpi)
-  } 
+  }
   if (aspectRatio) {
     return imageUrl(src, DEFAULT_SIZE, MAX_SIZE, aspectRatio)
-  } 
+  }
   return src
 }
 
@@ -37,7 +37,7 @@ const getStyle = (width, height, aspectRatio, maxHeight) => {
       maxHeight: 'unset',
       maxWidth: width,
     }
-  } 
+  }
   if (aspectRatio || maxHeight) {
     return {
       width: '100%',
@@ -45,7 +45,7 @@ const getStyle = (width, height, aspectRatio, maxHeight) => {
       objectFit: 'contain',
       maxHeight: maxHeight || 'unset',
     }
-  } 
+  }
   return undefined
 }
 
@@ -131,9 +131,7 @@ const ProductImageContent = ({
 }) => {
   const handles = useCssHandles(CSS_HANDLES)
   const { isMobile } = useDevice()
-  const {
-    skuSelector: { selectedImageVariationSKU },
-  } = useProduct()
+  const { skuSelector: { selectedImageVariationSKU } = {} } = useProduct()
 
   const { productClusters, productName: name } = product || {}
   const sku = product && product.sku
@@ -155,18 +153,18 @@ const ProductImageContent = ({
     legacyContainerClasses
   )
 
-  if (!sku || hasError) {
+  const images = pathOr([], ['images'], sku)
+  const hoverImage = findImageByLabel(images, hoverImageLabel)
+
+  let imageUrl = pathOr('', ['image', 'imageUrl'], sku)
+
+  if (!imageUrl || hasError) {
     return (
       <div className={containerClassname}>
         <ImagePlaceholder cssHandle={handles.productImage} />
       </div>
     )
   }
-
-  const images = pathOr([], ['images'], sku)
-  const hoverImage = findImageByLabel(images, hoverImageLabel)
-
-  let imageUrl = pathOr({}, ['image', 'imageUrl'], sku)
 
   if (selectedImageVariationSKU == null && mainImageLabel) {
     const mainImage = findImageByLabel(images, mainImageLabel)
@@ -231,10 +229,7 @@ const ProductImageContent = ({
     </div>
   )
 
-  return compose(
-    withBadge(showBadge),
-    withCollection(showCollections)
-  )(img)
+  return compose(withBadge(showBadge), withCollection(showCollections))(img)
 }
 
 const ProductImage = ({
