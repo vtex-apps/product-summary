@@ -155,18 +155,18 @@ const ProductImageContent = ({
     legacyContainerClasses
   )
 
-  if (!sku || hasError) {
+  const images = pathOr([], ['images'], sku)
+  const hoverImage = findImageByLabel(images, hoverImageLabel)
+
+  let imageUrl = pathOr('', ['image', 'imageUrl'], sku)
+
+  if (!imageUrl || hasError) {
     return (
       <div className={containerClassname}>
         <ImagePlaceholder cssHandle={handles.productImage} />
       </div>
     )
   }
-
-  const images = pathOr([], ['images'], sku)
-  const hoverImage = findImageByLabel(images, hoverImageLabel)
-
-  let imageUrl = pathOr({}, ['image', 'imageUrl'], sku)
 
   if (selectedImageVariationSKU == null && mainImageLabel) {
     const mainImage = findImageByLabel(images, mainImageLabel)

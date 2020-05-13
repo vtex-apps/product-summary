@@ -6,10 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- `ProductImage` crashing if there is no image to display.
 
 ## [2.54.0] - 2020-05-12
 ### Added
-- `href` prop in `ProductSummaryCustom` 
+- `href` prop in `ProductSummaryCustom`.
 
 ## [2.53.3] - 2020-04-24
 ### Fixed
