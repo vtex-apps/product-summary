@@ -3,11 +3,10 @@ import { useQuery } from 'react-apollo'
 import { ProductListContext } from 'vtex.product-list-context'
 import { ExtensionPoint, useTreePath } from 'vtex.render-runtime'
 import { useListContext, ListContextProvider } from 'vtex.list-context'
+import productsQuery from 'vtex.store-resources/QueryProducts'
 
 import { mapCatalogProductToProductSummary } from './utils/normalize'
 import ProductListEventCaller from './components/ProductListEventCaller'
-
-import productsQuery from 'vtex.store-resources/QueryProducts'
 
 const ORDER_BY_OPTIONS = {
   RELEVANCE: {

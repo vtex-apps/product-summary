@@ -5,15 +5,14 @@ import { withRuntimeContext } from 'vtex.render-runtime'
 import { equals, path } from 'ramda'
 import classnames from 'classnames'
 import { IOMessage } from 'vtex.native-types'
-
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
+import { useCssHandles } from 'vtex.css-handles'
+
 import displayButtonTypes, {
   getDisplayButtonNames,
   getDisplayButtonValues,
 } from '../../utils/displayButtonTypes'
-
 import productSummary from '../../productSummary.css'
-import { useCssHandles } from 'vtex.css-handles'
 
 const ALWAYS_GO_TO_PRODUCT = 'alwaysGoToProduct'
 const ALWAYS_ADD_TO_CART = 'alwaysAddToCart'
@@ -115,6 +114,7 @@ ProductSummaryBuyButton.propTypes = {
   displayBuyButton: PropTypes.oneOf(getDisplayButtonValues()),
   /** A custom URL for the `VIEW CART` button inside the toast created by BuyButton */
   customToastURL: PropTypes.string,
+  isHovering: PropTypes.boolean,
 }
 
 ProductSummaryBuyButton.defaultProps = {

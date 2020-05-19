@@ -45,7 +45,6 @@ Product Summary Buy Button is a block exported by the Product Summary app respon
 }
 ```
 
-
 ### Props
 
 | Prop name           | Type      | Description                                                                                 | Default value         |

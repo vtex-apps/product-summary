@@ -1,8 +1,8 @@
 import React from 'react'
+import { useCssHandles } from 'vtex.css-handles'
+
 import AddedAttachmentsList from './AddedAttachmentsList'
 import RemovedAttachmentsList from './RemovedAttachmentsList'
-
-import { useCssHandles } from 'vtex.css-handles'
 
 const CSS_HANDLES = ['attachmentChildrenContainer']
 

@@ -5,26 +5,22 @@ import { pathOr, path } from 'ramda'
 import { useInView } from 'react-intersection-observer'
 import { Link } from 'vtex.render-runtime'
 import { ProductListContext } from 'vtex.product-list-context'
-import ProductSummaryContext from './ProductSummaryContext'
 import {
   ProductSummaryProvider,
   useProductSummaryDispatch,
   useProductSummary,
 } from 'vtex.product-summary-context/ProductSummaryContext'
 import { ProductContextProvider } from 'vtex.product-context'
+import { useCssHandles } from 'vtex.css-handles'
+
+import ProductSummaryContext from './ProductSummaryContext'
 import { productShape } from '../utils/propTypes'
 import { mapCatalogProductToProductSummary } from '../utils/normalize'
-import { useCssHandles } from 'vtex.css-handles'
 
 const PRODUCT_SUMMARY_MAX_WIDTH = 300
 const CSS_HANDLES = ['container', 'containerNormal', 'element', 'clearLink']
 
-const ProductSummaryCustom = ({
-  product,
-  actionOnClick,
-  children,
-  href,
-}) => {
+const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
   const { isLoading, isHovering, selectedItem, query } = useProductSummary()
   const dispatch = useProductSummaryDispatch()
   const handles = useCssHandles(CSS_HANDLES)

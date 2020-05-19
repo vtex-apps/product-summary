@@ -2,6 +2,7 @@
   "name": "vtex.product-summary",
   "scripts": {
     "pretest": "yarn",
+    "lint": "eslint --ext js,jsx,ts,tsx .",
     "test": "vtex-test-tools test",
     "test:coverage": "vtex-test-tools test --collectCoverage",
     "gen:coveralls": "yarn test:coverage  && cat ./coverage/lcov.info | coveralls"

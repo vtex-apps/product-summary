@@ -5,7 +5,6 @@ import classNames from 'classnames'
 import { Spinner } from 'vtex.styleguide'
 import { ProductPrice } from 'vtex.store-components'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
-
 import { useCssHandles } from 'vtex.css-handles'
 
 const CSS_HANDLES = [
