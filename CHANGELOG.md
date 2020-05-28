@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Fixed Product Summary Price block documentation by adding deprecation badge and disclaimer.
+
 ## [2.54.1] - 2020-05-13
 ### Fixed
 - `ProductImage` crashing if there is no image to display.
