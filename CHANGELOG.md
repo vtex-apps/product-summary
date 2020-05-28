@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.54.2] - 2020-05-28
+
 ### Fixed
 - Fixed Product Summary Price block documentation by adding deprecation badge and disclaimer.
 
