@@ -15,7 +15,7 @@ const CSS_HANDLES = [
   'productNameLoader',
 ]
 
-const ProductSummaryName = ({ showFieldsProps }) => {
+const ProductSummaryName = ({ showFieldsProps, tag }) => {
   const { product } = useProductSummary()
   const handles = useCssHandles(CSS_HANDLES)
   const productName = path(['productName'], product)
@@ -40,6 +40,7 @@ const ProductSummaryName = ({ showFieldsProps }) => {
         name={productName}
         skuName={skuName}
         brandName={brandName}
+        tag={tag}
         {...showFieldsProps}
       />
     </div>
@@ -57,6 +58,7 @@ ProductSummaryName.defaultProps = {
 ProductSummaryName.propTypes = {
   /** Name schema props */
   showFieldsProps: PropTypes.object,
+  tag: PropTypes.string,
 }
 
 ProductSummaryName.getSchema = () => {
