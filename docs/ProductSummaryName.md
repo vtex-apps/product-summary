@@ -35,6 +35,10 @@ Through the Storefront, you can change the `ProductSummaryName`'s behavior and i
 
 You can find all options available in [Store Components Product Name app](https://github.com/vtex-apps/store-components/blob/master/react/components/ProductName/README.md).
 
+| Prop name | Type | Description | Default value |
+| ----------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- |
+| `tag` | `string` | Witch HTML element will render | `'h1'` |
+
 ### Styles API
 
 This app provides some CSS classes as an API for style customization.
