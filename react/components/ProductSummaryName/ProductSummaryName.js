@@ -53,6 +53,7 @@ ProductSummaryName.defaultProps = {
     showBrandName: false,
     showSku: false,
   },
+  tag: 'h1'
 }
 
 ProductSummaryName.propTypes = {
