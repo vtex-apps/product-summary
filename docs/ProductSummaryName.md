@@ -37,7 +37,7 @@ You can find all options available in [Store Components Product Name app](https:
 
 | Prop name | Type | Description | Default value |
 | ----------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- |
-| `tag` | `string` | Witch HTML element will render | `'h1'` |
+| `tag` | `string` | Which HTML element will render | `'h1'` |
 
 ### Styles API
 
