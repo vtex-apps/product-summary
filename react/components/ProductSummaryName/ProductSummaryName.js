@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import { ProductName } from 'vtex.store-components'
 import { useCssHandles } from 'vtex.css-handles'
-
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
 const CSS_HANDLES = [
@@ -15,7 +14,7 @@ const CSS_HANDLES = [
   'productNameLoader',
 ]
 
-const ProductSummaryName = ({ showFieldsProps }) => {
+const ProductSummaryName = ({ showFieldsProps, tag }) => {
   const { product } = useProductSummary()
   const handles = useCssHandles(CSS_HANDLES)
   const productName = path(['productName'], product)
@@ -40,6 +39,7 @@ const ProductSummaryName = ({ showFieldsProps }) => {
         name={productName}
         skuName={skuName}
         brandName={brandName}
+        tag={tag}
         {...showFieldsProps}
       />
     </div>
@@ -52,11 +52,13 @@ ProductSummaryName.defaultProps = {
     showBrandName: false,
     showSku: false,
   },
+  tag: 'h1',
 }
 
 ProductSummaryName.propTypes = {
   /** Name schema props */
   showFieldsProps: PropTypes.object,
+  tag: PropTypes.string,
 }
 
 ProductSummaryName.getSchema = () => {
