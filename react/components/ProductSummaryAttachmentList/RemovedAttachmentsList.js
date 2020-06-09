@@ -3,7 +3,6 @@ import { intlShape, injectIntl } from 'react-intl'
 import { arrayOf } from 'prop-types'
 
 import AttachmentItem from './AttachmentItem'
-
 import { removedOptionShape } from '../../utils/propTypes'
 
 const wasCompletelyRemoved = ({ removedQuantity, initialQuantity }) =>

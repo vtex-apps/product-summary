@@ -7,7 +7,6 @@ import ProductImage from './ProductImage'
 import ProductQuantityStepper from './ProductQuantityStepper'
 import ProductSummaryPrice from './ProductSummaryPrice'
 import ProductSummaryName from './ProductSummaryName'
-
 import styles from '../../productSummary.css'
 
 const ProductSummaryInlinePrice = ({

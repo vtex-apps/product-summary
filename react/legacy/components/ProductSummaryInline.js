@@ -7,7 +7,6 @@ import ProductImage from './ProductImage'
 import ProductSummaryBuyButton from './ProductSummaryBuyButton'
 import ProductSummaryPrice from './ProductSummaryPrice'
 import ProductSummaryName from './ProductSummaryName'
-
 import productSummary from '../../productSummary.css'
 
 class ProductSummaryInline extends Component {

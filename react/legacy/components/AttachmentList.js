@@ -1,10 +1,9 @@
 import React from 'react'
-import { productShape } from '../../utils/propTypes'
 import { pathOr, reject } from 'ramda'
 
+import { productShape } from '../../utils/propTypes'
 import RemovedAttachmentsList from '../../components/ProductSummaryAttachmentList/RemovedAttachmentsList'
 import AddedAttachmentsList from '../../components/ProductSummaryAttachmentList/AddedAttachmentsList'
-
 import styles from '../../productSummary.css'
 
 const itemShouldHide = ({ item, extraQuantity }) =>
@@ -22,9 +21,7 @@ const AttachmentList = ({ product }) => {
 
   return (
     <div className={`${styles.attachmentListContainer} pv2`}>
-      <AddedAttachmentsList
-        addedOptions={filteredOption}
-      />
+      <AddedAttachmentsList addedOptions={filteredOption} />
       <RemovedAttachmentsList removedOptions={removedOptions} />
     </div>
   )

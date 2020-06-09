@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { ProductBrand } from 'vtex.store-components'
-
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
 const DISPLAY_MODE = {

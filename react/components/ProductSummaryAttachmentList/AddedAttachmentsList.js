@@ -3,9 +3,7 @@ import { arrayOf, bool } from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 
 import AttachmentItem from './AttachmentItem'
-
 import { CHOICE_TYPES } from '../../utils/attachmentHelper'
-
 import { addedOptionShape } from '../../utils/propTypes'
 
 const formatAttachmentName = option => (

@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 import { useCssHandles } from 'vtex.css-handles'
 

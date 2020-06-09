@@ -111,16 +111,18 @@ class ProductSummary extends Component {
     this.sendImpressionEvent()
   }
 
-  componentDidUpdate = (prevProps) => {
-    if (prevProps.productListDispatch !== this.props.productListDispatch ||
+  componentDidUpdate = prevProps => {
+    if (
+      prevProps.productListDispatch !== this.props.productListDispatch ||
       prevProps.inView !== this.props.inView ||
-      prevProps.product !== this.props.product) {
-        this.sendImpressionEvent()
-      }
+      prevProps.product !== this.props.product
+    ) {
+      this.sendImpressionEvent()
+    }
   }
 
   sendImpressionEvent = () => {
-    const {inView, productListDispatch} = this.props
+    const { inView, productListDispatch } = this.props
     if (inView && productListDispatch) {
       productListDispatch({
         type: 'SEND_IMPRESSION',
@@ -208,7 +210,6 @@ class ProductSummary extends Component {
   }
 }
 
-
 const ProductSummaryWrapper = props => {
   const { useProductListDispatch } = ProductListContext
   const productListDispatch = useProductListDispatch()
@@ -220,7 +221,7 @@ const ProductSummaryWrapper = props => {
 
   return (
     <ProductSummary
-      { ...props }
+      {...props}
       productListDispatch={productListDispatch}
       inView={inView}
       inViewRef={inViewRef}

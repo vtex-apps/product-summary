@@ -5,9 +5,7 @@ import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
 
 import ImagePlaceholder from '../../components/ProductSummaryImage/ImagePlaceholder'
-
 import { productShape } from '../../utils/propTypes'
-
 import productSummary from '../../productSummary.css'
 
 const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
@@ -79,10 +77,7 @@ const ProductImage = ({
     />
   )
 
-  return compose(
-    withBadge(showBadge),
-    withCollection(showCollections)
-  )(img)
+  return compose(withBadge(showBadge), withCollection(showCollections))(img)
 }
 
 ProductImage.propTypes = {

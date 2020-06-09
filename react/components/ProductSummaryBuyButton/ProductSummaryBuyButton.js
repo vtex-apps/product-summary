@@ -5,20 +5,21 @@ import { withRuntimeContext } from 'vtex.render-runtime'
 import { equals, path } from 'ramda'
 import classnames from 'classnames'
 import { IOMessage } from 'vtex.native-types'
-
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
+import { useCssHandles } from 'vtex.css-handles'
+
 import displayButtonTypes, {
   getDisplayButtonNames,
   getDisplayButtonValues,
 } from '../../utils/displayButtonTypes'
-
 import productSummary from '../../productSummary.css'
-import { useCssHandles } from 'vtex.css-handles'
 
 const ALWAYS_GO_TO_PRODUCT = 'alwaysGoToProduct'
+const ALWAYS_ADD_TO_CART = 'alwaysAddToCart'
 const DEFAULT_BUTTON_BEHAVIOR = 'default'
 const BUY_BUTTON_BEHAVIOR_OPTIONS = [
   ALWAYS_GO_TO_PRODUCT,
+  ALWAYS_ADD_TO_CART,
   DEFAULT_BUTTON_BEHAVIOR,
 ]
 const CSS_HANDLES = ['buyButton', 'buyButtonContainer']
@@ -49,18 +50,11 @@ const ProductSummaryBuyButton = ({
       mobile
     )
 
-  const buyButtonClasses = classnames(
-    handles.buyButton,
-    'center mw-100',
-    {
-      [productSummary.isHidden]: !hoverBuyButton,
-    }
-  )
+  const buyButtonClasses = classnames(handles.buyButton, 'center mw-100', {
+    [productSummary.isHidden]: !hoverBuyButton,
+  })
 
-  const containerClass = classnames(
-    handles.buyButtonContainer,
-    'pv3 w-100 db'
-  )
+  const containerClass = classnames(handles.buyButtonContainer, 'pv3 w-100 db')
 
   const selectedSeller = path(['seller'], selectedItem)
   const isAvailable =
@@ -75,11 +69,10 @@ const ProductSummaryBuyButton = ({
   })
 
   const { items = [] } = product
-  // if the item is not available the behavior is just show the disabled BuyButton,
-  // but you still can go to the product page clicking in the summary
-  const shouldBeALink =
-    (items.length !== 1 || buyButtonBehavior !== DEFAULT_BUTTON_BEHAVIOR) &&
-    isAvailable
+  const shouldAddToCart =
+    isAvailable &&
+    (buyButtonBehavior === ALWAYS_ADD_TO_CART ||
+      (buyButtonBehavior === DEFAULT_BUTTON_BEHAVIOR && items.length === 1))
 
   return (
     showBuyButton && (
@@ -93,7 +86,7 @@ const ProductSummaryBuyButton = ({
             available={isAvailable}
             isOneClickBuy={isOneClickBuy}
             customToastURL={customToastURL}
-            shouldAddToCart={!shouldBeALink}
+            shouldAddToCart={shouldAddToCart}
           >
             <IOMessage id={buyButtonText} />
           </BuyButton>
@@ -121,6 +114,7 @@ ProductSummaryBuyButton.propTypes = {
   displayBuyButton: PropTypes.oneOf(getDisplayButtonValues()),
   /** A custom URL for the `VIEW CART` button inside the toast created by BuyButton */
   customToastURL: PropTypes.string,
+  isHovering: PropTypes.boolean,
 }
 
 ProductSummaryBuyButton.defaultProps = {

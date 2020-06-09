@@ -1,72 +1,67 @@
+📢 Use this project, [contribute](https://github.com/vtex-apps/product-summary) to it or open issues to help evolve it using [Store Discussion](https://github.com/vtex-apps/store-discussion).
+
 # Product Summary Buy Button
 
-## Description
+Product Summary Buy Button is a block exported by the Product Summary app responsible for rendering a buy button in the Product Summary Shelf block.
 
-`ProductSummaryBuyButton` is a VTEX Component that renders the buy button.
-This Component can be imported and used by any VTEX App.
+![](https://user-images.githubusercontent.com/52087100/76864047-38006600-683f-11ea-8a4e-74dc91712984.png)
 
-:loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
+## Configuration
 
-## Table of Contents
-- [Usage](#usage)
-  - [Blocks API](#blocks-api)
-  - [Configuration](#configuration)
-  - [Styles API](#styles-api)
-
-## Usage
-
-You should follow the usage instruction in the main [README](https://github.com/vtex-apps/product-summary/blob/master/README.md#usage).
-
-Then, add `product-summary-buy-button` block into your app theme, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
-
-### Blocks API
-
-This component has an interface that describes which rules must be implemented by a block when you want to use the `ProductSummaryBuyButton`.
+1. Add the [Product Summary app](https://vtex.io/docs/components/content-blocks/vtex.product-summary/) to your theme's dependencies on the `manifest.json`, for example:
 
 ```json
+  dependencies: {
+    "vtex.product-summary": "2.x"
+  }
+```
+
+2. Add the `product-summary-buy-button` block as a children of the `product-summary.shelf` block:
+
+```diff
+ {
+   "product-summary.shelf": {
+       "children": [
+           "product-summary-image",
+           "product-summary-name",
+           "product-rating-inline",
+           "product-summary-space",
+           "product-summary-price",
++          "product-summary-buy-button"
+       ]
+   },
+ }
+```
+
+3. Then, declare the `product-summary-buy-button` and configure its behavior using the props stated below.
+
+```json
+{
   "product-summary-buy-button": {
-    "component": "ProductSummaryBuyButton"
+    "props": {
+      "isOneClickBuy": false
+    }
   }
-```
-
-### Configuration
-
-Through the Storefront, you can change the `ProductSummaryBuyButton`'s behavior and interface. However, you also can make in your theme app.
-
-| Prop name           | Type      | Description                                                                                 | Default value         |
-| ------------------- | --------- | ------------------------------------------------------------------------------------------- | --------------------- |
-| `isOneClickBuy`     | `Boolean` | Should redirect to checkout after clicking on buy                                           | `false`               |
-| `buyButtonText`     | `String`  | Custom buy button text                                                                      |                       |
-| `displayBuyButton`  | `Enum`    | Set display mode of buy button (displayButtonAlways, displayButtonHover, displayButtonNone) | `displayButtonAlways` |
-| `customToastURL`  | `String`    | Set the link associated with the Toast created when adding an item to your cart.  | `/checkout/#/cart` |
-| `buyButtonBehavior` | `Enum` | What the buy button should do when you click it, if you pass `default` it will add to cart only if there is only one SKU of that product (default, alwaysGoToProduct) | `default`
-
-### Styles API
-
-This app provides some CSS classes as an API for style customization.
-
-To use this CSS API, you must add the `styles` builder and create an app styling CSS file.
-
-1. Add the `styles` builder to your `manifest.json`:
-
-```json
-  "builders": {
-    "styles": "1.x"
-  }
-```
-
-2. Create a file called `vtex.product-summary.css` inside the `styles/css` folder. Add your custom styles:
-
-```css
-.buyButtonContainer {
-  margin-top: 10px;
 }
 ```
 
-#### CSS Handles
+### Props
 
-| CSS Handles   | Description                                          | Component Source                     |
-| ------------ | ---------------------------------------------------- | ------------------------------------ |
-| `buyButtonContainer` | The main container of buy button | [index](/react/components/ProductSummaryBuyButton/ProductSummaryBuyButton.js) |
-| `buyButton` | Class right before buy button | [index](/react/components/ProductSummaryBuyButton/ProductSummaryBuyButton.js) |
-| `isHidden` | Class when button is hidden | [index](/react/components/ProductSummaryBuyButton/ProductSummaryBuyButton.js) |
+| Prop name           | Type      | Description                                                                                 | Default value         |
+| ------------------- | --------- | ------------------------------------------------------------------------------------------- | --------------------- |
+| `isOneClickBuy`     | `Boolean` | Whether the user should be redirected to Checkout after clicking on the Buy Button (`true`) or not (`false`) | `false` |
+| `buyButtonText`     | `String`  | Custom text that overwrites the default Buy Button text                                     | `undefined`           |
+| `displayBuyButton`  | `Enum`    | Sets the Buy Button display mode by defining whether it will always be displayed (`displayButtonAlways`), only displayed on hover (`displayButtonHover`) or if it will be hidden for users (`displayButtonNone`) | `displayButtonAlways` |
+| `customToastURL`    | `String`  | Defines a redirect link to the Toast displayed when an item is added to your cart. | `/checkout/#/cart` |
+| `buyButtonBehavior` | `Enum`    | Sets the Buy Button behavior when it is clicked on. You can choose between the following scenarios: <ul><li>`alwaysGoToProduct` - Redirect users to the product page;</li><li>`default` - Redirect users to the Product Page when there are several SKUs available. In scenarios in which there is only one SKU available, it will be add to the cart ;</li><li>`alwaysAddToTheCart` - Always add the selected SKU to the cart. When choosing this option, be careful: use it only if there are SKU Selectors for each product variation, so users can properly select their desired SKU. </li></ul> | `default` |
+
+## Customization
+
+In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
+
+| CSS Handles |
+| --- |
+| `buyButtonContainer` |
+| `buyButton` |
+| `isHidden` |
+
