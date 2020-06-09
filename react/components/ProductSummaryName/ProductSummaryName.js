@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import { ProductName } from 'vtex.store-components'
 import { useCssHandles } from 'vtex.css-handles'
-
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
 const CSS_HANDLES = [
@@ -53,7 +52,7 @@ ProductSummaryName.defaultProps = {
     showBrandName: false,
     showSku: false,
   },
-  tag: 'h1'
+  tag: 'h1',
 }
 
 ProductSummaryName.propTypes = {
