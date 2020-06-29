@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+- Extract `ProductSummaryList` component without query.
+
 ## [2.56.0] - 2020-06-09
 ### Added
 - New option `alwaysAddToCart` for prop `buyButtonBehavior`.
