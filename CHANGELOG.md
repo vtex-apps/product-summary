@@ -7,8 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-### Changed
-- Extract `ProductSummaryList` component without query.
+### Added
+- New component `ProductSummaryListWithoutQuery`.
 
 ## [2.56.0] - 2020-06-09
 ### Added

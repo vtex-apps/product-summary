@@ -3,8 +3,10 @@ import { ExtensionPoint, useTreePath } from 'vtex.render-runtime'
 import { useListContext, ListContextProvider } from 'vtex.list-context'
 import { ProductListContext } from 'vtex.product-list-context'
 
-import { mapCatalogProductToProductSummary } from '../../utils/normalize'
-import ProductListEventCaller from '../ProductListEventCaller'
+import { mapCatalogProductToProductSummary } from './utils/normalize'
+import ProductListEventCaller from './components/ProductListEventCaller'
+
+const { ProductListProvider } = ProductListContext
 
 const List = ({ children, products }) => {
   const { list } = useListContext()
@@ -35,8 +37,7 @@ const List = ({ children, products }) => {
   )
 }
 
-const ProductSummaryList = ({ children, products }) => {
-  const { ProductListProvider } = ProductListContext
+const ProductSummaryListWithoutQuery = ({ children, products }) => {
   return (
     <ProductListProvider>
       <List products={products}>{children}</List>
@@ -45,4 +46,4 @@ const ProductSummaryList = ({ children, products }) => {
   )
 }
 
-export default ProductSummaryList
+export default ProductSummaryListWithoutQuery
