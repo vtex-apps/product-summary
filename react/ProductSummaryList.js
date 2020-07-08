@@ -1,12 +1,8 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { useQuery } from 'react-apollo'
-import { ProductListContext } from 'vtex.product-list-context'
-import { ExtensionPoint, useTreePath } from 'vtex.render-runtime'
-import { useListContext, ListContextProvider } from 'vtex.list-context'
 import productsQuery from 'vtex.store-resources/QueryProducts'
 
-import { mapCatalogProductToProductSummary } from './utils/normalize'
-import ProductListEventCaller from './components/ProductListEventCaller'
+import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
 
 const ORDER_BY_OPTIONS = {
   RELEVANCE: {
@@ -50,17 +46,18 @@ function getOrdinationProp(attribute) {
   )
 }
 
-const ProductSummaryList = ({
-  children,
-  category = '',
-  collection,
-  hideUnavailableItems = false,
-  orderBy = ORDER_BY_OPTIONS.TOP_SALE_DESC.value,
-  specificationFilters = [],
-  maxItems = 10,
-  skusFilter,
-  installmentCriteria,
-}) => {
+const ProductSummaryList = ({ children, ...props }) => {
+  const {
+    category = '',
+    collection,
+    hideUnavailableItems = false,
+    orderBy = ORDER_BY_OPTIONS.TOP_SALE_DESC.value,
+    specificationFilters = [],
+    maxItems = 10,
+    skusFilter,
+    installmentCriteria,
+  } = props
+
   const { data, loading, error } = useQuery(productsQuery, {
     variables: {
       category,
@@ -79,53 +76,20 @@ const ProductSummaryList = ({
     },
   })
 
-  const { list } = useListContext()
-  const { treePath } = useTreePath()
-
   const { products } = data || {}
 
-  const newListContextValue = useMemo(() => {
-    const componentList =
-      products &&
-      products.map(product => {
-        const normalizedProduct = mapCatalogProductToProductSummary(product)
-
-        return (
-          <ExtensionPoint
-            id="product-summary"
-            key={product.id}
-            treePath={treePath}
-            product={normalizedProduct}
-          />
-        )
-      })
-    return list.concat(componentList)
-  }, [products, treePath, list])
-
-  // https://github.com/vtex-apps/product-summary/issues/235
   if (loading || error) {
     return null
   }
 
   return (
-    <ListContextProvider list={newListContextValue}>
+    <ProductSummaryListWithoutQuery products={products}>
       {children}
-    </ListContextProvider>
+    </ProductSummaryListWithoutQuery>
   )
 }
 
-const EnhancedProductList = ({ children, ...props }) => {
-  const { ProductListProvider } = ProductListContext
-
-  return (
-    <ProductListProvider>
-      <ProductSummaryList {...props}>{children}</ProductSummaryList>
-      <ProductListEventCaller />
-    </ProductListProvider>
-  )
-}
-
-EnhancedProductList.getSchema = () => ({
+ProductSummaryList.getSchema = () => ({
   title: 'admin/editor.productSummaryList.title',
   description: 'admin/editor.productSummaryList.description',
   type: 'object',
@@ -209,4 +173,4 @@ EnhancedProductList.getSchema = () => ({
   },
 })
 
-export default EnhancedProductList
+export default ProductSummaryList
