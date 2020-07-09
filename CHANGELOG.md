@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Updated Product Summary and Product Summary Buy Button docs to create a clearer information about Minicart versions.
 
 ## [2.57.0] - 2020-07-08
 
