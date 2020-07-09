@@ -27,7 +27,7 @@ Now, you are able to use all blocks exported by the `product-summary` app. Check
 | `product-summary.shelf` | ![https://img.shields.io/badge/-Mandatory-red](https://img.shields.io/badge/-Mandatory-red) Logical block responsible for providing the needed structure, data and context for its child blocks (listed below). 
 | `product-summary-attachment-list` | Renders a list for the product [attachments](https://help.vtex.com/tutorial/adding-an-attachment--7zHMUpuoQE4cAskqEUWScU). | 
 | `product-summary-brand`         | Renders the product brand. | 
-| `product-summary-buy-button` | Renders the Buy Button. Notice that this block should only be configured if your store uses the [Minicart v1](https://github.com/vtex-apps/minicart/blob/383d7bbd3295f06d1b5854a0add561a872e1515c/docs/README.md). If it uses the [Minicart v2](https://vtex.io/docs/components/all/vtex.minicart/), you should configure the [Add To Cart Button](https://vtex.io/docs/components/all/vtex.add-to-cart-button/) instead.  | 
+| `product-summary-buy-button` | Renders the Buy Button. Notice that this block should only be configured if your store still uses the [Minicart v1](https://github.com/vtex-apps/minicart/blob/383d7bbd3295f06d1b5854a0add561a872e1515c/docs/README.md). When using the [Minicart v2](https://vtex.io/docs/components/all/vtex.minicart/), you should configure the [Add To Cart Button](https://vtex.io/docs/components/all/vtex.add-to-cart-button/) instead.  | 
 | `product-summary-description` | Renders the product description. | 
 | `product-summary-image` | Renders the product image. | 
 | `list-context.product-list` | Renders a list of products in the Product Summary. | 
