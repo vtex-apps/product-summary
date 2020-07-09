@@ -1,4 +1,4 @@
-📢 Use this project, [contribute](https://github.com/vtex-apps/product-summary) to it or open issues to help evolve it using [Store Discussion](https://github.com/vtex-apps/store-discussion).
+📢 Use this project, [contribute](https://github.com/vtex-apps/product-summary/blob/master/docs/ProductSummaryBuyButton.md) to it or open issues to help evolve it using [Store Discussion](https://github.com/vtex-apps/store-discussion).
 
 # Product Summary Buy Button
 
@@ -6,7 +6,7 @@ Product Summary Buy Button is a block exported by the Product Summary app respon
 
 ![](https://user-images.githubusercontent.com/52087100/76864047-38006600-683f-11ea-8a4e-74dc91712984.png)
 
-:warning: **The Product Summary Buy Button only effectively function i.e. only adds products to the Minicart if the store still uses the [Minicart v1](https://github.com/vtex-apps/minicart/blob/383d7bbd3295f06d1b5854a0add561a872e1515c/docs/README.md)**. When using the [Minicart v2](https://vtex.io/docs/components/all/vtex.minicart/), use the [Add To Cart Button](https://vtex.io/docs/components/all/vtex.add-to-cart-button/) in the `product-summary.shelf` instead.
+:warning: **The Product Summary Buy Button only effectively function i.e. only adds products to the Minicart if the store still uses the [Minicart v1](https://github.com/vtex-apps/minicart/blob/383d7bbd3295f06d1b5854a0add561a872e1515c/docs/README.md)**. When using the [Minicart v2](https://vtex.io/docs/components/all/vtex.minicart/), you should configure the [Add To Cart Button](https://vtex.io/docs/components/all/vtex.add-to-cart-button/) in the `product-summary.shelf` block instead.
 
 ## Configuration
 
@@ -51,11 +51,11 @@ Product Summary Buy Button is a block exported by the Product Summary app respon
 
 | Prop name           | Type      | Description                                                                                 | Default value         |
 | ------------------- | --------- | ------------------------------------------------------------------------------------------- | --------------------- |
-| `isOneClickBuy`     | `Boolean` | Whether the user should be redirected to Checkout after clicking on the Buy Button (`true`) or not (`false`) | `false` |
-| `buyButtonText`     | `String`  | Custom text that overwrites the default Buy Button text                                     | `undefined`           |
-| `displayBuyButton`  | `Enum`    | Sets the Buy Button display mode by defining whether it will always be displayed (`displayButtonAlways`), only displayed on hover (`displayButtonHover`) or if it will be hidden for users (`displayButtonNone`) | `displayButtonAlways` |
-| `customToastURL`    | `String`  | Defines a redirect link to the Toast displayed when an item is added to your cart. | `/checkout/#/cart` |
-| `buyButtonBehavior` | `Enum`    | Sets the Buy Button behavior when it is clicked on. You can choose between the following scenarios: <ul><li>`alwaysGoToProduct` - Redirect users to the product page;</li><li>`default` - Redirect users to the Product Page when there are several SKUs available. In scenarios in which there is only one SKU available, it will be add to the cart ;</li><li>`alwaysAddToTheCart` - Always add the selected SKU to the cart. When choosing this option, be careful: use it only if there are SKU Selectors for each product variation, so users can properly select their desired SKU. </li></ul> | `default` |
+| `isOneClickBuy`     | `boolean` | Whether the user should be redirected to Checkout after clicking on the Buy Button (`true`) or not (`false`). | `false` |
+| `buyButtonText`     | `string`  | Custom text that overwrites the default Buy Button text.                                     | `undefined`           |
+| `displayBuyButton`  | `enum`    | Sets the Buy Button display mode. Possivle values are: `displayButtonAlways` (it will always be displayed), `displayButtonHover` (only displayed on hover), or `displayButtonNone` (it will be hidden for users). | `displayButtonAlways` |
+| `customToastURL`    | `string`  | Defines a redirect link to the Toast displayed when an item is added to your cart. | `/checkout/#/cart` |
+| `buyButtonBehavior` | `enum`    | Sets the Buy Button behavior when it is clicked on. Possible values are: `alwaysGoToProduct` (redirect users to the product page), `default` (redirect users to the minicart), or `alwaysAddToTheCart` (add the selected SKU to the minicart). When choosing this last option, be careful: use it only if there are SKU Selectors for each product variation. This way, users can properly select their desired SKU. | `default` |
 
 ## Customization
 
