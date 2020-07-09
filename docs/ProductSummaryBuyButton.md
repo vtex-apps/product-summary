@@ -2,9 +2,11 @@
 
 # Product Summary Buy Button
 
-Product Summary Buy Button is a block exported by the Product Summary app responsible for rendering a buy button in the Product Summary Shelf block.
+Product Summary Buy Button is a block exported by the Product Summary app responsible for rendering a Buy Button in the Product Summary Shelf block.
 
 ![](https://user-images.githubusercontent.com/52087100/76864047-38006600-683f-11ea-8a4e-74dc91712984.png)
+
+:warning: **The Product Summary Buy Button only effectively function i.e. only adds products to the Minicart if the store still uses the [Minicart v1](https://github.com/vtex-apps/minicart/blob/383d7bbd3295f06d1b5854a0add561a872e1515c/docs/README.md)**. When using the [Minicart v2](https://vtex.io/docs/components/all/vtex.minicart/), use the [Add To Cart Button](https://vtex.io/docs/components/all/vtex.add-to-cart-button/) in the `product-summary.shelf` instead.
 
 ## Configuration
 
