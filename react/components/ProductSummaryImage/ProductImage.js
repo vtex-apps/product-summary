@@ -116,6 +116,7 @@ const Image = ({
 
 const ProductImageContent = ({
   product,
+  selectedItem,
   onError,
   hasError,
   showBadge,
@@ -134,7 +135,7 @@ const ProductImageContent = ({
   const { skuSelector: { selectedImageVariationSKU } = {} } = useProduct()
 
   const { productClusters, productName: name } = product || {}
-  const sku = product && product.sku
+  const sku = selectedItem || (product && product.sku)
 
   const [width, height] = [
     // fallsback to the other remaining value, if not defined
@@ -156,7 +157,9 @@ const ProductImageContent = ({
   const images = pathOr([], ['images'], sku)
   const hoverImage = findImageByLabel(images, hoverImageLabel)
 
-  let imageUrl = pathOr('', ['image', 'imageUrl'], sku)
+  let imageUrl =
+    pathOr('', ['image', 'imageUrl'], sku) ||
+    pathOr('', [0, 'imageUrl'], images)
 
   if (!imageUrl || hasError) {
     return (
@@ -244,8 +247,7 @@ const ProductImage = ({
   aspectRatio: aspectRatioProp,
   maxHeight: maxHeightProp,
 }) => {
-  const { product } = useProductSummary()
-
+  const { product, selectedItem } = useProductSummary()
   const {
     widthProp: width,
     heightProp: height,
@@ -273,6 +275,7 @@ const ProductImage = ({
         maxHeight={maxHeight}
         hasError={error}
         product={product}
+        selectedItem={selectedItem}
         badgeText={badgeText}
         showBadge={showBadge}
         displayMode={displayMode}

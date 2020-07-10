@@ -23,6 +23,47 @@ export const removedOptionShape = PropTypes.shape({
   name: PropTypes.string.isRequired,
 })
 
+export const skuShape = PropTypes.shape({
+  /** SKU name */
+  name: PropTypes.string.isRequired,
+  /** SKU id */
+  itemId: PropTypes.string.isRequired,
+  /** SKU Image to be shown */
+  image: PropTypes.shape({
+    /** Image URL */
+    imageUrl: PropTypes.string.isRequired,
+    /** Image tag as string */
+    imageTag: PropTypes.string,
+  }).isRequired,
+  /** SKU seller */
+  seller: PropTypes.shape({
+    /** Seller id */
+    sellerId: PropTypes.string,
+    /** Seller comertial offer */
+    commertialOffer: PropTypes.shape({
+      /** SKU installments */
+      Installments: PropTypes.arrayOf(
+        PropTypes.shape({
+          /** Installment value */
+          Value: PropTypes.number.isRequired,
+          /** Interest rate (zero if interest-free) */
+          InterestRate: PropTypes.number.isRequired,
+          /** Calculated total value */
+          TotalValuePlusInterestRate: PropTypes.number,
+          /** Number of installments */
+          NumberOfInstallments: PropTypes.number.isRequired,
+          /** Installments offer name */
+          Name: PropTypes.string,
+        })
+      ),
+      /** Selling Price */
+      Price: PropTypes.number.isRequired,
+      /** List Price */
+      ListPrice: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
+})
+
 export const productShape = PropTypes.shape({
   /** Product's id */
   productId: PropTypes.string.isRequired,
@@ -35,46 +76,7 @@ export const productShape = PropTypes.shape({
   /** Product's brand id */
   brandId: PropTypes.number,
   /** Product's SKU */
-  sku: PropTypes.shape({
-    /** SKU name */
-    name: PropTypes.string.isRequired,
-    /** SKU id */
-    itemId: PropTypes.string.isRequired,
-    /** SKU Image to be shown */
-    image: PropTypes.shape({
-      /** Image URL */
-      imageUrl: PropTypes.string.isRequired,
-      /** Image tag as string */
-      imageTag: PropTypes.string,
-    }).isRequired,
-    /** SKU seller */
-    seller: PropTypes.shape({
-      /** Seller id */
-      sellerId: PropTypes.string,
-      /** Seller comertial offer */
-      commertialOffer: PropTypes.shape({
-        /** SKU installments */
-        Installments: PropTypes.arrayOf(
-          PropTypes.shape({
-            /** Installment value */
-            Value: PropTypes.number.isRequired,
-            /** Interest rate (zero if interest-free) */
-            InterestRate: PropTypes.number.isRequired,
-            /** Calculated total value */
-            TotalValuePlusInterestRate: PropTypes.number,
-            /** Number of installments */
-            NumberOfInstallments: PropTypes.number.isRequired,
-            /** Installments offer name */
-            Name: PropTypes.string,
-          })
-        ),
-        /** Selling Price */
-        Price: PropTypes.number.isRequired,
-        /** List Price */
-        ListPrice: PropTypes.number.isRequired,
-      }).isRequired,
-    }).isRequired,
-  }).isRequired,
+  sku: skuShape.isRequired,
   /** Product's collections */
   productClusters: PropTypes.arrayOf(
     PropTypes.shape({

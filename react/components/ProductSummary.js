@@ -14,13 +14,19 @@ import { ProductContextProvider } from 'vtex.product-context'
 import { useCssHandles } from 'vtex.css-handles'
 
 import ProductSummaryContext from './ProductSummaryContext'
-import { productShape } from '../utils/propTypes'
+import { productShape, skuShape } from '../utils/propTypes'
 import { mapCatalogProductToProductSummary } from '../utils/normalize'
 
 const PRODUCT_SUMMARY_MAX_WIDTH = 300
 const CSS_HANDLES = ['container', 'containerNormal', 'element', 'clearLink']
 
-const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
+const ProductSummaryCustom = ({
+  product,
+  actionOnClick,
+  children,
+  href,
+  selectedItem: currentSelectedItem,
+}) => {
   const { isLoading, isHovering, selectedItem, query } = useProductSummary()
   const dispatch = useProductSummaryDispatch()
   const handles = useCssHandles(CSS_HANDLES)
@@ -52,10 +58,10 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
     if (product) {
       dispatch({
         type: 'SET_PRODUCT',
-        args: { product },
+        args: { product, selectedItem: currentSelectedItem || selectedItem },
       })
     }
-  }, [product, dispatch])
+  }, [product, dispatch, selectedItem, currentSelectedItem])
 
   const handleMouseLeave = useCallback(() => {
     dispatch({
@@ -84,11 +90,19 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
   const oldContextProps = useMemo(
     () => ({
       product,
+      selectedItem: currentSelectedItem || selectedItem,
       isLoading,
       isHovering,
       handleItemsStateUpdate: handleItemsStateUpdate,
     }),
-    [product, isLoading, isHovering, handleItemsStateUpdate]
+    [
+      product,
+      currentSelectedItem,
+      selectedItem,
+      isLoading,
+      isHovering,
+      handleItemsStateUpdate,
+    ]
   )
 
   const containerClasses = classNames(
@@ -107,7 +121,7 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
   const skuId = pathOr(
     path(['sku', 'itemId'], product),
     ['itemId'],
-    selectedItem
+    currentSelectedItem || selectedItem
   )
 
   const linkProps = href
@@ -125,7 +139,11 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
 
   return (
     <ProductSummaryContext.Provider value={oldContextProps}>
-      <ProductContextProvider product={product} query={{ skuId }}>
+      <ProductContextProvider
+        product={product}
+        selectedItem={currentSelectedItem || selectedItem}
+        query={{ skuId }}
+      >
         <section
           className={containerClasses}
           onMouseEnter={handleMouseEnter}
@@ -145,6 +163,8 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
 ProductSummaryCustom.propTypes = {
   /** Product that owns the informations */
   product: productShape,
+  /** Selected Item. Should be only used by custom components, never by blocks */
+  selectedItem: skuShape,
   /** Function that is executed when a product is clicked */
   actionOnClick: PropTypes.func,
   children: PropTypes.node,
