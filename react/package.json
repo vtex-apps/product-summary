@@ -1,16 +1,14 @@
 {
   "name": "vtex.product-summary",
   "scripts": {
-    "pretest": "yarn",
-    "lint": "eslint --ext js,jsx,ts,tsx .",
     "test": "vtex-test-tools test",
-    "test:coverage": "vtex-test-tools test --collectCoverage",
-    "gen:coveralls": "yarn test:coverage  && cat ./coverage/lcov.info | coveralls"
+    "lint": "tsc --noEmit && eslint --quiet --fix --ext ts,tsx ."
   },
   "dependencies": {
     "classnames": "^2.2.6",
     "debounce": "^1.2.0",
     "graphql": "^14.1.1",
+    "prop-types": "^15.7.2",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-apollo": "^2.4.1",
@@ -22,11 +20,6 @@
     "@vtex/test-tools": "^0.1.3",
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",
-    "coveralls": "^3.0.3",
-    "eslint": "5",
-    "eslint-config-vtex-react": "^5.0.1",
-    "intl": "^1.2.5",
-    "prettier": "^1.18.2",
     "typescript": "3.8.3"
   },
   "vtexScriptsOverride": {
