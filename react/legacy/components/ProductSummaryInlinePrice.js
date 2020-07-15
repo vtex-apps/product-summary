@@ -88,7 +88,7 @@ const ProductSummaryInlinePrice = ({
             <AttachmentList product={product} />
             <div className="mv3 nr2">
               <div
-                onClick={e => {
+                onClick={(e) => {
                   e.preventDefault()
                   // Stop propagation so it doesn't trigger the Link component above
                   e.stopPropagation()

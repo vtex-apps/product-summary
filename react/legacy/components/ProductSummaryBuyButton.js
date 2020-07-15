@@ -46,6 +46,7 @@ const ProductSummaryBuyButton = ({
     selectedSeller &&
     selectedSeller.commertialOffer &&
     selectedSeller.commertialOffer.AvailableQuantity > 0
+
   const skuItems = BuyButton.mapCatalogItemToCart({
     product,
     selectedItem,

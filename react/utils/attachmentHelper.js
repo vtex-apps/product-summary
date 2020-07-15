@@ -6,5 +6,5 @@ export const CHOICE_TYPES = {
   TOGGLE: 'TOGGLE',
 }
 
-export const getProductPrice = product =>
+export const getProductPrice = (product) =>
   pathOr(0, ['sku', 'seller', 'commertialOffer', 'Price'], product)

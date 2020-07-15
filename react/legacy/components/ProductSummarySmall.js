@@ -64,7 +64,7 @@ class ProductSummarySmall extends Component {
       >
         <Link
           className={`${styles.clearLink} flex flex-column`}
-          page={'store.product'}
+          page="store.product"
           params={{ slug: path(['linkText'], product) }}
           onClick={actionOnClick}
         >

@@ -22,9 +22,11 @@ const getImageSrc = (src, width, height, dpi, aspectRatio) => {
   if (width || height) {
     return changeImageUrlSize(src, width * dpi, height * dpi)
   }
+
   if (aspectRatio) {
     return imageUrl(src, DEFAULT_SIZE, MAX_SIZE, aspectRatio)
   }
+
   return src
 }
 
@@ -38,6 +40,7 @@ const getStyle = (width, height, aspectRatio, maxHeight) => {
       maxWidth: width,
     }
   }
+
   if (aspectRatio || maxHeight) {
     return {
       width: '100%',
@@ -46,10 +49,13 @@ const getStyle = (width, height, aspectRatio, maxHeight) => {
       maxHeight: maxHeight || 'unset',
     }
   }
+
   return undefined
 }
 
-const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
+const maybeBadge = ({ listPrice, price, label }) => (shouldShow) => (
+  component
+) => {
   if (shouldShow) {
     return (
       <DiscountBadge listPrice={listPrice} sellingPrice={price} label={label}>
@@ -57,18 +63,23 @@ const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
       </DiscountBadge>
     )
   }
+
   return component
 }
 
-const maybeCollection = ({ productClusters }) => shouldShow => component => {
+const maybeCollection = ({ productClusters }) => (shouldShow) => (
+  component
+) => {
   if (shouldShow && productClusters && productClusters.length > 0) {
-    const collections = productClusters.map(cl => cl.name)
+    const collections = productClusters.map((cl) => cl.name)
+
     return (
       <CollectionBadges collectionBadgesText={collections}>
         {component}
       </CollectionBadges>
     )
   }
+
   return component
 }
 
@@ -76,6 +87,7 @@ const findImageByLabel = (images, selectedLabel) => {
   if (!selectedLabel) {
     return null
   }
+
   return images.find(({ imageLabel }) => imageLabel === selectedLabel)
 }
 
@@ -168,6 +180,7 @@ const ProductImageContent = ({
 
   if (selectedImageVariationSKU == null && mainImageLabel) {
     const mainImage = findImageByLabel(images, mainImageLabel)
+
     if (mainImage) {
       imageUrl = mainImage.imageUrl
     }

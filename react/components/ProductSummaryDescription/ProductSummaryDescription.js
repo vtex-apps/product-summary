@@ -9,6 +9,7 @@ const ProductSummaryDescription = () => {
   const {
     product: { description },
   } = useProductSummary()
+
   const handles = useCssHandles(CSS_HANDLES)
 
   if (!description) return <Fragment />

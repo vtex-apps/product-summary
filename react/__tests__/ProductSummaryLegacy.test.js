@@ -55,21 +55,25 @@ describe('<ProductSummary /> component', () => {
 
   it('should match the snapshot for normal mode', () => {
     const { asFragment } = renderComponent({ displayMode: 'normal' })
+
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match the snapshot for small mode', () => {
     const { asFragment } = renderComponent({ displayMode: 'small' })
+
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match the snapshot for inline normal mode', () => {
     const { asFragment } = renderComponent({ displayMode: 'inline' })
+
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('should match the snapshot for inline price mode', () => {
     const { asFragment } = renderComponent({ displayMode: 'inlinePrice' })
+
     expect(asFragment()).toMatchSnapshot()
   })
 
@@ -77,6 +81,7 @@ describe('<ProductSummary /> component', () => {
     const { getByText, rerender, container } = renderComponent({
       displayMode: 'normal',
     })
+
     expect(getByText('Buy')).toBeTruthy()
 
     rerender(<ProductSummary {...props} displayMode="small" />)
@@ -91,6 +96,7 @@ describe('<ProductSummary /> component', () => {
 
   it('should render quantity stepper only in inline price mode', () => {
     const { container, rerender } = renderComponent({ displayMode: 'normal' })
+
     expect(container.querySelector('.quantityStepperContainer')).toBeFalsy()
 
     rerender(<ProductSummary {...props} displayMode="inlinePrice" />)
@@ -110,6 +116,7 @@ describe('<ProductSummary /> component', () => {
   describe('Site editor editable', () => {
     it('should export getSchema and return object with title', () => {
       const schema = ProductSummary.schema || ProductSummary.getSchema({})
+
       expect(schema).toEqual(
         expect.objectContaining({ title: expect.any(String) })
       )

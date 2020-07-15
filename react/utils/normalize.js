@@ -28,13 +28,16 @@ function toHttps(url) {
 
 function cleanImageUrl(imageUrl) {
   const result = baseUrlRegex.exec(imageUrl)
+
   if (result.length > 0) return result[0]
 }
 
 function replaceLegacyFileManagerUrl(imageUrl, width, height) {
   const legacyUrlPattern = '/arquivos/ids/'
   const isLegacyUrl = imageUrl.includes(legacyUrlPattern)
+
   if (!isLegacyUrl) return imageUrl
+
   return `${cleanImageUrl(imageUrl)}-${width}-${height}`
 }
 
@@ -52,6 +55,7 @@ export function changeImageUrlSize(
     width,
     height
   )
+
   const queryStringSeparator = normalizedImageUrl.includes('?') ? '&' : '?'
 
   return `${normalizedImageUrl}${queryStringSeparator}width=${width}&height=${height}&aspect=true`
@@ -75,15 +79,18 @@ export function mapCatalogProductToProductSummary(product, imageSize = 500) {
   const normalizedProduct = { ...product }
   const items = normalizedProduct.items || []
   const sku = items.find(findAvailableProduct) || items[0]
+
   if (sku) {
     const [seller = defaultSeller] = pathOr([], ['sellers'], sku)
     const [referenceId = defaultReference] = pathOr([], ['referenceId'], sku)
     const catalogImages = pathOr([], ['images'], sku)
-    const normalizedImages = catalogImages.map(image => ({
+    const normalizedImages = catalogImages.map((image) => ({
       ...image,
       imageUrl: resizeImage(image.imageUrl, imageSize),
     }))
+
     const [image = defaultImage] = normalizedImages
+
     normalizedProduct.sku = {
       ...sku,
       seller,
@@ -92,5 +99,6 @@ export function mapCatalogProductToProductSummary(product, imageSize = 500) {
       images: normalizedImages,
     }
   }
+
   return normalizedProduct
 }

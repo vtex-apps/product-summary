@@ -10,6 +10,7 @@ const ProductSummarySpecificationBadges = ({
   orientation,
 }) => {
   const { product } = useProductSummary()
+
   return (
     <BaseSpecificationBadges
       product={product}

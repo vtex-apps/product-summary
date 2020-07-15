@@ -22,6 +22,7 @@ const BUY_BUTTON_BEHAVIOR_OPTIONS = [
   ALWAYS_ADD_TO_CART,
   DEFAULT_BUTTON_BEHAVIOR,
 ]
+
 const CSS_HANDLES = ['buyButton', 'buyButtonContainer']
 
 const ProductSummaryBuyButton = ({
@@ -61,6 +62,7 @@ const ProductSummaryBuyButton = ({
     selectedSeller &&
     selectedSeller.commertialOffer &&
     selectedSeller.commertialOffer.AvailableQuantity > 0
+
   const skuItems = BuyButton.mapCatalogItemToCart({
     product,
     selectedItem,

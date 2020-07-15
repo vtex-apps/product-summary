@@ -80,7 +80,7 @@ class ProductSummaryNormal extends Component {
         </div>
         <Link
           className={`${productSummary.clearLink} h-100 flex flex-column`}
-          page={'store.product'}
+          page="store.product"
           params={{
             slug: product && product.linkText,
             id: product && product.productId,

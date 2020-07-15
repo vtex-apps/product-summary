@@ -10,6 +10,7 @@ const wasCompletelyRemoved = ({ removedQuantity, initialQuantity }) =>
 
 const formatAttachmentName = (missingOption, intl) => {
   const { name, removedQuantity } = missingOption
+
   if (wasCompletelyRemoved(missingOption)) {
     return intl.formatMessage(
       { id: 'store/productSummary.missingOptionName' },
@@ -22,6 +23,7 @@ const formatAttachmentName = (missingOption, intl) => {
     name,
     quantity: removedQuantity,
   }
+
   return intl.formatMessage(
     { id: 'store/productSummary.attachmentName' },
     extraParams
@@ -35,8 +37,9 @@ const RemovedAttachmentsList = ({ removedOptions, intl }) => {
 
   return (
     <Fragment>
-      {removedOptions.map(removedOption => {
+      {removedOptions.map((removedOption) => {
         const productText = formatAttachmentName(removedOption, intl)
+
         return <AttachmentItem productText={productText} key={productText} />
       })}
     </Fragment>

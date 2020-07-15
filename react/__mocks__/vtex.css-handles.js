@@ -1,6 +1,7 @@
-export const useCssHandles = input =>
+export const useCssHandles = (input) =>
   input.reduce((acc, cur) => {
     acc[cur] = cur
+
     return acc
   }, {})
 

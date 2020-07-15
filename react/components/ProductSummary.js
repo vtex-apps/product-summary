@@ -38,12 +38,13 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
     threshold: 0.75,
     triggerOnce: true,
   })
+
   useEffect(() => {
     if (inView) {
       productListDispatch &&
         productListDispatch({
           type: 'SEND_IMPRESSION',
-          args: { product: product },
+          args: { product },
         })
     }
   }, [productListDispatch, inView, product])
@@ -72,7 +73,7 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
   }, [dispatch])
 
   const handleItemsStateUpdate = useCallback(
-    isLoading => {
+    (isLoading) => {
       dispatch({
         type: 'SET_LOADING',
         args: { isLoading },
@@ -86,7 +87,7 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
       product,
       isLoading,
       isHovering,
-      handleItemsStateUpdate: handleItemsStateUpdate,
+      handleItemsStateUpdate,
     }),
     [product, isLoading, isHovering, handleItemsStateUpdate]
   )
@@ -120,7 +121,7 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
           slug: product && product.linkText,
           id: product && product.productId,
         },
-        query: query,
+        query,
       }
 
   return (
