@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-handler-names */
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
@@ -104,14 +105,14 @@ class ProductSummary extends Component {
     this.setState({ isHovering: true })
   }
 
-  handleItemsStateUpdate = isLoading =>
+  handleItemsStateUpdate = (isLoading) =>
     this.setState({ isUpdatingItems: isLoading })
 
   componentDidMount = () => {
     this.sendImpressionEvent()
   }
 
-  componentDidUpdate = prevProps => {
+  componentDidUpdate = (prevProps) => {
     if (
       prevProps.productListDispatch !== this.props.productListDispatch ||
       prevProps.inView !== this.props.inView ||
@@ -123,6 +124,7 @@ class ProductSummary extends Component {
 
   sendImpressionEvent = () => {
     const { inView, productListDispatch } = this.props
+
     if (inView && productListDispatch) {
       productListDispatch({
         type: 'SEND_IMPRESSION',
@@ -164,6 +166,7 @@ class ProductSummary extends Component {
       showCollections,
       displayMode,
     }
+
     const nameProps = { product, showFieldsProps }
 
     const priceProps = {
@@ -210,7 +213,7 @@ class ProductSummary extends Component {
   }
 }
 
-const ProductSummaryWrapper = props => {
+const ProductSummaryWrapper = (props) => {
   const { useProductListDispatch } = ProductListContext
   const productListDispatch = useProductListDispatch()
   const [inViewRef, inView] = useInView({
@@ -267,6 +270,7 @@ const defaultSchema = {
 
 ProductSummaryWrapper.getSchema = () => {
   const nameSchema = ProductName.schema
+
   return {
     ...defaultSchema,
     properties: {
