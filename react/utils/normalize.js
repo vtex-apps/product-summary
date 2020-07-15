@@ -1,4 +1,4 @@
-import { pathOr } from 'ramda'
+import pathOr from 'ramda/src/pathOr'
 
 export const DEFAULT_WIDTH = 'auto'
 export const DEFAULT_HEIGHT = 'auto'

@@ -24,7 +24,7 @@ const parseAspectRatio = (input) => {
     const [width, height] = data
     const ratio = parseFloat(height) / parseFloat(width)
 
-    if (typeof ratio !== 'number' || isNaN(ratio)) {
+    if (typeof ratio !== 'number' || Number.isNaN(ratio)) {
       return null
     }
 
