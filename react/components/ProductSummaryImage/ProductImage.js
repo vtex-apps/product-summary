@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { pathOr, compose } from 'ramda'
+import pathOr from 'ramda/src/pathOr'
+import compose from 'ramda/src/compose'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
 import { useDevice } from 'vtex.device-detector'
@@ -18,7 +20,7 @@ const CSS_HANDLES = ['image', 'imageContainer', 'product', 'imagePlaceholder']
 const MAX_SIZE = 500
 const DEFAULT_SIZE = 300
 
-const getImageSrc = (src, width, height, dpi, aspectRatio) => {
+const getImageSrc = ({ src, width, height, dpi, aspectRatio }) => {
   if (width || height) {
     return changeImageUrlSize(src, width * dpi, height * dpi)
   }
@@ -30,7 +32,7 @@ const getImageSrc = (src, width, height, dpi, aspectRatio) => {
   return src
 }
 
-const getStyle = (width, height, aspectRatio, maxHeight) => {
+const getStyle = ({ width, height, aspectRatio, maxHeight }) => {
   if (width || height) {
     return {
       width: '100%',
@@ -116,8 +118,8 @@ const Image = ({
 
   return (
     <img
-      src={getImageSrc(src, width, height, dpi, aspectRatio)}
-      style={getStyle(width, height, aspectRatio, maxHeight)}
+      src={getImageSrc({ src, width, height, dpi, aspectRatio })}
+      style={getStyle({ width, height, aspectRatio, maxHeight })}
       loading={shouldResize ? 'lazy' : 'auto'}
       alt={alt}
       className={className}
@@ -168,9 +170,9 @@ const ProductImageContent = ({
   const images = pathOr([], ['images'], sku)
   const hoverImage = findImageByLabel(images, hoverImageLabel)
 
-  let imageUrl = pathOr('', ['image', 'imageUrl'], sku)
+  let skuImageUrl = pathOr('', ['image', 'imageUrl'], sku)
 
-  if (!imageUrl || hasError) {
+  if (!skuImageUrl || hasError) {
     return (
       <div className={containerClassname}>
         <ImagePlaceholder cssHandle={handles.productImage} />
@@ -182,7 +184,7 @@ const ProductImageContent = ({
     const mainImage = findImageByLabel(images, mainImageLabel)
 
     if (mainImage) {
-      imageUrl = mainImage.imageUrl
+      skuImageUrl = mainImage.imageUrl
     }
   }
 
@@ -218,7 +220,7 @@ const ProductImageContent = ({
   const img = (
     <div className={containerClassname}>
       <Image
-        src={imageUrl}
+        src={skuImageUrl}
         width={width}
         height={height}
         aspectRatio={aspectRatio}

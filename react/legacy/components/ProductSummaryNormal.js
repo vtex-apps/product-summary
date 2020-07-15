@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { path } from 'ramda'
+import path from 'ramda/src/path'
 import classNames from 'classnames'
 import { ExtensionPoint, Link } from 'vtex.render-runtime'
 

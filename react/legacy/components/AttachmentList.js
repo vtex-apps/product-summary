@@ -1,5 +1,6 @@
 import React from 'react'
-import { pathOr, reject } from 'ramda'
+import pathOr from 'ramda/src/pathOr'
+import reject from 'ramda/src/reject'
 
 import { productShape } from '../../utils/propTypes'
 import RemovedAttachmentsList from '../../components/ProductSummaryAttachmentList/RemovedAttachmentsList'

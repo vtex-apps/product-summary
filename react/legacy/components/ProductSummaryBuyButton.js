@@ -1,6 +1,7 @@
 import React from 'react'
 import BuyButton from 'vtex.store-components/BuyButton'
-import { equals, path } from 'ramda'
+import path from 'ramda/src/path'
+import equals from 'ramda/src/equals'
 import classNames from 'classnames'
 import { IOMessage } from 'vtex.native-types'
 import { useRuntime } from 'vtex.render-runtime'

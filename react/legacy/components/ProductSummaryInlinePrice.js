@@ -87,6 +87,7 @@ const ProductSummaryInlinePrice = ({
             <ProductSummaryName {...nameProps} {...nameClasses} />
             <AttachmentList product={product} />
             <div className="mv3 nr2">
+              {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}
               <div
                 onClick={(e) => {
                   e.preventDefault()

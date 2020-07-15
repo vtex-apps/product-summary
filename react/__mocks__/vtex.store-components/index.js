@@ -12,8 +12,6 @@ export class ProductPrice extends Component {
   }
 }
 
-export class ProductName extends Component {
-  render() {
-    return <div>ProductName</div>
-  }
+export function ProductName() {
+  return <div>ProductName</div>
 }

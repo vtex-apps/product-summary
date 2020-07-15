@@ -1,5 +1,6 @@
-import BaseSpecificationBadges from 'vtex.product-specification-badges/BaseSpecificationBadges'
+import React from 'react'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
+import BaseSpecificationBadges from 'vtex.product-specification-badges/BaseSpecificationBadges'
 
 const ProductSummarySpecificationBadges = ({
   specificationGroupName,

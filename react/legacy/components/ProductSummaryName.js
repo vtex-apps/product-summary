@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { path } from 'ramda'
+import path from 'ramda/src/path'
 import { ProductName } from 'vtex.store-components'
 
 import { productShape } from '../../utils/propTypes'

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { path } from 'ramda'
+import path from 'ramda/src/path'
 import PropTypes from 'prop-types'
 import { NumericStepper, withToast } from 'vtex.styleguide'
 import { Pixel } from 'vtex.pixel-manager/PixelContext'
@@ -51,6 +51,7 @@ class ProductQuantityStepper extends Component {
       brand: product.brand,
       category: product.category,
     }
+
     if (isAdditionOfProd) {
       this.props.push({
         event: 'addToCart',
@@ -65,21 +66,26 @@ class ProductQuantityStepper extends Component {
     }
   }
 
-  componentDidUpdate = prevProps => {
+  componentDidUpdate = (prevProps) => {
     const {
       product: { quantity: prevQuantity },
     } = prevProps
+
     const {
       product: { quantity },
       showToast,
       intl,
     } = this.props
+
+    // eslint-disable-next-line vtex/prefer-early-return
     if (prevQuantity !== quantity) {
       this.pushPixelCartEvents({
         isAdditionOfProd: prevQuantity < quantity,
         product: this.props.product,
       })
+      // eslint-disable-next-line react/no-access-state-in-setstate
       const canIncrease = quantity === this.state.quantity
+
       this.setState({ quantity, canIncrease })
       if (!canIncrease) {
         showToast({
@@ -91,7 +97,7 @@ class ProductQuantityStepper extends Component {
     }
   }
 
-  handleOnChange = e => {
+  handleOnChange = (e) => {
     e.stopPropagation()
     e.preventDefault()
     this.props.onUpdateItemsState(true)
@@ -100,13 +106,15 @@ class ProductQuantityStepper extends Component {
     )
   }
 
-  updateItemQuantity = async quantity => {
+  updateItemQuantity = async (quantity) => {
     const { product, updateItems, updateLocalItems, index } = this.props
+
     this.setState({ canIncrease: true })
     const {
       sku: { itemId: id, seller = {} },
       cartIndex,
     } = product
+
     try {
       if (cartIndex != null) {
         await updateItems([
@@ -131,6 +139,7 @@ class ProductQuantityStepper extends Component {
       // gone wrong, rollback to old quantity value
       console.error(err)
     }
+
     this.props.onUpdateItemsState(false)
   }
 
@@ -152,13 +161,13 @@ class ProductQuantityStepper extends Component {
 
 const withUpdateItemsMutation = graphql(UPDATE_ITEMS_MUTATION, {
   props: ({ mutate }) => ({
-    updateItems: items => mutate({ variables: { items } }),
+    updateItems: (items) => mutate({ variables: { items } }),
   }),
 })
 
 const withUpdateLocalItemsMutation = graphql(UPDATE_LOCAL_ITEMS_MUTATION, {
   props: ({ mutate }) => ({
-    updateLocalItems: items => mutate({ variables: { items } }),
+    updateLocalItems: (items) => mutate({ variables: { items } }),
   }),
 })
 

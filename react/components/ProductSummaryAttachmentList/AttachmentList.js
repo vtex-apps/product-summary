@@ -1,7 +1,8 @@
 import React from 'react'
-import { pathOr, reject } from 'ramda'
-import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
+import pathOr from 'ramda/src/pathOr'
+import reject from 'ramda/src/reject'
 import { useCssHandles } from 'vtex.css-handles'
+import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
 import RemovedAttachmentsList from './RemovedAttachmentsList'
 import AddedAttachmentsList from './AddedAttachmentsList'

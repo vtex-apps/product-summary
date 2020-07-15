@@ -1,10 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 /**
  * CollectionBadge Mocked Component.
  */
-export default class ContentLoader extends Component {
-  render() {
-    return <div>ContentLoader</div>
-  }
+export function ContentLoader() {
+  return <div>ContentLoader</div>
 }

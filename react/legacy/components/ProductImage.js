@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { path, pathOr, compose } from 'ramda'
+import path from 'ramda/src/path'
+import pathOr from 'ramda/src/pathOr'
+import compose from 'ramda/src/compose'
 import PropTypes from 'prop-types'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'

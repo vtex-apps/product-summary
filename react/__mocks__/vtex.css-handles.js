@@ -5,4 +5,4 @@ export const useCssHandles = (input) =>
     return acc
   }, {})
 
-export const applyModifiers = (input, modifier) => input
+export const applyModifiers = (input) => input
