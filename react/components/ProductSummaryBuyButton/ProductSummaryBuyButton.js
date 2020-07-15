@@ -117,7 +117,7 @@ ProductSummaryBuyButton.propTypes = {
   displayBuyButton: PropTypes.oneOf(getDisplayButtonValues()),
   /** A custom URL for the `VIEW CART` button inside the toast created by BuyButton */
   customToastURL: PropTypes.string,
-  isHovering: PropTypes.boolean,
+  isHovering: PropTypes.bool,
 }
 
 ProductSummaryBuyButton.defaultProps = {
