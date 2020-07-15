@@ -1,4 +1,5 @@
-import { values, map } from 'ramda'
+import values from 'ramda/src/values'
+import map from 'ramda/src/map'
 
 const displayButtonTypes = {
   DISPLAY_ALWAYS: {

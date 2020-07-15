@@ -1,4 +1,4 @@
-import { pathOr } from 'ramda'
+import pathOr from 'ramda/src/pathOr'
 
 export const CHOICE_TYPES = {
   SINGLE: 'SINGLE',
@@ -6,5 +6,5 @@ export const CHOICE_TYPES = {
   TOGGLE: 'TOGGLE',
 }
 
-export const getProductPrice = (product) =>
+export const getProductPrice = (product: any) =>
   pathOr(0, ['sku', 'seller', 'commertialOffer', 'Price'], product)

@@ -1,5 +1,5 @@
 import React from 'react'
-import { head } from 'ramda'
+import head from 'ramda/src/head'
 import { SKUSelector } from 'vtex.store-components'
 import { useCssHandles } from 'vtex.css-handles'
 import {
@@ -9,8 +9,8 @@ import {
 
 const CSS_HANDLES = ['SKUSelectorContainer']
 
-function ProductSummarySKUSelector(props) {
-  const stopBubblingUp = (e) => {
+function ProductSummarySKUSelector(props: any) {
+  const stopBubblingUp: React.MouseEventHandler<HTMLDivElement> = (e) => {
     e.preventDefault()
     e.stopPropagation()
   }
@@ -18,7 +18,7 @@ function ProductSummarySKUSelector(props) {
   const dispatch = useProductSummaryDispatch()
   const { product } = useProductSummary()
 
-  const handleSKUSelected = (skuId) => {
+  const handleSKUSelected = (skuId: string | null) => {
     if (skuId == null) {
       dispatch({
         type: 'SET_PRODUCT_QUERY',
@@ -29,7 +29,7 @@ function ProductSummarySKUSelector(props) {
     }
 
     const selectedItem =
-      product.items && product.items.find((item) => item.itemId === skuId)
+      product.items && product.items.find((item: any) => item.itemId === skuId)
 
     const sku = {
       ...selectedItem,
