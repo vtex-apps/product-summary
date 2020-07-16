@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import { ExtensionPoint } from 'vtex.render-runtime'
-import path from 'ramda/src/path'
+// eslint-disable-next-line no-restricted-imports
+import { path } from 'ramda'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 import { useCssHandles } from 'vtex.css-handles'
 

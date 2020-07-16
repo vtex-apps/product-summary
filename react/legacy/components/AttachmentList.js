@@ -1,6 +1,6 @@
 import React from 'react'
-import pathOr from 'ramda/src/pathOr'
-import reject from 'ramda/src/reject'
+// eslint-disable-next-line no-restricted-imports
+import { pathOr, reject } from 'ramda'
 
 import { productShape } from '../../utils/propTypes'
 import RemovedAttachmentsList from '../../components/ProductSummaryAttachmentList/RemovedAttachmentsList'

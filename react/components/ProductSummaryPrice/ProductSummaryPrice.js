@@ -1,11 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import path from 'ramda/src/path'
-import prop from 'ramda/src/prop'
-import pluck from 'ramda/src/pluck'
 import classNames from 'classnames'
-import flatten from 'ramda/src/flatten'
 import { Spinner } from 'vtex.styleguide'
+// eslint-disable-next-line no-restricted-imports
+import { pluck, prop, path, flatten } from 'ramda'
 import { ProductPrice } from 'vtex.store-components'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 import { useCssHandles } from 'vtex.css-handles'

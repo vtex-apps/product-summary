@@ -1,6 +1,6 @@
 import React from 'react'
-import pathOr from 'ramda/src/pathOr'
-import reject from 'ramda/src/reject'
+// eslint-disable-next-line no-restricted-imports
+import { reject, pathOr } from 'ramda'
 import { useCssHandles } from 'vtex.css-handles'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 

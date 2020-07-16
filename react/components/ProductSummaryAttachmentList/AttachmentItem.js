@@ -1,7 +1,8 @@
 import React, { memo } from 'react'
 import { string, number, object, bool } from 'prop-types'
 import ProductPrice from 'vtex.store-components/ProductPrice'
-import reject from 'ramda/src/reject'
+// eslint-disable-next-line no-restricted-imports
+import { reject } from 'ramda'
 import { useCssHandles } from 'vtex.css-handles'
 
 import AttachmentChildren from './AttachmentChildren'

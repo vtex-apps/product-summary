@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import path from 'ramda/src/path'
+// eslint-disable-next-line no-restricted-imports
+import { path } from 'ramda'
 import PropTypes from 'prop-types'
 import { NumericStepper, withToast } from 'vtex.styleguide'
 import { Pixel } from 'vtex.pixel-manager/PixelContext'

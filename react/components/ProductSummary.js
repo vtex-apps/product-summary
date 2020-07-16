@@ -1,8 +1,8 @@
 import React, { useCallback, useMemo, useEffect } from 'react'
-import path from 'ramda/src/path'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import pathOr from 'ramda/src/pathOr'
+// eslint-disable-next-line no-restricted-imports
+import { pathOr, path } from 'ramda'
 import { Link } from 'vtex.render-runtime'
 import { useInView } from 'react-intersection-observer'
 import { ProductListContext } from 'vtex.product-list-context'

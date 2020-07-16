@@ -1,5 +1,5 @@
-import values from 'ramda/src/values'
-import map from 'ramda/src/map'
+// eslint-disable-next-line no-restricted-imports
+import { values, map } from 'ramda'
 
 const displayButtonTypes = {
   DISPLAY_ALWAYS: {

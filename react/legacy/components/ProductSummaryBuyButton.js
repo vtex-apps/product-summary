@@ -1,7 +1,7 @@
 import React from 'react'
 import BuyButton from 'vtex.store-components/BuyButton'
-import path from 'ramda/src/path'
-import equals from 'ramda/src/equals'
+// eslint-disable-next-line no-restricted-imports
+import { equals, path } from 'ramda'
 import classNames from 'classnames'
 import { IOMessage } from 'vtex.native-types'
 import { useRuntime } from 'vtex.render-runtime'

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import path from 'ramda/src/path'
+// eslint-disable-next-line no-restricted-imports
+import { path } from 'ramda'
 import classNames from 'classnames'
 import { Link } from 'vtex.render-runtime'
 

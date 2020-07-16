@@ -1,5 +1,6 @@
 import React from 'react'
-import head from 'ramda/src/head'
+// eslint-disable-next-line no-restricted-imports
+import { head } from 'ramda'
 import { SKUSelector } from 'vtex.store-components'
 import { useCssHandles } from 'vtex.css-handles'
 import {

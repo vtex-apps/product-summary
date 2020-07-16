@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import pathOr from 'ramda/src/pathOr'
-import compose from 'ramda/src/compose'
+// eslint-disable-next-line no-restricted-imports
+import { compose, pathOr } from 'ramda'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
 import { useDevice } from 'vtex.device-detector'

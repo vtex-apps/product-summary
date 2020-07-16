@@ -1,4 +1,5 @@
-import pathOr from 'ramda/src/pathOr'
+// eslint-disable-next-line no-restricted-imports
+import { pathOr } from 'ramda'
 
 export const DEFAULT_WIDTH = 'auto'
 export const DEFAULT_HEIGHT = 'auto'
