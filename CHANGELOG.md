@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- `list-context.product-list-static` block.
+
 ## [2.57.1] - 2020-07-09
 ### Fixed
 - Updated Product Summary and Product Summary Buy Button docs to create a clearer information about Minicart versions.

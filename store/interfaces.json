@@ -91,5 +91,10 @@
       "type": "grid",
       "height": 550
     }
+  },
+  "list-context.product-list-static": {
+    "allowed": ["product-summary"],
+    "composition": "children",
+    "component": "ProductSummaryListWithoutQuery"
   }
 }
