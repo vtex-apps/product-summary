@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// eslint-disable-next-line no-restricted-imports
 import { path } from 'ramda'
 import classNames from 'classnames'
 import { ExtensionPoint, Link } from 'vtex.render-runtime'
@@ -80,7 +81,7 @@ class ProductSummaryNormal extends Component {
         </div>
         <Link
           className={`${productSummary.clearLink} h-100 flex flex-column`}
-          page={'store.product'}
+          page="store.product"
           params={{
             slug: product && product.linkText,
             id: product && product.productId,

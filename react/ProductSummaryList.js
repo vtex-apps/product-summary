@@ -38,11 +38,12 @@ const ORDER_BY_OPTIONS = {
     value: 'OrderByBestDiscountDESC',
   },
 }
+
 const parseFilters = ({ id, value }) => `specificationFilter_${id}:${value}`
 
 function getOrdinationProp(attribute) {
   return Object.keys(ORDER_BY_OPTIONS).map(
-    key => ORDER_BY_OPTIONS[key][attribute]
+    (key) => ORDER_BY_OPTIONS[key][attribute]
   )
 }
 

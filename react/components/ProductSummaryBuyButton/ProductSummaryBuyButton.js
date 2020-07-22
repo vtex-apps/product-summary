@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import BuyButton from 'vtex.store-components/BuyButton'
 import { withRuntimeContext } from 'vtex.render-runtime'
-import { equals, path } from 'ramda'
+// eslint-disable-next-line no-restricted-imports
+import { path, equals } from 'ramda'
 import classnames from 'classnames'
 import { IOMessage } from 'vtex.native-types'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
@@ -22,6 +23,7 @@ const BUY_BUTTON_BEHAVIOR_OPTIONS = [
   ALWAYS_ADD_TO_CART,
   DEFAULT_BUTTON_BEHAVIOR,
 ]
+
 const CSS_HANDLES = ['buyButton', 'buyButtonContainer']
 
 const ProductSummaryBuyButton = ({
@@ -61,6 +63,7 @@ const ProductSummaryBuyButton = ({
     selectedSeller &&
     selectedSeller.commertialOffer &&
     selectedSeller.commertialOffer.AvailableQuantity > 0
+
   const skuItems = BuyButton.mapCatalogItemToCart({
     product,
     selectedItem,
@@ -114,7 +117,7 @@ ProductSummaryBuyButton.propTypes = {
   displayBuyButton: PropTypes.oneOf(getDisplayButtonValues()),
   /** A custom URL for the `VIEW CART` button inside the toast created by BuyButton */
   customToastURL: PropTypes.string,
-  isHovering: PropTypes.boolean,
+  isHovering: PropTypes.bool,
 }
 
 ProductSummaryBuyButton.defaultProps = {

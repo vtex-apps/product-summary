@@ -9,7 +9,7 @@ export function ExtensionPoint(props) {
 }
 
 export function withRuntimeContext(Comp) {
-  const InjectRuntime = props => {
+  const InjectRuntime = (props) => {
     return <Comp {...props} runtime={{ hints: { mobile: false } }} />
   }
 

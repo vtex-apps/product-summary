@@ -1,4 +1,5 @@
 import React from 'react'
+// eslint-disable-next-line no-restricted-imports
 import { head } from 'ramda'
 import { SKUSelector } from 'vtex.store-components'
 import { useCssHandles } from 'vtex.css-handles'
@@ -9,25 +10,27 @@ import {
 
 const CSS_HANDLES = ['SKUSelectorContainer']
 
-function ProductSummarySKUSelector(props) {
-  const stopBubblingUp = e => {
+function ProductSummarySKUSelector(props: any) {
+  const stopBubblingUp: React.MouseEventHandler<HTMLDivElement> = (e) => {
     e.preventDefault()
     e.stopPropagation()
   }
+
   const dispatch = useProductSummaryDispatch()
   const { product } = useProductSummary()
 
-  const handleSKUSelected = skuId => {
+  const handleSKUSelected = (skuId: string | null) => {
     if (skuId == null) {
       dispatch({
         type: 'SET_PRODUCT_QUERY',
         args: { query: '' },
       })
+
       return
     }
 
     const selectedItem =
-      product.items && product.items.find(item => item.itemId === skuId)
+      product.items && product.items.find((item: any) => item.itemId === skuId)
 
     const sku = {
       ...selectedItem,
@@ -53,6 +56,7 @@ function ProductSummarySKUSelector(props) {
   }
 
   const handles = useCssHandles(CSS_HANDLES)
+
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div onClick={stopBubblingUp} className={handles.SKUSelectorContainer}>

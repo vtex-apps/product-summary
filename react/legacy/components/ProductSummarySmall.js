@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// eslint-disable-next-line no-restricted-imports
 import { path } from 'ramda'
 import classNames from 'classnames'
 import { Link } from 'vtex.render-runtime'
@@ -64,7 +65,7 @@ class ProductSummarySmall extends Component {
       >
         <Link
           className={`${styles.clearLink} flex flex-column`}
-          page={'store.product'}
+          page="store.product"
           params={{ slug: path(['linkText'], product) }}
           onClick={actionOnClick}
         >

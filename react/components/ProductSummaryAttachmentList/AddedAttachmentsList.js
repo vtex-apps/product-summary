@@ -6,7 +6,7 @@ import AttachmentItem from './AttachmentItem'
 import { CHOICE_TYPES } from '../../utils/attachmentHelper'
 import { addedOptionShape } from '../../utils/propTypes'
 
-const formatAttachmentName = option => (
+const formatAttachmentName = (option) => (
   <FormattedMessage
     id="store/productSummary.attachmentName"
     values={{
@@ -21,13 +21,15 @@ const AddedAttachmentsList = ({ addedOptions, showItemPrice }) => {
   if (addedOptions.length === 0) {
     return null
   }
+
   return (
     <Fragment>
-      {addedOptions.map(option => {
+      {addedOptions.map((option) => {
         const isMultiple = option.choiceType === CHOICE_TYPES.MULTIPLE
         const productText = isMultiple
           ? formatAttachmentName(option)
           : option.item.name
+
         return (
           <AttachmentItem
             productText={productText}

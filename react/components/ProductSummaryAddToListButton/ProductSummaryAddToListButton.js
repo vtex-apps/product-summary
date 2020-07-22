@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import { ExtensionPoint } from 'vtex.render-runtime'
+// eslint-disable-next-line no-restricted-imports
 import { path } from 'ramda'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 import { useCssHandles } from 'vtex.css-handles'
@@ -10,7 +11,7 @@ const getProductId = path(['productId'])
 const CSS_HANDLES = ['addToListBtn']
 
 // This avoids triggering the link to the product page
-const captureClick = e => {
+const captureClick = (e) => {
   e.preventDefault()
   e.stopPropagation()
 }

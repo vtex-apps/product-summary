@@ -62,7 +62,7 @@ class ProductSummaryInline extends Component {
       >
         <Link
           className={summaryClasses}
-          page={'store.product'}
+          page="store.product"
           params={{
             slug: product && product.linkText,
             id: product && product.productId,

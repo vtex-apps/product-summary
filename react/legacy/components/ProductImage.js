@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
-import { path, pathOr, compose } from 'ramda'
 import PropTypes from 'prop-types'
-import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
+// eslint-disable-next-line no-restricted-imports
+import { compose, pathOr, path } from 'ramda'
+import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 
 import ImagePlaceholder from '../../components/ProductSummaryImage/ImagePlaceholder'
 import { productShape } from '../../utils/propTypes'
 import productSummary from '../../productSummary.css'
 
-const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
+const maybeBadge = ({ listPrice, price, label }) => (shouldShow) => (
+  component
+) => {
   if (shouldShow) {
     return (
       <DiscountBadge listPrice={listPrice} sellingPrice={price} label={label}>
@@ -16,18 +19,23 @@ const maybeBadge = ({ listPrice, price, label }) => shouldShow => component => {
       </DiscountBadge>
     )
   }
+
   return component
 }
 
-const maybeCollection = ({ productClusters }) => shouldShow => component => {
+const maybeCollection = ({ productClusters }) => (shouldShow) => (
+  component
+) => {
   if (shouldShow && productClusters && productClusters.length > 0) {
-    const collections = productClusters.map(cl => cl.name)
+    const collections = productClusters.map((cl) => cl.name)
+
     return (
       <CollectionBadges collectionBadgesText={collections}>
         {component}
       </CollectionBadges>
     )
   }
+
   return component
 }
 
@@ -39,6 +47,7 @@ const ProductImage = ({
   displayMode,
 }) => {
   const [error, setError] = useState(false)
+
   if (!path(['sku', 'image', 'imageUrl'], product) || error) {
     return <ImagePlaceholder cssHandle={productSummary.imagePlaceholder} />
   }
@@ -67,6 +76,7 @@ const ProductImage = ({
     price: commertialOffer.Price,
     label: badgeText,
   })
+
   const withCollection = maybeCollection({ productClusters })
   const img = (
     <img

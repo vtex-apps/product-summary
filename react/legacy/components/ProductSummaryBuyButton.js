@@ -1,5 +1,6 @@
 import React from 'react'
 import BuyButton from 'vtex.store-components/BuyButton'
+// eslint-disable-next-line no-restricted-imports
 import { equals, path } from 'ramda'
 import classNames from 'classnames'
 import { IOMessage } from 'vtex.native-types'
@@ -46,6 +47,7 @@ const ProductSummaryBuyButton = ({
     selectedSeller &&
     selectedSeller.commertialOffer &&
     selectedSeller.commertialOffer.AvailableQuantity > 0
+
   const skuItems = BuyButton.mapCatalogItemToCart({
     product,
     selectedItem,

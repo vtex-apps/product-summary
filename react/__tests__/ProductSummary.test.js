@@ -61,7 +61,9 @@ describe('<ProductSummary /> component', () => {
       ],
       quantity: 1,
     }
+
     const result = ProductSummary.mapCatalogProductToProductSummary(product)
+
     expect(result).toBeDefined()
     expect(result.sku.seller.sellerId).toBe('1')
     expect(result.sku.image).toBeDefined()

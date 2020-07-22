@@ -1,6 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// eslint-disable-next-line no-restricted-imports
 import { path } from 'ramda'
+import PropTypes from 'prop-types'
 import { ProductName } from 'vtex.store-components'
 import { useCssHandles } from 'vtex.css-handles'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'

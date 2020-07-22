@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+// eslint-disable-next-line no-restricted-imports
 import { path, prop } from 'ramda'
 import { Spinner } from 'vtex.styleguide'
 import { ProductPrice } from 'vtex.store-components'

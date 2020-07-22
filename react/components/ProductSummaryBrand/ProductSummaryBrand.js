@@ -16,6 +16,7 @@ const ProductSummaryBrand = ({
   logoWithLink,
 }) => {
   const { product } = useProductSummary()
+
   return (
     <ProductBrand
       displayMode={displayMode}
@@ -40,7 +41,7 @@ ProductSummaryBrand.propTypes = {
   ),
   /** Height of the logo */
   height: PropTypes.number,
-  /** If the logo should have a link*/
+  /** If the logo should have a link */
   logoWithLink: PropTypes.bool,
 }
 

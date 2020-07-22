@@ -15,7 +15,7 @@ const List = ({ children, products }) => {
   const newListContextValue = useMemo(() => {
     const componentList =
       products &&
-      products.map(product => {
+      products.map((product) => {
         const normalizedProduct = mapCatalogProductToProductSummary(product)
 
         return (
@@ -27,6 +27,7 @@ const List = ({ children, products }) => {
           />
         )
       })
+
     return list.concat(componentList)
   }, [products, treePath, list])
 

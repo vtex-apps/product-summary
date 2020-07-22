@@ -8,6 +8,7 @@ const CSS_HANDLES = ['attachmentChildrenContainer']
 
 const AttachmentChildren = ({ addedOptions, removedOptions }) => {
   const handles = useCssHandles(CSS_HANDLES)
+
   if (addedOptions.length === 0 && removedOptions.length === 0) {
     return null
   }

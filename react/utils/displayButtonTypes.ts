@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { values, map } from 'ramda'
 
 const displayButtonTypes = {
@@ -16,11 +17,11 @@ const displayButtonTypes = {
 }
 
 export function getDisplayButtonNames() {
-  return map(opt => opt.name, values(displayButtonTypes))
+  return map((opt) => opt.name, values(displayButtonTypes))
 }
 
 export function getDisplayButtonValues() {
-  return map(opt => opt.value, values(displayButtonTypes))
+  return map((opt) => opt.value, values(displayButtonTypes))
 }
 
 export default displayButtonTypes

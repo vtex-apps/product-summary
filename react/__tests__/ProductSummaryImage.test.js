@@ -49,6 +49,7 @@ describe('<ProductImage /> component', () => {
     )
 
     const imgElements = container.getElementsByTagName('img')
+
     expect(imgElements).toHaveLength(1)
     expect(imgElements[0].getAttribute('src')).toBeTruthy()
     expect(imgElements[0].getAttribute('src')).toContain('image1')
@@ -93,8 +94,10 @@ describe('<ProductImage /> component', () => {
     )
 
     const imgElements = container.getElementsByTagName('img')
+
     expect(imgElements).toHaveLength(0)
     const svgElements = container.getElementsByTagName('svg')
+
     expect(svgElements).toHaveLength(1)
   })
 })

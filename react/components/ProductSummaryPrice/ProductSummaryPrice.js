@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { path, prop, flatten, pluck } from 'ramda'
 import classNames from 'classnames'
 import { Spinner } from 'vtex.styleguide'
+// eslint-disable-next-line no-restricted-imports
+import { pluck, prop, path, flatten } from 'ramda'
 import { ProductPrice } from 'vtex.store-components'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 import { useCssHandles } from 'vtex.css-handles'
@@ -25,14 +26,16 @@ const CSS_HANDLES = [
   'priceLoading',
 ]
 
-const isAvailableProduct = price => price !== 0
+const isAvailableProduct = (price) => price !== 0
 
 const getPrices = (product, attribute) => {
   if (!product || (!product.items && !product.priceRange)) {
     return []
   }
+
   if (product.priceRange) {
     const values = product.priceRange[attribute]
+
     return values ? [values.lowPrice, values.highPrice] : []
   }
 
@@ -41,6 +44,7 @@ const getPrices = (product, attribute) => {
   const offerAttribute = attribute === 'sellingPrice' ? 'Price' : 'ListPrice'
   const prices = sellers.map(path(['commertialOffer', offerAttribute]))
   const availableProductsPrices = prices.filter(isAvailableProduct)
+
   return availableProductsPrices
 }
 
@@ -80,9 +84,11 @@ const ProductSummaryPrice = ({
   const sellingPriceList = showSellingPriceRange
     ? getPrices(product, 'sellingPrice')
     : []
+
   const listPriceList = showListPriceRange
     ? getPrices(product, 'listPrice')
     : []
+
   const sellingPrice = prop('Price', commertialOffer)
 
   return (
@@ -132,7 +138,7 @@ ProductSummaryPrice.propTypes = {
   showLabels: PropTypes.bool,
   /** Set installments' visibility */
   showInstallments: PropTypes.bool,
-  /** Set savings' visibility*/
+  /** Set savings' visibility */
   showDiscountValue: PropTypes.bool,
   /** Text of selling Price's label */
   labelSellingPrice: PropTypes.string,

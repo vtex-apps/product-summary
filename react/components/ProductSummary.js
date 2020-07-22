@@ -1,9 +1,10 @@
 import React, { useCallback, useMemo, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+// eslint-disable-next-line no-restricted-imports
 import { pathOr, path } from 'ramda'
-import { useInView } from 'react-intersection-observer'
 import { Link } from 'vtex.render-runtime'
+import { useInView } from 'react-intersection-observer'
 import { ProductListContext } from 'vtex.product-list-context'
 import {
   ProductSummaryProvider,
@@ -38,12 +39,13 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
     threshold: 0.75,
     triggerOnce: true,
   })
+
   useEffect(() => {
     if (inView) {
       productListDispatch &&
         productListDispatch({
           type: 'SEND_IMPRESSION',
-          args: { product: product },
+          args: { product },
         })
     }
   }, [productListDispatch, inView, product])
@@ -72,10 +74,10 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
   }, [dispatch])
 
   const handleItemsStateUpdate = useCallback(
-    isLoading => {
+    (loading) => {
       dispatch({
         type: 'SET_LOADING',
-        args: { isLoading },
+        args: { isLoading: loading },
       })
     },
     [dispatch]
@@ -86,7 +88,7 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
       product,
       isLoading,
       isHovering,
-      handleItemsStateUpdate: handleItemsStateUpdate,
+      handleItemsStateUpdate,
     }),
     [product, isLoading, isHovering, handleItemsStateUpdate]
   )
@@ -120,7 +122,7 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
           slug: product && product.linkText,
           id: product && product.productId,
         },
-        query: query,
+        query,
       }
 
   return (

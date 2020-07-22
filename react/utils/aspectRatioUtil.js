@@ -4,16 +4,19 @@ import { changeImageUrlSize } from './normalize'
  * For example, turns "3:4" into 1.333, so the image height will be
  * 1.333 times its width.
  */
-const parseAspectRatio = input => {
+const parseAspectRatio = (input) => {
   if (!input) {
     return null
   }
+
   if (typeof input === 'string') {
     if (input === 'auto') {
       return null
     }
+
     const separator = ':'
     const data = input.split(separator)
+
     if (data.length !== 2) {
       return null
     }
@@ -21,7 +24,7 @@ const parseAspectRatio = input => {
     const [width, height] = data
     const ratio = parseFloat(height) / parseFloat(width)
 
-    if (typeof ratio !== 'number' || isNaN(ratio)) {
+    if (typeof ratio !== 'number' || Number.isNaN(ratio)) {
       return null
     }
 
@@ -43,12 +46,12 @@ export const imageUrl = (src, size, maxSize, aspectRatio) => {
     height = size * (parseAspectRatio(aspectRatio) || 1)
 
     if (width > maxSize) {
-      height = height / (width / maxSize)
+      height /= width / maxSize
       width = maxSize
     }
 
     if (height > maxSize) {
-      width = width / (height / maxSize)
+      width /= height / maxSize
       height = maxSize
     }
 
@@ -57,5 +60,6 @@ export const imageUrl = (src, size, maxSize, aspectRatio) => {
   } else {
     width = Math.min(maxSize, width)
   }
+
   return changeImageUrlSize(src, width, height)
 }
