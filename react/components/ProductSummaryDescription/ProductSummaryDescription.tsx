@@ -1,18 +1,21 @@
-import React, { Fragment } from 'react'
+import React, { FC } from 'react'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 import { useCssHandles } from 'vtex.css-handles'
+import { SanitizedHTML } from 'vtex.store-components'
 
 const MAX_SIZE_DESCRIPTION = 120
 const CSS_HANDLES = ['description']
 
-const ProductSummaryDescription = () => {
+const ProductSummaryDescription: FC = () => {
   const {
     product: { description },
   } = useProductSummary()
 
   const handles = useCssHandles(CSS_HANDLES)
 
-  if (!description) return <Fragment />
+  if (!description) {
+    return null
+  }
 
   const descriptionClasses = `${handles.description} c-muted-2 t-small`
 
@@ -21,7 +24,11 @@ const ProductSummaryDescription = () => {
       ? `${description.substring(0, MAX_SIZE_DESCRIPTION)}...`
       : description
 
-  return <span className={descriptionClasses}>{descriptionTruncated}</span>
+  return (
+    <span className={descriptionClasses}>
+      <SanitizedHTML content={descriptionTruncated} />
+    </span>
+  )
 }
 
 export default ProductSummaryDescription
