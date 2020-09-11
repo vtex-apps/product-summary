@@ -17,6 +17,7 @@ import { useCssHandles } from 'vtex.css-handles'
 import ProductSummaryContext from './ProductSummaryContext'
 import { productShape } from '../utils/propTypes'
 import { mapCatalogProductToProductSummary } from '../utils/normalize'
+import { useSearchPage } from 'vtex.search-page-context/SearchPageContext'
 
 const PRODUCT_SUMMARY_MAX_WIDTH = 300
 const CSS_HANDLES = ['container', 'containerNormal', 'element', 'clearLink']
@@ -25,6 +26,14 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
   const { isLoading, isHovering, selectedItem, query } = useProductSummary()
   const dispatch = useProductSummaryDispatch()
   const handles = useCssHandles(CSS_HANDLES)
+  const { searchQuery } = useSearchPage()
+
+  // trocar pra simulationBehavior = "async"
+  if (searchQuery?.variables?.simulationBehavior === 'default') {
+    // chamar aqui a query productWithSimulation
+    // colocar loading no componente (preco e botao de add to cart)
+    // dispatch SET_PRODUCT alterando o produto
+  }
 
   /*
     Use ProductListContext to send pixel events.

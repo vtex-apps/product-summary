@@ -1,0 +1,6 @@
+query productWithSimulation($product: Product) {
+  productWithSimulation(product: $product) {
+    brand
+    productName
+  }
+}
