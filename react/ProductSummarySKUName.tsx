@@ -1,7 +1,5 @@
 /* eslint-disable no-console */
 import React from 'react'
-// eslint-disable-next-line no-restricted-imports
-import { path } from 'ramda'
 import { useCssHandles } from 'vtex.css-handles'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
