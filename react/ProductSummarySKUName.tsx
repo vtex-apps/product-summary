@@ -10,7 +10,7 @@ const CSS_HANDLES = ['skuNameContainer']
 const ProductSummarySKUName = () => {
   const { product } = useProductSummary()
   const handles = useCssHandles(CSS_HANDLES)
-  const skuName: string = path(['sku', 'name'], product) ?? ''
+  const skuName: string = product?.sku?.name ?? ''
   const { productName } = product
 
   if (!skuName || skuName === productName) {
