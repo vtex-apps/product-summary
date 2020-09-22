@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react'
 import { useCssHandles } from 'vtex.css-handles'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
