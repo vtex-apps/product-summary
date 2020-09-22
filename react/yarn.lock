@@ -4457,62 +4457,6 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-"vtex.css-handles@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.css-handles@0.4.2/public/@types/vtex.css-handles":
-  version "0.4.2"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.css-handles@0.4.2/public/@types/vtex.css-handles#62ee61d1bb9efdc919e5cf4bb44fabcf9050d255"
-
-"vtex.device-detector@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.device-detector@0.2.4/public/@types/vtex.device-detector":
-  version "0.2.4"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.device-detector@0.2.4/public/@types/vtex.device-detector#bdf7ba78ba34e4ada63cca2bdf56e1674da068b9"
-
-"vtex.list-context@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.list-context@0.1.1/public/@types/vtex.list-context":
-  version "0.1.1"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.list-context@0.1.1/public/@types/vtex.list-context#c8ac9fc35b3f82b782562fa96e487ffc5ff02ca6"
-
-"vtex.native-types@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.native-types@0.7.1/public/@types/vtex.native-types":
-  version "0.7.1"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.native-types@0.7.1/public/@types/vtex.native-types#a197484a2fdcee5c61a6d20ad6c994faa58380f5"
-
-"vtex.pixel-manager@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.pixel-manager@1.1.4/public/@types/vtex.pixel-manager":
-  version "1.1.4"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.pixel-manager@1.1.4/public/@types/vtex.pixel-manager#96907e17f4e5c584162a47dc425cb5afb2267d00"
-
-"vtex.product-context@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-context@0.8.0/public/@types/vtex.product-context":
-  version "0.8.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-context@0.8.0/public/@types/vtex.product-context#02fb5b64676fd7c7ffa0c5531ff5fe8a39e57a54"
-
-"vtex.product-list-context@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-list-context@0.3.0/public/@types/vtex.product-list-context":
-  version "0.3.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-list-context@0.3.0/public/@types/vtex.product-list-context#830570426aa5e0286e2510ac04ddca054522e4fc"
-
-"vtex.product-specification-badges@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-specification-badges@0.1.1/public/@types/vtex.product-specification-badges":
-  version "0.1.1"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-specification-badges@0.1.1/public/@types/vtex.product-specification-badges#ed146564c6815cc16dfba6ab547e217dd4c3cfe5"
-
-"vtex.product-summary-context@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-summary-context@0.4.1/public/@types/vtex.product-summary-context":
-  version "0.4.1"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-summary-context@0.4.1/public/@types/vtex.product-summary-context#d79273a55b760faebaddad774ce5460db2274009"
-
-"vtex.render-runtime@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.111.0/public/@types/vtex.render-runtime":
-  version "8.111.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.111.0/public/@types/vtex.render-runtime#01b2ce53d1aa2a974f5229c61bd9c83b43a86d76"
-
-"vtex.responsive-values@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.responsive-values@0.2.0/public/_types/react":
-  version "0.0.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.responsive-values@0.2.0/public/_types/react#fa7a0347e046eab3dd768998fc9252b2c0dd5aef"
-
-"vtex.store-components@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.119.8/public/_types/react":
-  version "0.0.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.119.8/public/_types/react#fa7a0347e046eab3dd768998fc9252b2c0dd5aef"
-
-"vtex.store-resources@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.64.0/public/_types/react":
-  version "0.0.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.64.0/public/_types/react#fa7a0347e046eab3dd768998fc9252b2c0dd5aef"
-
-"vtex.styleguide@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.124.2/public/@types/vtex.styleguide":
-  version "9.124.2"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.124.2/public/@types/vtex.styleguide#23f1937bebae169c1d110594a4af3cc3ef05c601"
-
 w3c-hr-time@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/w3c-hr-time/-/w3c-hr-time-1.0.2.tgz#0a89cdf5cc15822df9c360543676963e0cc308cd"
