@@ -17,6 +17,7 @@ import { useCssHandles } from 'vtex.css-handles'
 import ProductSummaryContext from './ProductSummaryContext'
 import { productShape } from '../utils/propTypes'
 import { mapCatalogProductToProductSummary } from '../utils/normalize'
+import useIsPriceAsync from '../hooks/useIsPriceAsync'
 
 const PRODUCT_SUMMARY_MAX_WIDTH = 300
 const CSS_HANDLES = ['container', 'containerNormal', 'element', 'clearLink']
@@ -47,8 +48,13 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
           type: 'SEND_IMPRESSION',
           args: { product },
         })
+
+      dispatch({
+        type: 'SET_IN_VIEW',
+        args: { inView },
+      })
     }
-  }, [productListDispatch, inView, product])
+  }, [productListDispatch, dispatch, inView, product])
 
   useEffect(() => {
     if (product) {
@@ -161,8 +167,10 @@ ProductSummaryCustom.propTypes = {
 }
 
 function ProductSummaryWrapper(props) {
+  const { isPriceAsync } = useIsPriceAsync()
+
   return (
-    <ProductSummaryProvider {...props}>
+    <ProductSummaryProvider {...props} isLoading={isPriceAsync}>
       <ProductSummaryCustom {...props} />
     </ProductSummaryProvider>
   )
