@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.59.1] - 2020-09-23
+
 ### Fixed
 - Missing product items on simulation.
 
