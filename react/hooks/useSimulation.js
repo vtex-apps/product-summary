@@ -22,15 +22,17 @@ const mergeSellers = (sellerA, sellerB) => {
 const useSimulation = ({ product, inView, onComplete, onError }) => {
   const { isPriceAsync } = useIsPriceAsync()
 
+  const items = product.items || []
+
   const simulationItemsInput = useMemo(
     () =>
-      product.items.map((item) => ({
+      items.map((item) => ({
         itemId: item.itemId,
         sellers: item.sellers.map((seller) => ({
           sellerId: seller.sellerId,
         })),
       })),
-    [product]
+    [items]
   )
 
   useQuery(itemsWithSimulationQuery, {
