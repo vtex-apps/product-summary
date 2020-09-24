@@ -1,58 +1,54 @@
-# Product Summary Name
+📢 Use this project, [contribute](https://github.com/vtex-apps/product-summary) to it or open issues to help evolve it using [Store Discussion](https://github.com/vtex-apps/store-discussion).
 
-## Description
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-`ProductSummarySKUName` is a VTEX Component that renders the selected SKU's name.
-This Component can be imported and used by any VTEX App.
+[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors-)
+
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
+# Product Summary SKU Name
+
+The _Product Summary SKU Name_ is a VTEX Component that renders the selected SKU's name.
 
 :loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
 
-## Table of Contents
-- [Usage](#usage)
-  - [Blocks API](#blocks-api)
-  - [Configuration](#configuration)
-  - [Styles API](#styles-api)
-
-## Usage
+## Configuration
 
 You should follow the usage instruction in the main [README](https://github.com/vtex-apps/product-summary/blob/master/README.md#usage).
 
-Then, add `product-summary-sku-name` block into your app theme, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
+Then, add `product-summary-sku-name` block into your app theme as children of `product-summary.shelf`, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
 
-### Blocks API
-
-This component has an interface that describes which rules must be implemented by a block when you want to use the `ProductSummarySKUName`.
-
-```json
-  "product-summary-sku-name": {
-    "component": "ProductSummarySKUName"
-  }
+```diff
+   "product-summary.shelf": {
+    "children": [
+      "product-summary-image",
+      "product-summary-name",
++     "product-summary-sku-name",
+      "product-summary-attachment-list",
+      "product-summary-space",
+      "product-summary-column#1"
+    ]
+  },
 ```
 
-### Styles API
+## Customization
 
-This app provides some CSS classes as an API for style customization.
+In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
 
-To use this CSS API, you must add the `styles` builder and create an app styling CSS file.
+| CSS Handles        |
+| ------------------ |
+| `skuNameContainer` |
 
-1. Add the `styles` builder to your `manifest.json`:
+## Contributors ✨
 
-```json
-  "builders": {
-    "styles": "1.x"
-  }
-```
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
-2. Create a file called `vtex.product-summary.css` inside the `styles/css` folder. Add your custom styles:
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 
-```css
-.skuNameContainer {
-  margin-top: 10px;
-}
-```
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
-#### CSS Handles
-
-| CSS Handles   | Description                                          | Component Source                     |
-| ------------ | ---------------------------------------------------- | ------------------------------------ |
-| `skuNameContainer` | The main container of name | [index](/react/ProductSummarySKUName.tsx) |
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
