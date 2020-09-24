@@ -15,9 +15,7 @@ const ProductSummarySKUName = () => {
   }
 
   return (
-    <div
-      className={`${handles.skuNameContainer} flex items-start justify-center pv6`}
-    >
+    <div className={handles.skuNameContainer}>
       {skuName}
     </div>
   )
