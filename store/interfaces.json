@@ -54,6 +54,9 @@
   "product-summary-name": {
     "component": "ProductSummaryName"
   },
+  "product-summary-sku-name": {
+    "component": "ProductSummarySKUName"
+  },
   "product-summary-brand": {
     "component": "ProductSummaryBrand"
   },
