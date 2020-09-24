@@ -14,11 +14,7 @@ const ProductSummarySKUName = () => {
     return null
   }
 
-  return (
-    <div className={handles.skuNameContainer}>
-      {skuName}
-    </div>
-  )
+  return <div className={handles.skuNameContainer}>{skuName}</div>
 }
 
 export default ProductSummarySKUName
