@@ -2,7 +2,7 @@ import React from 'react'
 import { useCssHandles } from 'vtex.css-handles'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 
-const CSS_HANDLES = ['skuNameContainer']
+const CSS_HANDLES = ['skuNameContainer'] as const
 
 const ProductSummarySKUName = () => {
   const { product } = useProductSummary()
