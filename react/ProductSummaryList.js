@@ -47,7 +47,7 @@ function getOrdinationProp(attribute) {
   )
 }
 
-const ProductSummaryList = ({ children, ...props }) => {
+function ProductSummaryList(props) {
   const {
     category = '',
     collection,
@@ -57,6 +57,8 @@ const ProductSummaryList = ({ children, ...props }) => {
     maxItems = 10,
     skusFilter,
     installmentCriteria,
+    children,
+    ProductSummary,
   } = props
 
   const { data, loading, error } = useQuery(productsQuery, {
@@ -84,7 +86,10 @@ const ProductSummaryList = ({ children, ...props }) => {
   }
 
   return (
-    <ProductSummaryListWithoutQuery products={products}>
+    <ProductSummaryListWithoutQuery
+      products={products}
+      ProductSummary={ProductSummary}
+    >
       {children}
     </ProductSummaryListWithoutQuery>
   )
