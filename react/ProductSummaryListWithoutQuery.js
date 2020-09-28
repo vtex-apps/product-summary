@@ -8,7 +8,7 @@ import ProductListEventCaller from './components/ProductListEventCaller'
 
 const { ProductListProvider } = ProductListContext
 
-const List = ({ children, products }) => {
+function List({ children, products, ProductSummary }) {
   const { list } = useListContext()
   const { treePath } = useTreePath()
 
@@ -17,6 +17,10 @@ const List = ({ children, products }) => {
       products &&
       products.map((product) => {
         const normalizedProduct = mapCatalogProductToProductSummary(product)
+
+        if (typeof ProductSummary === 'function') {
+          return <ProductSummary product={normalizedProduct} />
+        }
 
         return (
           <ExtensionPoint
@@ -29,7 +33,7 @@ const List = ({ children, products }) => {
       })
 
     return list.concat(componentList)
-  }, [products, treePath, list])
+  }, [products, treePath, list, ProductSummary])
 
   return (
     <ListContextProvider list={newListContextValue}>
@@ -38,10 +42,16 @@ const List = ({ children, products }) => {
   )
 }
 
-const ProductSummaryListWithoutQuery = ({ children, products }) => {
+const ProductSummaryListWithoutQuery = ({
+  children,
+  products,
+  ProductSummary,
+}) => {
   return (
     <ProductListProvider>
-      <List products={products}>{children}</List>
+      <List products={products} ProductSummary={ProductSummary}>
+        {children}
+      </List>
       <ProductListEventCaller />
     </ProductListProvider>
   )
