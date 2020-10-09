@@ -1,5 +1,6 @@
 import React from 'react'
 import { render } from '@vtex/test-tools/react'
+import { MockedProvider } from '@apollo/react-testing'
 
 import ProductImage from '../ProductSummaryImage'
 import ProductSummary from '../ProductSummaryCustom'
@@ -43,9 +44,11 @@ describe('<ProductImage /> component', () => {
     const product = ProductSummary.mapCatalogProductToProductSummary(rawProduct)
 
     const { container } = render(
-      <ProductSummary product={product}>
-        <ProductImage />
-      </ProductSummary>
+      <MockedProvider>
+        <ProductSummary product={product}>
+          <ProductImage />
+        </ProductSummary>
+      </MockedProvider>
     )
 
     const imgElements = container.getElementsByTagName('img')
@@ -88,9 +91,11 @@ describe('<ProductImage /> component', () => {
     const product = ProductSummary.mapCatalogProductToProductSummary(rawProduct)
 
     const { container } = render(
-      <ProductSummary product={product}>
-        <ProductImage />
-      </ProductSummary>
+      <MockedProvider>
+        <ProductSummary product={product}>
+          <ProductImage />
+        </ProductSummary>
+      </MockedProvider>
     )
 
     const imgElements = container.getElementsByTagName('img')

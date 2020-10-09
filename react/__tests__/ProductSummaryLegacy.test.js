@@ -2,6 +2,7 @@ import fs from 'fs'
 
 import React from 'react'
 import { render } from '@vtex/test-tools/react'
+import { MockedProvider } from '@apollo/react-testing'
 
 import ProductSummary from '../legacy/index'
 
@@ -50,7 +51,11 @@ describe('<ProductSummary /> component', () => {
   }
 
   function renderComponent(customProps) {
-    return render(<ProductSummary {...props} {...customProps} />)
+    return render(
+      <MockedProvider>
+        <ProductSummary {...props} {...customProps} />
+      </MockedProvider>
+    )
   }
 
   it('should match the snapshot for normal mode', () => {
@@ -84,13 +89,25 @@ describe('<ProductSummary /> component', () => {
 
     expect(getByText('Buy')).toBeTruthy()
 
-    rerender(<ProductSummary {...props} displayMode="small" />)
+    rerender(
+      <MockedProvider>
+        <ProductSummary {...props} displayMode="small" />
+      </MockedProvider>
+    )
     expect(getByText('Buy')).toBeTruthy()
 
-    rerender(<ProductSummary {...props} displayMode="inline" />)
+    rerender(
+      <MockedProvider>
+        <ProductSummary {...props} displayMode="inline" />
+      </MockedProvider>
+    )
     expect(getByText('Buy')).toBeTruthy()
 
-    rerender(<ProductSummary {...props} displayMode="inlinePrice" />)
+    rerender(
+      <MockedProvider>
+        <ProductSummary {...props} displayMode="inlinePrice" />
+      </MockedProvider>
+    )
     expect(container.querySelector('.buyButtonContainer')).toBeFalsy()
   })
 
@@ -99,13 +116,25 @@ describe('<ProductSummary /> component', () => {
 
     expect(container.querySelector('.quantityStepperContainer')).toBeFalsy()
 
-    rerender(<ProductSummary {...props} displayMode="inlinePrice" />)
+    rerender(
+      <MockedProvider>
+        <ProductSummary {...props} displayMode="inlinePrice" />
+      </MockedProvider>
+    )
     expect(container.querySelector('.quantityStepperContainer')).toBeTruthy()
 
-    rerender(<ProductSummary {...props} displayMode="small" />)
+    rerender(
+      <MockedProvider>
+        <ProductSummary {...props} displayMode="small" />
+      </MockedProvider>
+    )
     expect(container.querySelector('.quantityStepperContainer')).toBeFalsy()
 
-    rerender(<ProductSummary {...props} displayMode="inline" />)
+    rerender(
+      <MockedProvider>
+        <ProductSummary {...props} displayMode="inline" />
+      </MockedProvider>
+    )
     expect(container.querySelector('.quantityStepperContainer')).toBeFalsy()
   })
 

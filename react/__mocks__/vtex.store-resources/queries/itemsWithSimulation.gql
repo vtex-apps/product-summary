@@ -1,0 +1,18 @@
+query itemsWithSimulation($items: [ItemInput]) {
+  itemsWithSimulation(items: $items) {
+    itemId
+    sellers {
+      commertialOffer {
+        Price
+        ListPrice
+        PriceValidUntil
+        Installments {
+          Value
+          InterestRate
+          TotalValuePlusInterestRate
+          NumberOfInstallments
+        }
+      }
+    }
+  }
+}

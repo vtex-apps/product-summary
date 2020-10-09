@@ -43,6 +43,10 @@ const useSimulation = ({ product, inView, onComplete, onError }) => {
     ssr: false,
     onError,
     onCompleted: (response) => {
+      if (!response) {
+        return
+      }
+
       const simulationItems = response.itemsWithSimulation
 
       const mergedProduct = clone(product)
