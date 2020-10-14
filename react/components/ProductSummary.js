@@ -7,7 +7,6 @@ import { Link } from 'vtex.render-runtime'
 import { useInView } from 'react-intersection-observer'
 import { ProductListContext } from 'vtex.product-list-context'
 import {
-  ProductSummaryConsumer,
   ProductSummaryProvider,
   useProductSummaryDispatch,
   useProductSummary,
@@ -19,14 +18,13 @@ import ProductSummaryContext from './ProductSummaryContext'
 import { productShape } from '../utils/propTypes'
 import { mapCatalogProductToProductSummary } from '../utils/normalize'
 import useIsPriceAsync from '../hooks/useIsPriceAsync'
-import useSetProduct from '../hooks/useSetProduct'
-import useSimulation from '../hooks/useSimulation'
+import ProductPriceSimulationWrapper from './ProductPriceSimulationWrapper'
 
 const PRODUCT_SUMMARY_MAX_WIDTH = 300
 const CSS_HANDLES = ['container', 'containerNormal', 'element', 'clearLink']
 
 const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
-  const { isLoading, isHovering, query } = useProductSummary()
+  const { isLoading, isHovering, selectedItem, query } = useProductSummary()
   const dispatch = useProductSummaryDispatch()
   const handles = useCssHandles(CSS_HANDLES)
 
@@ -67,28 +65,6 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
       })
     }
   }, [product, dispatch])
-
-  const productSummaryDispatch = useProductSummaryDispatch()
-  const setProduct = useSetProduct()
-
-  useSimulation({
-    product,
-    inView,
-    onError: () => {
-      productSummaryDispatch({
-        type: 'SET_PRICE_LOADING',
-        args: { isPriceLoading: false },
-      })
-    },
-    onComplete: (simulatedProduct) => {
-      setProduct(simulatedProduct)
-
-      productSummaryDispatch({
-        type: 'SET_PRICE_LOADING',
-        args: { isPriceLoading: false },
-      })
-    },
-  })
 
   const handleMouseLeave = useCallback(() => {
     dispatch({
@@ -137,6 +113,12 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
 
   const linkClasses = classNames(handles.clearLink, 'h-100 flex flex-column')
 
+  const skuId = pathOr(
+    path(['sku', 'itemId'], product),
+    ['itemId'],
+    selectedItem
+  )
+
   const linkProps = href
     ? {
         to: href,
@@ -152,17 +134,25 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
 
   return (
     <ProductSummaryContext.Provider value={oldContextProps}>
-      <section
-        className={containerClasses}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
-        ref={inViewRef}
-      >
-        <Link className={linkClasses} {...linkProps} onClick={actionOnClick}>
-          <article className={summaryClasses}>{children}</article>
-        </Link>
-      </section>
+      <ProductContextProvider product={product} query={{ skuId }}>
+        <ProductPriceSimulationWrapper product={product} inView={inView}>
+          <section
+            className={containerClasses}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
+            ref={inViewRef}
+          >
+            <Link
+              className={linkClasses}
+              {...linkProps}
+              onClick={actionOnClick}
+            >
+              <article className={summaryClasses}>{children}</article>
+            </Link>
+          </section>
+        </ProductPriceSimulationWrapper>
+      </ProductContextProvider>
     </ProductSummaryContext.Provider>
   )
 }
@@ -188,26 +178,7 @@ function ProductSummaryWrapper(props) {
 
   return (
     <ProductSummaryProvider {...props} isPriceLoading={isPriceAsync}>
-      <ProductSummaryConsumer>
-        {(value) => {
-          const skuId = pathOr(
-            path(['sku', 'itemId'], props.product),
-            ['itemId'],
-            value.selectedItem
-          )
-
-          return (
-            <ProductContextProvider
-              product={props.product}
-              query={{
-                skuId,
-              }}
-            >
-              <ProductSummaryCustom {...props} />
-            </ProductContextProvider>
-          )
-        }}
-      </ProductSummaryConsumer>
+      <ProductSummaryCustom {...props} />
     </ProductSummaryProvider>
   )
 }

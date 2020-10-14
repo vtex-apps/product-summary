@@ -13,5 +13,3 @@ export const useProductSummary = () => {
 export const useProductSummaryDispatch = () => {
   return () => {}
 }
-
-export const ProductSummaryConsumer = ProductSummaryContext.Consumer

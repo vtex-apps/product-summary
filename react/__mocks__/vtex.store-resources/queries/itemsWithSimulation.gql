@@ -1,5 +1,5 @@
 query itemsWithSimulation($items: [ItemInput]) {
-  itemsWithSimulation(items: $items) {
+  itemsWithSimulation(items: $items) @context(provider: "vtex.search-graphql") {
     itemId
     sellers {
       commertialOffer {
