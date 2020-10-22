@@ -2,7 +2,6 @@ import { useMemo } from 'react'
 import { useQuery } from 'react-apollo'
 import itemsWithSimulationQuery from 'vtex.store-resources/QueryItemsWithSimulation'
 
-import useIsPriceAsync from './useIsPriceAsync'
 import clone from '../utils/clone'
 
 const mergeSellers = (sellerA, sellerB) => {
@@ -19,9 +18,13 @@ const mergeSellers = (sellerA, sellerB) => {
   return sellerA
 }
 
-const useSimulation = ({ product, inView, onComplete, onError }) => {
-  const { isPriceAsync } = useIsPriceAsync()
-
+const useSimulation = ({
+  product,
+  inView,
+  onComplete,
+  onError,
+  isPriceAsync,
+}) => {
   const items = product.items || []
 
   const simulationItemsInput = useMemo(

@@ -4,13 +4,19 @@ import { useProductSummaryDispatch } from 'vtex.product-summary-context/ProductS
 import useSimulation from '../hooks/useSimulation'
 import useSetProduct from '../hooks/useSetProduct'
 
-const ProductPriceSimulationWrapper = ({ product, inView, children }) => {
+const ProductPriceSimulationWrapper = ({
+  product,
+  inView,
+  children,
+  isPriceAsync,
+}) => {
   const productSummaryDispatch = useProductSummaryDispatch()
   const setProduct = useSetProduct()
 
   useSimulation({
     product,
     inView,
+    isPriceAsync,
     onError: () => {
       productSummaryDispatch({
         type: 'SET_PRICE_LOADING',
