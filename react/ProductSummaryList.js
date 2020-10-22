@@ -1,6 +1,7 @@
 import React from 'react'
 import { useQuery } from 'react-apollo'
 import productsQuery from 'vtex.store-resources/QueryProducts'
+import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 
 import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
 
@@ -90,6 +91,7 @@ function ProductSummaryList(props) {
       products={products}
       ProductSummary={ProductSummary}
     >
+      <ProductListStructuredData products={products} />
       {children}
     </ProductSummaryListWithoutQuery>
   )
