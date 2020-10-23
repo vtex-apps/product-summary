@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Move `useSimulation` call from `ProductSummaryPrice` to the `ProductSummary`.
 
 ### Added
-- `isPriceAsync` prop.
+- `priceBehavior` prop.
 
 ## [2.62.0] - 2020-10-22
 ### Added

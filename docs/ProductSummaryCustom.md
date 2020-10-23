@@ -58,11 +58,11 @@ Product Summary Custom is a block exported by the Product Summary app responsibl
 
 | Prop name      | Type      | Description                                                                                                                                                                                                                                           | Default value                                    |
 | -------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| `isPriceAsync` | `boolean` | Whether the client-side will request the simulation API (`true`) or not (`false`). Remeber to set the [`simulationBehavior`](https://github.com/vtex-apps/search-result/blob/33faaa139d636d2ff10bb9a93e77075b31a66d6e/docs/README.md) prop to `skip`. | `false` if you want to use this feature on a PLP |
+| `priceBehavior` | `"async" | "default"` | Whether the client-side will request the simulation API (`async`) or not (`default`). Remeber to set the [`simulationBehavior`](https://github.com/vtex-apps/search-result/blob/33faaa139d636d2ff10bb9a93e77075b31a66d6e/docs/README.md) prop to `skip`. | `default` if you want to use this feature on a PLP |
 
-#### `isPriceAsync` example:
+#### `priceBehavior` example:
 
-We recommend using the `product-price-suspense` to have a loading spinner while the simulation API is being fetched.
+We recommend using the [`product-price-suspense`](https://github.com/vtex-apps/product-price/blob/master/docs/README.md) to have a loading spinner while the simulation API is being fetched.
 
 ![priceasync](https://user-images.githubusercontent.com/40380674/96735041-85265680-1391-11eb-80e9-2eb35607fd72.gif)
 
@@ -91,7 +91,7 @@ We recommend using the `product-price-suspense` to have a loading spinner while 
   },
   "product-summary.shelf": {
     "props": {
-+     "isPriceAsync": true
++     "priceBehavior": "async"
     },
     "children": [
       // other children

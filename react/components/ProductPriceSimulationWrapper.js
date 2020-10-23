@@ -8,7 +8,7 @@ const ProductPriceSimulationWrapper = ({
   product,
   inView,
   children,
-  isPriceAsync,
+  priceBehavior,
 }) => {
   const productSummaryDispatch = useProductSummaryDispatch()
   const setProduct = useSetProduct()
@@ -16,7 +16,7 @@ const ProductPriceSimulationWrapper = ({
   useSimulation({
     product,
     inView,
-    isPriceAsync,
+    priceBehavior,
     onError: () => {
       productSummaryDispatch({
         type: 'SET_PRICE_LOADING',

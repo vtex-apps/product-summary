@@ -27,7 +27,7 @@ const ProductSummaryCustom = ({
   actionOnClick,
   children,
   href,
-  isPriceAsync = false,
+  priceBehavior = 'default',
 }) => {
   const { isLoading, isHovering, selectedItem, query } = useProductSummary()
   const dispatch = useProductSummaryDispatch()
@@ -143,7 +143,7 @@ const ProductSummaryCustom = ({
         <ProductPriceSimulationWrapper
           product={product}
           inView={inView}
-          isPriceAsync={isPriceAsync}
+          priceBehavior={priceBehavior}
         >
           <section
             className={containerClasses}
@@ -180,13 +180,16 @@ ProductSummaryCustom.propTypes = {
   ]),
   /** Should be only used by custom components, never by blocks */
   href: PropTypes.string,
-  /** Whether the client will request the simulation API or not. */
-  isPriceAsync: PropTypes.bool,
+  /** Whether the client will request the simulation API ("async") or not "default". */
+  priceBehavior: PropTypes.string,
 }
 
 function ProductSummaryWrapper(props) {
   return (
-    <ProductSummaryProvider {...props} isPriceLoading={props.isPriceAsync}>
+    <ProductSummaryProvider
+      {...props}
+      isPriceLoading={props.priceBehavior === 'async'}
+    >
       <ProductSummaryCustom {...props} />
     </ProductSummaryProvider>
   )

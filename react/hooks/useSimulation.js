@@ -23,7 +23,7 @@ const useSimulation = ({
   inView,
   onComplete,
   onError,
-  isPriceAsync,
+  priceBehavior,
 }) => {
   const items = product.items || []
 
@@ -42,7 +42,7 @@ const useSimulation = ({
     variables: {
       items: simulationItemsInput,
     },
-    skip: !isPriceAsync || !inView,
+    skip: priceBehavior !== 'async' || !inView,
     ssr: false,
     onError,
     onCompleted: (response) => {
