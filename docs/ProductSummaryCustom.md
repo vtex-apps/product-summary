@@ -1,6 +1,6 @@
 📢 Use this project, [contribute](https://github.com/vtex-apps/product-summary/blob/master/docs/ProductSummaryCustom.md) to it or open issues to help evolve it using [Store Discussion](https://github.com/vtex-apps/store-discussion).
 
-# Product Summary Custom
+# Product Summary Shelf
 
 Product Summary Custom is a block exported by the Product Summary app responsible for rendering the Product Summary.
 
