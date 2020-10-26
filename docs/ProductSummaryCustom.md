@@ -55,9 +55,9 @@ Product Summary Custom is a block exported by the Product Summary app responsibl
 ```
 
 
-| Prop name      | Type      | Description                                                                                                                                                                                                                                           | Default value                                    |
-| -------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| `priceBehavior` | `"async" | "default"` | Whether the client-side will request the simulation API (`async`) or not (`default`). Remeber to set the [`simulationBehavior`](https://github.com/vtex-apps/search-result/blob/33faaa139d636d2ff10bb9a93e77075b31a66d6e/docs/README.md) prop to `skip`. | `default` if you want to use this feature on a PLP |
+| Prop name        | Type          | Description                            | Default value  |
+| :--------------: | :---------: | :--------------------------: | :------------: |
+| `priceBehavior` | `enum` | Whether the client-side should request the simulation API (`async`) or not (`default`). Remember to also set the [Search Result](https://vtex.io/docs/components/content-blocks/vtex.search-result@3.79.1/#configuration)'s`simulationBehavior` prop to `skip` and use the Product Price's [`product-price-suspense`](https://github.com/vtex-apps/product-price/blob/master/docs/README.md) block to render a loading spinner while the simulation API is being fetched. | `default` |
 
 #### `priceBehavior` example:
 
