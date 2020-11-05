@@ -16,7 +16,7 @@ import productSummary from '../../productSummary.css'
 import { changeImageUrlSize } from '../../utils/normalize'
 import { imageUrl } from '../../utils/aspectRatioUtil'
 
-const CSS_HANDLES = ['image', 'imageContainer', 'product', 'imagePlaceholder']
+const CSS_HANDLES = ['image', 'mainImageHovered', 'imageContainer', 'product', 'imagePlaceholder']
 const MAX_SIZE = 500
 const DEFAULT_SIZE = 300
 
@@ -93,6 +93,16 @@ const findImageByLabel = (images, selectedLabel) => {
   return images.find(({ imageLabel }) => imageLabel === selectedLabel)
 }
 
+const findImageByIndex = (images, index) => {
+  const imageIndex = parseInt(index, 10);
+
+  if (Number.isNaN(imageIndex)) {
+    return null
+  }
+
+  return images[imageIndex];
+}
+
 const Image = ({
   src,
   width,
@@ -137,6 +147,8 @@ const ProductImageContent = ({
   displayMode,
   mainImageLabel,
   hoverImageLabel,
+  hoverImageIndex,
+  hoverImageCriteria,
   showCollections,
   width: widthProp,
   height: heightProp,
@@ -168,7 +180,14 @@ const ProductImageContent = ({
   )
 
   const images = pathOr([], ['images'], sku)
-  const hoverImage = findImageByLabel(images, hoverImageLabel)
+  
+  const isLabelCriteria = hoverImageCriteria === "label";
+
+  const hoverImage = isLabelCriteria ?
+    findImageByLabel(images, hoverImageLabel) :
+    findImageByIndex(images, hoverImageIndex)
+
+  const hasHoverImage = hoverImage !== undefined && hoverImage !== null;
 
   let skuImageUrl = pathOr('', ['image', 'imageUrl'], sku)
 
@@ -208,7 +227,9 @@ const ProductImageContent = ({
 
   const withCollection = maybeCollection({ productClusters })
 
-  const imageClassname = classNames(legacyImageClasses, handles.image)
+  const imageClassname = classNames(legacyImageClasses, handles.image, {
+    [handles.mainImageHovered]: hasHoverImage
+  })
 
   const hoverImageClassname = classNames(
     'w-100 h-100 dn absolute top-0 left-0 z-999',
@@ -258,6 +279,8 @@ const ProductImage = ({
   height: heightProp,
   aspectRatio: aspectRatioProp,
   maxHeight: maxHeightProp,
+  hoverImageIndex,
+  hoverImageCriteria,
 }) => {
   const { product } = useProductSummary()
 
@@ -293,8 +316,10 @@ const ProductImage = ({
         displayMode={displayMode}
         onError={() => setError(true)}
         mainImageLabel={mainImageLabel}
-        hoverImageLabel={hoverImageLabel}
         showCollections={showCollections}
+        hoverImageLabel={hoverImageLabel}
+        hoverImageIndex={hoverImageIndex}
+        hoverImageCriteria={hoverImageCriteria}
       />
     </div>
   )
@@ -309,8 +334,10 @@ ProductImage.propTypes = {
   showCollections: PropTypes.bool,
   /** Display mode of the summary */
   displayMode: PropTypes.oneOf(['normal', 'inline']),
-  hoverImageLabel: PropTypes.string,
   mainImageLabel: PropTypes.string,
+  hoverImageLabel: PropTypes.string,
+  hoverImageIndex: PropTypes.number,
+  hoverImageCriteria: PropTypes.oneOf(['index', 'label']),
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
 }
@@ -319,8 +346,10 @@ ProductImage.defaultProps = {
   showBadge: true,
   showCollections: false,
   displayMode: 'normal',
-  hoverImageLabel: '',
   mainImageLabel: '',
+  hoverImageLabel: '',
+  hoverImageIndex: undefined,
+  hoverImageCriteria: 'label',
 }
 
 ProductImage.getSchema = () => {
@@ -348,10 +377,23 @@ ProductImage.getSchema = () => {
         default: ProductImage.defaultProps.displayMode,
         isLayout: true,
       },
+      hoverImageCriteria: {
+        title: 'admin/editor.productSummaryImage.hoverImageLabel.title',
+        type: 'string',
+        enum: ['index', 'label'],
+        default: ProductImage.defaultProps.hoverImageCriteria,
+        isLayout: false,
+      },
       hoverImageLabel: {
         title: 'admin/editor.productSummaryImage.hoverImageLabel.title',
         type: 'string',
         default: '',
+        isLayout: false,
+      },
+      hoverImageIndex: {
+        title: 'admin/editor.productSummaryImage.hoverImageLabel.title',
+        type: 'boolean',
+        default: ProductImage.defaultProps.hoverImageIndex,
         isLayout: false,
       },
     },
