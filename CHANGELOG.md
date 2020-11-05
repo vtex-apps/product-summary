@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.63.0] - 2020-11-05
+### Added
+- Added a second criteria to match the hover image beyond the `hoverImageLabel` option so it's possible to match the hover image by `index` instead of only by label. The props are `hoverImageCriteria` and `hoverImageIndex`.
+
+### Fixed
+- Main product image still appearing when hover image is being displayed.
+
 ## [2.62.0] - 2020-10-22
 ### Added
 - Uses product list structured data
