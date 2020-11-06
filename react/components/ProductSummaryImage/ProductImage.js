@@ -94,13 +94,13 @@ const findImageByLabel = (images, selectedLabel) => {
 }
 
 const findImageByIndex = (images, index) => {
-  const imageIndex = parseInt(index, 10);
+  const imageIndex = parseInt(index, 10)
 
   if (Number.isNaN(imageIndex)) {
     return null
   }
 
-  return images[imageIndex];
+  return images[imageIndex]
 }
 
 const Image = ({
@@ -181,13 +181,13 @@ const ProductImageContent = ({
 
   const images = pathOr([], ['images'], sku)
   
-  const isLabelCriteria = hoverImageCriteria === "label";
+  const isLabelCriteria = hoverImageCriteria === "label"
 
   const hoverImage = isLabelCriteria ?
     findImageByLabel(images, hoverImageLabel) :
     findImageByIndex(images, hoverImageIndex)
 
-  const hasHoverImage = hoverImage !== undefined && hoverImage !== null;
+  const hasHoverImage = hoverImage !== undefined && hoverImage !== null
 
   let skuImageUrl = pathOr('', ['image', 'imageUrl'], sku)
 
@@ -391,7 +391,7 @@ ProductImage.getSchema = () => {
         isLayout: false,
       },
       hoverImageIndex: {
-        title: 'admin/editor.productSummaryImage.hoverImageLabel.title',
+        title: 'admin/editor.productSummaryImage.hoverImageIndex.title',
         type: 'number',
         default: ProductImage.defaultProps.hoverImageIndex,
         isLayout: false,
