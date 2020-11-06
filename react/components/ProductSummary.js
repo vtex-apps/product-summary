@@ -17,12 +17,18 @@ import { useCssHandles } from 'vtex.css-handles'
 import ProductSummaryContext from './ProductSummaryContext'
 import { productShape } from '../utils/propTypes'
 import { mapCatalogProductToProductSummary } from '../utils/normalize'
-import useIsPriceAsync from '../hooks/useIsPriceAsync'
+import ProductPriceSimulationWrapper from './ProductPriceSimulationWrapper'
 
 const PRODUCT_SUMMARY_MAX_WIDTH = 300
 const CSS_HANDLES = ['container', 'containerNormal', 'element', 'clearLink']
 
-const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
+const ProductSummaryCustom = ({
+  product,
+  actionOnClick,
+  children,
+  href,
+  priceBehavior = 'default',
+}) => {
   const { isLoading, isHovering, selectedItem, query } = useProductSummary()
   const dispatch = useProductSummaryDispatch()
   const handles = useCssHandles(CSS_HANDLES)
@@ -134,17 +140,27 @@ const ProductSummaryCustom = ({ product, actionOnClick, children, href }) => {
   return (
     <ProductSummaryContext.Provider value={oldContextProps}>
       <ProductContextProvider product={product} query={{ skuId }}>
-        <section
-          className={containerClasses}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
-          ref={inViewRef}
+        <ProductPriceSimulationWrapper
+          product={product}
+          inView={inView}
+          priceBehavior={priceBehavior}
         >
-          <Link className={linkClasses} {...linkProps} onClick={actionOnClick}>
-            <article className={summaryClasses}>{children}</article>
-          </Link>
-        </section>
+          <section
+            className={containerClasses}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
+            ref={inViewRef}
+          >
+            <Link
+              className={linkClasses}
+              {...linkProps}
+              onClick={actionOnClick}
+            >
+              <article className={summaryClasses}>{children}</article>
+            </Link>
+          </section>
+        </ProductPriceSimulationWrapper>
       </ProductContextProvider>
     </ProductSummaryContext.Provider>
   )
@@ -164,13 +180,16 @@ ProductSummaryCustom.propTypes = {
   ]),
   /** Should be only used by custom components, never by blocks */
   href: PropTypes.string,
+  /** Whether the client will request the simulation API ("async") or not "default". */
+  priceBehavior: PropTypes.string,
 }
 
 function ProductSummaryWrapper(props) {
-  const { isPriceAsync } = useIsPriceAsync()
-
   return (
-    <ProductSummaryProvider {...props} isLoading={isPriceAsync}>
+    <ProductSummaryProvider
+      {...props}
+      isPriceLoading={props.priceBehavior === 'async'}
+    >
       <ProductSummaryCustom {...props} />
     </ProductSummaryProvider>
   )
