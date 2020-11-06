@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added a second criteria to match the hover image beyond the `hoverImageLabel` option so it's possible to match the hover image by `index` instead of only by label. The props are `hoverImageCriteria` and `hoverImageIndex`.
 
 ### Fixed
-- Main product image still appearing when hover image is being displayed.
+- Main product image was still appearing when a hover image with transparency was being displayed.
 
 ## [2.62.0] - 2020-10-22
 ### Added
