@@ -392,7 +392,7 @@ ProductImage.getSchema = () => {
       },
       hoverImageIndex: {
         title: 'admin/editor.productSummaryImage.hoverImageLabel.title',
-        type: 'boolean',
+        type: 'number',
         default: ProductImage.defaultProps.hoverImageIndex,
         isLayout: false,
       },
