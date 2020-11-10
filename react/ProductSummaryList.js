@@ -6,13 +6,9 @@ import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
 
 const ORDER_BY_OPTIONS = {
-  DEFAULT: {
-    name: 'admin/editor.productSummaryList.orderType.default',
-    value: '',
-  },
   RELEVANCE: {
     name: 'admin/editor.productSummaryList.orderType.relevance',
-    value: 'OrderByScoreDESC',
+    value: '',
   },
   TOP_SALE_DESC: {
     name: 'admin/editor.productSummaryList.orderType.sales',
@@ -143,7 +139,7 @@ ProductSummaryList.getSchema = () => ({
       type: 'string',
       enum: getOrdinationProp('value'),
       enumNames: getOrdinationProp('name'),
-      default: ORDER_BY_OPTIONS.DEFAULT.value,
+      default: ORDER_BY_OPTIONS.RELEVANCE.value,
       isLayout: false,
     },
     hideUnavailableItems: {
