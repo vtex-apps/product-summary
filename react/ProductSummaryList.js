@@ -53,7 +53,7 @@ function ProductSummaryList(props) {
     category = '',
     collection,
     hideUnavailableItems = false,
-    orderBy = ORDER_BY_OPTIONS.DEFAULT.value,
+    orderBy = ORDER_BY_OPTIONS.RELEVANCE.value,
     specificationFilters = [],
     maxItems = 10,
     skusFilter,
