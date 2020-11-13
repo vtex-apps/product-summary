@@ -8,7 +8,7 @@ import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
 const ORDER_BY_OPTIONS = {
   RELEVANCE: {
     name: 'admin/editor.productSummaryList.orderType.relevance',
-    value: 'OrderByScoreDESC',
+    value: '',
   },
   TOP_SALE_DESC: {
     name: 'admin/editor.productSummaryList.orderType.sales',
@@ -53,7 +53,7 @@ function ProductSummaryList(props) {
     category = '',
     collection,
     hideUnavailableItems = false,
-    orderBy = ORDER_BY_OPTIONS.TOP_SALE_DESC.value,
+    orderBy = ORDER_BY_OPTIONS.RELEVANCE.value,
     specificationFilters = [],
     maxItems = 10,
     skusFilter,
@@ -139,7 +139,7 @@ ProductSummaryList.getSchema = () => ({
       type: 'string',
       enum: getOrdinationProp('value'),
       enumNames: getOrdinationProp('name'),
-      default: ORDER_BY_OPTIONS.TOP_SALE_DESC.value,
+      default: ORDER_BY_OPTIONS.RELEVANCE.value,
       isLayout: false,
     },
     hideUnavailableItems: {
