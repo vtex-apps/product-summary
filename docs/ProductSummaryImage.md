@@ -39,6 +39,7 @@
 | `badgeText` | `string` | Text displayed on the discount badge (in case the badge is configured to be displayed on the image). | `undefined` |
 | `showCollections` | `boolean` | Whether collection badges (if there are any) will be displayed (`true`) or not (`false`). | `false` |
 | `displayMode` | `enum` | Defines the Product Summary Image display mode. Possible values are: `normal` and `inline`. | `normal` |
+| `placeholder` | `string` | Defines the Product Summary Image placeholder image. | `undefined` |
 | `mainImageLabel` | `string` | Text value that matches the value defined in the `imageLabel` field from the admin's Catalog. Once matched, it defines which product image will be the main image displayed in the Product Summary component. If you set a label and no match is found, the main image of the product will be shown instead. | `undefined`|
 | `hoverImageLabel` | `String` | Text value that matches the value defined in the `imageLabel` field from the admin's Catalog. Once matched, it defines which product image will be displayed when the user is hovering. If you set a label and no match is found, no image will be displayed during the hover. | `undefined` |
 | `width` | `object` | Defines the Product Summary Image width. | `undefined` |

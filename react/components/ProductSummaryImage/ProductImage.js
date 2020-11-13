@@ -138,6 +138,7 @@ const ProductImageContent = ({
   mainImageLabel,
   hoverImageLabel,
   showCollections,
+  placeholder,
   width: widthProp,
   height: heightProp,
   aspectRatio,
@@ -172,7 +173,7 @@ const ProductImageContent = ({
 
   let skuImageUrl = pathOr('', ['image', 'imageUrl'], sku)
 
-  if (!skuImageUrl || hasError) {
+  if (!placeholder && (!skuImageUrl || hasError)) {
     return (
       <div className={containerClassname}>
         <ImagePlaceholder cssHandle={handles.productImage} />
@@ -220,7 +221,7 @@ const ProductImageContent = ({
   const img = (
     <div className={containerClassname}>
       <Image
-        src={skuImageUrl}
+        src={!skuImageUrl || hasError ? placeholder : skuImageUrl}
         width={width}
         height={height}
         aspectRatio={aspectRatio}
@@ -254,6 +255,7 @@ const ProductImage = ({
   mainImageLabel,
   hoverImageLabel,
   showCollections,
+  placeholder,
   width: widthProp,
   height: heightProp,
   aspectRatio: aspectRatioProp,
@@ -295,6 +297,7 @@ const ProductImage = ({
         mainImageLabel={mainImageLabel}
         hoverImageLabel={hoverImageLabel}
         showCollections={showCollections}
+        placeholder={placeholder}
       />
     </div>
   )
@@ -311,6 +314,7 @@ ProductImage.propTypes = {
   displayMode: PropTypes.oneOf(['normal', 'inline']),
   hoverImageLabel: PropTypes.string,
   mainImageLabel: PropTypes.string,
+  placeholder: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
 }
