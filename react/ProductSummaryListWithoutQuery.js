@@ -8,7 +8,7 @@ import ProductListEventCaller from './components/ProductListEventCaller'
 
 const { ProductListProvider } = ProductListContext
 
-function List({ children, products, ProductSummary }) {
+function List({ children, products, ProductSummary, actionOnProductClick }) {
   const { list } = useListContext()
   const { treePath } = useTreePath()
 
@@ -18,8 +18,19 @@ function List({ children, products, ProductSummary }) {
       products.map((product) => {
         const normalizedProduct = mapCatalogProductToProductSummary(product)
 
+        const handleOnClick = () => {
+          if (typeof actionOnProductClick === 'function') {
+            actionOnProductClick(normalizedProduct)
+          }
+        }
+
         if (typeof ProductSummary === 'function') {
-          return <ProductSummary product={normalizedProduct} />
+          return (
+            <ProductSummary
+              product={normalizedProduct}
+              actionOnClick={handleOnClick}
+            />
+          )
         }
 
         return (
@@ -28,12 +39,13 @@ function List({ children, products, ProductSummary }) {
             key={product.id}
             treePath={treePath}
             product={normalizedProduct}
+            actionOnClick={handleOnClick}
           />
         )
       })
 
     return list.concat(componentList)
-  }, [products, treePath, list, ProductSummary])
+  }, [products, treePath, list, ProductSummary, actionOnProductClick])
 
   return (
     <ListContextProvider list={newListContextValue}>
@@ -46,10 +58,15 @@ const ProductSummaryListWithoutQuery = ({
   children,
   products,
   ProductSummary,
+  actionOnProductClick,
 }) => {
   return (
     <ProductListProvider>
-      <List products={products} ProductSummary={ProductSummary}>
+      <List
+        products={products}
+        ProductSummary={ProductSummary}
+        actionOnProductClick={actionOnProductClick}
+      >
         {children}
       </List>
       <ProductListEventCaller />

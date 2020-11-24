@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- `actionOnProductClick` prop to `ProductSummaryList`.
+
 ## [2.64.0] - 2020-11-30
 ### Added
 - `ProductSummaryImage` can now receive a custom placeholder image by using the `placeholder` prop.
