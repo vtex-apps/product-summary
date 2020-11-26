@@ -173,7 +173,9 @@ const ProductImageContent = ({
 
   let skuImageUrl = pathOr('', ['image', 'imageUrl'], sku)
 
-  if (!placeholder && (!skuImageUrl || hasError)) {
+  const shouldDisplayPlaceholder = !skuImageUrl || hasError
+
+  if (!placeholder && shouldDisplayPlaceholder) {
     return (
       <div className={containerClassname}>
         <ImagePlaceholder cssHandle={handles.productImage} />
@@ -221,7 +223,7 @@ const ProductImageContent = ({
   const img = (
     <div className={containerClassname}>
       <Image
-        src={!skuImageUrl || hasError ? placeholder : skuImageUrl}
+        src={shouldDisplayPlaceholder ? placeholder : skuImageUrl}
         width={width}
         height={height}
         aspectRatio={aspectRatio}

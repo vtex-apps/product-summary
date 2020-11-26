@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- `ProductSummaryImage` can receive a custom placeholder image by using the `placeholder` prop.
+- `ProductSummaryImage` can now receive a custom placeholder image by using the `placeholder` prop.
 
 ## [2.63.1] - 2020-11-13
 ### Changed
