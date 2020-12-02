@@ -60,6 +60,7 @@ function ProductSummaryList(props) {
     installmentCriteria,
     children,
     ProductSummary,
+    actionOnProductClick,
   } = props
 
   const { data, loading, error } = useQuery(productsQuery, {
@@ -90,6 +91,7 @@ function ProductSummaryList(props) {
     <ProductSummaryListWithoutQuery
       products={products}
       ProductSummary={ProductSummary}
+      actionOnProductClick={actionOnProductClick}
     >
       <ProductListStructuredData products={products} />
       {children}
