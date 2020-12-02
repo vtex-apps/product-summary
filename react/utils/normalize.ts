@@ -1,6 +1,3 @@
-// eslint-disable-next-line no-restricted-imports
-import { pathOr } from 'ramda'
-
 export const DEFAULT_WIDTH = 'auto'
 export const DEFAULT_HEIGHT = 'auto'
 export const MAX_WIDTH = 3000
@@ -23,17 +20,23 @@ const baseUrlRegex = new RegExp(/.+ids\/(\d+)/)
 
 const httpRegex = new RegExp(/http:\/\//)
 
-function toHttps(url) {
+function toHttps(url: string) {
   return url.replace(httpRegex, 'https://')
 }
 
-function cleanImageUrl(imageUrl) {
+function cleanImageUrl(imageUrl: string) {
   const result = baseUrlRegex.exec(imageUrl)
 
-  if (result.length > 0) return result[0]
+  if (!result || result.length === 0) return
+
+  return result[0]
 }
 
-function replaceLegacyFileManagerUrl(imageUrl, width, height) {
+function replaceLegacyFileManagerUrl(
+  imageUrl: string,
+  width: string | number,
+  height: string | number
+) {
   const legacyUrlPattern = '/arquivos/ids/'
   const isLegacyUrl = imageUrl.includes(legacyUrlPattern)
 
@@ -43,9 +46,9 @@ function replaceLegacyFileManagerUrl(imageUrl, width, height) {
 }
 
 export function changeImageUrlSize(
-  imageUrl,
-  width = DEFAULT_WIDTH,
-  height = DEFAULT_HEIGHT
+  imageUrl: string,
+  width: string | number = DEFAULT_WIDTH,
+  height: string | number = DEFAULT_HEIGHT
 ) {
   if (!imageUrl) return
   typeof width === 'number' && (width = Math.min(width, MAX_WIDTH))
@@ -62,9 +65,13 @@ export function changeImageUrlSize(
   return `${normalizedImageUrl}${queryStringSeparator}width=${width}&height=${height}&aspect=true`
 }
 
-function findAvailableProduct(item) {
+function findAvailableProduct(item: {
+  sellers: Array<{ commertialOffer: { AvailableQuantity: number } }>
+}) {
   return item.sellers.find(
-    ({ commertialOffer = {} }) => commertialOffer.AvailableQuantity > 0
+    ({ commertialOffer = {} }) =>
+      commertialOffer.AvailableQuantity != null &&
+      commertialOffer.AvailableQuantity > 0
   )
 }
 
@@ -72,23 +79,28 @@ const defaultImage = { imageUrl: '', imageLabel: '' }
 const defaultReference = { Value: '' }
 const defaultSeller = { commertialOffer: { Price: 0, ListPrice: 0 } }
 
-const resizeImage = (url, imageSize) =>
+const resizeImage = (url: string, imageSize: string | number) =>
   changeImageUrlSize(toHttps(url), imageSize)
 
-export function mapCatalogProductToProductSummary(product, imageSize = 500) {
+export function mapCatalogProductToProductSummary(
+  product: any,
+  imageSize: string | number = 500
+) {
   if (!product) return null
   const normalizedProduct = { ...product }
   const items = normalizedProduct.items || []
   const sku = items.find(findAvailableProduct) || items[0]
 
   if (sku) {
-    const [seller = defaultSeller] = pathOr([], ['sellers'], sku)
-    const [referenceId = defaultReference] = pathOr([], ['referenceId'], sku)
-    const catalogImages = pathOr([], ['images'], sku)
-    const normalizedImages = catalogImages.map((image) => ({
-      ...image,
-      imageUrl: resizeImage(image.imageUrl, imageSize),
-    }))
+    const [seller = defaultSeller] = sku?.sellers ?? []
+    const [referenceId = defaultReference] = sku?.referenceId ?? []
+    const catalogImages = sku?.images ?? []
+    const normalizedImages = catalogImages.map(
+      (image: { imageUrl: string }) => ({
+        ...image,
+        imageUrl: resizeImage(image.imageUrl, imageSize),
+      })
+    )
 
     const [image = defaultImage] = normalizedImages
 

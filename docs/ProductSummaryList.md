@@ -37,6 +37,7 @@ This block is used to specify what variation of `product-summary` to be used to 
 | `maxItems` | `Number`                              | Maximum items to be fetched.                                                                                                                                                                                                         | `10`       |
 | `skusFilter`               | `SkusFilterEnum`                 | Control SKUs returned for each product in the query. The less SKUs needed to be returned, the more performant your shelf query will be.                                                                                                    | `"ALL_AVAILABLE"` |
 | `installmentCriteria`               | `InstallmentCriteriaEnum`                 | ControlControl what price to be shown when price has different installments options.                                                                                                    | `"MAX_WITHOUT_INTEREST"` |
+| `analyticsListName`               | `String`                 | Name of the list property on Google Analytics events.                                                                                                    | `` |
 
 For `SkusFilterEnum`:
 

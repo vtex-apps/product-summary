@@ -1,6 +1,6 @@
 import { useProductImpression } from 'vtex.product-list-context'
 
-const ProductListEventCaller = () => {
+function ProductListEventCaller() {
   useProductImpression()
 
   return null

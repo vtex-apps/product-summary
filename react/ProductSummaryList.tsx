@@ -1,6 +1,7 @@
 import React from 'react'
+import type { ComponentType, PropsWithChildren } from 'react'
 import { useQuery } from 'react-apollo'
-import productsQuery from 'vtex.store-resources/QueryProducts'
+import { QueryProducts } from 'vtex.store-resources'
 import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 
 import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
@@ -40,15 +41,43 @@ const ORDER_BY_OPTIONS = {
   },
 }
 
-const parseFilters = ({ id, value }) => `specificationFilter_${id}:${value}`
+const parseFilters = ({ id, value }: { id: string; value: string }) =>
+  `specificationFilter_${id}:${value}`
 
-function getOrdinationProp(attribute) {
+function getOrdinationProp(attribute: 'name' | 'value') {
   return Object.keys(ORDER_BY_OPTIONS).map(
-    (key) => ORDER_BY_OPTIONS[key][attribute]
+    (key) => ORDER_BY_OPTIONS[key as keyof typeof ORDER_BY_OPTIONS][attribute]
   )
 }
 
-function ProductSummaryList(props) {
+interface SpecificationFilter {
+  id: string
+  value: string
+}
+
+interface Props {
+  category?: string
+  collection?: string
+  hideUnavailableItems?: boolean
+  orderBy?:
+    | ''
+    | 'OrderByTopSaleDESC'
+    | 'OrderByPriceDESC'
+    | 'OrderByPriceASC'
+    | 'OrderByNameASC'
+    | 'OrderByNameDESC'
+    | 'OrderByReleaseDateDESC'
+    | 'OrderByBestDiscountDESC'
+  specificationFilters?: SpecificationFilter[]
+  maxItems?: number
+  skusFilter?: 'ALL_AVAILABLE' | 'ALL' | 'FIRST_AVAILABLE'
+  installmentCriteria?: 'MAX_WITHOUT_INTEREST' | 'MAX_WITH_INTEREST'
+  ProductSummary: ComponentType<{ product: any }>
+  analyticsListName?: string
+  actionOnProductClick?: (product: any) => void
+}
+
+function ProductSummaryList(props: PropsWithChildren<Props>) {
   const {
     category = '',
     collection,
@@ -59,11 +88,12 @@ function ProductSummaryList(props) {
     skusFilter,
     installmentCriteria,
     children,
+    analyticsListName,
     ProductSummary,
     actionOnProductClick,
   } = props
 
-  const { data, loading, error } = useQuery(productsQuery, {
+  const { data, loading, error } = useQuery(QueryProducts, {
     variables: {
       category,
       ...(collection != null
@@ -90,6 +120,7 @@ function ProductSummaryList(props) {
   return (
     <ProductSummaryListWithoutQuery
       products={products}
+      listName={analyticsListName}
       ProductSummary={ProductSummary}
       actionOnProductClick={actionOnProductClick}
     >
@@ -99,7 +130,7 @@ function ProductSummaryList(props) {
   )
 }
 
-ProductSummaryList.getSchema = () => ({
+ProductSummaryList.schema = {
   title: 'admin/editor.productSummaryList.title',
   description: 'admin/editor.productSummaryList.description',
   type: 'object',
@@ -180,7 +211,11 @@ ProductSummaryList.getSchema = () => ({
         'admin/editor.productSummaryList.installmentCriteria.max-with-interest',
       ],
     },
+    analyticsListName: {
+      title: 'admin/editor.productSummaryList.analyticsListName.title',
+      type: 'string',
+    },
   },
-})
+}
 
 export default ProductSummaryList
