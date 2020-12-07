@@ -2,6 +2,7 @@ import React from 'react'
 import type { ComponentType, PropsWithChildren } from 'react'
 import { useQuery } from 'react-apollo'
 import { QueryProducts } from 'vtex.store-resources'
+import type { QueryProductsTypes } from 'vtex.store-resources'
 import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 
 import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
@@ -93,7 +94,10 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     actionOnProductClick,
   } = props
 
-  const { data, loading, error } = useQuery(QueryProducts, {
+  const { data, loading, error } = useQuery<
+    QueryProductsTypes.Data,
+    QueryProductsTypes.Variables
+  >(QueryProducts, {
     variables: {
       category,
       ...(collection != null
@@ -111,7 +115,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     },
   })
 
-  const { products } = data || {}
+  const { products } = data ?? {}
 
   if (loading || error) {
     return null
