@@ -3,5 +3,14 @@
   "root": true,
   "env": {
     "node": true
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.js", "*.jsx"],
+      "parser": "babel-eslint",
+      "parserOptions": {
+        "sourceType": "module"
+      }
+    }
+  ]
 }
