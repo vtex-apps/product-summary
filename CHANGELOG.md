@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- New prop `analyticsListName` to `list-context.product-list`.
+- New prop `listName` to `list-context.product-list`.
 - Missing `productClick` pixel event to `list-context.product-list`.
 
 ## [2.65.0] - 2020-12-02

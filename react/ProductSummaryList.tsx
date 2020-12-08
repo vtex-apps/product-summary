@@ -97,7 +97,7 @@ interface Props {
   /**
    * Name of the list property on Google Analytics events.
    */
-  analyticsListName?: string
+  listName?: string
   /** Slot of a product summary. */
   ProductSummary: ComponentType<{ product: any }>
   /** Callback on product click. */
@@ -115,7 +115,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     skusFilter,
     installmentCriteria,
     children,
-    analyticsListName,
+    listName,
     ProductSummary,
     actionOnProductClick,
   } = props
@@ -150,12 +150,12 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
 
       push({
         event: 'productClick',
-        // Not using ?? operator because analyticsListName can be ''
-        list: !analyticsListName ? 'List of products' : analyticsListName,
+        // Not using ?? operator because listName can be ''
+        list: !listName ? 'List of products' : listName,
         product,
       })
     },
-    [push, actionOnProductClick, analyticsListName]
+    [push, actionOnProductClick, listName]
   )
 
   if (loading || error) {
@@ -165,7 +165,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
   return (
     <ProductSummaryListWithoutQuery
       products={products}
-      listName={analyticsListName}
+      listName={listName}
       ProductSummary={ProductSummary}
       actionOnProductClick={productClick}
     >
@@ -256,7 +256,7 @@ ProductSummaryList.schema = {
         'admin/editor.productSummaryList.installmentCriteria.max-with-interest',
       ],
     },
-    analyticsListName: {
+    listName: {
       title: 'admin/editor.productSummaryList.analyticsListName.title',
       type: 'string',
     },
