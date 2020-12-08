@@ -146,12 +146,13 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
 
   const productClick = useCallback(
     (product: any) => {
-      if (actionOnProductClick) actionOnProductClick(product)
+      actionOnProductClick?.(product)
 
       push({
         event: 'productClick',
         // Not using ?? operator because listName can be ''
-        list: !listName ? 'List of products' : listName,
+        // eslint-disable-next-line no-unneeded-ternary
+        list: listName ? listName : 'List of products',
         product,
       })
     },
