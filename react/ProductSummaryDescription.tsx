@@ -1,12 +1,12 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 import { useCssHandles } from 'vtex.css-handles'
 import { SanitizedHTML } from 'vtex.store-components'
 
 const MAX_SIZE_DESCRIPTION = 120
-const CSS_HANDLES = ['description']
+const CSS_HANDLES = ['description'] as const
 
-const ProductSummaryDescription: FC = () => {
+function ProductSummaryDescription() {
   const {
     product: { description },
   } = useProductSummary()

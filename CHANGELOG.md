@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- New prop `listName` to `list-context.product-list`.
+- Missing `productClick` pixel event to `list-context.product-list`.
 
 ## [2.65.0] - 2020-12-02
 

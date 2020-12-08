@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import type { ComponentType, PropsWithChildren } from 'react'
 import { useQuery } from 'react-apollo'
-import productsQuery from 'vtex.store-resources/QueryProducts'
+import { QueryProducts } from 'vtex.store-resources'
+import type { QueryProductsTypes } from 'vtex.store-resources'
+import { usePixel } from 'vtex.pixel-manager'
 import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 
 import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
@@ -40,15 +43,68 @@ const ORDER_BY_OPTIONS = {
   },
 }
 
-const parseFilters = ({ id, value }) => `specificationFilter_${id}:${value}`
+const parseFilters = ({ id, value }: { id: string; value: string }) =>
+  `specificationFilter_${id}:${value}`
 
-function getOrdinationProp(attribute) {
+function getOrdinationProp(attribute: 'name' | 'value') {
   return Object.keys(ORDER_BY_OPTIONS).map(
-    (key) => ORDER_BY_OPTIONS[key][attribute]
+    (key) => ORDER_BY_OPTIONS[key as keyof typeof ORDER_BY_OPTIONS][attribute]
   )
 }
 
-function ProductSummaryList(props) {
+interface SpecificationFilter {
+  id: string
+  value: string
+}
+
+interface Props {
+  /** Category ID of the listed items. For sub-categories, use "/" (e.g. "1/2/3") */
+  category?: string
+  /** Specification Filters of the listed items. */
+  specificationFilters?: SpecificationFilter[]
+  /** Filter by collection. */
+  collection?: string
+  /**
+   * Ordination type of the items. Possible values: `''`, `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, `OrderByNameDESC`
+   * @default ""
+   */
+  orderBy?:
+    | ''
+    | 'OrderByTopSaleDESC'
+    | 'OrderByPriceDESC'
+    | 'OrderByPriceASC'
+    | 'OrderByNameASC'
+    | 'OrderByNameDESC'
+    | 'OrderByReleaseDateDESC'
+    | 'OrderByBestDiscountDESC'
+  /** Hides items that are unavailable. */
+  hideUnavailableItems?: boolean
+  /**
+   * Maximum items to be fetched.
+   * @default 10
+   */
+  maxItems?: number
+  /**
+   * Control SKUs returned for each product in the query. The less SKUs needed to be returned, the more performant your shelf query will be.
+   * @default "ALL_AVAILABLE"
+   */
+  skusFilter?: 'ALL_AVAILABLE' | 'ALL' | 'FIRST_AVAILABLE'
+  /**
+   * Control what price to be shown when price has different installments options.
+   * @default "MAX_WITHOUT_INTEREST"
+   */
+  installmentCriteria?: 'MAX_WITHOUT_INTEREST' | 'MAX_WITH_INTEREST'
+  /**
+   * Name of the list property on Google Analytics events.
+   */
+  listName?: string
+  /** Slot of a product summary. */
+  ProductSummary: ComponentType<{ product: any }>
+  /** Callback on product click. */
+  actionOnProductClick?: (product: any) => void
+}
+
+function ProductSummaryList(props: PropsWithChildren<Props>) {
   const {
     category = '',
     collection,
@@ -59,11 +115,16 @@ function ProductSummaryList(props) {
     skusFilter,
     installmentCriteria,
     children,
+    listName,
     ProductSummary,
     actionOnProductClick,
   } = props
 
-  const { data, loading, error } = useQuery(productsQuery, {
+  const { push } = usePixel()
+  const { data, loading, error } = useQuery<
+    QueryProductsTypes.Data,
+    QueryProductsTypes.Variables
+  >(QueryProducts, {
     variables: {
       category,
       ...(collection != null
@@ -81,7 +142,22 @@ function ProductSummaryList(props) {
     },
   })
 
-  const { products } = data || {}
+  const { products } = data ?? {}
+
+  const productClick = useCallback(
+    (product: any) => {
+      actionOnProductClick?.(product)
+
+      push({
+        event: 'productClick',
+        // Not using ?? operator because listName can be ''
+        // eslint-disable-next-line no-unneeded-ternary
+        list: listName ? listName : 'List of products',
+        product,
+      })
+    },
+    [push, actionOnProductClick, listName]
+  )
 
   if (loading || error) {
     return null
@@ -90,8 +166,9 @@ function ProductSummaryList(props) {
   return (
     <ProductSummaryListWithoutQuery
       products={products}
+      listName={listName}
       ProductSummary={ProductSummary}
-      actionOnProductClick={actionOnProductClick}
+      actionOnProductClick={productClick}
     >
       <ProductListStructuredData products={products} />
       {children}
@@ -99,7 +176,7 @@ function ProductSummaryList(props) {
   )
 }
 
-ProductSummaryList.getSchema = () => ({
+ProductSummaryList.schema = {
   title: 'admin/editor.productSummaryList.title',
   description: 'admin/editor.productSummaryList.description',
   type: 'object',
@@ -180,7 +257,11 @@ ProductSummaryList.getSchema = () => ({
         'admin/editor.productSummaryList.installmentCriteria.max-with-interest',
       ],
     },
+    listName: {
+      title: 'admin/editor.productSummaryList.analyticsListName.title',
+      type: 'string',
+    },
   },
-})
+}
 
 export default ProductSummaryList
