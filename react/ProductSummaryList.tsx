@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import type { ComponentType, PropsWithChildren } from 'react'
 import { useQuery } from 'react-apollo'
 import { QueryProducts } from 'vtex.store-resources'
 import type { QueryProductsTypes } from 'vtex.store-resources'
+import { usePixel } from 'vtex.pixel-manager'
 import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 
 import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
@@ -94,6 +95,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     actionOnProductClick,
   } = props
 
+  const { push } = usePixel()
   const { data, loading, error } = useQuery<
     QueryProductsTypes.Data,
     QueryProductsTypes.Variables
@@ -117,6 +119,20 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
 
   const { products } = data ?? {}
 
+  const productClick = useCallback(
+    (product: any) => {
+      if (actionOnProductClick) actionOnProductClick(product)
+
+      push({
+        event: 'productClick',
+        // Not using ?? operator because analyticsListName can be ''
+        list: !analyticsListName ? 'List of products' : analyticsListName,
+        product,
+      })
+    },
+    [push, actionOnProductClick, analyticsListName]
+  )
+
   if (loading || error) {
     return null
   }
@@ -126,7 +142,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
       products={products}
       listName={analyticsListName}
       ProductSummary={ProductSummary}
-      actionOnProductClick={actionOnProductClick}
+      actionOnProductClick={productClick}
     >
       <ProductListStructuredData products={products} />
       {children}
