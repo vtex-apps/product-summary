@@ -58,9 +58,16 @@ interface SpecificationFilter {
 }
 
 interface Props {
+  /** Category ID of the listed items. For sub-categories, use "/" (e.g. "1/2/3") */
   category?: string
+  /** Specification Filters of the listed items. */
+  specificationFilters?: SpecificationFilter[]
+  /** Filter by collection. */
   collection?: string
-  hideUnavailableItems?: boolean
+  /**
+   * Ordination type of the items. Possible values: `''`, `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, `OrderByNameDESC`
+   * @default ""
+   */
   orderBy?:
     | ''
     | 'OrderByTopSaleDESC'
@@ -70,12 +77,30 @@ interface Props {
     | 'OrderByNameDESC'
     | 'OrderByReleaseDateDESC'
     | 'OrderByBestDiscountDESC'
-  specificationFilters?: SpecificationFilter[]
+  /** Hides items that are unavailable. */
+  hideUnavailableItems?: boolean
+  /**
+   * Maximum items to be fetched.
+   * @default 10
+   */
   maxItems?: number
+  /**
+   * Control SKUs returned for each product in the query. The less SKUs needed to be returned, the more performant your shelf query will be.
+   * @default "ALL_AVAILABLE"
+   */
   skusFilter?: 'ALL_AVAILABLE' | 'ALL' | 'FIRST_AVAILABLE'
+  /**
+   * Control what price to be shown when price has different installments options.
+   * @default "MAX_WITHOUT_INTEREST"
+   */
   installmentCriteria?: 'MAX_WITHOUT_INTEREST' | 'MAX_WITH_INTEREST'
-  ProductSummary: ComponentType<{ product: any }>
+  /**
+   * Name of the list property on Google Analytics events.
+   */
   analyticsListName?: string
+  /** Slot of a product summary. */
+  ProductSummary: ComponentType<{ product: any }>
+  /** Callback on product click. */
   actionOnProductClick?: (product: any) => void
 }
 

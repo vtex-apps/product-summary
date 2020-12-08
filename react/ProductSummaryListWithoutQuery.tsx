@@ -10,9 +10,13 @@ import ProductListEventCaller from './components/ProductListEventCaller'
 const { ProductListProvider } = ProductListContext
 
 type Props = PropsWithChildren<{
+  /** Array of products. */
   products?: any[]
+  /** Slot of product summary. */
   ProductSummary: ComponentType<{ product: any }>
+  /** Name of the list property on Google Analytics events. */
   listName?: string
+  /** Callback on product click. */
   actionOnProductClick?: (product: any) => void
 }>
 
