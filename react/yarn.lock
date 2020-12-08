@@ -5025,21 +5025,21 @@ verror@1.10.0:
   version "0.6.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-summary-context@0.6.0/public/@types/vtex.product-summary-context#653154fe985a37b0e030b7b729f77a7ca33c02c4"
 
-"vtex.render-runtime@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.126.4-beta.1/public/@types/vtex.render-runtime":
-  version "8.126.4-beta.1"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.126.4-beta.1/public/@types/vtex.render-runtime#27e35991b2f5ebb376056584eda9ff3a88a5faf1"
+"vtex.render-runtime@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.126.4/public/@types/vtex.render-runtime":
+  version "8.126.4"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.126.4/public/@types/vtex.render-runtime#40d7ad8a7b04c50e61ff84a1089dcf7045efd548"
 
 "vtex.responsive-values@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.responsive-values@0.3.0/public/_types/react":
   version "0.0.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.responsive-values@0.3.0/public/_types/react#fa7a0347e046eab3dd768998fc9252b2c0dd5aef"
 
-"vtex.search-page-context@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-page-context@0.1.0/public/@types/vtex.search-page-context":
-  version "0.1.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-page-context@0.1.0/public/@types/vtex.search-page-context#e6cca7148e40885e593c56de0512ac496415d167"
+"vtex.search-page-context@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-page-context@0.2.0/public/@types/vtex.search-page-context":
+  version "0.2.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-page-context@0.2.0/public/@types/vtex.search-page-context#1b37f20648d8e4ff062ae9fffb0aa2718f172af7"
 
-"vtex.store-components@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.132.6/public/@types/vtex.store-components":
-  version "3.132.6"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.132.6/public/@types/vtex.store-components#22cb42f23e3deccb0bfe3f8f685bc63f471b6cde"
+"vtex.store-components@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.134.0/public/@types/vtex.store-components":
+  version "3.134.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.134.0/public/@types/vtex.store-components#1a4d5aae8c23c0fb98fabd259b4c0c3c2ba44ba8"
 
 "vtex.store-resources@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.75.0/public/@types/vtex.store-resources":
   version "0.75.0"
