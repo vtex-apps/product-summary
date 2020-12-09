@@ -1,40 +1,28 @@
+📢 Use this project, [contribute](https://github.com/vtex-apps/product-summary) to it or open issues to help evolve it using [Store Discussion](https://github.com/vtex-apps/store-discussion).
+
 # Product Summary Brand
 
-## Description
+![https://img.shields.io/badge/-Deprecated-red](https://img.shields.io/badge/-Deprecated-red)
 
-`ProductSummaryBrand` is a VTEX Component that renders the product's brand.
-This Component can be imported and used by any VTEX App.
+> ⚠️ The Product Summary Brand block has been deprecated in favor of the Product Brand from the app vtex.store-components. Although support for this block is still granted, we strongly recommend you to update your store theme with the Product Brand block in order to keep up with the component's evolution.
 
-:loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
+_Product Summary Brand_ renders the brand of the product.
 
-## Table of Contents
-- [Usage](#usage)
-  - [Blocks API](#blocks-api)
-  - [Configuration](#configuration)
-  - [Styles API](#styles-api)
-
-## Usage
+## Configuration
 
 You should follow the usage instruction in the main [README](https://github.com/vtex-apps/product-summary/blob/master/README.md#usage).
 
-Then, add `product-summary-brand` block into your app theme.
+Then, add `product-summary-brand` block into your app theme as children of `product-summary.shelf`, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
 
-### Blocks API
-
-This component has an interface that describes which rules must be implemented by a block when you want to use the `ProductSummaryBrand`.
-
-```json
-  "product-summary-brand": {
-    "component": "ProductSummaryBrand"
-  }
+```diff
+   "product-summary.shelf": {
+    "children": [
+      "product-summary-image",
+      "product-summary-name",
++     "product-summary-brand",
+      "product-summary-attachment-list",
+      "product-summary-space",
+      "product-summary-column#1"
+    ]
+  },
 ```
-
-### Configuration
-
-Through the Storefront, you can change the `ProductSummaryBrand`'s behavior and interface. However, you also can make in your theme app.
-
-You can find all options available in [Store Components Product Brand app](https://github.com/vtex-apps/store-components/blob/master/react/components/ProductBrand/README.md).
-
-### Styles API
-
-To change the style of this app, do it in the [Store Components Product Brand app](https://github.com/vtex-apps/store-components/blob/master/react/components/ProductBrand/README.md).

@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Deprecated
 - `product-summary-specification-badges`.
+- `product-summary-brand`.
 
 ## [2.66.3] - 2020-12-16
 ### Fixed
