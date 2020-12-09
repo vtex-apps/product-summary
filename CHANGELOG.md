@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `product-summary-specification-badges`.
 - `product-summary-brand`.
 
+### Changed
+- Refactor `product-summary-spacer` to TypeScript.
+
 ## [2.66.3] - 2020-12-16
 ### Fixed
 - Typo in property access.
