@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, fireEvent } from '@vtex/test-tools/react'
-import { ProductSummaryProvider } from 'vtex.product-summary-context/ProductSummaryContext'
+import { ProductSummaryContext } from 'vtex.product-summary-context/'
 
-import ProductImage from './ProductImage'
+import ProductImage from './ProductSummaryImage'
 
 test('should show placeholder on error', () => {
   const productName = 'Ball'
@@ -14,9 +14,10 @@ test('should show placeholder on error', () => {
   }
 
   const { getByAltText, getByTestId } = render(
-    <ProductSummaryProvider value={mock}>
+    // @ts-expect-error
+    <ProductSummaryContext.ProductSummaryProvider value={mock}>
       <ProductImage />
-    </ProductSummaryProvider>
+    </ProductSummaryContext.ProductSummaryProvider>
   )
 
   const image = getByAltText(productName)

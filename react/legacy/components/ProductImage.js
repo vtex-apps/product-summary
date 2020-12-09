@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { compose, pathOr, path } from 'ramda'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 
-import ImagePlaceholder from '../../components/ProductSummaryImage/ImagePlaceholder'
+import ImagePlaceholder from '../../components/ImagePlaceholder'
 import { productShape } from '../../utils/propTypes'
 import productSummary from '../../productSummary.css'
 

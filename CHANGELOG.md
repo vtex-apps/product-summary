@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Refactor `product-summary-sku-selector` to TypeScript.
 - Refactor `product-summary-buy-button` to TypeScript.
 - Refactor `product-summary.shelf` to TypeScript.
+- Refactor `product-summary-image` to TypeScript.
 
 ## [2.66.3] - 2020-12-16
 ### Fixed
