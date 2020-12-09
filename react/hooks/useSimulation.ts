@@ -1,10 +1,15 @@
 import { useMemo } from 'react'
 import { useQuery } from 'react-apollo'
-import itemsWithSimulationQuery from 'vtex.store-resources/QueryItemsWithSimulation'
+import type { ProductSummaryTypes } from 'vtex.product-summary-context'
+// @ts-expect-error
+import { QueryItemsWithSimulation } from 'vtex.store-resources'
 
 import clone from '../utils/clone'
 
-const mergeSellers = (sellerA, sellerB) => {
+const mergeSellers = (
+  sellerA: ProductSummaryTypes.Seller,
+  sellerB: ProductSummaryTypes.Seller
+) => {
   sellerA.commertialOffer = {
     ...sellerA.commertialOffer,
     ...sellerB.commertialOffer,
@@ -18,13 +23,21 @@ const mergeSellers = (sellerA, sellerB) => {
   return sellerA
 }
 
-const useSimulation = ({
+type Params = {
+  product: ProductSummaryTypes.Product
+  inView: boolean
+  onComplete: (product: ProductSummaryTypes.Product) => void
+  onError: () => void
+  priceBehavior: 'async' | 'default'
+}
+
+function useSimulation({
   product,
   inView,
   onComplete,
   onError,
   priceBehavior,
-}) => {
+}: Params) {
   const items = product.items || []
 
   const simulationItemsInput = useMemo(
@@ -38,7 +51,7 @@ const useSimulation = ({
     [items]
   )
 
-  useQuery(itemsWithSimulationQuery, {
+  useQuery(QueryItemsWithSimulation, {
     variables: {
       items: simulationItemsInput,
     },
@@ -52,7 +65,7 @@ const useSimulation = ({
 
       const simulationItems = response.itemsWithSimulation
 
-      const mergedProduct = clone(product)
+      const mergedProduct = clone(product) as ProductSummaryTypes.Product
 
       mergedProduct.items.forEach((item, itemIndex) => {
         const simulationItem = simulationItems[itemIndex]
@@ -66,14 +79,15 @@ const useSimulation = ({
 
       mergedProduct.sku = mergedProduct.items.find(
         (item) => item.itemId === mergedProduct.sku.itemId
-      )
+      ) as ProductSummaryTypes.SingleSKU
 
       if (mergedProduct.sku.sellers.length > 0) {
         mergedProduct.sku.seller = mergedProduct.sku.sellers.find(
           (seller) => seller.sellerId === product.sku.seller.sellerId
-        )
+        ) as ProductSummaryTypes.Seller
       } else {
         mergedProduct.sku.seller = {
+          // @ts-expect-error
           commertialOffer: { Price: 0, ListPrice: 0 },
         }
       }
