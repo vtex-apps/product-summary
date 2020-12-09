@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Deprecated
 - `product-summary-specification-badges`.
 - `product-summary-brand`.
+- `product-summary-price`.
 
 ### Changed
 - Refactor `product-summary-spacer` to TypeScript.
