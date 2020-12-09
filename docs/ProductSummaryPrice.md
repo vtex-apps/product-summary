@@ -1,44 +1,31 @@
-# Product Summary Price 
+📢 Use this project, [contribute](https://github.com/vtex-apps/product-summary) to it or open issues to help evolve it using [Store Discussion](https://github.com/vtex-apps/store-discussion).
+
+# Product Summary Price
+
 ![https://img.shields.io/badge/-Deprecated-red](https://img.shields.io/badge/-Deprecated-red)
 
 :warning: **The Product Summary Price block has been deprecated in favor of the [Product Price](https://vtex.io/docs/components/all/vtex.product-price/) app**. Although support for this block is still granted, we strongly recommend you to update your store theme with the Product Price's blocks in order to keep up with the component's evolution.
 
-## Description
-
-`ProductSummaryPrice` is a VTEX Component that renders the product's price.
-This Component can be imported and used by any VTEX App.
-
-:loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
-
-## Table of Contents
-- [Product Summary Price](#product-summary-price)
-  - [Description](#description)
-  - [Table of Contents](#table-of-contents)
-  - [Usage](#usage)
-    - [Blocks API](#blocks-api)
-    - [Configuration](#configuration)
-    - [Styles API](#styles-api)
-      - [CSS namespaces](#css-namespaces)
-
-## Usage
-
-You should follow the usage instruction in the main [README](https://github.com/vtex-apps/product-summary/blob/master/README.md#usage).
-
-Then, add `product-summary-price` block into your app theme, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
-
-### Blocks API
-
-This component has an interface that describes which rules must be implemented by a block when you want to use the `ProductSummaryPrice`.
-
-```json
-  "product-summary-price": {
-    "component": "ProductSummaryPrice"
-  }
-```
+`ProductSummaryPrice` renders the product's price.
 
 ### Configuration
 
-Through the Storefront, you can change the `ProductSummaryPrice`'s behavior and interface. However, you also can make in your theme app.
+You should follow the usage instruction in the main [README](https://github.com/vtex-apps/product-summary/blob/master/README.md#usage).
+
+Then, add `product-summary-price` block into your app theme as children of `product-summary.shelf`, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
+
+```diff
+   "product-summary.shelf": {
+    "children": [
+      "product-summary-image",
+      "product-summary-name",
++     "product-summary-price",
+      "product-summary-attachment-list",
+      "product-summary-space",
+      "product-summary-column#1"
+    ]
+  },
+```
 
 | Prop name           | Type      | Description                      | Default value |
 | ------------------- | --------- | -------------------------------- | ------------- |
@@ -52,29 +39,9 @@ Through the Storefront, you can change the `ProductSummaryPrice`'s behavior and 
 | `showListPriceRange`       | `Boolean` | Set if you want to see list price as range (lowest - highest) when available | `false`       |
 | `showSellingPriceRange`       | `Boolean` | Set if you want to see selling price as range (lowest - highest) when available | `false`       |
 
-### Styles API
+## Customization
 
-This app provides some CSS classes as an API for style customization.
-
-To use this CSS API, you must add the `styles` builder and create an app styling CSS file.
-
-1. Add the `styles` builder to your `manifest.json`:
-
-```json
-  "builders": {
-    "styles": "1.x"
-  }
-```
-
-2. Create a file called `vtex.product-summary.css` inside the `styles/css` folder. Add your custom styles:
-
-```css
-.priceContainer {
-  margin-top: 10px;
-}
-```
-
-#### CSS Handles
+In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
 
 | CSS Handles           |
 | ------------------- |

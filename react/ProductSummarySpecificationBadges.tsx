@@ -1,16 +1,19 @@
 import React from 'react'
-import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
-import BaseSpecificationBadges from 'vtex.product-specification-badges/BaseSpecificationBadges'
+import { ProductSummaryContext } from 'vtex.product-summary-context'
+import { BaseSpecificationBadges } from 'vtex.product-specification-badges'
 
-const ProductSummarySpecificationBadges = ({
+/**
+ * @deprecated Use [vtex.product-specifications](https://github.com/vtex-apps/product-specifications) instead.
+ */
+function ProductSummarySpecificationBadges({
   specificationGroupName,
   visibleWhen,
   specificationsOptions,
   specificationName,
   displayValue,
   orientation,
-}) => {
-  const { product } = useProductSummary()
+}: any) {
+  const { product } = ProductSummaryContext.useProductSummary()
 
   return (
     <BaseSpecificationBadges

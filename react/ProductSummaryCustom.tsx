@@ -1,66 +1,66 @@
-import React, { useCallback, useMemo, useEffect } from 'react'
-import PropTypes from 'prop-types'
+import React, { useCallback, useMemo, useEffect, useRef } from 'react'
+import type { PropsWithChildren } from 'react'
 import classNames from 'classnames'
-// eslint-disable-next-line no-restricted-imports
-import { pathOr, path } from 'ramda'
 import { Link } from 'vtex.render-runtime'
-import { useInView } from 'react-intersection-observer'
+import { useOnView } from 'vtex.on-view'
 import { ProductListContext } from 'vtex.product-list-context'
-import {
+import { ProductSummaryContext } from 'vtex.product-summary-context'
+import type { ProductSummaryTypes } from 'vtex.product-summary-context'
+import { ProductContextProvider } from 'vtex.product-context'
+import type { ProductTypes } from 'vtex.product-context'
+import { useCssHandles } from 'vtex.css-handles'
+
+import LocalProductSummaryContext from './ProductSummaryContext'
+import { mapCatalogProductToProductSummary } from './utils/normalize'
+import ProductPriceSimulationWrapper from './components/ProductPriceSimulationWrapper'
+
+const {
   ProductSummaryProvider,
   useProductSummaryDispatch,
   useProductSummary,
-} from 'vtex.product-summary-context/ProductSummaryContext'
-import { ProductContextProvider } from 'vtex.product-context'
-import { useCssHandles } from 'vtex.css-handles'
-
-import ProductSummaryContext from './ProductSummaryContext'
-import { productShape } from '../utils/propTypes'
-import { mapCatalogProductToProductSummary } from '../utils/normalize'
-import ProductPriceSimulationWrapper from './ProductPriceSimulationWrapper'
+} = ProductSummaryContext
 
 const PRODUCT_SUMMARY_MAX_WIDTH = 300
 const CSS_HANDLES = ['container', 'containerNormal', 'element', 'clearLink']
 
-const ProductSummaryCustom = ({
+function ProductSummaryCustom({
   product,
   actionOnClick,
   children,
   href,
   priceBehavior = 'default',
-}) => {
-  const { isLoading, isHovering, selectedItem, query } = useProductSummary()
+}: PropsWithChildren<Props>) {
+  const {
+    isLoading,
+    isHovering,
+    selectedItem,
+    query,
+    inView,
+  } = useProductSummary()
+
   const dispatch = useProductSummaryDispatch()
-  const handles = useCssHandles(CSS_HANDLES)
+  const { handles } = useCssHandles(CSS_HANDLES)
 
-  /*
-    Use ProductListContext to send pixel events.
-    Beware that productListDispatch could be undefined if
-    this component is not wrapped by a <ProductListContextProvider/>.
-    In that case we don't need to send events.
-  */
-  const { useProductListDispatch } = ProductListContext
-  const productListDispatch = useProductListDispatch()
-  const [inViewRef, inView] = useInView({
-    // Triggers the event when the element is 75% visible
-    threshold: 0.75,
-    triggerOnce: true,
+  const productListDispatch = ProductListContext.useProductListDispatch()
+
+  const inViewRef = useRef<HTMLDivElement | null>(null)
+  const onView = useCallback(() => {
+    productListDispatch?.({
+      type: 'SEND_IMPRESSION',
+      args: { product },
+    })
+
+    dispatch({
+      type: 'SET_IN_VIEW',
+      args: { inView: true },
+    })
+  }, [dispatch, productListDispatch, product])
+
+  useOnView({
+    ref: inViewRef,
+    once: true,
+    onView,
   })
-
-  useEffect(() => {
-    if (inView) {
-      productListDispatch &&
-        productListDispatch({
-          type: 'SEND_IMPRESSION',
-          args: { product },
-        })
-
-      dispatch({
-        type: 'SET_IN_VIEW',
-        args: { inView },
-      })
-    }
-  }, [productListDispatch, dispatch, inView, product])
 
   useEffect(() => {
     if (product) {
@@ -118,11 +118,7 @@ const ProductSummaryCustom = ({
 
   const linkClasses = classNames(handles.clearLink, 'h-100 flex flex-column')
 
-  const skuId = pathOr(
-    path(['sku', 'itemId'], product),
-    ['itemId'],
-    selectedItem
-  )
+  const skuId = selectedItem?.itemId ?? product?.sku?.itemId
 
   const linkProps = href
     ? {
@@ -131,15 +127,18 @@ const ProductSummaryCustom = ({
     : {
         page: 'store.product',
         params: {
-          slug: product && product.linkText,
-          id: product && product.productId,
+          slug: product?.linkText,
+          id: product?.productId,
         },
         query,
       }
 
   return (
-    <ProductSummaryContext.Provider value={oldContextProps}>
-      <ProductContextProvider product={product} query={{ skuId }}>
+    <LocalProductSummaryContext.Provider value={oldContextProps}>
+      <ProductContextProvider
+        product={(product as unknown) as ProductTypes.Product}
+        query={{ skuId }}
+      >
         <ProductPriceSimulationWrapper
           product={product}
           inView={inView}
@@ -162,44 +161,49 @@ const ProductSummaryCustom = ({
           </section>
         </ProductPriceSimulationWrapper>
       </ProductContextProvider>
-    </ProductSummaryContext.Provider>
+    </LocalProductSummaryContext.Provider>
   )
 }
 
-ProductSummaryCustom.propTypes = {
-  /** Product that owns the informations */
-  product: productShape,
+interface Props {
+  product: ProductSummaryTypes.Product
   /** Function that is executed when a product is clicked */
-  actionOnClick: PropTypes.func,
-  children: PropTypes.node,
-  containerRef: PropTypes.oneOfType([
-    // Either a function
-    PropTypes.func,
-    // Or the instance of a DOM native element
-    PropTypes.shape({ current: PropTypes.instanceOf(PropTypes.Element) }),
-  ]),
-  /** Should be only used by custom components, never by blocks */
-  href: PropTypes.string,
-  /** Whether the client will request the simulation API ("async") or not "default". */
-  priceBehavior: PropTypes.string,
+  actionOnClick?: () => void
+  href?: string
+  /**
+   * Whether the client will request the simulation API ("async") or not "default"
+   * @default "default"
+   */
+  priceBehavior?: 'async' | 'default'
 }
 
-function ProductSummaryWrapper(props) {
+function ProductSummaryWrapper({
+  product,
+  actionOnClick,
+  href,
+  priceBehavior = 'default',
+  children,
+}: PropsWithChildren<Props>) {
   return (
     <ProductSummaryProvider
-      {...props}
-      isPriceLoading={props.priceBehavior === 'async'}
+      product={product}
+      isPriceLoading={priceBehavior === 'async'}
     >
-      <ProductSummaryCustom {...props} />
+      <ProductSummaryCustom
+        product={product}
+        href={href}
+        actionOnClick={actionOnClick}
+        priceBehavior={priceBehavior}
+      >
+        {children}
+      </ProductSummaryCustom>
     </ProductSummaryProvider>
   )
 }
 
-ProductSummaryWrapper.getSchema = () => {
-  return {
-    title: 'admin/editor.productSummary.title',
-    description: 'admin/editor.productSummary.description',
-  }
+ProductSummaryWrapper.schema = {
+  title: 'admin/editor.productSummary.title',
+  description: 'admin/editor.productSummary.description',
 }
 
 // This function is public available to be used only by vtex.shelf and vtex.search-result.

@@ -1,16 +1,24 @@
 import React from 'react'
-import { useProductSummaryDispatch } from 'vtex.product-summary-context/ProductSummaryContext'
+import type { PropsWithChildren } from 'react'
+import { ProductSummaryContext } from 'vtex.product-summary-context'
+import type { ProductSummaryTypes } from 'vtex.product-summary-context'
 
 import useSimulation from '../hooks/useSimulation'
 import useSetProduct from '../hooks/useSetProduct'
 
-const ProductPriceSimulationWrapper = ({
+interface Props {
+  product: ProductSummaryTypes.Product
+  inView: boolean
+  priceBehavior: 'async' | 'default'
+}
+
+function ProductPriceSimulationWrapper({
   product,
   inView,
   children,
   priceBehavior,
-}) => {
-  const productSummaryDispatch = useProductSummaryDispatch()
+}: PropsWithChildren<Props>) {
+  const productSummaryDispatch = ProductSummaryContext.useProductSummaryDispatch()
   const setProduct = useSetProduct()
 
   useSimulation({

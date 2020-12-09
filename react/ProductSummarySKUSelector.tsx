@@ -1,23 +1,27 @@
 import React from 'react'
-// eslint-disable-next-line no-restricted-imports
-import { head } from 'ramda'
 import { SKUSelector } from 'vtex.store-components'
 import { useCssHandles } from 'vtex.css-handles'
-import {
-  useProductSummaryDispatch,
-  useProductSummary,
-} from 'vtex.product-summary-context/ProductSummaryContext'
+import type { CssHandlesTypes } from 'vtex.css-handles'
+import { ProductSummaryContext } from 'vtex.product-summary-context'
+import type { ProductSummaryTypes } from 'vtex.product-summary-context'
 
-const CSS_HANDLES = ['SKUSelectorContainer']
+const { useProductSummary, useProductSummaryDispatch } = ProductSummaryContext
 
-function ProductSummarySKUSelector(props: any) {
+const CSS_HANDLES = ['SKUSelectorContainer'] as const
+
+interface Props {
+  classes: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+}
+
+function ProductSummarySKUSelector(props: Props) {
+  const { handles } = useCssHandles(CSS_HANDLES)
+  const dispatch = useProductSummaryDispatch()
+  const { product } = useProductSummary()
+
   const stopBubblingUp: React.MouseEventHandler<HTMLDivElement> = (e) => {
     e.preventDefault()
     e.stopPropagation()
   }
-
-  const dispatch = useProductSummaryDispatch()
-  const { product } = useProductSummary()
 
   const handleSKUSelected = (skuId: string | null) => {
     if (skuId == null) {
@@ -30,12 +34,15 @@ function ProductSummarySKUSelector(props: any) {
     }
 
     const selectedItem =
-      product.items && product.items.find((item: any) => item.itemId === skuId)
+      product.items &&
+      (product.items.find(
+        (item) => item.itemId === skuId
+      ) as ProductSummaryTypes.SKU)
 
     const sku = {
       ...selectedItem,
-      image: head(selectedItem.images),
-      seller: head(selectedItem.sellers),
+      image: selectedItem.images[0],
+      seller: selectedItem.sellers[0],
     }
 
     const newProduct = {
@@ -54,8 +61,6 @@ function ProductSummarySKUSelector(props: any) {
       args: { query: `skuId=${skuId}` },
     })
   }
-
-  const handles = useCssHandles(CSS_HANDLES)
 
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions

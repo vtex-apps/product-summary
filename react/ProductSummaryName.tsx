@@ -1,10 +1,10 @@
 import React from 'react'
-// eslint-disable-next-line no-restricted-imports
-import { path } from 'ramda'
-import PropTypes from 'prop-types'
 import { ProductName } from 'vtex.store-components'
 import { useCssHandles } from 'vtex.css-handles'
-import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
+import type { CssHandlesTypes } from 'vtex.css-handles'
+import { ProductSummaryContext } from 'vtex.product-summary-context'
+
+const { useProductSummary } = ProductSummaryContext
 
 const CSS_HANDLES = [
   'nameContainer',
@@ -13,15 +13,38 @@ const CSS_HANDLES = [
   'skuName',
   'productReference',
   'productNameLoader',
-]
+] as const
 
-const ProductSummaryName = ({ showFieldsProps, tag }) => {
+const defaultShowFields = {
+  showProductReference: false,
+  showBrandName: false,
+  showSku: false,
+}
+
+interface Props {
+  showFieldsProps?: {
+    showProductReference: boolean
+    showBrandName: boolean
+    showSku: boolean
+  }
+  tag?: 'div' | 'h1' | 'h2' | 'h3'
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+}
+
+/**
+ * @deprecated Plase use ProductSummary from vtex.store-components instead.
+ */
+function ProductSummaryName({
+  showFieldsProps = defaultShowFields,
+  tag = 'h1',
+  classes,
+}: Props) {
   const { product } = useProductSummary()
-  const handles = useCssHandles(CSS_HANDLES)
-  const productName = path(['productName'], product)
+  const { handles } = useCssHandles(CSS_HANDLES, { classes })
+  const productName = product?.productName
   // TODO: change ProductSummaryContext to have `selectedSku` field instead of `sku`
-  const skuName = path(['sku', 'name'], product)
-  const brandName = path(['brand'], product)
+  const skuName = product?.sku?.name
+  const brandName = product?.brand
 
   const containerClasses = `${handles.nameContainer} flex items-start justify-center pv6`
   const wrapperClasses = `${handles.nameWrapper} overflow-hidden c-on-base f5`
@@ -47,29 +70,12 @@ const ProductSummaryName = ({ showFieldsProps, tag }) => {
   )
 }
 
-ProductSummaryName.defaultProps = {
-  showFieldsProps: {
-    showProductReference: false,
-    showBrandName: false,
-    showSku: false,
+ProductSummaryName.schema = {
+  title: 'admin/editor.productSummaryName.title',
+  type: 'object',
+  properties: {
+    showFieldsProps: ProductName.schema,
   },
-  tag: 'h1',
-}
-
-ProductSummaryName.propTypes = {
-  /** Name schema props */
-  showFieldsProps: PropTypes.object,
-  tag: PropTypes.string,
-}
-
-ProductSummaryName.getSchema = () => {
-  return {
-    title: 'admin/editor.productSummaryName.title',
-    type: 'object',
-    properties: {
-      showFieldsProps: ProductName.schema,
-    },
-  }
 }
 
 export default ProductSummaryName

@@ -1,13 +1,16 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 // eslint-disable-next-line no-restricted-imports
-import { pluck, prop, path, flatten } from 'ramda'
+import { pluck, path, flatten } from 'ramda'
 import { ProductPrice } from 'vtex.store-components'
-import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
+import { ProductSummaryContext } from 'vtex.product-summary-context'
+import type { ProductSummaryTypes } from 'vtex.product-summary-context'
 import { useCssHandles } from 'vtex.css-handles'
+import type { CssHandlesTypes } from 'vtex.css-handles'
 
-import styles from '../../productSummary.css'
+import styles from './productSummary.css'
+
+const { useProductSummary } = ProductSummaryContext
 
 const CSS_HANDLES = [
   'priceContainer',
@@ -25,11 +28,12 @@ const CSS_HANDLES = [
   'listPriceRange',
   'sellingPriceRange',
   'priceLoading',
-]
+] as const
 
-const isAvailableProduct = (price) => price !== 0
-
-const getPrices = (product, attribute) => {
+function getPrices(
+  product: ProductSummaryTypes.Product,
+  attribute: 'sellingPrice' | 'listPrice'
+) {
   if (!product || (!product.items && !product.priceRange)) {
     return []
   }
@@ -44,27 +48,77 @@ const getPrices = (product, attribute) => {
   const sellers = flatten(pluck('sellers', product.items))
   const offerAttribute = attribute === 'sellingPrice' ? 'Price' : 'ListPrice'
   const prices = sellers.map(path(['commertialOffer', offerAttribute]))
-  const availableProductsPrices = prices.filter(isAvailableProduct)
+  const availableProductsPrices = prices.filter((price) => price !== 0)
 
   return availableProductsPrices
 }
 
-const ProductSummaryPrice = ({
-  showListPrice,
-  showSellingPriceRange,
-  showLabels,
-  showInstallments,
-  showDiscountValue,
-  labelSellingPrice,
-  labelListPrice,
-  showBorders,
-  showListPriceRange,
-}) => {
+interface Props {
+  /**
+   * Set the product selling price range visibility
+   * @default false
+   */
+  showSellingPriceRange?: boolean
+  /**
+   * Set the product list price's visibility
+   * @default true
+   */
+  showListPrice?: boolean
+  /**
+   * Set the product list price range visibility
+   * @default false
+   */
+  showListPriceRange?: boolean
+  /**
+   * Set pricing labels' visibility
+   * @default true
+   */
+  showLabels?: boolean
+  /**
+   * Set installments' visibility
+   * @default true
+   */
+  showInstallments?: boolean
+  /**
+   * Set savings' visibility
+   * @default false
+   */
+  showDiscountValue?: boolean
+  /**
+   * Text of selling Price's label
+   * @default ""
+   */
+  labelSellingPrice?: string
+  /**
+   * Text of list Price's label
+   * @default ""
+   */
+  labelListPrice?: string
+  /**
+   * Whether should show borders
+   * @default false
+   */
+  showBorders?: boolean
+  classes: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+}
+
+function ProductSummaryPrice({
+  showListPrice = true,
+  showSellingPriceRange = false,
+  showLabels = true,
+  showInstallments = true,
+  showDiscountValue = false,
+  labelSellingPrice = '',
+  labelListPrice = '',
+  showBorders = false,
+  showListPriceRange = false,
+  classes,
+}: Props) {
   const { product, isLoading, isPriceLoading } = useProductSummary()
-  const handles = useCssHandles(CSS_HANDLES)
+  const { handles } = useCssHandles(CSS_HANDLES, { classes })
 
   // TODO: change ProductSummaryContext to have `selectedSku` field instead of `sku`
-  const commertialOffer = path(['sku', 'seller', 'commertialOffer'], product)
+  const commertialOffer = product?.sku?.seller?.commertialOffer
 
   if (isLoading || isPriceLoading) {
     return (
@@ -91,7 +145,7 @@ const ProductSummaryPrice = ({
     ? getPrices(product, 'listPrice')
     : []
 
-  const sellingPrice = prop('Price', commertialOffer)
+  const sellingPrice = commertialOffer.Price
 
   return (
     <div className={priceClasses.containerClass}>
@@ -108,12 +162,12 @@ const ProductSummaryPrice = ({
           savingsClass={`${handles.savings} dib`}
           interestRateClass={`${handles.interestRate} dib pl2`}
           installmentContainerClass={`${handles.installmentContainer} t-small-ns c-muted-2`}
-          listPrice={prop('ListPrice', commertialOffer)}
+          listPrice={commertialOffer.ListPrice}
           sellingPriceList={sellingPriceList}
           listPriceRangeClass={`${handles.listPriceRange} dib ph2 t-small-ns strike`}
           sellingPriceRangeClass={`${handles.sellingPriceRange} dib ph2 t-small-ns`}
-          sellingPrice={prop('Price', commertialOffer)}
-          installments={prop('Installments', commertialOffer)}
+          sellingPrice={commertialOffer.Price}
+          installments={commertialOffer.Installments}
           showListPrice={showListPrice}
           showSellingPriceRange={showSellingPriceRange}
           showLabels={showLabels}
@@ -129,39 +183,6 @@ const ProductSummaryPrice = ({
   )
 }
 
-ProductSummaryPrice.propTypes = {
-  /** Set the product selling price range visibility */
-  showSellingPriceRange: PropTypes.bool,
-  /** Set the product list price's visibility */
-  showListPrice: PropTypes.bool,
-  /** Set the product list price range visibility */
-  showListPriceRange: PropTypes.bool,
-  /** Set pricing labels' visibility */
-  showLabels: PropTypes.bool,
-  /** Set installments' visibility */
-  showInstallments: PropTypes.bool,
-  /** Set savings' visibility */
-  showDiscountValue: PropTypes.bool,
-  /** Text of selling Price's label */
-  labelSellingPrice: PropTypes.string,
-  /** Text of list Price's label */
-  labelListPrice: PropTypes.string,
-  /** Set installments' visibility */
-  showBorders: PropTypes.bool,
-}
-
-ProductSummaryPrice.defaultProps = {
-  showSellingPriceRange: false,
-  showDiscountValue: false,
-  showListPriceRange: false,
-  showListPrice: true,
-  showInstallments: true,
-  showLabels: true,
-  labelSellingPrice: '',
-  labelListPrice: '',
-  showBorders: false,
-}
-
 ProductSummaryPrice.schema = {
   title: 'admin/editor.productSummaryPrice.title',
   description: 'admin/editor.productSummaryPrice.description',
@@ -170,42 +191,42 @@ ProductSummaryPrice.schema = {
     showListPrice: {
       type: 'boolean',
       title: 'admin/editor.productSummaryPrice.showListPrice.title',
-      default: ProductSummaryPrice.defaultProps.showListPrice,
+      default: true,
       isLayout: true,
     },
     showSellingPriceRange: {
       type: 'boolean',
       title: 'admin/editor.productSummaryPrice.showSellingPriceRange.title',
-      default: ProductSummaryPrice.defaultProps.showSellingPriceRange,
+      default: false,
       isLayout: true,
     },
     showListPriceRange: {
       type: 'boolean',
       title: 'admin/editor.productSummaryPrice.showListPriceRange.title',
-      default: ProductSummaryPrice.defaultProps.showListPrice,
+      default: false,
       isLayout: true,
     },
     showInstallments: {
       type: 'boolean',
       title: 'admin/editor.productSummaryPrice.showInstallments.title',
-      default: ProductSummaryPrice.defaultProps.showInstallments,
+      default: true,
       isLayout: true,
     },
     showDiscountValue: {
       type: 'boolean',
       title: 'admin/editor.productSummaryPrice.showDiscountValue.title',
-      default: ProductSummaryPrice.defaultProps.showDiscountValue,
+      default: false,
     },
     showLabels: {
       type: 'boolean',
       title: 'admin/editor.productSummaryPrice.showLabels.title',
-      default: ProductSummaryPrice.defaultProps.showLabels,
+      default: true,
       isLayout: true,
     },
     showBorders: {
       type: 'boolean',
       title: 'admin/editor.productSummaryPrice.showBorders.title',
-      default: ProductSummaryPrice.defaultProps.showBorders,
+      default: false,
       isLayout: true,
     },
   },
