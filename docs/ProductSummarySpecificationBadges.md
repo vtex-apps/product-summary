@@ -1,4 +1,10 @@
-# VTEX Product Specification Badges
+📢 Use this project, [contribute](https://github.com/vtex-apps/product-summary) to it or open issues to help evolve it using [Store Discussion](https://github.com/vtex-apps/store-discussion).
+
+# Product Specification Badges
+
+![https://img.shields.io/badge/-Deprecated-red](https://img.shields.io/badge/-Deprecated-red)
+
+> ⚠️ The Product Specification Badges block has been deprecated in favor of the Product Specifications from the app vtex.product-specifications. Although support for this block is still granted, we strongly recommend you to update your store theme with the Product Speficiations's block in order to keep up with the component's evolution.
 
 Use this component to show badges based on your product specifications inside your product page.
 
@@ -237,13 +243,15 @@ You can use our `stack-layout` to show the badges over your product image for ex
   },
 ```
 
-### CSS Handles
+## Customization
 
-| CSS Handles       | Description                                 |
-| ---------------- | ------------------------------------------- |
-| `groupContainer` | Container that wrapps the whole badge group |
-| `badgeContainer` | Container for each badge                    |
-| `badgeText`      | Text displayed inside badge                 |
+In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
+
+| CSS Handles      |
+| ---------------- |
+| `groupContainer` |
+| `badgeContainer` |
+| `badgeText`      |
 
 Note: each badge also receives a class `badgeContainer` with its specification name slug appended to it.
 Example: on specification `On Sale` the badge will also have the class `badgeContainer--on-sale`.
