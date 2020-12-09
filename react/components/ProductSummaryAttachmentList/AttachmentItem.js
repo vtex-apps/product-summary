@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { string, number, object, bool } from 'prop-types'
-import ProductPrice from 'vtex.store-components/ProductPrice'
+import { ProductPrice } from 'vtex.store-components'
 // eslint-disable-next-line no-restricted-imports
 import { reject } from 'ramda'
 import { useCssHandles } from 'vtex.css-handles'
@@ -22,7 +22,7 @@ const AttachmentItem = ({
   assemblyOptions,
   showItemPrice,
 }) => {
-  const handles = useCssHandles(CSS_HANDLES)
+  const { handles } = useCssHandles(CSS_HANDLES)
   const childrenAdded = (assemblyOptions && assemblyOptions.added) || []
   const childrenRemoved = (assemblyOptions && assemblyOptions.removed) || []
   const filteredChildrenAdded = reject(itemShouldHide, childrenAdded)

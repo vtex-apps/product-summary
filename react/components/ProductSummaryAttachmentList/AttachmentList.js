@@ -1,8 +1,8 @@
 import React from 'react'
 // eslint-disable-next-line no-restricted-imports
-import { reject, pathOr } from 'ramda'
+import { reject } from 'ramda'
 import { useCssHandles } from 'vtex.css-handles'
-import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
+import { ProductSummaryContext } from 'vtex.product-summary-context'
 
 import RemovedAttachmentsList from './RemovedAttachmentsList'
 import AddedAttachmentsList from './AddedAttachmentsList'
@@ -13,10 +13,10 @@ const itemShouldHide = ({ item, extraQuantity }) =>
   extraQuantity === 0 && item.sellingPriceWithAssemblies === 0
 
 const AttachmentList = () => {
-  const { product } = useProductSummary()
-  const handles = useCssHandles(CSS_HANDLES)
-  const addedOptions = pathOr([], ['assemblyOptions', 'added'], product)
-  const removedOptions = pathOr([], ['assemblyOptions', 'removed'], product)
+  const { product } = ProductSummaryContext.useProductSummary()
+  const { handles } = useCssHandles(CSS_HANDLES)
+  const addedOptions = product?.assemblyOptions?.added ?? []
+  const removedOptions = product?.assemblyOptions?.removed ?? []
 
   const filteredOption = reject(itemShouldHide, addedOptions)
 
