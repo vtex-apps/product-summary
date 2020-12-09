@@ -1,12 +1,19 @@
 import React from 'react'
 import { useCssHandles } from 'vtex.css-handles'
-import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
+import type { CssHandlesTypes } from 'vtex.css-handles'
+import { ProductSummaryContext } from 'vtex.product-summary-context'
+
+const { useProductSummary } = ProductSummaryContext
 
 const CSS_HANDLES = ['skuNameContainer'] as const
 
-const ProductSummarySKUName = () => {
+interface Props {
+  classes: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+}
+
+const ProductSummarySKUName = ({ classes }: Props) => {
   const { product } = useProductSummary()
-  const handles = useCssHandles(CSS_HANDLES)
+  const { handles } = useCssHandles(CSS_HANDLES, { classes })
   const skuName: string = product?.sku?.name ?? ''
   const { productName } = product
 
