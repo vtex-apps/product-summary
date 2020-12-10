@@ -5,6 +5,7 @@ import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
 import { useDevice } from 'vtex.device-detector'
 import { useResponsiveValues } from 'vtex.responsive-values'
+import type { ResponsiveValuesTypes } from 'vtex.responsive-values'
 import { useCssHandles } from 'vtex.css-handles'
 import type { CssHandlesTypes } from 'vtex.css-handles'
 import { useProduct } from 'vtex.product-context'
@@ -219,10 +220,10 @@ interface Props {
    */
   showCollections?: boolean
   placeholder?: string
-  width?: any // TODO: change to responsive-values
-  height?: any
-  aspectRatio?: any
-  maxHeight?: any
+  width?: ResponsiveValuesTypes.ResponsiveValue<number | string>
+  height?: ResponsiveValuesTypes.ResponsiveValue<number | string>
+  aspectRatio?: ResponsiveValuesTypes.ResponsiveValue<string>
+  maxHeight?: ResponsiveValuesTypes.ResponsiveValue<string>
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
@@ -271,7 +272,9 @@ function ProductImage({
 
   const [width, height] = [
     // fallsback to the other remaining value, if not defined
+    // @ts-expect-error
     parseFloat(responsiveWidth ?? responsiveHeight ?? 0),
+    // @ts-expect-error
     parseFloat(responsiveHeight ?? responsiveWidth ?? 0),
   ]
 

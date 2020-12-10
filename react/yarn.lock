@@ -5038,9 +5038,9 @@ verror@1.10.0:
   version "8.126.4"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.126.4/public/@types/vtex.render-runtime#40d7ad8a7b04c50e61ff84a1089dcf7045efd548"
 
-"vtex.responsive-values@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.responsive-values@0.3.0/public/_types/react":
-  version "0.0.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.responsive-values@0.3.0/public/_types/react#fa7a0347e046eab3dd768998fc9252b2c0dd5aef"
+"vtex.responsive-values@https://summary--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.responsive-values@0.3.0+build1607559680/public/@types/vtex.responsive-values":
+  version "0.3.0"
+  resolved "https://summary--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.responsive-values@0.3.0+build1607559680/public/@types/vtex.responsive-values#ad1f4434b9e598c0505a8bf74cdd8ee51bc83674"
 
 "vtex.search-page-context@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-page-context@0.2.0/public/@types/vtex.search-page-context":
   version "0.2.0"
