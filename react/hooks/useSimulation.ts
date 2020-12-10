@@ -1,7 +1,6 @@
 import { useMemo } from 'react'
 import { useQuery } from 'react-apollo'
 import type { ProductSummaryTypes } from 'vtex.product-summary-context'
-// @ts-expect-error
 import { QueryItemsWithSimulation } from 'vtex.store-resources'
 
 import clone from '../utils/clone'
@@ -87,7 +86,7 @@ function useSimulation({
         ) as ProductSummaryTypes.Seller
       } else {
         mergedProduct.sku.seller = {
-          // @ts-expect-error
+          // @ts-expect-error We are not providing the full type
           commertialOffer: { Price: 0, ListPrice: 0 },
         }
       }

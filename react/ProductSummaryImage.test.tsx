@@ -14,7 +14,7 @@ test('should show placeholder on error', () => {
   }
 
   const { getByAltText, getByTestId } = render(
-    // @ts-expect-error
+    // @ts-expect-error We are not providing the full context
     <ProductSummaryContext.ProductSummaryProvider value={mock}>
       <ProductImage />
     </ProductSummaryContext.ProductSummaryProvider>

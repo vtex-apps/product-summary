@@ -57,8 +57,8 @@ function getImageSrc({
 type GetStyleParams = {
   width: number
   height: number
-  aspectRatio: string
-  maxHeight: string
+  aspectRatio?: string
+  maxHeight?: string
 }
 
 function getStyle({ width, height, aspectRatio, maxHeight }: GetStyleParams) {
@@ -69,7 +69,7 @@ function getStyle({ width, height, aspectRatio, maxHeight }: GetStyleParams) {
       objectFit: 'contain',
       maxHeight: 'unset',
       maxWidth: width,
-    }
+    } as React.CSSProperties
   }
 
   if (aspectRatio || maxHeight) {
@@ -77,8 +77,8 @@ function getStyle({ width, height, aspectRatio, maxHeight }: GetStyleParams) {
       width: '100%',
       height: '100%',
       objectFit: 'contain',
-      maxHeight: maxHeight || 'unset',
-    }
+      maxHeight: maxHeight ?? 'unset',
+    } as React.CSSProperties
   }
 
   return undefined
@@ -182,7 +182,6 @@ function Image({
   return (
     <img
       src={getImageSrc({ src, width, height, dpi, aspectRatio })}
-      // @ts-expect-error
       style={getStyle({ width, height, aspectRatio, maxHeight })}
       // @ts-expect-error This property exists in HTML
       loading={shouldResize ? 'lazy' : 'auto'}
@@ -272,9 +271,9 @@ function ProductImage({
 
   const [width, height] = [
     // fallsback to the other remaining value, if not defined
-    // @ts-expect-error
+    // @ts-expect-error There's no problem passing type number to parseFloat
     parseFloat(responsiveWidth ?? responsiveHeight ?? 0),
-    // @ts-expect-error
+    // @ts-expect-error There's no problem passing type number to parseFloat
     parseFloat(responsiveHeight ?? responsiveWidth ?? 0),
   ]
 

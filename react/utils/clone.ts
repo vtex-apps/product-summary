@@ -7,9 +7,9 @@ export default function clone(aObject: object) {
   const bObject = Array.isArray(aObject) ? [] : {}
 
   for (const k in aObject) {
-    // @ts-expect-error
+    // @ts-expect-error this function was copy-pasted from a JS snippet
     v = aObject[k]
-    // @ts-expect-error
+    // @ts-expect-error this function was copy-pasted from a JS snippet
     bObject[k] = typeof v === 'object' ? clone(v) : v
   }
 
