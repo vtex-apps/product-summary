@@ -65,15 +65,15 @@
 
 | Prop name | Type | Description | Default value |
 | ----------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- |
-| `desktop` | `number` | Image aspect ratio for desktop users. | `undefined` |
-| `mobile`| `number` | Image aspect ratio for mobile device users. | `undefined` |
+| `desktop` | `string` | Image aspect ratio for desktop users. | `undefined` |
+| `mobile`| `string` | Image aspect ratio for mobile device users. | `undefined` |
   
 - `maxHeight` object:
 
 | Prop name | Type | Description | Default value |
 | ----------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- |
-| `desktop` | `number` | Image maximum height for desktop users. | `undefined` |
-| `mobile`| `number` | Image maximum height for mobile device users. | `undefined` |
+| `desktop` | `string` | Image maximum height for desktop users. | `undefined` |
+| `mobile`| `string` | Image maximum height for mobile device users. | `undefined` |
 
 The `width`, `height`, `aspectRatio` and `maxHeight` props use the [responsive values logic](https://github.com/vtex-apps/responsive-values#vtexresponsive-values).
 
