@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { ExtensionPoint } from 'vtex.render-runtime'
 // eslint-disable-next-line no-restricted-imports
 import { path } from 'ramda'
-import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
+import { ProductSummaryContext } from 'vtex.product-summary-context'
 import { useCssHandles } from 'vtex.css-handles'
 
 // TODO: change ProductSummaryContext to have `selectedSku` field instead of `sku`
@@ -18,7 +18,7 @@ const captureClick = (e) => {
 
 function ProductSummaryAddToListButton() {
   const handles = useCssHandles(CSS_HANDLES)
-  const productContext = useProductSummary()
+  const productContext = ProductSummaryContext.useProductSummary()
 
   const skuId = getSkuId(productContext.product)
   const productId = getProductId(productContext.product)

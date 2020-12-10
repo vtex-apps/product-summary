@@ -4,7 +4,7 @@ const ProductContext = createContext({
   skuSelector: {},
 })
 
-export const ProductContextProvider = ({ product, query, ...rest }) => {
+export const ProductContextProvider = ({ product, query, ...rest }: any) => {
   return <ProductContext.Provider value={{ product, query }} {...rest} />
 }
 

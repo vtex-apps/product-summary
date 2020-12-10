@@ -1,8 +1,9 @@
-export const useCssHandles = (input) =>
-  input.reduce((acc, cur) => {
+export const useCssHandles = (input) => {
+  const handles = input.reduce((acc, cur) => {
     acc[cur] = cur
 
     return acc
   }, {})
 
-export const applyModifiers = (input) => input
+  return { handles, withModifiers: (name) => name }
+}

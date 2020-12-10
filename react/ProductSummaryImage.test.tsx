@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@vtex/test-tools/react'
-import { ProductSummaryContext } from 'vtex.product-summary-context/'
+import { ProductSummaryContext } from 'vtex.product-summary-context'
 
 import ProductImage from './ProductSummaryImage'
 

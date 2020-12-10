@@ -1,8 +1,8 @@
-import React, { createContext, useContext } from 'react'
+import React, { useContext } from 'react'
 
-const Context = createContext({})
+const Context = React.createContext({})
 
-export const ProductSummaryProvider = ({ product, ...rest }) => {
+export const ProductSummaryProvider = ({ product, ...rest }: any) => {
   return <Context.Provider value={{ product }} {...rest} />
 }
 

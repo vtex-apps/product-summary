@@ -320,7 +320,7 @@ function ProductImage({
   })
 
   // TODO: change ProductSummaryContext to have `selectedSku` field instead of `sku`
-  const commertialOffer = product.sku.seller.commertialOffer ?? {}
+  const commertialOffer = product.sku?.seller?.commertialOffer ?? {}
 
   const imageClassname = classNames(legacyImageClasses, handles.image)
 
