@@ -5030,17 +5030,17 @@ verror@1.10.0:
   version "0.3.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-specification-badges@0.3.0/public/@types/vtex.product-specification-badges#2df6b189acfabf642504df02d7b8ad406ee90c07"
 
-"vtex.product-summary-context@https://summary--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.product-summary-context@0.6.0+build1607546376/public/@types/vtex.product-summary-context":
-  version "0.6.0"
-  resolved "https://summary--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.product-summary-context@0.6.0+build1607546376/public/@types/vtex.product-summary-context#a43ba56592b8d921d833f8e34fd20d7a63dd56bb"
+"vtex.product-summary-context@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-summary-context@0.7.0/public/@types/vtex.product-summary-context":
+  version "0.7.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-summary-context@0.7.0/public/@types/vtex.product-summary-context#e4e8d6a83c4bc99ceaac9d93ec360d40c619a190"
 
 "vtex.render-runtime@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.126.4/public/@types/vtex.render-runtime":
   version "8.126.4"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.126.4/public/@types/vtex.render-runtime#40d7ad8a7b04c50e61ff84a1089dcf7045efd548"
 
-"vtex.responsive-values@https://summary--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.responsive-values@0.3.0+build1607559680/public/@types/vtex.responsive-values":
-  version "0.3.0"
-  resolved "https://summary--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.responsive-values@0.3.0+build1607559680/public/@types/vtex.responsive-values#ad1f4434b9e598c0505a8bf74cdd8ee51bc83674"
+"vtex.responsive-values@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.responsive-values@0.4.0/public/@types/vtex.responsive-values":
+  version "0.4.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.responsive-values@0.4.0/public/@types/vtex.responsive-values#a5f5d0c7f459ec01ad5e6580d0097a01a7536489"
 
 "vtex.search-page-context@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-page-context@0.2.0/public/@types/vtex.search-page-context":
   version "0.2.0"
