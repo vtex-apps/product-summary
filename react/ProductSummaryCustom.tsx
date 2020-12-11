@@ -9,6 +9,7 @@ import type { ProductSummaryTypes } from 'vtex.product-summary-context'
 import { ProductContextProvider } from 'vtex.product-context'
 import type { ProductTypes } from 'vtex.product-context'
 import { useCssHandles } from 'vtex.css-handles'
+import type { CssHandlesTypes } from 'vtex.css-handles'
 
 import LocalProductSummaryContext from './ProductSummaryContext'
 import { mapCatalogProductToProductSummary } from './utils/normalize'
@@ -21,7 +22,12 @@ const {
 } = ProductSummaryContext
 
 const PRODUCT_SUMMARY_MAX_WIDTH = 300
-const CSS_HANDLES = ['container', 'containerNormal', 'element', 'clearLink']
+const CSS_HANDLES = [
+  'container',
+  'containerNormal',
+  'element',
+  'clearLink',
+] as const
 
 function ProductSummaryCustom({
   product,
@@ -29,6 +35,7 @@ function ProductSummaryCustom({
   children,
   href,
   priceBehavior = 'default',
+  classes,
 }: PropsWithChildren<Props>) {
   const {
     isLoading,
@@ -39,7 +46,7 @@ function ProductSummaryCustom({
   } = useProductSummary()
 
   const dispatch = useProductSummaryDispatch()
-  const { handles } = useCssHandles(CSS_HANDLES)
+  const { handles } = useCssHandles(CSS_HANDLES, { classes })
 
   const productListDispatch = ProductListContext.useProductListDispatch()
 
@@ -175,6 +182,7 @@ interface Props {
    * @default "default"
    */
   priceBehavior?: 'async' | 'default'
+  classes: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
 function ProductSummaryWrapper({
@@ -182,6 +190,7 @@ function ProductSummaryWrapper({
   actionOnClick,
   href,
   priceBehavior = 'default',
+  classes,
   children,
 }: PropsWithChildren<Props>) {
   return (
@@ -194,6 +203,7 @@ function ProductSummaryWrapper({
         href={href}
         actionOnClick={actionOnClick}
         priceBehavior={priceBehavior}
+        classes={classes}
       >
         {children}
       </ProductSummaryCustom>
