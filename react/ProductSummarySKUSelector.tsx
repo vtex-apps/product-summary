@@ -1,6 +1,6 @@
 import React from 'react'
 import { SKUSelector } from 'vtex.store-components'
-import { useCssHandles } from 'vtex.css-handles'
+import { useCssHandles, useCustomClasses } from 'vtex.css-handles'
 import type { CssHandlesTypes } from 'vtex.css-handles'
 import { ProductSummaryContext } from 'vtex.product-summary-context'
 import type { ProductSummaryTypes } from 'vtex.product-summary-context'
@@ -11,7 +11,25 @@ import { getFirstAvailableSeller } from './modules/seller'
 
 const { useProductSummary, useProductSummaryDispatch } = ProductSummaryContext
 
-const CSS_HANDLES = ['SKUSelectorContainer'] as const
+const CSS_HANDLES = [
+  'SKUSelectorContainer',
+  'frameAround',
+  'seeMoreButton',
+  'skuSelectorContainer',
+  'skuSelectorInternalBox',
+  'skuSelectorItemImageValue',
+  'skuSelectorItemImage',
+  'skuSelectorItemTextValue',
+  'skuSelectorItem',
+  'skuSelectorNameContainer',
+  'skuSelectorNameSeparator',
+  'skuSelectorName',
+  'skuSelectorOptionsList',
+  'skuSelectorSelectorImageValue',
+  'skuSelectorSubcontainer',
+  'skuSelectorTextContainer',
+  'valueWrapper',
+] as const
 
 interface Props {
   skuItems: ProductTypes.Item[]
@@ -44,6 +62,76 @@ function ProductSummarySKUSelector(props: Props) {
   const { handles } = useCssHandles(CSS_HANDLES, { classes: props.classes })
   const dispatch = useProductSummaryDispatch()
   const { product } = useProductSummary()
+
+  const skuSelectorClasses = useCustomClasses(
+    () => ({
+      frameAround: [
+        handles.frameAround,
+        'vtex-store-components-3-x-frameAround',
+      ],
+      seeMoreButton: [
+        handles.seeMoreButton,
+        'vtex-store-components-3-x-seeMoreButton',
+      ],
+      skuSelectorContainer: [
+        handles.skuSelectorContainer,
+        'vtex-store-components-3-x-skuSelectorContainer',
+      ],
+      skuSelectorInternalBox: [
+        handles.skuSelectorInternalBox,
+        'vtex-store-components-3-x-skuSelectorInternalBox',
+      ],
+      skuSelectorItemImageValue: [
+        handles.skuSelectorItemImageValue,
+        'vtex-store-components-3-x-skuSelectorItemImageValue',
+      ],
+      skuSelectorItemImage: [
+        handles.skuSelectorItemImage,
+        'vtex-store-components-3-x-skuSelectorItemImage',
+      ],
+      skuSelectorItemTextValue: [
+        handles.skuSelectorItemTextValue,
+        'vtex-store-components-3-x-skuSelectorItemTextValue',
+      ],
+      skuSelectorItem: [
+        handles.skuSelectorItem,
+        'vtex-store-components-3-x-skuSelectorItem',
+      ],
+      skuSelectorNameContainer: [
+        handles.skuSelectorNameContainer,
+        'vtex-store-components-3-x-skuSelectorNameContainer',
+      ],
+      skuSelectorNameSeparator: [
+        handles.skuSelectorNameSeparator,
+        'vtex-store-components-3-x-skuSelectorNameSeparator',
+      ],
+      skuSelectorName: [
+        handles.skuSelectorName,
+        'vtex-store-components-3-x-skuSelectorName',
+      ],
+      skuSelectorOptionsList: [
+        handles.skuSelectorOptionsList,
+        'vtex-store-components-3-x-skuSelectorOptionsList',
+      ],
+      skuSelectorSelectorImageValue: [
+        handles.skuSelectorSelectorImageValue,
+        'vtex-store-components-3-x-skuSelectorSelectorImageValue',
+      ],
+      skuSelectorSubcontainer: [
+        handles.skuSelectorSubcontainer,
+        'vtex-store-components-3-x-skuSelectorSubcontainer',
+      ],
+      skuSelectorTextContainer: [
+        handles.skuSelectorTextContainer,
+        'vtex-store-components-3-x-skuSelectorTextContainer',
+      ],
+      valueWrapper: [
+        handles.valueWrapper,
+        'vtex-store-components-3-x-valueWrapper',
+      ],
+    }),
+    [handles]
+  )
 
   const stopBubblingUp: React.MouseEventHandler<HTMLDivElement> = (e) => {
     e.preventDefault()
@@ -94,7 +182,11 @@ function ProductSummarySKUSelector(props: Props) {
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div onClick={stopBubblingUp} className={handles.SKUSelectorContainer}>
-      <SKUSelector onSKUSelected={handleSKUSelected} {...props} />
+      <SKUSelector
+        onSKUSelected={handleSKUSelected}
+        {...props}
+        classes={skuSelectorClasses}
+      />
     </div>
   )
 }
