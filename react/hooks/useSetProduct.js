@@ -1,5 +1,4 @@
-import { useProduct } from 'vtex.product-context'
-import { useProductDispatch } from 'vtex.product-context/ProductDispatchContext'
+import { useProduct, useProductDispatch } from 'vtex.product-context'
 import { useProductSummaryDispatch } from 'vtex.product-summary-context/ProductSummaryContext'
 
 const useSetProduct = () => {
