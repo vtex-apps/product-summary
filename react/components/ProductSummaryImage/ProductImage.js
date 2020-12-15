@@ -179,7 +179,7 @@ const ProductImageContent = ({
 
   const images = pathOr([], ['images'], sku)
   
-  const isLabelCriteria = hoverImage.criteria === "label"
+  const isLabelCriteria = hoverImage.criteria === 'label'
 
   console.log({ hoverImage })
 
@@ -385,12 +385,13 @@ ProductImage.getSchema = () => {
         isLayout: true,
       },
       hoverImage: {
-        type: "object",
+        type: 'object',
         properties: {
           criteria: {
+            title: 'admin/editor.productSummaryImage.hoverImage.criteria.title',
             enum: [
-              "index",
-              "label"
+              'index',
+              'label'
             ]
           }
         },
@@ -401,11 +402,12 @@ ProductImage.getSchema = () => {
                 properties: {
                   criteria: {
                     enum: [
-                      "index"
+                      'index'
                     ]
                   },
                   index: {
-                    type: "number"
+                    title: 'admin/editor.productSummaryImage.hoverImage.criteria.index',
+                    type: 'number'
                   }
                 }
               },
@@ -413,11 +415,12 @@ ProductImage.getSchema = () => {
                 properties: {
                   criteria: {
                     enum: [
-                      "label"
+                      'label'
                     ]
                   },
                   label: {
-                    type: "string"
+                    title: 'admin/editor.productSummaryImage.hoverImage.criteria.label',
+                    type: 'string'
                   }
                 }
               }
