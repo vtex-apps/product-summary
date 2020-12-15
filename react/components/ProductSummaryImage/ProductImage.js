@@ -16,7 +16,14 @@ import productSummary from '../../productSummary.css'
 import { changeImageUrlSize } from '../../utils/normalize'
 import { imageUrl } from '../../utils/aspectRatioUtil'
 
-const CSS_HANDLES = ['image', 'mainImageHovered', 'imageContainer', 'product', 'imagePlaceholder']
+const CSS_HANDLES = [
+  'image',
+  'mainImageHovered',
+  'imageContainer',
+  'product',
+  'imagePlaceholder',
+]
+
 const MAX_SIZE = 500
 const DEFAULT_SIZE = 300
 
@@ -103,6 +110,20 @@ const findImageByIndex = (images, index) => {
   return images[imageIndex]
 }
 
+const getHoverImage = ({ images, hoverImage = {} }) => {
+  const { criteria, index, label } = hoverImage
+
+  const hasHoverImageCriteria = criteria === 'label' || criteria === 'index'
+
+  if (!hasHoverImageCriteria) return null
+
+  if (criteria === 'label') {
+    return findImageByLabel(images, label)
+  }
+
+  return findImageByIndex(images, index)
+}
+
 const Image = ({
   src,
   width,
@@ -178,14 +199,11 @@ const ProductImageContent = ({
   )
 
   const images = pathOr([], ['images'], sku)
-  
-  const isLabelCriteria = hoverImage.criteria === 'label'
 
-  console.log({ hoverImage })
-
-  const hoverImg = isLabelCriteria ?
-    findImageByLabel(images, hoverImage.label) :
-    findImageByIndex(images, hoverImage.index)
+  const hoverImg = getHoverImage({
+    images,
+    hoverImage,
+  })
 
   const hasHoverImage = hoverImg !== undefined && hoverImg !== null
 
@@ -228,7 +246,7 @@ const ProductImageContent = ({
   const withCollection = maybeCollection({ productClusters })
 
   const imageClassname = classNames(legacyImageClasses, handles.image, {
-    [handles.mainImageHovered]: hasHoverImage
+    [handles.mainImageHovered]: hasHoverImage,
   })
 
   const hoverImageClassname = classNames(
@@ -339,11 +357,11 @@ ProductImage.propTypes = {
   hoverImage: PropTypes.oneOf([
     PropTypes.shape({
       criteria: 'index',
-      index: PropTypes.number
+      index: PropTypes.number,
     }),
     PropTypes.shape({
       criteria: 'label',
-      label: PropTypes.string
+      label: PropTypes.string,
     }),
   ]),
 }
@@ -353,10 +371,6 @@ ProductImage.defaultProps = {
   showCollections: false,
   displayMode: 'normal',
   mainImageLabel: '',
-  hoverImage: {
-    label: '',
-    criteria: 'label',
-  }
 }
 
 ProductImage.getSchema = () => {
@@ -389,11 +403,8 @@ ProductImage.getSchema = () => {
         properties: {
           criteria: {
             title: 'admin/editor.productSummaryImage.hoverImage.criteria.title',
-            enum: [
-              'index',
-              'label'
-            ]
-          }
+            enum: ['index', 'label'],
+          },
         },
         dependencies: {
           criteria: {
@@ -401,32 +412,30 @@ ProductImage.getSchema = () => {
               {
                 properties: {
                   criteria: {
-                    enum: [
-                      'index'
-                    ]
+                    enum: ['index'],
                   },
                   index: {
-                    title: 'admin/editor.productSummaryImage.hoverImage.criteria.index',
-                    type: 'number'
-                  }
-                }
+                    title:
+                      'admin/editor.productSummaryImage.hoverImage.criteria.index',
+                    type: 'number',
+                  },
+                },
               },
               {
                 properties: {
                   criteria: {
-                    enum: [
-                      'label'
-                    ]
+                    enum: ['label'],
                   },
                   label: {
-                    title: 'admin/editor.productSummaryImage.hoverImage.criteria.label',
-                    type: 'string'
-                  }
-                }
-              }
-            ]
-          }
-        }
+                    title:
+                      'admin/editor.productSummaryImage.hoverImage.criteria.label',
+                    type: 'string',
+                  },
+                },
+              },
+            ],
+          },
+        },
       },
     },
   }
