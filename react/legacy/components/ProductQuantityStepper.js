@@ -6,9 +6,10 @@ import { NumericStepper, withToast } from 'vtex.styleguide'
 import { Pixel } from 'vtex.pixel-manager/PixelContext'
 import { debounce } from 'debounce'
 import { injectIntl, intlShape } from 'react-intl'
-import { compose, graphql } from 'react-apollo'
+import { graphql } from 'react-apollo'
 import { parse } from 'graphql'
 
+import compose from '../../utils/compose'
 import { productShape } from '../../utils/propTypes'
 
 const UPDATE_ITEMS_MUTATION = parse(`

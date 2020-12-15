@@ -1,0 +1,18 @@
+query itemsWithSimulation($items: [ItemInput]) {
+  itemsWithSimulation(items: $items) @context(provider: "vtex.search-graphql") {
+    itemId
+    sellers {
+      commertialOffer {
+        Price
+        ListPrice
+        PriceValidUntil
+        Installments {
+          Value
+          InterestRate
+          TotalValuePlusInterestRate
+          NumberOfInstallments
+        }
+      }
+    }
+  }
+}

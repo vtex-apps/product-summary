@@ -4,14 +4,9 @@ import classNames from 'classnames'
 // eslint-disable-next-line no-restricted-imports
 import { pluck, prop, path, flatten } from 'ramda'
 import { ProductPrice } from 'vtex.store-components'
-import {
-  useProductSummary,
-  useProductSummaryDispatch,
-} from 'vtex.product-summary-context/ProductSummaryContext'
+import { useProductSummary } from 'vtex.product-summary-context/ProductSummaryContext'
 import { useCssHandles } from 'vtex.css-handles'
 
-import useSimulation from '../../hooks/useSimulation'
-import useSetProduct from '../../hooks/useSetProduct'
 import styles from '../../productSummary.css'
 
 const CSS_HANDLES = [
@@ -65,35 +60,13 @@ const ProductSummaryPrice = ({
   showBorders,
   showListPriceRange,
 }) => {
-  const { product, isLoading, inView } = useProductSummary()
+  const { product, isLoading, isPriceLoading } = useProductSummary()
   const handles = useCssHandles(CSS_HANDLES)
-
-  const productSummaryDispatch = useProductSummaryDispatch()
-  const setProduct = useSetProduct()
-
-  useSimulation({
-    product,
-    inView,
-    onError: () => {
-      productSummaryDispatch({
-        type: 'SET_LOADING',
-        args: { isLoading: false },
-      })
-    },
-    onComplete: (simulatedProduct) => {
-      setProduct(simulatedProduct)
-
-      productSummaryDispatch({
-        type: 'SET_LOADING',
-        args: { isLoading: false },
-      })
-    },
-  })
 
   // TODO: change ProductSummaryContext to have `selectedSku` field instead of `sku`
   const commertialOffer = path(['sku', 'seller', 'commertialOffer'], product)
 
-  if (isLoading) {
+  if (isLoading || isPriceLoading) {
     return (
       <div
         className={`${handles.priceLoading} flex items-end justify-end w-100 h1 pr6`}

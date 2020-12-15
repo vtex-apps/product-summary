@@ -6,12 +6,40 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-
 ### Added
-- Added a second criteria to match the hover image beyond the `hoverImageLabel` option so it's possible to match the hover image by `index` instead of only by label. The props are `hoverImageCriteria` and `hoverImageIndex`.
+- Added support for a second criteria to match the hover image beyond the label option.
 
 ### Fixed
 - Main product image was still appearing when a hover image with transparency was being displayed.
+
+## [2.66.1] - 2020-12-14
+### Fixed
+- Context import.
+
+## [2.66.0] - 2020-12-08
+### Added
+- New prop `listName` to `list-context.product-list`.
+- Missing `productClick` pixel event to `list-context.product-list`.
+
+## [2.65.0] - 2020-12-02
+
+### Added
+- `actionOnProductClick` prop to `ProductSummaryList`.
+
+## [2.64.0] - 2020-11-30
+### Added
+- `ProductSummaryImage` can now receive a custom placeholder image by using the `placeholder` prop.
+
+## [2.63.1] - 2020-11-13
+### Changed
+- Default value for `orderBy` query variable, performed by the `ProductSummaryList` component.
+
+## [2.63.0] - 2020-11-06
+### Changed
+- Move `useSimulation` call from `ProductSummaryPrice` to the `ProductSummary`.
+
+### Added
+- `priceBehavior` prop.
 
 ## [2.62.0] - 2020-10-22
 ### Added
