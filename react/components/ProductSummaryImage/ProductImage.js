@@ -144,11 +144,9 @@ const ProductImageContent = ({
   hasError,
   showBadge,
   badgeText,
+  hoverImage,
   displayMode,
   mainImageLabel,
-  hoverImageLabel,
-  hoverImageIndex,
-  hoverImageCriteria,
   showCollections,
   width: widthProp,
   height: heightProp,
@@ -181,13 +179,15 @@ const ProductImageContent = ({
 
   const images = pathOr([], ['images'], sku)
   
-  const isLabelCriteria = hoverImageCriteria === "label"
+  const isLabelCriteria = hoverImage.criteria === "label"
 
-  const hoverImage = isLabelCriteria ?
-    findImageByLabel(images, hoverImageLabel) :
-    findImageByIndex(images, hoverImageIndex)
+  console.log({ hoverImage })
 
-  const hasHoverImage = hoverImage !== undefined && hoverImage !== null
+  const hoverImg = isLabelCriteria ?
+    findImageByLabel(images, hoverImage.label) :
+    findImageByIndex(images, hoverImage.index)
+
+  const hasHoverImage = hoverImg !== undefined && hoverImg !== null
 
   let skuImageUrl = pathOr('', ['image', 'imageUrl'], sku)
 
@@ -250,9 +250,9 @@ const ProductImageContent = ({
         className={imageClassname}
         onError={onError}
       />
-      {hoverImage && !isMobile && (
+      {hoverImg && !isMobile && (
         <Image
-          src={hoverImage.imageUrl}
+          src={hoverImg.imageUrl}
           width={width}
           height={height}
           aspectRatio={aspectRatio}
@@ -271,16 +271,14 @@ const ProductImageContent = ({
 const ProductImage = ({
   showBadge,
   badgeText,
+  hoverImage,
   displayMode,
   mainImageLabel,
-  hoverImageLabel,
   showCollections,
   width: widthProp,
   height: heightProp,
-  aspectRatio: aspectRatioProp,
   maxHeight: maxHeightProp,
-  hoverImageIndex,
-  hoverImageCriteria,
+  aspectRatio: aspectRatioProp,
 }) => {
   const { product } = useProductSummary()
 
@@ -313,13 +311,11 @@ const ProductImage = ({
         product={product}
         badgeText={badgeText}
         showBadge={showBadge}
+        hoverImage={hoverImage}
         displayMode={displayMode}
         onError={() => setError(true)}
         mainImageLabel={mainImageLabel}
         showCollections={showCollections}
-        hoverImageLabel={hoverImageLabel}
-        hoverImageIndex={hoverImageIndex}
-        hoverImageCriteria={hoverImageCriteria}
       />
     </div>
   )
@@ -340,6 +336,16 @@ ProductImage.propTypes = {
   hoverImageCriteria: PropTypes.oneOf(['index', 'label']),
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
+  hoverImage: PropTypes.oneOf([
+    PropTypes.shape({
+      criteria: 'index',
+      index: PropTypes.number
+    }),
+    PropTypes.shape({
+      criteria: 'label',
+      label: PropTypes.string
+    }),
+  ]),
 }
 
 ProductImage.defaultProps = {
@@ -347,9 +353,10 @@ ProductImage.defaultProps = {
   showCollections: false,
   displayMode: 'normal',
   mainImageLabel: '',
-  hoverImageLabel: '',
-  hoverImageIndex: undefined,
-  hoverImageCriteria: 'label',
+  hoverImage: {
+    label: '',
+    criteria: 'label',
+  }
 }
 
 ProductImage.getSchema = () => {
@@ -377,24 +384,46 @@ ProductImage.getSchema = () => {
         default: ProductImage.defaultProps.displayMode,
         isLayout: true,
       },
-      hoverImageCriteria: {
-        title: 'admin/editor.productSummaryImage.hoverImageLabel.title',
-        type: 'string',
-        enum: ['index', 'label'],
-        default: ProductImage.defaultProps.hoverImageCriteria,
-        isLayout: false,
-      },
-      hoverImageLabel: {
-        title: 'admin/editor.productSummaryImage.hoverImageLabel.title',
-        type: 'string',
-        default: '',
-        isLayout: false,
-      },
-      hoverImageIndex: {
-        title: 'admin/editor.productSummaryImage.hoverImageIndex.title',
-        type: 'number',
-        default: ProductImage.defaultProps.hoverImageIndex,
-        isLayout: false,
+      hoverImage: {
+        type: "object",
+        properties: {
+          criteria: {
+            enum: [
+              "index",
+              "label"
+            ]
+          }
+        },
+        dependencies: {
+          criteria: {
+            oneOf: [
+              {
+                properties: {
+                  criteria: {
+                    enum: [
+                      "index"
+                    ]
+                  },
+                  index: {
+                    type: "number"
+                  }
+                }
+              },
+              {
+                properties: {
+                  criteria: {
+                    enum: [
+                      "label"
+                    ]
+                  },
+                  label: {
+                    type: "string"
+                  }
+                }
+              }
+            ]
+          }
+        }
       },
     },
   }
