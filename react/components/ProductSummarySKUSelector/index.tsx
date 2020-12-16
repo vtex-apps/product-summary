@@ -36,7 +36,8 @@ function ProductSummarySKUSelector(props: any) {
       ...selectedItem,
       image: selectedItem.images[0],
       seller:
-        getFirstAvailableSeller(selectedItem.sellers) ?? selectedItem.seller[0],
+        getFirstAvailableSeller(selectedItem.sellers) ??
+        selectedItem.sellers[0],
     }
 
     const newProduct = {
