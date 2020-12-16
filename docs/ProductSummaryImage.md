@@ -41,11 +41,19 @@
 | `displayMode` | `enum` | Defines the Product Summary Image display mode. Possible values are: `normal` and `inline`. | `normal` |
 | `placeholder` | `string` | Defines the Product Summary Image placeholder image. | `undefined` |
 | `mainImageLabel` | `string` | Text value that matches the value defined in the `imageLabel` field from the admin's Catalog. Once matched, it defines which product image will be the main image displayed in the Product Summary component. If you set a label and no match is found, the main image of the product will be shown instead. | `undefined`|
-| `hoverImageLabel` | `String` | Text value that matches the value defined in the `imageLabel` field from the admin's Catalog. Once matched, it defines which product image will be displayed when the user is hovering. If you set a label and no match is found, no image will be displayed during the hover. | `undefined` |
+| `hoverImageLabel` | `String` | ![https://img.shields.io/badge/-Deprecated-red](https://img.shields.io/badge/-Deprecated-red) Use `hoverImage` instead. Text value that matches the value defined in the `imageLabel` field from the admin's Catalog. Once matched, it defines which product image will be displayed when the user is hovering. If you set a label and no match is found, no image will be displayed during the hover. | `undefined` |
+| `hoverImage`      | `object`  | The criteria that will be used to match the hover image in the product images list from the admin's Catalog.  | `undefined`   |
 | `width` | `object` | Defines the Product Summary Image width. | `undefined` |
 | `height` | `object` | Defines the Product Summary Image height. | `undefined` |
 | `aspectRatio` | `object` | Aspect ratio of the Product Summary Image. It defines whether the image should be displayed in a square, portrait, landscape or in another format. The prop value should follow the [common aspect ratio notation](https://en.wikipedia.org/wiki/Aspect_ratio_(image)), which gives two numbers separated by a colon. For example: `1:1` for a square format or `3:4` for an upright portrait. Note that this prop won't work if you've already configured the `width` or `height` props. | `undefined` |
 | `maxHeight` | `object` | Defines the Product Summary Image max height. Note that this prop won't work if you've already configured the `width` or `height` props.| `undefined` |
+
+- `hoverImage` object:
+| Prop name  | Type | Description | Default value |
+| ---------- | ---- | ----------- | ------------- |
+| `criteria` | `enum`   | The criteria that will be used to match the hover image in the product images list from the admin's Catalog. Possible values are: `label` and `index`. | `label`       |
+| `label`    | `string` | If `criteria` is set to `label` this will be the value that matches the value defined in the `imageLabel` field from the admin's Catalog. Once matched, it defines which product image will be displayed when the user is hovering. If you set a label and no match is found, no image will be displayed during the hover. | `undefined`   |
+| `index`    | `number` | Works the same as `label` but only when `criteria` is set to `index`. | `undefined`   |
 
 - `width` object:
 
@@ -88,4 +96,5 @@ In order to apply CSS customization to this and other blocks, follow the instruc
 | `imageInline` |
 | `imageStackContainer` |
 | `hoverImage` |
+| `mainImageHovered` |
 | `hoverEffect` |

@@ -87,6 +87,10 @@
   display: inline;
 }
 
+.hoverEffect:hover .mainImageHovered {
+  opacity: 0;
+}
+
 .hoverImage {
 }
 
