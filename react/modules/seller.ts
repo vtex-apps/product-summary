@@ -1,6 +1,8 @@
-import { ProductTypes } from 'vtex.product-context'
+import type { ProductSummaryTypes } from 'vtex.product-summary-context'
 
-export function getFirstAvailableSeller(sellers?: ProductTypes.Seller[]) {
+export function getFirstAvailableSeller(
+  sellers?: ProductSummaryTypes.Seller[]
+) {
   if (!sellers || sellers.length === 0) {
     return
   }
