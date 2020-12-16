@@ -9,3 +9,5 @@ export const ProductContextProvider = ({ product, query, ...rest }) => {
 }
 
 export const useProduct = () => useContext(ProductContext)
+
+export const useProductDispatch = () => null
