@@ -1,3 +1,5 @@
+import { getFirstAvailableSeller } from '../modules/seller'
+
 export const DEFAULT_WIDTH = 'auto'
 export const DEFAULT_HEIGHT = 'auto'
 export const MAX_WIDTH = 3000
@@ -92,7 +94,11 @@ export function mapCatalogProductToProductSummary(
   const sku = items.find(findAvailableProduct) || items[0]
 
   if (sku) {
-    const [seller = defaultSeller] = sku?.sellers ?? []
+    const seller =
+      getFirstAvailableSeller(sku?.sellers) ??
+      sku?.sellers?.[0] ??
+      defaultSeller
+
     const [referenceId = defaultReference] = sku?.referenceId ?? []
     const catalogImages = sku?.images ?? []
     const normalizedImages = catalogImages.map(
