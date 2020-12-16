@@ -1,12 +1,12 @@
 import React from 'react'
-// eslint-disable-next-line no-restricted-imports
-import { head } from 'ramda'
 import { SKUSelector } from 'vtex.store-components'
 import { useCssHandles } from 'vtex.css-handles'
 import {
   useProductSummaryDispatch,
   useProductSummary,
 } from 'vtex.product-summary-context/ProductSummaryContext'
+
+import { getFirstAvailableSeller } from '../../modules/seller'
 
 const CSS_HANDLES = ['SKUSelectorContainer']
 
@@ -34,8 +34,9 @@ function ProductSummarySKUSelector(props: any) {
 
     const sku = {
       ...selectedItem,
-      image: head(selectedItem.images),
-      seller: head(selectedItem.sellers),
+      image: selectedItem.images[0],
+      seller:
+        getFirstAvailableSeller(selectedItem.sellers) ?? selectedItem.seller[0],
     }
 
     const newProduct = {
