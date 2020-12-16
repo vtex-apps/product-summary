@@ -10,7 +10,7 @@ const MAX_SIZE_DESCRIPTION = 120
 const CSS_HANDLES = ['description'] as const
 
 interface Props {
-  classes: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
 function ProductSummaryDescription({ classes }: Props) {

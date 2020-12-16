@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react'
 import type { PropsWithChildren } from 'react'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
@@ -33,7 +32,7 @@ type GetImageSrcParams = {
   width: number
   height: number
   dpi: number
-  aspectRatio?: string
+  aspectRatio?: string | number
 }
 
 function getImageSrc({
@@ -57,7 +56,7 @@ function getImageSrc({
 type GetStyleParams = {
   width: number
   height: number
-  aspectRatio?: string
+  aspectRatio?: string | number
   maxHeight?: string
 }
 
@@ -136,7 +135,7 @@ function BadgeWrapper({
 
 function findImageByLabel(
   images: Array<{ imageLabel: string; imageUrl: string }>,
-  selectedLabel: string
+  selectedLabel: string | undefined
 ) {
   if (!selectedLabel) {
     return null
@@ -152,7 +151,7 @@ interface ImageProps {
   onError: () => void
   alt: string
   className: string
-  aspectRatio?: string
+  aspectRatio?: string | number
   maxHeight?: string
 }
 
@@ -221,7 +220,7 @@ interface Props {
   placeholder?: string
   width?: ResponsiveValuesTypes.ResponsiveValue<number | string>
   height?: ResponsiveValuesTypes.ResponsiveValue<number | string>
-  aspectRatio?: ResponsiveValuesTypes.ResponsiveValue<string>
+  aspectRatio?: ResponsiveValuesTypes.ResponsiveValue<string | number>
   maxHeight?: ResponsiveValuesTypes.ResponsiveValue<string>
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }

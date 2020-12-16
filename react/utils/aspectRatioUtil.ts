@@ -42,7 +42,7 @@ export const imageUrl = (
   src: string,
   size: number,
   maxSize: number,
-  aspectRatio: string
+  aspectRatio: string | number
 ) => {
   let width = size
   let height: string | number = 'auto'

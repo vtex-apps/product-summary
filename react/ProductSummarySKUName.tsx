@@ -8,7 +8,7 @@ const { useProductSummary } = ProductSummaryContext
 const CSS_HANDLES = ['skuNameContainer'] as const
 
 interface Props {
-  classes: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
 const ProductSummarySKUName = ({ classes }: Props) => {

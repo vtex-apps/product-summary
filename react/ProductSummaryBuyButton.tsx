@@ -39,6 +39,9 @@ interface Props {
   isHovering?: boolean
 }
 
+/**
+ * @deprecated This component is deprecated. Please migrate to vtex.add-to-cart-button and minicart.v2.
+ */
 function ProductSummaryBuyButton({
   displayBuyButton = 'displayButtonAlways',
   isOneClickBuy = false,
