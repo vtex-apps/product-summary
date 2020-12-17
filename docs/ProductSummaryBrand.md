@@ -4,7 +4,7 @@
 
 ![https://img.shields.io/badge/-Deprecated-red](https://img.shields.io/badge/-Deprecated-red)
 
-> ⚠️ The Product Summary Brand block has been deprecated in favor of the Product Brand from the app vtex.store-components. Although support for this block is still granted, we strongly recommend you to update your store theme with the Product Brand block in order to keep up with the component's evolution.
+> ⚠️ ***The Product Summary Brand block has been deprecated in favor of the [Product Brand block](https://vtex.io/docs/components/all/vtex.store-components/product-brand/) from the Store Components app**. Although support for this block is still granted, we strongly recommend you to update your store theme with the Product Brand block in order to keep up with the component's evolution.*
 
 _Product Summary Brand_ renders the brand of the product.
 
