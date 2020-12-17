@@ -4,7 +4,6 @@ The `product-summary-sku-selector` is a VTEX block that's tasked with rendering 
 
 ![product-summary-sku-selector](https://user-images.githubusercontent.com/52087100/68625690-87f9a580-04b8-11ea-835d-009ac768805f.gif)
 
-
 ## Configuration
 
 1. Follow the [Product Summary](https://vtex.io/docs/app/vtex.product-summary) app's configuration instruction.
@@ -37,8 +36,11 @@ The `product-summary-sku-selector` is a VTEX block that's tasked with rendering 
  ```
 :warning: This block can only be configured through the source code. You're not yet able to edit using the Site Editor. 
 
-#### Customization
 
-| CSS Handles   | Description                                          | Component Source                     |
-| ------------ | ---------------------------------------------------- | ------------------------------------ |
-| `SKUSelectorContainer` | SKU Selector main container | [index](/react/components/ProductSummarySKUSelector/index.js) |
+## Customization
+
+In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
+
+| CSS Handles        |
+| ------------------ |
+| `SKUSelectorContainer` |

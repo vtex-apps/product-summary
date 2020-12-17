@@ -1,68 +1,49 @@
+📢 Use this project, [contribute](https://github.com/vtex-apps/product-summary) to it or open issues to help evolve it using [Store Discussion](https://github.com/vtex-apps/store-discussion).
+
 # Product Summary Name
 
-## Description
+_Product Summary Name_ renders the product name.
 
-`ProductSummaryName` is a VTEX Component that renders the product's name.
-This Component can be imported and used by any VTEX App.
-
-:loudspeaker: **Disclaimer:** Don't fork this project; use, contribute, or open issue with your feature request.
-
-## Table of Contents
-- [Usage](#usage)
-  - [Blocks API](#blocks-api)
-  - [Configuration](#configuration)
-  - [Styles API](#styles-api)
-
-## Usage
+## Configuration
 
 You should follow the usage instruction in the main [README](https://github.com/vtex-apps/product-summary/blob/master/README.md#usage).
 
-Then, add `product-summary-name` block into your app theme, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
+Then, add `product-summary-name` block into your app theme as children of `product-summary.shelf`, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
 
-### Blocks API
-
-This component has an interface that describes which rules must be implemented by a block when you want to use the `ProductSummaryName`.
-
-```json
-  "product-summary-name": {
-    "component": "ProductSummaryName"
-  }
+```diff
+   "product-summary.shelf": {
+    "children": [
+      "product-summary-image",
++     "product-summary-name",
+      "product-summary-space",
+      "product-summary-column#1"
+    ]
+  },
 ```
-
-### Configuration
-
-Through the Storefront, you can change the `ProductSummaryName`'s behavior and interface. However, you also can make in your theme app.
-
-You can find all options available in [Store Components Product Name app](https://github.com/vtex-apps/store-components/blob/master/react/components/ProductName/README.md).
 
 | Prop name | Type | Description | Default value |
 | ----------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- |
-| `tag` | `string` | Which HTML element will render | `'h1'` |
+| `showFieldsProps` | `object` | Defines the visibility on certain properties. | `{ showProductReference: false, showBrandName: false, showSku: false }` |
+| `tag` | `string` | HTML tag used. It can be: `div`, `h1`, `h2`, `h3`. | `h1` |
 
-### Styles API
+- `showFieldsProps` object:
 
-This app provides some CSS classes as an API for style customization.
+| Prop name | Type | Description | Default value |
+| --- | --- | --- | ---| 
+| `showSku` | `Boolean` | Show product SKU | `false` |
+| `showProductReference` | `Boolean` | Show product reference | `false`| 
+| `showBrandName` | `Boolean` | Show brand name | `false`| 
 
-To use this CSS API, you must add the `styles` builder and create an app styling CSS file.
+## Customization
 
-1. Add the `styles` builder to your `manifest.json`:
+In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
 
-```json
-  "builders": {
-    "styles": "1.x"
-  }
-```
+| CSS Handles        |
+| ------------------ |
+| `nameContainer` |
+| `nameWrapper` |
+| `brandName` |
+| `skuName` |
+| `productReference` |
+| `productNameLoader` |
 
-2. Create a file called `vtex.product-summary.css` inside the `styles/css` folder. Add your custom styles:
-
-```css
-.nameContainer {
-  margin-top: 10px;
-}
-```
-
-#### CSS Handles
-
-| CSS Handles   | Description                                          | Component Source                     |
-| ------------ | ---------------------------------------------------- | ------------------------------------ |
-| `nameContainer` | The main container of name | [index](/react/components/ProductSummaryName/ProductSummaryName.js) |

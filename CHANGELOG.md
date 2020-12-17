@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Deprecated
+- `product-summary-specification-badges`.
+- `product-summary-brand`.
+- `product-summary-price`.
+
+### Changed
+- Refactor `product-summary-spacer` to TypeScript.
+- Refactor `product-summary-column` to TypeScript.
+- Refactor `product-summary-name` to TypeScript.
+- Refactor `product-summary-sku-selector` to TypeScript.
+- Refactor `product-summary-buy-button` to TypeScript.
+- Refactor `product-summary.shelf` to TypeScript.
+- Refactor `product-summary-image` to TypeScript.
+- Migrate to `vtex.css-handles@1.x`.
 
 ## [2.66.3] - 2020-12-16
 ### Fixed

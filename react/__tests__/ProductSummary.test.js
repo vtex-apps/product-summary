@@ -69,7 +69,8 @@ describe('<ProductSummary /> component', () => {
     expect(result.sku.image).toBeDefined()
     expect(result.sku.itemId).toBe('2')
   })
-  it(`should not break ProductSummary getSchema`, () => {
-    expect(ProductSummary.getSchema).toEqual(expect.any(Function))
+
+  it('ProductSummary should have a schema', () => {
+    expect(ProductSummary.schema).toBeDefined()
   })
 })
