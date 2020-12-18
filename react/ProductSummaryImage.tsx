@@ -8,7 +8,10 @@ import type { ResponsiveValuesTypes } from 'vtex.responsive-values'
 import { useCssHandles } from 'vtex.css-handles'
 import type { CssHandlesTypes } from 'vtex.css-handles'
 import { useProduct } from 'vtex.product-context'
-import { ProductSummaryContext } from 'vtex.product-summary-context'
+import {
+  ProductSummaryContext,
+  ProductSummaryTypes,
+} from 'vtex.product-summary-context'
 
 import ImagePlaceholder from './components/ImagePlaceholder'
 import productSummary from './productSummary.css'
@@ -22,10 +25,19 @@ const CSS_HANDLES = [
   'imageContainer',
   'product',
   'imagePlaceholder',
+  'mainImageHovered',
 ] as const
 
 const MAX_SIZE = 500
 const DEFAULT_SIZE = 300
+
+type HoverImageCriteria = 'label' | 'index'
+
+type HoverImage = {
+  label?: string
+  index?: number
+  criteria?: HoverImageCriteria
+}
 
 type GetImageSrcParams = {
   src: string
@@ -51,6 +63,42 @@ function getImageSrc({
   }
 
   return src
+}
+
+type GetHoverImageParams = {
+  images: ProductSummaryTypes.SKU['images']
+  hoverImage?: HoverImage
+  hoverImageLabel?: string
+}
+
+function findImageByIndex(
+  images: ProductSummaryTypes.SKU['images'],
+  index: HoverImage['index']
+) {
+  if (index === null || index === undefined || Number.isNaN(index)) {
+    return null
+  }
+
+  return images[index]
+}
+
+function getHoverImage({
+  images,
+  hoverImage,
+  hoverImageLabel,
+}: GetHoverImageParams) {
+  const { criteria = 'label', label = hoverImageLabel, index } =
+    hoverImage ?? {}
+
+  if (criteria === 'label') {
+    return findImageByLabel(images, label)
+  }
+
+  if (criteria === 'index') {
+    return findImageByIndex(images, index)
+  }
+
+  return null
 }
 
 type GetStyleParams = {
@@ -134,7 +182,7 @@ function BadgeWrapper({
 }
 
 function findImageByLabel(
-  images: Array<{ imageLabel: string; imageUrl: string }>,
+  images: ProductSummaryTypes.SKU['images'],
   selectedLabel: string | undefined
 ) {
   if (!selectedLabel) {
@@ -210,8 +258,11 @@ interface Props {
   mainImageLabel?: string
   /**
    * @default ""
+   * @deprecated
+   * Use hoverImage instead
    */
   hoverImageLabel?: string
+  hoverImage?: HoverImage
   /**
    * Defines if the collection badges are shown
    * @default false
@@ -231,6 +282,7 @@ function ProductImage({
   displayMode = 'normal',
   mainImageLabel = '',
   hoverImageLabel = '',
+  hoverImage,
   showCollections = false,
   placeholder,
   width: widthProp,
@@ -287,9 +339,6 @@ function ProductImage({
     legacyContainerClasses
   )
 
-  const images = sku?.images ?? []
-  const hoverImage = findImageByLabel(images, hoverImageLabel)
-
   let skuImageUrl = sku?.image?.imageUrl ?? ''
 
   const shouldDisplayPlaceholder = !skuImageUrl || error
@@ -303,6 +352,13 @@ function ProductImage({
       </div>
     )
   }
+
+  const images = sku?.images ?? []
+  const selectedHoverImage = getHoverImage({
+    images,
+    hoverImage,
+    hoverImageLabel,
+  })
 
   if (selectedImageVariationSKU == null && mainImageLabel) {
     const mainImage = findImageByLabel(images, mainImageLabel)
@@ -320,7 +376,9 @@ function ProductImage({
   // TODO: change ProductSummaryContext to have `selectedSku` field instead of `sku`
   const commertialOffer = product.sku?.seller?.commertialOffer ?? {}
 
-  const imageClassname = classNames(legacyImageClasses, handles.image)
+  const imageClassname = classNames(legacyImageClasses, handles.image, {
+    [handles.mainImageHovered]: Boolean(selectedHoverImage),
+  })
 
   const hoverImageClassname = classNames(
     'w-100 h-100 dn absolute top-0 left-0 z-999',
@@ -353,9 +411,9 @@ function ProductImage({
               className={imageClassname}
               onError={onError}
             />
-            {hoverImage && !isMobile && (
+            {selectedHoverImage && !isMobile && (
               <Image
-                src={hoverImage.imageUrl}
+                src={selectedHoverImage.imageUrl}
                 width={width}
                 height={height}
                 aspectRatio={aspectRatio}
@@ -398,9 +456,50 @@ ProductImage.schema = {
     },
     hoverImageLabel: {
       title: 'admin/editor.productSummaryImage.hoverImageLabel.title',
+      description:
+        'admin/editor.productSummaryImage.hoverImageLabel.description',
       type: 'string',
       default: '',
       isLayout: false,
+    },
+    hoverImage: {
+      type: 'object',
+      properties: {
+        criteria: {
+          title: 'admin/editor.productSummaryImage.hoverImage.criteria.title',
+          enum: ['index', 'label'],
+        },
+      },
+      dependencies: {
+        criteria: {
+          oneOf: [
+            {
+              properties: {
+                criteria: {
+                  enum: ['index'],
+                },
+                index: {
+                  title:
+                    'admin/editor.productSummaryImage.hoverImage.criteria.index',
+                  type: 'number',
+                },
+              },
+            },
+            {
+              properties: {
+                criteria: {
+                  enum: ['label'],
+                },
+                label: {
+                  title:
+                    'admin/editor.productSummaryImage.hoverImage.criteria.label',
+                  type: 'string',
+                },
+              },
+            },
+          ],
+        },
+      },
     },
   },
 }
