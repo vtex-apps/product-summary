@@ -66,68 +66,100 @@ function ProductSummarySKUSelector(props: Props) {
   const skuSelectorClasses = useCustomClasses(
     () => ({
       frameAround: [
-        handles.frameAround,
-        'vtex-store-components-3-x-frameAround',
+        {
+          name: `${handles.frameAround} vtex-store-components-3-x-frameAround`,
+          applyModifiers: true,
+        },
       ],
       seeMoreButton: [
-        handles.seeMoreButton,
-        'vtex-store-components-3-x-seeMoreButton',
+        {
+          name: `${handles.seeMoreButton} vtex-store-components-3-x-seeMoreButton`,
+          applyModifiers: true,
+        },
       ],
       skuSelectorContainer: [
-        handles.skuSelectorContainer,
-        'vtex-store-components-3-x-skuSelectorContainer',
+        {
+          name: `${handles.skuSelectorContainer} vtex-store-components-3-x-skuSelectorContainer`,
+          applyModifiers: true,
+        },
       ],
       skuSelectorInternalBox: [
-        handles.skuSelectorInternalBox,
-        'vtex-store-components-3-x-skuSelectorInternalBox',
+        {
+          name: `${handles.skuSelectorInternalBox} vtex-store-components-3-x-skuSelectorInternalBox`,
+          applyModifiers: true,
+        },
       ],
       skuSelectorItemImageValue: [
-        handles.skuSelectorItemImageValue,
-        'vtex-store-components-3-x-skuSelectorItemImageValue',
+        {
+          name: `${handles.skuSelectorItemImageValue} vtex-store-components-3-x-skuSelectorItemImageValue`,
+          applyModifiers: true,
+        },
       ],
       skuSelectorItemImage: [
-        handles.skuSelectorItemImage,
-        'vtex-store-components-3-x-skuSelectorItemImage',
+        {
+          name: `${handles.skuSelectorItemImage} vtex-store-components-3-x-skuSelectorItemImage`,
+          applyModifiers: true,
+        },
       ],
       skuSelectorItemTextValue: [
-        handles.skuSelectorItemTextValue,
-        'vtex-store-components-3-x-skuSelectorItemTextValue',
+        {
+          name: `${handles.skuSelectorItemTextValue} vtex-store-components-3-x-skuSelectorItemTextValue`,
+          applyModifiers: true,
+        },
       ],
       skuSelectorItem: [
-        handles.skuSelectorItem,
-        'vtex-store-components-3-x-skuSelectorItem',
+        {
+          name: `${handles.skuSelectorItem} vtex-store-components-3-x-skuSelectorItem`,
+          applyModifiers: true,
+        },
       ],
       skuSelectorNameContainer: [
-        handles.skuSelectorNameContainer,
-        'vtex-store-components-3-x-skuSelectorNameContainer',
+        {
+          name: `${handles.skuSelectorNameContainer} vtex-store-components-3-x-skuSelectorNameContainer`,
+          applyModifiers: true,
+        },
       ],
       skuSelectorNameSeparator: [
-        handles.skuSelectorNameSeparator,
-        'vtex-store-components-3-x-skuSelectorNameSeparator',
+        {
+          name: `${handles.skuSelectorNameSeparator} vtex-store-components-3-x-skuSelectorNameSeparator`,
+          applyModifiers: true,
+        },
       ],
       skuSelectorName: [
-        handles.skuSelectorName,
-        'vtex-store-components-3-x-skuSelectorName',
+        {
+          name: `${handles.skuSelectorName} vtex-store-components-3-x-skuSelectorName`,
+          applyModifiers: true,
+        },
       ],
       skuSelectorOptionsList: [
-        handles.skuSelectorOptionsList,
-        'vtex-store-components-3-x-skuSelectorOptionsList',
+        {
+          name: `${handles.skuSelectorOptionsList} vtex-store-components-3-x-skuSelectorOptionsList`,
+          applyModifiers: true,
+        },
       ],
       skuSelectorSelectorImageValue: [
-        handles.skuSelectorSelectorImageValue,
-        'vtex-store-components-3-x-skuSelectorSelectorImageValue',
+        {
+          name: `${handles.skuSelectorSelectorImageValue} vtex-store-components-3-x-skuSelectorSelectorImageValue`,
+          applyModifiers: true,
+        },
       ],
       skuSelectorSubcontainer: [
-        handles.skuSelectorSubcontainer,
-        'vtex-store-components-3-x-skuSelectorSubcontainer',
+        {
+          name: `${handles.skuSelectorSubcontainer} vtex-store-components-3-x-skuSelectorSubcontainer`,
+          applyModifiers: true,
+        },
       ],
       skuSelectorTextContainer: [
-        handles.skuSelectorTextContainer,
-        'vtex-store-components-3-x-skuSelectorTextContainer',
+        {
+          name: `${handles.skuSelectorTextContainer} vtex-store-components-3-x-skuSelectorTextContainer`,
+          applyModifiers: true,
+        },
       ],
       valueWrapper: [
-        handles.valueWrapper,
-        'vtex-store-components-3-x-valueWrapper',
+        {
+          name: `${handles.valueWrapper} vtex-store-components-3-x-valueWrapper`,
+          applyModifiers: true,
+        },
       ],
     }),
     [handles]
