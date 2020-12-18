@@ -182,7 +182,7 @@ interface Props {
    * @default "default"
    */
   priceBehavior?: 'async' | 'default'
-  classes: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
 function ProductSummaryWrapper({
