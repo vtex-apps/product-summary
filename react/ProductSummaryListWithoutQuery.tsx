@@ -34,7 +34,12 @@ function List({
       const normalizedProduct = mapCatalogProductToProductSummary(product)
 
       if (typeof ProductSummary === 'function') {
-        return <ProductSummary product={normalizedProduct} />
+        return (
+          <ProductSummary
+            key={normalizedProduct.cacheId}
+            product={normalizedProduct}
+          />
+        )
       }
 
       const handleOnClick = () => {
@@ -46,7 +51,7 @@ function List({
       return (
         <ExtensionPoint
           id="product-summary"
-          key={product.id}
+          key={product.cacheId}
           treePath={treePath}
           product={normalizedProduct}
           actionOnClick={handleOnClick}
