@@ -22,6 +22,7 @@ const { useProductSummary } = ProductSummaryContext
 
 const CSS_HANDLES = [
   'image',
+  'imageWrapper',
   'imageContainer',
   'product',
   'imagePlaceholder',
@@ -316,9 +317,14 @@ function ProductImage({
     maxHeightProp,
   })
 
-  const imageClassName = classNames(productSummary.imageContainer, {
-    'db w-100 center': displayMode !== 'inline',
-  })
+  const imageClassName = classNames(
+    // legacy class
+    productSummary.imageContainer,
+    handles.imageWrapper,
+    {
+      'db w-100 center': displayMode !== 'inline',
+    }
+  )
 
   const [width, height] = [
     // fallsback to the other remaining value, if not defined
