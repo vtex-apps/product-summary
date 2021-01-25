@@ -40,7 +40,6 @@ type MainImageLabel = {
 
 type HoverImageCriteria = 'label' | 'index'
 
-
 type HoverImage = {
   label?: string
   index?: number
@@ -96,8 +95,7 @@ function getHoverImage({
   hoverImage,
   hoverImageLabel,
 }: GetHoverImageParams) {
-  const { criteria = 'label', index } =
-    hoverImage ?? {}
+  const { criteria = 'label', index } = hoverImage ?? {}
 
   const label = hoverImage?.label ?? hoverImageLabel
 
@@ -195,16 +193,18 @@ function BadgeWrapper({
 function findImageByLabel(
   images: ProductSummaryTypes.SKU['images'],
   selectedLabel: string | undefined,
-  labelMatchCriteria: ImageLabelMatchCriteria | undefined = 'exact' 
+  labelMatchCriteria: ImageLabelMatchCriteria | undefined = 'exact'
 ) {
   if (!selectedLabel) {
     return null
   }
 
-  if(labelMatchCriteria === 'contains') {
-    return images.find(({ imageLabel }) => imageLabel?.indexOf(selectedLabel) !== -1)
+  if (labelMatchCriteria === 'contains') {
+    return images.find(
+      ({ imageLabel }) => imageLabel?.indexOf(selectedLabel) !== -1
+    )
   }
-  
+
   return images.find(({ imageLabel }) => imageLabel === selectedLabel)
 }
 
@@ -377,7 +377,11 @@ function ProductImage({
   })
 
   if (selectedImageVariationSKU == null && mainImageLabel?.label) {
-    const mainImage = findImageByLabel(images, mainImageLabel.label, mainImageLabel.labelMatchCriteria)
+    const mainImage = findImageByLabel(
+      images,
+      mainImageLabel.label,
+      mainImageLabel.labelMatchCriteria
+    )
 
     if (mainImage) {
       skuImageUrl = mainImage.imageUrl
@@ -515,11 +519,11 @@ ProductImage.schema = {
                   title:
                     'admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria',
                   widget: {
-                    "ui:widget": "radio"
+                    'ui:widget': 'radio',
                   },
                   type: 'string',
                   enum: ['exact', 'contains'],
-                  default: 'exact'
+                  default: 'exact',
                 },
               },
             },
