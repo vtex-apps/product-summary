@@ -35,6 +35,7 @@
   "admin/editor.productSummaryImage.hoverImageLabel.description": "Esta propriedade foi descontinuada. Use a propriedade de tipo de seleção",
   "admin/editor.productSummaryImage.hoverImage.criteria.title": "Tipo de seleção para imagem secundária",
   "admin/editor.productSummaryImage.hoverImage.criteria.label": "Rótulo da imagem secundária",
+  "admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria": "Critério de busca do rótulo da imagem secundária (exact: busca pelo nome exato definido no rótulo | contains: busca a primeira imagem que conter o texto definido no rótulo)",
   "admin/editor.productSummaryImage.hoverImage.criteria.index": "Número da imagem secundária",
   "admin/editor.productSummaryBuyButton.title": "Botão de compra",
   "admin/editor.productSummaryName.title": "Nome do resumo do produto",

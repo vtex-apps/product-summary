@@ -35,6 +35,7 @@
   "admin/editor.productSummaryImage.hoverImageLabel.description": "This property is deprecated. Use the criteria property instead",
   "admin/editor.productSummaryImage.hoverImage.criteria.title": "Criteria for hover image selection",
   "admin/editor.productSummaryImage.hoverImage.criteria.label": "Hover Image Label",
+  "admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria": "Hover image label search criteria (exact: finds the image that matches exactly the name filled in 'Hover Image Label' field | contains: finds the first image that contains the text filled in 'Hover Image Label' field)",
   "admin/editor.productSummaryImage.hoverImage.criteria.index": "Hover Image Index",
   "admin/editor.productSummaryBuyButton.title": "Product Summary Buy Button",
   "admin/editor.productSummaryName.title": "Product Summary Name",

@@ -31,12 +31,21 @@ const CSS_HANDLES = [
 const MAX_SIZE = 500
 const DEFAULT_SIZE = 300
 
+type ImageLabelMatchCriteria = 'exact' | 'contains'
+
+type MainImageLabel = {
+  label?: string
+  labelMatchCriteria?: ImageLabelMatchCriteria
+}
+
 type HoverImageCriteria = 'label' | 'index'
+
 
 type HoverImage = {
   label?: string
   index?: number
   criteria?: HoverImageCriteria
+  labelMatchCriteria?: ImageLabelMatchCriteria
 }
 
 type GetImageSrcParams = {
@@ -87,11 +96,13 @@ function getHoverImage({
   hoverImage,
   hoverImageLabel,
 }: GetHoverImageParams) {
-  const { criteria = 'label', label = hoverImageLabel, index } =
+  const { criteria = 'label', index } =
     hoverImage ?? {}
 
+  const label = hoverImage?.label ?? hoverImageLabel
+
   if (criteria === 'label') {
-    return findImageByLabel(images, label)
+    return findImageByLabel(images, label, hoverImage?.labelMatchCriteria)
   }
 
   if (criteria === 'index') {
@@ -183,12 +194,17 @@ function BadgeWrapper({
 
 function findImageByLabel(
   images: ProductSummaryTypes.SKU['images'],
-  selectedLabel: string | undefined
+  selectedLabel: string | undefined,
+  labelMatchCriteria: ImageLabelMatchCriteria | undefined = 'exact' 
 ) {
   if (!selectedLabel) {
     return null
   }
 
+  if(labelMatchCriteria === 'contains') {
+    return images.find(({ imageLabel }) => imageLabel?.indexOf(selectedLabel) !== -1)
+  }
+  
   return images.find(({ imageLabel }) => imageLabel === selectedLabel)
 }
 
@@ -255,7 +271,7 @@ interface Props {
   /**
    * @default ""
    */
-  mainImageLabel?: string
+  mainImageLabel?: MainImageLabel
   /**
    * @default ""
    * @deprecated
@@ -280,7 +296,7 @@ function ProductImage({
   showBadge = true,
   badgeText,
   displayMode = 'normal',
-  mainImageLabel = '',
+  mainImageLabel,
   hoverImageLabel = '',
   hoverImage,
   showCollections = false,
@@ -360,8 +376,8 @@ function ProductImage({
     hoverImageLabel,
   })
 
-  if (selectedImageVariationSKU == null && mainImageLabel) {
-    const mainImage = findImageByLabel(images, mainImageLabel)
+  if (selectedImageVariationSKU == null && mainImageLabel?.label) {
+    const mainImage = findImageByLabel(images, mainImageLabel.label, mainImageLabel.labelMatchCriteria)
 
     if (mainImage) {
       skuImageUrl = mainImage.imageUrl
@@ -494,6 +510,16 @@ ProductImage.schema = {
                   title:
                     'admin/editor.productSummaryImage.hoverImage.criteria.label',
                   type: 'string',
+                },
+                labelMatchCriteria: {
+                  title:
+                    'admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria',
+                  widget: {
+                    "ui:widget": "radio"
+                  },
+                  type: 'string',
+                  enum: ['exact', 'contains'],
+                  default: 'exact'
                 },
               },
             },
