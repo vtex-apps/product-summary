@@ -193,16 +193,14 @@ function BadgeWrapper({
 function findImageByLabel(
   images: ProductSummaryTypes.SKU['images'],
   selectedLabel: string | undefined,
-  labelMatchCriteria: ImageLabelMatchCriteria | undefined = 'exact'
+  labelMatchCriteria: ImageLabelMatchCriteria = 'exact'
 ) {
   if (!selectedLabel) {
     return null
   }
 
   if (labelMatchCriteria === 'contains') {
-    return images.find(
-      ({ imageLabel }) => imageLabel?.indexOf(selectedLabel) !== -1
-    )
+    return images.find(({ imageLabel }) => imageLabel?.includes(selectedLabel))
   }
 
   return images.find(({ imageLabel }) => imageLabel === selectedLabel)
