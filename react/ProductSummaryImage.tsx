@@ -95,12 +95,15 @@ function getHoverImage({
   hoverImage,
   hoverImageLabel,
 }: GetHoverImageParams) {
-  const { criteria = 'label', index } = hoverImage ?? {}
-
-  const label = hoverImage?.label ?? hoverImageLabel
+  const {
+    criteria = 'label',
+    label = hoverImageLabel,
+    labelMatchCriteria = 'exact',
+    index,
+  } = hoverImage ?? {}
 
   if (criteria === 'label') {
-    return findImageByLabel(images, label, hoverImage?.labelMatchCriteria)
+    return findImageByLabel(images, label, labelMatchCriteria)
   }
 
   if (criteria === 'index') {
@@ -193,7 +196,7 @@ function BadgeWrapper({
 function findImageByLabel(
   images: ProductSummaryTypes.SKU['images'],
   selectedLabel: string | undefined,
-  labelMatchCriteria: ImageLabelMatchCriteria = 'exact'
+  labelMatchCriteria: ImageLabelMatchCriteria
 ) {
   if (!selectedLabel) {
     return null
@@ -374,12 +377,10 @@ function ProductImage({
     hoverImageLabel,
   })
 
-  if (selectedImageVariationSKU == null && mainImageLabel?.label) {
-    const mainImage = findImageByLabel(
-      images,
-      mainImageLabel.label,
-      mainImageLabel.labelMatchCriteria
-    )
+  const { label, labelMatchCriteria = 'exact' } = mainImageLabel ?? {}
+
+  if (selectedImageVariationSKU == null && label) {
+    const mainImage = findImageByLabel(images, label, labelMatchCriteria)
 
     if (mainImage) {
       skuImageUrl = mainImage.imageUrl
