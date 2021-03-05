@@ -196,7 +196,7 @@ function BadgeWrapper({
 function findImageByLabel(
   images: ProductSummaryTypes.SKU['images'],
   selectedLabel: string | undefined,
-  labelMatchCriteria: ImageLabelMatchCriteria
+  labelMatchCriteria?: ImageLabelMatchCriteria
 ) {
   if (!selectedLabel) {
     return null
@@ -272,7 +272,7 @@ interface Props {
   /**
    * @default ""
    */
-  mainImageLabel?: MainImageLabel
+  mainImageLabel?: string | MainImageLabel
   /**
    * @default ""
    * @deprecated
@@ -297,7 +297,7 @@ function ProductImage({
   showBadge = true,
   badgeText,
   displayMode = 'normal',
-  mainImageLabel,
+  mainImageLabel = '',
   hoverImageLabel = '',
   hoverImage,
   showCollections = false,
@@ -377,10 +377,15 @@ function ProductImage({
     hoverImageLabel,
   })
 
-  const { label, labelMatchCriteria = 'exact' } = mainImageLabel ?? {}
-
-  if (selectedImageVariationSKU == null && label) {
-    const mainImage = findImageByLabel(images, label, labelMatchCriteria)
+  if (selectedImageVariationSKU == null && mainImageLabel) {
+    const mainImage =
+      typeof mainImageLabel === 'string'
+        ? findImageByLabel(images, mainImageLabel)
+        : findImageByLabel(
+            images,
+            mainImageLabel.label,
+            mainImageLabel.labelMatchCriteria
+          )
 
     if (mainImage) {
       skuImageUrl = mainImage.imageUrl
