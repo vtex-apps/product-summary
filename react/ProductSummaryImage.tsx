@@ -32,12 +32,20 @@ const CSS_HANDLES = [
 const MAX_SIZE = 500
 const DEFAULT_SIZE = 300
 
+type ImageLabelMatchCriteria = 'exact' | 'contains'
+
+type MainImageLabel = {
+  label?: string
+  labelMatchCriteria?: ImageLabelMatchCriteria
+}
+
 type HoverImageCriteria = 'label' | 'index'
 
 type HoverImage = {
   label?: string
   index?: number
   criteria?: HoverImageCriteria
+  labelMatchCriteria?: ImageLabelMatchCriteria
 }
 
 type GetImageSrcParams = {
@@ -88,11 +96,15 @@ function getHoverImage({
   hoverImage,
   hoverImageLabel,
 }: GetHoverImageParams) {
-  const { criteria = 'label', label = hoverImageLabel, index } =
-    hoverImage ?? {}
+  const {
+    criteria = 'label',
+    label = hoverImageLabel,
+    labelMatchCriteria = 'exact',
+    index,
+  } = hoverImage ?? {}
 
   if (criteria === 'label') {
-    return findImageByLabel(images, label)
+    return findImageByLabel(images, label, labelMatchCriteria)
   }
 
   if (criteria === 'index') {
@@ -184,10 +196,15 @@ function BadgeWrapper({
 
 function findImageByLabel(
   images: ProductSummaryTypes.SKU['images'],
-  selectedLabel: string | undefined
+  selectedLabel: string | undefined,
+  labelMatchCriteria?: ImageLabelMatchCriteria
 ) {
   if (!selectedLabel) {
     return null
+  }
+
+  if (labelMatchCriteria === 'contains') {
+    return images.find(({ imageLabel }) => imageLabel?.includes(selectedLabel))
   }
 
   return images.find(({ imageLabel }) => imageLabel === selectedLabel)
@@ -256,7 +273,7 @@ interface Props {
   /**
    * @default ""
    */
-  mainImageLabel?: string
+  mainImageLabel?: string | MainImageLabel
   /**
    * @default ""
    * @deprecated
@@ -367,7 +384,14 @@ function ProductImage({
   })
 
   if (selectedImageVariationSKU == null && mainImageLabel) {
-    const mainImage = findImageByLabel(images, mainImageLabel)
+    const mainImage =
+      typeof mainImageLabel === 'string'
+        ? findImageByLabel(images, mainImageLabel)
+        : findImageByLabel(
+            images,
+            mainImageLabel.label,
+            mainImageLabel.labelMatchCriteria
+          )
 
     if (mainImage) {
       skuImageUrl = mainImage.imageUrl
@@ -500,6 +524,16 @@ ProductImage.schema = {
                   title:
                     'admin/editor.productSummaryImage.hoverImage.criteria.label',
                   type: 'string',
+                },
+                labelMatchCriteria: {
+                  title:
+                    'admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria',
+                  widget: {
+                    'ui:widget': 'radio',
+                  },
+                  type: 'string',
+                  enum: ['exact', 'contains'],
+                  default: 'exact',
                 },
               },
             },
