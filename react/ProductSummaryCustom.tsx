@@ -130,6 +130,7 @@ function ProductSummaryCustom({
   const linkProps = href
     ? {
         to: href,
+        onClickCapture: actionOnClick,
       }
     : {
         page: 'store.product',
@@ -138,6 +139,7 @@ function ProductSummaryCustom({
           id: product?.productId,
         },
         query,
+        onClickCapture: actionOnClick,
       }
 
   return (
@@ -158,11 +160,7 @@ function ProductSummaryCustom({
             style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
             ref={inViewRef}
           >
-            <Link
-              className={linkClasses}
-              {...linkProps}
-              onClick={actionOnClick}
-            >
+            <Link className={linkClasses} {...linkProps}>
               <article className={summaryClasses}>{children}</article>
             </Link>
           </section>

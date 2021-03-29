@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- `actionOnClick` when clicking on the Add to Cart button.
+
 ## [2.71.0] - 2021-03-29
 ### Added
 - Option to match only a substring when defining the Product Image's label.
