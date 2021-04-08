@@ -50,6 +50,10 @@ function ProductSummaryCustom({
 
   const productListDispatch = ProductListContext.useProductListDispatch()
 
+  const productListState = ProductListContext.useProductListState()
+  const autocompleteSummary =
+    productListState?.listName === 'autocomplete-result-list'
+
   const inViewRef = useRef<HTMLDivElement | null>(null)
   const onView = useCallback(() => {
     productListDispatch?.({
@@ -130,7 +134,8 @@ function ProductSummaryCustom({
   const linkProps = href
     ? {
         to: href,
-        onClickCapture: actionOnClick,
+        onClick: autocompleteSummary ? actionOnClick : undefined,
+        onClickCapture: autocompleteSummary ? undefined : actionOnClick,
       }
     : {
         page: 'store.product',
@@ -139,7 +144,8 @@ function ProductSummaryCustom({
           id: product?.productId,
         },
         query,
-        onClickCapture: actionOnClick,
+        onClick: autocompleteSummary ? actionOnClick : undefined,
+        onClickCapture: autocompleteSummary ? undefined : actionOnClick,
       }
 
   return (

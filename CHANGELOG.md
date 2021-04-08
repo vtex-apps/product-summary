@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Autocomplete closing when clicking on the Add to Cart button.
+
 ## [2.71.1] - 2021-04-05
 
 ### Fixed
