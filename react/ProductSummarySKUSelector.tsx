@@ -217,7 +217,6 @@ function ProductSummarySKUSelector(props: Props) {
       <SKUSelector
         onSKUSelected={handleSKUSelected}
         {...props}
-        variations={props.visibleVariations}
         classes={skuSelectorClasses}
       />
     </div>
