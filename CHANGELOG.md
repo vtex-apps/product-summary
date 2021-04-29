@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Added media query into `productSummary.css` for small devices
+
 ## [2.71.2] - 2021-04-08
 
 ### Fixed

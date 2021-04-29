@@ -108,3 +108,9 @@
     transform: rotate(360deg);
   }
 }
+
+@media screen and (max-width: 800px) {
+  .hoverEffect:hover .mainImageHovered {
+    opacity: 1;
+  }
+}
