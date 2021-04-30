@@ -1,8 +1,3 @@
-
-files: [
- {
-  "source" : "/messages/en.json",
-  "translation" : "/messages/%locale%.json",
-  "type" : "json",
- }
-]
+files:
+ - source: /messages/en.json
+  translation: /messages/%locale%.json
