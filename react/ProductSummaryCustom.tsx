@@ -186,6 +186,10 @@ interface Props {
    * @default "default"
    */
   priceBehavior?: 'async' | 'default'
+  /**
+   * Name of the list the Product Summary is in. Should be set by a Shelf or the Search Result gallery.
+   */
+  listName?: string
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
@@ -194,12 +198,14 @@ function ProductSummaryWrapper({
   actionOnClick,
   href,
   priceBehavior = 'default',
+  listName,
   classes,
   children,
 }: PropsWithChildren<Props>) {
   return (
     <ProductSummaryProvider
       product={product}
+      listName={listName}
       isPriceLoading={priceBehavior === 'async'}
     >
       <ProductSummaryCustom

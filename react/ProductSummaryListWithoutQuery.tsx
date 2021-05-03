@@ -13,39 +13,46 @@ type Props = PropsWithChildren<{
   /** Array of products. */
   products?: any[]
   /** Slot of product summary. */
-  ProductSummary: ComponentType<{ product: any }>
+  ProductSummary: ComponentType<{
+    product: any
+    actionOnClick: (product: any, position: number) => void
+    listName?: string
+  }>
   /** Name of the list property on Google Analytics events. */
   listName?: string
   /** Callback on product click. */
-  actionOnProductClick?: (product: any) => void
+  actionOnProductClick?: (product: any, position: number) => void
 }>
 
 function List({
   children,
   products,
   ProductSummary,
+  listName,
   actionOnProductClick,
 }: Props) {
   const { list } = useListContext()
   const { treePath } = useTreePath()
 
   const newListContextValue = useMemo(() => {
-    const componentList = products?.map((product) => {
+    const componentList = products?.map((product, position) => {
       const normalizedProduct = mapCatalogProductToProductSummary(product)
+
+      const handleOnClick = () => {
+        if (typeof actionOnProductClick === 'function') {
+          actionOnProductClick(normalizedProduct, list.length + position)
+        }
+      }
 
       if (typeof ProductSummary === 'function') {
         return (
           <ProductSummary
             key={normalizedProduct.cacheId}
             product={normalizedProduct}
+            listName={listName}
+            actionOnClick={handleOnClick}
           />
         )
-      }
-
-      const handleOnClick = () => {
-        if (typeof actionOnProductClick === 'function') {
-          actionOnProductClick(normalizedProduct)
-        }
       }
 
       return (
@@ -54,13 +61,14 @@ function List({
           key={product.cacheId}
           treePath={treePath}
           product={normalizedProduct}
+          listName={listName}
           actionOnClick={handleOnClick}
         />
       )
     })
 
     return list.concat(componentList ?? [])
-  }, [products, list, ProductSummary, treePath, actionOnProductClick])
+  }, [products, list, ProductSummary, treePath, listName, actionOnProductClick])
 
   return (
     <ListContextProvider list={newListContextValue}>
@@ -80,6 +88,7 @@ function ProductSummaryListWithoutQuery({
     <ProductListProvider listName={listName ?? ''}>
       <List
         products={products}
+        listName={listName}
         ProductSummary={ProductSummary}
         actionOnProductClick={actionOnProductClick}
       >

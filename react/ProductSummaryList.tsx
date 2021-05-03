@@ -99,7 +99,7 @@ interface Props {
    */
   listName?: string
   /** Slot of a product summary. */
-  ProductSummary: ComponentType<{ product: any }>
+  ProductSummary: ComponentType<{ product: any; actionOnClick: any }>
   /** Callback on product click. */
   actionOnProductClick?: (product: any) => void
 }
@@ -115,7 +115,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     skusFilter,
     installmentCriteria,
     children,
-    listName,
+    listName: rawListName,
     ProductSummary,
     actionOnProductClick,
   } = props
@@ -143,17 +143,19 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
   })
 
   const { products } = data ?? {}
+  // Not using ?? operator because listName can be ''
+  // eslint-disable-next-line no-unneeded-ternary
+  const listName = rawListName ? rawListName : 'List of products'
 
   const productClick = useCallback(
-    (product: any) => {
+    (product: any, position: number) => {
       actionOnProductClick?.(product)
 
       push({
         event: 'productClick',
-        // Not using ?? operator because listName can be ''
-        // eslint-disable-next-line no-unneeded-ternary
-        list: listName ? listName : 'List of products',
+        list: listName,
         product,
+        position,
       })
     },
     [push, actionOnProductClick, listName]
