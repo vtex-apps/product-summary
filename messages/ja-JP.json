@@ -35,6 +35,7 @@
   "admin/editor.productSummaryImage.hoverImageLabel.description": "このプロパティは非推奨です。代わりに基準プロパティを使ってください",
   "admin/editor.productSummaryImage.hoverImage.criteria.title": "マウスオーバー画像選択の基準",
   "admin/editor.productSummaryImage.hoverImage.criteria.label": "マウスオーバー画像ラベル",
+  "admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria": "マウスオーバー画像ラベル検索の基準 (すべて一致: 「マウスオーバー画像ラベル」フィールドの名前フィールドとすべて一致する画像を探します | 含む: 「マウスオーバー画像ラベル」フィールドのテキストフィールドを含む最初の画像を探します)",
   "admin/editor.productSummaryImage.hoverImage.criteria.index": "マウスオーバー画像インデックス",
   "admin/editor.productSummaryBuyButton.title": "製品サマリ購入ボタン",
   "admin/editor.productSummaryName.title": "製品サマリ名",

@@ -35,6 +35,7 @@
   "admin/editor.productSummaryImage.hoverImageLabel.description": "Această proprietate este învechită. Folosește proprietatea de criterii mai degrabă",
   "admin/editor.productSummaryImage.hoverImage.criteria.title": "Criterii pentru selectarea imaginii secundare",
   "admin/editor.productSummaryImage.hoverImage.criteria.label": "Eticheta imaginii secundare",
+  "admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria": "Criteriu de căutare al etichetei imaginii secundare (exact: găsește imaginea care se potrivește perfect cu denumirea completată în câmpul „Etichetă imagine secundară” | contains: găsește prima imagine care conține textul complet în câmpul „Etichetă imagine secundară”)",
   "admin/editor.productSummaryImage.hoverImage.criteria.index": "Indexul imaginii secundare",
   "admin/editor.productSummaryBuyButton.title": "Rezumat produs Buton cumpărare",
   "admin/editor.productSummaryName.title": "Denumire rezumat produs",
