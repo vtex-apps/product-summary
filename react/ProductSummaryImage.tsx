@@ -353,7 +353,7 @@ function ProductImage({
 
   const legacyContainerClasses = classNames(
     productSummary.imageStackContainer,
-    productSummary.hoverEffect
+    !isMobile && productSummary.hoverEffect
   )
 
   const containerClassname = classNames(
@@ -414,7 +414,7 @@ function ProductImage({
     'w-100 h-100 dn absolute top-0 left-0 z-999',
     withModifiers('image', 'hover'),
     legacyImageClasses,
-    productSummary.hoverImage
+    !isMobile && productSummary.hoverImage
   )
 
   return (
