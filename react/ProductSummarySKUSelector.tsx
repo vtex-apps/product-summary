@@ -7,7 +7,7 @@ import type { ProductSummaryTypes } from 'vtex.product-summary-context'
 import type { ResponsiveValuesTypes } from 'vtex.responsive-values'
 import type { ProductTypes } from 'vtex.product-context'
 
-import { getFirstAvailableSeller } from './modules/seller'
+import { getDefaultSeller } from './modules/seller'
 
 const { useProductSummary, useProductSummaryDispatch } = ProductSummaryContext
 
@@ -190,7 +190,7 @@ function ProductSummarySKUSelector(props: Props) {
       ...selectedItem,
       image: selectedItem.images[0],
       seller:
-        getFirstAvailableSeller(selectedItem.sellers) ??
+        getDefaultSeller(selectedItem.sellers as ProductTypes.Seller[]) ??
         selectedItem.sellers[0],
     }
 
