@@ -190,6 +190,11 @@ interface Props {
    * Name of the list the Product Summary is in. Should be set by a Shelf or the Search Result gallery.
    */
   listName?: string
+  /**
+   * Whether the listName should be sent to product pages via querystring
+   * @default true
+   */
+  trackListName?: boolean
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
@@ -198,6 +203,7 @@ function ProductSummaryWrapper({
   actionOnClick,
   href,
   priceBehavior = 'default',
+  trackListName = true,
   listName,
   classes,
   children,
@@ -205,7 +211,7 @@ function ProductSummaryWrapper({
   return (
     <ProductSummaryProvider
       product={product}
-      listName={listName}
+      listName={trackListName ? listName : undefined}
       isPriceLoading={priceBehavior === 'async'}
     >
       <ProductSummaryCustom
