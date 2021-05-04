@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
-- First available seller being used instead of default seller
+- Seller to be the default seller instead of the first available seller
 - `actionOnClick` not being passed to `ProductSummary` slot
 
 ### Added
