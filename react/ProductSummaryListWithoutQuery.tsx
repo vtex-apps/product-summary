@@ -6,6 +6,7 @@ import { ProductListContext } from 'vtex.product-list-context'
 
 import { mapCatalogProductToProductSummary } from './utils/normalize'
 import ProductListEventCaller from './components/ProductListEventCaller'
+import type { ProductClickParams } from './ProductSummaryList'
 
 const { ProductListProvider } = ProductListContext
 
@@ -15,13 +16,19 @@ type Props = PropsWithChildren<{
   /** Slot of product summary. */
   ProductSummary: ComponentType<{
     product: any
-    actionOnClick: (product: any, position: number) => void
+    actionOnClick: (
+      product: any,
+      productClickParams?: ProductClickParams
+    ) => void
     listName?: string
   }>
   /** Name of the list property on Google Analytics events. */
   listName?: string
   /** Callback on product click. */
-  actionOnProductClick?: (product: any, position: number) => void
+  actionOnProductClick?: (
+    product: any,
+    productClickParams?: ProductClickParams
+  ) => void
 }>
 
 function List({
@@ -40,7 +47,9 @@ function List({
 
       const handleOnClick = () => {
         if (typeof actionOnProductClick === 'function') {
-          actionOnProductClick(normalizedProduct, list.length + position)
+          actionOnProductClick(normalizedProduct, {
+            position: list.length + position,
+          })
         }
       }
 

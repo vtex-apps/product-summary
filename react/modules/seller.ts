@@ -1,6 +1,10 @@
-import type { ProductTypes } from 'vtex.product-context'
+interface SellerDefault {
+  sellerDefault: boolean
+}
 
-export function getDefaultSeller(sellers?: ProductTypes.Seller[]) {
+export function getDefaultSeller<T extends SellerDefault>(
+  sellers?: T[]
+): T | undefined {
   if (!sellers || sellers.length === 0) {
     return
   }

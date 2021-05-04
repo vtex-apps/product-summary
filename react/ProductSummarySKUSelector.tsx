@@ -189,9 +189,9 @@ function ProductSummarySKUSelector(props: Props) {
     const sku = {
       ...selectedItem,
       image: selectedItem.images[0],
-      seller:
-        getDefaultSeller(selectedItem.sellers as ProductTypes.Seller[]) ??
-        selectedItem.sellers[0],
+      seller: getDefaultSeller(
+        selectedItem.sellers
+      ) as ProductSummaryTypes.Seller,
     }
 
     const newProduct = {

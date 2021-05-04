@@ -52,6 +52,10 @@ function getOrdinationProp(attribute: 'name' | 'value') {
   )
 }
 
+export interface ProductClickParams {
+  position: number
+}
+
 interface SpecificationFilter {
   id: string
   value: string
@@ -148,8 +152,10 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
   const listName = rawListName ? rawListName : 'List of products'
 
   const productClick = useCallback(
-    (product: any, position: number) => {
+    (product: any, productClickParams?: ProductClickParams) => {
       actionOnProductClick?.(product)
+
+      const { position } = productClickParams ?? {}
 
       push({
         event: 'productClick',
