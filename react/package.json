@@ -34,14 +34,14 @@
     "vtex.product-list-context": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-list-context@0.3.1/public/@types/vtex.product-list-context",
     "vtex.product-specification-badges": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-specification-badges@0.3.0/public/@types/vtex.product-specification-badges",
     "vtex.product-summary": "https://icarogtm--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.product-summary@2.71.2+build1620068186/public/@types/vtex.product-summary",
-    "vtex.product-summary-context": "https://icarogtm--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.product-summary-context@0.7.0+build1620067144/public/@types/vtex.product-summary-context",
+    "vtex.product-summary-context": "https://icarogtm--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.product-summary-context@0.7.0+build1620068304/public/@types/vtex.product-summary-context",
     "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.128.4/public/@types/vtex.render-runtime",
     "vtex.responsive-values": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.responsive-values@0.4.2/public/@types/vtex.responsive-values",
     "vtex.search-page-context": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-page-context@0.2.0/public/@types/vtex.search-page-context",
     "vtex.store-components": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.143.1/public/@types/vtex.store-components",
     "vtex.store-resources": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.80.0/public/@types/vtex.store-resources",
     "vtex.structured-data": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.structured-data@0.6.0/public/@types/vtex.structured-data",
-    "vtex.styleguide": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.140.0/public/@types/vtex.styleguide"
+    "vtex.styleguide": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.140.1/public/@types/vtex.styleguide"
   },
   "vtexScriptsOverride": {
     "srcPath": "."

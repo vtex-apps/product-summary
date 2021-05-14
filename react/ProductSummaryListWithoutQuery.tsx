@@ -42,13 +42,13 @@ function List({
   const { treePath } = useTreePath()
 
   const newListContextValue = useMemo(() => {
-    const componentList = products?.map((product, position) => {
+    const componentList = products?.map((product, index) => {
       const normalizedProduct = mapCatalogProductToProductSummary(product)
 
       const handleOnClick = () => {
         if (typeof actionOnProductClick === 'function') {
           actionOnProductClick(normalizedProduct, {
-            position: list.length + position,
+            position: list.length + index + 1,
           })
         }
       }

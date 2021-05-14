@@ -7,11 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
-- Seller to be the default seller instead of the first available seller
-- `actionOnClick` not being passed to `ProductSummary` slot
+- Seller to be the default seller instead of the first available seller.
+- `actionOnClick` not being passed to `ProductSummary` slot.
+- Product summary position now starts at 1.
 
 ### Added
-- Position and list name to `productClick` GTM event
+- Position and list name to `productClick` GTM event.
 - `ProductSummaryCustom` now accepts the `listName` prop. This is intended to be used by Shelves and Search Result galleries.
 
 ## [2.72.0] - 2021-05-03

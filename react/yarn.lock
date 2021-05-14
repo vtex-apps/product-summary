@@ -5030,9 +5030,9 @@ verror@1.10.0:
   version "0.3.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-specification-badges@0.3.0/public/@types/vtex.product-specification-badges#2df6b189acfabf642504df02d7b8ad406ee90c07"
 
-"vtex.product-summary-context@https://icarogtm--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.product-summary-context@0.7.0+build1620067144/public/@types/vtex.product-summary-context":
+"vtex.product-summary-context@https://icarogtm--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.product-summary-context@0.7.0+build1620068304/public/@types/vtex.product-summary-context":
   version "0.7.0"
-  resolved "https://icarogtm--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.product-summary-context@0.7.0+build1620067144/public/@types/vtex.product-summary-context#ba8f37de6f933ea482b85940d247d621d9b5b4cb"
+  resolved "https://icarogtm--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.product-summary-context@0.7.0+build1620068304/public/@types/vtex.product-summary-context#54923781d01030919024750877d98210a7a93a0f"
 
 "vtex.product-summary@https://icarogtm--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.product-summary@2.71.2+build1620068186/public/@types/vtex.product-summary":
   version "2.71.2"
@@ -5062,9 +5062,9 @@ verror@1.10.0:
   version "0.6.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.structured-data@0.6.0/public/@types/vtex.structured-data#39b3032db55a52544655a7fca8fcb792a0baae78"
 
-"vtex.styleguide@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.140.0/public/@types/vtex.styleguide":
-  version "9.140.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.140.0/public/@types/vtex.styleguide#f3180d1ff13a4d93be89505740ca5527c6e12313"
+"vtex.styleguide@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.140.1/public/@types/vtex.styleguide":
+  version "9.140.1"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.140.1/public/@types/vtex.styleguide#ff824d0557db7e6e76557975cbb511789a9909b2"
 
 w3c-hr-time@^1.0.1:
   version "1.0.2"
