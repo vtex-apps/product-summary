@@ -69,6 +69,6 @@
   "admin/editor.productSummaryList.installmentCriteria.description": "Elija qué tipo de cuota se mostrará en los productos (p. Ej., Máximo sin interés o con interés).",
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Máximo sin interés",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Máximo",
-  "admin/editor.productSummaryList.analyticsListName.title": "Nombre de lista en Analytics",
-  "admin/editor.productSummary.trackListName.title": "Debería rastrear el nombre de lista"
+  "admin/editor.productSummaryList.analyticsListName.title": "Nombre de la lista en Analytics",
+  "admin/editor.productSummary.trackListName.title": "Debe rastrear el nombre de la lista"
 }

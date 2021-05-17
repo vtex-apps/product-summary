@@ -69,5 +69,6 @@
   "admin/editor.productSummaryList.installmentCriteria.description": "표시될 할부 유형을 선택하세요 (예: 무이자 또는 무이자 최대).",
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "무이자 최대",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "최대",
-  "admin/editor.productSummaryList.analyticsListName.title": "애널리틱스의 목록 이름"
+  "admin/editor.productSummaryList.analyticsListName.title": "애널리틱스의 목록 이름",
+  "admin/editor.productSummary.trackListName.title": "목록 이름을 추적해야 함"
 }

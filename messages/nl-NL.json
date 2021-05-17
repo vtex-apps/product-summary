@@ -69,5 +69,6 @@
   "admin/editor.productSummaryList.installmentCriteria.description": "Kies welk type termijnen getoond moet worden (bijv.: maximaal zonder rente of met rente).",
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximaal zonder rente",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum",
-  "admin/editor.productSummaryList.analyticsListName.title": "Lijstnaam in Analytics"
+  "admin/editor.productSummaryList.analyticsListName.title": "Lijstnaam in Analytics",
+  "admin/editor.productSummary.trackListName.title": "Moet lijstnaam volgen"
 }

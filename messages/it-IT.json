@@ -69,5 +69,6 @@
   "admin/editor.productSummaryList.installmentCriteria.description": "Scegli il tipo di rate da mostrare (ad es.: importo massimo senza interessi o con interessi).",
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Importo massimo senza interessi",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Importo massimo",
-  "admin/editor.productSummaryList.analyticsListName.title": "Nome elenco in \"Analisi\""
+  "admin/editor.productSummaryList.analyticsListName.title": "Nome della lista in Analytics",
+  "admin/editor.productSummary.trackListName.title": "Serve a tracciare il nome della lista"
 }
