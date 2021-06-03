@@ -35,6 +35,7 @@ function ProductSummaryCustom({
   children,
   href,
   priceBehavior = 'default',
+  position,
   classes,
 }: PropsWithChildren<Props>) {
   const {
@@ -58,14 +59,14 @@ function ProductSummaryCustom({
   const onView = useCallback(() => {
     productListDispatch?.({
       type: 'SEND_IMPRESSION',
-      args: { product },
+      args: { product, position },
     })
 
     dispatch({
       type: 'SET_IN_VIEW',
       args: { inView: true },
     })
-  }, [dispatch, productListDispatch, product])
+  }, [dispatch, productListDispatch, product, position])
 
   useOnView({
     ref: inViewRef,
@@ -195,6 +196,11 @@ interface Props {
    * @default true
    */
   trackListName?: boolean
+  /**
+   * The position of the Product Summary in a list of Product Summaries. Used by the
+   * ProductImpressions event.
+   */
+  position?: number
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
@@ -205,6 +211,7 @@ function ProductSummaryWrapper({
   priceBehavior = 'default',
   trackListName = true,
   listName,
+  position,
   classes,
   children,
 }: PropsWithChildren<Props>) {
@@ -219,6 +226,7 @@ function ProductSummaryWrapper({
         href={href}
         actionOnClick={actionOnClick}
         priceBehavior={priceBehavior}
+        position={position}
         classes={classes}
       >
         {children}

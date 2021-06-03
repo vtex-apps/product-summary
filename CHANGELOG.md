@@ -13,7 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - Position and list name to `productClick` GTM event.
-- `ProductSummaryCustom` now accepts the `listName` prop. This is intended to be used by Shelves and Search Result galleries.
+- `ProductSummaryCustom` now accepts the `listName` and `position` props. This is intended to be used by Shelves and Search Result galleries.
+- `trackListName` prop to `ProductSummaryCustom`. It controls whether it should pass the `listName` prop to the PDP url or not.
 
 ## [2.72.0] - 2021-05-03
 ### Added

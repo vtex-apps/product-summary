@@ -21,6 +21,7 @@ type Props = PropsWithChildren<{
       productClickParams?: ProductClickParams
     ) => void
     listName?: string
+    position?: number
   }>
   /** Name of the list property on Google Analytics events. */
   listName?: string
@@ -44,11 +45,12 @@ function List({
   const newListContextValue = useMemo(() => {
     const componentList = products?.map((product, index) => {
       const normalizedProduct = mapCatalogProductToProductSummary(product)
+      const position = list.length + index + 1
 
       const handleOnClick = () => {
         if (typeof actionOnProductClick === 'function') {
           actionOnProductClick(normalizedProduct, {
-            position: list.length + index + 1,
+            position,
           })
         }
       }
@@ -60,6 +62,7 @@ function List({
             product={normalizedProduct}
             listName={listName}
             actionOnClick={handleOnClick}
+            position={position}
           />
         )
       }
@@ -72,6 +75,7 @@ function List({
           product={normalizedProduct}
           listName={listName}
           actionOnClick={handleOnClick}
+          position={position}
         />
       )
     })
