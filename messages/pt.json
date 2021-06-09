@@ -69,5 +69,6 @@
   "admin/editor.productSummaryList.installmentCriteria.description": "Escolha qual tipo de parcelamento a ser mostrado nos produtos (ex.: máximo sem juros, ou com juros).",
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Máxima sem juros",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Máxima",
-  "admin/editor.productSummaryList.analyticsListName.title": "Nome da lista no Analytics"
+  "admin/editor.productSummaryList.analyticsListName.title": "Nome da lista no Analytics",
+  "admin/editor.productSummary.trackListName.title": "Deveria rastrear nome da lista"
 }

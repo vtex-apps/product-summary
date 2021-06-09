@@ -6,6 +6,7 @@ import { ProductListContext } from 'vtex.product-list-context'
 
 import { mapCatalogProductToProductSummary } from './utils/normalize'
 import ProductListEventCaller from './components/ProductListEventCaller'
+import type { ProductClickParams } from './ProductSummaryList'
 
 const { ProductListProvider } = ProductListContext
 
@@ -13,39 +14,57 @@ type Props = PropsWithChildren<{
   /** Array of products. */
   products?: any[]
   /** Slot of product summary. */
-  ProductSummary: ComponentType<{ product: any }>
+  ProductSummary: ComponentType<{
+    product: any
+    actionOnClick: (
+      product: any,
+      productClickParams?: ProductClickParams
+    ) => void
+    listName?: string
+    position?: number
+  }>
   /** Name of the list property on Google Analytics events. */
   listName?: string
   /** Callback on product click. */
-  actionOnProductClick?: (product: any) => void
+  actionOnProductClick?: (
+    product: any,
+    productClickParams?: ProductClickParams
+  ) => void
 }>
 
 function List({
   children,
   products,
   ProductSummary,
+  listName,
   actionOnProductClick,
 }: Props) {
   const { list } = useListContext()
   const { treePath } = useTreePath()
 
   const newListContextValue = useMemo(() => {
-    const componentList = products?.map((product) => {
+    const componentList = products?.map((product, index) => {
       const normalizedProduct = mapCatalogProductToProductSummary(product)
+      const position = list.length + index + 1
+
+      const handleOnClick = () => {
+        if (typeof actionOnProductClick === 'function') {
+          actionOnProductClick(normalizedProduct, {
+            position,
+          })
+        }
+      }
 
       if (typeof ProductSummary === 'function') {
         return (
           <ProductSummary
             key={normalizedProduct.cacheId}
             product={normalizedProduct}
+            listName={listName}
+            actionOnClick={handleOnClick}
+            position={position}
           />
         )
-      }
-
-      const handleOnClick = () => {
-        if (typeof actionOnProductClick === 'function') {
-          actionOnProductClick(normalizedProduct)
-        }
       }
 
       return (
@@ -54,13 +73,15 @@ function List({
           key={product.cacheId}
           treePath={treePath}
           product={normalizedProduct}
+          listName={listName}
           actionOnClick={handleOnClick}
+          position={position}
         />
       )
     })
 
     return list.concat(componentList ?? [])
-  }, [products, list, ProductSummary, treePath, actionOnProductClick])
+  }, [products, list, ProductSummary, treePath, listName, actionOnProductClick])
 
   return (
     <ListContextProvider list={newListContextValue}>
@@ -80,6 +101,7 @@ function ProductSummaryListWithoutQuery({
     <ProductListProvider listName={listName ?? ''}>
       <List
         products={products}
+        listName={listName}
         ProductSummary={ProductSummary}
         actionOnProductClick={actionOnProductClick}
       >

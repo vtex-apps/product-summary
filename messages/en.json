@@ -69,5 +69,6 @@
   "admin/editor.productSummaryList.installmentCriteria.description": "Choose what type of installments to be showed (e.g.: maximum without interest or with interest).",
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum without interest",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum",
-  "admin/editor.productSummaryList.analyticsListName.title": "List name in Analytics"
+  "admin/editor.productSummaryList.analyticsListName.title": "List name in Analytics",
+  "admin/editor.productSummary.trackListName.title": "Should track list name"
 }

@@ -69,5 +69,6 @@
   "admin/editor.productSummaryList.installmentCriteria.description": "Description of installment criteria property",
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum without interest enum name",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum with interest enum name",
-  "admin/editor.productSummaryList.analyticsListName.title": "List name in Analytics"
+  "admin/editor.productSummaryList.analyticsListName.title": "List name in Analytics",
+  "admin/editor.productSummary.trackListName.title": "Should track list name"
 }

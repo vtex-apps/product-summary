@@ -69,5 +69,6 @@
   "admin/editor.productSummaryList.installmentCriteria.description": "どのタイプの分割払いが表示されるかを選びます (例: 利息込みあるいは利息抜きでの最大値)。",
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "利息抜き最大値",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "最大値",
-  "admin/editor.productSummaryList.analyticsListName.title": "アナリティクスのリスト名"
+  "admin/editor.productSummaryList.analyticsListName.title": "アナリティクスのリスト名",
+  "admin/editor.productSummary.trackListName.title": "リスト名を追跡する"
 }

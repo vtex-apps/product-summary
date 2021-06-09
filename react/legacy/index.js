@@ -70,6 +70,7 @@ class ProductSummary extends Component {
     priceAlignLeft: PropTypes.bool,
     muted: PropTypes.bool,
     index: PropTypes.number,
+    position: PropTypes.number,
   }
 
   static defaultProps = {
@@ -128,7 +129,7 @@ class ProductSummary extends Component {
     if (inView && productListDispatch) {
       productListDispatch({
         type: 'SEND_IMPRESSION',
-        args: { product: this.props.product },
+        args: { product: this.props.product, position: this.props.position },
       })
     }
   }

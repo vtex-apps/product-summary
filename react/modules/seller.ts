@@ -1,15 +1,19 @@
-import type { ProductSummaryTypes } from 'vtex.product-summary-context'
+interface SellerDefault {
+  sellerDefault: boolean
+}
 
-export function getFirstAvailableSeller(
-  sellers?: ProductSummaryTypes.Seller[]
-) {
+export function getDefaultSeller<T extends SellerDefault>(
+  sellers?: T[]
+): T | undefined {
   if (!sellers || sellers.length === 0) {
     return
   }
 
-  const availableSeller = sellers.find(
-    (seller) => seller.commertialOffer.AvailableQuantity !== 0
-  )
+  const defaultSeller = sellers.find((seller) => seller.sellerDefault)
 
-  return availableSeller
+  if (!defaultSeller) {
+    return sellers[0]
+  }
+
+  return defaultSeller
 }
