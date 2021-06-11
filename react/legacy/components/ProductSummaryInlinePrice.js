@@ -24,6 +24,7 @@ const ProductSummaryInlinePrice = ({
   muted,
   index,
   inViewRef,
+  listName,
 }) => {
   const containerClasses = classNames(
     styles.container,
@@ -77,6 +78,7 @@ const ProductSummaryInlinePrice = ({
           params={{
             slug: product && product.linkText,
             id: product && product.productId,
+            __listName: listName,
           }}
           onClick={actionOnClick}
         >

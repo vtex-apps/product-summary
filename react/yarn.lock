@@ -5030,13 +5030,13 @@ verror@1.10.0:
   version "0.3.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-specification-badges@0.3.0/public/@types/vtex.product-specification-badges#2df6b189acfabf642504df02d7b8ad406ee90c07"
 
-"vtex.product-summary-context@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-summary-context@0.8.0/public/@types/vtex.product-summary-context":
+"vtex.product-summary-context@https://icarogtm--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.product-summary-context@0.8.0+build1623444138/public/@types/vtex.product-summary-context":
   version "0.8.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-summary-context@0.8.0/public/@types/vtex.product-summary-context#97a92f11f6236519c4cdd3cb5f52da2cef7673c6"
+  resolved "https://icarogtm--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.product-summary-context@0.8.0+build1623444138/public/@types/vtex.product-summary-context#1b2963673b42c5596769f87be0e9303c888da9f9"
 
-"vtex.product-summary@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-summary@2.72.0/public/@types/vtex.product-summary":
-  version "2.72.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-summary@2.72.0/public/@types/vtex.product-summary#c6e382fa58790d5d1ff0a2fc532586dedc216b3f"
+"vtex.product-summary@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-summary@2.73.1/public/@types/vtex.product-summary":
+  version "2.73.1"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-summary@2.73.1/public/@types/vtex.product-summary#3850be70d0c2603e10ef45a35982d9c83e537e27"
 
 "vtex.render-runtime@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.128.4/public/@types/vtex.render-runtime":
   version "8.128.4"

@@ -42,6 +42,7 @@ function ProductSummaryCustom({
     isLoading,
     isHovering,
     selectedItem,
+    listName,
     query,
     inView,
   } = useProductSummary()
@@ -143,6 +144,7 @@ function ProductSummaryCustom({
         params: {
           slug: product?.linkText,
           id: product?.productId,
+          __listName: listName,
         },
         query,
         onClick: autocompleteSummary ? actionOnClick : undefined,
@@ -209,7 +211,7 @@ function ProductSummaryWrapper({
   actionOnClick,
   href,
   priceBehavior = 'default',
-  trackListName = false,
+  trackListName = true,
   listName,
   position,
   classes,

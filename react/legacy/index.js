@@ -71,6 +71,7 @@ class ProductSummary extends Component {
     muted: PropTypes.bool,
     index: PropTypes.number,
     position: PropTypes.number,
+    listName: PropTypes.string,
   }
 
   static defaultProps = {
@@ -157,6 +158,7 @@ class ProductSummary extends Component {
       priceAlignLeft,
       muted,
       index,
+      listName,
       inViewRef,
     } = this.props
 
@@ -208,6 +210,7 @@ class ProductSummary extends Component {
         priceAlignLeft={priceAlignLeft}
         muted={muted}
         index={index}
+        listName={listName}
         inViewRef={inViewRef}
       />
     )

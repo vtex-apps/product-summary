@@ -24,7 +24,7 @@
         "trackListName": {
           "title": "admin/editor.productSummary.trackListName.title",
           "type": "boolean",
-          "default": false
+          "default": true
         }
       }
     },

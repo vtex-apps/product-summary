@@ -24,6 +24,7 @@ class ProductSummarySmall extends Component {
       priceProps,
       buyButtonProps,
       inViewRef,
+      listName,
     } = this.props
 
     const containerClasses = classNames(
@@ -66,7 +67,7 @@ class ProductSummarySmall extends Component {
         <Link
           className={`${styles.clearLink} flex flex-column`}
           page="store.product"
-          params={{ slug: path(['linkText'], product) }}
+          params={{ slug: path(['linkText'], product), __listName: listName }}
           onClick={actionOnClick}
         >
           <article className={summaryClasses}>
