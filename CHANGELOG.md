@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Changed
-`trackListName` prop now defaults to false
+- `trackListName` prop now defaults to false
 
 ## [2.73.0] - 2021-06-09
 ### Fixed
