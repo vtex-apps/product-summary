@@ -209,7 +209,7 @@ function ProductSummaryWrapper({
   actionOnClick,
   href,
   priceBehavior = 'default',
-  trackListName = true,
+  trackListName = false,
   listName,
   position,
   classes,
