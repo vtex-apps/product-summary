@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Crowdin configuration file.
+
 ## [2.73.1] - 2021-06-11
 ### Changed
 - `trackListName` prop now defaults to false
