@@ -27,6 +27,7 @@ const CSS_HANDLES = [
   'product',
   'imagePlaceholder',
   'mainImageHovered',
+  'summaryItemContainer',
 ] as const
 
 const MAX_SIZE = 500
@@ -153,6 +154,7 @@ function CollectionWrapper({
   showCollections,
   productClusters,
   children,
+  classes,
 }: PropsWithChildren<CollectionWrapperProps>) {
   if (!showCollections || !productClusters || productClusters.length === 0) {
     return <>{children}</>
@@ -160,8 +162,10 @@ function CollectionWrapper({
 
   const collections = productClusters.map((cl) => cl.name)
 
+  const { handles } = useCssHandles(CSS_HANDLES, { classes })
+
   return (
-    <CollectionBadges collectionBadgesText={collections}>
+    <CollectionBadges collectionBadgesText={collections} className={handles.summaryItemContainer}>
       {children}
     </CollectionBadges>
   )
