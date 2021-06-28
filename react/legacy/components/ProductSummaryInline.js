@@ -22,6 +22,7 @@ class ProductSummaryInline extends Component {
       priceProps,
       buyButtonProps,
       inViewRef,
+      listName,
     } = this.props
 
     const containerClasses = classNames(
@@ -66,6 +67,7 @@ class ProductSummaryInline extends Component {
           params={{
             slug: product && product.linkText,
             id: product && product.productId,
+            __listName: listName,
           }}
           onClick={actionOnClick}
         >
