@@ -69,6 +69,6 @@
   "admin/editor.productSummaryList.installmentCriteria.description": "Choisissez le type de versements à afficher (par ex : maximum sans frais ou avec les frais).",
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum sans intérêt",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum",
-  "admin/editor.productSummaryList.analyticsListName.title": "Liste des noms dans Analytics",
+  "admin/editor.productSummaryList.analyticsListName.title": "Nom de la liste dans Analyses",
   "admin/editor.productSummary.trackListName.title": "Suivre la liste des noms"
 }
