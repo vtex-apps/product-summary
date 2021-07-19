@@ -33,6 +33,7 @@ Now, you are able to use all blocks exported by the `product-summary` app. Check
 | [`product-summary-image`](https://vtex.io/docs/components/all/vtex.product-summary/product-summary-image) | Renders the product image. | 
 | [`product-summary-name`](https://vtex.io/docs/components/all/vtex.product-summary/product-summary-name) | Renders the product name. | 
 | [`product-summary-sku-name`](https://vtex.io/docs/components/all/vtex.product-summary/product-summary-sku-name) | Renders the selected sku name. | 
+| [`product-summary-reference`](https://vtex.io/docs/components/all/vtex.product-summary/product-summary-reference) | Renders the product reference. | 
 | `product-summary-price` | ![https://img.shields.io/badge/-Deprecated-red](https://img.shields.io/badge/-Deprecated-red) The Product Summary Price block, responsible for rendering the product price, has been deprecated in favor of the [Product Price](https://vtex.io/docs/components/all/vtex.product-price/) app. Although support for this block is still granted, we strongly recommend you to use the Product Price app's blocks instead. | 
 | [`product-summary-sku-selector`](https://vtex.io/docs/components/all/vtex.product-summary/product-summary-sku-selector) | Renders the SKU Selector block. | 
 | [`product-specification-badges`](https://vtex.io/docs/components/all/vtex.product-summary/product-summary-specification-badges) | Renders badges based on the product specifications. |
