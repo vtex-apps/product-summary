@@ -1,21 +1,26 @@
 import React from 'react'
-import { useCssHandles } from 'vtex.css-handles'
+import type { CssHandlesTypes } from 'vtex.css-handles'
+import {  useCssHandles } from 'vtex.css-handles'
 import { ProductSummaryContext } from 'vtex.product-summary-context'
+
+interface Props {
+  classes: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+}
 
 const { useProductSummary } = ProductSummaryContext
 
-const CSS_HANDLES = ['referenceContainer']
+const CSS_HANDLES = ['referenceContainer'] as const
 
-const ProductSummaryReference = () => {
+const ProductSummaryReference = ({ classes }:Props) => {
   const { product } = useProductSummary()
-  const { referenceContainer } = useCssHandles(CSS_HANDLES)
-  const productReference: string = product?.productReference ?? ''
+  const { handles } = useCssHandles(CSS_HANDLES, { classes })
+  const productReference: string = product.productReference ?? ''
 
   if (!productReference) {
     return null
   }
 
-  return <div className={referenceContainer}>{productReference}</div>
+  return <div className={handles.referenceContainer}>{productReference}</div>
 }
 
 export default ProductSummaryReference
