@@ -364,13 +364,14 @@ function ProductImage({
 
   let skuImageUrl = sku?.image?.imageUrl ?? ''
 
-  const shouldDisplayPlaceholder = !skuImageUrl || error
+  console.log(error)
+  const shouldDisplayPlaceholder = true
 
-  if (!placeholder && shouldDisplayPlaceholder) {
+  if (shouldDisplayPlaceholder) {
     return (
       <div className={imageClassName}>
         <div className={containerClassname}>
-          <ImagePlaceholder cssHandle={handles.imagePlaceholder} />
+          <ImagePlaceholder cssHandle={handles.imagePlaceholder} skuInfo={sku} productContext={product} />
         </div>
       </div>
     )

@@ -1,0 +1,7 @@
+query CUSTOM_SPECIFICATION($skuId: ID!) {
+  sku(identifier: { field: id, value: $skuId }) @context(provider: "vtex.catalog-graphql"){
+    images{
+      url
+    }
+  }
+}
