@@ -8,7 +8,7 @@ import clone from '../utils/clone'
 const mergeSellers = (
   sellerA: ProductSummaryTypes.Seller,
   sellerB: ProductSummaryTypes.Seller,
-  sellerDefault?: string,
+  sellerDefault?: string
 ) => {
   sellerA.commertialOffer = {
     ...sellerA.commertialOffer,
@@ -26,16 +26,18 @@ const mergeSellers = (
 
   return {
     ...sellerA,
-    sellerDefault: sellerA.sellerId === sellerDefault ? true : false
+    sellerDefault: sellerA.sellerId === sellerDefault,
   }
 }
 
 const getDefaultSeller = (sellers: ProductSummaryTypes.Seller[]) => {
-  const sellersWithStock = sellers
-    .filter(seller => seller.commertialOffer.AvailableQuantity !== 0)
+  const sellersWithStock = sellers.filter(
+    (seller) => seller.commertialOffer.AvailableQuantity !== 0
+  )
 
-  return sellersWithStock?.sort((a, b) => a.commertialOffer.Price - b.commertialOffer.Price)
-    .map(seller => seller.sellerId)[0]
+  return sellersWithStock
+    ?.sort((a, b) => a.commertialOffer.Price - b.commertialOffer.Price)
+    .map((seller) => seller.sellerId)[0]
 }
 
 type Params = {
