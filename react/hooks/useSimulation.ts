@@ -85,7 +85,7 @@ function useSimulation({
       mergedProduct.items.forEach((item, itemIndex) => {
         const simulationItem = simulationItems[itemIndex]
 
-        const sellerDefault = getDefaultSeller(item.sellers)
+        const sellerDefault = getDefaultSeller(simulationItem.sellers)
 
         item.sellers = item.sellers.map((seller, simulationIndex) => {
           const sellerSimulation = simulationItem.sellers[simulationIndex]
