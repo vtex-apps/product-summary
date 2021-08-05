@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+- Update default seller after the simulation call.
+
 ## [2.74.0] - 2021-06-28
 ### Changed
 - `listName` is sent via runtime params, not query string. This fixes the issue with other conflicting query strings.

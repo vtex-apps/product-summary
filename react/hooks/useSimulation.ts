@@ -7,7 +7,8 @@ import clone from '../utils/clone'
 
 const mergeSellers = (
   sellerA: ProductSummaryTypes.Seller,
-  sellerB: ProductSummaryTypes.Seller
+  sellerB: ProductSummaryTypes.Seller,
+  sellerDefault?: string,
 ) => {
   sellerA.commertialOffer = {
     ...sellerA.commertialOffer,
@@ -19,7 +20,22 @@ const mergeSellers = (
     sellerA.commertialOffer.AvailableQuantity = 0
   }
 
-  return sellerA
+  if (!sellerDefault) {
+    return sellerA
+  }
+
+  return {
+    ...sellerA,
+    sellerDefault: sellerA.sellerId === sellerDefault ? true : false
+  }
+}
+
+const getDefaultSeller = (sellers: ProductSummaryTypes.Seller[]) => {
+  const sellersWithStock = sellers
+    .filter(seller => seller.commertialOffer.AvailableQuantity !== 0)
+
+  return sellersWithStock?.sort((a, b) => a.commertialOffer.Price - b.commertialOffer.Price)
+    .map(seller => seller.sellerId)[0]
 }
 
 type Params = {
@@ -69,10 +85,12 @@ function useSimulation({
       mergedProduct.items.forEach((item, itemIndex) => {
         const simulationItem = simulationItems[itemIndex]
 
+        const sellerDefault = getDefaultSeller(item.sellers)
+
         item.sellers = item.sellers.map((seller, simulationIndex) => {
           const sellerSimulation = simulationItem.sellers[simulationIndex]
 
-          return mergeSellers(seller, sellerSimulation)
+          return mergeSellers(seller, sellerSimulation, sellerDefault)
         })
       })
 
@@ -82,7 +100,7 @@ function useSimulation({
 
       if (mergedProduct.sku.sellers.length > 0) {
         mergedProduct.sku.seller = mergedProduct.sku.sellers.find(
-          (seller) => seller.sellerId === product.sku.seller.sellerId
+          (seller) => seller.sellerDefault
         ) as ProductSummaryTypes.Seller
       } else {
         mergedProduct.sku.seller = {
