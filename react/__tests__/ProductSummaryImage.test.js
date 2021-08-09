@@ -130,6 +130,7 @@ describe('<ProductImage /> component', () => {
       ],
       quantity: 1,
     }
+
     const placeholder = 'placeholder-image-url'
 
     const product = ProductSummary.mapCatalogProductToProductSummary(rawProduct)
