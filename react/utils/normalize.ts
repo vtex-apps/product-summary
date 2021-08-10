@@ -5,6 +5,15 @@ export const DEFAULT_HEIGHT = 'auto'
 export const MAX_WIDTH = 3000
 export const MAX_HEIGHT = 4000
 
+export type PreferenceType =
+  | 'FIRST_AVAILABLE'
+  | 'LAST_AVAILABLE'
+  | 'PRICE_ASC'
+  | 'PRICE_DESC'
+  | 'SPECIFICATION'
+
+type ConditionRule = 'cheapest' | 'expensive'
+
 /**
  * Having the url below as base for the LEGACY file manager,
  * https://storecomponents.vteximg.com.br/arquivos/ids/155472/Frame-3.jpg?v=636793763985400000
@@ -67,6 +76,93 @@ export function changeImageUrlSize(
   return `${normalizedImageUrl}${queryStringSeparator}width=${width}&height=${height}&aspect=true`
 }
 
+function getPriceBySeller(seller: { commertialOffer: { Price: number } }) {
+  return seller.commertialOffer.Price
+}
+
+/**
+ * @description
+ * Find the lowest/highest `Price` between sellers
+ * @param item an SKU
+ * @param condition the condition enum used for comparison functions
+ * */
+function getPriceByCondition(item: { sellers: any }, condition: ConditionRule) {
+  // First, if there's only 1 seller, avoid filtering
+  const { sellers } = item
+  if (sellers.length === 1) return sellers[0].commertialOffer.Price
+
+  const availableSellers = sellers.filter(
+    ({ commertialOffer }: any) =>
+      commertialOffer.AvailableQuantity != null &&
+      commertialOffer.AvailableQuantity > 0
+  )
+
+  let itemPrice
+  if (condition === 'expensive') {
+    itemPrice = Math.max(...availableSellers.map(getPriceBySeller))
+  } else {
+    itemPrice = Math.min(...availableSellers.map(getPriceBySeller))
+  }
+  return itemPrice
+}
+
+/**
+ * @description
+ * Retrieves the SKU with the best price considering a provided condition
+ * @param items an array of SKUs
+ * @param condition the condition enum used for comparison functions
+ * */
+function getBestSKUPrice(items: any[], condition: ConditionRule) {
+  // First, if none or only 1 sku is available, avoid reducing
+  const filteredItems = items.filter(getOnlyAvailable)
+  if (filteredItems.length === 0) return items[0]
+  if (filteredItems.length === 1) return filteredItems[0]
+
+  return items.reduce((acc: any, curr: any) => {
+    if (condition === 'expensive') {
+      return getPriceByCondition(curr, condition) >
+        getPriceByCondition(acc, condition)
+        ? curr
+        : acc
+    } else {
+      return getPriceByCondition(curr, condition) <
+        getPriceByCondition(acc, condition)
+        ? curr
+        : acc
+    }
+  })
+}
+
+/**
+ * @description
+ * This will retrieve the specific SKU using a custom Product (field)
+ * in the Catalog. The specification has the value of the SKU ID
+ * that will be looking for
+ * @see {@link https://vtex.io/docs/recipes/all} recipe on how to implement this
+ * */
+function getSpecificSKU(items: any[], specifications: any[]) {
+  let defaultSKUspec =
+    specifications.find(
+      (spec: { name: string }) => spec.name === 'DefaultSKUSelected'
+    ) ?? null
+
+  if (!defaultSKUspec) return items[0]
+
+  const specificSKU = items.filter(
+    ({ itemId }) => Number(itemId) === Number(defaultSKUspec.values)
+  )
+
+  if (specificSKU.length) {
+    return specificSKU[0]
+  } else {
+    return items[0]
+  }
+}
+
+/**
+ * @description
+ * Returns the first available SKU, checks all sellers
+ * */
 function findAvailableProduct(item: {
   sellers: Array<{ commertialOffer: { AvailableQuantity: number } }>
 }) {
@@ -77,6 +173,46 @@ function findAvailableProduct(item: {
   )
 }
 
+/**
+ * @description
+ * Returns only the available SKUs, checks all sellers
+ * */
+function getOnlyAvailable({ sellers }: any) {
+  return sellers.some(
+    (element: { commertialOffer: { AvailableQuantity: number } }) =>
+      element.commertialOffer.AvailableQuantity > 0
+  )
+}
+
+/**
+ * @description
+ * The SKU will be responsible of setting the selected item context for the product.
+ * If there's more than one, we will browse for the preferred SKU depending on
+ * the logic provided
+ * @param items an array of SKUs
+ * @param preferredSKU the logic for selecting an SKU
+ * @param properties the product's specifications
+ * */
+function findPreferredSKU(
+  items: any,
+  preferredSKU: PreferenceType,
+  properties: any
+) {
+  switch (preferredSKU) {
+    default:
+    case 'FIRST_AVAILABLE':
+      return items.find(findAvailableProduct) || items[0]
+    case 'LAST_AVAILABLE':
+      return items.reverse().find(findAvailableProduct) || items.reverse()[0]
+    case 'PRICE_ASC':
+      return getBestSKUPrice(items, 'cheapest')
+    case 'PRICE_DESC':
+      return getBestSKUPrice(items, 'expensive')
+    case 'SPECIFICATION':
+      return getSpecificSKU(items, properties)
+  }
+}
+
 const defaultImage = { imageUrl: '', imageLabel: '' }
 const defaultReference = { Value: '' }
 const defaultSeller = { commertialOffer: { Price: 0, ListPrice: 0 } }
@@ -84,14 +220,24 @@ const defaultSeller = { commertialOffer: { Price: 0, ListPrice: 0 } }
 const resizeImage = (url: string, imageSize: string | number) =>
   changeImageUrlSize(toHttps(url), imageSize)
 
+/**
+ * @description
+ * This method is responsible of constructing the product type for the  product-context.
+ * */
 export function mapCatalogProductToProductSummary(
   product: any,
+  preferredSKU: PreferenceType = 'FIRST_AVAILABLE',
   imageSize: string | number = 500
 ) {
   if (!product) return null
   const normalizedProduct = { ...product }
   const items = normalizedProduct.items || []
-  const sku = items.find(findAvailableProduct) || items[0]
+  const specifications = normalizedProduct.properties || []
+
+  const sku =
+    items.length === 1
+      ? items[0]
+      : findPreferredSKU(items, preferredSKU, specifications)
 
   if (sku) {
     const seller = getDefaultSeller(sku?.sellers) ?? defaultSeller
