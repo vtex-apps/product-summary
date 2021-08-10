@@ -54,6 +54,7 @@ function List({
         product,
         preferredSKU
       )
+
       const position = list.length + index + 1
 
       const handleOnClick = () => {
@@ -90,7 +91,15 @@ function List({
     })
 
     return list.concat(componentList ?? [])
-  }, [products, list, ProductSummary, treePath, listName, actionOnProductClick])
+  }, [
+    products,
+    list,
+    preferredSKU,
+    ProductSummary,
+    treePath,
+    listName,
+    actionOnProductClick,
+  ])
 
   return (
     <ListContextProvider list={newListContextValue}>

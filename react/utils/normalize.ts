@@ -89,6 +89,7 @@ function getPriceBySeller(seller: { commertialOffer: { Price: number } }) {
 function getPriceByCondition(item: { sellers: any }, condition: ConditionRule) {
   // First, if there's only 1 seller, avoid filtering
   const { sellers } = item
+
   if (sellers.length === 1) return sellers[0].commertialOffer.Price
 
   const availableSellers = sellers.filter(
@@ -98,11 +99,13 @@ function getPriceByCondition(item: { sellers: any }, condition: ConditionRule) {
   )
 
   let itemPrice
+
   if (condition === 'expensive') {
     itemPrice = Math.max(...availableSellers.map(getPriceBySeller))
   } else {
     itemPrice = Math.min(...availableSellers.map(getPriceBySeller))
   }
+
   return itemPrice
 }
 
@@ -115,6 +118,7 @@ function getPriceByCondition(item: { sellers: any }, condition: ConditionRule) {
 function getBestSKUPrice(items: any[], condition: ConditionRule) {
   // First, if none or only 1 sku is available, avoid reducing
   const filteredItems = items.filter(getOnlyAvailable)
+
   if (filteredItems.length === 0) return items[0]
   if (filteredItems.length === 1) return filteredItems[0]
 
@@ -124,12 +128,12 @@ function getBestSKUPrice(items: any[], condition: ConditionRule) {
         getPriceByCondition(acc, condition)
         ? curr
         : acc
-    } else {
-      return getPriceByCondition(curr, condition) <
-        getPriceByCondition(acc, condition)
-        ? curr
-        : acc
     }
+
+    return getPriceByCondition(curr, condition) <
+      getPriceByCondition(acc, condition)
+      ? curr
+      : acc
   })
 }
 
@@ -141,7 +145,7 @@ function getBestSKUPrice(items: any[], condition: ConditionRule) {
  * @see {@link https://vtex.io/docs/recipes/all} recipe on how to implement this
  * */
 function getSpecificSKU(items: any[], specifications: any[]) {
-  let defaultSKUspec =
+  const defaultSKUspec =
     specifications.find(
       (spec: { name: string }) => spec.name === 'DefaultSKUSelected'
     ) ?? null
@@ -154,9 +158,9 @@ function getSpecificSKU(items: any[], specifications: any[]) {
 
   if (specificSKU.length) {
     return specificSKU[0]
-  } else {
-    return items[0]
   }
+
+  return items[0]
 }
 
 /**
@@ -202,12 +206,16 @@ function findPreferredSKU(
     default:
     case 'FIRST_AVAILABLE':
       return items.find(findAvailableProduct) || items[0]
+
     case 'LAST_AVAILABLE':
       return items.reverse().find(findAvailableProduct) || items.reverse()[0]
+
     case 'PRICE_ASC':
       return getBestSKUPrice(items, 'cheapest')
+
     case 'PRICE_DESC':
       return getBestSKUPrice(items, 'expensive')
+
     case 'SPECIFICATION':
       return getSpecificSKU(items, properties)
   }
