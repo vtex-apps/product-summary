@@ -102,6 +102,8 @@ interface Props {
    * Name of the list property on Google Analytics events.
    */
   listName?: string
+  /** Custom item */
+  LastItemSummary?: ComponentType
   /** Slot of a product summary. */
   ProductSummary: ComponentType<{ product: any; actionOnClick: any }>
   /** Callback on product click. */
@@ -120,6 +122,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     installmentCriteria,
     children,
     listName: rawListName,
+    LastItemSummary,
     ProductSummary,
     actionOnProductClick,
   } = props
@@ -175,6 +178,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     <ProductSummaryListWithoutQuery
       products={products}
       listName={listName}
+      LastItemSummary={LastItemSummary}
       ProductSummary={ProductSummary}
       actionOnProductClick={productClick}
     >
