@@ -118,11 +118,10 @@ function getPriceByCondition(item: { sellers: any }, condition: ConditionRule) {
 function getBestSKUPrice(items: any[], condition: ConditionRule) {
   // First, if none or only 1 sku is available, avoid reducing
   const filteredItems = items.filter(getOnlyAvailable)
-
   if (filteredItems.length === 0) return items[0]
   if (filteredItems.length === 1) return filteredItems[0]
 
-  return items.reduce((acc: any, curr: any) => {
+  return filteredItems.reduce((acc: any, curr: any) => {
     if (condition === 'expensive') {
       return getPriceByCondition(curr, condition) >
         getPriceByCondition(acc, condition)
