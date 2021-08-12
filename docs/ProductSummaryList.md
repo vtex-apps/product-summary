@@ -38,7 +38,7 @@ This block is used to specify what variation of `product-summary` to be used to 
 | `skusFilter`           | `SkusFilterEnum`                       | Control SKUs returned for each product in the query. The less SKUs needed to be returned, the more performant your shelf query will be.                                                                    | `"ALL_AVAILABLE"`        |
 | `installmentCriteria`  | `InstallmentCriteriaEnum`              | Control what price to be shown when price has different installments options.                                                                                                                              | `"MAX_WITHOUT_INTEREST"` |
 | `listName`             | `String`                               | Name of the list property on Google Analytics events.                                                                                                                                                      | ``                       |
-| `preferredSKU`         | `PreferredSKUEnum`                     | Controls which SKU will be selected in the summary                                                                                                                                                          | `"FIRST_AVAILABLE"`      |
+| `preferredSKU`         | `PreferredSKUEnum`                     | Controls which SKU will be selected in the summary                                                                                                                                                         | `"FIRST_AVAILABLE"`      |
 
 For `SkusFilterEnum`:
 
@@ -57,10 +57,12 @@ For `InstallmentCriteriaEnum`:
 
 For `PreferredSKUEnum`:
 
-| Name              | Value             | Description                                                                              |
-| ----------------- | ----------------- | ---------------------------------------------------------------------------------------- |
-| First Available   | `FIRST_AVAILABLE` | Selects the first available SKU in stock it finds.                                       |
-| Last Available    | `LAST_AVAILABLE`  | Selects the last available SKU in stock it finds.                                        |
-| Cheapest          | `PRICE_ASC`       | Selects the cheapest SKU in stock it finds.                                              |
-| Most Expensive    | `PRICE_DESC`      | Selects the most expensive SKU in stock it finds.                                        |
-| A specific SKU ID | `SPECIFICATION`   | Selects the desired SKU, see how to do it in [Recipes](https://vtex.io/docs/recipes/all) |
+| Name            | Value             | Description                                        |
+| --------------- | ----------------- | -------------------------------------------------- |
+| First Available | `FIRST_AVAILABLE` | Selects the first available SKU in stock it finds. |
+| Last Available  | `LAST_AVAILABLE`  | Selects the last available SKU in stock it finds.  |
+| Cheapest        | `PRICE_ASC`       | Selects the cheapest SKU in stock it finds.        |
+| Most Expensive  | `PRICE_DESC`      | Selects the most expensive SKU in stock it finds.  |
+
+⚠️ Keep in mind that the default behaviour for the initially selected SKU, has now changed to a Product (field) specification.  
+If that one doesn't exist, it will use the `preferredSKU` prop. You can read more about it, and how to implement it in [Recipes](https://vtex.io/docs/recipes/all)
