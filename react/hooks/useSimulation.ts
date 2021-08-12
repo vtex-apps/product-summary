@@ -103,7 +103,7 @@ function useSimulation({
             (seller) => seller.sellerId === '1'
           )
 
-          const { sellers } = item
+          const sellers = Array.from(item.sellers)
 
           sellers[seller1PIndex] = simulationItem.sellers[0]
           const sellerDefault = getDefaultSeller(sellers)
