@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import type { ProductTypes } from 'vtex.product-context'
 
 import { getDefaultSeller } from '../modules/seller'
@@ -169,7 +168,7 @@ function findAnyAvailable({ sellers }: ProductTypes.Item) {
  * @param preferenceFallback the logic for finding an SKU if the ID fails
  * @see {@link https://vtex.io/docs/recipes/all} recipe on how to implement this
  * */
-/* function findDefaultSKU(
+function findDefaultSKU(
   items: ProductTypes.Item[],
   defaultSKUspec: string[],
   preferenceFallback: PreferenceType
@@ -183,7 +182,7 @@ function findAnyAvailable({ sellers }: ProductTypes.Item) {
   }
 
   return findPreferredSKU(items, preferenceFallback)
-} */
+}
 
 /**
  * @description
@@ -241,17 +240,13 @@ export function mapCatalogProductToProductSummary(
       (spec: { name: string }) => spec.name === 'DefaultSKUSelected'
     ) ?? null
 
-  console.log(preferredSKU)
-
   // The SKU will be responsible of setting the `selectedItem` in the product context.
   let sku
 
   if (items.length === 1) {
     sku = items[0]
   } else if (defaultSKUspec) {
-    sku = findPreferredSKU(items, preferredSKU)
-
-    // sku = findDefaultSKU(items, defaultSKUspec.values, preferredSKU)
+    sku = findDefaultSKU(items, defaultSKUspec.values, preferredSKU)
   } else {
     sku = findPreferredSKU(items, preferredSKU)
   }
