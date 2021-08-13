@@ -211,7 +211,7 @@ function findPreferredSKU(
     case 'LAST_AVAILABLE':
       return (
         [...items].reverse().find(getAvailableProduct) ??
-        [...items].reverse()[0]
+        items[items.length - 1]
       )
 
     case 'PRICE_ASC':
