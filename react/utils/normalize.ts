@@ -12,7 +12,6 @@ export type PreferenceType =
   | 'LAST_AVAILABLE'
   | 'PRICE_ASC'
   | 'PRICE_DESC'
-  | 'SPECIFICATION'
 
 type PriceConditionRule = 'lowest' | 'highest'
 
