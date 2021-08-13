@@ -101,13 +101,14 @@ function getBestPrice(item: ProductTypes.Item, condition: PriceConditionRule) {
   if (sellers.length === 1) return sellers[0].commertialOffer.Price
 
   const availableSellers = sellers.filter(isAvailable)
+  const allPrices = availableSellers.map(getPriceFromSeller)
 
   let itemPrice
 
   if (condition === 'highest') {
-    itemPrice = Math.max(...availableSellers.map(getPriceFromSeller))
+    itemPrice = allPrices.reduce((max, price) => (price > max ? price : max))
   } else {
-    itemPrice = Math.min(...availableSellers.map(getPriceFromSeller))
+    itemPrice = allPrices.reduce((min, price) => (price < min ? price : min))
   }
 
   return itemPrice
@@ -133,10 +134,18 @@ function findSKUByPrice(
   let itemToReturn
 
   if (condition === 'highest') {
-    itemToReturn = bestPrices.indexOf(Math.max(...bestPrices))
+    itemToReturn = bestPrices.reduce(
+      (maxIndex, currentPrice, currentIndex) =>
+        currentPrice > bestPrices[maxIndex] ? currentIndex : maxIndex,
+      0
+    )
+  } else {
+    itemToReturn = bestPrices.reduce(
+      (minIndex, currentPrice, currentIndex) =>
+        currentPrice < bestPrices[minIndex] ? currentIndex : minIndex,
+      0
+    )
   }
-
-  itemToReturn = bestPrices.indexOf(Math.min(...bestPrices))
 
   return availableItems[itemToReturn]
 }
