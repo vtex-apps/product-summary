@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - The ability to dynamically choose the SKU that will be initially selected
+
 ## [2.74.1] - 2021-08-09
 
 ### Changed

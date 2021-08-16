@@ -169,7 +169,7 @@ function findAnyAvailable({ sellers }: ProductTypes.Item) {
  * @description
  * Attempts to retrieve the specific SKU using a custom Product (field)
  * in the Catalog. The specification has the value of the SKU ID
- * that will be looking for. If not found by any reason, we default
+ * that will be looking for. If not found for any reason, we default
  * to finding the preferred SKU
  * @param items an array of SKUs
  * @param defaultSKUspec the ID used to find the SKU
@@ -231,7 +231,7 @@ const resizeImage = (url: string, imageSize: string | number) =>
 
 /**
  * @description
- * This method is responsible of constructing the product type for the product-context.
+ * This method is responsible for constructing the product type for the product-context.
  * The property `product.sku` is built by these specifications
  * */
 export function mapCatalogProductToProductSummary(
