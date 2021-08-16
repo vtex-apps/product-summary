@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useState } from 'react'
 import type { PropsWithChildren } from 'react'
 import { CollectionBadges, DiscountBadge } from 'vtex.store-components'
 import classNames from 'classnames'
@@ -8,6 +8,7 @@ import type { ResponsiveValuesTypes } from 'vtex.responsive-values'
 import { useCssHandles } from 'vtex.css-handles'
 import type { CssHandlesTypes } from 'vtex.css-handles'
 import { useProduct } from 'vtex.product-context'
+import { Spinner } from 'vtex.styleguide'
 import {
   ProductSummaryContext,
   ProductSummaryTypes,
@@ -17,6 +18,8 @@ import ImagePlaceholder from './components/ImagePlaceholder'
 import productSummary from './productSummary.css'
 import { changeImageUrlSize } from './utils/normalize'
 import { imageUrl } from './utils/aspectRatioUtil'
+
+
 
 const { useProductSummary } = ProductSummaryContext
 
@@ -46,6 +49,7 @@ type HoverImage = {
   index?: number
   criteria?: HoverImageCriteria
   labelMatchCriteria?: ImageLabelMatchCriteria
+  lazyLoad?:boolean
 }
 
 type GetImageSrcParams = {
@@ -102,6 +106,8 @@ function getHoverImage({
     labelMatchCriteria = 'exact',
     index,
   } = hoverImage ?? {}
+  
+  
 
   if (criteria === 'label') {
     return findImageByLabel(images, label, labelMatchCriteria)
@@ -219,7 +225,11 @@ interface ImageProps {
   className: string
   aspectRatio?: string | number
   maxHeight?: string
+  lazy?: boolean
+  setIsLoaded:(flag:boolean)=> void
+  
 }
+
 
 function Image({
   src,
@@ -230,19 +240,31 @@ function Image({
   className,
   aspectRatio,
   maxHeight,
+  lazy,
+  setIsLoaded
 }: ImageProps) {
   const { isMobile } = useDevice()
 
-  /** TODO: Previously it was as follows :
-   * 
-  const dpi = window.devicePixelRatio || (isMobile ? 2 : 1)
-   *
-   * it seems good, because it takes the actual user's screen density
-   * into account, but causes images to be re-downloaded if the initial
-   * device-based guess was wrong. Has to be looked into */
+  
   const dpi = isMobile ? 2 : 1
 
   const shouldResize = !!(width || height)
+
+  if(lazy){
+    return (
+      <img
+        lazy-src={getImageSrc({ src, width, height, dpi, aspectRatio })}
+        style={getStyle({ width, height, aspectRatio, maxHeight })}
+        // @ts-expect-error This property exists in HTML
+        loading={shouldResize ? 'lazy' : 'auto'}
+        alt={alt}
+        className={className}
+        onError={onError}
+        onLoader={()=>setIsLoaded(true)}
+      />
+    )
+
+  }
 
   return (
     <img
@@ -253,6 +275,17 @@ function Image({
       alt={alt}
       className={className}
       onError={onError}
+      onMouseOver={(event)=>{
+        setIsLoaded(false) as void
+        const lazyImg = (event.target as HTMLImageElement).parentElement?.children[1]
+        const srcValue = lazyImg?.getAttribute("lazy-src")
+        if(srcValue){
+          lazyImg?.removeAttribute("lazy-src")
+          lazyImg?.setAttribute("src",srcValue as string)
+        } 
+      }}
+      
+      
     />
   )
 }
@@ -311,9 +344,15 @@ function ProductImage({
 }: Props) {
   const { product } = useProductSummary()
   const { handles, withModifiers } = useCssHandles(CSS_HANDLES, { classes })
+  
+  const [isLoaded,setIsLoaded] = useState(true)
+  
+  
+  
 
   const [error, setError] = useState(false)
   const onError = () => setError(true)
+  
 
   const { isMobile } = useDevice()
   const productContext = useProduct() ?? {}
@@ -333,6 +372,19 @@ function ProductImage({
     aspectRatioProp,
     maxHeightProp,
   })
+  const images = sku?.images ?? []
+
+  !hoverImage?.lazyLoad ?? false
+  
+    const selectedHoverImage = getHoverImage({
+    images,
+    hoverImage,
+    hoverImageLabel,
+  })
+  
+  
+  
+  
 
   const imageClassName = classNames(
     // legacy class
@@ -375,13 +427,10 @@ function ProductImage({
       </div>
     )
   }
+  
 
-  const images = sku?.images ?? []
-  const selectedHoverImage = getHoverImage({
-    images,
-    hoverImage,
-    hoverImageLabel,
-  })
+  
+  
 
   if (selectedImageVariationSKU == null && mainImageLabel) {
     const mainImage =
@@ -416,6 +465,10 @@ function ProductImage({
     legacyImageClasses,
     !isMobile && productSummary.hoverImage
   )
+  
+  
+  
+  
 
   return (
     <div className={imageClassName}>
@@ -440,9 +493,17 @@ function ProductImage({
               alt={name}
               className={imageClassname}
               onError={onError}
+              lazy={false}
+              setIsLoaded={setIsLoaded}
             />
+            { !isLoaded &&
+            <span className={productSummary.containerSpinner}>
+              <Spinner color="currentColor" size={20} />
+            </span>
+            }
             {selectedHoverImage && !isMobile && (
               <Image
+                lazy={hoverImage?.lazyLoad}
                 src={selectedHoverImage.imageUrl}
                 width={width}
                 height={height}
@@ -451,6 +512,7 @@ function ProductImage({
                 alt={name}
                 className={hoverImageClassname}
                 onError={onError}
+                setIsLoaded={setIsLoaded}
               />
             )}
           </div>
@@ -499,6 +561,7 @@ ProductImage.schema = {
           title: 'admin/editor.productSummaryImage.hoverImage.criteria.title',
           enum: ['index', 'label'],
         },
+
       },
       dependencies: {
         criteria: {
