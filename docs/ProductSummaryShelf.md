@@ -45,7 +45,7 @@ Product Summary Shelf is the main block exported by the Product Summary app. Thr
 
 | Prop name        | Type          | Description                | Default value  |
 | :--------------: | :---------: | :--------------------------: | :------------: |
-| `priceBehavior` | `enum` | Whether the component should fetch the most up-to-date price for all sellers (`async`), only for the first party seller (`asyncOnly1P`) or will not fetch the most up-to-date price (`default`). Remember to also set the [Search Result](https://vtex.io/docs/components/content-blocks/vtex.search-result@3.79.1/#configuration)'s`simulationBehavior` prop to `skip` and use the Product Price's [`product-price-suspense`](https://github.com/vtex-apps/product-price/blob/master/docs/README.md) block to render a loading spinner while the price data is being fetched. | `default` |
+| `priceBehavior` | `enum` | Whether the component should fetch the most up-to-date price (`async`) or not (`default`). Remember to also set the [Search Result](https://vtex.io/docs/components/content-blocks/vtex.search-result@3.79.1/#configuration)'s`simulationBehavior` prop to `skip` and use the Product Price's [`product-price-suspense`](https://github.com/vtex-apps/product-price/blob/master/docs/README.md) block to render a loading spinner while the price data is being fetched. | `default` |
 | `trackListName` | `boolean` | Whether the component should send the list name to the product page when the product summary is clicked. Disabling it will prevent the `productDetail` GTM event sent on the PDP to identify from which list the user navigated from. | `true` |
 
 ## Customization
