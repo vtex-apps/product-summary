@@ -97,7 +97,9 @@ function getBestPrice(item: ProductTypes.Item, condition: PriceConditionRule) {
   // If there's only 1 seller, avoid filtering
   const { sellers } = item
 
-  if (sellers.length === 1) return sellers[0].commertialOffer.Price
+  if (sellers.length === 1) {
+    return sellers[0].commertialOffer.Price
+  }
 
   const availableSellers = sellers.filter(isAvailable)
   const allPrices = availableSellers.map(getPriceFromSeller)
