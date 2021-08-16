@@ -63,6 +63,8 @@
 | `label` | `string` | Text string to match the desired image's `label` value. If no match is found, no image will be displayed during the hover. *Caution*: This prop should only be used when the `criteria` prop is set as `label`. | `undefined`   |
 | `labelMatchCriteria` | `enum` | Criteria to define if the image's `label` searched value should be exactly as provided or if it just needs to contain the substring anywhere in the image's `label`. Possible values are: `exact` (finds the image that matches exactly the string filled in `label` field) and `contains` (finds the first image that contains the substring filled in `label` field). *Caution*: This prop should only be used when the `criteria` prop is set as `label`. | `exact`   |
 | `index` | `number` | Index number to match with the desired image's. If no match is found, no image will be displayed during the hover. *Caution*: This prop should only be used when the `criteria` prop is set as `index`. | `undefined`   |
+| `lazyLoad`| `boolean` | It sets the hover image to not be rendered/loaded/downloaded unless the user hovers on the first image | `false`   |
+
 
 - `width` object:
 
