@@ -36,7 +36,7 @@ const getDefaultSeller = (sellers: ProductSummaryTypes.Seller[]) => {
   )
 
   return sellersWithStock
-    ?.sort((a, b) => a.commertialOffer.Price - b.commertialOffer.Price)
+    ?.sort((a, b) => (a.commertialOffer as any).spotPrice - (b.commertialOffer as any).spotPrice)
     .map((seller) => seller.sellerId)[0]
 }
 
