@@ -13,7 +13,7 @@
   "admin/editor.productSummary.displayBuyButton.title": "구매 버튼 디스플레이 모드",
   "admin/editor.productSummary.displayBuyButton.option.none": "표시 안함",
   "admin/editor.productSummary.displayBuyButton.option.always": "항상 표시",
-  "admin/editor.productSummary.displayBuyButton.option.hover": "hover 표시(웹)",
+  "admin/editor.productSummary.displayBuyButton.option.hover": "가리키면 표시(웹)",
   "store/productSummary.quantity-error": "지정한 금액을 선택할 수 없습니다.",
   "store/productSummary.unit": "단위",
   "store/productSummary.attachmentName": "{sign} {quantity}x {name}",
