@@ -11,6 +11,8 @@ import type { ProductClickParams } from './ProductSummaryList'
 const { ProductListProvider } = ProductListContext
 
 type Props = PropsWithChildren<{
+  /** Custom item */
+  LastItemSummary?: ComponentType<any>
   /** Array of products. */
   products?: any[]
   /** Slot of product summary. */
@@ -35,6 +37,7 @@ type Props = PropsWithChildren<{
 function List({
   children,
   products,
+  LastItemSummary,
   ProductSummary,
   listName,
   actionOnProductClick,
@@ -43,6 +46,7 @@ function List({
   const { treePath } = useTreePath()
 
   const newListContextValue = useMemo(() => {
+
     const componentList = products?.map((product, index) => {
       const normalizedProduct = mapCatalogProductToProductSummary(product)
       const position = list.length + index + 1
@@ -80,6 +84,10 @@ function List({
       )
     })
 
+    if(LastItemSummary) {
+      componentList?.push(<LastItemSummary />)
+    }
+
     return list.concat(componentList ?? [])
   }, [products, list, ProductSummary, treePath, listName, actionOnProductClick])
 
@@ -94,6 +102,7 @@ function ProductSummaryListWithoutQuery({
   children,
   products,
   listName,
+  LastItemSummary,
   ProductSummary,
   actionOnProductClick,
 }: Props) {
@@ -102,6 +111,7 @@ function ProductSummaryListWithoutQuery({
       <List
         products={products}
         listName={listName}
+        LastItemSummary={LastItemSummary}
         ProductSummary={ProductSummary}
         actionOnProductClick={actionOnProductClick}
       >
