@@ -188,7 +188,7 @@ function findDefaultSKU(
   )
 
   if (specificSKU) {
-    return specificSKU[0]
+    return specificSKU
   }
 
   return findPreferredSKU(items, preferenceFallback)

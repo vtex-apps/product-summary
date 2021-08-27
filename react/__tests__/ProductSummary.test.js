@@ -97,7 +97,7 @@ describe('<ProductSummary /> component', () => {
     expect(result).toBeDefined()
     expect(result.sku.seller.sellerId).toBe('1')
     expect(result.sku.image).toBeDefined()
-    expect(result.sku.itemId).toBe('3')
+    expect(result.sku.itemId).toBe('2')
   })
 
   it(`should parse a catalog product and get a specific SKU by it's properties`, () => {
