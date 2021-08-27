@@ -183,11 +183,11 @@ function findDefaultSKU(
   defaultSKUspec: string[],
   preferenceFallback: PreferenceType
 ) {
-  const specificSKU = items.filter(
+  const specificSKU = items.find(
     ({ itemId }) => String(itemId) === String(defaultSKUspec)
   )
 
-  if (specificSKU.length) {
+  if (specificSKU) {
     return specificSKU[0]
   }
 
