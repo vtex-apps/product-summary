@@ -81,9 +81,12 @@ function useSimulation({
   })
 
   useEffect(() => {
+    console.log('use effect')
     if (!response) {
+      console.log('no response, return')
       return
     }
+    console.log('has response, continuing')
 
     const simulationItems = response.itemsWithSimulation
 
