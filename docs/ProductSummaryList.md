@@ -64,5 +64,4 @@ For `PreferredSKUEnum`:
 | Cheapest        | `PRICE_ASC`       | Selects the cheapest SKU in stock it finds.        |
 | Most Expensive  | `PRICE_DESC`      | Selects the most expensive SKU in stock it finds.  |
 
-⚠️ Keep in mind that the default behaviour for the initially selected SKU, has now changed to a Product (field) specification.  
-If that one doesn't exist, it will use the `preferredSKU` prop. You can read more about it, and how to implement it in [Recipes](https://vtex.io/docs/recipes/all)
+⚠️ There's a way to select which SKU should take preference over this prop. You can create a Product (field) specification and per product assign the value of the desired SKU to be initially selected. Keep in mind that If the specification doesn't exist or if the value is empty, it will use the `preferredSKU` prop as fallback. You can read more about it, and how to implement it in [Recipes](https://vtex.io/docs/recipes/all)
