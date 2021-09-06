@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Use `spotPrice` to get the default seller
+- Bug where the `onCompleted` function in the `useSimulation` hook was only being executed once.
+
 ## [2.75.0] - 2021-08-23
 
 ### Added

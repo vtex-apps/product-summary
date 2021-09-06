@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import type { PropsWithChildren } from 'react'
 import { ProductSummaryContext } from 'vtex.product-summary-context'
 import type { ProductSummaryTypes } from 'vtex.product-summary-context'
@@ -21,17 +21,8 @@ function ProductPriceSimulationWrapper({
   const productSummaryDispatch = ProductSummaryContext.useProductSummaryDispatch()
   const setProduct = useSetProduct()
 
-  useSimulation({
-    product,
-    inView,
-    priceBehavior,
-    onError: () => {
-      productSummaryDispatch({
-        type: 'SET_PRICE_LOADING',
-        args: { isPriceLoading: false },
-      })
-    },
-    onComplete: (simulatedProduct) => {
+  const onComplete = useCallback(
+    (simulatedProduct) => {
       setProduct(simulatedProduct)
 
       productSummaryDispatch({
@@ -39,6 +30,22 @@ function ProductPriceSimulationWrapper({
         args: { isPriceLoading: false },
       })
     },
+    [setProduct, productSummaryDispatch]
+  )
+
+  const onError = useCallback(() => {
+    productSummaryDispatch({
+      type: 'SET_PRICE_LOADING',
+      args: { isPriceLoading: false },
+    })
+  }, [productSummaryDispatch])
+
+  useSimulation({
+    product,
+    inView,
+    priceBehavior,
+    onError,
+    onComplete,
   })
 
   return <>{children}</>

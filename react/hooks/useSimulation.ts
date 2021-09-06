@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useQuery } from 'react-apollo'
 import type { ProductSummaryTypes } from 'vtex.product-summary-context'
 import { QueryItemsWithSimulation } from 'vtex.store-resources'
@@ -36,7 +36,7 @@ const getDefaultSeller = (sellers: ProductSummaryTypes.Seller[]) => {
   )
 
   return sellersWithStock
-    ?.sort((a, b) => a.commertialOffer.Price - b.commertialOffer.Price)
+    ?.sort((a, b) => a.commertialOffer.spotPrice - b.commertialOffer.spotPrice)
     .map((seller) => seller.sellerId)[0]
 }
 
@@ -55,6 +55,10 @@ function useSimulation({
   onError,
   priceBehavior,
 }: Params) {
+  const [simulatedProduct, setSimulatedProduct] = useState<
+    ProductSummaryTypes.Product
+  >()
+
   const items = product.items || []
 
   const simulationItemsInput = useMemo(() => {
@@ -144,9 +148,15 @@ function useSimulation({
 
       mergedProduct.sku.image = product.sku.image
 
-      onComplete(mergedProduct)
+      setSimulatedProduct(mergedProduct)
     },
   })
+
+  useEffect(() => {
+    if (simulatedProduct) {
+      onComplete(simulatedProduct)
+    }
+  }, [simulatedProduct, onComplete])
 }
 
 export default useSimulation
