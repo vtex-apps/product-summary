@@ -3,13 +3,13 @@ import type { CssHandlesTypes } from 'vtex.css-handles'
 import { useCssHandles } from 'vtex.css-handles'
 import { ProductSummaryContext } from 'vtex.product-summary-context'
 
+const { useProductSummary } = ProductSummaryContext
+
 const CSS_HANDLES = ['referenceContainer'] as const
 
 interface Props {
   classes: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
-
-const { useProductSummary } = ProductSummaryContext
 
 const ProductSummaryReference = ({ classes }: Props) => {
   const { product } = useProductSummary()
