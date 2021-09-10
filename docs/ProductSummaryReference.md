@@ -2,7 +2,7 @@
 
 # Product Summary Reference
 
-_Product Summary Reference_ renders the selected SKU's name.
+_Product Summary Reference_ renders the product's reference id.
 
 ## Configuration
 
@@ -11,16 +11,15 @@ You should follow the usage instruction in the main [README](https://github.com/
 Then, add `product-summary-reference` block into your app theme as children of `product-summary.shelf`, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
 
 ```diff
-   "product-summary.shelf": {
-    "children": [
-      "product-summary-image",
-      "product-summary-name",
-+     "product-summary-reference",
-      "product-summary-attachment-list",
-      "product-summary-space",
-      "product-summary-column#1"
-    ]
-  },
+     "children": [
+       "product-summary-image",
+       "product-summary-name",
++      "product-summary-reference",
+       "product-summary-attachment-list",
+       "product-summary-space",
+       "product-summary-column#1"
+     ]
+  }
 ```
 
 ## Customization
