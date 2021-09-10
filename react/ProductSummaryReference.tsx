@@ -14,7 +14,7 @@ interface Props {
 const ProductSummaryReference = ({ classes }: Props) => {
   const { product } = useProductSummary()
   const { handles } = useCssHandles(CSS_HANDLES, { classes })
-  const productReference: string = product.productReference ?? ''
+  const { productReference } = product
 
   if (!productReference) {
     return null
