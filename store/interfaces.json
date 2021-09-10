@@ -60,7 +60,7 @@
   "product-summary-brand": {
     "component": "ProductSummaryBrand"
   },
-  "product-summary-reference":{
+  "product-summary-reference": {
     "component": "ProductSummaryReference"
   },
   "product-summary-price": {
