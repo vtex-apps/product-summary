@@ -4,7 +4,10 @@ import { ExtensionPoint, useTreePath } from 'vtex.render-runtime'
 import { useListContext, ListContextProvider } from 'vtex.list-context'
 import { ProductListContext } from 'vtex.product-list-context'
 
-import { mapCatalogProductToProductSummary } from './utils/normalize'
+import {
+  mapCatalogProductToProductSummary,
+  PreferenceType,
+} from './utils/normalize'
 import ProductListEventCaller from './components/ProductListEventCaller'
 import type { ProductClickParams } from './ProductSummaryList'
 
@@ -30,6 +33,8 @@ type Props = PropsWithChildren<{
     product: any,
     productClickParams?: ProductClickParams
   ) => void
+  /** Logic to enable which SKU will be the selected item */
+  preferredSKU?: PreferenceType
 }>
 
 function List({
@@ -38,13 +43,18 @@ function List({
   ProductSummary,
   listName,
   actionOnProductClick,
+  preferredSKU,
 }: Props) {
   const { list } = useListContext()
   const { treePath } = useTreePath()
 
   const newListContextValue = useMemo(() => {
     const componentList = products?.map((product, index) => {
-      const normalizedProduct = mapCatalogProductToProductSummary(product)
+      const normalizedProduct = mapCatalogProductToProductSummary(
+        product,
+        preferredSKU
+      )
+
       const position = list.length + index + 1
 
       const handleOnClick = () => {
@@ -81,7 +91,15 @@ function List({
     })
 
     return list.concat(componentList ?? [])
-  }, [products, list, ProductSummary, treePath, listName, actionOnProductClick])
+  }, [
+    products,
+    list,
+    preferredSKU,
+    ProductSummary,
+    treePath,
+    listName,
+    actionOnProductClick,
+  ])
 
   return (
     <ListContextProvider list={newListContextValue}>
@@ -96,10 +114,12 @@ function ProductSummaryListWithoutQuery({
   listName,
   ProductSummary,
   actionOnProductClick,
+  preferredSKU,
 }: Props) {
   return (
     <ProductListProvider listName={listName ?? ''}>
       <List
+        preferredSKU={preferredSKU}
         products={products}
         listName={listName}
         ProductSummary={ProductSummary}

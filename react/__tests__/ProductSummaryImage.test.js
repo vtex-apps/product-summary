@@ -5,6 +5,10 @@ import ProductImage from '../ProductSummaryImage'
 import ProductSummary from '../ProductSummaryCustom'
 
 describe('<ProductImage /> component', () => {
+  const inheritedProps = {
+    preferredSKU: 'FIRST_AVAILABLE',
+  }
+
   it('should render one img element', () => {
     const rawProduct = {
       productId: '123456789',
@@ -40,7 +44,10 @@ describe('<ProductImage /> component', () => {
       quantity: 1,
     }
 
-    const product = ProductSummary.mapCatalogProductToProductSummary(rawProduct)
+    const product = ProductSummary.mapCatalogProductToProductSummary(
+      rawProduct,
+      inheritedProps.preferredSKU
+    )
 
     const { container } = render(
       <ProductSummary product={product}>
@@ -85,7 +92,10 @@ describe('<ProductImage /> component', () => {
       quantity: 1,
     }
 
-    const product = ProductSummary.mapCatalogProductToProductSummary(rawProduct)
+    const product = ProductSummary.mapCatalogProductToProductSummary(
+      rawProduct,
+      inheritedProps.preferredSKU
+    )
 
     const { container } = render(
       <ProductSummary product={product}>
@@ -133,7 +143,10 @@ describe('<ProductImage /> component', () => {
 
     const placeholder = 'placeholder-image-url'
 
-    const product = ProductSummary.mapCatalogProductToProductSummary(rawProduct)
+    const product = ProductSummary.mapCatalogProductToProductSummary(
+      rawProduct,
+      inheritedProps.preferredSKU
+    )
 
     const { container } = render(
       <ProductSummary product={product}>
