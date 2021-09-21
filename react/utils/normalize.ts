@@ -1,9 +1,19 @@
+import type { ProductTypes } from 'vtex.product-context'
+
 import { getDefaultSeller } from '../modules/seller'
 
 export const DEFAULT_WIDTH = 'auto'
 export const DEFAULT_HEIGHT = 'auto'
 export const MAX_WIDTH = 3000
 export const MAX_HEIGHT = 4000
+
+export type PreferenceType =
+  | 'FIRST_AVAILABLE'
+  | 'LAST_AVAILABLE'
+  | 'PRICE_ASC'
+  | 'PRICE_DESC'
+
+type PriceConditionRule = 'lowest' | 'highest'
 
 /**
  * Having the url below as base for the LEGACY file manager,
@@ -67,14 +77,151 @@ export function changeImageUrlSize(
   return `${normalizedImageUrl}${queryStringSeparator}width=${width}&height=${height}&aspect=true`
 }
 
-function findAvailableProduct(item: {
-  sellers: Array<{ commertialOffer: { AvailableQuantity: number } }>
-}) {
-  return item.sellers.find(
-    ({ commertialOffer = {} }) =>
-      commertialOffer.AvailableQuantity != null &&
-      commertialOffer.AvailableQuantity > 0
+function getPriceFromSeller(seller: ProductTypes.Seller) {
+  return seller.commertialOffer.Price
+}
+
+function isAvailable({
+  commertialOffer: { AvailableQuantity },
+}: ProductTypes.Seller) {
+  return AvailableQuantity != null && AvailableQuantity > 0
+}
+
+/**
+ * @description
+ * Find the lowest/highest `Price` between sellers
+ * @param item an SKU
+ * @param condition the condition enum used for comparison functions
+ * */
+function getBestPrice(item: ProductTypes.Item, condition: PriceConditionRule) {
+  // If there's only 1 seller, avoid filtering
+  const { sellers } = item
+
+  if (sellers.length === 1) {
+    return sellers[0].commertialOffer.Price
+  }
+
+  const availableSellers = sellers.filter(isAvailable)
+  const allPrices = availableSellers.map(getPriceFromSeller)
+
+  let itemPrice
+
+  if (condition === 'highest') {
+    itemPrice = allPrices.reduce((max, price) => (price > max ? price : max))
+  } else {
+    itemPrice = allPrices.reduce((min, price) => (price < min ? price : min))
+  }
+
+  return itemPrice
+}
+
+/**
+ * @description
+ * Retrieves the SKU with the best price considering a provided condition
+ * @param items an array of SKUs
+ * @param condition the condition [highest|lowest]
+ * */
+function findSKUByPrice(
+  items: ProductTypes.Item[],
+  condition: PriceConditionRule
+) {
+  // If none or only 1 sku is available, avoid reducing
+  const availableItems = items.filter(findAnyAvailable)
+
+  if (availableItems.length === 0) return items[0]
+  if (availableItems.length === 1) return availableItems[0]
+
+  const bestPrices = availableItems.map((item) => getBestPrice(item, condition))
+  let itemToReturn
+
+  if (condition === 'highest') {
+    itemToReturn = bestPrices.reduce(
+      (maxIndex, currentPrice, currentIndex) =>
+        currentPrice > bestPrices[maxIndex] ? currentIndex : maxIndex,
+      0
+    )
+  } else {
+    itemToReturn = bestPrices.reduce(
+      (minIndex, currentPrice, currentIndex) =>
+        currentPrice < bestPrices[minIndex] ? currentIndex : minIndex,
+      0
+    )
+  }
+
+  return availableItems[itemToReturn]
+}
+
+/**
+ * @summary
+ * Used to return the first available SKU
+ * */
+function getAvailableProduct({ sellers }: ProductTypes.Item) {
+  return sellers.find(isAvailable)
+}
+
+/**
+ * @summary
+ * Used to probe if at least 1 seller has stock
+ * */
+function findAnyAvailable({ sellers }: ProductTypes.Item) {
+  return sellers.some(isAvailable)
+}
+
+/**
+ * @description
+ * Attempts to retrieve the specific SKU using a custom Product (field)
+ * in the Catalog. The specification has the value of the SKU ID
+ * that will be looking for. If not found for any reason, we default
+ * to finding the preferred SKU
+ * @param items an array of SKUs
+ * @param defaultSKUspec the ID used to find the SKU
+ * @param preferenceFallback the logic for finding an SKU if the ID fails
+ * @see {@link https://vtex.io/docs/recipes/all} recipe on how to implement this
+ * */
+function findDefaultSKU(
+  items: ProductTypes.Item[],
+  defaultSKUspec: string[],
+  preferenceFallback: PreferenceType
+) {
+  const specificSKU = items.find(
+    ({ itemId }) => String(itemId) === String(defaultSKUspec)
   )
+
+  if (specificSKU) {
+    return specificSKU
+  }
+
+  return findPreferredSKU(items, preferenceFallback)
+}
+
+/**
+ * @description
+ * If there's more than one `Item`, and if there's no defaultSKU, this will
+ * retrieve a suitable one depending on the logic provided
+ * @param items an array of SKUs
+ * @param preferredSKU the logic for finding an SKU
+ * */
+function findPreferredSKU(
+  items: ProductTypes.Item[],
+  preferredSKU: PreferenceType
+) {
+  switch (preferredSKU) {
+    default:
+    case 'FIRST_AVAILABLE':
+      return items.find(getAvailableProduct) ?? items[0]
+
+    case 'LAST_AVAILABLE':
+      return (
+        [...items].reverse().find(getAvailableProduct) ??
+        items[items.length - 1]
+      )
+
+    case 'PRICE_ASC':
+      return findSKUByPrice(items, 'lowest')
+
+    case 'PRICE_DESC':
+      return findSKUByPrice(items, 'highest')
+  }
 }
 
 const defaultImage = { imageUrl: '', imageLabel: '' }
@@ -84,14 +231,35 @@ const defaultSeller = { commertialOffer: { Price: 0, ListPrice: 0 } }
 const resizeImage = (url: string, imageSize: string | number) =>
   changeImageUrlSize(toHttps(url), imageSize)
 
+/**
+ * @description
+ * This method is responsible for constructing the product type for the product-context.
+ * The property `product.sku` is built by these specifications
+ * */
 export function mapCatalogProductToProductSummary(
-  product: any,
+  product: ProductTypes.Product,
+  preferredSKU: PreferenceType = 'FIRST_AVAILABLE',
   imageSize: string | number = 500
 ) {
   if (!product) return null
-  const normalizedProduct = { ...product }
+  const normalizedProduct: any = { ...product }
   const items = normalizedProduct.items || []
-  const sku = items.find(findAvailableProduct) || items[0]
+  const specifications = normalizedProduct.properties || []
+  const defaultSKUspec =
+    specifications.find(
+      (spec: { name: string }) => spec.name === 'DefaultSKUSelected'
+    ) ?? null
+
+  // The SKU will be responsible of setting the `selectedItem` in the product context.
+  let sku
+
+  if (items.length === 1) {
+    sku = items[0]
+  } else if (defaultSKUspec) {
+    sku = findDefaultSKU(items, defaultSKUspec.values, preferredSKU)
+  } else {
+    sku = findPreferredSKU(items, preferredSKU)
+  }
 
   if (sku) {
     const seller = getDefaultSeller(sku?.sellers) ?? defaultSeller
