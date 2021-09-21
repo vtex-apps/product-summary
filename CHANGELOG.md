@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - I18n Bg and Bs.
 
 ### Fixed
-- I18n Fr, It, Ja, Ko and Ro.
+- I18n En, Fr, It, Ko and Ro.
 
 ## [2.76.0] - 2021-09-17
 ### Added
