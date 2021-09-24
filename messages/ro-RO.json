@@ -69,6 +69,6 @@
   "admin/editor.productSummaryList.installmentCriteria.description": "Alege ce tip de rate vrei să fie afișate (ex: maxime fără dobândă sau cu dobândă).",
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum fără dobândă",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum",
-  "admin/editor.productSummaryList.analyticsListName.title": "Denumire listă în Analytics",
+  "admin/editor.productSummaryList.analyticsListName.title": "Numele listei în Analytics",
   "admin/editor.productSummary.trackListName.title": "Trebuie monitorizată denumirea listei"
 }

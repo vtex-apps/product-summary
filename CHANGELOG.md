@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- I18n Bg and Bs.
+
+### Fixed
+- I18n En, Fr, It, Ko and Ro.
+
 ## [2.76.0] - 2021-09-17
 ### Added
 - The ability to dynamically choose the SKU that will be initially selected
