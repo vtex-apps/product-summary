@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Version param to images to permit caching it on CDN.
+
 ## [2.77.0] - 2021-09-24
 
 ### Added
