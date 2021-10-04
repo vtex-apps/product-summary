@@ -40,7 +40,6 @@ function toHttps(url: string) {
   return url.replace(httpRegex, 'https://')
 }
 
-
 export function cleanImageUrl(imageUrl: string) {
   const cleanUrlResult = baseUrlRegex.exec(imageUrl)
   const vParam = getParamFromUrl(imageUrl, 'v')
