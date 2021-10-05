@@ -45,7 +45,7 @@
   "admin/editor.productSummaryList.category.title": "ID Categorie",
   "admin/editor.productSummaryList.category.description": "Pentru sub-categorii, folosește „/” (de exemplu, 1/2/3)",
   "admin/editor.productSummaryList.collection.title": "Colecție",
-  "admin/editor.productSummaryList.orderBy.title": "Ordonarea listei",
+  "admin/editor.productSummaryList.orderBy.title": "Sortare listă",
   "admin/editor.productSummaryList.hideUnavailableItems": "Ascunde articolele indisponibile",
   "admin/editor.productSummaryList.maxItems.title": "Cantitatea maximă de articole",
   "admin/editor.productSummaryList.specificationFilters.title": "Filtre specificație",
