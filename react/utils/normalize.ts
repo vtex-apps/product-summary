@@ -32,16 +32,26 @@ const baseUrlRegex = new RegExp(/.+ids\/(\d+)/)
 
 const httpRegex = new RegExp(/http:\/\//)
 
+function getParamFromUrl(url: string, name: string) {
+  return (url?.split(`${name}=`)[1] ?? '')?.split('&')[0]
+}
+
 function toHttps(url: string) {
   return url.replace(httpRegex, 'https://')
 }
 
-function cleanImageUrl(imageUrl: string) {
-  const result = baseUrlRegex.exec(imageUrl)
+export function cleanImageUrl(imageUrl: string) {
+  const cleanUrlResult = baseUrlRegex.exec(imageUrl)
+  const vParam = getParamFromUrl(imageUrl, 'v')
 
-  if (!result || result.length === 0) return
+  if (cleanUrlResult && cleanUrlResult.length > 0) {
+    return {
+      cleanUrl: cleanUrlResult[0],
+      vParam,
+    }
+  }
 
-  return result[0]
+  return { cleanUrl: imageUrl }
 }
 
 function replaceLegacyFileManagerUrl(
@@ -54,7 +64,11 @@ function replaceLegacyFileManagerUrl(
 
   if (!isLegacyUrl) return imageUrl
 
-  return `${cleanImageUrl(imageUrl)}-${width}-${height}`
+  const { vParam, cleanUrl } = cleanImageUrl(imageUrl)
+
+  return vParam
+    ? `${cleanUrl}-${width}-${height}?v=${vParam}`
+    : `${cleanUrl}-${width}-${height}`
 }
 
 export function changeImageUrlSize(
