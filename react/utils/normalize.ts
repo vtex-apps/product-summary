@@ -33,7 +33,7 @@ const baseUrlRegex = new RegExp(/.+ids\/(\d+)/)
 const httpRegex = new RegExp(/http:\/\//)
 
 function getParamFromUrl(url: string, name: string) {
-  return (url.split(`${name}=`)[1] || '').split('&')[0]
+  return (url?.split(`${name}=`)[1] ?? '')?.split('&')[0]
 }
 
 function toHttps(url: string) {
