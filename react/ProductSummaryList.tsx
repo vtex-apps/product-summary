@@ -7,6 +7,7 @@ import { usePixel } from 'vtex.pixel-manager'
 import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 
 import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
+import { PreferenceType } from './utils/normalize'
 
 const ORDER_BY_OPTIONS = {
   RELEVANCE: {
@@ -102,6 +103,10 @@ interface Props {
    * Name of the list property on Google Analytics events.
    */
   listName?: string
+  /**
+   * Logic to enable which SKU will be the selected item
+   * */
+  preferredSKU?: PreferenceType
   /** Slot of a product summary. */
   ProductSummary: ComponentType<{ product: any; actionOnClick: any }>
   /** Callback on product click. */
@@ -122,6 +127,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     listName: rawListName,
     ProductSummary,
     actionOnProductClick,
+    preferredSKU,
   } = props
 
   const { push } = usePixel()
@@ -177,6 +183,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
       listName={listName}
       ProductSummary={ProductSummary}
       actionOnProductClick={productClick}
+      preferredSKU={preferredSKU}
     >
       <ProductListStructuredData products={products} />
       {children}

@@ -9,7 +9,7 @@ import useSetProduct from '../hooks/useSetProduct'
 interface Props {
   product: ProductSummaryTypes.Product
   inView: boolean
-  priceBehavior: 'async' | 'default'
+  priceBehavior: 'async' | 'asyncOnly1P' | 'default'
 }
 
 function ProductPriceSimulationWrapper({

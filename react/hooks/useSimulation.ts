@@ -7,7 +7,8 @@ import clone from '../utils/clone'
 
 const mergeSellers = (
   sellerA: ProductSummaryTypes.Seller,
-  sellerB: ProductSummaryTypes.Seller
+  sellerB: ProductSummaryTypes.Seller,
+  sellerDefault?: string
 ) => {
   sellerA.commertialOffer = {
     ...sellerA.commertialOffer,
@@ -19,7 +20,24 @@ const mergeSellers = (
     sellerA.commertialOffer.AvailableQuantity = 0
   }
 
-  return sellerA
+  if (!sellerDefault) {
+    return sellerA
+  }
+
+  return {
+    ...sellerA,
+    sellerDefault: sellerA.sellerId === sellerDefault,
+  }
+}
+
+const getDefaultSeller = (sellers: ProductSummaryTypes.Seller[]) => {
+  const sellersWithStock = sellers.filter(
+    (seller) => seller.commertialOffer.AvailableQuantity !== 0
+  )
+
+  return sellersWithStock
+    ?.sort((a, b) => a.commertialOffer.Price - b.commertialOffer.Price)
+    .map((seller) => seller.sellerId)[0]
 }
 
 type Params = {
@@ -27,7 +45,7 @@ type Params = {
   inView: boolean
   onComplete: (product: ProductSummaryTypes.Product) => void
   onError: () => void
-  priceBehavior: 'async' | 'default'
+  priceBehavior: 'async' | 'asyncOnly1P' | 'default'
 }
 
 function useSimulation({
@@ -39,22 +57,25 @@ function useSimulation({
 }: Params) {
   const items = product.items || []
 
-  const simulationItemsInput = useMemo(
-    () =>
-      items.map((item) => ({
+  const simulationItemsInput = useMemo(() => {
+    if (priceBehavior === 'async') {
+      return items.map((item) => ({
         itemId: item.itemId,
-        sellers: item.sellers.map((seller) => ({
-          sellerId: seller.sellerId,
-        })),
-      })),
-    [items]
-  )
+        sellers: item.sellers.map((seller) => ({ sellerId: seller.sellerId })),
+      }))
+    }
+
+    return items.map((item) => ({
+      itemId: item.itemId,
+      sellers: [{ sellerId: '1' }],
+    }))
+  }, [items, priceBehavior])
 
   useQuery(QueryItemsWithSimulation, {
     variables: {
       items: simulationItemsInput,
     },
-    skip: priceBehavior !== 'async' || !inView,
+    skip: priceBehavior === 'default' || !inView,
     ssr: false,
     onError,
     onCompleted: (response) => {
@@ -69,11 +90,41 @@ function useSimulation({
       mergedProduct.items.forEach((item, itemIndex) => {
         const simulationItem = simulationItems[itemIndex]
 
-        item.sellers = item.sellers.map((seller, simulationIndex) => {
-          const sellerSimulation = simulationItem.sellers[simulationIndex]
+        if (priceBehavior === 'async') {
+          const sellerDefault = getDefaultSeller(simulationItem.sellers)
 
-          return mergeSellers(seller, sellerSimulation)
-        })
+          item.sellers = item.sellers.map((seller, simulationIndex) => {
+            const sellerSimulation = simulationItem.sellers[simulationIndex]
+
+            return mergeSellers(seller, sellerSimulation, sellerDefault)
+          })
+        } else {
+          const seller1PIndex = item.sellers.findIndex(
+            (seller) => seller.sellerId === '1'
+          )
+
+          const sellers = Array.from(item.sellers)
+
+          sellers[seller1PIndex] = simulationItem.sellers[0]
+          const sellerDefault = getDefaultSeller(sellers)
+
+          item.sellers = item.sellers.map((seller) => {
+            if (seller.sellerId !== '1') {
+              return !sellerDefault
+                ? seller
+                : {
+                    ...seller,
+                    sellerDefault: seller.sellerId === sellerDefault,
+                  }
+            }
+
+            return mergeSellers(
+              seller,
+              simulationItem.sellers[0],
+              sellerDefault
+            )
+          })
+        }
       })
 
       mergedProduct.sku = mergedProduct.items.find(
@@ -81,9 +132,9 @@ function useSimulation({
       ) as ProductSummaryTypes.SingleSKU
 
       if (mergedProduct.sku.sellers.length > 0) {
-        mergedProduct.sku.seller = mergedProduct.sku.sellers.find(
-          (seller) => seller.sellerId === product.sku.seller.sellerId
-        ) as ProductSummaryTypes.Seller
+        mergedProduct.sku.seller = (mergedProduct.sku.sellers.find(
+          (seller) => seller.sellerDefault
+        ) ?? mergedProduct.sku.sellers[0]) as ProductSummaryTypes.Seller
       } else {
         mergedProduct.sku.seller = {
           // @ts-expect-error We are not providing the full type

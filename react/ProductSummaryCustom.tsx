@@ -185,10 +185,10 @@ interface Props {
   actionOnClick?: () => void
   href?: string
   /**
-   * Whether the client will request the simulation API ("async") or not "default"
+   * Whether the client will request the simulation API for all sellers ("async"), only for the 1P seller ("asyncOnly1P") or if will not request the API ("default")
    * @default "default"
    */
-  priceBehavior?: 'async' | 'default'
+  priceBehavior?: 'async' | 'asyncOnly1P' | 'default'
   /**
    * Name of the list the Product Summary is in. Should be set by a Shelf or the Search Result gallery.
    */
@@ -221,7 +221,9 @@ function ProductSummaryWrapper({
     <ProductSummaryProvider
       product={product}
       listName={trackListName ? listName : undefined}
-      isPriceLoading={priceBehavior === 'async'}
+      isPriceLoading={
+        priceBehavior === 'async' || priceBehavior === 'asyncOnly1P'
+      }
     >
       <ProductSummaryCustom
         product={product}
