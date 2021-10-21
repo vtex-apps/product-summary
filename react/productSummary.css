@@ -90,6 +90,15 @@
 .hoverEffect:hover .mainImageHovered {
   opacity: 0;
 }
+.hoverEffect:hover > span.containerSpinner {
+  display: block;
+}
+span.containerSpinner{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+}
 
 .hoverImage {
 }
