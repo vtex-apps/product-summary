@@ -1,67 +1,52 @@
-# ProductSummaryList
+# Product Summary List
 
-The `list-context.product-list` interface is a instance of the `list-context` interfaces, which means its part of a set of special interfaces that enables you to create lists of content that can be edited via Site Editor.
+The `list-context.product-list` block is an instance of the `list-context` interfaces, meaning that it is a part of a set of special interfaces that enables you to create a products list that can be edited via [Site Editor](https://developers.vtex.com/vtex-developer-docs/docs/vtex-io-documentation-site-editor).
 
-In order to create a list of products, you need to use the `list-context.product-list` block and a `product-summary.shelf`.
+It performs the GraphQL query that fetches the desired list of products for your store. Because of this, it is an essential block when [building a Shelf component for your store](https://developers.vtex.com/vtex-developer-docs/docs/vtex-io-documentation-building-a-shelf). 
 
-## product-list-block
+![foto-shelf](https://user-images.githubusercontent.com/52087100/70079904-60dc5280-15e4-11ea-8ef6-0aa69cadd61d.png)
 
-This block is used to specify what variation of `product-summary` to be used to create the list of products, and the `list-context.product-list` you want as follows:
+## Configuration
+
+1. Add the Product Summary app to your theme's dependencies on the manifest.json, for example:
+
+```
+  dependencies: {
+    "vtex.product-summary": "2.x"
+  }
+```
+
+2. Add the `list-context.product-list` block to the store theme template where you desire to display a product list and declare the `product-summary.shelf` in its block list. For example:
 
 ```json
-  "product-summary.shelf#demo1": {
-    "children": [
-      "stack-layout#prodsum",
-      "product-summary-name",
-      "product-rating-inline",
-      "product-summary-space",
-      "product-summary-price",
-      "product-summary-buy-button"
-    ]
-  },
-  "list-context.product-list#demo1": {
-    "blocks": ["product-summary.shelf#demo1"],
-    "children": ["slider-layout#demo-products"]
+{
+  "list-context.product-list": {
+    "blocks": ["product-summary.shelf"]
   },
 ```
 
-`list-context.product-list` is also responsible for performing the GraphQL query that fetches the list of products, so it can receive the following props:
+>ℹ️ Info
+>
+> Do not forget to check out the [`product-summary.shelf` block documentation](https://vtex.io/docs/components/all/vtex.product-summary@2.77.1/product-summary-shelf/) in order to keep evolving your product list. You can also check out the [Building a Shelf documentation](https://developers.vtex.com/vtex-developer-docs/docs/vtex-io-documentation-building-a-shelf) that teaches how to build a product list for the Shelf component.
 
-| Prop name              | Type                                   | Description                                                                                                                                                                                                | Default value            |
-| ---------------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
-| `category`             | `String`                               | Category ID of the listed items. For sub-categories, use "/" (e.g. "1/2/3")                                                                                                                                | -                        |
-| `specificationFilters` | `Array({ id: String, value: String })` | Specification Filters of the listed items.                                                                                                                                                                 | []                       |
-| `collection`           | `String`                               | Filter by collection.                                                                                                                                                                                      | -                        |
-| `orderBy`              | `Enum`                                 | Ordination type of the items. Possible values: `''`, `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, `OrderByNameDESC` | `OrderByTopSaleDESC`     |
-| `hideUnavailableItems` | `Boolean`                              | Hides items that are unavailable.                                                                                                                                                                          | `false`                  |
-| `maxItems`             | `Number`                               | Maximum items to be fetched.                                                                                                                                                                               | `10`                     |
-| `skusFilter`           | `SkusFilterEnum`                       | Control SKUs returned for each product in the query. The less SKUs needed to be returned, the more performant your shelf query will be.                                                                    | `"ALL_AVAILABLE"`        |
-| `installmentCriteria`  | `InstallmentCriteriaEnum`              | Control what price to be shown when price has different installments options.                                                                                                                              | `"MAX_WITHOUT_INTEREST"` |
-| `listName`             | `String`                               | Name of the list property on Google Analytics events.                                                                                                                                                      | ``                       |
-| `preferredSKU`         | `PreferredSKUEnum`                     | Controls which SKU will be selected in the summary                                                                                                                                                         | `"FIRST_AVAILABLE"`      |
+| Prop name | Type | Description  | Default value |
+| --------- | ---- |------------- | ------------- |
+| `category`| `string`| Listed items' category ID. For sub-categories, use `/` (e.g. `1/2/3`). | `undefined` |
+| `specificationFilters` | `object` | Listed items' specification filters. For more on this, check out the `specificationFilters` object section below. | `undefined`|
+| `collection`| `string` | Listed item's collection ID. | `undefined` |
+| `orderBy`   | `enum`   | Items sorting in the list. Possible values are: `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, or `OrderByNameDESC`. | `OrderByTopSaleDESC`|
+| `hideUnavailableItems` | `boolean`| Whether unavailable items should be hidden from the list (`true`) or not (`false`).  | `false`|
+| `maxItems` | `number`   | Maximum number of items to be fetched for the list.      | `10`       |
+| `skusFilter` | `enum`   | Controls the number of SKUs fetched in the query for each listed product. Notice the following: the less SKUs needs to be returned, the more performant your product list query will be. Possible values are: `FIRST_AVAILABLE` (most performant, returns only the first SKU available for the product), `ALL_AVAILABLE` (returns all available SKUs), or `ALL` (least performant option, returns all SKUs related to the product being displayed).  | `ALL_AVAILABLE` |
+| `installmentCriteria`   | `enum`  | Defines the price to be shown when the product has different installments options. Possible values are: `MAX_WITHOUT_INTEREST` (displays the price with maximum number of installments with no interest applied) or `MAX_WITH_INTEREST` (displayes the price with maximum number of installments, having it interest applied or not). | `MAX_WITHOUT_INTEREST` |
 
-For `SkusFilterEnum`:
+- **`specificationFilters` object**
 
-| Name            | Value             | Description                                                                                                                                            |
-| --------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| First Available | `FIRST_AVAILABLE` | Most performant, ideal if you do not have a SKU selector in your shelf. Will return only the first available SKU for that product in your shelf query. |
-| All Available   | `ALL_AVAILABLE`   | A bit better performace, will only return SKUs that are available, ideal if you have a SKU selector but still want a better performance.               |
-| All             | `ALL`             | Returns all SKUs related to that product, least performant option.                                                                                     |
+| Prop name | Type | Description | Default value | 
+| --------- | ---- | ----------- | ------------- | 
+| `id`  | `string` | Specification filter ID. | `undefined` | 
+| `value` | `string` | Specification filter value. | `undefined` | 
 
-For `InstallmentCriteriaEnum`:
+## Customization
 
-| Name                     | Value                  | Description                                                         |
-| ------------------------ | ---------------------- | ------------------------------------------------------------------- |
-| Maximum without interest | `MAX_WITHOUT_INTEREST` | Will display the maximum installment option with no interest.       |
-| Maximum                  | `MAX_WITH_INTEREST`    | Will display the maximum installment option having interest or not. |
-
-For `PreferredSKUEnum`:
-
-| Name            | Value             | Description                                        |
-| --------------- | ----------------- | -------------------------------------------------- |
-| First Available | `FIRST_AVAILABLE` | Selects the first available SKU in stock it finds. |
-| Last Available  | `LAST_AVAILABLE`  | Selects the last available SKU in stock it finds.  |
-| Cheapest        | `PRICE_ASC`       | Selects the cheapest SKU in stock it finds.        |
-| Most Expensive  | `PRICE_DESC`      | Selects the most expensive SKU in stock it finds.  |
-
-⚠️ There's a way to select which SKU should take preference over this prop. You can create a Product (field) specification and per product assign the value of the desired SKU to be initially selected. Keep in mind that If the specification doesn't exist or if the value is empty, it will use the `preferredSKU` prop as fallback. You can read more about it, and how to implement it in [Recipes](https://vtex.io/docs/recipes/all)
+No CSS Handles are available for this block customization.
