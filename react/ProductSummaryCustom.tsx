@@ -37,6 +37,7 @@ function ProductSummaryCustom({
   priceBehavior = 'default',
   position,
   classes,
+  target,
 }: PropsWithChildren<Props>) {
   const {
     isLoading,
@@ -46,7 +47,8 @@ function ProductSummaryCustom({
     query,
     inView,
   } = useProductSummary()
-
+  console.log("TARGET ",target)
+  console.log("Href ",href)
   const dispatch = useProductSummaryDispatch()
   const { handles } = useCssHandles(CSS_HANDLES, { classes })
 
@@ -169,7 +171,7 @@ function ProductSummaryCustom({
             style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
             ref={inViewRef}
           >
-            <Link className={linkClasses} {...linkProps}>
+            <Link className={linkClasses} {...linkProps} target={target}>
               <article className={summaryClasses}>{children}</article>
             </Link>
           </section>
@@ -204,6 +206,7 @@ interface Props {
    */
   position?: number
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  target?: string
 }
 
 function ProductSummaryWrapper({
@@ -216,6 +219,7 @@ function ProductSummaryWrapper({
   position,
   classes,
   children,
+  target,
 }: PropsWithChildren<Props>) {
   return (
     <ProductSummaryProvider
@@ -228,6 +232,7 @@ function ProductSummaryWrapper({
       <ProductSummaryCustom
         product={product}
         href={href}
+        target={target}
         actionOnClick={actionOnClick}
         priceBehavior={priceBehavior}
         position={position}
