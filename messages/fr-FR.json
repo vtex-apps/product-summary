@@ -45,7 +45,7 @@
   "admin/editor.productSummaryList.category.title": "ID de la catégorie",
   "admin/editor.productSummaryList.category.description": "Pour les sous-catégories, utilisez \"/\" (par exemple 1/2/3)",
   "admin/editor.productSummaryList.collection.title": "Collection",
-  "admin/editor.productSummaryList.orderBy.title": "Ordre de liste",
+  "admin/editor.productSummaryList.orderBy.title": "Tri de la liste",
   "admin/editor.productSummaryList.hideUnavailableItems": "Masquer les articles non disponibles",
   "admin/editor.productSummaryList.maxItems.title": "Maximum d’articles",
   "admin/editor.productSummaryList.specificationFilters.title": "Filtres de spécification",

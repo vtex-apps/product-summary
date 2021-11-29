@@ -45,7 +45,7 @@
   "admin/editor.productSummaryList.category.title": "카테고리 ID",
   "admin/editor.productSummaryList.category.description": "하위 카테고리의 경우 \"/\" 사용 (예: 1/2/3)",
   "admin/editor.productSummaryList.collection.title": "컬렉션",
-  "admin/editor.productSummaryList.orderBy.title": "목록 순서",
+  "admin/editor.productSummaryList.orderBy.title": "목록 정렬",
   "admin/editor.productSummaryList.hideUnavailableItems": "이용할 수 없는 품목 숨기기",
   "admin/editor.productSummaryList.maxItems.title": "최대 항목",
   "admin/editor.productSummaryList.specificationFilters.title": "사양 필터",
