@@ -7,8 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ## -2021-12-10
-- added new component: Product Category link to allow navigating into a category from a product shelf or search result.
-- 
+### added 
+- new component: Product Category link to allow navigating into a category from a product shelf or search result.
+
 ## [2.77.1] - 2021-10-08
 
 ### Added
