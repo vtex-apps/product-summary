@@ -42,7 +42,7 @@ function ProductSummaryCategoryLink( { classes } : Props) {
     const url = categories.toLowerCase().replace(/[ &]/g, '-');
     lastcat = lastcat[lastcat.length-2];
     return (
-      ······<a href={url} className={handles.categoryLink}>{lastcat}</a>
+            <a href={url} className={handles.categoryLink}>{lastcat}</a>
     )
   }
 
