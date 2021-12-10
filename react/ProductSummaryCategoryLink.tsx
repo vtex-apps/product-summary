@@ -47,8 +47,8 @@ function ProductSummaryCategoryLink({ classes }: Props) {
         onClick={blocklink}
         onKeyPress={blocklink}
       >
-       {lastcat}
-       </a>
+        {lastcat}
+      </a>
     )
   }
 
