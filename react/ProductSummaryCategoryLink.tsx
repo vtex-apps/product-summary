@@ -42,24 +42,19 @@ function ProductSummaryCategoryLink( { classes } : Props) {
     const url = categories.toLowerCase().replace(/[ &]/g, '-')
     lastcat = lastcat[lastcat.length - 2]
     return (
-      <a 
+      <a
         href={url}
-        role="link"
         className={handles.categoryLink}
         onClick={blocklink}
         onKeyPress={blocklink}
        >
-        {lastcat}
+       {lastcat}
       </a>
     )
   }
 
   return (
-    <div
-      className={handles.categoryLinkContainer}
-    >
-      {mylink}
-    </div>
+    <div className={handles.categoryLinkContainer}>{mylink}</div>
   )
 }
 
