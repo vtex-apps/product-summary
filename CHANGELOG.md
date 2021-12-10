@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-
+## -2021-12-10
+- added new component: Product Category link to allow navigating into a category from a product shelf or search result.
+- 
 ## [2.77.1] - 2021-10-08
 
 ### Added
