@@ -36,6 +36,7 @@ Now, you are able to use all blocks exported by the `product-summary` app. Check
 | `product-summary-price` | ![https://img.shields.io/badge/-Deprecated-red](https://img.shields.io/badge/-Deprecated-red) The Product Summary Price block, responsible for rendering the product price, has been deprecated in favor of the [Product Price](https://vtex.io/docs/components/all/vtex.product-price/) app. Although support for this block is still granted, we strongly recommend you to use the Product Price app's blocks instead. | 
 | [`product-summary-sku-selector`](https://vtex.io/docs/components/all/vtex.product-summary/product-summary-sku-selector) | Renders the SKU Selector block. | 
 | [`product-specification-badges`](https://vtex.io/docs/components/all/vtex.product-summary/product-summary-specification-badges) | Renders badges based on the product specifications. |
+| `product-summary-category-link` | Renders a link to the product's category page. |
 
 2. Add the `list-context.product-list` block to the store theme template where you desire to display a product list and declare the `product-summary.shelf` in its block list. For example:
 
@@ -60,6 +61,7 @@ Now, you are able to use all blocks exported by the `product-summary` app. Check
     "children": [
       "product-summary-name",
       "product-summary-description",
+      "product-summary-category-link",
       "product-summary-image",
       "product-summary-price",
       "product-summary-sku-selector",
@@ -97,8 +99,11 @@ In order to apply CSS customizations in this and other blocks, follow the instru
 | `priceContainer`           |
 | `quantityStepperContainer` |
 | `spacer`                   |
+| `categoryLink` |
+| `categoryLinkContainer`                   |
 
 <!-- DOCS-IGNORE:start -->
+
 
 ## Contributors ✨
 

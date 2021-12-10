@@ -99,5 +99,9 @@
     "allowed": ["product-summary"],
     "composition": "children",
     "component": "ProductSummaryListWithoutQuery"
+  },
+
+  "product-summary-category-link": {
+    "component": "ProductSummaryCategoryLink"
   }
 }
