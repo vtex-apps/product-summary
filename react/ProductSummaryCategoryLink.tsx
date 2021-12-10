@@ -17,7 +17,7 @@ interface Props {
   classes: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
-function ProductSummaryCategoryLink({ classes } : Props) {
+function ProductSummaryCategoryLink({ classes }: Props) {
   const { product, isLoading } = useProductSummary()
   const { handles } = useCssHandles(CSS_HANDLES, { classes })
   const mylink = buildLink(product)
@@ -48,7 +48,7 @@ function ProductSummaryCategoryLink({ classes } : Props) {
         onKeyPress={blocklink}
       >
        {lastcat}
-      </a>
+       </a>
     )
   }
 
