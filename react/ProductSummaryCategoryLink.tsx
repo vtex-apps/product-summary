@@ -38,16 +38,20 @@ function ProductSummaryCategoryLink( { classes } : Props) {
 
   function buildLink(pr: any) {
     const categories = pr?.categories[0]
-    let lastcat = categories.split('/');
-    const url = categories.toLowerCase().replace(/[ &]/g, '-');
-    lastcat = lastcat[lastcat.length-2];
+    let lastcat = categories.split('/')
+    const url = categories.toLowerCase().replace(/[ &]/g, '-')
+    lastcat = lastcat[lastcat.length - 2]
     return (
-            <a href={url} className={handles.categoryLink}>{lastcat}</a>
+      <a href={url} className={handles.categoryLink}>{lastcat}</a>
     )
   }
 
   return (
-    <div role="link" onKeyPress={blocklink} className={handles.categoryLinkContainer} onClick={blocklink}>
+    <div
+      role="layout"
+      onKeyPress={blocklink}
+      className={handles.categoryLinkContainer}
+      onClick={blocklink}>
       {mylink}
     </div>
   )
