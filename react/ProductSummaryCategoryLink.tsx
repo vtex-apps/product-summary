@@ -1,12 +1,7 @@
 import React from 'react'
-
-
-
 import { ProductSummaryContext } from 'vtex.product-summary-context'
-
 import { useCssHandles } from 'vtex.css-handles'
 import type { CssHandlesTypes } from 'vtex.css-handles'
-
 import styles from './productSummary.css'
 
 
