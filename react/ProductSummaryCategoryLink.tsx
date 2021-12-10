@@ -10,16 +10,9 @@ const { useProductSummary } = ProductSummaryContext
 const CSS_HANDLES = [
   'categoryLink',
   'categoryLinkContainer',
-  'loading'
-  
-] as const
-
-
-
-
+  'loading' ] as const
 
 interface Props {
-  
   classes: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
@@ -29,8 +22,7 @@ function ProductSummaryCategoryLink({
 }: Props) {
   const { product, isLoading } = useProductSummary()
   const { handles } = useCssHandles(CSS_HANDLES, { classes })
-
-  const mylink = buildLink(product);
+  const mylink = buildLink(product)
   if (isLoading ) {
     return (
       <div
@@ -40,21 +32,18 @@ function ProductSummaryCategoryLink({
       </div>
     )
   }
-function blocklink(e: any){
-  e.stopPropagation();
   
-}
+  function blocklink(e: any){
+    e.stopPropagation();
+  }
 
-function buildLink(product: any){
-  const categories = product?.categories[0];
-  let lastcat = categories.split("/");
-  const url= categories.toLowerCase().replace(/[ &]/g, '-');
-  lastcat=lastcat[lastcat.length-2];
-
-  return (<a href={url} className={handles.categoryLink}>{lastcat}</a>)
-
-
-}
+  function buildLink(product: any){
+    const categories = product?.categories[0];
+    let lastcat = categories.split("/");
+    const url= categories.toLowerCase().replace(/[ &]/g, '-');
+    lastcat=lastcat[lastcat.length-2];
+    return (<a href={url} className={handles.categoryLink}>{lastcat}</a>)
+  }
 
 
   return (
@@ -63,7 +52,5 @@ function buildLink(product: any){
     </div>
   )
 }
-
-
-
+  
 export default ProductSummaryCategoryLink
