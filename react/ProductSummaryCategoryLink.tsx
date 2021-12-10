@@ -48,7 +48,7 @@ function ProductSummaryCategoryLink( { classes } : Props) {
 
   return (
     <div
-      role="widget"
+      role="button"
       onKeyPress={blocklink}
       className={handles.categoryLinkContainer}
       onClick={blocklink}
