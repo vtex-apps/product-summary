@@ -46,15 +46,13 @@ function ProductSummaryCategoryLink({ classes } : Props) {
         className={handles.categoryLink}
         onClick={blocklink}
         onKeyPress={blocklink}
-       >
+      >
        {lastcat}
       </a>
     )
   }
 
-  return (
-    <div className={handles.categoryLinkContainer}>{mylink}</div>
-  )
+  return <div className={handles.categoryLinkContainer}>{mylink}</div>
 }
 
 export default ProductSummaryCategoryLink
