@@ -47,8 +47,6 @@ function ProductSummaryCustom({
     query,
     inView,
   } = useProductSummary()
-  console.log("TARGET ",target)
-  console.log("Href ",href)
   const dispatch = useProductSummaryDispatch()
   const { handles } = useCssHandles(CSS_HANDLES, { classes })
 
