@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Product Summary SKU selector Doc: fixed hyperlinks.
+
 ## [2.77.1] - 2021-10-08
 
 ### Added
