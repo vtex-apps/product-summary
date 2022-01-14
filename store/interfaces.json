@@ -99,5 +99,14 @@
     "allowed": ["product-summary"],
     "composition": "children",
     "component": "ProductSummaryListWithoutQuery"
+  },
+  "list-context.related-product-list": {
+    "allowed": ["product-summary"],
+    "composition": "children",
+    "component": "ProductSummaryRelatedList",
+    "preview": {
+      "type": "grid",
+      "height": 550
+    }
   }
 }

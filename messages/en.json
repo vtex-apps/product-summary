@@ -70,5 +70,16 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum without interest",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum",
   "admin/editor.productSummaryList.analyticsListName.title": "List name in Analytics",
-  "admin/editor.productSummary.trackListName.title": "Should track list name"
+  "admin/editor.productSummary.trackListName.title": "Should track list name",
+  "admin/editor.productSummaryRelatedList.title": "Related Products",
+  "admin/editor.productSummaryRelatedList.description": "A related products shelf to show view recommendations",
+  "admin/editor.productSummaryRelatedList.recommendation": "Recommendations",
+  "admin/editor.productSummaryRelatedList.recommendation.description": "Which recommendations will be shown",
+  "admin/editor.productSummaryRelatedList.similars": "Similar products",
+  "admin/editor.productSummaryRelatedList.view": "Who saw this, also saw...",
+  "admin/editor.productSummaryRelatedList.buy": "Who bought this, also bought...",
+  "admin/editor.productSummaryRelatedList.accessories": "Accessories products",
+  "admin/editor.productSummaryRelatedList.viewAndBought": "Who saw this, also bought...",
+  "admin/editor.productSummaryRelatedList.suggestions": "Suggestions",
+  "admin/editor.productSummaryRelatedList.hideOutOfStockItems": "Hide out of stock items"
 }

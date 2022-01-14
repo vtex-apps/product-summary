@@ -70,5 +70,16 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum without interest enum name",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum with interest enum name",
   "admin/editor.productSummaryList.analyticsListName.title": "List name in Analytics",
-  "admin/editor.productSummary.trackListName.title": "Should track list name"
+  "admin/editor.productSummary.trackListName.title": "Should track list name",
+  "admin/editor.productSummaryRelatedList.title": "admin/editor.productSummaryRelatedList.title",
+  "admin/editor.productSummaryRelatedList.description": "admin/editor.productSummaryRelatedList.description",
+  "admin/editor.productSummaryRelatedList.recommendation": "admin/editor.productSummaryRelatedList.recommendation",
+  "admin/editor.productSummaryRelatedList.recommendation.description": "admin/editor.productSummaryRelatedList.recommendation.description",
+  "admin/editor.productSummaryRelatedList.similars": "admin/editor.productSummaryRelatedList.similars",
+  "admin/editor.productSummaryRelatedList.view": "admin/editor.productSummaryRelatedList.view",
+  "admin/editor.productSummaryRelatedList.buy": "admin/editor.productSummaryRelatedList.buy",
+  "admin/editor.productSummaryRelatedList.accessories": "admin/editor.productSummaryRelatedList.accessories",
+  "admin/editor.productSummaryRelatedList.viewAndBought": "admin/editor.productSummaryRelatedList.viewAndBought",
+  "admin/editor.productSummaryRelatedList.suggestions": "admin/editor.productSummaryRelatedList.suggestions",
+  "admin/editor.productSummaryRelatedList.hideOutOfStockItems": "admin/editor.shelf.hideOutOfStockItems"
 }
