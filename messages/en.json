@@ -70,7 +70,7 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum without interest",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum",
   "admin/editor.productSummaryList.analyticsListName.title": "List name in Analytics",
-  "admin/editor.productSummary.trackListName.title": "Should track list name",
+  "admin/editor.productSummary.trackListName.title": "Track list name",
   "admin/editor.productSummaryRelatedList.title": "Related Products",
   "admin/editor.productSummaryRelatedList.description": "A related products shelf to show view recommendations",
   "admin/editor.productSummaryRelatedList.recommendation": "Recommendations",
