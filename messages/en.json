@@ -72,7 +72,7 @@
   "admin/editor.productSummaryList.analyticsListName.title": "List name in Analytics",
   "admin/editor.productSummary.trackListName.title": "Track list name",
   "admin/editor.productSummaryRelatedList.title": "Related Products",
-  "admin/editor.productSummaryRelatedList.description": "A related products shelf to show view recommendations",
+  "admin/editor.productSummaryRelatedList.description": "A window display showing product recommendations for the user to view",
   "admin/editor.productSummaryRelatedList.recommendation": "Recommendations",
   "admin/editor.productSummaryRelatedList.recommendation.description": "Which recommendations will be shown",
   "admin/editor.productSummaryRelatedList.similars": "Similar products",
