@@ -70,7 +70,7 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum without interest enum name",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum with interest enum name",
   "admin/editor.productSummaryList.analyticsListName.title": "List name in Analytics",
-  "admin/editor.productSummary.trackListName.title": "Should track list name",
+  "admin/editor.productSummary.trackListName.title": "Track list name",
   "admin/editor.productSummaryRelatedList.title": "admin/editor.productSummaryRelatedList.title",
   "admin/editor.productSummaryRelatedList.description": "admin/editor.productSummaryRelatedList.description",
   "admin/editor.productSummaryRelatedList.recommendation": "admin/editor.productSummaryRelatedList.recommendation",
