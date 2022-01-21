@@ -76,7 +76,7 @@
   "admin/editor.productSummaryRelatedList.recommendation": "Recommendations",
   "admin/editor.productSummaryRelatedList.recommendation.description": "Which recommendations will be shown",
   "admin/editor.productSummaryRelatedList.similars": "Similar products",
-  "admin/editor.productSummaryRelatedList.view": "Who saw this, also saw...",
+  "admin/editor.productSummaryRelatedList.view": "People who viewed this also viewed...",
   "admin/editor.productSummaryRelatedList.buy": "Who bought this, also bought...",
   "admin/editor.productSummaryRelatedList.accessories": "Accessories products",
   "admin/editor.productSummaryRelatedList.viewAndBought": "Who saw this, also bought...",
