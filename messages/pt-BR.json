@@ -71,7 +71,7 @@
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Máxima",
   "admin/editor.productSummaryList.analyticsListName.title": "Nome da lista no Analytics",
   "admin/editor.productSummary.trackListName.title": "Deveria rastrear nome da lista",
-  "admin/editor.productSummaryRelatedList.title": "Produtos Relacionados",
+  "admin/editor.productSummaryRelatedList.title": "Produtos relacionados",
   "admin/editor.productSummaryRelatedList.description": "Uma vitrine de produtos recomendados para ver",
   "admin/editor.productSummaryRelatedList.recommendation": "Recomendações",
   "admin/editor.productSummaryRelatedList.recommendation.description": "Quais recomendações serão mostradas",
