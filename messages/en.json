@@ -78,8 +78,8 @@
   "admin/editor.productSummaryRelatedList.similars": "Similar products",
   "admin/editor.productSummaryRelatedList.view": "People who viewed this also viewed...",
   "admin/editor.productSummaryRelatedList.buy": "Who bought this, also bought...",
-  "admin/editor.productSummaryRelatedList.accessories": "Accessories products",
-  "admin/editor.productSummaryRelatedList.viewAndBought": "Who saw this, also bought...",
+  "admin/editor.productSummaryRelatedList.accessories": "Accessories",
+  "admin/editor.productSummaryRelatedList.viewAndBought": "People who saw this, also bought...",
   "admin/editor.productSummaryRelatedList.suggestions": "Suggestions",
   "admin/editor.productSummaryRelatedList.hideOutOfStockItems": "Hide out of stock items"
 }
