@@ -74,7 +74,7 @@
   "admin/editor.productSummaryRelatedList.title": "Productos relacionados",
   "admin/editor.productSummaryRelatedList.description": "Una vitrina de productos recomendados para ver",
   "admin/editor.productSummaryRelatedList.recommendation": "Recomendaciones",
-  "admin/editor.productSummaryRelatedList.recommendation.description": "Qué recomendaciones se mostrará",
+  "admin/editor.productSummaryRelatedList.recommendation.description": "Recomendaciones que se mostrarán",
   "admin/editor.productSummaryRelatedList.similars": "Productos similares",
   "admin/editor.productSummaryRelatedList.view": "Quién vio esto, también vio...",
   "admin/editor.productSummaryRelatedList.buy": "Quién compró esto, también compró...",
