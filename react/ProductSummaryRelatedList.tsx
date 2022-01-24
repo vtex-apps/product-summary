@@ -44,6 +44,11 @@ interface ProductSummaryRelatedListProps {
   recommendation: Recommendations
   listName: string
   hideOutOfStockItems: boolean
+  /**
+   * Maximum items to be fetched.
+   * @default 10
+   */
+  maxItems?: number
   preferredSKU?: PreferenceType
   ProductSummary: ComponentType<{ product: any; actionOnClick: any }>
   actionOnProductClick?: (product: any) => void
@@ -59,6 +64,7 @@ const ProductSummaryRelatedList = ({
   hideOutOfStockItems = false,
   children,
   ProductSummary,
+  maxItems = 10,
   preferredSKU = 'FIRST_AVAILABLE',
   actionOnProductClick,
 }: PropsWithChildren<ProductSummaryRelatedListProps>) => {
@@ -111,8 +117,10 @@ const ProductSummaryRelatedList = ({
   const { productRecommendations = [] } = data
 
   const products = hideOutOfStockItems
-    ? filterOutOfStock(productRecommendations)
-    : productRecommendations
+    ? filterOutOfStock(productRecommendations).slice(0, maxItems)
+    : productRecommendations.slice(0, maxItems)
+
+  if (products.length === 0) return null
 
   return (
     <ProductSummaryListWithoutQuery
