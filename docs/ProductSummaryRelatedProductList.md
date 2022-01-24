@@ -27,12 +27,12 @@ This block is used to specify what variation of `product-summary` to be used to 
 
 `list-context.product-list` is also responsible for performing the GraphQL query that fetches the list of products, so it can receive the following props:
 
-| Prop name             | Type               | Description                                                                                                                             | Default value       |
-| --------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `hideOutOfStockItems` | `Boolean`          | Hides items that are unavailable.                                                                                                       | `false`             |
-| `skusFilter`          | `SkusFilterEnum`   | Control SKUs returned for each product in the query. The less SKUs needed to be returned, the more performant your shelf query will be. | `"ALL_AVAILABLE"`   |
-| `listName`            | `String`           | Name of the list property on Google Analytics events.                                                                                   | ``                  |
-| `preferredSKU`        | `PreferredSKUEnum` | Controls which SKU will be selected in the summary                                                                                      | `"FIRST_AVAILABLE"` |
+| Prop name             | Type               | Description                                           | Default value       |
+| --------------------- | ------------------ | ----------------------------------------------------- | ------------------- |
+| `hideOutOfStockItems` | `Boolean`          | Hides items that are unavailable.                     | `false`             |
+| `listName`            | `String`           | Name of the list property on Google Analytics events. | ``                  |
+| `maxItems`            | `Number`           | Max items to be showed.                               | `10`                |
+| `preferredSKU`        | `PreferredSKUEnum` | Controls which SKU will be selected in the summary    | `"FIRST_AVAILABLE"` |
 
 For `SkusFilterEnum`:
 
