@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.78.1] - 2022-01-24
+
 ### Added 
 
 - `list-context.related-product-list` block
