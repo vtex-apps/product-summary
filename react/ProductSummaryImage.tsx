@@ -281,6 +281,7 @@ interface Props {
    */
   hoverImageLabel?: string
   hoverImage?: HoverImage
+  showImgLabelOnMobile?: boolean
   /**
    * Defines if the collection badges are shown
    * @default false
@@ -299,6 +300,7 @@ function ProductImage({
   badgeText,
   displayMode = 'normal',
   mainImageLabel = '',
+  showImgLabelOnMobile = false,
   hoverImageLabel = '',
   hoverImage,
   showCollections = false,
@@ -441,7 +443,7 @@ function ProductImage({
               className={imageClassname}
               onError={onError}
             />
-            {selectedHoverImage && !isMobile && (
+            {selectedHoverImage && showImgLabelOnMobile && (
               <Image
                 src={selectedHoverImage.imageUrl}
                 width={width}
