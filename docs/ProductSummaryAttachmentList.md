@@ -8,7 +8,7 @@ _Product Summary Attachment List_ renders the assembly options added and removed
 
 You should follow the usage instruction in the main [README](https://github.com/vtex-apps/product-summary/blob/master/README.md#usage).
 
-Then, add `product-summary-sku-name` block into your app theme as children of `product-summary.shelf`, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
+Then, add `product-summary-attachment-list` block into your app theme as children of `product-summary.shelf`, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
 
 ```diff
    "product-summary.shelf": {
