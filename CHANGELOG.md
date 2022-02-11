@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Doc: Product Summary Attachment List - fixed the block name to be added into the app theme.
+
 ## [2.78.0] - 2022-01-06
 
 ### Fixed
