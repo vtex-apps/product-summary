@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Doc: ProductSummaryList - Added an image to illustrate the block `list-context.product-list` 
+### Fixed
+- Doc: ProductSummaryList - fixed the warning callout
 
 ## [2.78.0] - 2022-01-06
 
