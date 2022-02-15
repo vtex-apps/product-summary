@@ -10,12 +10,12 @@ import { useQuery } from 'react-apollo'
 import { useProduct } from 'vtex.product-context'
 import { usePixel } from 'vtex.pixel-manager'
 import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
-import { QueryProductRecommendations } from 'vtex.store-resources'
 
 import { filterOutOfStock } from './utils/filterOutOfStock'
 import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
 import { PreferenceType } from './utils/normalize'
 import { ProductClickParams } from './ProductSummaryList'
+import ProductRecommendationsQuery from './graphql/ProductRecomendations.gql'
 
 const fixRecommendation = (recommendation: string) => {
   if (recommendation.includes('editor.ProductSummaryRelatedList.')) {
@@ -90,7 +90,7 @@ const ProductSummaryRelatedList = ({
     }
   }, [productId, recommendation])
 
-  const { data, loading, error } = useQuery(QueryProductRecommendations, {
+  const { data, loading, error } = useQuery(ProductRecommendationsQuery, {
     variables,
   })
 

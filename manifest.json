@@ -1,5 +1,5 @@
 {
-  "vendor": "agenciaeplus",
+  "vendor": "anbeauty",
   "name": "product-summary",
   "version": "2.78.1",
   "title": "Product Summary",
@@ -32,7 +32,8 @@
     "vtex.search-page-context": "0.x",
     "vtex.structured-data": "0.x",
     "vtex.on-view": "1.x",
-    "vtex.product-summary": "2.x"
+    "vtex.product-summary": "2.x",
+    "vtex.search-graphql": "0.x"
   },
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
