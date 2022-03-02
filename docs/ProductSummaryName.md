@@ -44,7 +44,7 @@ Check out the `product-summary-name` props to configure its behavior:
 
 ## Customization
 
-In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
+In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://developers.vtex.com/vtex-developer-docs/docs/vtex-io-documentation-using-css-handles-for-store-customization).
 
 | CSS Handles        |
 | ------------------ |
