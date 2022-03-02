@@ -1,12 +1,20 @@
 # Product Summary Image
 
-`product-summary-image` is a block exported by the Product Summary app that renders the product's image.
+`product-summary-image` is a block exported by the [Product Summary app](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary) that renders the product's image.
 
-![foto product-summary-image](https://user-images.githubusercontent.com/52087100/79134289-d5d64a80-7d83-11ea-84e6-a5a237acfae1.png)
+![foto-product-summary-image](https://user-images.githubusercontent.com/52087100/79134289-d5d64a80-7d83-11ea-84e6-a5a237acfae1.png)
 
 ## Configuration
 
-:warning: The `product-summary-image` is exported by the Product Summary app. Therefore, in order to configure it as a block, you must first follow the configuration instructions given in the [**Product Summary main documentation**](https://vtex.io/docs/components/all/vtex.product-summary@2.53.0/).
+1. Import the `vtex.product-summary` app to your theme's dependencies in the `manifest.json`:
+
+```json
+  dependencies: {
+    "vtex.product-summary": "2.x"
+  }
+```
+
+2. Add the `product-summary-image` block as a children of the `product-summary.shelf` block:
 
 ```json
 {
@@ -23,6 +31,10 @@
         "product-summary-buy-button"
       ]
     },
+```
+3. Then, declare the `product-summary-image` and configure its behavior using the props stated below.
+
+```json
     "product-summary-image": {
       "props": {
         "showBadge": true,
