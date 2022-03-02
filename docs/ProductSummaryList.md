@@ -2,6 +2,8 @@
 
 The `list-context.product-list` interface is a instance of the `list-context` interfaces, which means its part of a set of special interfaces that enables you to create lists of content that can be edited via Site Editor.
 
+![list-context-example](https://user-images.githubusercontent.com/67270558/153598896-f252b9f4-9fce-4242-b311-48d52e0345e7.png)
+
 In order to create a list of products, you need to use the `list-context.product-list` block and a `product-summary.shelf`.
 
 ## product-list-block
@@ -64,4 +66,6 @@ For `PreferredSKUEnum`:
 | Cheapest        | `PRICE_ASC`       | Selects the cheapest SKU in stock it finds.        |
 | Most Expensive  | `PRICE_DESC`      | Selects the most expensive SKU in stock it finds.  |
 
-⚠️ There's a way to select which SKU should take preference over this prop. You can create a Product (field) specification and per product assign the value of the desired SKU to be initially selected. Keep in mind that If the specification doesn't exist or if the value is empty, it will use the `preferredSKU` prop as fallback. You can read more about it, and how to implement it in [Recipes](https://vtex.io/docs/recipes/all)
+> ⚠️ 
+>
+> There's a way to select which SKU should take preference over this prop. You can create a Product (field) specification and per product assign the value of the desired SKU to be initially selected. Keep in mind that If the specification doesn't exist or if the value is empty, it will use the `preferredSKU` prop as fallback. You can read more about it, and how to implement it in [Recipes](https://vtex.io/docs/recipes/all)
