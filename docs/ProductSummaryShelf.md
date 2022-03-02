@@ -2,13 +2,13 @@
 
 # Product Summary Shelf
 
-Product Summary Shelf is the main block exported by the Product Summary app. Through its child blocks, it provides the needed structure to render the Product Summary component in your store.
+Product Summary Shelf is the main block exported by the [Product Summary app](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary). Through its child blocks, it provides the needed structure to render the Product Summary component in your store.
 
 ![](https://user-images.githubusercontent.com/40380674/96649443-7d21d480-1307-11eb-9100-534fa9e70ca6.png))
 
 ## Configuration
 
-1. Add the [Product Summary app](https://vtex.io/docs/components/content-blocks/vtex.product-summary/) to your theme's dependencies in the `manifest.json` file. For example:
+1. Import the `vtex.product-summary` app to your theme's dependencies in the `manifest.json`:
 
 ```json
   dependencies: {
@@ -16,7 +16,7 @@ Product Summary Shelf is the main block exported by the Product Summary app. Thr
   }
 ```
 
-2. Add the `product-summary.shelf` block as child of the `list-context.product-list` block (exported by the [Product List app](https://vtex.io/docs/components/content-blocks/vtex.product-list/)):
+2. Add the `product-summary.shelf` block as child of the [`list-context.product-list` block](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary-productsummarylist#product-list-block) :
 
 ```diff
    "list-context.product-list": {
@@ -41,7 +41,9 @@ Product Summary Shelf is the main block exported by the Product Summary app. Thr
 }
 ```
 
-> ⚠️ *Do not forget to also declare the other Product Summary's blocks in your theme, otherwise the component won't be displayed*. 
+> ⚠️ 
+> 
+> Do not forget to also declare the other Product Summary's blocks in your theme, otherwise the component won't be displayed. 
 
 | Prop name        | Type          | Description                | Default value  |
 | :--------------: | :---------: | :--------------------------: | :------------: |
