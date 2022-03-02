@@ -2,13 +2,22 @@
 
 # Product Summary Attachment List
 
-_Product Summary Attachment List_ renders the assembly options added and removed of an item.
+Product Summary Attachment is a block exported by the [Product Summary app](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary) responsible for rendering a list of [attachments](https://help.vtex.com/tutorial/adding-an-attachment--7zHMUpuoQE4cAskqEUWScU?_ga=2.214353246.838011516.1646145984-1001456323.1619912759) for the product 
+
+![att-example](https://user-images.githubusercontent.com/67270558/156370029-833f68ce-a270-4e01-ae20-5d63061f0a03.png)
+
 
 ## Configuration
 
-You should follow the usage instruction in the main [README](https://github.com/vtex-apps/product-summary/blob/master/README.md#usage).
+1. Import the `vtex.product-summary` app to your theme's dependencies in the `manifest.json`:
 
-Then, add `product-summary-sku-name` block into your app theme as children of `product-summary.shelf`, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
+```json
+  "dependencies": {
+    "vtex.product-summary": "2.x"
+  }
+```
+
+2. Then, add `product-summary-attachment-list` block into your app theme as children of `product-summary.shelf`, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
 
 ```diff
    "product-summary.shelf": {
@@ -22,6 +31,8 @@ Then, add `product-summary-sku-name` block into your app theme as children of `p
     ]
   },
 ```
+
+3. Once you have added the block in your app, make sure to add an attachment to your desired product so the list can be displayed in your store. To achieve this, follow the instructions on [Adding an attachment](https://help.vtex.com/en/tutorial/cadastrar-um-anexo--7zHMUpuoQE4cAskqEUWScU).
 
 ## Customization
 
