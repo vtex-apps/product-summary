@@ -40,12 +40,12 @@
   "admin/editor.productSummaryBuyButton.title": "Pulsante \"Acquista\" nel riepilogo del prodotto",
   "admin/editor.productSummaryName.title": "Nome nel riepilogo del prodotto",
   "admin/editor.product-summary-specification-badges.title": "Badge per le specifiche nel riepilogo del prodotto",
-  "admin/editor.productSummaryList.title": "Elenco prodotti",
-  "admin/editor.productSummaryList.description": "Un elenco di prodotti che presenta una collezione",
+  "admin/editor.productSummaryList.title": "Listino prodotti",
+  "admin/editor.productSummaryList.description": "Un listino di prodotti di una collezione",
   "admin/editor.productSummaryList.category.title": "ID categoria",
-  "admin/editor.productSummaryList.category.description": "Per le sottocategorie, utilizza \"/\" (es.: 1/2/3)",
+  "admin/editor.productSummaryList.category.description": "Per le sottocategorie utilizza \"/\" (es.: 1/2/3)",
   "admin/editor.productSummaryList.collection.title": "Collezione",
-  "admin/editor.productSummaryList.orderBy.title": "Ordine elenco",
+  "admin/editor.productSummaryList.orderBy.title": "Ordinamento del listino",
   "admin/editor.productSummaryList.hideUnavailableItems": "Nascondi gli articoli non disponibili",
   "admin/editor.productSummaryList.maxItems.title": "Numero massimo di articoli",
   "admin/editor.productSummaryList.specificationFilters.title": "Filtri di specifica",
@@ -69,6 +69,6 @@
   "admin/editor.productSummaryList.installmentCriteria.description": "Scegli il tipo di rate da mostrare (ad es.: importo massimo senza interessi o con interessi).",
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Importo massimo senza interessi",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Importo massimo",
-  "admin/editor.productSummaryList.analyticsListName.title": "Nome elenco in \"Analisi\"",
-  "admin/editor.productSummary.trackListName.title": "Serve a tracciare il nome della lista"
+  "admin/editor.productSummaryList.analyticsListName.title": "Nome del listino in \"Analisi\"",
+  "admin/editor.productSummary.trackListName.title": "Serve a tracciare il nome del listino"
 }

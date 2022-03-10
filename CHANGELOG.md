@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Arabic, Norwegian and Norwegian variant translation
+
+### Fixed
+- Spanish, French, Italian, Japanese, Korean, Dutch and Romanian translation and removed Pseudolanguage
+
 ## [2.78.0] - 2022-01-06
 
 ### Fixed

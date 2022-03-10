@@ -45,7 +45,7 @@
   "admin/editor.productSummaryList.category.title": "カテゴリ ID",
   "admin/editor.productSummaryList.category.description": "サブカテゴリには「/」を使ってください (例 1/2/3)",
   "admin/editor.productSummaryList.collection.title": "コレクション",
-  "admin/editor.productSummaryList.orderBy.title": "リストの順序",
+  "admin/editor.productSummaryList.orderBy.title": "リストの並べ替え",
   "admin/editor.productSummaryList.hideUnavailableItems": "利用できない項目を非表示にする",
   "admin/editor.productSummaryList.maxItems.title": "最大項目数",
   "admin/editor.productSummaryList.specificationFilters.title": "仕様フィルタ",
