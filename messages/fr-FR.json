@@ -60,7 +60,7 @@
   "admin/editor.productSummaryList.orderType.releaseDate": "Date de sortie",
   "admin/editor.productSummaryList.orderType.discount": "Réduction",
   "admin/editor.productSummaryList.orderType.relevance": "Pertinence",
-  "admin/editor.productSummaryList.skusFilter.title": "Flitre UGS",
+  "admin/editor.productSummaryList.skusFilter.title": "Filtre des SKU",
   "admin/editor.productSummaryList.skusFilter.description": "Le réglage du premier filtre disponible pourrait rendre votre requête beaucoup plus rapide !",
   "admin/editor.productSummaryList.skusFilter.none": "Aucun",
   "admin/editor.productSummaryList.skusFilter.first-available": "Premier disponible",
