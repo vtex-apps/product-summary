@@ -5034,10 +5034,6 @@ verror@1.10.0:
   version "0.8.1"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.product-summary-context@0.8.1/public/@types/vtex.product-summary-context#df39f9e59c3f09246d38b32c90a0f802864cce72"
 
-"vtex.product-summary@https://specification--motoroladevelopment.myvtex.com/_v/private/typings/linked/v1/vtex.product-summary@2.74.1+build1628605519/public/@types/vtex.product-summary":
-  version "2.74.1"
-  resolved "https://specification--motoroladevelopment.myvtex.com/_v/private/typings/linked/v1/vtex.product-summary@2.74.1+build1628605519/public/@types/vtex.product-summary#ec208382c77a57bc3fe48fa01cda790a4039a364"
-
 "vtex.render-runtime@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.131.0/public/@types/vtex.render-runtime":
   version "8.131.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.131.0/public/@types/vtex.render-runtime#dcc88828e3d65ecb4e7538a3623a4b1ddd77e034"
