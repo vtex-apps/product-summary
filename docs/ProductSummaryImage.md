@@ -14,7 +14,7 @@
   }
 ```
 
-2. Add the `product-summary-image` block as a children of the `product-summary.shelf` block:
+2. Add the `product-summary-image` block as a child of the `product-summary.shelf` block:
 
 ```json
 {
