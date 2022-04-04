@@ -68,4 +68,4 @@ For `PreferredSKUEnum`:
 
 > ⚠️ 
 >
-> There's a way to select which SKU should take preference over this prop. You can create a Product (field) specification and per product assign the value of the desired SKU to be initially selected. Keep in mind that If the specification doesn't exist or if the value is empty, it will use the `preferredSKU` prop as fallback. You can read more about it, and how to implement it in [here](https://developers.vtex.com/vtex-developer-docs/docs/vtex-io-documentation-configuring-custom-images-for-the-sku-selector).
+> To select which SKU will take preference over this prop, create a Product (field) specification and assign the value of the desired SKU to be initially set for each product. If the specification doesn't exist or the value is empty, the `preferredSKU` prop will be used as a fallback. For more information, please refer to [this guide](https://developers.vtex.com/vtex-developer-docs/docs/vtex-io-documentation-configuring-custom-images-for-the-sku-selector).
