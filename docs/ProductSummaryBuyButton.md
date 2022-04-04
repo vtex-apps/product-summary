@@ -2,7 +2,7 @@
 
 # Product Summary Buy Button
 
-Product Summary Buy Button is a block exported by the [Product Summary app](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary) responsible for rendering a Buy Button in the Product Summary Shelf block.
+Product Summary Buy Button is the block exported by the [Product Summary app](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary) responsible for rendering a Buy Button in the [Product Summary Shelf](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary-productsummaryshelf) block.
 
 ![buy-button](https://user-images.githubusercontent.com/52087100/76864047-38006600-683f-11ea-8a4e-74dc91712984.png)
 
