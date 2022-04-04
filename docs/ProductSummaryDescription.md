@@ -15,7 +15,7 @@ Product Summary Description is a block exported by the [Product Summary app](htt
   }
 ```
 
-2. Then, add `product-summary-description` block into your app theme as children of `product-summary.shelf`, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
+2. Add the `product-summary-description` block to your store theme as a child of `product-summary.shelf`. For example:
 
 ```diff
    "product-summary.shelf": {
