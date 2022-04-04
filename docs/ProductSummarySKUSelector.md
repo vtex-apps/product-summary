@@ -36,7 +36,7 @@ The `product-summary-sku-selector` is a VTEX block that's tasked with rendering 
  ```
 > ⚠️
 >
-> This block can only be configured through the source code. You're not yet able to edit using the Site Editor. 
+> The Product Summary SKU block can only be modified through the source code. It's not possible yet to edit it via the Site Editor. 
 
 
 ## Customization
