@@ -2,7 +2,7 @@
 
 # Product Summary Attachment List
 
-Product Summary Attachment is a block exported by the [Product Summary app](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary) responsible for rendering a list of [attachments](https://help.vtex.com/tutorial/adding-an-attachment--7zHMUpuoQE4cAskqEUWScU?_ga=2.214353246.838011516.1646145984-1001456323.1619912759) for the product 
+Product Summary Attachment is the block exported by the [Product Summary app](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary) responsible for rendering the [attachment](https://help.vtex.com/en/tutorial/o-que-e-um-anexo--aGICk0RVbqKg6GYmQcWUm) options available for a product.
 
 ![att-example](https://user-images.githubusercontent.com/67270558/156370029-833f68ce-a270-4e01-ae20-5d63061f0a03.png)
 
