@@ -71,9 +71,6 @@ Now, you are able to use all blocks exported by the `product-summary` app. Check
 }
 ```
 
-> ℹ️ Info
->
-> In order to configure and better understand each of the Product Summary exported blocks, go through their respective documentation.
 
 ## Customization
 
