@@ -24,7 +24,7 @@ Now, you are able to use all blocks exported by the `product-summary` app. Check
 
 | Block name     | Description | 
 | -------------- | ----------- | 
-| [`list-context.product-list`](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary-productsummarylist) | ![https://img.shields.io/badge/-Mandatory-red](https://img.shields.io/badge/-Mandatory-red) Renders the list of products in the Product Summary component. It is responsible for fetching product data and providing it to the `product-summary.shelf` block. The last one, in turn, provides the product data to its children blocks. | 
+| [`list-context.product-list`](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary-productsummarylist) | ![https://img.shields.io/badge/-Mandatory-red](https://img.shields.io/badge/-Mandatory-red) Renders the list of products in the Product Summary component. It fetches product data and provides it to the `product-summary.shelf` block. This block, then, provides its child blocks with the product data. | 
 | `product-summary.shelf` | ![https://img.shields.io/badge/-Mandatory-red](https://img.shields.io/badge/-Mandatory-red) Logical block responsible for providing the needed structure for the Product Summary component through its child blocks (listed below). 
 | [`product-summary-attachment-list`](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary-productsummaryattachmentlist) | Renders a list for the product [attachments](https://help.vtex.com/tutorial/adding-an-attachment--7zHMUpuoQE4cAskqEUWScU). | 
 | [`product-summary-brand`](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary-productsummarybrand)         | Renders the product brand. | 
