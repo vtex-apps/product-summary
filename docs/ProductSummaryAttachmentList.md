@@ -17,7 +17,7 @@ Product Summary Attachment is the block exported by the [Product Summary app](ht
   }
 ```
 
-2. Then, add `product-summary-attachment-list` block into your app theme as children of `product-summary.shelf`, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
+2. Add the `product-summary-attachment-list` block to a store template of your choice as a child of the `product-summary.shelf` block. For example:
 
 ```diff
    "product-summary.shelf": {
