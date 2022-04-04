@@ -4,7 +4,7 @@ The  Product Summary List app (`list-context.product-list`) is an instance of th
 
 ![list-context-example](https://user-images.githubusercontent.com/67270558/153598896-f252b9f4-9fce-4242-b311-48d52e0345e7.png)
 
-In order to create a list of products, you need to use the `list-context.product-list` block and a `product-summary.shelf`.
+To create a list of products, you must use the `list-context.product-list` and `product-summary.shelf` blocks.
 
 ## product-list-block
 
