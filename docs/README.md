@@ -37,7 +37,7 @@ Now, you are able to use all blocks exported by the `product-summary` app. Check
 | [`product-summary-sku-selector`](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary-productsummaryskuselector) | Renders the SKU Selector block. | 
 | [`product-specification-badges`](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary-productsummaryspecificationbadges) | Renders badges based on the product specifications. |
 
-2. Add the `list-context.product-list` block to the store theme template where you desire to display a product list and declare the `product-summary.shelf` in its block list. For example:
+2. Add the `list-context.product-list` block to a store template of your choice and declare the `product-summary.shelf` in its block list. For example:
 
 ```json
 {
