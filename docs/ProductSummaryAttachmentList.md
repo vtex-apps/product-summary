@@ -32,7 +32,7 @@ Product Summary Attachment is the block exported by the [Product Summary app](ht
   },
 ```
 
-3. Once you have added the block in your app, make sure to add an attachment to your desired product so the list can be displayed in your store. To achieve this, follow the instructions on [Adding an attachment](https://help.vtex.com/en/tutorial/cadastrar-um-anexo--7zHMUpuoQE4cAskqEUWScU).
+After adding the `product-summary-attachment-list` block to your store theme, use the VTEX Admin to add attachments to your products to display the component in your store correctly. For more information, please refer to [Adding an attachment](https://help.vtex.com/en/tutorial/cadastrar-um-anexo--7zHMUpuoQE4cAskqEUWScU).
 
 ## Customization
 
