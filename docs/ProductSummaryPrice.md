@@ -36,7 +36,7 @@
     ]
   },
 ```
-Check out the `product-summary-price` props to configure its behavior:
+3. Then, declare the `product-summary-price` and configure its behavior using the props stated below.
 
 | Prop name           | Type      | Description                      | Default value |
 | ------------------- | --------- | -------------------------------- | ------------- |
