@@ -1,6 +1,6 @@
 # ProductSummaryList
 
-The `list-context.product-list` interface is a instance of the `list-context` interfaces, which means its part of a set of special interfaces that enables you to create lists of content that can be edited via Site Editor.
+The  Product Summary List app (`list-context.product-list`) is an instance of the `list-context` interface - a set of special interfaces used to create lists of content, such as a list of products.
 
 ![list-context-example](https://user-images.githubusercontent.com/67270558/153598896-f252b9f4-9fce-4242-b311-48d52e0345e7.png)
 
