@@ -16,7 +16,7 @@ The Product Summary Shelf is the main block exported by the [Product Summary app
   }
 ```
 
-2. Add the `product-summary.shelf` block as child of the [`list-context.product-list` block](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary-productsummarylist#product-list-block) :
+2. Add the `product-summary.shelf` block as a child of the [`list-context.product-list` block](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary-productsummarylist#product-list-block) :
 
 ```diff
    "list-context.product-list": {
