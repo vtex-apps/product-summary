@@ -108,7 +108,7 @@ The `width`, `height`, `aspectRatio` and `maxHeight` props use the [responsive v
 
 ## Customization
 
-In order to apply CSS customization to this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://developers.vtex.com/vtex-developer-docs/docs/vtex-io-documentation-using-css-handles-for-store-customization).
+To apply CSS customizations in this and other blocks, follow the [Using CSS Handles for store customization](https://developers.vtex.com/vtex-developer-docs/docs/vtex-io-documentation-using-css-handles-for-store-customization) guide.
 
 | CSS Handles |
 | :----------:|
