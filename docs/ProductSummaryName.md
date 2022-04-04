@@ -27,7 +27,8 @@ Product Summary Name is a block exported by the [Product Summary app](https://de
     ]
   },
 ```
-Check out the `product-summary-name` props to configure its behavior:
+3. Then, declare the `product-summary-name` and configure its behavior using the props stated below.
+
 
 | Prop name | Type | Description | Default value |
 | ----------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- |
