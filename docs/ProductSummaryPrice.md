@@ -4,15 +4,25 @@
 
 ![https://img.shields.io/badge/-Deprecated-red](https://img.shields.io/badge/-Deprecated-red)
 
-:warning: **The Product Summary Price block has been deprecated in favor of the [Product Price](https://vtex.io/docs/components/all/vtex.product-price/) app**. Although support for this block is still granted, we strongly recommend you to update your store theme with the Product Price's blocks in order to keep up with the component's evolution.
+> ⚠️
+>
+> **The Product Summary Price block has been deprecated in favor of the [Product Price](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-price) app**. Although support for this block is still available, we strongly recommend that you update your store theme with the Product Price app to stay up with the component's evolution.
 
-`ProductSummaryPrice` renders the product's price.
+`ProductSummaryPrice` is a block exported by the [Product Summary app](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary) responsible for rendering the product's price.
+
+![price-example](https://user-images.githubusercontent.com/67270558/156375295-9fc9b1b8-2534-4a12-ac59-4db52b763bf7.png)
 
 ### Configuration
 
-You should follow the usage instruction in the main [README](https://github.com/vtex-apps/product-summary/blob/master/README.md#usage).
+1. Import the `vtex.product-summary` app to your theme's dependencies in the `manifest.json`:
 
-Then, add `product-summary-price` block into your app theme as children of `product-summary.shelf`, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
+```json
+  dependencies: {
+    "vtex.product-summary": "2.x"
+  }
+```
+
+2. Add the `product-summary-price` block to your store theme as a child of the `product-summary.shelf` block. For example:
 
 ```diff
    "product-summary.shelf": {
@@ -26,6 +36,7 @@ Then, add `product-summary-price` block into your app theme as children of `prod
     ]
   },
 ```
+3. Then, declare the `product-summary-price` and configure its behavior using the props stated below.
 
 | Prop name           | Type      | Description                      | Default value |
 | ------------------- | --------- | -------------------------------- | ------------- |
@@ -41,7 +52,7 @@ Then, add `product-summary-price` block into your app theme as children of `prod
 
 ## Customization
 
-In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
+To apply CSS customizations in this and other blocks, follow the [Using CSS Handles for store customization](https://developers.vtex.com/vtex-developer-docs/docs/vtex-io-documentation-using-css-handles-for-store-customization) guide.
 
 | CSS Handles           |
 | ------------------- |

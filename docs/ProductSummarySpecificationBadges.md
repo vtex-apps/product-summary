@@ -4,7 +4,9 @@
 
 ![https://img.shields.io/badge/-Deprecated-red](https://img.shields.io/badge/-Deprecated-red)
 
-> ⚠️ The Product Specification Badges block has been deprecated in favor of the Product Specifications from the app vtex.product-specifications. Although support for this block is still granted, we strongly recommend you to update your store theme with the Product Speficiations's block in order to keep up with the component's evolution.
+> ⚠️ 
+>
+> The Product Specification Badges block has been deprecated in favor of the [Product Specifications](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-specifications) app. Although support for this block is still available, we strongly recommend that you update your store theme with the Product Specifications app to stay up with the component's evolution.
 
 Use this component to show badges based on your product specifications inside your product page.
 
@@ -245,7 +247,7 @@ You can use our `stack-layout` to show the badges over your product image for ex
 
 ## Customization
 
-In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
+To apply CSS customizations in this and other blocks, follow the [Using CSS Handles for store customization](https://developers.vtex.com/vtex-developer-docs/docs/vtex-io-documentation-using-css-handles-for-store-customization) guide.
 
 | CSS Handles      |
 | ---------------- |

@@ -2,13 +2,20 @@
 
 # Product Summary Name
 
-_Product Summary Name_ renders the product name.
+Product Summary Name is a block exported by the [Product Summary app](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary) responsible for rendering the product name.
 
+![name-example](https://user-images.githubusercontent.com/67270558/156374478-42cc320d-8aa9-432a-95c1-cf884534cbb1.png)
 ## Configuration
 
-You should follow the usage instruction in the main [README](https://github.com/vtex-apps/product-summary/blob/master/README.md#usage).
+1. Import the `vtex.product-summary` app to your theme's dependencies in the `manifest.json`:
 
-Then, add `product-summary-name` block into your app theme as children of `product-summary.shelf`, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
+```json
+  dependencies: {
+    "vtex.product-summary": "2.x"
+  }
+```
+
+2. Add the `product-summary-name` block to your store theme as a child of `product-summary.shelf`. For example:
 
 ```diff
    "product-summary.shelf": {
@@ -20,6 +27,8 @@ Then, add `product-summary-name` block into your app theme as children of `produ
     ]
   },
 ```
+3. Then, declare the `product-summary-name` and configure its behavior using the props stated below.
+
 
 | Prop name | Type | Description | Default value |
 | ----------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- |
@@ -36,7 +45,7 @@ Then, add `product-summary-name` block into your app theme as children of `produ
 
 ## Customization
 
-In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
+To apply CSS customizations in this and other blocks, follow the [Using CSS Handles for store customization](https://developers.vtex.com/vtex-developer-docs/docs/vtex-io-documentation-using-css-handles-for-store-customization) guide.
 
 | CSS Handles        |
 | ------------------ |

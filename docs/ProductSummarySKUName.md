@@ -2,13 +2,19 @@
 
 # Product Summary SKU Name
 
-_Product Summary SKU Name_ renders the selected SKU's name.
+Product Summary SKU Name is a block exported by the [Product Summary app](https://developers.vtex.com/vtex-developer-docs/docs/vtex-product-summary) responsible for rendering the selected SKU's name.
 
 ## Configuration
 
-You should follow the usage instruction in the main [README](https://github.com/vtex-apps/product-summary/blob/master/README.md#usage).
+1. Import the `vtex.product-summary` app to your theme's dependencies in the `manifest.json`:
 
-Then, add `product-summary-sku-name` block into your app theme as children of `product-summary.shelf`, as we do in our [Product Summary app](https://github.com/vtex-apps/product-summary/blob/master/store/blocks.json).
+```json
+  "dependencies": {
+    "vtex.product-summary": "2.x"
+  }
+```
+
+2. Add the `product-summary-sku-name` block to your store theme as a child of `product-summary.shelf`. For example:
 
 ```diff
    "product-summary.shelf": {
@@ -25,7 +31,7 @@ Then, add `product-summary-sku-name` block into your app theme as children of `p
 
 ## Customization
 
-In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
+To apply CSS customizations in this and other blocks, follow the [Using CSS Handles for store customization](https://developers.vtex.com/vtex-developer-docs/docs/vtex-io-documentation-using-css-handles-for-store-customization) guide.
 
 | CSS Handles        |
 | ------------------ |
