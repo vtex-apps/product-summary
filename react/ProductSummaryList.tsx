@@ -5,6 +5,7 @@ import { QueryProducts } from 'vtex.store-resources'
 import type { QueryProductsTypes } from 'vtex.store-resources'
 import { usePixel } from 'vtex.pixel-manager'
 import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
+import { useDevice } from 'vtex.device-detector'
 
 import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
 import { PreferenceType } from './utils/normalize'
@@ -131,6 +132,8 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
   } = props
 
   const { push } = usePixel()
+  const { isMobile } = useDevice()
+
   const { data, loading, error } = useQuery<
     QueryProductsTypes.Data,
     QueryProductsTypes.Variables
@@ -150,6 +153,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
       skusFilter,
       installmentCriteria,
     },
+    ssr: !isMobile,
   })
 
   const { products } = data ?? {}

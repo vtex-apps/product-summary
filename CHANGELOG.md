@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+- Remove SSR on mobile devices.
+
 ## [2.80.0] - 2022-05-27
 
 ### Added
