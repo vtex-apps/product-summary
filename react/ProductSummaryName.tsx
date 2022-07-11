@@ -33,7 +33,7 @@ interface Props {
   }
   /**
    * HTML tag used. It can be: `div`, `h1`, `h2`, `h3`.
-   * @default "h1"
+   * @default "h3"
    */
   tag?: 'div' | 'h1' | 'h2' | 'h3'
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
@@ -41,7 +41,7 @@ interface Props {
 
 function ProductSummaryName({
   showFieldsProps = defaultShowFields,
-  tag = 'h1',
+  tag = 'h3',
   classes,
 }: Props) {
   const { product } = useProductSummary()
