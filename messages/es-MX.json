@@ -4,7 +4,7 @@
   "store/button-label": "Comprar",
   "admin/editor.productSummary.title": "Resumen del producto",
   "admin/editor.productSummary.description": "El resumen del producto que muestra la información principal del producto",
-  "admin/editor.productSummary.isOneClickBuy.title": "Debe redirigir al checkout después de hacer clic en comprar",
+  "admin/editor.productSummary.isOneClickBuy.title": "Redirigir al checkout después de hacer clic en comprar",
   "admin/editor.productSummary.showBadge.title": "Mostrar la insignia de descuento",
   "admin/editor.productSummary.badgeText.title": "Texto de la insignia",
   "admin/editor.productSummary.buyButtonText.title": "Texto del botón de compra personalizado",
@@ -70,5 +70,5 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Máximo sin interés",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Máximo",
   "admin/editor.productSummaryList.analyticsListName.title": "Nombre de la lista en Analytics",
-  "admin/editor.productSummary.trackListName.title": "Debe rastrear el nombre de la lista"
+  "admin/editor.productSummary.trackListName.title": "Rastrear el nombre de la lista"
 }
