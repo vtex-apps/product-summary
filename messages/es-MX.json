@@ -32,7 +32,7 @@
   "admin/editor.productSummaryImage.title": "Imagen del resumen del producto",
   "admin/editor.productSummaryImage.description": "El componente que muestra la imagen del producto",
   "admin/editor.productSummaryImage.hoverImageLabel.title": "Etiqueta de la imagen activable",
-  "admin/editor.productSummaryImage.hoverImageLabel.description": "Esta propiedad está obsoleta. Utilice la propiedad de criterios",
+  "admin/editor.productSummaryImage.hoverImageLabel.description": "Esta propiedad está en desuso. Por favor, utiliza la propiedad de criterios.",
   "admin/editor.productSummaryImage.hoverImage.criteria.title": "Criterio para selección de imágenes activables",
   "admin/editor.productSummaryImage.hoverImage.criteria.label": "Etiqueta de la imagen activable",
   "admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria": "Criterios de búsqueda de la etiqueta de la imagen activable (exact: busca la imagen que sea un resultado exacto para el nombre ingresado en el campo 'Etiqueta de la imagen activable' | contains: busca la primera imagen que contenga el texto ingresado en el campo 'Etiqueta de la imagen activable')",
