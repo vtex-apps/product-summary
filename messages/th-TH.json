@@ -63,7 +63,7 @@
   "admin/editor.productSummaryList.skusFilter.title": "ตัวกรอง SKUs",
   "admin/editor.productSummaryList.skusFilter.description": "การตั้งค่าตัวกรองแรกที่มีอยู่อาจทำให้การสืบค้นของคุณเร็วขึ้นมาก",
   "admin/editor.productSummaryList.skusFilter.none": "ไม่มี",
-  "admin/editor.productSummaryList.skusFilter.first-available": "แรกที่มี",
+  "admin/editor.productSummaryList.skusFilter.first-available": "แรกสุดที่มี",
   "admin/editor.productSummaryList.skusFilter.all-available": "ทั้งหมดที่มี",
   "admin/editor.productSummaryList.installmentCriteria.title": "การผ่อนชำระที่แสดง",
   "admin/editor.productSummaryList.installmentCriteria.description": "เลือกว่าจะแสดงการผ่อนชำระประเภทใด (เช่น สูงสุดปราศจากดอกเบี้ยหรือมีดอกเบี้ย)",
