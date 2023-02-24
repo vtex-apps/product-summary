@@ -219,6 +219,7 @@ interface ImageProps {
   className: string
   aspectRatio?: string | number
   maxHeight?: string
+  experimentalSetExplicitDimensions?: boolean
 }
 
 function Image({
@@ -230,6 +231,7 @@ function Image({
   className,
   aspectRatio,
   maxHeight,
+  experimentalSetExplicitDimensions,
 }: ImageProps) {
   const { isMobile } = useDevice()
 
@@ -244,6 +246,16 @@ function Image({
 
   const shouldResize = !!(width || height)
 
+  const widthWithoutUnits = width ? width.toString().replace(/\D/g, '') : null
+  const heightWithoutUnits = height
+    ? height.toString().replace(/\D/g, '')
+    : null
+
+  const explicitDimensionsAreAvailable =
+    !width?.toString().includes('%') &&
+    !height?.toString().includes('%') &&
+    (widthWithoutUnits || heightWithoutUnits)
+
   return (
     <img
       src={getImageSrc({ src, width, height, dpi, aspectRatio })}
@@ -253,6 +265,12 @@ function Image({
       alt={alt}
       className={className}
       onError={onError}
+      {...(experimentalSetExplicitDimensions && explicitDimensionsAreAvailable
+        ? {
+            width: widthWithoutUnits ?? undefined,
+            height: heightWithoutUnits ?? undefined,
+          }
+        : {})}
     />
   )
 }
@@ -292,6 +310,7 @@ interface Props {
   aspectRatio?: ResponsiveValuesTypes.ResponsiveValue<string | number>
   maxHeight?: ResponsiveValuesTypes.ResponsiveValue<string>
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  experimentalSetExplicitDimensions?: boolean
 }
 
 function ProductImage({
@@ -308,6 +327,7 @@ function ProductImage({
   aspectRatio: aspectRatioProp,
   maxHeight: maxHeightProp,
   classes,
+  experimentalSetExplicitDimensions,
 }: Props) {
   const { product } = useProductSummary()
   const { handles, withModifiers } = useCssHandles(CSS_HANDLES, { classes })
@@ -440,6 +460,9 @@ function ProductImage({
               alt={name}
               className={imageClassname}
               onError={onError}
+              experimentalSetExplicitDimensions={
+                experimentalSetExplicitDimensions
+              }
             />
             {selectedHoverImage && !isMobile && (
               <Image
@@ -451,6 +474,9 @@ function ProductImage({
                 alt={name}
                 className={hoverImageClassname}
                 onError={onError}
+                experimentalSetExplicitDimensions={
+                  experimentalSetExplicitDimensions
+                }
               />
             )}
           </div>
