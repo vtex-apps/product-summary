@@ -56,6 +56,7 @@
 | `hoverImage` | `object` | Defines which criteria should be used to define the hover image according to the product images in the admin's Catalog. | `undefined`|
 | `width` | `object` | Defines the Product Summary Image width. | `undefined` |
 | `height` | `object` | Defines the Product Summary Image height. | `undefined` |
+| `experimentalSetExplicitDimensions` | `boolean` | Experimental property to apply `width` and `height` props in HTML tag attribute values | `false` |
 | `aspectRatio` | `object` | Aspect ratio of the Product Summary Image. It defines whether the image should be displayed in a square, portrait, landscape or in another format. The prop value should follow the [common aspect ratio notation](https://en.wikipedia.org/wiki/Aspect_ratio_(image)), which gives two numbers separated by a colon. For example: `1:1` for a square format or `3:4` for an upright portrait. Note that this prop won't work if you've already configured the `width` or `height` props. | `undefined` |
 | `maxHeight` | `object` | Defines the Product Summary Image max height. Note that this prop won't work if you've already configured the `width` or `height` props.| `undefined` |
 
