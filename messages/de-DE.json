@@ -44,7 +44,7 @@
   "admin/editor.productSummaryList.description": "Eine Produktliste mit einer Kollektion",
   "admin/editor.productSummaryList.category.title": "Kategorie-ID",
   "admin/editor.productSummaryList.category.description": "Für Unterkategorien verwenden Sie \"/\" (z.B. 1/2/3)",
-  "admin/editor.productSummaryList.collection.title": "Collectie|Collectie",
+  "admin/editor.productSummaryList.collection.title": "Kollektion",
   "admin/editor.productSummaryList.orderBy.title": "Listensortierung",
   "admin/editor.productSummaryList.hideUnavailableItems": "Nicht verfügbare Artikel ausblenden",
   "admin/editor.productSummaryList.maxItems.title": "Max. Artikel",
