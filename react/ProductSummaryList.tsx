@@ -1,13 +1,16 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import type { ComponentType, PropsWithChildren } from 'react'
 import { useQuery } from 'react-apollo'
 import { QueryProducts } from 'vtex.store-resources'
 import type { QueryProductsTypes } from 'vtex.store-resources'
 import { usePixel } from 'vtex.pixel-manager'
 import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
+// eslint-disable-next-line no-restricted-imports
+import { equals } from 'ramda'
 
 import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
 import { PreferenceType } from './utils/normalize'
+import useSession from './hooks/useSession'
 
 const ORDER_BY_OPTIONS = {
   RELEVANCE: {
@@ -130,6 +133,26 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     preferredSKU,
   } = props
 
+  const [shippingOptions, setShippingOptions] = useState([])
+
+  const { getShippingOptionFromSession } = useSession()
+
+  useEffect(() => {
+    async function getShippingFromSession() {
+      const result = await getShippingOptionFromSession()
+
+      if (result) {
+        setShippingOptions((currentShippingOptions) =>
+          equals(currentShippingOptions, result)
+            ? currentShippingOptions
+            : result
+        )
+      }
+    }
+
+    getShippingFromSession()
+  }, [getShippingOptionFromSession])
+
   const { push } = usePixel()
   const { data, loading, error } = useQuery<
     QueryProductsTypes.Data,
@@ -146,6 +169,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
       orderBy,
       from: 0,
       to: maxItems - 1,
+      shippingOptions,
       hideUnavailableItems,
       skusFilter,
       installmentCriteria,
