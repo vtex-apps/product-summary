@@ -141,13 +141,17 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     async function getShippingFromSession() {
       const result = await getShippingOptionFromSession()
 
-      if (result && !equals(result, shippingOptions)) {
-        setShippingOptions(result)
+      if (result) {
+        setShippingOptions((currentShippingOptions) =>
+          equals(currentShippingOptions, result)
+            ? currentShippingOptions
+            : result
+        )
       }
     }
 
     getShippingFromSession()
-  }, [getShippingOptionFromSession, shippingOptions])
+  }, [getShippingOptionFromSession])
 
   const { push } = usePixel()
   const { data, loading, error } = useQuery<

@@ -13,7 +13,7 @@ const useSession = () => {
     }
 
     const session = await fetch(
-      `${window.location.origin}/api/sessions?items=public.shippingOption`,
+      '/api/sessions?items=public.shippingOption',
       requestOptions
     )
 
