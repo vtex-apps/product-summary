@@ -29,7 +29,7 @@ const useSession = () => {
     return JSON.parse(data.namespaces.public.shippingOption.value)?.map(
       (option: { key: string; value: string }) => option.value
     )
-  }, [])
+  }, [rootPath])
 
   return { getShippingOptionFromSession }
 }
