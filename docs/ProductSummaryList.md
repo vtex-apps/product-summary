@@ -27,7 +27,7 @@ This block is used to specify what variation of `product-summary` should be used
   },
 ```
 
-`list-context.product-list` is also runs the GraphQL query that fetches the product list to allow it to receive the following props:
+`list-context.product-list` also runs the GraphQL query that fetches the product list to allow it to receive the following props:
 
 | Prop name              | Type                                   | Description                                                                                                                                                                                                  | Default value            |
 | ---------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ |
