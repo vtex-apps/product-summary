@@ -8,7 +8,7 @@ The Product Summary Shelf is the main block exported by the [Product Summary app
 
 ## Configuration
 
-1. Import the `vtex.product-summary` app to your theme dependencies in the `manifest.json`:
+1. Import the `vtex.product-summary` app to your theme dependencies in the `manifest.json` file:
 
 ```json
   dependencies: {
@@ -41,12 +41,12 @@ The Product Summary Shelf is the main block exported by the [Product Summary app
 }
 ```
 
-> ⚠️ Remember to define the other Product Summary blocks in your theme, otherwise the component will not be displayed.
+>⚠️ Remember to define the other Product Summary blocks in your theme, otherwise the component will not be displayed.
 
-|    Prop name    |   Type    |                                                                                                                                                                                                                                 Description                                                                                                                                                                                                                                 | Default value |
-|:---------------:|:---------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------:|
-| `priceBehavior` |  `enum`   | Whether the component should fetch the most up-to-date price (`async`) or (`default`). Remember to configure the [Search Result](https://vtex.io/docs/components/content-blocks/vtex.search-result@3.79.1/#configuration)'s `simulationBehavior` prop to `skip` and use the Product Price [`product-price-suspense`](https://github.com/vtex-apps/product-price/blob/master/docs/README.md) block to render a loading spinner while the price information is being fetched. |   `default`   |
-| `trackListName` | `boolean` |                                                                                                                 Whether the component should send the list name to the product page when the product summary is clicked. Disabling it will prevent the `productDetail` GTM event from being sent on the PDP to identify from which list the user navigated.                                                                                                                 |    `true`     |
+| Prop name | Type | Description | Default value |
+| - | - | - | - |
+| `priceBehavior` |  `enum` | Determines whether the component should fetch the most up-to-date price (`async`) or (`default`). Remember to configure the [Search Result](https://vtex.io/docs/components/content-blocks/vtex.search-result@3.79.1/#configuration)'s `simulationBehavior` prop to `skip` and use the Product Price [`product-price-suspense`](https://github.com/vtex-apps/product-price/blob/master/docs/README.md) block to render a loading spinner while the price information is being fetched. | `default` |
+| `trackListName` | `boolean` | Determines whether the component should send the list name to the product page when the product summary is clicked. Disabling it will prevent the `productDetail` GTM event sent on the PDP to identify from which list the user navigated. | `true` |
 
 ## Customization
 
