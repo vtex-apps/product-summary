@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- I18n on ProductSummaryImage file.
+
 ## [2.83.2] - 2023-06-22
 ### Fixed
 - Adds `rootPath` to Session API requests.
