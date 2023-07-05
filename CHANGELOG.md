@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.83.5] - 2023-07-05
+
 ### Fixed
 
 - I18n on ProductSummaryImage file.
