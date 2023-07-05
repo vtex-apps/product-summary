@@ -1,6 +1,9 @@
 import { useCallback } from 'react'
+import { useRuntime } from 'vtex.render-runtime'
 
 const useSession = () => {
+  const { rootPath } = useRuntime()
+
   const getShippingOptionFromSession = useCallback(async () => {
     const headers = new Headers()
 
@@ -13,7 +16,7 @@ const useSession = () => {
     }
 
     const session = await fetch(
-      '/api/sessions?items=public.shippingOption',
+      `${rootPath ?? ''}/api/sessions?items=public.shippingOption`,
       requestOptions
     )
 
@@ -26,7 +29,7 @@ const useSession = () => {
     return JSON.parse(data.namespaces.public.shippingOption.value)?.map(
       (option: { key: string; value: string }) => option.value
     )
-  }, [])
+  }, [rootPath])
 
   return { getShippingOptionFromSession }
 }
