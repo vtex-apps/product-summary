@@ -11,11 +11,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - I18n on ProductSummaryImage file.
 
+## [2.83.4] - 2023-07-05
+### Fixed
+
+- Fixes of i18n on ProductSummaryShelf.md
+
+## [2.83.3] - 2023-07-05
+
+### Fixed
+
+- Fixes of i18n on ProductSummaryList.md
+
 ## [2.83.2] - 2023-06-22
+
 ### Fixed
 - Adds `rootPath` to Session API requests.
 
 ## [2.83.1] - 2023-05-03
+
 ### Fixed
 - Fixes of i18n on readme.md
 
