@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.84.0] - 2023-08-03
+
 ### Added
 
 - Added a prop to set the max description dynamically
