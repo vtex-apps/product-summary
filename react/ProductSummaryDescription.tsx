@@ -11,10 +11,10 @@ const CSS_HANDLES = ['description'] as const
 
 interface Props {
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
-  maxSizeDescription?: number
+  descriptionMaxSize?: number
 }
 
-function ProductSummaryDescription({ classes, maxSizeDescription }: Props) {
+function ProductSummaryDescription({ classes, descriptionMaxSize }: Props) {
   const { handles } = useCssHandles(CSS_HANDLES, { classes })
 
   const {
@@ -27,7 +27,7 @@ function ProductSummaryDescription({ classes, maxSizeDescription }: Props) {
 
   const descriptionClasses = `${handles.description} c-muted-2 t-small`
 
-  const maxSize = maxSizeDescription ?? MAX_SIZE_DESCRIPTION
+  const maxSize = descriptionMaxSize ?? MAX_SIZE_DESCRIPTION
   const descriptionTruncated =
     description.length > maxSize
       ? `${description.substring(0, maxSize)}...`
