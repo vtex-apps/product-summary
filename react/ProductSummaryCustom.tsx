@@ -1,19 +1,20 @@
-import React, { useCallback, useMemo, useEffect, useRef } from 'react'
-import type { PropsWithChildren } from 'react'
 import classNames from 'classnames'
-import { Link } from 'vtex.render-runtime'
-import { useOnView } from 'vtex.on-view'
-import { ProductListContext } from 'vtex.product-list-context'
-import { ProductSummaryContext } from 'vtex.product-summary-context'
-import type { ProductSummaryTypes } from 'vtex.product-summary-context'
-import { ProductContextProvider } from 'vtex.product-context'
-import type { ProductTypes } from 'vtex.product-context'
-import { useCssHandles } from 'vtex.css-handles'
+import type { PropsWithChildren } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import type { CssHandlesTypes } from 'vtex.css-handles'
+import { useCssHandles } from 'vtex.css-handles'
+import { useOnView } from 'vtex.on-view'
+import type { ProductTypes } from 'vtex.product-context'
+import { ProductContextProvider } from 'vtex.product-context'
+import { ProductListContext } from 'vtex.product-list-context'
+import type { ProductSummaryTypes } from 'vtex.product-summary-context'
+import { ProductSummaryContext } from 'vtex.product-summary-context'
+import { Link } from 'vtex.render-runtime'
 
 import LocalProductSummaryContext from './ProductSummaryContext'
-import { mapCatalogProductToProductSummary } from './utils/normalize'
 import ProductPriceSimulationWrapper from './components/ProductPriceSimulationWrapper'
+import SponsoredProductWrapper from './components/SponsoredProductWrapper'
+import { mapCatalogProductToProductSummary } from './utils/normalize'
 
 const {
   ProductSummaryProvider,
@@ -162,17 +163,19 @@ function ProductSummaryCustom({
           inView={inView}
           priceBehavior={priceBehavior}
         >
-          <section
-            className={containerClasses}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
-            ref={inViewRef}
-          >
-            <Link className={linkClasses} {...linkProps}>
-              <article className={summaryClasses}>{children}</article>
-            </Link>
-          </section>
+          <SponsoredProductWrapper product={product} position={position}>
+            <section
+              className={containerClasses}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
+              ref={inViewRef}
+            >
+              <Link className={linkClasses} {...linkProps}>
+                <article className={summaryClasses}>{children}</article>
+              </Link>
+            </section>
+          </SponsoredProductWrapper>
         </ProductPriceSimulationWrapper>
       </ProductContextProvider>
     </LocalProductSummaryContext.Provider>
