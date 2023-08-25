@@ -83,6 +83,9 @@
     "component": "ProductSummaryAddToListButton",
     "allowed": ["addon-summary-btn"]
   },
+  "product-summary-sponsored-badge": {
+    "component": "ProductSummarySponsoredBadge"
+  },
   "addon-summary-btn": {
     "component": "*"
   },
