@@ -18,6 +18,7 @@
   "store/productSummary.unit": "الوحدة",
   "store/productSummary.attachmentName": "{sign} {quantity}x {name}",
   "store/productSummary.missingOptionName": "بدون {name}",
+  "store/productSummarySponsoredBadge.title": "برعاية",
   "admin/editor.productSummaryPrice.title": "سعر ملخص المنتج",
   "admin/editor.productSummaryPrice.description": "المكون الذي يظهر سعر المنتج داخل ملخص المنتج",
   "admin/editor.productSummaryPrice.showListPrice.title": "إظهار سعر القائمة",

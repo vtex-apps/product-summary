@@ -18,6 +18,7 @@
   "store/productSummary.unit": "단위",
   "store/productSummary.attachmentName": "{sign} {quantity}x {name}",
   "store/productSummary.missingOptionName": "{name} 없음",
+  "store/productSummarySponsoredBadge.title": "후원",
   "admin/editor.productSummaryPrice.title": "제품 요약 가격",
   "admin/editor.productSummaryPrice.description": "제품 요약 내에 제품 가격을 표시하는 구성 요소",
   "admin/editor.productSummaryPrice.showListPrice.title": "정가 표시",

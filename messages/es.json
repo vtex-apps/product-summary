@@ -18,6 +18,7 @@
   "store/productSummary.unit": "Unidad",
   "store/productSummary.attachmentName": "{sign} {quantity}x {name}",
   "store/productSummary.missingOptionName": "Sin {name}",
+  "store/productSummarySponsoredBadge.title": "Patrocinado",
   "admin/editor.productSummaryPrice.title": "Precio del resumen del producto",
   "admin/editor.productSummaryPrice.description": "Componente que muestra el precio del producto dentro del resumen del producto",
   "admin/editor.productSummaryPrice.showListPrice.title": "Mostrar el precio de lista",

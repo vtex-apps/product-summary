@@ -18,6 +18,7 @@
   "store/productSummary.unit": "Unitate",
   "store/productSummary.attachmentName": "{sign} {quantity}x {name}",
   "store/productSummary.missingOptionName": "Fără {name}",
+  "store/productSummarySponsoredBadge.title": "Спонсор",
   "admin/editor.productSummaryPrice.title": "Preț rezumat produs",
   "admin/editor.productSummaryPrice.description": "Componenta care arată prețul produsului în rezumatul produsului",
   "admin/editor.productSummaryPrice.showListPrice.title": "Arată prețul de listă",

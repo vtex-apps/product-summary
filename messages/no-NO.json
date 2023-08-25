@@ -18,6 +18,7 @@
   "store/productSummary.unit": "Enhet",
   "store/productSummary.attachmentName": "{sign} {quantity}x {name}",
   "store/productSummary.missingOptionName": "Nei {name}",
+  "store/productSummarySponsoredBadge.title": "Sponset",
   "admin/editor.productSummaryPrice.title": "Pris for produktsammendrag",
   "admin/editor.productSummaryPrice.description": "Komponent som viser produktpris inne i produktsammendraget",
   "admin/editor.productSummaryPrice.showListPrice.title": "Vis listepris",

@@ -18,6 +18,7 @@
   "store/productSummary.unit": "Unit",
   "store/productSummary.attachmentName": "{sign} {quantity}x {name}",
   "store/productSummary.missingOptionName": "Tidak ada {name}",
+  "store/productSummarySponsoredBadge.title": "Disponsori",
   "admin/editor.productSummaryPrice.title": "Harga Ringkasan Produk",
   "admin/editor.productSummaryPrice.description": "Komponen yang menampilkan harga produk di dalam ringkasan produk",
   "admin/editor.productSummaryPrice.showListPrice.title": "Tampilkan harga eceran",

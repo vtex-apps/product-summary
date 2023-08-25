@@ -18,6 +18,7 @@
   "store/productSummary.unit": "Eenheid",
   "store/productSummary.attachmentName": "{sign} {quantity}x {name}",
   "store/productSummary.missingOptionName": "Geen {name}",
+  "store/productSummarySponsoredBadge.title": "Gesponsord",
   "admin/editor.productSummaryPrice.title": "Productoverzicht prijs",
   "admin/editor.productSummaryPrice.description": "Component die de prijs van het product toont in het productoverzicht",
   "admin/editor.productSummaryPrice.showListPrice.title": "Toon lijstprijs",

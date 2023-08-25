@@ -18,6 +18,7 @@
   "store/productSummary.unit": "ユニット",
   "store/productSummary.attachmentName": "{sign} {quantity}x {name}",
   "store/productSummary.missingOptionName": "{name} なし",
+  "store/productSummarySponsoredBadge.title": "スポンサー付き",
   "admin/editor.productSummaryPrice.title": "製品サマリ価格",
   "admin/editor.productSummaryPrice.description": "製品サマリ内で製品価格を表示するコンポーネント",
   "admin/editor.productSummaryPrice.showListPrice.title": "希望小売価格を表示する",

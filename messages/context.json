@@ -18,6 +18,7 @@
   "store/productSummary.unit": "store/productSummary.unit",
   "store/productSummary.attachmentName": "store/productSummary.attachmentName",
   "store/productSummary.missingOptionName": "String displayed when the assembly option was removed by user",
+  "store/productSummarySponsoredBadge.title": "String displayed in the sponsored product badge",
   "admin/editor.productSummaryPrice.title": "Title of ProductSummaryPrice component",
   "admin/editor.productSummaryPrice.description": "Description of ProductSummaryPrice component",
   "admin/editor.productSummaryPrice.showListPrice.title": "Title of showListPrice prop",

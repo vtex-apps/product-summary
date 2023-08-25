@@ -18,6 +18,7 @@
   "store/productSummary.unit": "หน่วย",
   "store/productSummary.attachmentName": "{sign} {quantity}x {name}",
   "store/productSummary.missingOptionName": "ไม่มี {name}",
+  "store/productSummarySponsoredBadge.title": "ได้รับการสนับสนุน",
   "admin/editor.productSummaryPrice.title": "ราคาตามภาพรวมผลิตภัณฑ์",
   "admin/editor.productSummaryPrice.description": "คอมโพเนนต์ที่แสดงราคาผลิตภัณฑ์ภายในภาพรวมผลิตภัณฑ์",
   "admin/editor.productSummaryPrice.showListPrice.title": "แสดงราคาตามบัญชีราคา",

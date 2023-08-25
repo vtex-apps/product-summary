@@ -18,6 +18,7 @@
   "store/productSummary.unit": "Единица",
   "store/productSummary.attachmentName": "{sign} {quantity}x {name}",
   "store/productSummary.missingOptionName": "Няма {name}",
+  "store/productSummarySponsoredBadge.title": "Спонсориран",
   "admin/editor.productSummaryPrice.title": "Цена в резюме на продукта",
   "admin/editor.productSummaryPrice.description": "Компонент, който показва цената на продукта в резюмето на продукта",
   "admin/editor.productSummaryPrice.showListPrice.title": "Показване на цената в каталога",
