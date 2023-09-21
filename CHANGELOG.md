@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.85.0] - 2023-09-21
+
 ### Added
 
 - `variant` cookie.
