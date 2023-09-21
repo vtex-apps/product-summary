@@ -2,11 +2,11 @@ import React, { useCallback, useEffect, useState } from 'react'
 import type { ComponentType, PropsWithChildren } from 'react'
 import { useQuery } from 'react-apollo'
 import { QueryProducts } from 'vtex.store-resources'
-import type { QueryProductsTypes } from 'vtex.store-resources'
 import { usePixel } from 'vtex.pixel-manager'
 import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 // eslint-disable-next-line no-restricted-imports
 import { equals } from 'ramda'
+import { canUseDOM } from 'vtex.render-runtime'
 
 import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
 import { PreferenceType } from './utils/normalize'
@@ -45,6 +45,30 @@ const ORDER_BY_OPTIONS = {
     name: 'admin/editor.productSummaryList.orderType.discount',
     value: 'OrderByBestDiscountDESC',
   },
+}
+
+function getCookie(cname: string) {
+  if (!canUseDOM) {
+    return null
+  }
+
+  const name = `${cname}=`
+  const decodedCookie = decodeURIComponent(document.cookie)
+  const ca = decodedCookie.split(';')
+
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i]
+
+    while (c.charAt(0) === ' ') {
+      c = c.substring(1)
+    }
+
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length)
+    }
+  }
+
+  return ''
 }
 
 const parseFilters = ({ id, value }: { id: string; value: string }) =>
@@ -154,10 +178,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
   }, [getShippingOptionFromSession])
 
   const { push } = usePixel()
-  const { data, loading, error } = useQuery<
-    QueryProductsTypes.Data,
-    QueryProductsTypes.Variables
-  >(QueryProducts, {
+  const { data, loading, error } = useQuery(QueryProducts, {
     variables: {
       category,
       ...(collection != null
@@ -173,6 +194,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
       hideUnavailableItems,
       skusFilter,
       installmentCriteria,
+      variant: getCookie('sp-variant'),
     },
   })
 
