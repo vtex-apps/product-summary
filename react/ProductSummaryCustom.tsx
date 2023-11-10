@@ -14,6 +14,7 @@ import type { CssHandlesTypes } from 'vtex.css-handles'
 import LocalProductSummaryContext from './ProductSummaryContext'
 import { mapCatalogProductToProductSummary } from './utils/normalize'
 import ProductPriceSimulationWrapper from './components/ProductPriceSimulationWrapper'
+import getAdsDataProperties from './utils/getAdsDataProperties'
 
 const {
   ProductSummaryProvider,
@@ -151,6 +152,8 @@ function ProductSummaryCustom({
         onClickCapture: autocompleteSummary ? undefined : actionOnClick,
       }
 
+  const adsDataProperties = getAdsDataProperties({ product, position })
+
   return (
     <LocalProductSummaryContext.Provider value={oldContextProps}>
       <ProductContextProvider
@@ -168,6 +171,7 @@ function ProductSummaryCustom({
             onMouseLeave={handleMouseLeave}
             style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
             ref={inViewRef}
+            {...adsDataProperties}
           >
             <Link className={linkClasses} {...linkProps}>
               <article className={summaryClasses}>{children}</article>

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- When a product is sponsored, adds HTML data properties so that they can be observed by the Activity Flow script.
+
 ## [2.85.0] - 2023-09-21
 
 ### Added
