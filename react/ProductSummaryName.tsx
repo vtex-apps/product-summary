@@ -36,11 +36,13 @@ interface Props {
    * @default "h3"
    */
   tag?: 'div' | 'h1' | 'h2' | 'h3'
+  sponsoredBadgeLabel: string
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
 function ProductSummaryName({
   showFieldsProps = defaultShowFields,
+  sponsoredBadgeLabel,
   tag = 'h3',
   classes,
 }: Props) {
@@ -50,6 +52,8 @@ function ProductSummaryName({
   // TODO: change ProductSummaryContext to have `selectedSku` field instead of `sku`
   const skuName = product?.sku?.name
   const brandName = product?.brand
+
+  const isSponsored = !!product?.advertisement?.adId
 
   const containerClasses = `${handles.nameContainer} flex items-start justify-center pv6`
   const wrapperClasses = `${handles.nameWrapper} overflow-hidden c-on-base f5`
@@ -64,6 +68,8 @@ function ProductSummaryName({
         brandNameClass={brandNameClasses}
         skuNameClass={skuNameClasses}
         loaderClass={loaderClasses}
+        showSponsoredBadge={isSponsored}
+        sponsoredBadgeLabel={sponsoredBadgeLabel}
         productReferenceClass={handles.productReference}
         name={productName}
         skuName={skuName}
