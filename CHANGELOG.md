@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.87.0] - 2023-11-28
+
 ### Added
 
 - When a product is sponsored, renders the sponsored tag above the product's name.
