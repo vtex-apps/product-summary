@@ -52,7 +52,14 @@
     }
   },
   "product-summary-name": {
-    "component": "ProductSummaryName"
+    "component": "ProductSummaryName",
+    "content": {
+      "properties": {
+        "sponsoredBadgeLabel": {
+          "$ref": "app:vtex.product-summary#/definitions/ProductSummary/properties/sponsoredBadgeLabel"
+        }
+      }
+    }
   },
   "product-summary-sku-name": {
     "component": "ProductSummarySKUName"
