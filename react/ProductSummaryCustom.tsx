@@ -85,6 +85,17 @@ function ProductSummaryCustom({
     }
   }, [product, dispatch])
 
+  useEffect(() => {
+    if (position) {
+      dispatch({
+        // @ts-expect-error - Depends on vtex.product-summary-context update
+        type: 'SET_POSITION',
+        // @ts-expect-error - Depends on vtex.product-summary-context update
+        args: { position },
+      })
+    }
+  }, [product, dispatch])
+
   const handleMouseLeave = useCallback(() => {
     dispatch({
       type: 'SET_HOVER',

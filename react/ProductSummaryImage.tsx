@@ -219,6 +219,7 @@ interface ImageProps {
   className: string
   aspectRatio?: string | number
   maxHeight?: string
+  fetchpriority?: 'high' | 'low' | 'auto'
 }
 
 function Image({
@@ -230,6 +231,7 @@ function Image({
   className,
   aspectRatio,
   maxHeight,
+  fetchpriority = 'auto',
 }: ImageProps) {
   const { isMobile } = useDevice()
 
@@ -253,6 +255,7 @@ function Image({
       alt={alt}
       className={className}
       onError={onError}
+      fetchpriority={fetchpriority}
     />
   )
 }
@@ -292,6 +295,7 @@ interface Props {
   aspectRatio?: ResponsiveValuesTypes.ResponsiveValue<string | number>
   maxHeight?: ResponsiveValuesTypes.ResponsiveValue<string>
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  fetchpriority?: 'high' | 'low' | 'auto'
 }
 
 function ProductImage({
@@ -308,8 +312,10 @@ function ProductImage({
   aspectRatio: aspectRatioProp,
   maxHeight: maxHeightProp,
   classes,
+  fetchpriority = 'auto',
 }: Props) {
-  const { product } = useProductSummary()
+  // @ts-expect-error - Depends on vtex.product-summary-context update
+  const { product, position } = useProductSummary()
   const { handles, withModifiers } = useCssHandles(CSS_HANDLES, { classes })
 
   const [error, setError] = useState(false)
@@ -440,6 +446,7 @@ function ProductImage({
               alt={name}
               className={imageClassname}
               onError={onError}
+              fetchpriority={isMobile ? position === 1 ? 'high' : 'low' : fetchpriority}
             />
             {selectedHoverImage && !isMobile && (
               <Image
