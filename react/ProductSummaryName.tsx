@@ -54,6 +54,8 @@ function ProductSummaryName({
   const brandName = product?.brand
 
   const isSponsored = !!product?.advertisement?.adId
+  const showSponsoredBadge =
+    isSponsored && product?.advertisement?.options?.showSponsoredBadge
 
   const containerClasses = `${handles.nameContainer} flex items-start justify-center pv6`
   const wrapperClasses = `${handles.nameWrapper} overflow-hidden c-on-base f5`
@@ -68,7 +70,7 @@ function ProductSummaryName({
         brandNameClass={brandNameClasses}
         skuNameClass={skuNameClasses}
         loaderClass={loaderClasses}
-        showSponsoredBadge={isSponsored}
+        showSponsoredBadge={showSponsoredBadge}
         sponsoredBadgeLabel={sponsoredBadgeLabel}
         productReferenceClass={handles.productReference}
         name={productName}
