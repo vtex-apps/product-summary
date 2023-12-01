@@ -295,7 +295,6 @@ interface Props {
   aspectRatio?: ResponsiveValuesTypes.ResponsiveValue<string | number>
   maxHeight?: ResponsiveValuesTypes.ResponsiveValue<string>
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
-  fetchpriority?: 'high' | 'low' | 'auto'
 }
 
 function ProductImage({
@@ -312,7 +311,6 @@ function ProductImage({
   aspectRatio: aspectRatioProp,
   maxHeight: maxHeightProp,
   classes,
-  fetchpriority = 'auto',
 }: Props) {
   // @ts-expect-error - Depends on vtex.product-summary-context update on PR: https://github.com/vtex-apps/product-summary-context/pull/25
   const { product, position } = useProductSummary()
@@ -446,7 +444,7 @@ function ProductImage({
               alt={name}
               className={imageClassname}
               onError={onError}
-              fetchpriority={isMobile ? position === 1 ? 'high' : 'low' : fetchpriority}
+              fetchpriority={isMobile ? (position === 1 ? 'high' : 'low') : (position < 4 ? 'high' : 'low')}
             />
             {selectedHoverImage && !isMobile && (
               <Image
