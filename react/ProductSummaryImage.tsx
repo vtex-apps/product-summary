@@ -251,7 +251,7 @@ function Image({
       src={getImageSrc({ src, width, height, dpi, aspectRatio })}
       style={getStyle({ width, height, aspectRatio, maxHeight })}
       // @ts-expect-error This property exists in HTML
-      loading={shouldResize ? 'lazy' : 'auto'}
+      loading={shouldResize ? 'lazy' : fetchpriority === 'high' ? 'eager' : 'auto'}
       alt={alt}
       className={className}
       onError={onError}
