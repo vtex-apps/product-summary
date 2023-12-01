@@ -314,7 +314,7 @@ function ProductImage({
   classes,
   fetchpriority = 'auto',
 }: Props) {
-  // @ts-expect-error - Depends on vtex.product-summary-context update
+  // @ts-expect-error - Depends on vtex.product-summary-context update on PR: https://github.com/vtex-apps/product-summary-context/pull/25
   const { product, position } = useProductSummary()
   const { handles, withModifiers } = useCssHandles(CSS_HANDLES, { classes })
 
