@@ -94,7 +94,7 @@ function ProductSummaryCustom({
         args: { position },
       })
     }
-  }, [product, dispatch])
+  }, [position, dispatch])
 
   const handleMouseLeave = useCallback(() => {
     dispatch({
