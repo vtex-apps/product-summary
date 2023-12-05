@@ -251,7 +251,9 @@ function Image({
       src={getImageSrc({ src, width, height, dpi, aspectRatio })}
       style={getStyle({ width, height, aspectRatio, maxHeight })}
       // @ts-expect-error This property exists in HTML
-      loading={shouldResize ? 'lazy' : fetchpriority === 'high' ? 'eager' : 'auto'}
+      loading={
+        shouldResize ? 'lazy' : fetchpriority === 'high' ? 'eager' : 'auto'
+      }
       alt={alt}
       className={className}
       onError={onError}
@@ -444,7 +446,15 @@ function ProductImage({
               alt={name}
               className={imageClassname}
               onError={onError}
-              fetchpriority={isMobile ? (position === 1 ? 'high' : 'low') : (position < 4 ? 'high' : 'low')}
+              fetchpriority={
+                isMobile
+                ? position === 1
+                ? 'high'
+                : 'low'
+                : position < 4
+                ? 'high'
+                : 'low'
+              }
             />
             {selectedHoverImage && !isMobile && (
               <Image
