@@ -50,6 +50,7 @@
 | `badgeText` | `string` | Text displayed on the discount badge (in case the badge is configured to be shown in the product image). |  `undefined`  |
 | `showCollections` | `boolean` | Whether collection badges, if any, will be displayed (`true`) or not (`false`). | `false` |
 | `displayMode` | `enum` | Defines the Product Summary Image display mode. Possible values are: `normal` and `inline`. | `normal` |
+| `fetchPriority` | `enum` | Defines the Product Summary Image fetch priority. Possible values are: `auto`, `high` and `low`. | `auto` |
 | `placeholder` | `string` | Defines the Product Summary Image placeholder image. | `undefined` |
 | `mainImageLabel`  | `string` | object` | Matches the value defined in the `imageLabel` field from the Admin Catalog. Once matched, it determines which product image will be used as the main image displayed in the Product Summary component. | `undefined` |
 | `hoverImageLabel` | `string` |  ![https://img.shields.io/badge/-Deprecated-red](https://img.shields.io/badge/-Deprecated-red) Text value that matches the value defined in the `imageLabel` field from the Admin Catalog. Once matched, it determines which product image will be displayed when the user hovers over the product. If you set a label and no match is found, no image will be displayed during the hover. **In this case, use the `hoverImage` prop instead. | `undefined` |
