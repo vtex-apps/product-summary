@@ -37,6 +37,8 @@
   "admin/editor.productSummaryImage.hoverImage.criteria.index": "admin/editor.productSummaryImage.hoverImage.criteria.index",
   "admin/editor.productSummaryImage.hoverImage.criteria.label": "admin/editor.productSummaryImage.hoverImage.criteria.label",
   "admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria": "admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria",
+  "admin/editor.productSummaryImage.fetchPriority.title": "admin/editor.productSummaryImage.fetchPriority.title",
+  "admin/editor.productSummaryName.sponsoredBadge.title": "admin/editor.productSummaryName.sponsoredBadge.title",
   "admin/editor.productSummaryBuyButton.title": "admin/editor.productSummaryBuyButton.title",
   "admin/editor.productSummaryName.title": "admin/editor.productSummaryName.title",
   "admin/editor.product-summary-specification-badges.title": "admin/editor.product-summary-specification-badges.title",
