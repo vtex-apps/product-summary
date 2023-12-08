@@ -219,6 +219,7 @@ interface ImageProps {
   className: string
   aspectRatio?: string | number
   maxHeight?: string
+  fetchPriority?: 'high' | 'auto' | 'low'
 }
 
 function Image({
@@ -230,11 +231,12 @@ function Image({
   className,
   aspectRatio,
   maxHeight,
+  fetchPriority,
 }: ImageProps) {
   const { isMobile } = useDevice()
 
   /** TODO: Previously it was as follows :
-   * 
+   *
   const dpi = window.devicePixelRatio || (isMobile ? 2 : 1)
    *
    * it seems good, because it takes the actual user's screen density
@@ -252,6 +254,7 @@ function Image({
       loading={shouldResize ? 'lazy' : 'auto'}
       alt={alt}
       className={className}
+      fetchPriority={fetchPriority}
       onError={onError}
     />
   )
@@ -270,6 +273,11 @@ interface Props {
    * @default "normal"
    */
   displayMode?: 'normal' | 'inline'
+  /**
+   * Fetch priority of the summary
+   * @default "auto"
+   */
+  fetchPriority?: 'high' | 'auto' | 'low'
   /**
    * @default ""
    */
@@ -307,6 +315,7 @@ function ProductImage({
   height: heightProp,
   aspectRatio: aspectRatioProp,
   maxHeight: maxHeightProp,
+  fetchPriority = 'auto',
   classes,
 }: Props) {
   const { product } = useProductSummary()
@@ -439,6 +448,7 @@ function ProductImage({
               maxHeight={maxHeight}
               alt={name}
               className={imageClassname}
+              fetchPriority={fetchPriority}
               onError={onError}
             />
             {selectedHoverImage && !isMobile && (
@@ -450,6 +460,7 @@ function ProductImage({
                 maxHeight={maxHeight}
                 alt={name}
                 className={hoverImageClassname}
+                fetchPriority={fetchPriority}
                 onError={onError}
               />
             )}
@@ -540,6 +551,13 @@ ProductImage.schema = {
           ],
         },
       },
+    },
+    fetchPriority: {
+      title: 'admin/editor.productSummaryImage.fetchPriority.title',
+      type: 'string',
+      enum: ['auto', 'high', 'low'],
+      default: 'auto',
+      isLayout: true,
     },
   },
 }
