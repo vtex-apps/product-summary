@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Added `fetchPriority` prop to `ProductSummaryImage`.
+
+## [2.87.0] - 2023-11-28
+
+### Added
+
+- When a product is sponsored, renders the sponsored tag above the product's name.
+
 ## [2.86.0] - 2023-11-10
 
 ### Added
@@ -74,7 +84,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-- SEO: Use `h3` as default tag for `ProductSummaryName` instead of `h1` 
+- SEO: Use `h3` as default tag for `ProductSummaryName` instead of `h1`
 
 ## [2.80.0] - 2022-05-27
 
@@ -348,7 +358,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [2.53.1] - 2020-04-13
 ### Fixed
-- Product Summary Image - README.md Documentation 
+- Product Summary Image - README.md Documentation
 
 ## [2.53.0] - 2020-04-08
 ### Added
@@ -361,7 +371,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [2.52.2] - 2020-03-11
 ### Removed
-- graphql-tag removed from deps since `parse`, from graphql-js already does the job. It is not ideal to use gql from 'graphql-tag' since our current webpack config only strips away the gql when explicitly importing, and not using gql in the code. 
+- graphql-tag removed from deps since `parse`, from graphql-js already does the job. It is not ideal to use gql from 'graphql-tag' since our current webpack config only strips away the gql when explicitly importing, and not using gql in the code.
 
 ## [2.52.1] - 2020-03-04
 ### Fixed
