@@ -5050,9 +5050,9 @@ verror@1.10.0:
   version "0.2.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.search-page-context@0.2.0/public/@types/vtex.search-page-context#1b37f20648d8e4ff062ae9fffb0aa2718f172af7"
 
-"vtex.store-components@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.167.0/public/@types/vtex.store-components":
-  version "3.167.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.167.0/public/@types/vtex.store-components#1abbb57f3a78dd19dbcd4a473012ac44e23fa7ff"
+"vtex.store-components@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.170.0/public/@types/vtex.store-components":
+  version "3.170.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-components@3.170.0/public/@types/vtex.store-components#1f5673bc0b974862ed0a0c0e61cefefff1d472c6"
 
 "vtex.store-resources@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.90.0/public/@types/vtex.store-resources":
   version "0.90.0"

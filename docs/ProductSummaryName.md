@@ -42,6 +42,7 @@ Product Summary Name is a block exported by the [Product Summary app](https://de
 | `showSku` | `Boolean` | Show product SKU | `false` |
 | `showProductReference` | `Boolean` | Show product reference | `false`| 
 | `showBrandName` | `Boolean` | Show brand name | `false`| 
+| `sponsoredBadgeLabel` | `String` | The text of the "Sponsored" tag, if applicable. | `"store/sponsored-badge.label"`| 
 
 ## Customization
 
