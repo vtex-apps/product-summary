@@ -38,7 +38,6 @@
   "admin/editor.productSummaryImage.hoverImage.criteria.label": "Mausverschiebung Bildbeschriftung",
   "admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria": "Mausverschiebung Bildbeschriftung Bezeichnungssuche (genau: findet das Bild, das genau mit dem Namen übereinstimmt, der im Feld 'Hover Image Label' eingetragen ist | enthält: findet das erste Bild, das den Text enthält, der im Feld 'Hover Image Label' ausgefüllt ist)",
   "admin/editor.productSummaryImage.hoverImage.criteria.index": "Mausverschiebung Index",
-  "admin/editor.productSummaryName.sponsoredBadge.title": "Text des gesponserten Produkt-Tags, falls zutreffend",
   "admin/editor.productSummaryBuyButton.title": "Produktübersicht Kauf-Taste",
   "admin/editor.productSummaryName.title": "Produktübersicht Name",
   "admin/editor.product-summary-specification-badges.title": "Produktübersicht Spezifikations-Abzeichen",
@@ -72,5 +71,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum ohne Zinsen",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum",
   "admin/editor.productSummaryList.analyticsListName.title": "Listenname in der Analytik",
-  "admin/editor.productSummary.trackListName.title": "Sollte Listenname anzeigen"
+  "admin/editor.productSummary.trackListName.title": "Sollte Listenname anzeigen",
+  "admin/editor.productSummary.sponsoredBadge.title": "Text des gesponserten Produkts, falls zutreffend",
+  "admin/editor.productSummary.sponsoredBadge.position": "Position des gesponserten Produkts, falls zutreffend",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "Über dem Namen des Produkts",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "Über den Produktbehälter",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "Zeigen Sie nicht"
 }

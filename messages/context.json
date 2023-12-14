@@ -37,7 +37,6 @@
   "admin/editor.productSummaryImage.hoverImage.criteria.index": "admin/editor.productSummaryImage.hoverImage.criteria.index",
   "admin/editor.productSummaryImage.hoverImage.criteria.label": "admin/editor.productSummaryImage.hoverImage.criteria.label",
   "admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria": "admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria",
-  "admin/editor.productSummaryName.sponsoredBadge.title": "admin/editor.productSummaryName.sponsoredBadge.title",
   "admin/editor.productSummaryBuyButton.title": "admin/editor.productSummaryBuyButton.title",
   "admin/editor.productSummaryName.title": "admin/editor.productSummaryName.title",
   "admin/editor.product-summary-specification-badges.title": "admin/editor.product-summary-specification-badges.title",
@@ -71,5 +70,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum without interest enum name",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum with interest enum name",
   "admin/editor.productSummaryList.analyticsListName.title": "List name in Analytics",
-  "admin/editor.productSummary.trackListName.title": "Should track list name"
+  "admin/editor.productSummary.trackListName.title": "Should track list name",
+  "admin/editor.productSummary.sponsoredBadge.title": "admin/editor.productSummary.sponsoredBadge.title",
+  "admin/editor.productSummary.sponsoredBadge.position": "admin/editor.productSummary.sponsoredBadge.position",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "admin/editor.productSummary.sponsoredBadge.position.titleTop",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "admin/editor.productSummary.sponsoredBadge.position.none"
 }

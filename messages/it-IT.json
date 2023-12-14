@@ -38,7 +38,6 @@
   "admin/editor.productSummaryImage.hoverImage.criteria.label": "Etichetta dell'immagine secondaria",
   "admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria": "Criterio di ricerca dell'etichetta dell'immagine secondaria (exact: trova l'immagine che corrisponde esattamente al nome inserito nel campo \"Etichetta dell'immagine secondaria\" | contains: trova la prima immagine che contiene il testo inserito nel campo \"Etichetta dell'immagina secondaria\")",
   "admin/editor.productSummaryImage.hoverImage.criteria.index": "Indice dell'immagine secondaria",
-  "admin/editor.productSummaryName.sponsoredBadge.title": "Testo del tag del prodotto sponsorizzato, se applicabile",
   "admin/editor.productSummaryBuyButton.title": "Pulsante \"Acquista\" nel riepilogo del prodotto",
   "admin/editor.productSummaryName.title": "Nome nel riepilogo del prodotto",
   "admin/editor.product-summary-specification-badges.title": "Badge per le specifiche nel riepilogo del prodotto",
@@ -72,5 +71,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Importo massimo senza interessi",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Importo massimo",
   "admin/editor.productSummaryList.analyticsListName.title": "Nome del listino in \"Analisi\"",
-  "admin/editor.productSummary.trackListName.title": "Serve a tracciare il nome del listino"
+  "admin/editor.productSummary.trackListName.title": "Serve a tracciare il nome del listino",
+  "admin/editor.productSummary.sponsoredBadge.title": "Testo del tag prodotto sponsorizzato, se applicabile",
+  "admin/editor.productSummary.sponsoredBadge.position": "Posizione del tag prodotto sponsorizzato, se applicabile",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "Sopra il nome del prodotto",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "In cima al contenitore del prodotto",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "Non mostrare"
 }
