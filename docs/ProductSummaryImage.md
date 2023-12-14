@@ -58,6 +58,7 @@
 | `height` | `object` | Defines the Product Summary Image height. | `undefined` |
 | `aspectRatio` | `object` | The aspect ratio of the Product Summary Image. It defines whether the image should be displayed in a square, portrait, landscape, or another format. The prop value should follow the [ standard aspect ratio notation](https://en.wikipedia.org/wiki/Aspect_ratio_(image)), which consists of two numbers separated by a colon. For example, you can use `1:1` for a square format or `3:4` for an upright portrait. Note that this prop will not work if you have already configured the `width` or `height` props. | `undefined` |
 | `maxHeight` | `object` | Sets the maximum height for the Product Summary Image. Note that this prop will only work if you have already configured the `width` or `height` props. | `undefined` |
+| `fetchpriority` | `string` | The fetch priority hint (`'high'`, `'low'`, `'auto'` or `'byPosition'`). The `'byPosition'` option will determine if the image's fetchpriority should be high or low based on its rendering position on search result or list context. This prioritization is optimized for performance  | `'byPosition'` |
 
 - `mainImageLabel` object:
 

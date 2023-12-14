@@ -297,6 +297,7 @@ interface Props {
   aspectRatio?: ResponsiveValuesTypes.ResponsiveValue<string | number>
   maxHeight?: ResponsiveValuesTypes.ResponsiveValue<string>
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  fetchpriority?: 'high' | 'low' | 'auto' | 'byPosition'
 }
 
 function ProductImage({
@@ -313,6 +314,7 @@ function ProductImage({
   aspectRatio: aspectRatioProp,
   maxHeight: maxHeightProp,
   classes,
+  fetchpriority = 'byPosition',
 }: Props) {
   // @ts-expect-error - Depends on vtex.product-summary-context update on PR: https://github.com/vtex-apps/product-summary-context/pull/25
   const { product, position }: { product: ProductSummaryTypes.Product, position: number | undefined } = useProductSummary()
@@ -459,7 +461,7 @@ function ProductImage({
               alt={name}
               className={imageClassname}
               onError={onError}
-              fetchpriority={getFetchPriority(isMobile, position)}
+              fetchpriority={fetchpriority === 'byPosition' ? getFetchPriority(isMobile, position) : fetchpriority}
             />
             {selectedHoverImage && !isMobile && (
               <Image
@@ -560,6 +562,20 @@ ProductImage.schema = {
           ],
         },
       },
+    },
+    fetchpriority: {
+      title: 'admin/editor.productSummaryImage.fetchpriority.title',
+      enum: ['high', 'low', 'auto', 'byPosition'],
+      enumNames: [
+        'admin/editor.productSummaryImage.fetchpriority.high',
+        'admin/editor.productSummaryImage.fetchpriority.low',
+        'admin/editor.productSummaryImage.fetchpriority.auto',
+        'admin/editor.productSummaryImage.fetchpriority.byPosition'
+      ],
+      widget: {
+        'ui:widget': 'radio'
+      },
+      default: 'byPosition'
     },
   },
 }
