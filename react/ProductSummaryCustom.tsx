@@ -10,11 +10,14 @@ import { ProductContextProvider } from 'vtex.product-context'
 import type { ProductTypes } from 'vtex.product-context'
 import { useCssHandles } from 'vtex.css-handles'
 import type { CssHandlesTypes } from 'vtex.css-handles'
+import { SponsoredBadgePosition } from 'vtex.product-summary-context/react/ProductSummaryTypes'
 
 import LocalProductSummaryContext from './ProductSummaryContext'
 import { mapCatalogProductToProductSummary } from './utils/normalize'
 import ProductPriceSimulationWrapper from './components/ProductPriceSimulationWrapper'
 import getAdsDataProperties from './utils/getAdsDataProperties'
+import shouldShowSponsoredBadge from './utils/shouldShowSponsoredBadge'
+import { SponsoredBadge } from './components/SponsoredBadge'
 
 const {
   ProductSummaryProvider,
@@ -46,6 +49,7 @@ function ProductSummaryCustom({
     listName,
     query,
     inView,
+    sponsoredBadge,
   } = useProductSummary()
 
   const dispatch = useProductSummaryDispatch()
@@ -153,6 +157,11 @@ function ProductSummaryCustom({
       }
 
   const adsDataProperties = getAdsDataProperties({ product, position })
+  const showSponsoredBadge = shouldShowSponsoredBadge(
+    product,
+    sponsoredBadge?.position as SponsoredBadgePosition,
+    ['containerTopLeft']
+  )
 
   return (
     <LocalProductSummaryContext.Provider value={oldContextProps}>
@@ -174,6 +183,10 @@ function ProductSummaryCustom({
             {...adsDataProperties}
           >
             <Link className={linkClasses} {...linkProps}>
+              <SponsoredBadge
+                label={sponsoredBadge?.label}
+                showLabel={showSponsoredBadge}
+              />
               <article className={summaryClasses}>{children}</article>
             </Link>
           </section>
@@ -208,6 +221,14 @@ interface Props {
    */
   position?: number
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  /**
+   * The predefined position of the sponsored badge, if applicable.
+   */
+  sponsoredBadgePosition?: SponsoredBadgePosition
+  /**
+   * The label of the sponsored badge, if applicable.
+   */
+  sponsoredBadgeLabel?: string
 }
 
 function ProductSummaryWrapper({
@@ -218,13 +239,21 @@ function ProductSummaryWrapper({
   trackListName = true,
   listName,
   position,
+  sponsoredBadgePosition,
+  sponsoredBadgeLabel,
   classes,
   children,
 }: PropsWithChildren<Props>) {
+  const sponsoredBadge = {
+    position: sponsoredBadgePosition,
+    label: sponsoredBadgeLabel,
+  }
+
   return (
     <ProductSummaryProvider
       product={product}
       listName={trackListName ? listName : undefined}
+      sponsoredBadge={sponsoredBadge}
       isPriceLoading={
         priceBehavior === 'async' || priceBehavior === 'asyncOnly1P'
       }
