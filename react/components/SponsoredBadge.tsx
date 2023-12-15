@@ -23,6 +23,8 @@ export const SponsoredBadge = ({
 }: Props) => {
   const { handles } = useCssHandles(CSS_HANDLES)
 
+  if (!showLabel) return null
+
   const containerClasses = classNames(
     handles.sponsoredBadgeContainer,
     'absolute top-0 z-1'
@@ -36,7 +38,7 @@ export const SponsoredBadge = ({
   return (
     <div className={containerClasses}>
       <span className={textClasses}>
-        {showLabel ? <IOMessage id={label} /> : null}
+        <IOMessage id={label} />
       </span>
     </div>
   )

@@ -183,11 +183,13 @@ function ProductSummaryCustom({
             {...adsDataProperties}
           >
             <Link className={linkClasses} {...linkProps}>
-              <SponsoredBadge
-                label={sponsoredBadge?.label}
-                showLabel={showSponsoredBadge}
-              />
-              <article className={summaryClasses}>{children}</article>
+              <article className={summaryClasses}>
+                <SponsoredBadge
+                  label={sponsoredBadge?.label}
+                  showLabel={showSponsoredBadge}
+                />
+                {children}
+              </article>
             </Link>
           </section>
         </ProductPriceSimulationWrapper>
