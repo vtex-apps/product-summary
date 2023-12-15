@@ -27,7 +27,7 @@ export const SponsoredBadge = ({
 
   const containerClasses = classNames(
     handles.sponsoredBadgeContainer,
-    'absolute top-0 z-1'
+    'absolute z-1'
   )
 
   const textClasses = classNames(
