@@ -317,7 +317,13 @@ function ProductImage({
   fetchpriority = 'byPosition',
 }: Props) {
   // @ts-expect-error - Depends on vtex.product-summary-context update on PR: https://github.com/vtex-apps/product-summary-context/pull/25
-  const { product, position }: { product: ProductSummaryTypes.Product, position: number | undefined } = useProductSummary()
+  const {
+    product,
+    position
+  }: {
+    product: ProductSummaryTypes.Product,
+    position: number | undefined
+  } = useProductSummary()
   const { handles, withModifiers } = useCssHandles(CSS_HANDLES, { classes })
 
   const [error, setError] = useState(false)
@@ -427,16 +433,26 @@ function ProductImage({
 
   /**
    * Determines the priority ('high' or 'low') based on the isMobile flag and the position value.
-   * @param isMobile - A boolean indicating the device type (true for mobile, false for non-mobile).
-   * @param position - The Product Summary's position on a list context or search result, used to determine priority.
+   * @param isMobileDevice - A boolean indicating the device type (true for mobile, false for non-mobile).
+   * @param positionNumber - The Product Summary's position on a list context or search result, used to determine priority.
    * @returns A string representing the priority: 'high' for high priority, 'low' for low priority.
    */
-  const getFetchPriority = (isMobile: boolean, position: number | undefined): 'high' | 'low' => {
-    if (position) {
-      return isMobile ? (position === 1 ? 'high' : 'low') : position < 4 ? 'high' : 'low';
+  const getFetchPriority = (
+    isMobileDevice: boolean,
+    positionNumber: number | undefined
+  ): 'high' | 'low' => {
+    if (positionNumber) {
+      return isMobileDevice ?
+      positionNumber === 1
+      ? 'high'
+      : 'low'
+      : positionNumber < 4
+      ? 'high'
+      : 'low'
     }
-    return 'low';
-  };
+
+    return 'low'
+  }
 
   return (
     <div className={imageClassName}>
@@ -461,7 +477,11 @@ function ProductImage({
               alt={name}
               className={imageClassname}
               onError={onError}
-              fetchpriority={fetchpriority === 'byPosition' ? getFetchPriority(isMobile, position) : fetchpriority}
+              fetchpriority={
+                fetchpriority === 'byPosition'
+                ? getFetchPriority(isMobile, position)
+                : fetchpriority
+              }
             />
             {selectedHoverImage && !isMobile && (
               <Image
@@ -570,12 +590,12 @@ ProductImage.schema = {
         'admin/editor.productSummaryImage.fetchpriority.high',
         'admin/editor.productSummaryImage.fetchpriority.low',
         'admin/editor.productSummaryImage.fetchpriority.auto',
-        'admin/editor.productSummaryImage.fetchpriority.byPosition'
+        'admin/editor.productSummaryImage.fetchpriority.byPosition',
       ],
       widget: {
-        'ui:widget': 'radio'
+        'ui:widget': 'radio',
       },
-      default: 'byPosition'
+      default: 'byPosition',
     },
   },
 }
