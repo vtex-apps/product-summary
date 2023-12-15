@@ -319,9 +319,9 @@ function ProductImage({
   // @ts-expect-error - Depends on vtex.product-summary-context update on PR: https://github.com/vtex-apps/product-summary-context/pull/25
   const {
     product,
-    position
+    position,
   }: {
-    product: ProductSummaryTypes.Product,
+    product: ProductSummaryTypes.Product
     position: number | undefined
   } = useProductSummary()
   const { handles, withModifiers } = useCssHandles(CSS_HANDLES, { classes })
@@ -442,13 +442,13 @@ function ProductImage({
     positionNumber: number | undefined
   ): 'high' | 'low' => {
     if (positionNumber) {
-      return isMobileDevice ?
-      positionNumber === 1
-      ? 'high'
-      : 'low'
-      : positionNumber < 4
-      ? 'high'
-      : 'low'
+      return isMobileDevice
+        ? positionNumber === 1
+          ? 'high'
+          : 'low'
+        : positionNumber < 4
+        ? 'high'
+        : 'low'
     }
 
     return 'low'
@@ -479,8 +479,8 @@ function ProductImage({
               onError={onError}
               fetchpriority={
                 fetchpriority === 'byPosition'
-                ? getFetchPriority(isMobile, position)
-                : fetchpriority
+                  ? getFetchPriority(isMobile, position)
+                  : fetchpriority
               }
             />
             {selectedHoverImage && !isMobile && (
