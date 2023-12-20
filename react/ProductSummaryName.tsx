@@ -57,7 +57,7 @@ function ProductSummaryName({
   const showSponsoredBadge = shouldShowSponsoredBadge(
     product,
     sponsoredBadge.position as SponsoredBadgePosition,
-    ['titleTop']
+    'titleTop'
   )
 
   const containerClasses = `${handles.nameContainer} flex items-start justify-center pv6`

@@ -6,10 +6,10 @@ import {
 const shouldShowSponsoredBadge = (
   product: Product,
   position: SponsoredBadgePosition,
-  eligiblePositions: SponsoredBadgePosition[]
+  eligiblePosition: SponsoredBadgePosition
 ) => {
   const isSponsored = !!product?.advertisement?.adId
-  const showSponsoredBadge = isSponsored && eligiblePositions.includes(position)
+  const showSponsoredBadge = isSponsored && position === eligiblePosition
 
   return showSponsoredBadge
 }

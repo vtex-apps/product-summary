@@ -160,7 +160,7 @@ function ProductSummaryCustom({
   const showSponsoredBadge = shouldShowSponsoredBadge(
     product,
     sponsoredBadge?.position as SponsoredBadgePosition,
-    ['containerTopLeft']
+    'containerTopLeft'
   )
 
   return (
