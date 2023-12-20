@@ -184,10 +184,9 @@ function ProductSummaryCustom({
           >
             <Link className={linkClasses} {...linkProps}>
               <article className={summaryClasses}>
-                <SponsoredBadge
-                  label={sponsoredBadge?.label}
-                  showLabel={showSponsoredBadge}
-                />
+                {showSponsoredBadge ? (
+                  <SponsoredBadge label={sponsoredBadge?.label} />
+                ) : null}
                 {children}
               </article>
             </Link>

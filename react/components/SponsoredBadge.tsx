@@ -10,20 +10,12 @@ type Props = {
    * The message ID or string for the sponsored label.
    */
   label?: string
-
-  /**
-   * Whether to show the sponsored label text.
-   */
-  showLabel?: boolean
 }
 
 export const SponsoredBadge = ({
   label = 'store/sponsoredBadge.title',
-  showLabel = false,
 }: Props) => {
   const { handles } = useCssHandles(CSS_HANDLES)
-
-  if (!showLabel) return null
 
   const containerClasses = classNames(
     handles.sponsoredBadgeContainer,
