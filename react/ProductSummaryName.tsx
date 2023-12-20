@@ -56,7 +56,7 @@ function ProductSummaryName({
 
   const showSponsoredBadge = shouldShowSponsoredBadge(
     product,
-    sponsoredBadge.position as SponsoredBadgePosition,
+    sponsoredBadge?.position as SponsoredBadgePosition,
     'titleTop'
   )
 
@@ -74,7 +74,7 @@ function ProductSummaryName({
         skuNameClass={skuNameClasses}
         loaderClass={loaderClasses}
         showSponsoredBadge={showSponsoredBadge}
-        sponsoredBadgeLabel={sponsoredBadge.label}
+        sponsoredBadgeLabel={sponsoredBadge?.label}
         productReferenceClass={handles.productReference}
         name={productName}
         skuName={skuName}
