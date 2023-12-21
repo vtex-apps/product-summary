@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.89.0] - 2023-12-21
+
 ### Added
 
 - `fetchpriority` prop for `Image` to allow fetch priority.
