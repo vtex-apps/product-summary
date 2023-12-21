@@ -73,5 +73,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "利息抜き最大値",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "最大値",
   "admin/editor.productSummaryList.analyticsListName.title": "アナリティクスのリスト名",
-  "admin/editor.productSummary.trackListName.title": "リスト名を追跡する"
+  "admin/editor.productSummary.trackListName.title": "リスト名を追跡する",
+  "admin/editor.productSummary.sponsoredBadge.title": "該当する場合、スポンサー付き製品タグのテキスト",
+  "admin/editor.productSummary.sponsoredBadge.position": "該当する場合、スポンサー付き製品タグの位置",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "製品の名前の上",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "製品容器の上",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "見せないでください"
 }

@@ -73,5 +73,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum ohne Zinsen",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum",
   "admin/editor.productSummaryList.analyticsListName.title": "Listenname in der Analytik",
-  "admin/editor.productSummary.trackListName.title": "Sollte Listenname anzeigen"
+  "admin/editor.productSummary.trackListName.title": "Sollte Listenname anzeigen",
+  "admin/editor.productSummary.sponsoredBadge.title": "Text des gesponserten Produkts, falls zutreffend",
+  "admin/editor.productSummary.sponsoredBadge.position": "Position des gesponserten Produkts, falls zutreffend",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "Über dem Namen des Produkts",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "Über den Produktbehälter",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "Zeigen Sie nicht"
 }

@@ -41,7 +41,6 @@
   "admin/editor.productSummaryImage.fetchPriority.title": "The fetchPriority property represents a hint given to the browser on how it should prioritize fetching the image compared to other images.",
   "admin/editor.productSummaryBuyButton.title": "Product Summary Buy Button",
   "admin/editor.productSummaryName.title": "Product Summary Name",
-  "admin/editor.productSummaryName.sponsoredBadge.title": "Text of the sponsored product tag, if applicable",
   "admin/editor.product-summary-specification-badges.title": "Product Summary Specification Badges",
   "admin/editor.productSummaryList.title": "Product List",
   "admin/editor.productSummaryList.description": "Product list from a collection",
@@ -73,5 +72,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum without interest",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum",
   "admin/editor.productSummaryList.analyticsListName.title": "List name in Analytics",
-  "admin/editor.productSummary.trackListName.title": "Track list name"
+  "admin/editor.productSummary.trackListName.title": "Track list name",
+  "admin/editor.productSummary.sponsoredBadge.title": "Text of the sponsored product tag, if applicable",
+  "admin/editor.productSummary.sponsoredBadge.position": "Position of the sponsored product tag, if applicable",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "Above the product's name",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "On top of the product container",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "Don't show"
 }

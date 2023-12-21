@@ -73,5 +73,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "무이자 최대",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "최대",
   "admin/editor.productSummaryList.analyticsListName.title": "애널리틱스의 목록 이름",
-  "admin/editor.productSummary.trackListName.title": "목록 이름을 추적해야 함"
+  "admin/editor.productSummary.trackListName.title": "목록 이름을 추적해야 함",
+  "admin/editor.productSummary.sponsoredBadge.title": "적용 가능한 경우 스폰서 제품 태그의 텍스트",
+  "admin/editor.productSummary.sponsoredBadge.position": "적용 가능한 경우 스폰서 제품 태그의 위치",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "제품 이름 위",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "제품 컨테이너 위에",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "표시하지 마십시오"
 }

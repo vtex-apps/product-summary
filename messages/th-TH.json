@@ -73,5 +73,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "สูงสุดปราศจากดอกเบี้ย",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "สูงสุด",
   "admin/editor.productSummaryList.analyticsListName.title": "ชื่อรายการใน Analytics",
-  "admin/editor.productSummary.trackListName.title": "ควรติดตามชื่อรายการ"
+  "admin/editor.productSummary.trackListName.title": "ควรติดตามชื่อรายการ",
+  "admin/editor.productSummary.sponsoredBadge.title": "ข้อความของแท็กผลิตภัณฑ์ที่ได้รับการสนับสนุนหากมี",
+  "admin/editor.productSummary.sponsoredBadge.position": "ตำแหน่งของแท็กผลิตภัณฑ์ที่ได้รับการสนับสนุนหากมี",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "เหนือชื่อผลิตภัณฑ์",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "ด้านบนของภาชนะบรรจุผลิตภัณฑ์",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "อย่าแสดง"
 }

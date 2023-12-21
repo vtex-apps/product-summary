@@ -73,5 +73,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum sans intérêt",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum",
   "admin/editor.productSummaryList.analyticsListName.title": "Nom de la liste dans Analyses",
-  "admin/editor.productSummary.trackListName.title": "Suivre la liste des noms"
+  "admin/editor.productSummary.trackListName.title": "Suivre la liste des noms",
+  "admin/editor.productSummary.sponsoredBadge.title": "Texte de la balise de produit sponsorisée, le cas échéant",
+  "admin/editor.productSummary.sponsoredBadge.position": "Position de l'étiquette de produit sponsorisée, le cas échéant",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "Au-dessus du nom du produit",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "En plus du conteneur de produit",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "Ne montre pas"
 }

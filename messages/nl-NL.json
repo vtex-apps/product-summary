@@ -73,5 +73,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximaal zonder rente",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum",
   "admin/editor.productSummaryList.analyticsListName.title": "Lijstnaam in Analytics",
-  "admin/editor.productSummary.trackListName.title": "Moet lijstnaam volgen"
+  "admin/editor.productSummary.trackListName.title": "Moet lijstnaam volgen",
+  "admin/editor.productSummary.sponsoredBadge.title": "Tekst van de gesponsorde producttag, indien van toepassing",
+  "admin/editor.productSummary.sponsoredBadge.position": "Positie van de gesponsorde producttag, indien van toepassing",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "Boven de naam van het product",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "Bovenop de productcontainer",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "Niet laten zien"
 }

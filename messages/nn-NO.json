@@ -73,5 +73,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maksimum uten renter",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maksimum",
   "admin/editor.productSummaryList.analyticsListName.title": "Listenavn i Analytics",
-  "admin/editor.productSummary.trackListName.title": "Bør navn på sporliste"
+  "admin/editor.productSummary.trackListName.title": "Bør navn på sporliste",
+  "admin/editor.productSummary.sponsoredBadge.title": "Tekst av den sponsede produktkoden, hvis aktuelt",
+  "admin/editor.productSummary.sponsoredBadge.position": "Plassering av den sponsede produkttaggen, hvis aktuelt",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "Over produktets navn",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "På toppen av produktbeholderen",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "Ikke vis"
 }

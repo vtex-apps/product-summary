@@ -73,5 +73,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maksimum tanpa bunga",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maksimum",
   "admin/editor.productSummaryList.analyticsListName.title": "Nama daftar dalam Analitika",
-  "admin/editor.productSummary.trackListName.title": "Harus melacak nama daftar"
+  "admin/editor.productSummary.trackListName.title": "Harus melacak nama daftar",
+  "admin/editor.productSummary.sponsoredBadge.title": "Teks dari tag produk yang disponsori, jika berlaku",
+  "admin/editor.productSummary.sponsoredBadge.position": "Posisi tag produk yang disponsori, jika berlaku",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "Di atas nama produk",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "Di atas wadah produk",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "Jangan tunjukkan"
 }

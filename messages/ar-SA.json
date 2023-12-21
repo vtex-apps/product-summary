@@ -73,5 +73,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "الحد الأقصى بدون فوائد",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "الحد الأقصى",
   "admin/editor.productSummaryList.analyticsListName.title": "اسم القائمة في التحليلات",
-  "admin/editor.productSummary.trackListName.title": "يجب أن يكون اسم مسار القائمة"
+  "admin/editor.productSummary.trackListName.title": "يجب أن يكون اسم مسار القائمة",
+  "admin/editor.productSummary.sponsoredBadge.title": "نص علامة المنتج الدعاء ، إن أمكن",
+  "admin/editor.productSummary.sponsoredBadge.position": "موقف علامة المنتج المدعومة ، إن أمكن",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "فوق اسم المنتج",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "فوق حاوية المنتج",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "لا تظهر"
 }
