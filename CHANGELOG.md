@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - `fetchpriority` prop for `Image` to allow fetch priority.
 
+## [2.87.1] - 2023-12-19
+
+### Added
+
+- Adds `@vtex-apps/intelligent-search-apps` on CODEOWNERS.
+
+
 ## [2.87.0] - 2023-11-28
 
 ### Added
