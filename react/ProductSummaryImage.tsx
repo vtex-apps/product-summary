@@ -219,6 +219,7 @@ interface ImageProps {
   className: string
   aspectRatio?: string | number
   maxHeight?: string
+  fetchpriority?: 'high' | 'low' | 'auto'
 }
 
 function Image({
@@ -230,6 +231,7 @@ function Image({
   className,
   aspectRatio,
   maxHeight,
+  fetchpriority = 'auto',
 }: ImageProps) {
   const { isMobile } = useDevice()
 
@@ -249,10 +251,13 @@ function Image({
       src={getImageSrc({ src, width, height, dpi, aspectRatio })}
       style={getStyle({ width, height, aspectRatio, maxHeight })}
       // @ts-expect-error This property exists in HTML
-      loading={shouldResize ? 'lazy' : 'auto'}
+      loading={
+        shouldResize ? 'lazy' : fetchpriority === 'high' ? 'eager' : 'auto'
+      }
       alt={alt}
       className={className}
       onError={onError}
+      fetchpriority={fetchpriority}
     />
   )
 }
@@ -292,6 +297,7 @@ interface Props {
   aspectRatio?: ResponsiveValuesTypes.ResponsiveValue<string | number>
   maxHeight?: ResponsiveValuesTypes.ResponsiveValue<string>
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  fetchpriority?: 'high' | 'low' | 'auto' | 'byPosition'
 }
 
 function ProductImage({
@@ -308,8 +314,16 @@ function ProductImage({
   aspectRatio: aspectRatioProp,
   maxHeight: maxHeightProp,
   classes,
+  fetchpriority = 'byPosition',
 }: Props) {
-  const { product } = useProductSummary()
+  // @ts-expect-error - Depends on vtex.product-summary-context update on PR: https://github.com/vtex-apps/product-summary-context/pull/25
+  const {
+    product,
+    position,
+  }: {
+    product: ProductSummaryTypes.Product
+    position: number | undefined
+  } = useProductSummary()
   const { handles, withModifiers } = useCssHandles(CSS_HANDLES, { classes })
 
   const [error, setError] = useState(false)
@@ -417,6 +431,29 @@ function ProductImage({
     !isMobile && productSummary.hoverImage
   )
 
+  /**
+   * Determines the priority ('high' or 'low') based on the isMobile flag and the position value.
+   * @param isMobileDevice - A boolean indicating the device type (true for mobile, false for non-mobile).
+   * @param positionNumber - The Product Summary's position on a list context or search result, used to determine priority.
+   * @returns A string representing the priority: 'high' for high priority, 'low' for low priority.
+   */
+  const getFetchPriority = (
+    isMobileDevice: boolean,
+    positionNumber: number | undefined
+  ): 'high' | 'low' => {
+    if (positionNumber) {
+      return isMobileDevice
+        ? positionNumber === 1
+          ? 'high'
+          : 'low'
+        : positionNumber < 4
+        ? 'high'
+        : 'low'
+    }
+
+    return 'low'
+  }
+
   return (
     <div className={imageClassName}>
       <CollectionWrapper
@@ -440,6 +477,11 @@ function ProductImage({
               alt={name}
               className={imageClassname}
               onError={onError}
+              fetchpriority={
+                fetchpriority === 'byPosition'
+                  ? getFetchPriority(isMobile, position)
+                  : fetchpriority
+              }
             />
             {selectedHoverImage && !isMobile && (
               <Image
@@ -540,6 +582,20 @@ ProductImage.schema = {
           ],
         },
       },
+    },
+    fetchpriority: {
+      title: 'admin/editor.productSummaryImage.fetchpriority.title',
+      enum: ['high', 'low', 'auto', 'byPosition'],
+      enumNames: [
+        'admin/editor.productSummaryImage.fetchpriority.high',
+        'admin/editor.productSummaryImage.fetchpriority.low',
+        'admin/editor.productSummaryImage.fetchpriority.auto',
+        'admin/editor.productSummaryImage.fetchpriority.byPosition',
+      ],
+      widget: {
+        'ui:widget': 'radio',
+      },
+      default: 'byPosition',
     },
   },
 }
