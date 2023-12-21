@@ -40,7 +40,6 @@
   "admin/editor.productSummaryImage.hoverImage.criteria.index": "Índice de la imagen activable",
   "admin/editor.productSummaryBuyButton.title": "Botón de compra del resumen del producto",
   "admin/editor.productSummaryName.title": "Nombre del resumen del producto",
-  "admin/editor.productSummaryName.sponsoredBadge.title": "Texto de la etiqueta de producto patrocinado, si corresponde",
   "admin/editor.product-summary-specification-badges.title": "Insignias de especificación del resumen del producto",
   "admin/editor.productSummaryList.title": "Lista de productos",
   "admin/editor.productSummaryList.description": "Una lista de productos que tiene una colección",
@@ -72,5 +71,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Máximo sin interés",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Máximo",
   "admin/editor.productSummaryList.analyticsListName.title": "Nombre de la lista en Analytics",
-  "admin/editor.productSummary.trackListName.title": "Rastrear el nombre de la lista"
+  "admin/editor.productSummary.trackListName.title": "Rastrear el nombre de la lista",
+  "admin/editor.productSummary.sponsoredBadge.title": "Texto de la insignia de producto patrocinado, si corresponde",
+  "admin/editor.productSummary.sponsoredBadge.position": "Posición de la insignia de producto patrocinado, si corresponde",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "Sobre el nombre del producto",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "Sobre el container del producto",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "No mostrar"
 }

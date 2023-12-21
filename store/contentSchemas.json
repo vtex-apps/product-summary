@@ -22,9 +22,20 @@
           "default": "store/pricing.from"
         },
         "sponsoredBadgeLabel": {
-          "title": "admin/editor.productSummaryName.sponsoredBadge.title",
+          "title": "admin/editor.productSummary.sponsoredBadge.title",
           "$ref": "app:vtex.native-types#/definitions/text",
           "default": "store/sponsored-badge.label"
+        },
+        "sponsoredBadgePosition": {
+          "title": "admin/editor.productSummary.sponsoredBadge.position",
+          "type": "string",
+          "enum": ["titleTop", "containerTopLeft", "none"],
+          "default": "titleTop",
+          "enumNames": [
+            "admin/editor.productSummary.sponsoredBadge.position.titleTop",
+            "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft",
+            "admin/editor.productSummary.sponsoredBadge.position.none"
+          ]
         },
         "trackListName": {
           "title": "admin/editor.productSummary.trackListName.title",

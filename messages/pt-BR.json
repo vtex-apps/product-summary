@@ -38,7 +38,6 @@
   "admin/editor.productSummaryImage.hoverImage.criteria.label": "Etiqueta da imagem secundária",
   "admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria": "Critério de busca da etiqueta da imagem secundária (exato: busca pelo nome exato definido em \"Etiqueta da imagem secundária\" | contém: busca a primeira imagem que contém o texto definido em \"Etiqueta da imagem secundária\")",
   "admin/editor.productSummaryImage.hoverImage.criteria.index": "Número da imagem secundária",
-  "admin/editor.productSummaryName.sponsoredBadge.title": "Texto da tag indicativa de produto patrocinado, se aplicável",
   "admin/editor.productSummaryBuyButton.title": "Botão de compra do resumo do produto",
   "admin/editor.productSummaryName.title": "Nome do resumo do produto",
   "admin/editor.product-summary-specification-badges.title": "Selos de especificação do resumo do produto",
@@ -72,5 +71,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Máximo sem juros",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Máximo",
   "admin/editor.productSummaryList.analyticsListName.title": "Nome da lista no Analytics",
-  "admin/editor.productSummary.trackListName.title": "Rastreia o nome da lista"
+  "admin/editor.productSummary.trackListName.title": "Rastreia o nome da lista",
+  "admin/editor.productSummary.sponsoredBadge.title": "Texto da tag de produto patrocinado, se aplicável",
+  "admin/editor.productSummary.sponsoredBadge.position": "Posição da tag de produto patrocinado",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "Acima do nome do produto",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "Acima do container do produto",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "Não mostrar"
 }

@@ -38,7 +38,6 @@
   "admin/editor.productSummaryImage.hoverImage.criteria.label": "Eticheta imaginii secundare",
   "admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria": "Criteriu de căutare al etichetei imaginii secundare (exact: găsește imaginea care se potrivește perfect cu denumirea completată în câmpul „Etichetă imagine secundară” | contains: găsește prima imagine care conține textul complet în câmpul „Etichetă imagine secundară”)",
   "admin/editor.productSummaryImage.hoverImage.criteria.index": "Indexul imaginii secundare",
-  "admin/editor.productSummaryName.sponsoredBadge.title": "Textul etichetei produsului sponsorizat, dacă este cazul",
   "admin/editor.productSummaryBuyButton.title": "Rezumat produs Buton cumpărare",
   "admin/editor.productSummaryName.title": "Denumire rezumat produs",
   "admin/editor.product-summary-specification-badges.title": "Rezumat produs Badge-uri specificații",
@@ -72,5 +71,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum fără dobândă",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum",
   "admin/editor.productSummaryList.analyticsListName.title": "Numele listei în Analytics",
-  "admin/editor.productSummary.trackListName.title": "Trebuie monitorizată denumirea listei"
+  "admin/editor.productSummary.trackListName.title": "Trebuie monitorizată denumirea listei",
+  "admin/editor.productSummary.sponsoredBadge.title": "Textul etichetei de produs sponsorizat, dacă este cazul",
+  "admin/editor.productSummary.sponsoredBadge.position": "Poziția etichetei de produs sponsorizate, dacă este cazul",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "Deasupra numelui produsului",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "Deasupra containerului de produs",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "Nu arăta"
 }

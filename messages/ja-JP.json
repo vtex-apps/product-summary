@@ -38,7 +38,6 @@
   "admin/editor.productSummaryImage.hoverImage.criteria.label": "マウスオーバー画像ラベル",
   "admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria": "マウスオーバー画像ラベル検索の基準 (すべて一致: 「マウスオーバー画像ラベル」フィールドの名前フィールドとすべて一致する画像を探します | 含む: 「マウスオーバー画像ラベル」フィールドのテキストフィールドを含む最初の画像を探します)",
   "admin/editor.productSummaryImage.hoverImage.criteria.index": "マウスオーバー画像インデックス",
-  "admin/editor.productSummaryName.sponsoredBadge.title": "スポンサー付き商品タグのテキスト（該当する場合）",
   "admin/editor.productSummaryBuyButton.title": "製品サマリ購入ボタン",
   "admin/editor.productSummaryName.title": "製品サマリ名",
   "admin/editor.product-summary-specification-badges.title": "製品サマリ指定バッジ",
@@ -72,5 +71,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "利息抜き最大値",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "最大値",
   "admin/editor.productSummaryList.analyticsListName.title": "アナリティクスのリスト名",
-  "admin/editor.productSummary.trackListName.title": "リスト名を追跡する"
+  "admin/editor.productSummary.trackListName.title": "リスト名を追跡する",
+  "admin/editor.productSummary.sponsoredBadge.title": "該当する場合、スポンサー付き製品タグのテキスト",
+  "admin/editor.productSummary.sponsoredBadge.position": "該当する場合、スポンサー付き製品タグの位置",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "製品の名前の上",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "製品容器の上",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "見せないでください"
 }

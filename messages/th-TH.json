@@ -38,7 +38,6 @@
   "admin/editor.productSummaryImage.hoverImage.criteria.label": "ป้ายข้อความภาพโฮเวอร์",
   "admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria": "เกณฑ์การค้นหาป้ายข้อความภาพโฮเวอร์ (ทุกประการ: หารูปภาพที่มีค่าตรงกันทุกประการกับชื่อที่กรอกไว้ในฟิลด์ \"ป้ายข้อความภาพโฮเวอร์\" | มี: หารูปภาพแรกที่มีข้อความที่กรอกไว้ในฟิลด์ \"ป้ายข้อความภาพโฮเวอร์\")",
   "admin/editor.productSummaryImage.hoverImage.criteria.index": "ดัชนีภาพโฮเวอร์",
-  "admin/editor.productSummaryName.sponsoredBadge.title": "ข้อความของแท็กผลิตภัณฑ์ที่ได้รับการสนับสนุน หากมี",
   "admin/editor.productSummaryBuyButton.title": "ปุ่มซื้อภาพรวมผลิตภัณฑ์",
   "admin/editor.productSummaryName.title": "ชื่อภาพรวมผลิตภัณฑ์",
   "admin/editor.product-summary-specification-badges.title": "ป้ายข้อกำหนดคุณลักษณะภาพรวมผลิตภัณฑ์",
@@ -72,5 +71,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "สูงสุดปราศจากดอกเบี้ย",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "สูงสุด",
   "admin/editor.productSummaryList.analyticsListName.title": "ชื่อรายการใน Analytics",
-  "admin/editor.productSummary.trackListName.title": "ควรติดตามชื่อรายการ"
+  "admin/editor.productSummary.trackListName.title": "ควรติดตามชื่อรายการ",
+  "admin/editor.productSummary.sponsoredBadge.title": "ข้อความของแท็กผลิตภัณฑ์ที่ได้รับการสนับสนุนหากมี",
+  "admin/editor.productSummary.sponsoredBadge.position": "ตำแหน่งของแท็กผลิตภัณฑ์ที่ได้รับการสนับสนุนหากมี",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "เหนือชื่อผลิตภัณฑ์",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "ด้านบนของภาชนะบรรจุผลิตภัณฑ์",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "อย่าแสดง"
 }
