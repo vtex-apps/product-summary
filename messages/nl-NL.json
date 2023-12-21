@@ -38,7 +38,6 @@
   "admin/editor.productSummaryImage.hoverImage.criteria.label": "Aanwijzen afbeeldingslabel",
   "admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria": "Zoekcriteria voor afbeeldingslabel zweven (exact: vindt de afbeelding die exact overeenkomt met de naam die is ingevuld in het veld 'Afbeeldingslabel zweven' | bevat: vindt de eerste afbeelding die de tekst bevat die is ingevuld in het veld 'Afbeeldingslabel zweven')",
   "admin/editor.productSummaryImage.hoverImage.criteria.index": "Aanwijzen afbeeldingsindex",
-  "admin/editor.productSummaryName.sponsoredBadge.title": "Tekst van de gesponsorde producttag, indien van toepassing",
   "admin/editor.productSummaryBuyButton.title": "Productoverzicht koopknop",
   "admin/editor.productSummaryName.title": "Productoverzicht naam",
   "admin/editor.product-summary-specification-badges.title": "Productoverzicht specificatiebadges",
@@ -72,5 +71,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximaal zonder rente",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum",
   "admin/editor.productSummaryList.analyticsListName.title": "Lijstnaam in Analytics",
-  "admin/editor.productSummary.trackListName.title": "Moet lijstnaam volgen"
+  "admin/editor.productSummary.trackListName.title": "Moet lijstnaam volgen",
+  "admin/editor.productSummary.sponsoredBadge.title": "Tekst van de gesponsorde producttag, indien van toepassing",
+  "admin/editor.productSummary.sponsoredBadge.position": "Positie van de gesponsorde producttag, indien van toepassing",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "Boven de naam van het product",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "Bovenop de productcontainer",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "Niet laten zien"
 }

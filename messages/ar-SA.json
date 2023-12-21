@@ -38,7 +38,6 @@
   "admin/editor.productSummaryImage.hoverImage.criteria.label": "تسمية الصورة الفوقية",
   "admin/editor.productSummaryImage.hoverImage.criteria.matchCriteria": "معايير البحث عن تسمية صورة فوقية (بالضبط: العثور على الصورة التي تطابق تماما الاسم المملوء في حقل 'تسمية صورة فوقية' | تضمن: العثور على الصورة الأولى التي تحتوي على النص المملوء في حقل 'تسمية صورة فوقية')",
   "admin/editor.productSummaryImage.hoverImage.criteria.index": "مؤشر الصورة الفوقية",
-  "admin/editor.productSummaryName.sponsoredBadge.title": "ข้อความของแท็กผลิตภัณฑ์ที่ได้รับการสนับสนุน หากมี",
   "admin/editor.productSummaryBuyButton.title": "زر ملخص شراء المنتج",
   "admin/editor.productSummaryName.title": "اسم ملخص المنتج",
   "admin/editor.product-summary-specification-badges.title": "ملخص مواصفات شارات المنتج",
@@ -72,5 +71,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "الحد الأقصى بدون فوائد",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "الحد الأقصى",
   "admin/editor.productSummaryList.analyticsListName.title": "اسم القائمة في التحليلات",
-  "admin/editor.productSummary.trackListName.title": "يجب أن يكون اسم مسار القائمة"
+  "admin/editor.productSummary.trackListName.title": "يجب أن يكون اسم مسار القائمة",
+  "admin/editor.productSummary.sponsoredBadge.title": "نص علامة المنتج الدعاء ، إن أمكن",
+  "admin/editor.productSummary.sponsoredBadge.position": "موقف علامة المنتج المدعومة ، إن أمكن",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "فوق اسم المنتج",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "فوق حاوية المنتج",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "لا تظهر"
 }

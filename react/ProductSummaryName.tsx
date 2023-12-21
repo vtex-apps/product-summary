@@ -3,6 +3,9 @@ import { ProductName } from 'vtex.store-components'
 import { useCssHandles } from 'vtex.css-handles'
 import type { CssHandlesTypes } from 'vtex.css-handles'
 import { ProductSummaryContext } from 'vtex.product-summary-context'
+import { SponsoredBadgePosition } from 'vtex.product-summary-context/react/ProductSummaryTypes'
+
+import shouldShowSponsoredBadge from './utils/shouldShowSponsoredBadge'
 
 const { useProductSummary } = ProductSummaryContext
 
@@ -36,24 +39,26 @@ interface Props {
    * @default "h3"
    */
   tag?: 'div' | 'h1' | 'h2' | 'h3'
-  sponsoredBadgeLabel: string
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
 function ProductSummaryName({
   showFieldsProps = defaultShowFields,
-  sponsoredBadgeLabel,
   tag = 'h3',
   classes,
 }: Props) {
-  const { product } = useProductSummary()
+  const { product, sponsoredBadge } = useProductSummary()
   const { handles } = useCssHandles(CSS_HANDLES, { classes })
   const productName = product?.productName
   // TODO: change ProductSummaryContext to have `selectedSku` field instead of `sku`
   const skuName = product?.sku?.name
   const brandName = product?.brand
 
-  const isSponsored = !!product?.advertisement?.adId
+  const showSponsoredBadge = shouldShowSponsoredBadge(
+    product,
+    sponsoredBadge?.position as SponsoredBadgePosition,
+    'titleTop'
+  )
 
   const containerClasses = `${handles.nameContainer} flex items-start justify-center pv6`
   const wrapperClasses = `${handles.nameWrapper} overflow-hidden c-on-base f5`
@@ -68,8 +73,8 @@ function ProductSummaryName({
         brandNameClass={brandNameClasses}
         skuNameClass={skuNameClasses}
         loaderClass={loaderClasses}
-        showSponsoredBadge={isSponsored}
-        sponsoredBadgeLabel={sponsoredBadgeLabel}
+        showSponsoredBadge={showSponsoredBadge}
+        sponsoredBadgeLabel={sponsoredBadge?.label}
         productReferenceClass={handles.productReference}
         name={productName}
         skuName={skuName}

@@ -77,5 +77,10 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Máximo sem juros",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Máximo",
   "admin/editor.productSummaryList.analyticsListName.title": "Nome da lista no Analytics",
-  "admin/editor.productSummary.trackListName.title": "Rastreia o nome da lista"
+  "admin/editor.productSummary.trackListName.title": "Rastreia o nome da lista",
+  "admin/editor.productSummary.sponsoredBadge.title": "Texto da tag de produto patrocinado, se aplicável",
+  "admin/editor.productSummary.sponsoredBadge.position": "Posição da tag de produto patrocinado",
+  "admin/editor.productSummary.sponsoredBadge.position.titleTop": "Acima do nome do produto",
+  "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "Acima do container do produto",
+  "admin/editor.productSummary.sponsoredBadge.position.none": "Não mostrar"
 }
