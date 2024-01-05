@@ -11,17 +11,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Added `fetchPriority` prop to `ProductSummaryImage`.
 
+## [2.89.0] - 2023-12-21
+
+### Added
+
+- `fetchpriority` prop for `Image` to allow fetch priority.
+
 ## [2.88.0] - 2023-12-21
 
 ### Added
 
 - Support options for different sponsored badge positions.
 
+
 ## [2.87.1] - 2023-12-19
 
 ### Added
 
 - Adds `@vtex-apps/intelligent-search-apps` on CODEOWNERS.
+
 
 ## [2.87.0] - 2023-11-28
 
