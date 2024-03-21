@@ -220,6 +220,7 @@ interface ImageProps {
   aspectRatio?: string | number
   maxHeight?: string
   fetchpriority?: 'high' | 'low' | 'auto'
+  loading?: 'lazy' | 'eager' | 'auto'
 }
 
 function Image({
@@ -232,6 +233,7 @@ function Image({
   aspectRatio,
   maxHeight,
   fetchpriority = 'auto',
+  loading,
 }: ImageProps) {
   const { isMobile } = useDevice()
 
@@ -245,15 +247,16 @@ function Image({
   const dpi = isMobile ? 2 : 1
 
   const shouldResize = !!(width || height)
+  const loadingProperty =
+    loading ??
+    (shouldResize ? 'lazy' : fetchpriority === 'high' ? 'eager' : 'auto')
 
   return (
     <img
       src={getImageSrc({ src, width, height, dpi, aspectRatio })}
       style={getStyle({ width, height, aspectRatio, maxHeight })}
       // @ts-expect-error This property exists in HTML
-      loading={
-        shouldResize ? 'lazy' : fetchpriority === 'high' ? 'eager' : 'auto'
-      }
+      loading={loadingProperty}
       alt={alt}
       className={className}
       onError={onError}
@@ -298,6 +301,7 @@ interface Props {
   maxHeight?: ResponsiveValuesTypes.ResponsiveValue<string>
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
   fetchpriority?: 'high' | 'low' | 'auto' | 'byPosition'
+  loading?: 'lazy' | 'eager' | 'auto'
 }
 
 function ProductImage({
@@ -315,6 +319,7 @@ function ProductImage({
   maxHeight: maxHeightProp,
   classes,
   fetchpriority = 'byPosition',
+  loading,
 }: Props) {
   // @ts-expect-error - Depends on vtex.product-summary-context update on PR: https://github.com/vtex-apps/product-summary-context/pull/25
   const {
@@ -324,6 +329,7 @@ function ProductImage({
     product: ProductSummaryTypes.Product
     position: number | undefined
   } = useProductSummary()
+
   const { handles, withModifiers } = useCssHandles(CSS_HANDLES, { classes })
 
   const [error, setError] = useState(false)
@@ -477,6 +483,7 @@ function ProductImage({
               alt={name}
               className={imageClassname}
               onError={onError}
+              loading={loading}
               fetchpriority={
                 fetchpriority === 'byPosition'
                   ? getFetchPriority(isMobile, position)
