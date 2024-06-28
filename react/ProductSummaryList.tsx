@@ -195,6 +195,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
       skusFilter,
       installmentCriteria,
       variant: getCookie('sp-variant'),
+      showSponsored: true
     },
   })
 

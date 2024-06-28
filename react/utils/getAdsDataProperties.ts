@@ -3,11 +3,13 @@ import { Product } from 'vtex.product-summary-context/react/ProductSummaryTypes'
 type GetAdsDataPropertiesArgs = {
   product: Product
   position?: number
+  placement?: string
 }
 
 const getAdsDataProperties = ({
   product,
   position,
+  placement,
 }: GetAdsDataPropertiesArgs) => {
   if (!product.advertisement?.adId) return {}
 
@@ -26,6 +28,7 @@ const getAdsDataProperties = ({
     'data-van-req-id': adRequestId,
     'data-van-res-id': adResponseId,
     'data-van-cpc': actionCost,
+    'data-van-placement': placement
   }
 }
 

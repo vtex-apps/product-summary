@@ -1,23 +1,23 @@
-import React, { useCallback, useMemo, useEffect, useRef } from 'react'
-import type { PropsWithChildren } from 'react'
 import classNames from 'classnames'
-import { Link } from 'vtex.render-runtime'
-import { useOnView } from 'vtex.on-view'
-import { ProductListContext } from 'vtex.product-list-context'
-import { ProductSummaryContext } from 'vtex.product-summary-context'
-import type { ProductSummaryTypes } from 'vtex.product-summary-context'
-import { ProductContextProvider } from 'vtex.product-context'
-import type { ProductTypes } from 'vtex.product-context'
-import { useCssHandles } from 'vtex.css-handles'
+import type { PropsWithChildren } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import type { CssHandlesTypes } from 'vtex.css-handles'
+import { useCssHandles } from 'vtex.css-handles'
+import { useOnView } from 'vtex.on-view'
+import type { ProductTypes } from 'vtex.product-context'
+import { ProductContextProvider } from 'vtex.product-context'
+import { ProductListContext } from 'vtex.product-list-context'
+import type { ProductSummaryTypes } from 'vtex.product-summary-context'
+import { ProductSummaryContext } from 'vtex.product-summary-context'
 import { SponsoredBadgePosition } from 'vtex.product-summary-context/react/ProductSummaryTypes'
+import { Link } from 'vtex.render-runtime'
 
 import LocalProductSummaryContext from './ProductSummaryContext'
-import { mapCatalogProductToProductSummary } from './utils/normalize'
 import ProductPriceSimulationWrapper from './components/ProductPriceSimulationWrapper'
-import getAdsDataProperties from './utils/getAdsDataProperties'
-import shouldShowSponsoredBadge from './utils/shouldShowSponsoredBadge'
 import { SponsoredBadge } from './components/SponsoredBadge'
+import getAdsDataProperties from './utils/getAdsDataProperties'
+import { mapCatalogProductToProductSummary } from './utils/normalize'
+import shouldShowSponsoredBadge from './utils/shouldShowSponsoredBadge'
 
 const {
   ProductSummaryProvider,
@@ -39,6 +39,7 @@ function ProductSummaryCustom({
   children,
   href,
   priceBehavior = 'default',
+  placement,
   position,
   classes,
 }: PropsWithChildren<Props>) {
@@ -167,7 +168,7 @@ function ProductSummaryCustom({
         onClickCapture: autocompleteSummary ? undefined : actionOnClick,
       }
 
-  const adsDataProperties = getAdsDataProperties({ product, position })
+  const adsDataProperties = getAdsDataProperties({ product, position, placement })
   const showSponsoredBadge = shouldShowSponsoredBadge(
     product,
     sponsoredBadge?.position as SponsoredBadgePosition,
@@ -241,6 +242,10 @@ interface Props {
    * The label of the sponsored badge, if applicable.
    */
   sponsoredBadgeLabel?: string
+  /**
+   * Where this ProductSummary is being shown. Used for analytics. E.g. "search" or "shelf".
+   */
+  placement?: string
 }
 
 function ProductSummaryWrapper({
@@ -253,6 +258,7 @@ function ProductSummaryWrapper({
   position,
   sponsoredBadgePosition,
   sponsoredBadgeLabel,
+  placement,
   classes,
   children,
 }: PropsWithChildren<Props>) {
@@ -276,6 +282,7 @@ function ProductSummaryWrapper({
         actionOnClick={actionOnClick}
         priceBehavior={priceBehavior}
         position={position}
+        placement={placement}
         classes={classes}
       >
         {children}
