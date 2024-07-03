@@ -12,6 +12,9 @@ import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
 import useSession from './hooks/useSession'
 import { PreferenceType } from './utils/normalize'
 
+const DEFAULT_SPONSORED_COUNT = 2
+const DEFAULT_REPEAT_SPONSORED_PRODUCTS = false
+
 const ORDER_BY_OPTIONS = {
   RELEVANCE: {
     name: 'admin/editor.productSummaryList.orderType.relevance',
@@ -138,6 +141,10 @@ interface Props {
   ProductSummary: ComponentType<{ product: any; actionOnClick: any }>
   /** Callback on product click. */
   actionOnProductClick?: (product: any) => void
+  /** Maximum number of sponsored products to put on top of the regular products. */
+  sponsoredCount: number
+  /** If true, sponsored and regular products will be repeated on the list. */
+  repeatSponsoredProducts: boolean
 }
 
 function ProductSummaryList(props: PropsWithChildren<Props>) {
@@ -155,6 +162,8 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     ProductSummary,
     actionOnProductClick,
     preferredSKU,
+    sponsoredCount = DEFAULT_SPONSORED_COUNT,
+    repeatSponsoredProducts = DEFAULT_REPEAT_SPONSORED_PRODUCTS,
   } = props
 
   const [shippingOptions, setShippingOptions] = useState([])
@@ -195,7 +204,12 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
       skusFilter,
       installmentCriteria,
       variant: getCookie('sp-variant'),
-      showSponsored: true
+      advertisementOptions: {
+        sponsoredCount,
+        repeatSponsoredProducts,
+        showSponsored: true,
+        advertisementPlacement: 'product-list',
+      }
     },
   })
 
@@ -327,13 +341,13 @@ ProductSummaryList.schema = {
       title: 'admin/editor.productSummaryList.sponsoredCount.title',
       description: 'admin/editor.productSummaryList.sponsoredCount.description',
       type: 'number',
-      default: 2
+      default: DEFAULT_SPONSORED_COUNT
     },
     repeatSponsoredProducts: {
       title: 'admin/editor.productSummaryList.repeatSponsoredProducts.title',
       description: 'admin/editor.productSummaryList.repeatSponsoredProducts.description',
       type: 'boolean',
-      default: false
+      default: DEFAULT_REPEAT_SPONSORED_PRODUCTS
     }
   },
 }
