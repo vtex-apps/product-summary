@@ -8,7 +8,9 @@ import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 import { equals } from 'ramda'
 import { canUseDOM } from 'vtex.render-runtime'
 
-import ProductSummaryListWithoutQuery, { PRODUCT_LIST_PLACEMENT } from './ProductSummaryListWithoutQuery'
+import ProductSummaryListWithoutQuery, {
+  PRODUCT_LIST_PLACEMENT,
+} from './ProductSummaryListWithoutQuery'
 import useSession from './hooks/useSession'
 import { PreferenceType } from './utils/normalize'
 
@@ -209,7 +211,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
         repeatSponsoredProducts,
         showSponsored: true,
         advertisementPlacement: PRODUCT_LIST_PLACEMENT,
-      }
+      },
     },
   })
 
@@ -341,14 +343,15 @@ ProductSummaryList.schema = {
       title: 'admin/editor.productSummaryList.sponsoredCount.title',
       description: 'admin/editor.productSummaryList.sponsoredCount.description',
       type: 'number',
-      default: DEFAULT_SPONSORED_COUNT
+      default: DEFAULT_SPONSORED_COUNT,
     },
     repeatSponsoredProducts: {
       title: 'admin/editor.productSummaryList.repeatSponsoredProducts.title',
-      description: 'admin/editor.productSummaryList.repeatSponsoredProducts.description',
+      description:
+        'admin/editor.productSummaryList.repeatSponsoredProducts.description',
       type: 'boolean',
-      default: DEFAULT_REPEAT_SPONSORED_PRODUCTS
-    }
+      default: DEFAULT_REPEAT_SPONSORED_PRODUCTS,
+    },
   },
 }
 

@@ -9,10 +9,7 @@
     ]
   },
   "product-summary-column#1": {
-    "children": [
-      "product-summary-price",
-      "product-summary-buy-button"
-    ]
+    "children": ["product-summary-price", "product-summary-buy-button"]
   },
   "product-summary.unstable--flex": {
     "children": [
@@ -24,9 +21,6 @@
     ]
   },
   "unstable--product-summary-column#1": {
-    "children": [
-      "product-summary-price",
-      "product-summary-buy-button"
-    ]
+    "children": ["product-summary-price", "product-summary-buy-button"]
   }
 }

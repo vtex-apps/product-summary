@@ -28,7 +28,7 @@ const getAdsDataProperties = ({
     'data-van-req-id': adRequestId,
     'data-van-res-id': adResponseId,
     'data-van-cpc': actionCost,
-    'data-van-placement': placement
+    'data-van-placement': placement,
   }
 }
 

@@ -168,7 +168,12 @@ function ProductSummaryCustom({
         onClickCapture: autocompleteSummary ? undefined : actionOnClick,
       }
 
-  const adsDataProperties = getAdsDataProperties({ product, position, placement })
+  const adsDataProperties = getAdsDataProperties({
+    product,
+    position,
+    placement,
+  })
+
   const showSponsoredBadge = shouldShowSponsoredBadge(
     product,
     sponsoredBadge?.position as SponsoredBadgePosition,
