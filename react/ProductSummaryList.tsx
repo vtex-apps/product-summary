@@ -8,7 +8,7 @@ import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 import { equals } from 'ramda'
 import { canUseDOM } from 'vtex.render-runtime'
 
-import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
+import ProductSummaryListWithoutQuery, { PRODUCT_LIST_PLACEMENT } from './ProductSummaryListWithoutQuery'
 import useSession from './hooks/useSession'
 import { PreferenceType } from './utils/normalize'
 
@@ -208,7 +208,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
         sponsoredCount,
         repeatSponsoredProducts,
         showSponsored: true,
-        advertisementPlacement: 'product-list',
+        advertisementPlacement: PRODUCT_LIST_PLACEMENT,
       }
     },
   })

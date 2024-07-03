@@ -13,7 +13,7 @@ import {
 
 const { ProductListProvider } = ProductListContext
 
-const LIST_PLACEMENT = 'list'
+export const PRODUCT_LIST_PLACEMENT = 'product-list'
 
 type Props = PropsWithChildren<{
   /** Array of products. */
@@ -76,7 +76,7 @@ function List({
             listName={listName}
             actionOnClick={handleOnClick}
             position={position}
-            placement={LIST_PLACEMENT}
+            placement={PRODUCT_LIST_PLACEMENT}
           />
         )
       }
@@ -90,7 +90,7 @@ function List({
           listName={listName}
           actionOnClick={handleOnClick}
           position={position}
-          placement={LIST_PLACEMENT}
+          placement={PRODUCT_LIST_PLACEMENT}
         />
       )
     })
@@ -120,6 +120,7 @@ function ProductSummaryListWithoutQuery({
   ProductSummary,
   actionOnProductClick,
   preferredSKU,
+  placement,
 }: Props) {
   return (
     <ProductListProvider listName={listName ?? ''}>
