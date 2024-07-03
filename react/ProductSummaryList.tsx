@@ -1,16 +1,16 @@
-import React, { useCallback, useEffect, useState } from 'react'
 import type { ComponentType, PropsWithChildren } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useQuery } from 'react-apollo'
-import { QueryProducts } from 'vtex.store-resources'
 import { usePixel } from 'vtex.pixel-manager'
+import { QueryProducts } from 'vtex.store-resources'
 import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 // eslint-disable-next-line no-restricted-imports
 import { equals } from 'ramda'
 import { canUseDOM } from 'vtex.render-runtime'
 
 import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
-import { PreferenceType } from './utils/normalize'
 import useSession from './hooks/useSession'
+import { PreferenceType } from './utils/normalize'
 
 const ORDER_BY_OPTIONS = {
   RELEVANCE: {
@@ -323,6 +323,18 @@ ProductSummaryList.schema = {
       title: 'admin/editor.productSummaryList.analyticsListName.title',
       type: 'string',
     },
+    sponsoredCount: {
+      title: 'admin/editor.productSummaryList.sponsoredCount.title',
+      description: 'admin/editor.productSummaryList.sponsoredCount.description',
+      type: 'number',
+      default: 2
+    },
+    repeatSponsoredProducts: {
+      title: 'admin/editor.productSummaryList.repeatSponsoredProducts.title',
+      description: 'admin/editor.productSummaryList.repeatSponsoredProducts.description',
+      type: 'boolean',
+      default: false
+    }
   },
 }
 
