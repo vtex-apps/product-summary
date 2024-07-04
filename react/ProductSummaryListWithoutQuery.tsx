@@ -120,7 +120,6 @@ function ProductSummaryListWithoutQuery({
   ProductSummary,
   actionOnProductClick,
   preferredSKU,
-  placement,
 }: Props) {
   return (
     <ProductListProvider listName={listName ?? ''}>
