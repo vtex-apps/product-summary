@@ -13,7 +13,7 @@ import {
 
 const { ProductListProvider } = ProductListContext
 
-export const PRODUCT_LIST_PLACEMENT = 'product-list'
+export const PRODUCT_LIST_PLACEMENT = 'home_shelf'
 
 type Props = PropsWithChildren<{
   /** Array of products. */
