@@ -76,6 +76,8 @@
   "admin/editor.productSummaryList.installmentCriteria.max-without-interest": "Maximum without interest enum name",
   "admin/editor.productSummaryList.installmentCriteria.max-with-interest": "Maximum with interest enum name",
   "admin/editor.productSummaryList.analyticsListName.title": "List name in Analytics",
+  "admin/editor.productSummaryList.showSponsoredProducts.title": "Show contextual sponsored products",
+  "admin/editor.productSummaryList.showSponsoredProducts.description": "Whether or not to show contextual sponsored products in this list.",
   "admin/editor.productSummaryList.sponsoredCount.title": "Maximum amount of sponsored products",
   "admin/editor.productSummaryList.sponsoredCount.description": "If there are sponsored products for this search, how many of them should be displayed before normal products",
   "admin/editor.productSummaryList.repeatSponsoredProducts.title": "Repeat sponsored and regular products",
