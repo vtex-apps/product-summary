@@ -1,16 +1,22 @@
-import React, { useCallback, useEffect, useState } from 'react'
 import type { ComponentType, PropsWithChildren } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useQuery } from 'react-apollo'
-import { QueryProducts } from 'vtex.store-resources'
 import { usePixel } from 'vtex.pixel-manager'
+import { QueryProducts } from 'vtex.store-resources'
 import { ProductList as ProductListStructuredData } from 'vtex.structured-data'
 // eslint-disable-next-line no-restricted-imports
 import { equals } from 'ramda'
 import { canUseDOM } from 'vtex.render-runtime'
 
-import ProductSummaryListWithoutQuery from './ProductSummaryListWithoutQuery'
-import { PreferenceType } from './utils/normalize'
+import ProductSummaryListWithoutQuery, {
+  PRODUCT_LIST_PLACEMENT,
+} from './ProductSummaryListWithoutQuery'
 import useSession from './hooks/useSession'
+import { PreferenceType } from './utils/normalize'
+
+const DEFAULT_SHOW_SPONSORED_PRODUCTS = false
+const DEFAULT_SPONSORED_COUNT = 2
+const DEFAULT_REPEAT_SPONSORED_PRODUCTS = false
 
 const ORDER_BY_OPTIONS = {
   RELEVANCE: {
@@ -138,6 +144,12 @@ interface Props {
   ProductSummary: ComponentType<{ product: any; actionOnClick: any }>
   /** Callback on product click. */
   actionOnProductClick?: (product: any) => void
+  /** Whether or not to show sponsored products in this list. */
+  showSponsoredProducts: boolean
+  /** Maximum number of sponsored products to put on top of the regular products. */
+  sponsoredCount: number
+  /** If true, sponsored and regular products will be repeated on the list. */
+  repeatSponsoredProducts: boolean
 }
 
 function ProductSummaryList(props: PropsWithChildren<Props>) {
@@ -155,6 +167,9 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     ProductSummary,
     actionOnProductClick,
     preferredSKU,
+    showSponsoredProducts = DEFAULT_SHOW_SPONSORED_PRODUCTS,
+    sponsoredCount = DEFAULT_SPONSORED_COUNT,
+    repeatSponsoredProducts = DEFAULT_REPEAT_SPONSORED_PRODUCTS,
   } = props
 
   const [shippingOptions, setShippingOptions] = useState([])
@@ -195,6 +210,12 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
       skusFilter,
       installmentCriteria,
       variant: getCookie('sp-variant'),
+      advertisementOptions: {
+        showSponsored: showSponsoredProducts,
+        sponsoredCount,
+        repeatSponsoredProducts,
+        advertisementPlacement: PRODUCT_LIST_PLACEMENT,
+      },
     },
   })
 
@@ -321,6 +342,26 @@ ProductSummaryList.schema = {
     listName: {
       title: 'admin/editor.productSummaryList.analyticsListName.title',
       type: 'string',
+    },
+    showSponsoredProducts: {
+      title: 'admin/editor.productSummaryList.showSponsoredProducts.title',
+      description:
+        'admin/editor.productSummaryList.showSponsoredProducts.description',
+      type: 'boolean',
+      default: DEFAULT_SHOW_SPONSORED_PRODUCTS,
+    },
+    sponsoredCount: {
+      title: 'admin/editor.productSummaryList.sponsoredCount.title',
+      description: 'admin/editor.productSummaryList.sponsoredCount.description',
+      type: 'number',
+      default: DEFAULT_SPONSORED_COUNT,
+    },
+    repeatSponsoredProducts: {
+      title: 'admin/editor.productSummaryList.repeatSponsoredProducts.title',
+      description:
+        'admin/editor.productSummaryList.repeatSponsoredProducts.description',
+      type: 'boolean',
+      default: DEFAULT_REPEAT_SPONSORED_PRODUCTS,
     },
   },
 }

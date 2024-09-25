@@ -48,7 +48,7 @@ The Product Summary Shelf is the main block exported by the [Product Summary app
 | `priceBehavior` |  `enum` | Determines whether the component should fetch the most up-to-date price (`async`) or (`default`). Remember to configure the [Search Result](https://vtex.io/docs/components/content-blocks/vtex.search-result@3.79.1/#configuration)'s `simulationBehavior` prop to `skip` and use the Product Price [`product-price-suspense`](https://github.com/vtex-apps/product-price/blob/master/docs/README.md) block to render a loading spinner while the price information is being fetched. | `default` |
 | `trackListName` | `boolean` | Determines whether the component should send the list name to the product page when the product summary is clicked. Disabling it will prevent the `productDetail` GTM event sent on the PDP to identify from which list the user navigated. | `true` |
 | `sponsoredBadgeLabel` | `String` | The text of the "Sponsored" tag, if applicable. | `"store/sponsored-badge.label"`| 
-| `sponsoredBadgePosition` | `enum` | The position of the "Sponsored" tag, if applicable. Possible values are `titleTop`, `containerTopLeft` and `none`. | `"titleTop"`| 
+| `sponsoredBadgePosition` | `enum` | The position of the "Sponsored" tag, if applicable. Possible values are `titleTop`, `containerTopLeft` and `none`. | `"containerTopLeft"`| 
 
 ## Customization
 

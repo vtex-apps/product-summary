@@ -1,17 +1,19 @@
-import React, { useMemo } from 'react'
 import type { ComponentType, PropsWithChildren } from 'react'
-import { ExtensionPoint, useTreePath } from 'vtex.render-runtime'
-import { useListContext, ListContextProvider } from 'vtex.list-context'
+import React, { useMemo } from 'react'
+import { ListContextProvider, useListContext } from 'vtex.list-context'
 import { ProductListContext } from 'vtex.product-list-context'
+import { ExtensionPoint, useTreePath } from 'vtex.render-runtime'
 
+import ProductListEventCaller from './components/ProductListEventCaller'
+import type { ProductClickParams } from './ProductSummaryList'
 import {
   mapCatalogProductToProductSummary,
   PreferenceType,
 } from './utils/normalize'
-import ProductListEventCaller from './components/ProductListEventCaller'
-import type { ProductClickParams } from './ProductSummaryList'
 
 const { ProductListProvider } = ProductListContext
+
+export const PRODUCT_LIST_PLACEMENT = 'home_shelf'
 
 type Props = PropsWithChildren<{
   /** Array of products. */
@@ -25,6 +27,7 @@ type Props = PropsWithChildren<{
     ) => void
     listName?: string
     position?: number
+    placement?: string
   }>
   /** Name of the list property on Google Analytics events. */
   listName?: string
@@ -73,6 +76,7 @@ function List({
             listName={listName}
             actionOnClick={handleOnClick}
             position={position}
+            placement={PRODUCT_LIST_PLACEMENT}
           />
         )
       }
@@ -86,6 +90,7 @@ function List({
           listName={listName}
           actionOnClick={handleOnClick}
           position={position}
+          placement={PRODUCT_LIST_PLACEMENT}
         />
       )
     })
