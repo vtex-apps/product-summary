@@ -248,9 +248,7 @@ function Image({
     <img
       src={getImageSrc({ src, width, height, dpi, aspectRatio })}
       style={getStyle({ width, height, aspectRatio, maxHeight })}
-      loading={
-        fetchpriority === 'low' ? 'lazy' : 'eager'
-      }
+      loading={fetchpriority === 'low' ? 'lazy' : 'eager'}
       alt={alt}
       className={className}
       onError={onError}
