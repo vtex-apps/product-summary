@@ -244,19 +244,15 @@ function Image({
    * device-based guess was wrong. Has to be looked into */
   const dpi = isMobile ? 2 : 1
 
-  const shouldResize = !!(width || height)
-
   return (
     <img
       src={getImageSrc({ src, width, height, dpi, aspectRatio })}
       style={getStyle({ width, height, aspectRatio, maxHeight })}
-      // @ts-expect-error This property exists in HTML
-      loading={
-        shouldResize ? 'lazy' : fetchpriority === 'high' ? 'eager' : 'auto'
-      }
+      loading={fetchpriority === 'low' ? 'lazy' : 'eager'}
       alt={alt}
       className={className}
       onError={onError}
+      // @ts-expect-error This property exists in HTML
       fetchpriority={fetchpriority}
     />
   )

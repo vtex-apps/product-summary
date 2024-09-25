@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- The logic of the `loading` attribute depends only on the `fetchpriority` value and no longer on the image resizing
+
 ## [2.90.0] - 2024-08-01
 
 ### Added
