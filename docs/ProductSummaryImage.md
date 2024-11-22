@@ -72,7 +72,7 @@
 
 | Prop name | Type | Description | Default value |
 | - | - | - | - |
-| `criteria` | `enum` | Specify the criteria that should determine the hover image based on the product images from the Admin Catalog. Possible values are: `label` (the hover image will be the one that matches the `label` value) and `index` (the hover image will be the one with the same `index` value). | `label` |
+| `criteria` | `enum` | Defines the criteria that should determine the hover image based on the product images from the Admin Catalog. Possible values are: `label` (the hover image will be the one that matches the `label` value) and `index` (the hover image will be the one with the same `index` value). | `label` |
 | `label` | `string` | Determines the text string to match the desired image's `label` value. No image will be displayed during the hover if no match is found. *Caution*: This prop should only be used when the `criteria` prop is set to `label`. |  `undefined`  |
 | `labelMatchCriteria` |  `enum`  | Defines the criteria for searching the image `label` value, determining whether the image label should match exactly as provided or just need to contain the substring anywhere in the image `label`. Possible values are: `exact` (finds the image that matches exactly the string entered the `label` field) and `contains` (finds the first image that includes the substring entered the `label` field). *This prop should only be used when the `criteria` prop is set to `label`*. | `exact` |
 | `index` | `number` | Index number to match with the desired images. No image will be displayed during hover if no match is found. *This prop should only be used when the `criteria` prop is set to `index`*. | `undefined` |
