@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.90.2] - 2024-11-28
+
 ### Fixed
 
 - Updating the `showCollections` prop to indicate that it is now deprecated.
