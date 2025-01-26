@@ -42,6 +42,8 @@ function ProductSummaryCustom({
   placement,
   position,
   classes,
+  arialabel
+
 }: PropsWithChildren<Props>) {
   const {
     isLoading,
@@ -192,6 +194,8 @@ function ProductSummaryCustom({
           priceBehavior={priceBehavior}
         >
           <section
+            aria-label={arialabel}
+            
             className={containerClasses}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -251,6 +255,7 @@ interface Props {
    * Where this ProductSummary is being shown. Used for analytics. E.g. "search" or "shelf".
    */
   placement?: string
+  arialabel?: string
 }
 
 function ProductSummaryWrapper({
@@ -266,6 +271,7 @@ function ProductSummaryWrapper({
   placement,
   classes,
   children,
+  arialabel
 }: PropsWithChildren<Props>) {
   const sponsoredBadge = {
     position: sponsoredBadgePosition,
@@ -289,6 +295,7 @@ function ProductSummaryWrapper({
         position={position}
         placement={placement}
         classes={classes}
+        arialabel={arialabel}
       >
         {children}
       </ProductSummaryCustom>
