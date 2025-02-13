@@ -294,6 +294,7 @@ interface Props {
   maxHeight?: ResponsiveValuesTypes.ResponsiveValue<string>
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
   fetchpriority?: 'high' | 'low' | 'auto' | 'byPosition'
+  arialabel?: string
 }
 
 function ProductImage({
@@ -311,6 +312,7 @@ function ProductImage({
   maxHeight: maxHeightProp,
   classes,
   fetchpriority = 'byPosition',
+  arialabel
 }: Props) {
   // @ts-expect-error - Depends on vtex.product-summary-context update on PR: https://github.com/vtex-apps/product-summary-context/pull/25
   const {
@@ -451,7 +453,7 @@ function ProductImage({
   }
 
   return (
-    <div className={imageClassName}>
+    <div className={imageClassName} aria-label={arialabel}>
       <CollectionWrapper
         showCollections={showCollections}
         productClusters={productClusters}
