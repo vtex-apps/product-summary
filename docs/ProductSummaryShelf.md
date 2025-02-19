@@ -49,6 +49,7 @@ The Product Summary Shelf is the main block exported by the [Product Summary app
 | `trackListName` | `boolean` | Determines whether the component should send the list name to the product page when the product summary is clicked. Disabling it will prevent the `productDetail` GTM event sent on the PDP to identify from which list the user navigated. | `true` |
 | `sponsoredBadgeLabel` | `String` | The text of the "Sponsored" tag, if applicable. | `"store/sponsored-badge.label"`| 
 | `sponsoredBadgePosition` | `enum` | The position of the "Sponsored" tag, if applicable. Possible values are `titleTop`, `containerTopLeft` and `none`. | `"containerTopLeft"`| 
+| `arialabel` | `string` | Aria-label to be included for accessibility purposes |  `undefined` |
 
 ## Customization
 
