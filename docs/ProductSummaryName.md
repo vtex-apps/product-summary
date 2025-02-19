@@ -34,6 +34,7 @@ Product Summary Name is a block exported by the [Product Summary app](https://de
 | ----------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- |
 | `showFieldsProps` | `object` | Defines the visibility on certain properties. | `{ showProductReference: false, showBrandName: false, showSku: false }` |
 | `tag` | `string` | HTML tag used. It can be: `div`, `h1`, `h2`, `h3`. | `h1` |
+| `arialabel` | `string` | Aria-label to be included for accessibility purposes |  `undefined` |
 
 - `showFieldsProps` object:
 
