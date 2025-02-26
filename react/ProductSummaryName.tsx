@@ -40,14 +40,12 @@ interface Props {
    */
   tag?: 'div' | 'h1' | 'h2' | 'h3'
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
-  arialabel?: string
 }
 
 function ProductSummaryName({
   showFieldsProps = defaultShowFields,
   tag = 'h3',
-  classes,
-  arialabel
+  classes
 }: Props) {
   const { product, sponsoredBadge } = useProductSummary()
   const { handles } = useCssHandles(CSS_HANDLES, { classes })
@@ -69,7 +67,7 @@ function ProductSummaryName({
   const loaderClasses = `${handles.productNameLoader} pt5 overflow-hidden`
 
   return (
-    <div className={containerClasses} aria-label={arialabel}>
+    <div className={containerClasses} aria-label={"Name for product " + productName}>
       <ProductName
         className={wrapperClasses}
         brandNameClass={brandNameClasses}
