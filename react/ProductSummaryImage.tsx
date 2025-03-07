@@ -12,6 +12,7 @@ import {
   ProductSummaryContext,
   ProductSummaryTypes,
 } from 'vtex.product-summary-context'
+import { useIntl } from 'react-intl'
 
 import ImagePlaceholder from './components/ImagePlaceholder'
 import productSummary from './productSummary.css'
@@ -310,7 +311,7 @@ function ProductImage({
   aspectRatio: aspectRatioProp,
   maxHeight: maxHeightProp,
   classes,
-  fetchpriority = 'byPosition'
+  fetchpriority = 'byPosition',
 }: Props) {
   // @ts-expect-error - Depends on vtex.product-summary-context update on PR: https://github.com/vtex-apps/product-summary-context/pull/25
   const {
@@ -320,7 +321,10 @@ function ProductImage({
     product: ProductSummaryTypes.Product
     position: number | undefined
   } = useProductSummary()
+
   const { handles, withModifiers } = useCssHandles(CSS_HANDLES, { classes })
+
+  const intl = useIntl()
 
   const [error, setError] = useState(false)
   const onError = () => setError(true)
@@ -433,6 +437,7 @@ function ProductImage({
    * @param positionNumber - The Product Summary's position on a list context or search result, used to determine priority.
    * @returns A string representing the priority: 'high' for high priority, 'low' for low priority.
    */
+
   const getFetchPriority = (
     isMobileDevice: boolean,
     positionNumber: number | undefined
@@ -451,7 +456,13 @@ function ProductImage({
   }
 
   return (
-    <div className={imageClassName} aria-label={"Image from product " + product.productName}>
+    <div
+      className={imageClassName}
+      aria-label={intl.formatMessage(
+        { id: 'store/product-summary.image.aria-label' },
+        { productName: product.productName }
+      )}
+    >
       <CollectionWrapper
         showCollections={showCollections}
         productClusters={productClusters}

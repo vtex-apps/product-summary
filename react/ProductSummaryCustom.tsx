@@ -11,6 +11,7 @@ import type { ProductSummaryTypes } from 'vtex.product-summary-context'
 import { ProductSummaryContext } from 'vtex.product-summary-context'
 import { SponsoredBadgePosition } from 'vtex.product-summary-context/react/ProductSummaryTypes'
 import { Link } from 'vtex.render-runtime'
+import { useIntl } from 'react-intl'
 
 import LocalProductSummaryContext from './ProductSummaryContext'
 import ProductPriceSimulationWrapper from './components/ProductPriceSimulationWrapper'
@@ -41,8 +42,7 @@ function ProductSummaryCustom({
   priceBehavior = 'default',
   placement,
   position,
-  classes
-
+  classes,
 }: PropsWithChildren<Props>) {
   const {
     isLoading,
@@ -181,6 +181,8 @@ function ProductSummaryCustom({
     'containerTopLeft'
   )
 
+  const intl = useIntl()
+
   return (
     <LocalProductSummaryContext.Provider value={oldContextProps}>
       <ProductContextProvider
@@ -193,8 +195,10 @@ function ProductSummaryCustom({
           priceBehavior={priceBehavior}
         >
           <section
-            aria-label={"product "+ product.productName}
-            
+            aria-label={intl.formatMessage(
+              { id: 'store/product-summary.shelf.aria-label' },
+              { productName: product.productName }
+            )}
             className={containerClasses}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -268,7 +272,7 @@ function ProductSummaryWrapper({
   sponsoredBadgeLabel,
   placement,
   classes,
-  children
+  children,
 }: PropsWithChildren<Props>) {
   const sponsoredBadge = {
     position: sponsoredBadgePosition,

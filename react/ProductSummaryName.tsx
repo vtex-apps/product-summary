@@ -4,6 +4,7 @@ import { useCssHandles } from 'vtex.css-handles'
 import type { CssHandlesTypes } from 'vtex.css-handles'
 import { ProductSummaryContext } from 'vtex.product-summary-context'
 import { SponsoredBadgePosition } from 'vtex.product-summary-context/react/ProductSummaryTypes'
+import { useIntl } from 'react-intl'
 
 import shouldShowSponsoredBadge from './utils/shouldShowSponsoredBadge'
 
@@ -45,7 +46,7 @@ interface Props {
 function ProductSummaryName({
   showFieldsProps = defaultShowFields,
   tag = 'h3',
-  classes
+  classes,
 }: Props) {
   const { product, sponsoredBadge } = useProductSummary()
   const { handles } = useCssHandles(CSS_HANDLES, { classes })
@@ -65,9 +66,16 @@ function ProductSummaryName({
   const brandNameClasses = `${handles.brandName} t-body`
   const skuNameClasses = `${handles.skuName} t-small`
   const loaderClasses = `${handles.productNameLoader} pt5 overflow-hidden`
+  const intl = useIntl()
 
   return (
-    <div className={containerClasses} aria-label={"Name for product " + productName}>
+    <div
+      className={containerClasses}
+      aria-label={intl.formatMessage(
+        { id: 'store/product-summary.name.aria-label' },
+        { productName: product.productName }
+      )}
+    >
       <ProductName
         className={wrapperClasses}
         brandNameClass={brandNameClasses}

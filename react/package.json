@@ -14,7 +14,7 @@
     "react-apollo": "^3.1.5",
     "react-content-loader": "^3.1.2",
     "react-intersection-observer": "^8.25.2",
-    "react-intl": "^2.7.2"
+    "react-intl": "^3.12.1"
   },
   "devDependencies": {
     "@apollo/react-testing": "^3.1.4",
