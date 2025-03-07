@@ -89,7 +89,7 @@
   "admin/editor.productSummary.sponsoredBadge.position.titleTop": "Acima do nome do produto",
   "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "Acima do container do produto",
   "admin/editor.productSummary.sponsoredBadge.position.none": "Não mostrar",
-  "store/product-summary.shelf.aria-label": "Produtp {productName}",
+  "store/product-summary.shelf.aria-label": "Produto {productName}",
   "store/product-summary.name.aria-label": "Nome do produto {productName}",
   "store/product-summary.image.aria-label": "Imagem do produto {productName}"
 }
