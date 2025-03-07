@@ -31,7 +31,5 @@
     "prettier": "^2.0.5",
     "typescript": "^3.9.6"
   },
-  "dependencies": {
-    "react-intl": "^7.1.6"
-  }
+  "dependencies": {}
 }
