@@ -35,7 +35,6 @@ Product Summary Name is a block exported by the [Product Summary app](https://de
 | `showFieldsProps` | `object` | Defines the visibility on certain properties. | `{ showProductReference: false, showBrandName: false, showSku: false }` |
 | `tag` | `string` | HTML tag used. It can be: `div`, `h1`, `h2`, `h3`. | `h1` |
 
-
 - `showFieldsProps` object:
 
 | Prop name | Type | Description | Default value |
