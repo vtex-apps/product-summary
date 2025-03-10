@@ -7,8 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
  ## [Unreleased]
 
-+ ### Fixed
-+ - Accessibility issue with missing aria-label property
++ ### Added
++ - aria-label property for product summary
 
 ## [2.90.2] - 2024-11-28
 
