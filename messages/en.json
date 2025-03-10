@@ -87,5 +87,8 @@
   "admin/editor.productSummary.sponsoredBadge.position": "Position of the sponsored product tag, if applicable",
   "admin/editor.productSummary.sponsoredBadge.position.titleTop": "Above the product's name",
   "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "On top of the product container",
-  "admin/editor.productSummary.sponsoredBadge.position.none": "Don't show"
+  "admin/editor.productSummary.sponsoredBadge.position.none": "Don't show",
+  "store/product-summary.shelf.aria-label": "Product {productName}",
+  "store/product-summary.name.aria-label": "Name for product {productName}",
+  "store/product-summary.image.aria-label": "Image from product {productName}"
 }

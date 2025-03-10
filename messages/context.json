@@ -87,5 +87,8 @@
   "admin/editor.productSummary.sponsoredBadge.position": "admin/editor.productSummary.sponsoredBadge.position",
   "admin/editor.productSummary.sponsoredBadge.position.titleTop": "admin/editor.productSummary.sponsoredBadge.position.titleTop",
   "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft": "admin/editor.productSummary.sponsoredBadge.position.containerTopLeft",
-  "admin/editor.productSummary.sponsoredBadge.position.none": "admin/editor.productSummary.sponsoredBadge.position.none"
+  "admin/editor.productSummary.sponsoredBadge.position.none": "admin/editor.productSummary.sponsoredBadge.position.none",
+  "store/product-summary.shelf.aria-label": "Product {productName}",
+  "store/product-summary.name.aria-label": "Name for product {productName}",
+  "store/product-summary.image.aria-label": "Image from product {productName}"
 }
