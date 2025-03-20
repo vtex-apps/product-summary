@@ -38,26 +38,26 @@ This block is used to specify what variation of `product-summary` should be used
 | `hideUnavailableItems` | `boolean`                              | Hides unavailable items.                                                                                                                                                                                     | `false`                  |
 | `maxItems`             | `number`                               | Maximum items to be fetched.                                                                                                                                                                                 | `10`                     |
 | `skusFilter`           | [`SkusFilterEnum`](#skusfilterenum)                       | Control SKUs returned for each product in the query. The fewer SKUs that need to be returned, the more efficient your shelf query will be. Possible values are: `FIRST_AVAILABLE`, `ALL_AVAILABLE`, `ALL`.         | `"ALL_AVAILABLE"`        |
-| `installmentCriteria`  | `InstallmentCriteriaEnum`              | Control the price that will be displayed when the price has different installment options. Possible values are: `MAX_WITHOUT_INTEREST`, `MAX_WITH_INTEREST`.                                                                                                                | `"MAX_WITHOUT_INTEREST"` |
+| `installmentCriteria`  | [`InstallmentCriteriaEnum`](#installmentcriteriaenum)              | Control the price that will be displayed when the price has different installment options. Possible values are: `MAX_WITHOUT_INTEREST`, `MAX_WITH_INTEREST`.                                                                                                                | `"MAX_WITHOUT_INTEREST"` |
 | `listName`             | `string`                               | Name of the list property in Google Analytics events.                                                                                                                                                        | -                     |
-| `preferredSKU`         | `PreferredSKUEnum`                     | Controls which SKU will be selected in the summary. Possible values are: `FIRST_AVAILABLE`, `LAST_AVAILABLE`, `PRICE_ASC`, `PRICE_DESC`.                                                                                                                                     | `"FIRST_AVAILABLE"`      |
+| `preferredSKU`         | [`PreferredSKUEnum`](#preferredskuenum)                     | Controls which SKU will be selected in the summary. Possible values are: `FIRST_AVAILABLE`, `LAST_AVAILABLE`, `PRICE_ASC`, `PRICE_DESC`.                                                                                                                                     | `"FIRST_AVAILABLE"`      |
 
 ### `SkusFilterEnum`:
 
 | Name            | Value             | Description                                                                                                                                                |
 | --------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| First Available | `FIRST_AVAILABLE` | Best performance, ideal if you doN'T have a SKU selector on your shelf. It will return only the first available SKU for that product in your shelf query. |
+| First Available | `FIRST_AVAILABLE` | Best performance, ideal if you don't have a SKU selector on your shelf. It will return only the first available SKU for that product in your shelf query. |
 | All Available   | `ALL_AVAILABLE`   | Performance is somewhat better; it will only return available SKUs, which is ideal if you have a SKU selector but still want better performance.           |
 | All             | `ALL`             | Returns all SKUs related to the product; the least efficient option.                                                                                       |
 
-For `InstallmentCriteriaEnum`:
+### `InstallmentCriteriaEnum`:
 
 | Name                     | Value                  | Description                                                       |
 | ------------------------ | ---------------------- | ----------------------------------------------------------------- |
 | Maximum without interest | `MAX_WITHOUT_INTEREST` | Displays the maximum installment option with no interest.         |
 | Maximum                  | `MAX_WITH_INTEREST`    | Displays the maximum installment option with or without interest. |
 
-For `PreferredSKUEnum`:
+### `PreferredSKUEnum`:
 
 | Name            | Value             | Description                                        |
 | --------------- | ----------------- | -------------------------------------------------- |
