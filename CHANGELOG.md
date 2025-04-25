@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
  ## [Unreleased]
 
- ### Added
+### Changed
+
+- Update GitHub actions/cache to v4
+
+### Added
 
 - Updated `docs/ProductSummaryList.md` to add possible values for `SkusFilterEnum`, `InstallmentCriteriaEnum`, `PreferredSKUEnum`.
 
