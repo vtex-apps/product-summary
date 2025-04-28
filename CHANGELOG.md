@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Update GitHub actions/cache to v4
 
+### Added
+
+- Updated `docs/ProductSummaryList.md` to add possible values for `SkusFilterEnum`, `InstallmentCriteriaEnum`, `PreferredSKUEnum`.
+
 ## [2.90.3] - 2025-03-10
 
 + ### Added
