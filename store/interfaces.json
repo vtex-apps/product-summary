@@ -8,7 +8,8 @@
   },
   "product-summary.shelf": {
     "component": "ProductSummaryCustom",
-    "composition": "children"
+    "composition": "children",
+    "allowed": ["availability-badges"]
   },
   "product-summary-column": {
     "component": "Column",
