@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
  - Also add prop fetchpriority to hover image
 
+## [2.90.5] - 2025-07-15
+
 ## [2.90.4] - 2025-04-28
 
 ### Changed
@@ -37,6 +39,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 
 - The logic of the `loading` attribute depends only on the `fetchpriority` value and no longer on the image resizing
+
+### Changed
+- Limited `fetchpriority="high"` to a maximum of 2 images to improve LCP performance in carousels.
 
 ## [2.90.0] - 2024-08-01
 

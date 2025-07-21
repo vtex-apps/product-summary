@@ -447,7 +447,7 @@ function ProductImage({
         ? positionNumber === 1
           ? 'high'
           : 'low'
-        : positionNumber < 4
+        : positionNumber < 3
         ? 'high'
         : 'low'
     }
