@@ -504,7 +504,7 @@ function ProductImage({
                   fetchpriority === 'byPosition'
                     ? getFetchPriority(isMobile, position)
                     : fetchpriority
-              }
+                }
               />
             )}
           </div>
