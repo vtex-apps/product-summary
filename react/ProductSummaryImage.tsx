@@ -501,9 +501,9 @@ function ProductImage({
                 className={hoverImageClassname}
                 onError={onError}
                 fetchpriority={
-                fetchpriority === 'byPosition'
-                  ? getFetchPriority(isMobile, position)
-                  : fetchpriority
+                  fetchpriority === 'byPosition'
+                    ? getFetchPriority(isMobile, position)
+                    : fetchpriority
               }
               />
             )}
