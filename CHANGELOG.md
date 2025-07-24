@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
  ## [Unreleased]
 
+## [2.90.6] - 2025-07-24
+
  ### Fixed 
 
  - Also add prop fetchpriority to hover image
