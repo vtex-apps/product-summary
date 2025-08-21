@@ -45,7 +45,7 @@ interface Props {
 
 function ProductSummaryName({
   showFieldsProps = defaultShowFields,
-  tag = 'h3',
+  tag = 'div',
   classes,
 }: Props) {
   const { product, sponsoredBadge } = useProductSummary()
