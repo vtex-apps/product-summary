@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
  ## [Unreleased]
 
+ - Change default ProductSummaryName element to div for accessibility, as h3 element should not be used only for decorative purposes.
+
 ## [2.90.6] - 2025-07-24
 
  ### Fixed 
