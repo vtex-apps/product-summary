@@ -156,6 +156,7 @@ function ProductSummaryCustom({
         to: href,
         onClick: autocompleteSummary ? actionOnClick : undefined,
         onClickCapture: autocompleteSummary ? undefined : actionOnClick,
+        'aria-label': `View product details for ${product?.productName || 'product'}`,
       }
     : {
         page: 'store.product',
@@ -167,6 +168,7 @@ function ProductSummaryCustom({
         query,
         onClick: autocompleteSummary ? actionOnClick : undefined,
         onClickCapture: autocompleteSummary ? undefined : actionOnClick,
+        'aria-label': `View product details for ${product?.productName || 'product'}`,
       }
 
   const adsDataProperties = getAdsDataProperties({
