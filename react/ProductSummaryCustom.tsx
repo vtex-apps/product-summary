@@ -139,7 +139,7 @@ function ProductSummaryCustom({
   const containerClasses = classNames(
     handles.container,
     handles.containerNormal,
-    'overflow-hidden br3 h-100 w-100 flex flex-column justify-between center tc'
+    'br3 h-100 w-100 flex flex-column justify-between center tc'
   )
 
   const summaryClasses = classNames(
@@ -147,7 +147,7 @@ function ProductSummaryCustom({
     'pointer pt3 pb4 flex flex-column h-100'
   )
 
-  const linkClasses = classNames(handles.clearLink, 'h-100 flex flex-column')
+  const linkClasses = classNames(handles.clearLink, 'h-100 flex flex-column focus-visible:outline-2 focus-visible:outline-blue-500')
 
   const skuId = selectedItem?.itemId ?? product?.sku?.itemId
 
