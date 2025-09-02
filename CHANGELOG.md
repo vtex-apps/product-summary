@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
  - Focus-visible outline when product summary selected using keyboard
 
+## [2.90.7] - 2025-08-27
+
+ - Add aria-label to ProductSummaryCustom link
+
 ## [2.90.6] - 2025-07-24
 
  ### Fixed 
