@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
  ## [Unreleased]
 
+## [2.90.8] - 2025-09-22
+
  ### Added
 
  - Focus-visible outline when product summary selected using keyboard
