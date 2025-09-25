@@ -10,7 +10,7 @@ import { ProductListContext } from 'vtex.product-list-context'
 import type { ProductSummaryTypes } from 'vtex.product-summary-context'
 import { ProductSummaryContext } from 'vtex.product-summary-context'
 import { SponsoredBadgePosition } from 'vtex.product-summary-context/react/ProductSummaryTypes'
-import { Link } from 'vtex.render-runtime'
+import { Link, useRuntime } from 'vtex.render-runtime'
 import { useIntl } from 'react-intl'
 
 import LocalProductSummaryContext from './ProductSummaryContext'
@@ -56,6 +56,10 @@ function ProductSummaryCustom({
 
   const dispatch = useProductSummaryDispatch()
   const { handles } = useCssHandles(CSS_HANDLES, { classes })
+  const { getSettings } = useRuntime()
+  
+  const settings = getSettings('vtex.store')
+  const useSemanticHtml = settings?.advancedSettings?.a11ySemanticHtmlMigration
 
   const productListDispatch = ProductListContext.useProductListDispatch()
 
@@ -139,7 +143,8 @@ function ProductSummaryCustom({
   const containerClasses = classNames(
     handles.container,
     handles.containerNormal,
-    'br3 h-100 w-100 flex flex-column justify-between center tc'
+    'br3 h-100 w-100 flex flex-column justify-between center tc',
+    !useSemanticHtml && 'overflow-hidden'
   )
 
   const summaryClasses = classNames(
@@ -147,7 +152,11 @@ function ProductSummaryCustom({
     'pointer pt3 pb4 flex flex-column h-100'
   )
 
-  const linkClasses = classNames(handles.clearLink, 'h-100 flex flex-column focus-visible:outline-2 focus-visible:outline-blue-500')
+  const linkClasses = classNames(
+    handles.clearLink, 
+    'h-100 flex flex-column',
+    useSemanticHtml && 'focus-visible:outline-2 focus-visible:outline-blue-500'
+  )
 
   const skuId = selectedItem?.itemId ?? product?.sku?.itemId
 
