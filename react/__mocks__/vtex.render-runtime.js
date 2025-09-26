@@ -23,8 +23,8 @@ export const useRuntime = () => {
       if (appName === 'vtex.store') {
         return {
           advancedSettings: {
-            a11ySemanticHtmlMigration: false // Default para testes
-          }
+            a11ySemanticHtmlMigration: false,
+          },
         }
       }
       return {}

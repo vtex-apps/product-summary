@@ -153,7 +153,7 @@ function ProductSummaryCustom({
   )
 
   const linkClasses = classNames(
-    handles.clearLink, 
+    handles.clearLink,
     'h-100 flex flex-column',
     useSemanticHtml && 'focus-visible:outline-2 focus-visible:outline-blue-500'
   )
@@ -165,7 +165,9 @@ function ProductSummaryCustom({
         to: href,
         onClick: autocompleteSummary ? actionOnClick : undefined,
         onClickCapture: autocompleteSummary ? undefined : actionOnClick,
-        'aria-label': `View product details for ${product?.productName || 'product'}`,
+        'aria-label': `View product details for ${
+          product?.productName || 'product'
+        }`,
       }
     : {
         page: 'store.product',
@@ -177,7 +179,9 @@ function ProductSummaryCustom({
         query,
         onClick: autocompleteSummary ? actionOnClick : undefined,
         onClickCapture: autocompleteSummary ? undefined : actionOnClick,
-        'aria-label': `View product details for ${product?.productName || 'product'}`,
+        'aria-label': `View product details for ${
+          product?.productName || 'product'
+        }`,
       }
 
   const adsDataProperties = getAdsDataProperties({
