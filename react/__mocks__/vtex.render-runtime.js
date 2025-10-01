@@ -19,5 +19,15 @@ export function withRuntimeContext(Comp) {
 export const useRuntime = () => {
   return {
     hints: { mobile: false },
+    getSettings: (appName) => {
+      if (appName === 'vtex.store') {
+        return {
+          advancedSettings: {
+            a11ySemanticHtmlMigration: false,
+          },
+        }
+      }
+      return {}
+    }
   }
 }
