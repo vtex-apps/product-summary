@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
  ## [Unreleased]
 
+## [2.90.9] - 2025-10-01
+
 ### Fixed
 
 - Layout issues from v2.90.8 by adding `a11ySemanticHtmlMigration` feature flag to control accessibility enhancements
