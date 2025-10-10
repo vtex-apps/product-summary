@@ -74,7 +74,7 @@ function getCookie(cname: string) {
     }
   }
 
-  return ''
+  return null
 }
 
 const parseFilters = ({ id, value }: { id: string; value: string }) =>
