@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-- Updated `getCookie` fallback return value from '' to null, to avoid product carousel disappearing on client side for a brief moment
+- Updated `getCookie` return value from `null` to `''` in server side rendering (!canUseDOM) to avoid product carousel disappearing on client side for a brief moment
 
 ## [2.90.9] - 2025-10-01
 
