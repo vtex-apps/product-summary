@@ -28,6 +28,7 @@ type Props = PropsWithChildren<{
     listName?: string
     position?: number
     placement?: string
+    afDataAttributes?: Record<string, string>
   }>
   /** Name of the list property on Google Analytics events. */
   listName?: string
@@ -38,6 +39,15 @@ type Props = PropsWithChildren<{
   ) => void
   /** Logic to enable which SKU will be the selected item */
   preferredSKU?: PreferenceType
+  /**
+   * Array of Activity Flow data attributes objects. Each object will be spread directly onto the corresponding section element.
+   * @example
+   * afDataAttributesList={[
+   *   { 'data-af-category': 'electronics', 'data-af-onclick': 'true' },
+   *   { 'data-af-category': 'clothing', 'data-af-position': '2' }
+   * ]}
+   */
+  afDataAttributesList?: Array<Record<string, string>>
 }>
 
 function List({
@@ -47,6 +57,7 @@ function List({
   listName,
   actionOnProductClick,
   preferredSKU,
+  afDataAttributesList = [],
 }: Props) {
   const { list } = useListContext()
   const { treePath } = useTreePath()
@@ -77,6 +88,7 @@ function List({
             actionOnClick={handleOnClick}
             position={position}
             placement={PRODUCT_LIST_PLACEMENT}
+            afDataAttributes={afDataAttributesList[index]}
           />
         )
       }
@@ -91,6 +103,7 @@ function List({
           actionOnClick={handleOnClick}
           position={position}
           placement={PRODUCT_LIST_PLACEMENT}
+          afDataAttributes={afDataAttributesList[index]}
         />
       )
     })
@@ -104,6 +117,7 @@ function List({
     treePath,
     listName,
     actionOnProductClick,
+    afDataAttributesList,
   ])
 
   return (
@@ -120,6 +134,7 @@ function ProductSummaryListWithoutQuery({
   ProductSummary,
   actionOnProductClick,
   preferredSKU,
+  afDataAttributesList,
 }: Props) {
   return (
     <ProductListProvider listName={listName ?? ''}>
@@ -129,6 +144,7 @@ function ProductSummaryListWithoutQuery({
         listName={listName}
         ProductSummary={ProductSummary}
         actionOnProductClick={actionOnProductClick}
+        afDataAttributesList={afDataAttributesList}
       >
         {children}
       </List>
