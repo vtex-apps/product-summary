@@ -150,6 +150,15 @@ interface Props {
   sponsoredCount: number
   /** If true, sponsored and regular products will be repeated on the list. */
   repeatSponsoredProducts: boolean
+  /**
+   * Array of Activity Flow data attributes objects. Each object will be spread directly onto the corresponding section element.
+   * @example
+   * afDataAttributesList={[
+   *   { 'data-af-category': 'electronics', 'data-af-onclick': 'true' },
+   *   { 'data-af-category': 'clothing', 'data-af-position': '2' }
+   * ]}
+   */
+  afDataAttributesList?: Array<Record<string, string>>
 }
 
 function ProductSummaryList(props: PropsWithChildren<Props>) {
@@ -170,6 +179,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     showSponsoredProducts = DEFAULT_SHOW_SPONSORED_PRODUCTS,
     sponsoredCount = DEFAULT_SPONSORED_COUNT,
     repeatSponsoredProducts = DEFAULT_REPEAT_SPONSORED_PRODUCTS,
+    afDataAttributesList,
   } = props
 
   const [shippingOptions, setShippingOptions] = useState([])
@@ -251,6 +261,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
       ProductSummary={ProductSummary}
       actionOnProductClick={productClick}
       preferredSKU={preferredSKU}
+      afDataAttributesList={afDataAttributesList}
     >
       <ProductListStructuredData products={products} />
       {children}

@@ -43,6 +43,7 @@ function ProductSummaryCustom({
   placement,
   position,
   classes,
+  afDataAttributes,
 }: PropsWithChildren<Props>) {
   const {
     isLoading,
@@ -57,7 +58,7 @@ function ProductSummaryCustom({
   const dispatch = useProductSummaryDispatch()
   const { handles } = useCssHandles(CSS_HANDLES, { classes })
   const { getSettings } = useRuntime()
-  
+
   const settings = getSettings('vtex.store')
   const useSemanticHtml = settings?.advancedSettings?.a11ySemanticHtmlMigration
 
@@ -220,6 +221,7 @@ function ProductSummaryCustom({
             style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
             ref={inViewRef}
             {...adsDataProperties}
+            {...(afDataAttributes ?? {})}
           >
             <Link className={linkClasses} {...linkProps}>
               <article className={summaryClasses}>
@@ -273,6 +275,12 @@ interface Props {
    * Where this ProductSummary is being shown. Used for analytics. E.g. "search" or "shelf".
    */
   placement?: string
+  /**
+   * Activity Flow data attributes object. These attributes will be spread directly onto the section element.
+   * @example
+   * afDataAttributes={{ 'data-af-category': 'electronics', 'data-af-onclick': 'true' }}
+   */
+  afDataAttributes?: Record<string, string>
 }
 
 function ProductSummaryWrapper({
@@ -288,6 +296,7 @@ function ProductSummaryWrapper({
   placement,
   classes,
   children,
+  afDataAttributes,
 }: PropsWithChildren<Props>) {
   const sponsoredBadge = {
     position: sponsoredBadgePosition,
@@ -311,6 +320,7 @@ function ProductSummaryWrapper({
         position={position}
         placement={placement}
         classes={classes}
+        afDataAttributes={afDataAttributes}
       >
         {children}
       </ProductSummaryCustom>
