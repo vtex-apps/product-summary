@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
  ## [Unreleased]
 
+### Added
+
+- Support for `eventParameters` encoded event parameter for sponsored products.
+
 ## [2.90.10] - 2025-10-23
 
 ### Fixed

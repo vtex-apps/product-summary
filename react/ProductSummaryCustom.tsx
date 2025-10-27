@@ -16,7 +16,6 @@ import { useIntl } from 'react-intl'
 import LocalProductSummaryContext from './ProductSummaryContext'
 import ProductPriceSimulationWrapper from './components/ProductPriceSimulationWrapper'
 import { SponsoredBadge } from './components/SponsoredBadge'
-import getAdsDataProperties from './utils/getAdsDataProperties'
 import { mapCatalogProductToProductSummary } from './utils/normalize'
 import shouldShowSponsoredBadge from './utils/shouldShowSponsoredBadge'
 
@@ -40,7 +39,6 @@ function ProductSummaryCustom({
   children,
   href,
   priceBehavior = 'default',
-  placement,
   position,
   classes,
 }: PropsWithChildren<Props>) {
@@ -57,7 +55,7 @@ function ProductSummaryCustom({
   const dispatch = useProductSummaryDispatch()
   const { handles } = useCssHandles(CSS_HANDLES, { classes })
   const { getSettings } = useRuntime()
-  
+
   const settings = getSettings('vtex.store')
   const useSemanticHtml = settings?.advancedSettings?.a11ySemanticHtmlMigration
 
@@ -184,11 +182,9 @@ function ProductSummaryCustom({
         }`,
       }
 
-  const adsDataProperties = getAdsDataProperties({
-    product,
-    position,
-    placement,
-  })
+  const eventParameters =
+    (product.advertisement as any)?.eventParameters ??
+    product.advertisement?.adId
 
   const showSponsoredBadge = shouldShowSponsoredBadge(
     product,
@@ -219,7 +215,7 @@ function ProductSummaryCustom({
             onMouseLeave={handleMouseLeave}
             style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
             ref={inViewRef}
-            {...adsDataProperties}
+            data-van-aid={eventParameters}
           >
             <Link className={linkClasses} {...linkProps}>
               <article className={summaryClasses}>
