@@ -55,7 +55,7 @@ const ORDER_BY_OPTIONS = {
 
 function getCookie(cname: string) {
   if (!canUseDOM) {
-    return null
+    return ''
   }
 
   const name = `${cname}=`
