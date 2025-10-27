@@ -12,7 +12,9 @@ const shouldShowSponsoredBadge = (
   position: SponsoredBadgePosition,
   eligiblePosition: SponsoredBadgePosition
 ) => {
-  const isSponsored = !!product?.advertisement?.adId || !!(product.advertisement as NewAdvertisement)?.eventParameters
+  const isSponsored =
+    !!product?.advertisement?.adId ||
+    !!(product.advertisement as NewAdvertisement)?.eventParameters
   const showSponsoredBadge = isSponsored && position === eligiblePosition
 
   return showSponsoredBadge

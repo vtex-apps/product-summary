@@ -55,7 +55,7 @@ function ProductSummaryCustom({
   const dispatch = useProductSummaryDispatch()
   const { handles } = useCssHandles(CSS_HANDLES, { classes })
   const { getSettings } = useRuntime()
-  
+
   const settings = getSettings('vtex.store')
   const useSemanticHtml = settings?.advancedSettings?.a11ySemanticHtmlMigration
 
@@ -182,7 +182,9 @@ function ProductSummaryCustom({
         }`,
       }
 
-  const eventParameters = (product.advertisement as any)?.eventParameters ?? product.advertisement?.adId
+  const eventParameters =
+    (product.advertisement as any)?.eventParameters ??
+    product.advertisement?.adId
 
   const showSponsoredBadge = shouldShowSponsoredBadge(
     product,
