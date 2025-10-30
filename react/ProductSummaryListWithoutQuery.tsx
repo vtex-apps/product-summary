@@ -40,14 +40,19 @@ type Props = PropsWithChildren<{
   /** Logic to enable which SKU will be the selected item */
   preferredSKU?: PreferenceType
   /**
-   * Array of Activity Flow data attributes objects. Each object will be spread directly onto the corresponding section element.
+   * Function that returns Activity Flow data attributes for each product summary.
+   * The returned key/value pairs will be spread onto the corresponding section element.
+   *
    * @example
-   * afDataAttributesList={[
-   *   { 'data-af-category': 'electronics', 'data-af-onclick': 'true' },
-   *   { 'data-af-category': 'clothing', 'data-af-position': '2' }
-   * ]}
+   * buildProductAfDataAttributes={(product, index) => ({
+   *   'data-af-category': product.category || 'unknown',
+   *   'data-af-index': String(index),
+   * })}
    */
-  afDataAttributesList?: Array<Record<string, string>>
+  buildProductAfDataAttributes?: (
+    product?: Record<string, string>,
+    index?: number
+  ) => Record<string, string>
 }>
 
 function List({
@@ -57,7 +62,7 @@ function List({
   listName,
   actionOnProductClick,
   preferredSKU,
-  afDataAttributesList = [],
+  buildProductAfDataAttributes,
 }: Props) {
   const { list } = useListContext()
   const { treePath } = useTreePath()
@@ -88,7 +93,11 @@ function List({
             actionOnClick={handleOnClick}
             position={position}
             placement={PRODUCT_LIST_PLACEMENT}
-            afDataAttributes={afDataAttributesList[index]}
+            afDataAttributes={
+              buildProductAfDataAttributes
+                ? buildProductAfDataAttributes(product, index)
+                : {}
+            }
           />
         )
       }
@@ -103,7 +112,11 @@ function List({
           actionOnClick={handleOnClick}
           position={position}
           placement={PRODUCT_LIST_PLACEMENT}
-          afDataAttributes={afDataAttributesList[index]}
+          afDataAttributes={
+            buildProductAfDataAttributes
+              ? buildProductAfDataAttributes(product, index)
+              : {}
+          }
         />
       )
     })
@@ -117,7 +130,7 @@ function List({
     treePath,
     listName,
     actionOnProductClick,
-    afDataAttributesList,
+    buildProductAfDataAttributes,
   ])
 
   return (
@@ -134,7 +147,7 @@ function ProductSummaryListWithoutQuery({
   ProductSummary,
   actionOnProductClick,
   preferredSKU,
-  afDataAttributesList,
+  buildProductAfDataAttributes,
 }: Props) {
   return (
     <ProductListProvider listName={listName ?? ''}>
@@ -144,7 +157,7 @@ function ProductSummaryListWithoutQuery({
         listName={listName}
         ProductSummary={ProductSummary}
         actionOnProductClick={actionOnProductClick}
-        afDataAttributesList={afDataAttributesList}
+        buildProductAfDataAttributes={buildProductAfDataAttributes}
       >
         {children}
       </List>
