@@ -151,16 +151,16 @@ interface Props {
   /** If true, sponsored and regular products will be repeated on the list. */
   repeatSponsoredProducts: boolean
   /**
-   * Function that returns Activity Flow data attributes for each product summary.
+   * Function that returns optional external porps for each product summary.
    * The returned key/value pairs will be spread onto the corresponding section element.
    *
    * @example
-   * buildProductAfDataAttributes={(product, index) => ({
+   * buildExtraProductProps={(product, index) => ({
    *   'data-af-category': product.category || 'unknown',
    *   'data-af-index': String(index),
    * })}
    */
-  buildProductAfDataAttributes?: (
+  buildExtraProductProps?: (
     product?: Record<string, string>,
     index?: number
   ) => Record<string, string>
@@ -184,7 +184,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     showSponsoredProducts = DEFAULT_SHOW_SPONSORED_PRODUCTS,
     sponsoredCount = DEFAULT_SPONSORED_COUNT,
     repeatSponsoredProducts = DEFAULT_REPEAT_SPONSORED_PRODUCTS,
-    buildProductAfDataAttributes,
+    buildExtraProductProps,
   } = props
 
   const [shippingOptions, setShippingOptions] = useState([])
@@ -266,7 +266,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
       ProductSummary={ProductSummary}
       actionOnProductClick={productClick}
       preferredSKU={preferredSKU}
-      buildProductAfDataAttributes={buildProductAfDataAttributes}
+      buildExtraProductProps={buildExtraProductProps}
     >
       <ProductListStructuredData products={products} />
       {children}

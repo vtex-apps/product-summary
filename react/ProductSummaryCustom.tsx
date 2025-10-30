@@ -43,7 +43,7 @@ function ProductSummaryCustom({
   placement,
   position,
   classes,
-  afDataAttributes,
+  extraProductProps,
 }: PropsWithChildren<Props>) {
   const {
     isLoading,
@@ -221,7 +221,7 @@ function ProductSummaryCustom({
             style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
             ref={inViewRef}
             {...adsDataProperties}
-            {...(afDataAttributes ?? {})}
+            {...(extraProductProps ?? {})}
           >
             <Link className={linkClasses} {...linkProps}>
               <article className={summaryClasses}>
@@ -276,11 +276,11 @@ interface Props {
    */
   placement?: string
   /**
-   * Activity Flow data attributes object. These attributes will be spread directly onto the section element.
+   * Extra Product props object. These attributes will be spread directly onto the section element.
    * @example
-   * afDataAttributes={{ 'data-af-category': 'electronics', 'data-af-onclick': 'true' }}
+   * extraProductProps={{ 'data-af-category': 'electronics', 'data-af-onclick': 'true' }}
    */
-  afDataAttributes?: Record<string, string>
+  extraProductProps?: Record<string, string>
 }
 
 function ProductSummaryWrapper({
@@ -296,7 +296,7 @@ function ProductSummaryWrapper({
   placement,
   classes,
   children,
-  afDataAttributes,
+  extraProductProps,
 }: PropsWithChildren<Props>) {
   const sponsoredBadge = {
     position: sponsoredBadgePosition,
@@ -320,7 +320,7 @@ function ProductSummaryWrapper({
         position={position}
         placement={placement}
         classes={classes}
-        afDataAttributes={afDataAttributes}
+        extraProductProps={extraProductProps}
       >
         {children}
       </ProductSummaryCustom>

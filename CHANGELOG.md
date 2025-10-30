@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
- - Implements ActivityFlow data attributes support to ProductSummary components
+- Implements support for Product Summary components to render optional props.
 
 ## [2.90.10] - 2025-10-23
 
