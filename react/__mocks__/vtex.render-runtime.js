@@ -28,6 +28,6 @@ export const useRuntime = () => {
         }
       }
       return {}
-    }
+    },
   }
 }
