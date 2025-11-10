@@ -27,7 +27,8 @@ export const useRuntime = () => {
           },
         }
       }
+
       return {}
-    }
+    },
   }
 }

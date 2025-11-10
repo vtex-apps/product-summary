@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Implements support for Product Summary components to render optional props.
 
+## [2.91.0] - 2025-11-05
+
+### Added
+
+- Support for `eventParameters` encoded event parameter for sponsored products.
+
 ## [2.90.10] - 2025-10-23
 
 ### Fixed
