@@ -41,6 +41,7 @@ function ProductSummaryCustom({
   priceBehavior = 'default',
   position,
   classes,
+  extraProductProps,
 }: PropsWithChildren<Props>) {
   const {
     isLoading,
@@ -216,6 +217,7 @@ function ProductSummaryCustom({
             style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
             ref={inViewRef}
             data-van-aid={eventParameters}
+            {...(extraProductProps ?? {})}
           >
             <Link className={linkClasses} {...linkProps}>
               <article className={summaryClasses}>
@@ -269,6 +271,12 @@ interface Props {
    * Where this ProductSummary is being shown. Used for analytics. E.g. "search" or "shelf".
    */
   placement?: string
+  /**
+   * Extra Product props object. These attributes will be spread directly onto the section element.
+   * @example
+   * extraProductProps={{ 'data-af-category': 'electronics', 'data-af-onclick': 'true' }}
+   */
+  extraProductProps?: Record<string, string>
 }
 
 function ProductSummaryWrapper({
@@ -284,6 +292,7 @@ function ProductSummaryWrapper({
   placement,
   classes,
   children,
+  extraProductProps,
 }: PropsWithChildren<Props>) {
   const sponsoredBadge = {
     position: sponsoredBadgePosition,
@@ -307,6 +316,7 @@ function ProductSummaryWrapper({
         position={position}
         placement={placement}
         classes={classes}
+        extraProductProps={extraProductProps}
       >
         {children}
       </ProductSummaryCustom>
