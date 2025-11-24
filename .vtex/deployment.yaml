@@ -3,8 +3,6 @@
     - name: techdocs-v1
       parameters:
         entityReference: default/component/product-summary
-        indexFile: README.md
-        sourceDir: ./docs/
       when:
         - event: push
           source: branch
