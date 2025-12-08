@@ -151,7 +151,7 @@ interface Props {
   /** If true, sponsored and regular products will be repeated on the list. */
   repeatSponsoredProducts: boolean
   /**
-   * Function that returns optional external porps for each product summary.
+   * Function that returns optional external props for each product summary.
    * The returned key/value pairs will be spread onto the corresponding section element.
    *
    * @example
