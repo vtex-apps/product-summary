@@ -33,6 +33,13 @@ const CSS_HANDLES = [
   'clearLink',
 ] as const
 
+/**
+ * Type for data attributes that must start with 'data-'
+ * Note: TypeScript 3.9 doesn't support template literal types,
+ * so this is a documentation type. Runtime validation ensures keys start with 'data-'
+ */
+type DataAttributes = Record<string, string>
+
 function ProductSummaryCustom({
   product,
   actionOnClick,
@@ -43,6 +50,21 @@ function ProductSummaryCustom({
   classes,
   extraProductProps,
 }: PropsWithChildren<Props>) {
+  // Validate that all keys in extraProductProps start with 'data-'
+  if (extraProductProps) {
+    const invalidKeys = Object.keys(extraProductProps).filter(
+      (key) => !key.startsWith('data-')
+    )
+
+    if (invalidKeys.length > 0) {
+      console.warn(
+        `extraProductProps contains keys that don't start with 'data-': ${invalidKeys.join(
+          ', '
+        )}`
+      )
+    }
+  }
+
   const {
     isLoading,
     isHovering,
@@ -207,6 +229,7 @@ function ProductSummaryCustom({
           priceBehavior={priceBehavior}
         >
           <section
+            {...(extraProductProps ?? {})}
             aria-label={intl.formatMessage(
               { id: 'store/product-summary.shelf.aria-label' },
               { productName: product.productName }
@@ -217,7 +240,6 @@ function ProductSummaryCustom({
             style={{ maxWidth: PRODUCT_SUMMARY_MAX_WIDTH }}
             ref={inViewRef}
             data-van-aid={eventParameters}
-            {...(extraProductProps ?? {})}
           >
             <Link className={linkClasses} {...linkProps}>
               <article className={summaryClasses}>
@@ -273,10 +295,11 @@ interface Props {
   placement?: string
   /**
    * Extra Product props object. These attributes will be spread directly onto the section element.
+   * All keys must start with 'data-'. Invalid keys will trigger a console warning.
    * @example
    * extraProductProps={{ 'data-af-category': 'electronics', 'data-af-onclick': 'true' }}
    */
-  extraProductProps?: Record<string, string>
+  extraProductProps?: DataAttributes
 }
 
 function ProductSummaryWrapper({
