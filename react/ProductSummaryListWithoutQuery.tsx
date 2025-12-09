@@ -40,7 +40,7 @@ type Props = PropsWithChildren<{
   /** Logic to enable which SKU will be the selected item */
   preferredSKU?: PreferenceType
   /**
-   * Function that returns optional external porps for each product summary.
+   * Function that returns optional external props for each product summary.
    * The returned key/value pairs will be spread onto the corresponding section element.
    *
    * @example
