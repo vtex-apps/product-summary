@@ -40,6 +40,33 @@ const CSS_HANDLES = [
  */
 type DataAttributes = Record<string, string>
 
+const sanitizeDataAttributes = (
+  extraProductProps?: DataAttributes
+): DataAttributes | undefined => {
+  if (!extraProductProps) return undefined
+
+  const sanitized: DataAttributes = {}
+  const invalidKeys: string[] = []
+
+  Object.keys(extraProductProps).forEach((key) => {
+    if (key.startsWith('data-')) {
+      sanitized[key] = extraProductProps[key]
+    } else {
+      invalidKeys.push(key)
+    }
+  })
+
+  if (invalidKeys.length > 0) {
+    console.warn(
+      `extraProductProps contains keys that don't start with 'data-': ${invalidKeys.join(
+        ', '
+      )}`
+    )
+  }
+
+  return sanitized
+}
+
 function ProductSummaryCustom({
   product,
   actionOnClick,
@@ -50,20 +77,7 @@ function ProductSummaryCustom({
   classes,
   extraProductProps,
 }: PropsWithChildren<Props>) {
-  // Validate that all keys in extraProductProps start with 'data-'
-  if (extraProductProps) {
-    const invalidKeys = Object.keys(extraProductProps).filter(
-      (key) => !key.startsWith('data-')
-    )
-
-    if (invalidKeys.length > 0) {
-      console.warn(
-        `extraProductProps contains keys that don't start with 'data-': ${invalidKeys.join(
-          ', '
-        )}`
-      )
-    }
-  }
+  const sanitizedExtraProductProps = sanitizeDataAttributes(extraProductProps)
 
   const {
     isLoading,
@@ -229,7 +243,7 @@ function ProductSummaryCustom({
           priceBehavior={priceBehavior}
         >
           <section
-            {...(extraProductProps ?? {})}
+            {...(sanitizedExtraProductProps ?? {})}
             aria-label={intl.formatMessage(
               { id: 'store/product-summary.shelf.aria-label' },
               { productName: product.productName }
