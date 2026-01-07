@@ -18,6 +18,10 @@ import ProductPriceSimulationWrapper from './components/ProductPriceSimulationWr
 import { SponsoredBadge } from './components/SponsoredBadge'
 import { mapCatalogProductToProductSummary } from './utils/normalize'
 import shouldShowSponsoredBadge from './utils/shouldShowSponsoredBadge'
+import {
+  DataAttributes,
+  sanitizeDataAttributes,
+} from './utils/sanitizeDataAttributes'
 
 const {
   ProductSummaryProvider,
@@ -41,7 +45,10 @@ function ProductSummaryCustom({
   priceBehavior = 'default',
   position,
   classes,
+  extraProductProps,
 }: PropsWithChildren<Props>) {
+  const sanitizedExtraProductProps = sanitizeDataAttributes(extraProductProps)
+
   const {
     isLoading,
     isHovering,
@@ -206,6 +213,7 @@ function ProductSummaryCustom({
           priceBehavior={priceBehavior}
         >
           <section
+            {...sanitizedExtraProductProps}
             aria-label={intl.formatMessage(
               { id: 'store/product-summary.shelf.aria-label' },
               { productName: product.productName }
@@ -269,6 +277,13 @@ interface Props {
    * Where this ProductSummary is being shown. Used for analytics. E.g. "search" or "shelf".
    */
   placement?: string
+  /**
+   * Extra Product props object. These attributes will be spread directly onto the section element.
+   * All keys must start with 'data-'. Invalid keys will trigger a console warning.
+   * @example
+   * extraProductProps={{ 'data-af-category': 'electronics', 'data-af-onclick': 'true' }}
+   */
+  extraProductProps?: DataAttributes
 }
 
 function ProductSummaryWrapper({
@@ -284,6 +299,7 @@ function ProductSummaryWrapper({
   placement,
   classes,
   children,
+  extraProductProps,
 }: PropsWithChildren<Props>) {
   const sponsoredBadge = {
     position: sponsoredBadgePosition,
@@ -307,6 +323,7 @@ function ProductSummaryWrapper({
         position={position}
         placement={placement}
         classes={classes}
+        extraProductProps={extraProductProps}
       >
         {children}
       </ProductSummaryCustom>

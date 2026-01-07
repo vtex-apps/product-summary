@@ -28,6 +28,7 @@ type Props = PropsWithChildren<{
     listName?: string
     position?: number
     placement?: string
+    extraProductProps?: Record<string, string>
   }>
   /** Name of the list property on Google Analytics events. */
   listName?: string
@@ -38,6 +39,20 @@ type Props = PropsWithChildren<{
   ) => void
   /** Logic to enable which SKU will be the selected item */
   preferredSKU?: PreferenceType
+  /**
+   * Function that returns optional external props for each product summary.
+   * The returned key/value pairs will be spread onto the corresponding section element.
+   *
+   * @example
+   * buildExtraProductProps={(product, index) => ({
+   *   'data-af-category': product.category || 'unknown',
+   *   'data-af-index': String(index),
+   * })}
+   */
+  buildExtraProductProps?: (
+    product?: Record<string, string>,
+    index?: number
+  ) => Record<string, string>
 }>
 
 function List({
@@ -47,6 +62,7 @@ function List({
   listName,
   actionOnProductClick,
   preferredSKU,
+  buildExtraProductProps,
 }: Props) {
   const { list } = useListContext()
   const { treePath } = useTreePath()
@@ -77,6 +93,11 @@ function List({
             actionOnClick={handleOnClick}
             position={position}
             placement={PRODUCT_LIST_PLACEMENT}
+            extraProductProps={
+              buildExtraProductProps
+                ? buildExtraProductProps(product, index)
+                : {}
+            }
           />
         )
       }
@@ -91,6 +112,9 @@ function List({
           actionOnClick={handleOnClick}
           position={position}
           placement={PRODUCT_LIST_PLACEMENT}
+          extraProductProps={
+            buildExtraProductProps ? buildExtraProductProps(product, index) : {}
+          }
         />
       )
     })
@@ -104,6 +128,7 @@ function List({
     treePath,
     listName,
     actionOnProductClick,
+    buildExtraProductProps,
   ])
 
   return (
@@ -120,6 +145,7 @@ function ProductSummaryListWithoutQuery({
   ProductSummary,
   actionOnProductClick,
   preferredSKU,
+  buildExtraProductProps,
 }: Props) {
   return (
     <ProductListProvider listName={listName ?? ''}>
@@ -129,6 +155,7 @@ function ProductSummaryListWithoutQuery({
         listName={listName}
         ProductSummary={ProductSummary}
         actionOnProductClick={actionOnProductClick}
+        buildExtraProductProps={buildExtraProductProps}
       >
         {children}
       </List>
