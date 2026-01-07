@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
  ## [Unreleased]
 
+## [2.91.1] - 2026-01-07
+
 ### Added
 
 - Added `extraProductProps` and `buildExtraProductProps` props to Product Summary components to enable passing custom data attributes for analytics and tracking purposes.
