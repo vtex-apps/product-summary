@@ -170,9 +170,7 @@ function ProductSummaryCustom({
         to: href,
         onClick: autocompleteSummary ? actionOnClick : undefined,
         onClickCapture: autocompleteSummary ? undefined : actionOnClick,
-        'aria-label': `${
-          product?.productName || 'product'
-        }`,
+        'aria-label': `${product?.productName || 'product'}`,
       }
     : {
         page: 'store.product',
@@ -184,9 +182,7 @@ function ProductSummaryCustom({
         query,
         onClick: autocompleteSummary ? actionOnClick : undefined,
         onClickCapture: autocompleteSummary ? undefined : actionOnClick,
-        'aria-label': `${
-          product?.productName || 'product'
-        }`,
+        'aria-label': `${product?.productName || 'product'}`,
       }
 
   const eventParameters =
