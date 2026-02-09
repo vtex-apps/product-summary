@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
  ### Fixed
 
  - Change aria-label in shelf to be the same as product name (visible label)
+ 
+## [2.91.1] - 2026-01-07
+
+### Added
+
+- Added `extraProductProps` and `buildExtraProductProps` props to Product Summary components to enable passing custom data attributes for analytics and tracking purposes.
 
 ## [2.91.0] - 2025-11-05
 

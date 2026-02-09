@@ -150,6 +150,20 @@ interface Props {
   sponsoredCount: number
   /** If true, sponsored and regular products will be repeated on the list. */
   repeatSponsoredProducts: boolean
+  /**
+   * Function that returns optional external props for each product summary.
+   * The returned key/value pairs will be spread onto the corresponding section element.
+   *
+   * @example
+   * buildExtraProductProps={(product, index) => ({
+   *   'data-af-category': product.category || 'unknown',
+   *   'data-af-index': String(index),
+   * })}
+   */
+  buildExtraProductProps?: (
+    product?: Record<string, string>,
+    index?: number
+  ) => Record<string, string>
 }
 
 function ProductSummaryList(props: PropsWithChildren<Props>) {
@@ -170,6 +184,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
     showSponsoredProducts = DEFAULT_SHOW_SPONSORED_PRODUCTS,
     sponsoredCount = DEFAULT_SPONSORED_COUNT,
     repeatSponsoredProducts = DEFAULT_REPEAT_SPONSORED_PRODUCTS,
+    buildExtraProductProps,
   } = props
 
   const [shippingOptions, setShippingOptions] = useState([])
@@ -251,6 +266,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
       ProductSummary={ProductSummary}
       actionOnProductClick={productClick}
       preferredSKU={preferredSKU}
+      buildExtraProductProps={buildExtraProductProps}
     >
       <ProductListStructuredData products={products} />
       {children}
