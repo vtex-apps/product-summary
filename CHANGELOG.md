@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
  ## [Unreleased]
 
+## [2.91.2] - 2026-02-09
+
  ### Fixed
 
  - Change aria-label in shelf to be the same as product name (visible label)
