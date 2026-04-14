@@ -11,7 +11,7 @@ metadata:
     vtex.com/o11y-os-index: ""
     grafana/dashboard-selector: ""
     github.com/project-slug: vtex-apps/product-summary
-    vtex.com/platform-flow-id: "Shopper#1"
+    vtex.com/platform-flow-id: Shopper#1
     backstage.io/techdocs-ref: dir:../
     vtex.com/application-id: HCIH5RS1
 spec:
