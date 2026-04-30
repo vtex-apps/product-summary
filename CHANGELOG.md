@@ -5,10 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
- ## [Unreleased]
+## [Unreleased]
 
 ### Changed
 
+- `ProductSummaryList`: stop defaulting `hideUnavailableItems` to `false`; when the prop is omitted it stays unset and is omitted from the `Products` query variables. Site Editor schema no longer defines a default for `hideUnavailableItems`.
 - Update DK Catalog platform-flow-id
 
 ## [2.91.2] - 2026-02-09
