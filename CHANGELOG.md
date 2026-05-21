@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- `ProductSummaryList`: stop defaulting `hideUnavailableItems` to `false`; when the prop is omitted it stays unset and is omitted from the `Products` query variables. Site Editor schema no longer defines a default for `hideUnavailableItems`.
+- `ProductSummaryList`: stop defaulting `hideUnavailableItems` to `false`; when the prop is omitted it stays unset and is omitted from the `Products` query variables. Site Editor schema no longer defines a default for `hideUnavailableItems`. When omitted, the effective value is `false` unless Delivery Promise is enabled, in which case it is treated as `true`.
+- `ProductSummaryList` docs: document omitted `hideUnavailableItems` behavior and Delivery Promise interaction.
 - Update DK Catalog platform-flow-id
 
 ## [2.91.2] - 2026-02-09
