@@ -19,7 +19,7 @@ Use this app to build shelves, product carousels, and other storefront sections 
 ## Configuration
 
 1. Open you [Store Theme](https://developers.vtex.com/docs/guides/vtex-io-documentation-store-theme) app in a code editor.
-2. Open to [`manifest.json`](https://developers.vtex.com/docs/guides/vtex-io-documentation-manifest) file and add the Product Summary List app (`vtex.product-summary`) under the [`dependencies`](https://developers.vtex.com/docs/guides/vtex-io-documentation-dependencies) field.
+2. Open the [`manifest.json`](https://developers.vtex.com/docs/guides/vtex-io-documentation-manifest) file and add the Product Summary List app (`vtex.product-summary`) under [`dependencies`](https://developers.vtex.com/docs/guides/vtex-io-documentation-dependencies).
 
   ```json
   "dependencies": {
@@ -52,34 +52,34 @@ Use this block to define the `product-summary` variation for creating the produc
 
 ## Props
 
-The `list-context.product-list` also runs the GraphQL query that fetches the product list, allowing it to receive the following props:
+`list-context.product-list` also runs the GraphQL query that fetches the product list, allowing it to receive the following props:
 
 | Prop name              | Type                                                  | Description                                                                                                                                                                                                 | Default value            |
 | ---------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
 | `category`             | `string`                                              | Category ID of the listed items. For subcategories, use `"/"` (example: `"1/2/3"`).                                                                                                                         | -                        |
 | `specificationFilters` | `Array({ id: String, value: String })`                | Specification filters of the listed items.                                                                                                                                                                  | `[]`                     |
-| `collection`           | `string`                                              | ID of the product collection to be displayed.                                                                                                                                                               | -                        |
+| `collection`           | `string`                                              | ID of the product collection to display.                                                                                                                                                               | -                        |
 | `orderBy`              | `enum`                                                | Sort order for the items. Possible values are: `''`, `OrderByTopSaleDESC`, `OrderByReleaseDateDESC`, `OrderByBestDiscountDESC`, `OrderByPriceDESC`, `OrderByPriceASC`, `OrderByNameASC`, `OrderByNameDESC`. | `OrderByTopSaleDESC`     |
 | `hideUnavailableItems` | `boolean`                                             | Hides unavailable items when set to `true`.                                                                                                                                                                 | `false`                  |
-| `maxItems`             | `number`                                              | Maximum number items to be fetched.                                                                                                                                                                         | `10`                     |
-| `skusFilter`           | [`SkusFilterEnum`](#skusfilterenum)                   | Controls which SKUs are returned for each product. The fewer SKUs that need to be returned, the more efficient your shelf query will be. Possible values are: `FIRST_AVAILABLE`, `ALL_AVAILABLE`, `ALL`.    | `"ALL_AVAILABLE"`        |
+| `maxItems`             | `number`                                              | Maximum number of items to fetch.                                                                                                                                                                                                           | `10`                     |
+| `skusFilter`           | [`SkusFilterEnum`](#skusfilterenum)                   | Controls which SKUs are returned for each product. Returning fewer SKUs improves shelf query performance. Possible values are: `FIRST_AVAILABLE`, `ALL_AVAILABLE`, `ALL`.                   | `"ALL_AVAILABLE"`        |
 | `installmentCriteria`  | [`InstallmentCriteriaEnum`](#installmentcriteriaenum) | Controls which price is displayed when a product has multiple installment options. Possible values are: `MAX_WITHOUT_INTEREST`, `MAX_WITH_INTEREST`.                                                        | `"MAX_WITHOUT_INTEREST"` |
-| `listName`             | `string`                                              | Name of the list property in Google Analytics events.                                                                                                                                                       | -                        |
+| `listName`             | `string`                                              | Name of the list property for Google Analytics events.                                                                                                                                                                                      | -                        |
 | `preferredSKU`         | [`PreferredSKUEnum`](#preferredskuenum)               | Defines which SKU is selected in the summary. Possible values are: `FIRST_AVAILABLE`, `LAST_AVAILABLE`, `PRICE_ASC`, `PRICE_DESC`.                                                                          | `"FIRST_AVAILABLE"`      |
 
 ### `SkusFilterEnum`
 
 | Name            | Value             | Description                                                                                                                                                |
 | --------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| First Available | `FIRST_AVAILABLE` | Best performance, ideal if you don't have a SKU selector on your shelf. It returns only the first available SKU for that product in your shelf query. |
-| All Available   | `ALL_AVAILABLE`   | It only returns available SKUs. Ideal if you have a SKU selector but want better performance.                                                         |
-| All             | `ALL`             | Lowest performance. Returns all SKUs associated with the product, including unavailable ones.                                                             |
+| First Available | `FIRST_AVAILABLE` | Best performance, ideal if you don't have a SKU selector on your shelf. Returns only the first available SKU for that product in your query. |
+| All Available   | `ALL_AVAILABLE`   | It only returns available SKUs. Ideal if you have a SKU selector and want better performance.                                                |
+| All             | `ALL`             | Lowest performance. Returns all SKUs for each product, including unavailable ones.                                                           |
 
 ### `InstallmentCriteriaEnum`
 
 | Name                     | Value                  | Description                                                       |
 | ------------------------ | ---------------------- | --------------------------------------------------------------------------- |
-| Maximum without interest | `MAX_WITHOUT_INTEREST` | Displays the maximum number of installments with no interest.               |
+| Maximum without interest | `MAX_WITHOUT_INTEREST` | Displays the maximum number of interest-free installments.                  |
 | Maximum                  | `MAX_WITH_INTEREST`    | Displays the maximum number of installments, including those with interest. |
 
 ### `PreferredSKUEnum`
@@ -90,4 +90,4 @@ The `list-context.product-list` also runs the GraphQL query that fetches the pro
 | Last Available  | `LAST_AVAILABLE`  | Selects the last available SKU.           |
 | Most Expensive  | `PRICE_DESC`      | Selects the most expensive available SKU. |
 
-> ⚠️ To override the `PreferredSKU` prop, create a Product specification and assign the value of the SKU you want selected by default for each product. If the specification doesn't exist or the value is empty, the `preferredSKU` prop is used as a fallback.
+> ⚠️ To override the `preferredSKU` prop, create a product specification and assign the SKU value you want selected by default for each product. If the specification doesn't exist or the value is empty, the `preferredSKU` prop is used as a fallback.
