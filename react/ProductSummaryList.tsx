@@ -170,7 +170,7 @@ function ProductSummaryList(props: PropsWithChildren<Props>) {
   const {
     category = '',
     collection,
-    hideUnavailableItems = false,
+    hideUnavailableItems,
     orderBy = ORDER_BY_OPTIONS.RELEVANCE.value,
     specificationFilters = [],
     maxItems = 10,
@@ -322,7 +322,6 @@ ProductSummaryList.schema = {
     hideUnavailableItems: {
       title: 'admin/editor.productSummaryList.hideUnavailableItems',
       type: 'boolean',
-      default: false,
       isLayout: false,
     },
     maxItems: {
