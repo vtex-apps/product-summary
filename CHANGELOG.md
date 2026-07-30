@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- `ProductSummaryImage` and `ProductSummaryName`: add `role="group"` to the container `<div>` that carries `aria-label`, fixing a WCAG 2.2 (4.1.2 Name, Role, Value) / ARIA 1.2 violation (`aria-label` is a prohibited attribute on elements with the implicit `role="generic"`).
+
 ## [2.92.0] - 2026-05-21
 
 ### Changed
