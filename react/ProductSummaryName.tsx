@@ -71,6 +71,7 @@ function ProductSummaryName({
   return (
     <div
       className={containerClasses}
+      role="group"
       aria-label={intl.formatMessage(
         { id: 'store/product-summary.name.aria-label' },
         { productName: product.productName }

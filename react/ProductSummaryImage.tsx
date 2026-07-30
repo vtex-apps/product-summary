@@ -458,6 +458,7 @@ function ProductImage({
   return (
     <div
       className={imageClassName}
+      role="group"
       aria-label={intl.formatMessage(
         { id: 'store/product-summary.image.aria-label' },
         { productName: product.productName }
