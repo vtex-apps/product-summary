@@ -5,15 +5,31 @@ import { QueryItemsWithSimulation } from 'vtex.store-resources'
 
 import clone from '../utils/clone'
 
-const mergeSellers = (
+type OfferWithPriceToken = ProductSummaryTypes.Seller['commertialOffer'] & {
+  priceToken?: string
+}
+
+export const mergeSellers = (
   sellerA: ProductSummaryTypes.Seller,
   sellerB: ProductSummaryTypes.Seller,
   sellerDefault?: string
 ) => {
-  sellerA.commertialOffer = {
+  const indexedOffer = sellerA.commertialOffer as OfferWithPriceToken
+
+  const mergedOffer: OfferWithPriceToken = {
     ...sellerA.commertialOffer,
     ...sellerB.commertialOffer,
   }
+
+  // `priceToken` is signed for the price the search returned and survives the
+  // spread above, because the simulation query does not select it. Whenever the
+  // simulation overwrites `Price` - regionalized stores, B2B price tables - the
+  // token would let checkout close the cart at a price the shopper never saw.
+  if (indexedOffer.priceToken && mergedOffer.Price !== indexedOffer.Price) {
+    delete mergedOffer.priceToken
+  }
+
+  sellerA.commertialOffer = mergedOffer
 
   // Deal with withoutPriceFulfillment cases
   if (sellerA.commertialOffer.Price === 0) {
