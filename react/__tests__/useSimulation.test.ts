@@ -4,11 +4,18 @@ import { mergeSellers } from '../hooks/useSimulation'
 
 type Offer = { Price: number; AvailableQuantity: number; priceToken?: string }
 
-const seller = (sellerId: string, offer: Offer) =>
-  ({ sellerId, commertialOffer: offer } as unknown as ProductSummaryTypes.Seller)
+// The tests only need the fields `mergeSellers` touches, not a full Seller.
+const seller = (sellerId: string, offer: Offer) => {
+  const value: unknown = { sellerId, commertialOffer: offer }
 
-const offerOf = (result: ProductSummaryTypes.Seller) =>
-  result.commertialOffer as unknown as Offer
+  return value as ProductSummaryTypes.Seller
+}
+
+const offerOf = (result: ProductSummaryTypes.Seller) => {
+  const value: unknown = result.commertialOffer
+
+  return value as Offer
+}
 
 describe('mergeSellers', () => {
   it('keeps the signed price when the simulation confirms the indexed price', () => {
