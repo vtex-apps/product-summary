@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Drop the search-signed `priceToken` (Pricing Fallback V2) from a seller's commercial offer when `itemsWithSimulation` overwrites its `Price`. The simulation query does not select the token, so it survived the merge and kept asserting the indexed price while the shopper saw a regionalized or B2B one.
+
 ## [2.92.2] - 2026-08-07
 
 ### Fixed
